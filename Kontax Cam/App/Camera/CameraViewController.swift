@@ -33,6 +33,7 @@ class CameraViewController: UIViewController {
         // By default, don't store to device
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.shouldFlipFrontCameraImage = false
+        cameraManager.shouldUseLocationServices = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

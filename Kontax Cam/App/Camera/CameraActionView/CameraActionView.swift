@@ -91,15 +91,26 @@ class CameraActionView: UIView {
     
     @objc func shutterTapped() {
         timeEngine.presentTimerDisplay()
+        TapticHelper.shared.successTaptic()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(timeEngine.currentTime)) {
             self.cameraManager.capturePictureWithCompletion({ result in
                 switch result {
                 case .failure:
                     print("error")
                     TapticHelper.shared.errorTaptic()
-                case .success(_):
+                case .success(let content):
                     print("success")
-                    TapticHelper.shared.successTaptic()
+                    
+                    if let image = content.asImage {
+//                        PhotoLibraryEngine.shared.save(image) { (result, error) in
+//                            if let e = error {
+//                                fatalError("Unable saving to album \(e.localizedDescription)")
+//                            }
+//                        }
+                    } else {
+                        fatalError("Unable to render image.")
+                    }
                 }
             })
         }

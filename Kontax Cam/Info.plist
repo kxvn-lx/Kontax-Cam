@@ -22,8 +22,12 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Kontax Cam requires camera access to take photo.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Kontax Cam requires access to your library to save photo.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Kontax Cam requires access to your library to save photo.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>When enabled, Kontax Cam will get the location the photo was taken at and add it to the photo&apos;s metadata.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>When enabled, Kontax Cam will get the location the photo was taken at and add it to the photo&apos;s metadata.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

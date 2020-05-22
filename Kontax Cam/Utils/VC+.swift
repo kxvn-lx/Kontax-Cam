@@ -19,7 +19,6 @@ extension UIApplication {
 
 // MARK: - UIViewController
 extension UIViewController {
-    
     func configureView() {
         self.view.backgroundColor = UIColor.systemBackground
     }
@@ -48,5 +47,17 @@ extension UIStackView {
         ])
         
         addArrangedSubview(containerForMargin)
+    }
+}
+
+// MARK: - UIFont
+extension UIFont {
+    func makeRoundedFont(ofSize style: UIFont.TextStyle, multiplier: CGFloat = 1, weight: UIFont.Weight) -> UIFont {
+        let fontSize = UIFont.preferredFont(forTextStyle: style).pointSize * multiplier
+        if let descriptor = UIFont.systemFont(ofSize: fontSize, weight: weight).fontDescriptor.withDesign(.rounded) {
+            return UIFont(descriptor: descriptor, size: fontSize)
+        } else {
+            return UIFont.preferredFont(forTextStyle: style)
+        }
     }
 }

@@ -13,6 +13,7 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
+		0A44B2B62476BF3700603F2C /* LUTEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B2B52476BF3700603F2C /* LUTEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0A44B2A32476A7F100603F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A44B2B52476BF3700603F2C /* LUTEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A44B2B02476A80D00603F2C /* Utils */,
+				0A44B2AF2476A80700603F2C /* Engine */,
+				0A44B2AE2476A80300603F2C /* App */,
 				0A44B29A2476A7F000603F2C /* AppDelegate.swift */,
 				0A44B29C2476A7F000603F2C /* SceneDelegate.swift */,
-				0A44B29E2476A7F000603F2C /* ViewController.swift */,
 				0A44B2A02476A7F000603F2C /* Main.storyboard */,
 				0A44B2A32476A7F100603F2C /* Assets.xcassets */,
 				0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */,
 				0A44B2A82476A7F100603F2C /* Info.plist */,
 			);
 			path = "Kontax Cam";
+			sourceTree = "<group>";
+		};
+		0A44B2AE2476A80300603F2C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0A44B29E2476A7F000603F2C /* ViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0A44B2AF2476A80700603F2C /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				0A44B2B52476BF3700603F2C /* LUTEngine.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		0A44B2B02476A80D00603F2C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +167,7 @@
 			files = (
 				0A44B29F2476A7F000603F2C /* ViewController.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
+				0A44B2B62476BF3700603F2C /* LUTEngine.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

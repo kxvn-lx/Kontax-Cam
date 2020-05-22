@@ -99,18 +99,18 @@ class CameraActionView: UIView {
                 case .failure:
                     print("error")
                     TapticHelper.shared.errorTaptic()
-                case .success(let content):
+                case .success(_):
                     print("success")
                     
-                    if let image = content.asImage {
+//                    if let image = content.asImage {
 //                        PhotoLibraryEngine.shared.save(image) { (result, error) in
 //                            if let e = error {
 //                                fatalError("Unable saving to album \(e.localizedDescription)")
 //                            }
 //                        }
-                    } else {
-                        fatalError("Unable to render image.")
-                    }
+//                    } else {
+//                        fatalError("Unable to render image.")
+//                    }
                 }
             })
         }
@@ -134,8 +134,8 @@ class CameraActionView: UIView {
         
         if spAlert != nil { spAlert.dismiss() }
         let time = timeEngine.ToggleTimer()
-        let message = time == 0 ? "Off" : String(time)
-        spAlert = SPAlertView(message: message)
+        let message = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
+        spAlert = SPAlertView(title: message, message: nil, image: IconHelper.shared.getIcon(iconName: .timer, currentIcon: nil).0)
         spAlert.present()
     }
     

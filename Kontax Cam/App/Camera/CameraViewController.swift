@@ -28,12 +28,14 @@ class CameraViewController: UIViewController {
         setupConstraint()
         self.configureView()
 
+        // Setup Camera Manager
         cameraManager.addPreviewLayerToView(self.cameraView)
-        cameraManager.imageAlbumName = "Kontax Cam"
         // By default, don't store to device
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.shouldFlipFrontCameraImage = false
         cameraManager.shouldUseLocationServices = true
+        cameraManager.shouldRespondToOrientationChanges = false
+        cameraManager.shouldKeepViewAtOrientationChanges = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

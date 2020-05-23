@@ -12,21 +12,24 @@ import SnapKit
 class ShutterButtonView: UIView {
 
     private let animationDuration: TimeInterval = 0.05
+    private let color = UIColor.systemBlue
+    private let touchedColor = UIColor.systemBlue.withAlphaComponent(0.8)
+    
+    private var oriFrame: CGRect!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.oriFrame = frame
         
         // View configuration
         self.isUserInteractionEnabled = true
         
         // View UI
-        self.backgroundColor = UIColor.systemGray6
-        self.layer.cornerRadius = frame.width / 2
+        self.backgroundColor = color
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.snp.makeConstraints { (make) in
-            make.height.width.equalTo(frame.width)
-        }
+        renderSize()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,29 +39,41 @@ class ShutterButtonView: UIView {
     // MARK: - Touch event listener
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
-            self.backgroundColor = UIColor.systemGray6
+            self.backgroundColor = self.color
             UIView.animate(withDuration: self.animationDuration) {
-                self.backgroundColor = UIColor.systemGray5
+                self.backgroundColor = self.touchedColor
+                self.renderSize(multiplier: 0.98)
             }
         }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
-            self.backgroundColor = UIColor.systemGray5
+            self.backgroundColor = self.touchedColor
+            self.renderSize(multiplier: 0.98)
             UIView.animate(withDuration: self.animationDuration) {
-                self.backgroundColor = UIColor.systemGray6
+                self.backgroundColor = self.color
+                self.renderSize()
             }
         }
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
-            self.backgroundColor = UIColor.systemGray5
+            self.backgroundColor = self.touchedColor
+            self.renderSize(multiplier: 0.98)
             UIView.animate(withDuration: self.animationDuration) {
-                self.backgroundColor = UIColor.systemGray6
+                self.backgroundColor = self.color
+                self.renderSize()
             }
         }
+    }
+    
+    private func renderSize(multiplier: CGFloat = 1) {
+        self.snp.remakeConstraints { (make) in
+            make.height.width.equalTo( oriFrame.width * multiplier )
+        }
+        self.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
     }
 
 }

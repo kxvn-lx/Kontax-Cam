@@ -55,6 +55,7 @@ class CameraActionView: UIView {
         
         timerButton.setImage(IconHelper.shared.getIcon(iconName: .timer, currentIcon: nil).0, for: .normal)
         timerButton.addTarget(self, action: #selector(timerButtonTapped), for: .touchUpInside)
+        flashButton.setTitleColor(.systemTeal, for: .normal)
         
         reverseCamButton.setImage(IconHelper.shared.getIcon(iconName: .reverse, currentIcon: nil).0, for: .normal)
         reverseCamButton.addTarget(self, action: #selector(reverseButtonTapped), for: .touchUpInside)

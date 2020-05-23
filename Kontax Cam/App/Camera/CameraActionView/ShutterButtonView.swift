@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+enum TouchEvent {
+    case begin, end
+}
+
 class ShutterButtonView: UIView {
 
     private let animationDuration: TimeInterval = 0.05
@@ -17,19 +21,27 @@ class ShutterButtonView: UIView {
     
     private var oriFrame: CGRect!
     
+    private let innerCircle = UIView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.oriFrame = frame
+        self.addSubview(innerCircle)
+        
         
         // View configuration
         self.isUserInteractionEnabled = true
         
         // View UI
-        self.backgroundColor = color
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.layer.borderWidth = 2
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        innerCircle.translatesAutoresizingMaskIntoConstraints = false
+        
+        touchEvent(event: .begin)
         renderSize()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,9 +51,9 @@ class ShutterButtonView: UIView {
     // MARK: - Touch event listener
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
-            self.backgroundColor = self.color
+            self.touchEvent(event: .begin)
             UIView.animate(withDuration: self.animationDuration) {
-                self.backgroundColor = self.touchedColor
+                self.touchEvent(event: .end)
                 self.renderSize(multiplier: 0.98)
             }
         }
@@ -49,10 +61,10 @@ class ShutterButtonView: UIView {
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
-            self.backgroundColor = self.touchedColor
+            self.touchEvent(event: .end)
             self.renderSize(multiplier: 0.98)
             UIView.animate(withDuration: self.animationDuration) {
-                self.backgroundColor = self.color
+                self.touchEvent(event: .begin)
                 self.renderSize()
             }
         }
@@ -60,10 +72,10 @@ class ShutterButtonView: UIView {
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
-            self.backgroundColor = self.touchedColor
+            self.touchEvent(event: .end)
             self.renderSize(multiplier: 0.98)
             UIView.animate(withDuration: self.animationDuration) {
-                self.backgroundColor = self.color
+                self.touchEvent(event: .begin)
                 self.renderSize()
             }
         }
@@ -71,9 +83,33 @@ class ShutterButtonView: UIView {
     
     private func renderSize(multiplier: CGFloat = 1) {
         self.snp.remakeConstraints { (make) in
-            make.height.width.equalTo( oriFrame.width * multiplier )
+            make.height.width.equalTo( oriFrame.width )
         }
         self.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
+        
+        innerCircle.snp.remakeConstraints { (make) in
+            make.height.width.equalTo(oriFrame.width * 0.9 * multiplier)
+            make.center.equalTo(self)
+        }
+        innerCircle.layer.cornerRadius = ( oriFrame.width * 0.9 * multiplier ) / 2
+    }
+    
+    /// Tell the UI to render the layout according to the event
+    /// - Parameter event: The event. Begin: When no event detected. End: When event has ended.
+    private func touchEvent(event: TouchEvent) {
+        switch event {
+        case .begin:
+            self.backgroundColor = .clear
+            self.layer.borderColor = color.cgColor
+            
+            innerCircle.backgroundColor = color
+            
+        case .end:
+            self.backgroundColor = .clear
+            self.layer.borderColor = color.cgColor
+            
+            innerCircle.backgroundColor = touchedColor
+        }
     }
 
 }

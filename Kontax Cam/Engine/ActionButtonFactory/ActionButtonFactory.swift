@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-enum ActionType {
-    case flash
-}
-
 class ActionButtonFactory {
     
     /// The actions that will be presented on the main screen

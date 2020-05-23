@@ -36,6 +36,9 @@ class CameraViewController: UIViewController {
         cameraManager.shouldUseLocationServices = true
         cameraManager.shouldRespondToOrientationChanges = false
         cameraManager.shouldKeepViewAtOrientationChanges = true
+        
+        // Pass the instance to CameraActionView
+        CameraActionView.cameraManager = cameraManager
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +59,6 @@ class CameraViewController: UIViewController {
         
         // Camera Action View
         cameraActionView = CameraActionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - cameraView.frame.height))
-        cameraActionView.cameraManager = cameraManager
         
         self.view.addSubview(cameraActionView)
         self.view.addSubview(cameraView)

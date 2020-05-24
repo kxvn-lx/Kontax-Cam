@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "QuickTableViewController",
+        "repositoryURL": "https://github.com/bcylin/QuickTableViewController",
+        "state": {
+          "branch": null,
+          "revision": "70ec82dc5f3cf55dc8518eca834d09c758a398fb",
+          "version": "1.2.1"
+        }
+      },
+      {
         "package": "SnapKit",
         "repositoryURL": "https://github.com/SnapKit/SnapKit",
         "state": {

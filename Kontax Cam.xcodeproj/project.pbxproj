@@ -29,6 +29,8 @@
 		0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */; };
 		0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E59247A572A00E039FC /* Filter.swift */; };
 		0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */; };
+		0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5290A7247AB40500BA0D57 /* QuickTableViewController */; };
+		0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A97CE7C2478DA4D0048CDCB /* ActionButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7B2478DA4D0048CDCB /* ActionButtonFactory.swift */; };
 		0A97CE802478DAE40048CDCB /* FlashAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7F2478DAE40048CDCB /* FlashAction.swift */; };
@@ -61,6 +63,7 @@
 		0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListTableViewCell.swift; sourceTree = "<group>"; };
 		0A4D6E59247A572A00E039FC /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
+		0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A97CE7B2478DA4D0048CDCB /* ActionButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonFactory.swift; sourceTree = "<group>"; };
 		0A97CE7F2478DAE40048CDCB /* FlashAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashAction.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */,
 				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
 				0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
@@ -139,6 +143,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A5290A9247AB43900BA0D57 /* Settings */,
 				0A4D6E5E247A5AD500E039FC /* PhotoDisplay [Demo] */,
 				0A4D6E53247A472100E039FC /* Filter List */,
 				0A1D97C22477BE7800E4078F /* Camera */,
@@ -194,6 +199,14 @@
 			path = "PhotoDisplay [Demo]";
 			sourceTree = "<group>";
 		};
+		0A5290A9247AB43900BA0D57 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		0A97CE7A2478DA370048CDCB /* ActionButtonFactory */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +241,7 @@
 				0A1D97BB2477B80D00E4078F /* CameraManager */,
 				0A1D97C02477BACE00E4078F /* SnapKit */,
 				0A1D97CF2477EFB900E4078F /* SPAlert */,
+				0A5290A7247AB40500BA0D57 /* QuickTableViewController */,
 			);
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
@@ -261,6 +275,7 @@
 				0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */,
 				0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */,
+				0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */,
 			);
 			productRefGroup = 0A44B2982476A7F000603F2C /* Products */;
 			projectDirPath = "";
@@ -297,6 +312,7 @@
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A97CE822478E8110048CDCB /* TimerAction.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
+				0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */,
 				0A97CE862478E8CD0048CDCB /* FxAction.swift in Sources */,
 				0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */,
 				0A97CE7C2478DA4D0048CDCB /* ActionButtonFactory.swift in Sources */,
@@ -536,6 +552,14 @@
 				minimumVersion = 2.1.4;
 			};
 		};
+		0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bcylin/QuickTableViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -553,6 +577,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
+		};
+		0A5290A7247AB40500BA0D57 /* QuickTableViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */;
+			productName = QuickTableViewController;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

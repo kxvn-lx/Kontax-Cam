@@ -32,6 +32,21 @@
             </objects>
             <point key="canvasLocation" x="1048" y="947"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="AG1-WA-tlL">
+            <objects>
+                <viewController storyboardIdentifier="settingsVC" id="8Bc-7M-SAA" customClass="SettingsViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qlJ-2A-YtC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="lFQ-oJ-jtT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yqe-Ks-S87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2023" y="947"/>
+        </scene>
         <!--Filter List Table View Controller-->
         <scene sceneID="UIF-KP-BPe">
             <objects>

@@ -113,7 +113,10 @@ class CameraViewController: UIViewController {
     }
     
     @objc private func settingButtonTapped() {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
         
+        let navController = UINavigationController(rootViewController: vc)
+        self.present(navController, animated: true, completion: nil)
     }
     
     // MARK: - NotificationObserver Method

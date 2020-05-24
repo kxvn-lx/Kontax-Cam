@@ -95,10 +95,10 @@ class CameraViewController: UIViewController {
         self.view.addSubview(settingButton)
         settingButton.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
         settingButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(10)
+            make.top.equalTo(self.view).offset(20)
             make.height.equalTo(35)
             make.width.equalTo(65)
-            make.right.equalTo(self.view).offset(-10)
+            make.right.equalTo(self.view).offset(-20)
         }
     }
     

@@ -94,8 +94,8 @@ class CameraActionView: UIView {
         labButton.snp.makeConstraints { (make) in
             make.width.equalTo(65 * 1.5)
             make.height.equalTo(35 * 1.25)
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(60)
-            make.centerX.equalToSuperview().offset(120)
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40 + shutterSize / 2 - (35 * 1.25 / 2))
+            make.centerX.equalTo(self.frame.width * 0.75 + shutterSize / 4)
         }
     }
     

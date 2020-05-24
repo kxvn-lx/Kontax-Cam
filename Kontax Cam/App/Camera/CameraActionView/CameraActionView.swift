@@ -12,8 +12,13 @@ import CameraManager
 
 class CameraActionView: UIView {
     
-    private var cameraActionStack = SVHelper.shared.createSV(axis: .vertical, spacing: 40, alignment: .center, distribution: .fillProportionally)
-    private var functionStack = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .equalCentering)
+    private let actionButtonsScrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.showsVerticalScrollIndicator = false
+        sv.showsHorizontalScrollIndicator = false
+        return sv
+    }()
     
     static var cameraManager: CameraManager!
     
@@ -29,33 +34,42 @@ class CameraActionView: UIView {
     
     // MARK: - Setup UI
     private func setupUI() {
-        self.addSubview(cameraActionStack)
-        cameraActionStack.snp.makeConstraints { (make) in
+        // action buttons scrollview
+        self.addSubview(actionButtonsScrollView)
+        actionButtonsScrollView.snp.makeConstraints { (make) in
             make.width.equalTo(self.frame.width)
+            make.height.equalTo(40)
+            make.top.equalTo(self).offset(10)
         }
         
-        // Function stack
-        cameraActionStack.addArrangedSubview(functionStack, withMargin: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
-        functionStack.snp.makeConstraints { (make) in
-            make.width.equalTo(self.frame.width * 0.7)
-        }
-        
-        // Adding the action buttons to the view
+        // Adding the action buttons to the scrollView
         let actionButtons = ActionButtonFactory.shared.actionButtons
+        var xCoord: CGFloat = 10
+        let yCoord: CGFloat = 5
+        let buttonWidth:CGFloat = 65
+        let buttonHeight: CGFloat = 35
+        let gapBetweenButtons: CGFloat = 10
+        
         for button in actionButtons {
             button.backgroundColor = .systemGray6
             button.layer.cornerRadius = 5
             
-            button.snp.makeConstraints { (make) in
-                make.width.height.equalTo(30)
-            }
+            button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)
+            button.clipsToBounds = true
             
-            functionStack.addArrangedSubview(button)
+            xCoord += buttonWidth + gapBetweenButtons
+            actionButtonsScrollView.addSubview(button)
         }
         
+        actionButtonsScrollView.contentSize = CGSize(width: buttonWidth * CGFloat(actionButtons.count + 2), height: yCoord)
+
         // Shutter button
-        let shutterButton = ShutterButtonView(frame:  CGRect(x: 0, y: 0, width: 100, height: 100))
-        cameraActionStack.addArrangedSubview(shutterButton)
+        let shutterButton = ShutterButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        self.addSubview(shutterButton)
+        shutterButton.snp.makeConstraints { (make) in
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
+            make.centerX.equalTo(self)
+        }
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(shutterTapped))
         gesture.numberOfTapsRequired = 1

@@ -27,6 +27,8 @@
 		0A44B2B62476BF3700603F2C /* LUTEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B2B52476BF3700603F2C /* LUTEngine.swift */; };
 		0A4D6E55247A474100E039FC /* FilterListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E54247A474100E039FC /* FilterListTableViewController.swift */; };
 		0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */; };
+		0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E59247A572A00E039FC /* Filter.swift */; };
+		0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A97CE7C2478DA4D0048CDCB /* ActionButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7B2478DA4D0048CDCB /* ActionButtonFactory.swift */; };
 		0A97CE802478DAE40048CDCB /* FlashAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7F2478DAE40048CDCB /* FlashAction.swift */; };
@@ -57,6 +59,8 @@
 		0A44B2B52476BF3700603F2C /* LUTEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTEngine.swift; sourceTree = "<group>"; };
 		0A4D6E54247A474100E039FC /* FilterListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListTableViewController.swift; sourceTree = "<group>"; };
 		0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListTableViewCell.swift; sourceTree = "<group>"; };
+		0A4D6E59247A572A00E039FC /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A97CE7B2478DA4D0048CDCB /* ActionButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonFactory.swift; sourceTree = "<group>"; };
 		0A97CE7F2478DAE40048CDCB /* FlashAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashAction.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D6E58247A571E00E039FC /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
 				0A44B2AF2476A80700603F2C /* Engine */,
 				0A44B2AE2476A80300603F2C /* App */,
@@ -134,6 +139,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D6E5E247A5AD500E039FC /* PhotoDisplay [Demo] */,
 				0A4D6E53247A472100E039FC /* Filter List */,
 				0A1D97C22477BE7800E4078F /* Camera */,
 			);
@@ -170,6 +176,22 @@
 				0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */,
 			);
 			path = "Filter List";
+			sourceTree = "<group>";
+		};
+		0A4D6E58247A571E00E039FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A4D6E59247A572A00E039FC /* Filter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A4D6E5E247A5AD500E039FC /* PhotoDisplay [Demo] */ = {
+			isa = PBXGroup;
+			children = (
+				0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */,
+			);
+			path = "PhotoDisplay [Demo]";
 			sourceTree = "<group>";
 		};
 		0A97CE7A2478DA370048CDCB /* ActionButtonFactory */ = {
@@ -269,7 +291,9 @@
 			files = (
 				0A1D97CB2477CBB100E4078F /* ShutterButtonView.swift in Sources */,
 				0A97CE882478E8EC0048CDCB /* FilterAction.swift in Sources */,
+				0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
+				0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A97CE822478E8110048CDCB /* TimerAction.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,

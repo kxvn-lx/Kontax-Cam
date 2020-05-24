@@ -26,6 +26,7 @@ struct SPAlertHelper {
                 fatalError()
             }
             spAlert = SPAlertView(title: title, message: message, image: image)
+            spAlert.duration = 0.5
         }
         
         spAlert.present()

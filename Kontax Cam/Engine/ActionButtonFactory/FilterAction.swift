@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class FilterAction: UIButton {
 
     private let filter = ["paintbrush.fill"]
@@ -25,10 +26,13 @@ class FilterAction: UIButton {
     
     @objc private func filterTapped() {
         TapticHelper.shared.lightTaptic()
+        NotificationCenter.default.post(name: .filterList, object: nil)
     }
     
     private func getIcon() -> UIImage {
         return IconHelper.shared.getIconImage(iconName: filter[0])
     }
+    
+    
 
 }

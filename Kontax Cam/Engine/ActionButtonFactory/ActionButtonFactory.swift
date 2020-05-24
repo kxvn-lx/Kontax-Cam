@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ActionButtonFactory {
+struct ActionButtonFactory {
     
     /// The actions that will be presented on the main screen
     let actionButtons: [UIButton] = [

@@ -20,6 +20,15 @@ class CameraActionView: UIView {
         return sv
     }()
     var shutterButton: ShutterButtonView!
+    let labButton: UIButton = {
+       let btn = UIButton()
+        btn.addTextWithImagePrefix(image: IconHelper.shared.getIconImage(iconName: "tray"), text: "Lab")
+        btn.tintColor = .label
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 35 / 2
+        btn.backgroundColor = .secondarySystemBackground
+        return btn
+    }()
     
     static var cameraManager: CameraManager!
     
@@ -78,5 +87,19 @@ class CameraActionView: UIView {
         let shutterSize = self.frame.height * 0.13
         shutterButton = ShutterButtonView(frame: CGRect(x: 0, y: 0, width: shutterSize, height: shutterSize))
         self.addSubview(shutterButton)
+        
+        // Lab button
+        self.addSubview(labButton)
+        labButton.addTarget(self, action: #selector(labButtonTapped), for: .touchUpInside)
+        labButton.snp.makeConstraints { (make) in
+            make.width.equalTo(65 * 1.5)
+            make.height.equalTo(35 * 1.25)
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(60)
+            make.centerX.equalToSuperview().offset(120)
+        }
+    }
+    
+    @objc private func labButtonTapped() {
+        NotificationCenter.default.post(name: .presentLabVC, object: nil)
     }
 }

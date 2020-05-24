@@ -10,6 +10,9 @@ import UIKit
 import CameraManager
 import SnapKit
 
+protocol CameraViewDelegate {
+}
+
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
@@ -53,6 +56,7 @@ class CameraViewController: UIViewController {
          
         NotificationCenter.default.addObserver(self, selector: #selector(presentFilterListVC), name: .presentFilterListVC, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(presentPhotoDisplayVC), name: .presentPhotoDisplayVC, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presentLabVC), name: .presentLabVC, object: nil)
         
         setupUI()
         setupConstraint()
@@ -142,5 +146,9 @@ class CameraViewController: UIViewController {
         } else {
             fatalError("No information is being passed.")
         }
+    }
+    
+    @objc private func presentLabVC() {
+        print("Presenting lab...")
     }
 }

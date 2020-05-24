@@ -86,6 +86,7 @@ extension UIFont {
 extension Notification.Name {
     static let presentFilterListVC = Notification.Name("presentFilterListVC")
     static let presentPhotoDisplayVC = Notification.Name("presentPhotoDisplayVC")
+    static let presentLabVC = Notification.Name("presentLabVC")
 }
 
 // MARK: - UIButton
@@ -116,5 +117,19 @@ extension UIButton {
             imageView.backgroundColor = .clear
             self.bringSubviewToFront(imageView)
         }
+    }
+    
+    func addTextWithImagePrefix(image: UIImage, text: String) {
+        let fullString = NSMutableAttributedString()
+        let imageAttachment = NSTextAttachment()
+        
+        imageAttachment.bounds = CGRect(x: 0, y: ((self.titleLabel?.font.capHeight)! - image.size.height).rounded() / 2, width: image.size.width, height: image.size.height)
+        imageAttachment.image = image
+        
+        let imageString = NSAttributedString(attachment: imageAttachment)
+        fullString.append(imageString)
+        fullString.append(NSAttributedString(string: "  " + text))
+        
+        self.setAttributedTitle(fullString, for: .normal)
     }
 }

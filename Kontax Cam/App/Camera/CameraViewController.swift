@@ -17,6 +17,12 @@ class CameraViewController: UIViewController {
     
     // MARK: - Class variables
     private let cameraView = UIView()
+    static let rotView: UIImageView = {
+       let v = UIImageView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.image = UIImage(named: "rot")
+        return v
+    }()
     private var cameraActionView: CameraActionView!
     private let cameraManager = CameraManager()
     
@@ -62,6 +68,12 @@ class CameraViewController: UIViewController {
         
         self.view.addSubview(cameraActionView)
         self.view.addSubview(cameraView)
+        
+        // RotView
+        self.view.addSubview(CameraViewController.rotView)
+        CameraViewController.rotView.snp.makeConstraints { (make) in
+            make.edges.equalTo(cameraView)
+        }
     }
     
     private func setupConstraint() {

@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "lookup-edit-portra.png",
+      "filename" : "rot.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,8 +17,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

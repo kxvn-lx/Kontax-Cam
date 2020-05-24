@@ -29,8 +29,9 @@
 		0A97CE802478DAE40048CDCB /* FlashAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7F2478DAE40048CDCB /* FlashAction.swift */; };
 		0A97CE822478E8110048CDCB /* TimerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE812478E8110048CDCB /* TimerAction.swift */; };
 		0A97CE842478E8AE0048CDCB /* ReverseCamAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE832478E8AE0048CDCB /* ReverseCamAction.swift */; };
-		0A97CE862478E8CD0048CDCB /* fxAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE852478E8CD0048CDCB /* fxAction.swift */; };
-		0A97CE882478E8EC0048CDCB /* filterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE872478E8EC0048CDCB /* filterAction.swift */; };
+		0A97CE862478E8CD0048CDCB /* FxAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE852478E8CD0048CDCB /* FxAction.swift */; };
+		0A97CE882478E8EC0048CDCB /* FilterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE872478E8EC0048CDCB /* FilterAction.swift */; };
+		0ADBE50D247A26C100B01FA9 /* GridAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBE50C247A26C100B01FA9 /* GridAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +56,9 @@
 		0A97CE7F2478DAE40048CDCB /* FlashAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashAction.swift; sourceTree = "<group>"; };
 		0A97CE812478E8110048CDCB /* TimerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAction.swift; sourceTree = "<group>"; };
 		0A97CE832478E8AE0048CDCB /* ReverseCamAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseCamAction.swift; sourceTree = "<group>"; };
-		0A97CE852478E8CD0048CDCB /* fxAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fxAction.swift; sourceTree = "<group>"; };
-		0A97CE872478E8EC0048CDCB /* filterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterAction.swift; sourceTree = "<group>"; };
+		0A97CE852478E8CD0048CDCB /* FxAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FxAction.swift; sourceTree = "<group>"; };
+		0A97CE872478E8EC0048CDCB /* FilterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAction.swift; sourceTree = "<group>"; };
+		0ADBE50C247A26C100B01FA9 /* GridAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,8 +162,9 @@
 				0A97CE7F2478DAE40048CDCB /* FlashAction.swift */,
 				0A97CE812478E8110048CDCB /* TimerAction.swift */,
 				0A97CE832478E8AE0048CDCB /* ReverseCamAction.swift */,
-				0A97CE852478E8CD0048CDCB /* fxAction.swift */,
-				0A97CE872478E8EC0048CDCB /* filterAction.swift */,
+				0A97CE852478E8CD0048CDCB /* FxAction.swift */,
+				0A97CE872478E8EC0048CDCB /* FilterAction.swift */,
+				0ADBE50C247A26C100B01FA9 /* GridAction.swift */,
 			);
 			path = ActionButtonFactory;
 			sourceTree = "<group>";
@@ -248,12 +251,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D97CB2477CBB100E4078F /* ShutterButtonView.swift in Sources */,
-				0A97CE882478E8EC0048CDCB /* filterAction.swift in Sources */,
+				0A97CE882478E8EC0048CDCB /* FilterAction.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A97CE822478E8110048CDCB /* TimerAction.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
-				0A97CE862478E8CD0048CDCB /* fxAction.swift in Sources */,
+				0A97CE862478E8CD0048CDCB /* FxAction.swift in Sources */,
 				0A97CE7C2478DA4D0048CDCB /* ActionButtonFactory.swift in Sources */,
 				0A44B2B62476BF3700603F2C /* LUTEngine.swift in Sources */,
 				0A97CE802478DAE40048CDCB /* FlashAction.swift in Sources */,
@@ -262,6 +265,7 @@
 				0A1D97C82477C17A00E4078F /* CameraActionView.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0A97CE842478E8AE0048CDCB /* ReverseCamAction.swift in Sources */,
+				0ADBE50D247A26C100B01FA9 /* GridAction.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,

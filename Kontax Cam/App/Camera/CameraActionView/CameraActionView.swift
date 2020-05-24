@@ -61,7 +61,7 @@ class CameraActionView: UIView {
             actionButtonsScrollView.addSubview(button)
         }
         
-        actionButtonsScrollView.contentSize = CGSize(width: buttonWidth * CGFloat(actionButtons.count + 2), height: yCoord)
+        actionButtonsScrollView.contentSize = CGSize(width: buttonWidth * CGFloat(actionButtons.count + 1), height: yCoord)
 
         // Shutter button
         let shutterButton = ShutterButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))

@@ -1,5 +1,5 @@
 //
-//  fxAction.swift
+//  FxAction.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 23/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class fxAction: UIButton {
+class FxAction: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

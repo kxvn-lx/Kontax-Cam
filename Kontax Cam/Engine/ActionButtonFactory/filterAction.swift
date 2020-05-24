@@ -1,5 +1,5 @@
 //
-//  filterAction.swift
+//  FilterAction.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 23/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class filterAction: UIButton {
+class FilterAction: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

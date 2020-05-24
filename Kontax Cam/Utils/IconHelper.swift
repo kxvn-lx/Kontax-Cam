@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum IconName: String {
-    case flash, timer, reverse, effect, filter
+    case flash, timer, reverse, effect, filter, grid
 }
 
 struct IconHelper {
@@ -20,6 +20,7 @@ struct IconHelper {
     private let reverse = ["arrow.2.circlepath"]
     private let effect = ["fx"]
     private let filter = ["paintbrush.fill"]
+    private let grid = ["grid"]
     
     
     static let shared = IconHelper()
@@ -52,6 +53,10 @@ struct IconHelper {
             
         case .filter:
             let image = getIconImage(iconName: filter[0])
+            return (image, nil)
+            
+        case .grid:
+            let image = getIconImage(iconName: grid[0])
             return (image, nil)
         }
     }

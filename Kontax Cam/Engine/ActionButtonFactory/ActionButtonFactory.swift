@@ -16,8 +16,9 @@ class ActionButtonFactory {
         FlashAction(),
         TimerAction(),
         ReverseCamAction(),
-        fxAction(),
-        filterAction()
+        FxAction(),
+        FilterAction(),
+        GridAction()
     ]
     
     static let shared = ActionButtonFactory()

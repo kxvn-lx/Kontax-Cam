@@ -51,7 +51,7 @@ class ShutterButtonView: UIView {
     
     /// Handles the shutter button tapped
     @objc func shutterTapped() {
-        TimerAction.timeEngine.presentTimerDisplay()
+        if TimerAction.timeEngine.currentTime != 0 { TimerAction.timeEngine.presentTimerDisplay() }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(TimerAction.timeEngine.currentTime)) {
             CameraActionView.cameraManager.capturePictureWithCompletion({ result in

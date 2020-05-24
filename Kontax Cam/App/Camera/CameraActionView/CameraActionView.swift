@@ -62,6 +62,7 @@ class CameraActionView: UIView {
         
         for button in actionButtons {
             button.backgroundColor = .secondarySystemBackground
+            button.tintColor = .label
             button.layer.cornerRadius = 5
             
             button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)

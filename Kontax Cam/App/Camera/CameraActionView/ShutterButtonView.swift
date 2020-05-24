@@ -15,9 +15,9 @@ enum TouchEvent {
 
 class ShutterButtonView: UIView {
     
-    private let animationDuration: TimeInterval = 0.05
-    private let color = UIColor.systemBlue
-    private let touchedColor = UIColor.systemBlue.withAlphaComponent(0.8)
+    private let animationDuration: TimeInterval = 0.1
+    private let color = UIColor.label
+    private let touchedColor = UIColor.label.withAlphaComponent(0.8)
     var selectedFilterName = FilterName.KC01.rawValue
     
     private var oriFrame: CGRect!
@@ -49,6 +49,14 @@ class ShutterButtonView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            touchEvent(event: .begin)
+        }
     }
     
     /// Handles the shutter button tapped
@@ -124,15 +132,11 @@ class ShutterButtonView: UIView {
     private func touchEvent(event: TouchEvent) {
         switch event {
         case .begin:
-            self.backgroundColor = .clear
             self.layer.borderColor = color.cgColor
-            
             innerCircle.backgroundColor = color
             
         case .end:
-            self.backgroundColor = .clear
             self.layer.borderColor = color.cgColor
-            
             innerCircle.backgroundColor = touchedColor
         }
     }

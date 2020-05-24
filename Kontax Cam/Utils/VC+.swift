@@ -19,10 +19,6 @@ extension UIApplication {
 
 // MARK: - UIViewController
 extension UIViewController {
-    func configureView() {
-        self.view.backgroundColor = UIColor.systemBackground
-    }
-    
     func configureNavigationBar(largeTitleColor: UIColor? = nil, backgoundColor: UIColor? = nil, tintColor: UIColor? = nil, title: String? = "", preferredLargeTitle: Bool? = nil) {
         
         let largeTitleColour = largeTitleColor == nil ? UIColor.label : largeTitleColor
@@ -90,4 +86,35 @@ extension UIFont {
 extension Notification.Name {
     static let presentFilterListVC = Notification.Name("presentFilterListVC")
     static let presentPhotoDisplayVC = Notification.Name("presentPhotoDisplayVC")
+}
+
+// MARK: - UIButton
+extension UIButton {
+    func addBlurEffect(style: UIBlurEffect.Style = .regular, cornerRadius: CGFloat = 0, padding: CGFloat = 0) {
+        backgroundColor = .clear
+        
+        let blur = UIBlurEffect(style: style)
+        
+        let blurView = UIVisualEffectView()
+        blurView.effect = blur
+        blurView.isUserInteractionEnabled = false
+        blurView.backgroundColor = .clear
+        if cornerRadius > 0 {
+            blurView.layer.cornerRadius = cornerRadius
+            blurView.layer.masksToBounds = true
+        }
+        
+        self.insertSubview(blurView, at: 0)
+        
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        self.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: padding).isActive = true
+        self.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -padding).isActive = true
+        self.topAnchor.constraint(equalTo: blurView.topAnchor, constant: padding).isActive = true
+        self.bottomAnchor.constraint(equalTo: blurView.bottomAnchor, constant: -padding).isActive = true
+        
+        if let imageView = self.imageView {
+            imageView.backgroundColor = .clear
+            self.bringSubviewToFront(imageView)
+        }
+    }
 }

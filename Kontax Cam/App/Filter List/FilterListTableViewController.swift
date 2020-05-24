@@ -30,7 +30,8 @@ class FilterListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(title: "Filter List")
+        self.configureNavigationBar(tintColor: .label, title: "Filter List")
+        
         let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         navigationItem.leftBarButtonItem = cancel
         
@@ -55,9 +56,9 @@ class FilterListTableViewController: UITableViewController {
         cell.filterSubLabel.text = filters[indexPath.section].subtitle
         
         if filters[indexPath.section].title == selectedFilterName {
-            cell.backgroundColor = .systemBlue
-            cell.filterTitleLabel.textColor = .label
-            cell.filterSubLabel.textColor = .secondaryLabel
+            cell.backgroundColor = .label
+            cell.filterTitleLabel.textColor = .systemBackground
+            cell.filterSubLabel.textColor = .secondarySystemBackground
         }
         
         return cell

@@ -17,6 +17,16 @@ class CameraViewController: UIViewController {
     
     // MARK: - Class variables
     private let cameraView = UIView()
+    private let settingButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(IconHelper.shared.getIconImage(iconName: "gear"), for: .normal)
+        btn.tintColor = .label
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 5
+        btn.addBlurEffect(style: .regular, cornerRadius: 5)
+        
+        return btn
+    }()
     static let rotView: UIImageView = {
         let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -34,7 +44,7 @@ class CameraViewController: UIViewController {
         cameraManager.addPreviewLayerToView(self.cameraView)
         // By default, don't store to device
         cameraManager.writeFilesToPhoneLibrary = true
-        cameraManager.shouldFlipFrontCameraImage = false
+        cameraManager.shouldFlipFrontCameraImage = true
         cameraManager.shouldUseLocationServices = true
         cameraManager.shouldKeepViewAtOrientationChanges = true
         
@@ -46,7 +56,8 @@ class CameraViewController: UIViewController {
         
         setupUI()
         setupConstraint()
-        self.configureView()
+        
+        self.view.backgroundColor = .systemBackground
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +75,6 @@ class CameraViewController: UIViewController {
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
         
-        
         // Camera Action View
         cameraActionView = CameraActionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - cameraView.frame.height))
         
@@ -75,6 +85,16 @@ class CameraViewController: UIViewController {
         self.view.addSubview(CameraViewController.rotView)
         CameraViewController.rotView.snp.makeConstraints { (make) in
             make.edges.equalTo(cameraView)
+        }
+        
+        // Setting Button
+        self.view.addSubview(settingButton)
+        settingButton.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
+        settingButton.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(10)
+            make.height.equalTo(35)
+            make.width.equalTo(65)
+            make.right.equalTo(self.view).offset(-10)
         }
     }
     
@@ -90,6 +110,10 @@ class CameraViewController: UIViewController {
             make.height.equalTo(self.view.frame.height - cameraView.frame.height)
             make.top.equalTo(cameraView.snp_bottomMargin)
         }
+    }
+    
+    @objc private func settingButtonTapped() {
+        
     }
     
     // MARK: - NotificationObserver Method

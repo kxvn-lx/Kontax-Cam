@@ -20,7 +20,6 @@ class PhotoDisplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureView()
         self.configureNavigationBar(title: "Photo Display [Demo]", preferredLargeTitle: false)
         
         self.view.addSubview(imageView)

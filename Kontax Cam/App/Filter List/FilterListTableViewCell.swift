@@ -25,7 +25,8 @@ class FilterListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = .boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize)
+        label.font = .systemFont(ofSize: label.font.pointSize, weight: .bold)
+        label.textColor = .label
         return label
     }()
     let filterSubLabel: UILabel = {

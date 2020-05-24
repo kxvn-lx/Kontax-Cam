@@ -19,7 +19,7 @@ class CameraActionView: UIView {
         sv.showsHorizontalScrollIndicator = false
         return sv
     }()
-    private var shutterButton: ShutterButtonView!
+    var shutterButton: ShutterButtonView!
     
     static var cameraManager: CameraManager!
     

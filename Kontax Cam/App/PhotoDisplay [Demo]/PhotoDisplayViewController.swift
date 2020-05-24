@@ -30,10 +30,10 @@ class PhotoDisplayViewController: UIViewController {
         }
     }
     
-    func renderPhoto(originalPhoto: UIImage) {
+    func renderPhoto(originalPhoto: UIImage, filterName: String) {
         let inputImage = originalPhoto
         let context = CIContext(options: nil)
-        let filter = UIImage(named: "kc01")!
+        let filter = UIImage(named: filterName.lowercased())!
         
 
         let currentFilter = LUTEngine.shared.makeFilter(from: filter)

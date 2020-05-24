@@ -18,6 +18,7 @@ class ShutterButtonView: UIView {
     private let animationDuration: TimeInterval = 0.05
     private let color = UIColor.systemBlue
     private let touchedColor = UIColor.systemBlue.withAlphaComponent(0.8)
+    var selectedFilterName = FilterName.KC01.rawValue
     
     private var oriFrame: CGRect!
     
@@ -61,8 +62,12 @@ class ShutterButtonView: UIView {
                     print("error capturing.")
                     TapticHelper.shared.errorTaptic()
                 case .success(let content):
-                    let imageDict: [String: UIImage?] = ["image": content.asImage]
-                    NotificationCenter.default.post(name: .photoDisplay, object: nil, userInfo: imageDict as [AnyHashable : Any])
+                    let contentDict: [String: Any] = [
+                        "image": content.asImage! as UIImage,
+                        "selectedFilterName": self.selectedFilterName as String
+                    ]
+                    
+                    NotificationCenter.default.post(name: .presentPhotoDisplayVC, object: nil, userInfo: contentDict as [AnyHashable : Any])
                 }
             })
         }
@@ -78,7 +83,7 @@ class ShutterButtonView: UIView {
             }
         }
     }
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
             self.touchEvent(event: .end)
@@ -89,7 +94,7 @@ class ShutterButtonView: UIView {
             }
         }
     }
-
+    
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
             self.touchEvent(event: .end)
@@ -100,13 +105,13 @@ class ShutterButtonView: UIView {
             }
         }
     }
-
+    
     private func renderSize(multiplier: CGFloat = 1) {
         self.snp.remakeConstraints { (make) in
             make.height.width.equalTo( oriFrame.width )
         }
         self.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
-
+        
         innerCircle.snp.remakeConstraints { (make) in
             make.height.width.equalTo(oriFrame.width * 0.9 * multiplier)
             make.center.equalTo(self)
@@ -133,3 +138,17 @@ class ShutterButtonView: UIView {
     }
     
 }
+
+extension ShutterButtonView: FilterListDelegate {
+    func didSelectFilter(filterName: String) {
+        selectedFilterName = filterName
+        
+        let title = "\(filterName) activated"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: "paintbrush.fill"))
+        }
+        
+    }
+    
+}
+

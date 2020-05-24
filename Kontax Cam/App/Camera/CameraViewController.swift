@@ -41,8 +41,8 @@ class CameraViewController: UIViewController {
         // Pass the instance to CameraActionView
         CameraActionView.cameraManager = cameraManager
          
-        NotificationCenter.default.addObserver(self, selector: #selector(presentFilterListVC), name: .filterList, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(presentPhotoDisplayVC), name: .photoDisplay, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presentFilterListVC), name: .presentFilterListVC, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presentPhotoDisplayVC), name: .presentPhotoDisplayVC, object: nil)
         
         setupUI()
         setupConstraint()
@@ -95,6 +95,9 @@ class CameraViewController: UIViewController {
     // MARK: - NotificationObserver Method
     @objc private func presentFilterListVC() {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
+        vc.delegate = cameraActionView.shutterButton
+        vc.selectedFilterName = cameraActionView.shutterButton.selectedFilterName
+        
         let navController = UINavigationController(rootViewController: vc)
         self.present(navController, animated: true, completion: nil)
     }
@@ -102,9 +105,12 @@ class CameraViewController: UIViewController {
     @objc private func presentPhotoDisplayVC(_ notification: NSNotification) {
         if let dict = notification.userInfo as NSDictionary? {
             let image = dict["image"] as! UIImage
+            let selectedFilterName = dict["selectedFilterName"] as! String
+            
             let vc = self.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
-            vc.renderPhoto(originalPhoto: image)
+            vc.renderPhoto(originalPhoto: image, filterName: selectedFilterName)
             let navController = UINavigationController(rootViewController: vc)
+            
             self.present(navController, animated: true, completion: nil)
         } else {
             fatalError("No information is being passed.")

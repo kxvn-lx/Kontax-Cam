@@ -70,35 +70,5 @@ class CameraActionView: UIView {
             make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
             make.centerX.equalTo(self)
         }
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(shutterTapped))
-        gesture.numberOfTapsRequired = 1
-        shutterButton.addGestureRecognizer(gesture)
-    }
-    
-    @objc func shutterTapped() {
-        TimerAction.timeEngine.presentTimerDisplay()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(TimerAction.timeEngine.currentTime)) {
-            CameraActionView.self.cameraManager.capturePictureWithCompletion({ result in
-                switch result {
-                case .failure:
-                    print("error")
-                    TapticHelper.shared.errorTaptic()
-                case .success(_):
-                    print("success")
-                    
-                    //                    if let image = content.asImage {
-                    //                        PhotoLibraryEngine.shared.save(image) { (result, error) in
-                    //                            if let e = error {
-                    //                                fatalError("Unable saving to album \(e.localizedDescription)")
-                    //                            }
-                    //                        }
-                    //                    } else {
-                    //                        fatalError("Unable to render image.")
-                    //                    }
-                }
-            })
-        }
     }
 }

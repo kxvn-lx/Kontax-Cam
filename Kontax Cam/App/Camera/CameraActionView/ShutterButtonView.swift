@@ -14,7 +14,7 @@ enum TouchEvent {
 }
 
 class ShutterButtonView: UIView {
-
+    
     private let animationDuration: TimeInterval = 0.05
     private let color = UIColor.systemBlue
     private let touchedColor = UIColor.systemBlue.withAlphaComponent(0.8)
@@ -29,23 +29,51 @@ class ShutterButtonView: UIView {
         self.oriFrame = frame
         self.addSubview(innerCircle)
         
-        
         // View configuration
         self.isUserInteractionEnabled = true
         
         // View UI
         self.layer.borderWidth = 2
-        
         self.translatesAutoresizingMaskIntoConstraints = false
         innerCircle.translatesAutoresizingMaskIntoConstraints = false
         
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(shutterTapped))
+        gesture.numberOfTapsRequired = 1
+        self.addGestureRecognizer(gesture)
+        
         touchEvent(event: .begin)
         renderSize()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    /// Handles the shutter button tapped
+    @objc func shutterTapped() {
+        TimerAction.timeEngine.presentTimerDisplay()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(TimerAction.timeEngine.currentTime)) {
+            CameraActionView.cameraManager.capturePictureWithCompletion({ result in
+                switch result {
+                case .failure:
+                    print("error")
+                    TapticHelper.shared.errorTaptic()
+                case .success(_):
+                    print("success")
+                    
+                    //                    if let image = content.asImage {
+                    //                        PhotoLibraryEngine.shared.save(image) { (result, error) in
+                    //                            if let e = error {
+                    //                                fatalError("Unable saving to album \(e.localizedDescription)")
+                    //                            }
+                    //                        }
+                    //                    } else {
+                    //                        fatalError("Unable to render image.")
+                    //                    }
+                }
+            })
+        }
     }
     
     // MARK: - Touch event listener
@@ -58,7 +86,7 @@ class ShutterButtonView: UIView {
             }
         }
     }
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
             self.touchEvent(event: .end)
@@ -69,7 +97,7 @@ class ShutterButtonView: UIView {
             }
         }
     }
-
+    
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
             self.touchEvent(event: .end)
@@ -111,5 +139,5 @@ class ShutterButtonView: UIView {
             innerCircle.backgroundColor = touchedColor
         }
     }
-
+    
 }

@@ -20,7 +20,7 @@ class FilterListTableViewController: UITableViewController {
     
     private let CELL_ID = "filtersCell"
     private let filters: [Filter] = [
-        .init(title: FilterName.KC01.rawValue, subtitle: "A perfect soft film preset best suited for day to day photo.", image: #imageLiteral(resourceName: "kc01-ex")),
+        .init(title: FilterName.KC01.rawValue, subtitle: "Film preset best suited for day to day photo.", image: #imageLiteral(resourceName: "kc01-ex")),
         .init(title: FilterName.KC02.rawValue, subtitle: "A Beautifully crafted black and white preset to emulate old film.", image: #imageLiteral(resourceName: "kc02-ex")),
         .init(title: FilterName.KC03.rawValue, subtitle: "Soft purple preset best suited for sunset and dusk.", image: #imageLiteral(resourceName: "kc03-ex"))
     ]

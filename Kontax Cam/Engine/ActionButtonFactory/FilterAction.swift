@@ -26,7 +26,7 @@ class FilterAction: UIButton {
     
     @objc private func filterTapped() {
         TapticHelper.shared.lightTaptic()
-        NotificationCenter.default.post(name: .filterList, object: nil)
+        NotificationCenter.default.post(name: .presentFilterListVC, object: nil)
     }
     
     private func getIcon() -> UIImage {

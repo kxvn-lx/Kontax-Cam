@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import SPAlert
 
 class GridAction: UIButton {
 
+    private let grid = ["grid"]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setImage(IconHelper.shared.getIcon(iconName: .grid, currentIcon: nil).0, for: .normal)
+        self.setImage(getIcon(), for: .normal)
         self.addTarget(self, action: #selector(gridTapped), for: .touchUpInside)
     }
     
@@ -25,6 +28,13 @@ class GridAction: UIButton {
         TapticHelper.shared.lightTaptic()
         
         CameraViewController.rotView.isHidden = !CameraViewController.rotView.isHidden
+        
+        let title = !CameraViewController.rotView.isHidden ? "Grid enabled" : "Grid disabled"
+        SPAlertHelper.shared.present(title: title, message: nil, image: getIcon())
+    }
+    
+    private func getIcon() -> UIImage {
+        return IconHelper.shared.getIconImage(iconName: grid[0])
     }
 
 }

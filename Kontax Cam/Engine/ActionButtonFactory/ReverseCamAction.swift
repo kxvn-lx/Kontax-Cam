@@ -10,11 +10,13 @@ import UIKit
 import CameraManager
 
 class ReverseCamAction: UIButton {
+    
+    private let reverse = ["arrow.2.circlepath"]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setImage(IconHelper.shared.getIcon(iconName: .reverse, currentIcon: nil).0, for: .normal)
+        self.setImage(getIcon(), for: .normal)
         self.addTarget(self, action: #selector(reverseCamTapped), for: .touchUpInside)
     }
     
@@ -27,6 +29,10 @@ class ReverseCamAction: UIButton {
 
         let currentDevice = CameraActionView.cameraManager.cameraDevice
         CameraActionView.cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
+    }
+    
+    private func getIcon() -> UIImage {
+        return IconHelper.shared.getIconImage(iconName: reverse[0])
     }
 
 }

@@ -11,13 +11,14 @@ import SPAlert
 
 class TimerAction: UIButton {
     
+    private let timer = ["timer"]
+    
     static var timeEngine = TimerEngine()
-    private var spAlert: SPAlertView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setImage(IconHelper.shared.getIcon(iconName: .timer, currentIcon: nil).0, for: .normal)
+        self.setImage(getIcon(), for: .normal)
         self.addTarget(self, action: #selector(timerTapped), for: .touchUpInside)
     }
     
@@ -28,12 +29,13 @@ class TimerAction: UIButton {
     @objc private func timerTapped() {
         TapticHelper.shared.lightTaptic()
         
-        if spAlert != nil { spAlert.dismiss() }
         let time = TimerAction.timeEngine.ToggleTimer()
-        let message = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
-        spAlert = SPAlertView(title: message, message: nil, image: IconHelper.shared.getIcon(iconName: .timer, currentIcon: nil).0)
-        
-        spAlert.present()
+        let title = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
+        SPAlertHelper.shared.present(title: title, message: nil, image: getIcon())
+    }
+    
+    private func getIcon() -> UIImage {
+        return IconHelper.shared.getIconImage(iconName: timer[0])
     }
 
 }

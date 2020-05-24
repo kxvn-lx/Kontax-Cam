@@ -9,11 +9,13 @@
 import UIKit
 
 class FlashAction: UIButton {
+    
+    private let flash = ["", "bolt.slash.fill", "bolt.fill", "bolt.badge.a.fill"]
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setImage(IconHelper.shared.getIcon(iconName: .flash, currentIcon: nil).0, for: .normal)
+        self.setImage(getIcon(currentIcon: nil).0, for: .normal)
         self.addTarget(self, action: #selector(flashTapped), for: .touchUpInside)
     }
     
@@ -23,7 +25,7 @@ class FlashAction: UIButton {
     
     @objc private func flashTapped() {
         TapticHelper.shared.lightTaptic()
-        let (image, index) = IconHelper.shared.getIcon(iconName: .flash, currentIcon: self.imageView?.image?.accessibilityIdentifier!)
+        let (image, index) = getIcon(currentIcon: self.imageView?.image?.accessibilityIdentifier!)
         self.setImage(image, for: .normal)
         
         switch index {
@@ -32,5 +34,16 @@ class FlashAction: UIButton {
         case 3: CameraActionView.cameraManager.flashMode = .auto
         default: fatalError("Invalid index")
         }
+    }
+    
+    private func getIcon(currentIcon: String?) -> (UIImage, Int?) {
+        let currentIcon = currentIcon == nil ? flash[0] : currentIcon
+        var nextIndex = flash.firstIndex{ $0 == currentIcon }! + 1
+        nextIndex = nextIndex >= flash.count ? 1 : nextIndex
+        
+        let image = IconHelper.shared.getIconImage(iconName: flash[nextIndex])
+        image.accessibilityIdentifier = flash[nextIndex]
+        
+        return (image, nextIndex)
     }
 }

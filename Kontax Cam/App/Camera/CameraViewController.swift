@@ -33,16 +33,16 @@ class CameraViewController: UIViewController {
         // Setup Camera Manager
         cameraManager.addPreviewLayerToView(self.cameraView)
         // By default, don't store to device
-        cameraManager.writeFilesToPhoneLibrary = false
+        cameraManager.writeFilesToPhoneLibrary = true
         cameraManager.shouldFlipFrontCameraImage = false
         cameraManager.shouldUseLocationServices = true
-        cameraManager.shouldRespondToOrientationChanges = false
         cameraManager.shouldKeepViewAtOrientationChanges = true
         
         // Pass the instance to CameraActionView
         CameraActionView.cameraManager = cameraManager
          
         NotificationCenter.default.addObserver(self, selector: #selector(presentFilterListVC), name: .filterList, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presentPhotoDisplayVC), name: .photoDisplay, object: nil)
         
         setupUI()
         setupConstraint()
@@ -92,9 +92,22 @@ class CameraViewController: UIViewController {
         }
     }
     
+    // MARK: - NotificationObserver Method
     @objc private func presentFilterListVC() {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
         let navController = UINavigationController(rootViewController: vc)
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    @objc private func presentPhotoDisplayVC(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            let image = dict["image"] as! UIImage
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
+            vc.renderPhoto(originalPhoto: image)
+            let navController = UINavigationController(rootViewController: vc)
+            self.present(navController, animated: true, completion: nil)
+        } else {
+            fatalError("No information is being passed.")
+        }
     }
 }

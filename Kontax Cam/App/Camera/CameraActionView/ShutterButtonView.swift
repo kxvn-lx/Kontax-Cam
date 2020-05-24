@@ -43,6 +43,7 @@ class ShutterButtonView: UIView {
         
         touchEvent(event: .begin)
         renderSize()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,10 +58,11 @@ class ShutterButtonView: UIView {
             CameraActionView.cameraManager.capturePictureWithCompletion({ result in
                 switch result {
                 case .failure:
-                    print("error")
+                    print("error capturing.")
                     TapticHelper.shared.errorTaptic()
-                case .success(_):
-                    print("success")
+                case .success(let content):
+                    let imageDict: [String: UIImage?] = ["image": content.asImage]
+                    NotificationCenter.default.post(name: .photoDisplay, object: nil, userInfo: imageDict as [AnyHashable : Any])
                 }
             })
         }

@@ -89,4 +89,5 @@ extension UIFont {
 // MARK: - NotificationCenter
 extension Notification.Name {
     static let filterList = Notification.Name("filterList")
+    static let photoDisplay = Notification.Name("photoDisplay")
 }

@@ -28,8 +28,10 @@ class PhotoDisplayViewController: UIViewController {
             make.width.height.equalTo(self.view.frame.width * 0.9)
             make.center.equalTo(self.view)
         }
-        
-        let inputImage = UIImage(named: "test")!
+    }
+    
+    func renderPhoto(originalPhoto: UIImage) {
+        let inputImage = originalPhoto
         let context = CIContext(options: nil)
         let filter = UIImage(named: "kc01")!
         
@@ -40,8 +42,10 @@ class PhotoDisplayViewController: UIViewController {
 
         if let output = currentFilter.outputImage {
             if let cgimg = context.createCGImage(output, from: output.extent) {
-                let processedImage = UIImage(cgImage: cgimg)
+                let processedImage = UIImage(cgImage: cgimg, scale: 1.0, orientation: inputImage.imageOrientation)
                 self.imageView.image = processedImage
+
+
             }
         }
     }

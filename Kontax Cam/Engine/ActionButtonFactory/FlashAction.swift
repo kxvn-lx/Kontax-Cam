@@ -10,7 +10,7 @@ import UIKit
 
 class FlashAction: UIButton {
     
-    private let flash = ["", "bolt.slash.fill", "bolt.fill", "bolt.badge.a.fill"]
+    private let flash = ["", "bolt.slash", "bolt", "bolt.badge.a"]
 
     override init(frame: CGRect) {
         super.init(frame: frame)

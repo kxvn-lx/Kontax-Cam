@@ -10,8 +10,8 @@ import UIKit
 
 
 class FilterAction: UIButton {
-
-    private let filter = ["paintbrush.fill"]
+    
+    private let filter = ["paintbrush"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +32,5 @@ class FilterAction: UIButton {
     private func getIcon() -> UIImage {
         return IconHelper.shared.getIconImage(iconName: filter[0])
     }
-    
-    
 
 }

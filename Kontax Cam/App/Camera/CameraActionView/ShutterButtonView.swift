@@ -149,7 +149,7 @@ extension ShutterButtonView: FilterListDelegate {
         
         let title = "\(filterName) activated"
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: "paintbrush.fill"))
+            SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: "paintbrush"))
         }
         
     }

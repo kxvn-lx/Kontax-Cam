@@ -22,6 +22,30 @@ extension UIViewController {
     func configureView() {
         self.view.backgroundColor = UIColor.systemBackground
     }
+    
+    func configureNavigationBar(largeTitleColor: UIColor? = nil, backgoundColor: UIColor? = nil, tintColor: UIColor? = nil, title: String? = "", preferredLargeTitle: Bool? = nil) {
+        
+        let largeTitleColour = largeTitleColor == nil ? UIColor.label : largeTitleColor
+        let backgroundColour = backgoundColor == nil ? UIColor.systemBackground : backgoundColor
+        let tintColour = tintColor == nil ? UIColor.systemBlue : tintColor
+        let prefLargeTitle = preferredLargeTitle == nil ? true : false
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: largeTitleColour!]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: largeTitleColour!]
+        navBarAppearance.backgroundColor = backgroundColour
+        navBarAppearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.compactAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        navigationController?.navigationBar.prefersLargeTitles = prefLargeTitle
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.tintColor = tintColour
+        navigationItem.title = title
+    }
 }
 
 
@@ -60,4 +84,9 @@ extension UIFont {
             return UIFont.preferredFont(forTextStyle: style)
         }
     }
+}
+
+// MARK: - NotificationCenter
+extension Notification.Name {
+    static let filterList = Notification.Name("filterList")
 }

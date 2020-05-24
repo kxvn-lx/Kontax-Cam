@@ -25,6 +25,8 @@
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A44B2B62476BF3700603F2C /* LUTEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B2B52476BF3700603F2C /* LUTEngine.swift */; };
+		0A4D6E55247A474100E039FC /* FilterListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E54247A474100E039FC /* FilterListTableViewController.swift */; };
+		0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A97CE7C2478DA4D0048CDCB /* ActionButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7B2478DA4D0048CDCB /* ActionButtonFactory.swift */; };
 		0A97CE802478DAE40048CDCB /* FlashAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A97CE7F2478DAE40048CDCB /* FlashAction.swift */; };
@@ -53,6 +55,8 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A44B2B52476BF3700603F2C /* LUTEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTEngine.swift; sourceTree = "<group>"; };
+		0A4D6E54247A474100E039FC /* FilterListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListTableViewController.swift; sourceTree = "<group>"; };
+		0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListTableViewCell.swift; sourceTree = "<group>"; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A97CE7B2478DA4D0048CDCB /* ActionButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonFactory.swift; sourceTree = "<group>"; };
 		0A97CE7F2478DAE40048CDCB /* FlashAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashAction.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D6E53247A472100E039FC /* Filter List */,
 				0A1D97C22477BE7800E4078F /* Camera */,
 			);
 			path = App;
@@ -156,6 +161,15 @@
 				0A86E467247A350B00937CFC /* SPAlertHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0A4D6E53247A472100E039FC /* Filter List */ = {
+			isa = PBXGroup;
+			children = (
+				0A4D6E54247A474100E039FC /* FilterListTableViewController.swift */,
+				0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */,
+			);
+			path = "Filter List";
 			sourceTree = "<group>";
 		};
 		0A97CE7A2478DA370048CDCB /* ActionButtonFactory */ = {
@@ -260,9 +274,11 @@
 				0A97CE822478E8110048CDCB /* TimerAction.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A97CE862478E8CD0048CDCB /* FxAction.swift in Sources */,
+				0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */,
 				0A97CE7C2478DA4D0048CDCB /* ActionButtonFactory.swift in Sources */,
 				0A44B2B62476BF3700603F2C /* LUTEngine.swift in Sources */,
 				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
+				0A4D6E55247A474100E039FC /* FilterListTableViewController.swift in Sources */,
 				0A97CE802478DAE40048CDCB /* FlashAction.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,

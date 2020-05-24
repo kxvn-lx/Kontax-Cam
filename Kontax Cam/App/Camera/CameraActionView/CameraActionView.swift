@@ -19,6 +19,7 @@ class CameraActionView: UIView {
         sv.showsHorizontalScrollIndicator = false
         return sv
     }()
+    private var shutterButton: ShutterButtonView!
     
     static var cameraManager: CameraManager!
     
@@ -26,6 +27,15 @@ class CameraActionView: UIView {
         super.init(frame: frame)
         
         setupUI()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        shutterButton.snp.makeConstraints { (make) in
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
+            make.centerX.equalTo(self)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +61,7 @@ class CameraActionView: UIView {
         let gapBetweenButtons: CGFloat = 10
         
         for button in actionButtons {
-            button.backgroundColor = .systemGray6
+            button.backgroundColor = .secondarySystemBackground
             button.layer.cornerRadius = 5
             
             button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)
@@ -64,11 +74,8 @@ class CameraActionView: UIView {
         actionButtonsScrollView.contentSize = CGSize(width: buttonWidth * CGFloat(actionButtons.count + 1), height: yCoord)
 
         // Shutter button
-        let shutterButton = ShutterButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let shutterSize = self.frame.height * 0.13
+        shutterButton = ShutterButtonView(frame: CGRect(x: 0, y: 0, width: shutterSize, height: shutterSize))
         self.addSubview(shutterButton)
-        shutterButton.snp.makeConstraints { (make) in
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
-            make.centerX.equalTo(self)
-        }
     }
 }

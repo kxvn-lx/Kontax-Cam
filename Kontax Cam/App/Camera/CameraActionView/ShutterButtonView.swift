@@ -61,16 +61,6 @@ class ShutterButtonView: UIView {
                     TapticHelper.shared.errorTaptic()
                 case .success(_):
                     print("success")
-                    
-                    //                    if let image = content.asImage {
-                    //                        PhotoLibraryEngine.shared.save(image) { (result, error) in
-                    //                            if let e = error {
-                    //                                fatalError("Unable saving to album \(e.localizedDescription)")
-                    //                            }
-                    //                        }
-                    //                    } else {
-                    //                        fatalError("Unable to render image.")
-                    //                    }
                 }
             })
         }
@@ -86,7 +76,7 @@ class ShutterButtonView: UIView {
             }
         }
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
             self.touchEvent(event: .end)
@@ -97,7 +87,7 @@ class ShutterButtonView: UIView {
             }
         }
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
             self.touchEvent(event: .end)
@@ -108,13 +98,13 @@ class ShutterButtonView: UIView {
             }
         }
     }
-    
+
     private func renderSize(multiplier: CGFloat = 1) {
         self.snp.remakeConstraints { (make) in
             make.height.width.equalTo( oriFrame.width )
         }
         self.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
-        
+
         innerCircle.snp.remakeConstraints { (make) in
             make.height.width.equalTo(oriFrame.width * 0.9 * multiplier)
             make.center.equalTo(self)

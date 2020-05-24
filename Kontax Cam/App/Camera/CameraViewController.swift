@@ -18,7 +18,7 @@ class CameraViewController: UIViewController {
     // MARK: - Class variables
     private let cameraView = UIView()
     static let rotView: UIImageView = {
-       let v = UIImageView()
+        let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.image = UIImage(named: "rot")
         return v
@@ -30,10 +30,6 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
-        setupConstraint()
-        self.configureView()
-
         // Setup Camera Manager
         cameraManager.addPreviewLayerToView(self.cameraView)
         // By default, don't store to device
@@ -45,13 +41,19 @@ class CameraViewController: UIViewController {
         
         // Pass the instance to CameraActionView
         CameraActionView.cameraManager = cameraManager
+         
+        NotificationCenter.default.addObserver(self, selector: #selector(presentFilterListVC), name: .filterList, object: nil)
+        
+        setupUI()
+        setupConstraint()
+        self.configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -61,7 +63,7 @@ class CameraViewController: UIViewController {
     private func setupUI() {
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
-
+        
         
         // Camera Action View
         cameraActionView = CameraActionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - cameraView.frame.height))
@@ -89,5 +91,10 @@ class CameraViewController: UIViewController {
             make.top.equalTo(cameraView.snp_bottomMargin)
         }
     }
+    
+    @objc private func presentFilterListVC() {
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
+        let navController = UINavigationController(rootViewController: vc)
+        self.present(navController, animated: true, completion: nil)
+    }
 }
-

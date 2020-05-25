@@ -12,10 +12,8 @@ class LabCollectionViewCell: UICollectionViewCell {
     
     let photoView: UIImageView = {
         let v = UIImageView()
-        v.layer.cornerRadius = 5
-        v.clipsToBounds = true
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.contentMode = .scaleAspectFill
+        v.contentMode = .scaleAspectFit
         return v
     }()
     let dateLabel: UILabel = {

@@ -90,7 +90,9 @@ class LabCollectionViewController: UICollectionViewController {
                 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
 
-        vc.imageView.image = images[indexPath.row]
+//        vc.imageView.image = images[indexPath.row]
+        vc.imgArray = images
+        vc.passedContentOffset = indexPath
 
         let navController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .fullScreen
@@ -111,17 +113,17 @@ class LabCollectionViewController: UICollectionViewController {
             })
     }
     
-    override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-
-        guard let indexPath = configuration.identifier as? IndexPath else { return }
-        let selectedImage = images[indexPath.row]
-
-        animator.addAnimations {
-            let vc = PhotoDisplayViewController()
-            vc.imageView.image = selectedImage
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+//    override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+//
+//        guard let indexPath = configuration.identifier as? IndexPath else { return }
+//        let selectedImage = images[indexPath.row]
+//
+//        animator.addAnimations {
+//            let vc = PhotoDisplayViewController()
+//            vc.imageView.image = selectedImage
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
     
     // MARK: - Class functions
     private func makeContextMenu() -> UIMenu {

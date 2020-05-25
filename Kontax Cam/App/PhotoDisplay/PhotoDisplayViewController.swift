@@ -8,26 +8,58 @@
 
 import UIKit
 
-class PhotoDisplayViewController: UIViewController {
+class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
-    let imageView: UIImageView = {
-        let v = UIImageView()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.contentMode = .scaleAspectFit
-        return v
+    private var collectionView: UICollectionView!
+    var imgArray = [UIImage]()
+    var passedContentOffset = IndexPath()
+    
+    private let flowLayout: UICollectionViewLayout = {
+        let margin: CGFloat = 5
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(0.8))
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: margin,
+            leading: margin,
+            bottom: margin,
+            trailing: margin)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .secondarySystemBackground
-        self.configureNavigationBar(backgoundColor: .secondarySystemBackground, tintColor: .label, title: "", preferredLargeTitle: false)
         
-        let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
-        navigationItem.leftBarButtonItem = close
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
+        collectionView.register(ImagePreviewFullViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
+        collectionView.isPagingEnabled = true
+        collectionView.layoutIfNeeded()
+        collectionView.scrollToItem(at: passedContentOffset, at: .left, animated: true)
+        
+        self.collectionView.backgroundColor = .secondarySystemBackground
+        
+        self.view.addSubview(collectionView)
 
         setupUI()
-        setupConstraint()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +72,19 @@ class PhotoDisplayViewController: UIViewController {
         self.navigationController?.isToolbarHidden = true
     }
     
-    // MARK: - Setup UI
-    private func setupUI() {
-        self.view.addSubview(imageView)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imgArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImagePreviewFullViewCell
+        cell.imgView.image = imgArray[indexPath.row]
+        return cell
+    }
+    
+    private func setupUI () {
+        let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
+        navigationItem.leftBarButtonItem = close
         
         let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         let save = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
@@ -54,20 +96,8 @@ class PhotoDisplayViewController: UIViewController {
         for item in items {
             item.tintColor = .label
         }
-
-        self.toolbarItems = items
-    }
-    
-    private func setupConstraint() {
-        imageView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view.frame.width * 0.9)
-            make.height.equalTo(self.view.frame.height * 0.7)
-            make.center.equalToSuperview()
-        }
-    }
-    
-    @objc func addItem() {
-        print("Adding...")
+        
+         self.toolbarItems = items
     }
     
     @objc private func shareTapped() {
@@ -86,4 +116,5 @@ class PhotoDisplayViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
+    
 }

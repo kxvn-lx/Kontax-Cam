@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
+		0A1D97BC2477B80D00E4078F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* SwiftPackageProductDependency */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
-		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
+		0A1D97C12477BACE00E4078F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SwiftPackageProductDependency */; };
 		0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97C32477BFAE00E4078F /* SVHelper.swift */; };
 		0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */; };
 		0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */; };
 		0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CC2477DDB900E4078F /* IconHelper.swift */; };
-		0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97CF2477EFB900E4078F /* SPAlert */; };
+		0A1D97D02477EFB900E4078F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97CF2477EFB900E4078F /* SwiftPackageProductDependency */; };
 		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D32477F38900E4078F /* TimerEngine.swift */; };
 		0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */; };
@@ -29,7 +29,7 @@
 		0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */; };
 		0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E59247A572A00E039FC /* Filter.swift */; };
 		0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */; };
-		0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5290A7247AB40500BA0D57 /* QuickTableViewController */; };
+		0A5290A8247AB40500BA0D57 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5290A7247AB40500BA0D57 /* SwiftPackageProductDependency */; };
 		0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
@@ -75,10 +75,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */,
-				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
-				0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */,
-				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
+				0A5290A8247AB40500BA0D57 /* BuildFile in Frameworks */,
+				0A1D97D02477EFB900E4078F /* BuildFile in Frameworks */,
+				0A1D97BC2477B80D00E4078F /* BuildFile in Frameworks */,
+				0A1D97C12477BACE00E4078F /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +108,7 @@
 			children = (
 				0A44B2992476A7F000603F2C /* Kontax Cam */,
 				0A44B2982476A7F000603F2C /* Products */,
+				816177D18B28A96025786676 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,6 +216,13 @@
 			path = Lab;
 			sourceTree = "<group>";
 		};
+		816177D18B28A96025786676 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,10 +240,10 @@
 			);
 			name = "Kontax Cam";
 			packageProductDependencies = (
-				0A1D97BB2477B80D00E4078F /* CameraManager */,
-				0A1D97C02477BACE00E4078F /* SnapKit */,
-				0A1D97CF2477EFB900E4078F /* SPAlert */,
-				0A5290A7247AB40500BA0D57 /* QuickTableViewController */,
+				0A1D97BB2477B80D00E4078F /* SwiftPackageProductDependency */,
+				0A1D97C02477BACE00E4078F /* SwiftPackageProductDependency */,
+				0A1D97CF2477EFB900E4078F /* SwiftPackageProductDependency */,
+				0A5290A7247AB40500BA0D57 /* SwiftPackageProductDependency */,
 			);
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
@@ -266,10 +274,10 @@
 			);
 			mainGroup = 0A44B28E2476A7F000603F2C;
 			packageReferences = (
-				0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */,
-				0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */,
-				0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */,
-				0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */,
+				0A1D97BA2477B80D00E4078F /* RemoteSwiftPackageReference */,
+				0A1D97BF2477BACE00E4078F /* RemoteSwiftPackageReference */,
+				0A1D97CE2477EFB900E4078F /* RemoteSwiftPackageReference */,
+				0A5290A6247AB40500BA0D57 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 0A44B2982476A7F000603F2C /* Products */;
 			projectDirPath = "";
@@ -520,7 +528,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */ = {
+		0A1D97BA2477B80D00E4078F /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/imaginary-cloud/CameraManager";
 			requirement = {
@@ -528,7 +536,7 @@
 				minimumVersion = 5.1.3;
 			};
 		};
-		0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		0A1D97BF2477BACE00E4078F /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -536,7 +544,7 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */ = {
+		0A1D97CE2477EFB900E4078F /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
 			requirement = {
@@ -544,7 +552,7 @@
 				minimumVersion = 2.1.4;
 			};
 		};
-		0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */ = {
+		0A5290A6247AB40500BA0D57 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bcylin/QuickTableViewController";
 			requirement = {
@@ -555,24 +563,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A1D97BB2477B80D00E4078F /* CameraManager */ = {
+		0A1D97BB2477B80D00E4078F /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */;
+			package = 0A1D97BA2477B80D00E4078F /* RemoteSwiftPackageReference */;
 			productName = CameraManager;
 		};
-		0A1D97C02477BACE00E4078F /* SnapKit */ = {
+		0A1D97C02477BACE00E4078F /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 0A1D97BF2477BACE00E4078F /* RemoteSwiftPackageReference */;
 			productName = SnapKit;
 		};
-		0A1D97CF2477EFB900E4078F /* SPAlert */ = {
+		0A1D97CF2477EFB900E4078F /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */;
+			package = 0A1D97CE2477EFB900E4078F /* RemoteSwiftPackageReference */;
 			productName = SPAlert;
 		};
-		0A5290A7247AB40500BA0D57 /* QuickTableViewController */ = {
+		0A5290A7247AB40500BA0D57 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */;
+			package = 0A5290A6247AB40500BA0D57 /* RemoteSwiftPackageReference */;
 			productName = QuickTableViewController;
 		};
 /* End XCSwiftPackageProductDependency section */

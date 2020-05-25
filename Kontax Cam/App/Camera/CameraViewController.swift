@@ -43,7 +43,7 @@ class CameraViewController: UIViewController {
         // Setup Camera Manager
         cameraManager.addPreviewLayerToView(self.cameraView)
         // By default, don't store to device
-        cameraManager.writeFilesToPhoneLibrary = true
+        cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.shouldFlipFrontCameraImage = true
         cameraManager.shouldUseLocationServices = true
         cameraManager.shouldKeepViewAtOrientationChanges = true

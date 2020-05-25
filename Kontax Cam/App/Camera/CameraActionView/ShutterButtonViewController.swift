@@ -53,21 +53,18 @@ class ShutterButtonViewController: UIViewController {
         let parent = self.parent as! CameraActionViewController
         
         if parent.timerEngine.currentTime != 0 { parent.timerEngine.presentTimerDisplay() }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
             parent.cameraManager.capturePictureWithCompletion({ result in
                 switch result {
                 case .failure:
-                    print("error capturing.")
-                    TapticHelper.shared.errorTaptic()
+                    AlertHelper.shared.presentDefault(title: "Error", message: "Looks like there was an error capturing the image. Please try again or if problem persist, contact kevin.laminto@gmail.com", to: self)
+                    
                 case .success(let content):
                     if let image = content.asImage {
-                        if let parent = parent.parent {
-                            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
-                            vc.renderPhoto(originalPhoto: image, filterName: self.selectedFilterName)
-                            let navController = UINavigationController(rootViewController: vc)
 
-                            self.present(navController, animated: true, completion: nil)
+//                        self.goToDisplayVC(parent: parent, image: image)
+                        if let data = image.jpegData(compressionQuality: 1.0) {
+                            DataEngine.shared.save(imageData: data)
                         }
                     }
                 }
@@ -135,6 +132,16 @@ class ShutterButtonViewController: UIViewController {
         }
     }
     
+    /// For testing purposes only.
+    private func goToDisplayVC(parent: UIViewController, image: UIImage) {
+        if let parent = parent.parent {
+            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
+            vc.renderPhoto(originalPhoto: image, filterName: self.selectedFilterName)
+            let navController = UINavigationController(rootViewController: vc)
+            
+            self.present(navController, animated: true, completion: nil)
+        }
+    }
 }
 
 extension ShutterButtonViewController: FilterListDelegate {
@@ -147,6 +154,5 @@ extension ShutterButtonViewController: FilterListDelegate {
         }
         
     }
-    
 }
 

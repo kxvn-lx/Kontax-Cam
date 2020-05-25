@@ -19,12 +19,12 @@ extension UIApplication {
 
 // MARK: - UIViewController
 extension UIViewController {
-    func configureNavigationBar(largeTitleColor: UIColor? = nil, backgoundColor: UIColor? = nil, tintColor: UIColor? = nil, title: String? = "", preferredLargeTitle: Bool? = nil) {
+    func configureNavigationBar(largeTitleColor: UIColor? = nil, backgoundColor: UIColor? = nil, tintColor: UIColor? = nil, title: String? = "", preferredLargeTitle: Bool = true) {
         
         let largeTitleColour = largeTitleColor == nil ? UIColor.label : largeTitleColor
         let backgroundColour = backgoundColor == nil ? UIColor.systemBackground : backgoundColor
         let tintColour = tintColor == nil ? UIColor.systemBlue : tintColor
-        let prefLargeTitle = preferredLargeTitle == nil ? true : false
+        let prefLargeTitle = preferredLargeTitle
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()

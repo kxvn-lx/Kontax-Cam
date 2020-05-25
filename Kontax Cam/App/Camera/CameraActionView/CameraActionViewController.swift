@@ -51,6 +51,16 @@ class CameraActionViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        shutterButton.view.snp.makeConstraints { (make) in
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
+            make.centerX.equalTo(self.view)
+        }
+        self.view.layoutIfNeeded()
+    }
+    
     // MARK: - Setup UI
     private func setupUI() {
         // action buttons scrollview
@@ -89,11 +99,6 @@ class CameraActionViewController: UIViewController {
         shutterButton.oriFrame = CGSize(width: shutterSize, height: shutterSize)
         self.add(shutterButton)
         
-        shutterButton.view.snp.makeConstraints { (make) in
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
-            make.centerX.equalTo(self.view)
-        }
-        
         // Lab button
         self.view.addSubview(labButton)
         labButton.addTarget(self, action: #selector(labButtonTapped), for: .touchUpInside)
@@ -101,7 +106,7 @@ class CameraActionViewController: UIViewController {
             make.width.equalTo(65 * 1.5)
             make.height.equalTo(35 * 1.25)
             make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40 + shutterSize / 2 - (35 * 1.25 / 2))
-            make.centerX.equalTo(self.view.frame.width * 0.75 + shutterSize / 4)
+            make.centerX.equalTo(self.view.frame.width * 0.25 - shutterSize / 4)
         }
     }
     
@@ -123,7 +128,12 @@ class CameraActionViewController: UIViewController {
     }
     
     @objc private func labButtonTapped() {
-        print("Presenting lab...")
+        if let parent = self.parent {
+            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
+            
+            let navController = UINavigationController(rootViewController: vc)
+            self.present(navController, animated: true, completion: nil)
+        }
     }
 }
 

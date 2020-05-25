@@ -36,6 +36,7 @@
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
+		0AADEE7E247BC31F009FFA52 /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE7D247BC31F009FFA52 /* PhotoPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AADEE7D247BC31F009FFA52 /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +141,7 @@
 			children = (
 				0AADEE72247B731C009FFA52 /* Lab */,
 				0A5290A9247AB43900BA0D57 /* Settings */,
-				0A4D6E5E247A5AD500E039FC /* PhotoDisplay [Demo] */,
+				0A4D6E5E247A5AD500E039FC /* PhotoDisplay */,
 				0A4D6E53247A472100E039FC /* Filter List */,
 				0A1D97C22477BE7800E4078F /* Camera */,
 			);
@@ -187,12 +189,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0A4D6E5E247A5AD500E039FC /* PhotoDisplay [Demo] */ = {
+		0A4D6E5E247A5AD500E039FC /* PhotoDisplay */ = {
 			isa = PBXGroup;
 			children = (
 				0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */,
+				0AADEE7D247BC31F009FFA52 /* PhotoPreviewViewController.swift */,
 			);
-			path = "PhotoDisplay [Demo]";
+			path = PhotoDisplay;
 			sourceTree = "<group>";
 		};
 		0A5290A9247AB43900BA0D57 /* Settings */ = {
@@ -297,6 +300,7 @@
 			files = (
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
+				0AADEE7E247BC31F009FFA52 /* PhotoPreviewViewController.swift in Sources */,
 				0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
 				0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */,

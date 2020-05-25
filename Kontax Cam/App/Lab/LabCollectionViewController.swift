@@ -83,14 +83,37 @@ class LabCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        TapticHelper.shared.lightTaptic()
+        
+        let vc = PhotoDisplayViewController()
+        vc.imageView.image = images[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         let selectedImage = images[indexPath.row]
         
         return UIContextMenuConfiguration(
             identifier: indexPath as NSIndexPath,
-            previewProvider: nil) { (_) -> UIMenu? in
+            previewProvider: {
+                return PhotoPreviewViewController(image: selectedImage)
+            },
+            actionProvider: { suggestedActions in
                 return self.makeContextMenu()
+            })
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+
+        guard let indexPath = configuration.identifier as? IndexPath else { return }
+        let selectedImage = images[indexPath.row]
+
+        animator.addAnimations {
+            let vc = PhotoDisplayViewController()
+            vc.imageView.image = selectedImage
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

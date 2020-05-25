@@ -62,7 +62,6 @@ class ShutterButtonViewController: UIViewController {
                 case .success(let content):
                     if let image = content.asImage {
 
-//                        self.goToDisplayVC(parent: parent, image: image)
                         guard let editedImage = LUTEngine.shared.applyFilter(toImage: image, withFilterName: self.selectedFilterName) else {
                             TapticHelper.shared.errorTaptic()
                             return
@@ -134,17 +133,6 @@ class ShutterButtonViewController: UIViewController {
         case .end:
             self.view.layer.borderColor = color.cgColor
             innerCircle.backgroundColor = touchedColor
-        }
-    }
-    
-    /// For testing purposes only.
-    private func goToDisplayVC(parent: UIViewController, image: UIImage) {
-        if let parent = parent.parent {
-            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
-            vc.renderPhoto(originalPhoto: image, filterName: self.selectedFilterName)
-            let navController = UINavigationController(rootViewController: vc)
-            
-            self.present(navController, animated: true, completion: nil)
         }
     }
 }

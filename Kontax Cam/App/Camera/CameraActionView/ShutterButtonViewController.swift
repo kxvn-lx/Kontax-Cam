@@ -18,7 +18,7 @@ class ShutterButtonViewController: UIViewController {
     private let animationDuration: TimeInterval = 0.1
     private let color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
-    var selectedFilterName = FilterName.KC01.rawValue
+    var selectedFilterName = FilterName.KC01
     
     var oriFrame: CGSize! // passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
@@ -63,7 +63,12 @@ class ShutterButtonViewController: UIViewController {
                     if let image = content.asImage {
 
 //                        self.goToDisplayVC(parent: parent, image: image)
-                        if let data = image.jpegData(compressionQuality: 1.0) {
+                        guard let editedImage = LUTEngine.shared.applyFilter(toImage: image, withFilterName: self.selectedFilterName) else {
+                            TapticHelper.shared.errorTaptic()
+                            return
+                        }
+                        
+                        if let data = editedImage.jpegData(compressionQuality: 1.0) {
                             DataEngine.shared.save(imageData: data)
                         }
                     }
@@ -145,10 +150,10 @@ class ShutterButtonViewController: UIViewController {
 }
 
 extension ShutterButtonViewController: FilterListDelegate {
-    func didSelectFilter(filterName: String) {
+    func didSelectFilter(filterName: FilterName) {
         selectedFilterName = filterName
         
-        let title = "\(filterName) activated"
+        let title = "\(selectedFilterName.rawValue) activated"
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: "paintbrush"))
         }

@@ -20,10 +20,33 @@ class LUTEngine {
     private init() {}
     
     
+    /// Apply filter to the given image
+    /// - Parameters:
+    ///   - image: The image that will be applied with filter
+    ///   - filterName: The filter name
+    /// - Returns: The image filtered
+    func applyFilter(toImage image: UIImage, withFilterName filterName: FilterName) -> UIImage? {
+        guard let lutImage = UIImage(named: filterName.rawValue.lowercased()) else { return nil }
+        let context = CIContext(options: nil)
+        
+        let beginImage = CIImage(image: image)
+        let filter = makeFilter(from: lutImage)
+        filter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        if let output = filter.outputImage {
+            if let cgImg = context.createCGImage(output, from: output.extent) {
+                let processedImage = UIImage(cgImage: cgImg, scale: 1.0, orientation: image.imageOrientation)
+                return processedImage
+            }
+        }
+        
+        return nil
+    }
+    
     /// Create a CIFilter based on the given ColourCube
     /// - Parameter lutImage: The LUT that will be converted to CI Filter
     /// - Returns: CIFilter ready to be applied to an image
-    func makeFilter(from lutImage: UIImage) -> CIFilter {
+    private func makeFilter(from lutImage: UIImage) -> CIFilter {
         
         let data = makeCubeData(lutImage: lutImage)!
         
@@ -37,7 +60,6 @@ class LUTEngine {
         
         return filter!
     }
-    
     
     /// Create a data memory based on the given lut image
     /// - Parameter lutImage: The LUT that will be converted to data

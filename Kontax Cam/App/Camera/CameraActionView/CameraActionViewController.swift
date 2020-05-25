@@ -129,6 +129,7 @@ class CameraActionViewController: UIViewController {
     
     @objc private func labButtonTapped() {
         if let parent = self.parent {
+            TapticHelper.shared.lightTaptic()
             let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
             
             let navController = UINavigationController(rootViewController: vc)

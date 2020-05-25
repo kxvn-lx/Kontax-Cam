@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FilterListDelegate {
-    func didSelectFilter(filterName: String)
+    func didSelectFilter(filterName: FilterName)
 }
 
 enum FilterName: String, CaseIterable {
@@ -25,7 +25,7 @@ class FilterListTableViewController: UITableViewController {
         .init(title: FilterName.KC03.rawValue, subtitle: "Soft purple preset best suited for sunset and dusk.", image: #imageLiteral(resourceName: "kc03-ex"))
     ]
     var delegate: FilterListDelegate?
-    var selectedFilterName: String!
+    var selectedFilterName: FilterName!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class FilterListTableViewController: UITableViewController {
         cell.filterTitleLabel.text = filters[indexPath.section].title
         cell.filterSubLabel.text = filters[indexPath.section].subtitle
         
-        if filters[indexPath.section].title == selectedFilterName {
+        if filters[indexPath.section].title == selectedFilterName.rawValue {
             cell.backgroundColor = .label
             cell.filterTitleLabel.textColor = .systemBackground
             cell.filterSubLabel.textColor = .secondarySystemBackground
@@ -69,8 +69,8 @@ class FilterListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedFilter = filters[indexPath.section]
-        delegate?.didSelectFilter(filterName: selectedFilter.title)
+        guard let selectedFilter = FilterName(rawValue: filters[indexPath.section].title) else { return }
+        delegate?.didSelectFilter(filterName: selectedFilter)
         cancelTapped()
     }
     

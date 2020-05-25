@@ -29,23 +29,10 @@ class PhotoDisplayViewController: UIViewController {
         }
     }
     
-    func renderPhoto(originalPhoto: UIImage, filterName: String) {
-        let inputImage = originalPhoto
-        let context = CIContext(options: nil)
-        let filter = UIImage(named: filterName.lowercased())!
+    func renderPhoto(originalPhoto: UIImage, filterName: FilterName) {
         
-
-        let currentFilter = LUTEngine.shared.makeFilter(from: filter)
-        let beginImage = CIImage(image: inputImage)
-        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-
-        if let output = currentFilter.outputImage {
-            if let cgimg = context.createCGImage(output, from: output.extent) {
-                let processedImage = UIImage(cgImage: cgimg, scale: 1.0, orientation: inputImage.imageOrientation)
-                self.imageView.image = processedImage
-
-
-            }
+        if let editedImage = LUTEngine.shared.applyFilter(toImage: originalPhoto, withFilterName: filterName) {
+            self.imageView.image = editedImage
         }
     }
     

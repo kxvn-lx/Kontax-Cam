@@ -10,9 +10,6 @@ import UIKit
 import CameraManager
 import SnapKit
 
-protocol CameraViewDelegate {
-}
-
 class CameraViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
@@ -30,13 +27,13 @@ class CameraViewController: UIViewController {
         
         return btn
     }()
-    static let rotView: UIImageView = {
+    let rotView: UIImageView = {
         let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.image = UIImage(named: "rot")
         return v
     }()
-    private var cameraActionView: CameraActionView!
+    private var cameraActionView: CameraActionViewController!
     private let cameraManager = CameraManager()
     
     
@@ -50,13 +47,6 @@ class CameraViewController: UIViewController {
         cameraManager.shouldFlipFrontCameraImage = true
         cameraManager.shouldUseLocationServices = true
         cameraManager.shouldKeepViewAtOrientationChanges = true
-        
-        // Pass the instance to CameraActionView
-        CameraActionView.cameraManager = cameraManager
-         
-        NotificationCenter.default.addObserver(self, selector: #selector(presentFilterListVC), name: .presentFilterListVC, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(presentPhotoDisplayVC), name: .presentPhotoDisplayVC, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(presentLabVC), name: .presentLabVC, object: nil)
         
         setupUI()
         setupConstraint()
@@ -80,14 +70,16 @@ class CameraViewController: UIViewController {
         cameraView.backgroundColor = UIColor.systemGray6
         
         // Camera Action View
-        cameraActionView = CameraActionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - cameraView.frame.height))
+        cameraActionView = CameraActionViewController()
+        cameraActionView.deviceFrame = CGSize(width: self.view.frame.width, height: self.view.frame.height - cameraView.frame.height)
+        cameraActionView.cameraManager = cameraManager
         
-        self.view.addSubview(cameraActionView)
+        add(cameraActionView)
         self.view.addSubview(cameraView)
         
         // RotView
-        self.view.addSubview(CameraViewController.rotView)
-        CameraViewController.rotView.snp.makeConstraints { (make) in
+        self.view.addSubview(rotView)
+        rotView.snp.makeConstraints { (make) in
             make.edges.equalTo(cameraView)
         }
         
@@ -109,7 +101,7 @@ class CameraViewController: UIViewController {
             make.top.equalTo(self.view)
         }
         
-        cameraActionView.snp.makeConstraints { (make) in
+        cameraActionView.view.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width)
             make.height.equalTo(self.view.frame.height - cameraView.frame.height)
             make.top.equalTo(cameraView.snp_bottomMargin)
@@ -121,34 +113,5 @@ class CameraViewController: UIViewController {
         
         let navController = UINavigationController(rootViewController: vc)
         self.present(navController, animated: true, completion: nil)
-    }
-    
-    // MARK: - NotificationObserver Method
-    @objc private func presentFilterListVC() {
-        let vc = self.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
-        vc.delegate = cameraActionView.shutterButton
-        vc.selectedFilterName = cameraActionView.shutterButton.selectedFilterName
-        
-        let navController = UINavigationController(rootViewController: vc)
-        self.present(navController, animated: true, completion: nil)
-    }
-    
-    @objc private func presentPhotoDisplayVC(_ notification: NSNotification) {
-        if let dict = notification.userInfo as NSDictionary? {
-            let image = dict["image"] as! UIImage
-            let selectedFilterName = dict["selectedFilterName"] as! String
-            
-            let vc = self.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
-            vc.renderPhoto(originalPhoto: image, filterName: selectedFilterName)
-            let navController = UINavigationController(rootViewController: vc)
-            
-            self.present(navController, animated: true, completion: nil)
-        } else {
-            fatalError("No information is being passed.")
-        }
-    }
-    
-    @objc private func presentLabVC() {
-        print("Presenting lab...")
     }
 }

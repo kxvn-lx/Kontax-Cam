@@ -82,13 +82,6 @@ extension UIFont {
     }
 }
 
-// MARK: - NotificationCenter
-extension Notification.Name {
-    static let presentFilterListVC = Notification.Name("presentFilterListVC")
-    static let presentPhotoDisplayVC = Notification.Name("presentPhotoDisplayVC")
-    static let presentLabVC = Notification.Name("presentLabVC")
-}
-
 // MARK: - UIButton
 extension UIButton {
     func addBlurEffect(style: UIBlurEffect.Style = .regular, cornerRadius: CGFloat = 0, padding: CGFloat = 0) {
@@ -131,5 +124,26 @@ extension UIButton {
         fullString.append(NSAttributedString(string: "  " + text))
         
         self.setAttributedTitle(fullString, for: .normal)
+    }
+}
+
+// MARK: - UIViewController
+extension UIViewController {
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+
+    func remove() {
+        // Just to be safe, we check that this view controller
+        // is actually added to a parent before removing it.
+        guard parent != nil else {
+            return
+        }
+
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
     }
 }

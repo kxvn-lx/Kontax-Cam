@@ -1,5 +1,5 @@
 //
-//  ShutterButtonView.swift
+//  ShutterButtonViewController.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 22/5/20.
@@ -13,42 +13,31 @@ enum TouchEvent {
     case begin, end
 }
 
-class ShutterButtonView: UIView {
+class ShutterButtonViewController: UIViewController {
     
     private let animationDuration: TimeInterval = 0.1
     private let color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
     var selectedFilterName = FilterName.KC01.rawValue
     
-    private var oriFrame: CGRect!
-    
+    var oriFrame: CGSize! // passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        self.oriFrame = frame
-        self.addSubview(innerCircle)
-        
-        // View configuration
-        self.isUserInteractionEnabled = true
-        
-        // View UI
-        self.layer.borderWidth = 2
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(innerCircle)
+        self.view.isUserInteractionEnabled = true
+        self.view.layer.borderWidth = 2
+        self.view.translatesAutoresizingMaskIntoConstraints = false
         innerCircle.translatesAutoresizingMaskIntoConstraints = false
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(shutterTapped))
         gesture.numberOfTapsRequired = 1
-        self.addGestureRecognizer(gesture)
+        self.view.addGestureRecognizer(gesture)
         
         touchEvent(event: .begin)
         renderSize()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -61,21 +50,26 @@ class ShutterButtonView: UIView {
     
     /// Handles the shutter button tapped
     @objc func shutterTapped() {
-        if TimerAction.timeEngine.currentTime != 0 { TimerAction.timeEngine.presentTimerDisplay() }
+        let parent = self.parent as! CameraActionViewController
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(TimerAction.timeEngine.currentTime)) {
-            CameraActionView.cameraManager.capturePictureWithCompletion({ result in
+        if parent.timerEngine.currentTime != 0 { parent.timerEngine.presentTimerDisplay() }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
+            parent.cameraManager.capturePictureWithCompletion({ result in
                 switch result {
                 case .failure:
                     print("error capturing.")
                     TapticHelper.shared.errorTaptic()
                 case .success(let content):
-                    let contentDict: [String: Any] = [
-                        "image": content.asImage! as UIImage,
-                        "selectedFilterName": self.selectedFilterName as String
-                    ]
-                    
-                    NotificationCenter.default.post(name: .presentPhotoDisplayVC, object: nil, userInfo: contentDict as [AnyHashable : Any])
+                    if let image = content.asImage {
+                        if let parent = parent.parent {
+                            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
+                            vc.renderPhoto(originalPhoto: image, filterName: self.selectedFilterName)
+                            let navController = UINavigationController(rootViewController: vc)
+
+                            self.present(navController, animated: true, completion: nil)
+                        }
+                    }
                 }
             })
         }
@@ -115,14 +109,14 @@ class ShutterButtonView: UIView {
     }
     
     private func renderSize(multiplier: CGFloat = 1) {
-        self.snp.remakeConstraints { (make) in
+        self.view.snp.remakeConstraints { (make) in
             make.height.width.equalTo( oriFrame.width )
         }
-        self.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
+        self.view.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
         
         innerCircle.snp.remakeConstraints { (make) in
             make.height.width.equalTo(oriFrame.width * 0.9 * multiplier)
-            make.center.equalTo(self)
+            make.center.equalTo(self.view)
         }
         innerCircle.layer.cornerRadius = ( oriFrame.width * 0.9 * multiplier ) / 2
     }
@@ -132,18 +126,18 @@ class ShutterButtonView: UIView {
     private func touchEvent(event: TouchEvent) {
         switch event {
         case .begin:
-            self.layer.borderColor = color.cgColor
+            self.view.layer.borderColor = color.cgColor
             innerCircle.backgroundColor = color
             
         case .end:
-            self.layer.borderColor = color.cgColor
+            self.view.layer.borderColor = color.cgColor
             innerCircle.backgroundColor = touchedColor
         }
     }
     
 }
 
-extension ShutterButtonView: FilterListDelegate {
+extension ShutterButtonViewController: FilterListDelegate {
     func didSelectFilter(filterName: String) {
         selectedFilterName = filterName
         

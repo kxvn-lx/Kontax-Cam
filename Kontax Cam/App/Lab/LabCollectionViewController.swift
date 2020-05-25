@@ -47,6 +47,8 @@ class LabCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.configureNavigationBar(tintColor: .label, title: "Lab")
+        let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
+        navigationItem.leftBarButtonItem = close
         
         //UICollectionView setup
         self.collectionView.collectionViewLayout = flowLayout
@@ -86,9 +88,13 @@ class LabCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.lightTaptic()
         
-        let vc = PhotoDisplayViewController()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
+        
         vc.imageView.image = images[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true, completion: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -147,5 +153,10 @@ class LabCollectionViewController: UICollectionViewController {
         
         return(date, time)
         
+    }
+    
+    @objc private func closeTapped() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }

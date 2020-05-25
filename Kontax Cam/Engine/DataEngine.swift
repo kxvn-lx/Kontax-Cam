@@ -39,6 +39,7 @@ struct DataEngine {
             for fileName in fileNames {
                 let imageURL = URL(fileURLWithPath: documentsPath).appendingPathComponent(fileName)
                 if let image = UIImage(contentsOfFile: imageURL.path) {
+                    image.accessibilityIdentifier = fileName
                     images.append(image)
                 }
             }

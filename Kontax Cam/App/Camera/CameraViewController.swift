@@ -45,7 +45,6 @@ class CameraViewController: UIViewController {
         // By default, don't store to device
         cameraManager.writeFilesToPhoneLibrary = false
         cameraManager.shouldFlipFrontCameraImage = true
-        cameraManager.shouldUseLocationServices = true
         cameraManager.shouldKeepViewAtOrientationChanges = true
         
         setupUI()

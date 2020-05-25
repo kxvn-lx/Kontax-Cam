@@ -35,6 +35,7 @@
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
+		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		0AADEE6E247B6541009FFA52 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
+		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,10 +149,10 @@
 		0A44B2AF2476A80700603F2C /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */,
 				0A44B2B52476BF3700603F2C /* LUTEngine.swift */,
 				0A1D97D32477F38900E4078F /* TimerEngine.swift */,
 				0AADEE70247B6987009FFA52 /* DataEngine.swift */,
+				0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */,
+				0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */,
 			);
 			path = Lab;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
+				0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,

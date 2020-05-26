@@ -24,6 +24,7 @@ class CameraActionViewController: UIViewController {
         
     ]
     var timerEngine = TimerEngine()
+    private let shutterOffset: CGFloat = 40
     
     private let actionButtonsScrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -44,7 +45,6 @@ class CameraActionViewController: UIViewController {
     }()
     
     var cameraManager: CameraManager! // Passed from parent
-    var deviceFrame: CGSize! // Passed from parent to determined the size of the view
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class CameraActionViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         shutterButton.view.snp.makeConstraints { (make) in
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40)
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(shutterOffset)
             make.centerX.equalTo(self.view)
         }
         self.view.layoutIfNeeded()
@@ -67,15 +67,15 @@ class CameraActionViewController: UIViewController {
         self.view.addSubview(actionButtonsScrollView)
         actionButtonsScrollView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width)
-            make.height.equalTo(40)
+            make.height.equalTo(45)
             make.top.equalTo(self.view).offset(10)
         }
         
         // Adding the action buttons to the scrollView
         let actionButtons = setupActionButtons()
         var xCoord: CGFloat = 10
-        let yCoord: CGFloat = 5
-        let buttonWidth:CGFloat = 65
+        let yCoord: CGFloat = UIDevice().hasNotch ? -30 : 5
+        let buttonWidth: CGFloat = 65
         let buttonHeight: CGFloat = 35
         let gapBetweenButtons: CGFloat = 10
         
@@ -84,14 +84,17 @@ class CameraActionViewController: UIViewController {
             button.tintColor = .label
             button.layer.cornerRadius = 5
             
+            actionButtonsScrollView.addSubview(button)
+            
             button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)
             button.clipsToBounds = true
-            
             xCoord += buttonWidth + gapBetweenButtons
-            actionButtonsScrollView.addSubview(button)
         }
         
-        actionButtonsScrollView.contentSize = CGSize(width: buttonWidth * CGFloat(actionButtons.count + 1), height: yCoord)
+        actionButtonsScrollView.contentSize = CGSize(
+            width: buttonWidth * CGFloat(actionButtons.count + 1),
+            height: UIDevice().hasNotch ? 5 : buttonHeight
+        )
         
         // Shutter button
         let shutterSize = self.view.frame.height * 0.13
@@ -102,10 +105,11 @@ class CameraActionViewController: UIViewController {
         // Lab button
         self.view.addSubview(labButton)
         labButton.addTarget(self, action: #selector(labButtonTapped), for: .touchUpInside)
+        let calc = shutterSize / 2 - (35 * 1.25 / 2)
         labButton.snp.makeConstraints { (make) in
             make.width.equalTo(65 * 1.5)
             make.height.equalTo(35 * 1.25)
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40 + shutterSize / 2 - (35 * 1.25 / 2))
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40 + calc)
             make.centerX.equalTo(self.view.frame.width * 0.25 - shutterSize / 4)
         }
     }

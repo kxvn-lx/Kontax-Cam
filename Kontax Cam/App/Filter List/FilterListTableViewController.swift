@@ -75,6 +75,7 @@ class FilterListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedFilter = FilterName(rawValue: filters[indexPath.section].title) else { return }
         delegate?.didSelectFilter(filterName: selectedFilter)
+        TapticHelper.shared.lightTaptic()
         cancelTapped()
     }
     

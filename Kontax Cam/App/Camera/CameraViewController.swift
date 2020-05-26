@@ -70,7 +70,6 @@ class CameraViewController: UIViewController {
         
         // Camera Action View
         cameraActionView = CameraActionViewController()
-        cameraActionView.deviceFrame = CGSize(width: self.view.frame.width, height: self.view.frame.height - cameraView.frame.height)
         cameraActionView.cameraManager = cameraManager
         
         add(cameraActionView)

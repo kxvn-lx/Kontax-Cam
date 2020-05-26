@@ -1,5 +1,5 @@
 //
-//  ImagePreviewFullViewCell.swift
+//  PhotoDisplayCollectionViewCell.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 25/5/20.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ImagePreviewFullViewCell: UICollectionViewCell, UIScrollViewDelegate {
+class PhotoDisplayCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
     var scrollImg: UIScrollView!
     var imgView: UIImageView!

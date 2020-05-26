@@ -54,9 +54,13 @@ class LabCollectionViewController: UICollectionViewController {
         self.collectionView.collectionViewLayout = flowLayout
         
         // Fetch all images
-        DataEngine.shared.read { (images) in
-            self.images = images
-            self.collectionView.reloadData()
+        let imageUrls = DataEngine.shared.readDataToURLs()
+        for url in imageUrls {
+            if let image = UIImage(contentsOfFile: url.path) {
+                let filename = url.path.replacingOccurrences(of: DataEngine.shared.getDocumentsDirectory().path, with: "", options: .literal, range: nil)
+                image.accessibilityIdentifier = filename
+                images.append(image)
+            }
         }
     }
     
@@ -108,7 +112,7 @@ class LabCollectionViewController: UICollectionViewController {
                 return PhotoPreviewViewController(image: selectedImage)
             },
             actionProvider: { suggestedActions in
-                return self.makeContextMenu()
+                return ShareHelper.shared.presentContextShare(image: selectedImage, toVC: self)
             })
     }
     
@@ -125,17 +129,6 @@ class LabCollectionViewController: UICollectionViewController {
 //    }
     
     // MARK: - Class functions
-    private func makeContextMenu() -> UIMenu {
-
-        // Create a UIAction for sharing
-        let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { action in
-            //TODO: show system sharesheet.
-        }
-
-        // Create and return a UIMenu with the share action
-        return UIMenu(title: "", children: [share])
-    }
-        
     /// Parse the given encoded timestamp and render it into strings for readability
     /// - Parameter filename: The filename of the image (in timestamp format)
     /// - Returns: The parsed timestamp into Date, and time.

@@ -10,10 +10,12 @@ import UIKit
 
 class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
+    private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
+    private var photoLibraryEngine: PhotoLibraryEngine!
+    
     private var collectionView: UICollectionView!
     var imgArray = [UIImage]()
     var passedContentOffset = IndexPath()
-    private var viewTranslation = CGPoint(x: 0, y: 0)
     
     private let flowLayout: UICollectionViewLayout = {
         let margin: CGFloat = 0
@@ -43,14 +45,17 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         return layout
     }()
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photoLibraryEngine = PhotoLibraryEngine(caller: self)
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(ImagePreviewFullViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(PhotoDisplayCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         
         collectionView.isPagingEnabled = true
         collectionView.layoutIfNeeded()
@@ -75,12 +80,13 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         self.navigationController?.isToolbarHidden = true
     }
     
+    // MARK: - Collection View datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imgArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImagePreviewFullViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoDisplayCollectionViewCell
         cell.imgView.image = imgArray[indexPath.row]
         return cell
     }
@@ -89,35 +95,62 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
         navigationItem.leftBarButtonItem = close
         
-        let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
-        let save = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
-        let delete = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
-        
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let items = [share, flexible, save, flexible, delete]
-        for item in items {
-            item.tintColor = .label
+        var items: [UIBarButtonItem] = []
+        
+        for i in 0 ..< toolImages.count {
+            let btn = UIButton()
+            btn.setImage(IconHelper.shared.getIconImage(iconName: toolImages[i]), for: .normal)
+            btn.tintColor = .label
+            btn.tag = i
+            btn.addTarget(self, action: #selector(toolButtonTapped), for: .touchUpInside)
+            
+            let toolBtn = UIBarButtonItem(customView: btn)
+            items.append(toolBtn)
+            if i != toolImages.count - 1 { items.append(flexible) }
         }
         
         self.toolbarItems = items
     }
     
-    @objc private func shareTapped() {
-        print("Sharing")
-    }
-    
-    @objc private func saveTapped() {
-        print("Saving")
-    }
-    
-    @objc private func deleteTapped() {
-        print("Deleting")
-    }
-    
     @objc private func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func toolButtonTapped(sender: UIButton) {
+        
+        guard let indexPath = collectionView.indexPathForItem(at: self.view.center) else {
+            TapticHelper.shared.errorTaptic()
+            AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "There was a problem performing the action. Please try again. Or, contact kevin.laminto@gmail.com", to: self)
+            return
+        }
+        
+        TapticHelper.shared.lightTaptic()
+        let selectedImage = imgArray[indexPath.row]
+        
+        switch sender.tag {
+        case 0:
+            ShareHelper.shared.presentShare(withImage: selectedImage, toView: self)
+        case 1:
+            photoLibraryEngine.save(selectedImage) { (success, error) in
+                if let error = error {
+                    AlertHelper.shared.presentDefault(title: "Something went wrong.", message: error.localizedDescription, to: self)
+                    TapticHelper.shared.errorTaptic()
+                    return
+                }
+                DispatchQueue.main.async {
+                    SPAlertHelper.shared.present(title: "Saved", message: nil, preset: .done)
+                }
+                
+                TapticHelper.shared.successTaptic()
+            }
+
+        case 2:
+            print("Delete")
+        default: break
+        }
     }
     
 }

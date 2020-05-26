@@ -28,8 +28,10 @@ struct DataEngine {
         }
     }
     
-    func read( completion: ( ([UIImage]) -> ()) ) {
-        var images: [UIImage] = []
+    /// Read data from the file and convert them into array of URLs for reading
+    /// - Returns: The array of URLs
+    func readDataToURLs() -> [URL] {
+        var urls: [URL] = []
         
         let fileManager = FileManager.default
         let documentsPath = getDocumentsDirectory().path
@@ -38,21 +40,21 @@ struct DataEngine {
             let fileNames = try fileManager.contentsOfDirectory(atPath: "\(documentsPath)")
             for fileName in fileNames {
                 let imageURL = URL(fileURLWithPath: documentsPath).appendingPathComponent(fileName)
-                if let image = UIImage(contentsOfFile: imageURL.path) {
-                    image.accessibilityIdentifier = fileName
-                    images.append(image)
-                }
+                urls.append(imageURL)
             }
+            
+            urls.sort(by: { $0.absoluteString.compare(
+                $1.absoluteString, options: .numeric) == .orderedDescending })
             
         } catch {
             print(error.localizedDescription)
         }
         
-        completion(images)
+        return urls
     }
     
     /// getDocumentsDirectory() is a little helper function to locate the user's documents directory where you can save app files.
-    private func getDocumentsDirectory() -> URL {
+    func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }

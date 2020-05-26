@@ -10,24 +10,18 @@ import Foundation
 import Photos
 import UIKit
 
-class PhotoLibraryEngine: NSObject {
-    static let albumName = "Kontax Cam"
-    static let shared = PhotoLibraryEngine()
+class PhotoLibraryEngine {
+    private let albumName = "Kontax Cam"
+    private var assetCollection: PHAssetCollection!
+    var sender: UIViewController!
     
-    var assetCollection: PHAssetCollection!
-    
-    private override init() {
-        super.init()
+    init(caller sender: UIViewController) {
+        
+        self.sender = sender
         
         if let assetCollection = fetchAssetCollectionForAlbum() {
             self.assetCollection = assetCollection
             return
-        }
-        
-        if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
-            PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) -> Void in
-                ()
-            })
         }
         
         if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
@@ -43,7 +37,10 @@ class PhotoLibraryEngine: NSObject {
     ///   - completion: Completion with given Bool and Error
     /// - Returns: nil
     func save(_ image: UIImage, completion: @escaping ((Bool, Error?) -> ())) {
-        if assetCollection == nil { return }
+        if assetCollection == nil {
+            print("PhotoLibraryEngine: assetCollection is nil")
+            return
+        }
         
         PHPhotoLibrary.shared().performChanges({
             let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
@@ -59,17 +56,19 @@ class PhotoLibraryEngine: NSObject {
     
     private func requestAuthorizationHandler(status: PHAuthorizationStatus) {
         if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
-            // ideally this ensures the creation of the photo album even if authorization wasn't prompted till after init was done
-            print("trying again to create the album")
+            print("Album created.")
             self.createAlbum()
         } else {
-            print("should really prompt the user to let them know it's failed")
+            DispatchQueue.main.async {
+                AlertHelper.shared.presentDefault(title: "We can't check for permission", message: "Please ensure the app has the required permission in oder to function properly.", to: self.sender)
+            }
+            
         }
     }
     
     private func createAlbum() {
         PHPhotoLibrary.shared().performChanges({
-            PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: PhotoLibraryEngine.albumName)
+            PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: self.albumName)
         }) { success, error in
             if success {
                 self.assetCollection = self.fetchAssetCollectionForAlbum()
@@ -81,7 +80,7 @@ class PhotoLibraryEngine: NSObject {
     
     private func fetchAssetCollectionForAlbum() -> PHAssetCollection? {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "title = %@", PhotoLibraryEngine.albumName)
+        fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
         let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
         
         if let _: AnyObject = collection.firstObject {

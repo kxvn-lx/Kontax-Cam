@@ -61,13 +61,12 @@ class ShutterButtonViewController: UIViewController {
                     
                 case .success(let content):
                     if let image = content.asImage {
-
                         guard let editedImage = LUTEngine.shared.applyFilter(toImage: image, withFilterName: self.selectedFilterName) else {
                             TapticHelper.shared.errorTaptic()
                             return
                         }
                         
-                        if let data = editedImage.jpegData(compressionQuality: 1.0) {
+                        if let data = editedImage.jpegData(compressionQuality: 0.4) {
                             DataEngine.shared.save(imageData: data)
                         }
                     }

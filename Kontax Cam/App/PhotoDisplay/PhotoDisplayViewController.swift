@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PhotoDisplayDelegate {
-    func photoDisplayDismissed()
+    func didDeleteImage()
 }
 
 class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
@@ -89,6 +89,8 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
             self.navigationItem.titleView = timestampTitle
         }
         
+        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
+        
     }
     
     private func setupUI () {
@@ -115,7 +117,6 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     @objc private func closeTapped() {
-        delegate?.photoDisplayDismissed()
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
@@ -166,7 +167,6 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     /// Helper class to delete the image
     private func deleteImage(at indexPath: IndexPath) {
         SPAlertHelper.shared.present(title: "Image deleted.")
-        
         DataEngine.shared.deleteData(imageToDelete: imgArray[indexPath.row]) { (success) in
             if !success {
                 AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: self)
@@ -175,6 +175,7 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         imgArray.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
         collectionView.reloadData()
+        delegate?.didDeleteImage()
     }
     
     /// Parse the given encoded timestamp and render it into strings for readability

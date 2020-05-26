@@ -139,7 +139,6 @@ extension LabCollectionViewController {
         vc.delegate = self
 
         let navController = UINavigationController(rootViewController: vc)
-        navController.presentationController?.delegate = self
         self.present(navController, animated: true, completion: nil)
     }
     
@@ -196,15 +195,8 @@ extension LabCollectionViewController {
     }
 }
 
-extension LabCollectionViewController: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-        images = self.fetchData()
-        self.collectionView.reloadData()
-    }
-}
-
 extension LabCollectionViewController: PhotoDisplayDelegate {
-    func photoDisplayDismissed() {
+    func didDeleteImage() {
         images = self.fetchData()
         self.collectionView.reloadData()
     }

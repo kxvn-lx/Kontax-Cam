@@ -31,7 +31,7 @@ extension UIViewController {
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: largeTitleColour!]
         navBarAppearance.titleTextAttributes = [.foregroundColor: largeTitleColour!]
         navBarAppearance.backgroundColor = backgroundColour
-//        navBarAppearance.shadowColor = .clear
+        //        navBarAppearance.shadowColor = .clear
         
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.compactAppearance = navBarAppearance
@@ -134,14 +134,14 @@ extension UIViewController {
         view.addSubview(child.view)
         child.didMove(toParent: self)
     }
-
+    
     func remove() {
         // Just to be safe, we check that this view controller
         // is actually added to a parent before removing it.
         guard parent != nil else {
             return
         }
-
+        
         willMove(toParent: nil)
         view.removeFromSuperview()
         removeFromParent()
@@ -150,11 +150,30 @@ extension UIViewController {
 
 // MARK: - UIDevice
 extension UIDevice {
-
+    
     /// Returns 'true' if the device has a notch
     var hasNotch: Bool {
         guard #available(iOS 11.0, *), let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
         return window.safeAreaInsets.top >= 44
     }
-
+    
 }
+
+extension UIImage {
+    
+    func getFileSizeInfo(allowedUnits: ByteCountFormatter.Units = .useMB,
+                         countStyle: ByteCountFormatter.CountStyle = .file) -> String? {
+        // https://developer.apple.com/documentation/foundation/bytecountformatter
+        let formatter = ByteCountFormatter()
+        formatter.allowedUnits = allowedUnits
+        formatter.countStyle = countStyle
+        return getSizeInfo(formatter: formatter)
+    }
+    
+    private func getSizeInfo(formatter: ByteCountFormatter, compressionQuality: CGFloat = 1.0) -> String? {
+        guard let imageData = jpegData(compressionQuality: compressionQuality) else { return nil }
+        return formatter.string(fromByteCount: Int64(imageData.count))
+    }
+}
+
+

@@ -18,7 +18,7 @@ struct DataEngine {
     /// - Parameter imageData: "The image data ready to be saved"
     func save(imageData: Data) {
         let timestamp = NSDate().timeIntervalSince1970
-        let imageName = "KontaxCam_\(timestamp).jpg"
+        let imageName = "KontaxCam_\(timestamp).jpeg"
         
         let filename = getDocumentsDirectory().appendingPathComponent(imageName)
         do {

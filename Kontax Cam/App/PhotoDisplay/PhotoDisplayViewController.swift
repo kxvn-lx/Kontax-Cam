@@ -13,9 +13,10 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     private var collectionView: UICollectionView!
     var imgArray = [UIImage]()
     var passedContentOffset = IndexPath()
+    private var viewTranslation = CGPoint(x: 0, y: 0)
     
     private let flowLayout: UICollectionViewLayout = {
-        let margin: CGFloat = 5
+        let margin: CGFloat = 0
         
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
@@ -56,10 +57,12 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         collectionView.scrollToItem(at: passedContentOffset, at: .left, animated: true)
         
         self.collectionView.backgroundColor = .secondarySystemBackground
+        self.view.backgroundColor = .clear
         
         self.view.addSubview(collectionView)
-
+        
         setupUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,7 +100,7 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
             item.tintColor = .label
         }
         
-         self.toolbarItems = items
+        self.toolbarItems = items
     }
     
     @objc private func shareTapped() {

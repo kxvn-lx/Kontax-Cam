@@ -90,12 +90,11 @@ class LabCollectionViewController: UICollectionViewController {
                 
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoDisplayVC") as! PhotoDisplayViewController
 
-//        vc.imageView.image = images[indexPath.row]
         vc.imgArray = images
         vc.passedContentOffset = indexPath
 
         let navController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .fullScreen
+//        navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: true, completion: nil)
     }
     

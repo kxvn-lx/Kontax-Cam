@@ -17,41 +17,13 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     var imgArray = [UIImage]()
     var passedContentOffset = IndexPath()
     
-    private let flowLayout: UICollectionViewLayout = {
-        let margin: CGFloat = 0
-        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(0.8))
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 1)
-        group.contentInsets = NSDirectionalEdgeInsets(
-            top: margin,
-            leading: margin,
-            bottom: margin,
-            trailing: margin)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPaging
-        
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }()
-    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         photoLibraryEngine = PhotoLibraryEngine(caller: self)
         
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
+        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: makeLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -153,4 +125,34 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         }
     }
     
+}
+
+extension PhotoDisplayViewController {
+    private func makeLayout() -> UICollectionViewLayout {
+        let margin: CGFloat = 0
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(0.8))
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: margin,
+            leading: margin,
+            bottom: margin,
+            trailing: margin)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
 }

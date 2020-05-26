@@ -83,7 +83,7 @@ class CameraActionViewController: UIViewController {
             button.backgroundColor = .secondarySystemBackground
             button.tintColor = .label
             button.layer.cornerRadius = 5
-            
+             
             actionButtonsScrollView.addSubview(button)
             
             button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)

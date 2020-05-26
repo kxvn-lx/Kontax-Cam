@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PhotoDisplayDelegate {
+    func photoDisplayDismissed()
+}
+
 class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
     private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
@@ -16,6 +20,8 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     private var collectionView: UICollectionView!
     var imgArray = [UIImage]()
     var passedContentOffset = IndexPath()
+    
+    var delegate: PhotoDisplayDelegate?
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -87,6 +93,7 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     @objc private func closeTapped() {
+        delegate?.photoDisplayDismissed()
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
@@ -118,11 +125,34 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
                 
                 TapticHelper.shared.successTaptic()
             }
-
+            
         case 2:
-            print("Delete")
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive , handler:{ _ in
+                self.deleteImage(at: indexPath)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            
         default: break
         }
+    }
+    
+    /// Helper class to delete the image
+    private func deleteImage(at indexPath: IndexPath) {
+        SPAlertHelper.shared.present(title: "Image deleted.")
+        
+        DataEngine.shared.deleteData(imageToDelete: imgArray[indexPath.row]) { (success) in
+            if !success {
+                AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: self)
+            }
+        }
+        imgArray.remove(at: indexPath.row)
+        collectionView.deleteItems(at: [indexPath])
+        collectionView.reloadData()
     }
     
 }

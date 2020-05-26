@@ -27,13 +27,11 @@ struct SPAlertHelper {
         if image == nil {
             spAlert = SPAlertView(message: title)
         } else {
-            guard let image = image else {
-                fatalError()
-            }
+            guard let image = image else { fatalError() }
             spAlert = SPAlertView(title: title, message: message, image: image)
-            spAlert.duration = 0.5
         }
         
+        spAlert.duration = 0.5
         spAlert.present()
     }
     

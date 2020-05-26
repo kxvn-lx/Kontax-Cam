@@ -18,7 +18,7 @@ struct DataEngine {
     /// - Parameter imageData: "The image data ready to be saved"
     func save(imageData: Data) {
         let timestamp = NSDate().timeIntervalSince1970
-        let imageName = "KontaxCam_\(timestamp).png"
+        let imageName = "KontaxCam_\(timestamp).jpg"
         
         let filename = getDocumentsDirectory().appendingPathComponent(imageName)
         do {
@@ -51,6 +51,36 @@ struct DataEngine {
         }
         
         return urls
+    }
+    
+    /// Delete the image from the file directory
+    /// - Parameters:
+    ///   - image: The image to be deleted
+    ///   - completion: Completion handler of success
+    /// - Returns: The completion handler
+    func deleteData(imageToDelete image: UIImage , completion: (Bool) -> ()) {
+        guard var imageID = image.accessibilityIdentifier else {
+            completion(false)
+            return
+        }
+        
+        imageID = String(imageID.dropFirst())
+        
+        let fileManager = FileManager.default
+        let documentsPath = getDocumentsDirectory().path
+        
+        let fileURL = URL(fileURLWithPath: documentsPath).appendingPathComponent(imageID)
+        
+        // Delete file in document directory
+        if fileManager.fileExists(atPath: fileURL.path) {
+            do {
+                try fileManager.removeItem(at: fileURL)
+                completion(true)
+            } catch {
+                print("Could not delete file: \(error)")
+                completion(false)
+            }
+        }
     }
     
     /// getDocumentsDirectory() is a little helper function to locate the user's documents directory where you can save app files.

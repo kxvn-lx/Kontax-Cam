@@ -25,14 +25,7 @@ class LabCollectionViewController: UICollectionViewController {
         self.collectionView.collectionViewLayout = makeLayout()
         
         // Fetch all images
-        let imageUrls = DataEngine.shared.readDataToURLs()
-        for url in imageUrls {
-            if let image = UIImage(contentsOfFile: url.path) {
-                let filename = url.path.replacingOccurrences(of: DataEngine.shared.getDocumentsDirectory().path, with: "", options: .literal, range: nil)
-                image.accessibilityIdentifier = filename
-                images.append(image)
-            }
-        }
+        images = fetchData()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -143,9 +136,26 @@ extension LabCollectionViewController {
 
         vc.imgArray = self.images
         vc.passedContentOffset = indexPath
+        vc.delegate = self
 
         let navController = UINavigationController(rootViewController: vc)
+        navController.presentationController?.delegate = self
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    private func fetchData() -> [UIImage] {
+        var images: [UIImage] = []
+        let imageUrls = DataEngine.shared.readDataToURLs()
+        
+        for url in imageUrls {
+            if let image = UIImage(contentsOfFile: url.path) {
+                let filename = url.path.replacingOccurrences(of: DataEngine.shared.getDocumentsDirectory().path, with: "", options: .literal, range: nil)
+                image.accessibilityIdentifier = filename
+                images.append(image)
+            }
+        }
+        
+        return images
     }
 
     /// Parse the given encoded timestamp and render it into strings for readability
@@ -183,5 +193,19 @@ extension LabCollectionViewController {
     @objc private func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension LabCollectionViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        images = self.fetchData()
+        self.collectionView.reloadData()
+    }
+}
+
+extension LabCollectionViewController: PhotoDisplayDelegate {
+    func photoDisplayDismissed() {
+        images = self.fetchData()
+        self.collectionView.reloadData()
     }
 }

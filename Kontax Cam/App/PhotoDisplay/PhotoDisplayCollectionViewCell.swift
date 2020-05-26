@@ -11,14 +11,8 @@ import UIKit
 
 class PhotoDisplayCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
-    var scrollImg: UIScrollView!
-    var imgView: UIImageView!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        scrollImg = UIScrollView()
-        scrollImg.delegate = self
+    var scrollImg: UIScrollView = {
+        let scrollImg = UIScrollView()
         scrollImg.alwaysBounceVertical = false
         scrollImg.alwaysBounceHorizontal = false
         scrollImg.showsVerticalScrollIndicator = true
@@ -27,15 +21,25 @@ class PhotoDisplayCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate
         scrollImg.minimumZoomScale = 1.0
         scrollImg.maximumZoomScale = 4.0
         
+        return scrollImg
+    }()
+    var imgView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        return imgView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        scrollImg.delegate = self
+        
+        self.addSubview(scrollImg)
+        scrollImg.addSubview(imgView)
+        
         let doubleTapGest = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapScrollView(recognizer:)))
         doubleTapGest.numberOfTapsRequired = 2
         scrollImg.addGestureRecognizer(doubleTapGest)
-        
-        self.addSubview(scrollImg)
-        
-        imgView = UIImageView()
-        scrollImg.addSubview(imgView!)
-        imgView.contentMode = .scaleAspectFit
     }
     
     @objc func handleDoubleTapScrollView(recognizer: UITapGestureRecognizer) {

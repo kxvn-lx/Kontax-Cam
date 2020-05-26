@@ -171,7 +171,7 @@ extension LabCollectionViewController {
         let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
         let date = formatter.string(from: ts)
         
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "h:mm a"
         let time = formatter.string(from: ts)
         
         return(date, time)

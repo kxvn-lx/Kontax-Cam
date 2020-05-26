@@ -21,6 +21,17 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     var imgArray = [UIImage]()
     var passedContentOffset = IndexPath()
     
+    private var currentCell: CGFloat = 0
+    private var timestampTitle: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.textAlignment = .center
+        label.textColor = .label
+        label.font = .preferredFont(forTextStyle: .body)
+        return label
+    }()
+    
     var delegate: PhotoDisplayDelegate?
     
     // MARK: - View lifecycle
@@ -67,6 +78,17 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoDisplayCollectionViewCell
         cell.imgView.image = imgArray[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let filename = imgArray[indexPath.row].accessibilityIdentifier {
+            let timestamp = String(filename.dropFirst())
+            let ( date, time ) = parseToDateTime(filename: timestamp)
+            timestampTitle.text = "\(date)\n\(time)"
+            
+            self.navigationItem.titleView = timestampTitle
+        }
+        
     }
     
     private func setupUI () {
@@ -153,6 +175,26 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         imgArray.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
         collectionView.reloadData()
+    }
+    
+    /// Parse the given encoded timestamp and render it into strings for readability
+    /// - Parameter filename: The filename of the image (in timestamp format)
+    /// - Returns: The parsed timestamp into Date, and time.
+    private func parseToDateTime(filename: String) -> (String, String) {
+        let filenameArr = filename.components(separatedBy: "_")
+        let timestamp = String(filenameArr[1].dropLast(4))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        
+        let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
+        let date = formatter.string(from: ts)
+        
+        formatter.dateFormat = "h:mm a"
+        let time = formatter.string(from: ts)
+        
+        return(date, time)
+        
     }
     
 }

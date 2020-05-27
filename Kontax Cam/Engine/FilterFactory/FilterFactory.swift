@@ -22,7 +22,6 @@ class FilterFactory {
     static let shared = FilterFactory()
     private init() { }
     
-    
     /// Get the filter and returns the object
     /// - Parameters:
     ///   - filterType: The type of the filter

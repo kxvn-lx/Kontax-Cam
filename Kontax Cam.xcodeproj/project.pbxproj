@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
@@ -103,6 +104,7 @@
 			files = (
 				0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */,
 				0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */,
+				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
 				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
 				0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
@@ -294,6 +296,7 @@
 				0A1D97C02477BACE00E4078F /* SnapKit */,
 				0A1D97CF2477EFB900E4078F /* SPAlert */,
 				0A5290A7247AB40500BA0D57 /* QuickTableViewController */,
+				0A0F94CD247E501300E33AEC /* PanModal */,
 			);
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
@@ -328,6 +331,7 @@
 				0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */,
 				0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */,
+				0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = 0A44B2982476A7F000603F2C /* Products */;
 			projectDirPath = "";
@@ -583,6 +587,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
+			};
+		};
 		0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/imaginary-cloud/CameraManager";
@@ -618,6 +630,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A0F94CD247E501300E33AEC /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
+		};
 		0A1D97BB2477B80D00E4078F /* CameraManager */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */;

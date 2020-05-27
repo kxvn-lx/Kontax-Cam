@@ -178,7 +178,7 @@ extension CameraActionViewController {
             if let parent = self.parent {
                 let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
                 vc.delegate = shutterButton
-                vc.selectedFilterName = shutterButton.selectedFilterName
+                vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
                 
                 let navController = UINavigationController(rootViewController: vc)
                 self.present(navController, animated: true, completion: nil)

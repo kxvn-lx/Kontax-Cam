@@ -12,10 +12,6 @@ protocol FilterListDelegate {
     func didSelectFilter(filterName: FilterName)
 }
 
-enum FilterName: String, CaseIterable {
-    case KC01, KC02, KC03
-}
-
 class FilterListTableViewController: UITableViewController {
     
     private let CELL_ID = "filtersCell"

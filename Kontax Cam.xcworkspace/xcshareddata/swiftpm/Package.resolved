@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CameraManager",
+        "repositoryURL": "https://github.com/imaginary-cloud/CameraManager",
+        "state": {
+          "branch": null,
+          "revision": "30584f3b8fcb47ed778b172b8727b10854704927",
+          "version": "5.1.3"
+        }
+      },
+      {
+        "package": "QuickTableViewController",
+        "repositoryURL": "https://github.com/bcylin/QuickTableViewController",
+        "state": {
+          "branch": null,
+          "revision": "70ec82dc5f3cf55dc8518eca834d09c758a398fb",
+          "version": "1.2.1"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit",
+        "state": {
+          "branch": null,
+          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+          "version": "5.0.1"
+        }
+      },
+      {
+        "package": "SPAlert",
+        "repositoryURL": "https://github.com/ivanvorobei/SPAlert",
+        "state": {
+          "branch": null,
+          "revision": "18862409586ac547bcdf8957cd96beb872fbc729",
+          "version": "2.1.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

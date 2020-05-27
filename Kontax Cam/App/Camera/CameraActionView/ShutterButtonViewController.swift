@@ -15,10 +15,11 @@ enum TouchEvent {
 
 class ShutterButtonViewController: UIViewController {
     
+    let filterEngine = FilterEngine()
+    
     private let animationDuration: TimeInterval = 0.1
     private let color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
-    var selectedFilterName = FilterName.KC01
     
     var oriFrame: CGSize! // passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
@@ -48,6 +49,7 @@ class ShutterButtonViewController: UIViewController {
         }
     }
     
+    // MARK: - Shutter tapped
     /// Handles the shutter button tapped
     @objc func shutterTapped() {
         let parent = self.parent as! CameraActionViewController
@@ -61,14 +63,18 @@ class ShutterButtonViewController: UIViewController {
                     
                 case .success(let content):
                     if let image = content.asImage {
-                        guard let editedImage = LUTEngine.shared.applyFilter(toImage: image, withFilterName: self.selectedFilterName) else {
+
+                        guard let editedImage = self.filterEngine.process(originalImage: image) else {
+                            TapticHelper.shared.errorTaptic()
+                            return
+                        }
+                    
+                        guard let data = editedImage.jpegData(compressionQuality: 0.4) else {
                             TapticHelper.shared.errorTaptic()
                             return
                         }
                         
-                        if let data = editedImage.jpegData(compressionQuality: 0.4) {
-                            DataEngine.shared.save(imageData: data)
-                        }
+                        DataEngine.shared.save(imageData: data)
                     }
                 }
             })
@@ -138,9 +144,9 @@ class ShutterButtonViewController: UIViewController {
 
 extension ShutterButtonViewController: FilterListDelegate {
     func didSelectFilter(filterName: FilterName) {
-        selectedFilterName = filterName
+        LUTImageFilter.selectedLUTFilter = filterName
         
-        let title = "\(selectedFilterName.rawValue) activated"
+        let title = "\(LUTImageFilter.selectedLUTFilter.rawValue) activated"
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: "paintbrush"))
         }

@@ -39,6 +39,7 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
         
         photoLibraryEngine = PhotoLibraryEngine(caller: self)
+        self.navigationController?.isToolbarHidden = false
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: makeLayout())
         collectionView.delegate = self
@@ -57,16 +58,6 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         
         setupUI()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isToolbarHidden = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isToolbarHidden = true
     }
     
     // MARK: - Collection View datasource

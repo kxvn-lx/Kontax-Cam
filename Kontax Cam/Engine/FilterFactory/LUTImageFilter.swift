@@ -1,32 +1,31 @@
 //
-//  LUTMuuki.swift
+//  LUTImageFilter.swift
 //  Kontax Cam
 //
-//  Created by Kevin Laminto on 21/5/20.
+//  Created by Kevin Laminto on 27/5/20.
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
-
-// Inspired by Muuki https://github.com/muukii/Pixel/blob/master/Sources/PixelEngine/ColorCube.swift
 
 import Foundation
 import UIKit
 
-class LUTEngine {
+enum FilterName: String, CaseIterable {
+    case KC01, KC02, KC03
+}
+
+class LUTImageFilter: ImageFilter {
+    
+    static var selectedLUTFilter = FilterName.KC01
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
     
-    static let shared = LUTEngine()
-    private init() {}
-    
-    
     /// Apply filter to the given image
     /// - Parameters:
     ///   - image: The image that will be applied with filter
-    ///   - filterName: The filter name
     /// - Returns: The image filtered
-    func applyFilter(toImage image: UIImage, withFilterName filterName: FilterName) -> UIImage? {
-        guard let lutImage = UIImage(named: filterName.rawValue.lowercased()) else { return nil }
+    func process(imageToEdit image: UIImage) -> UIImage? {
+        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter.rawValue.lowercased()) else { return nil }
         let context = CIContext(options: nil)
         
         let beginImage = CIImage(image: image)

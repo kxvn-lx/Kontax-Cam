@@ -47,6 +47,5 @@ class GrainImageFilter: ImageFilter {
         grainInput.processImage(synchronously: true)
         
         return editedImage
-        
     }
 }

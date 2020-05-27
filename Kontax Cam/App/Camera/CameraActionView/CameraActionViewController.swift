@@ -130,16 +130,6 @@ class CameraActionViewController: UIViewController {
         
         return buttonArray
     }
-    
-    @objc private func labButtonTapped() {
-        if let parent = self.parent {
-            TapticHelper.shared.lightTaptic()
-            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
-            
-            let navController = UINavigationController(rootViewController: vc)
-            self.present(navController, animated: true, completion: nil)
-        }
-    }
 }
 
 extension CameraActionViewController {
@@ -179,9 +169,10 @@ extension CameraActionViewController {
                 let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
                 vc.delegate = shutterButton
                 vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
-                
-                let navController = UINavigationController(rootViewController: vc)
-                self.present(navController, animated: true, completion: nil)
+//
+//                let navController = UINavigationController(rootViewController: vc)
+//                self.present(navController, animated: true, completion: nil)
+                self.presentPanModal(vc)
             }
 
             // Grid
@@ -193,6 +184,16 @@ extension CameraActionViewController {
             SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconName(currentIcon: (sender.imageView?.image?.accessibilityIdentifier)!, iconImageArray: actionButtonsIconName[sender.tag]).0)
 
         default: print("No button with ID is found")
+        }
+    }
+    
+    @objc private func labButtonTapped() {
+        if let parent = self.parent {
+            TapticHelper.shared.lightTaptic()
+            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
+            
+            let navController = UINavigationController(rootViewController: vc)
+            self.present(navController, animated: true, completion: nil)
         }
     }
 }

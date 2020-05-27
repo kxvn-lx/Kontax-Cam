@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
+		0A0F94D0247E54EB00E33AEC /* FilterListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94CF247E54EB00E33AEC /* FilterListHeaderView.swift */; };
+		0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
@@ -61,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A0F94CF247E54EB00E33AEC /* FilterListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListHeaderView.swift; sourceTree = "<group>"; };
+		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
 		0A1D97BD2477B94F00E4078F /* VC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+.swift"; sourceTree = "<group>"; };
 		0A1D97C32477BFAE00E4078F /* SVHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVHelper.swift; sourceTree = "<group>"; };
 		0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */,
 				0A1D97BD2477B94F00E4078F /* VC+.swift */,
 				0A1D97C32477BFAE00E4078F /* SVHelper.swift */,
 				0A1D97CC2477DDB900E4078F /* IconHelper.swift */,
@@ -210,6 +215,7 @@
 			children = (
 				0A4D6E54247A474100E039FC /* FilterListTableViewController.swift */,
 				0A4D6E56247A478500E039FC /* FilterListTableViewCell.swift */,
+				0A0F94CF247E54EB00E33AEC /* FilterListHeaderView.swift */,
 			);
 			path = "Filter List";
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AADEE7E247BC31F009FFA52 /* PhotoPreviewViewController.swift in Sources */,
@@ -371,6 +378,7 @@
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */,
 				0A4D6E57247A478500E039FC /* FilterListTableViewCell.swift in Sources */,
+				0A0F94D0247E54EB00E33AEC /* FilterListHeaderView.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
 				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,

@@ -36,7 +36,7 @@ class CameraViewController: UIViewController {
     private var cameraActionView: CameraActionViewController!
     private let cameraManager = CameraManager()
     
-    
+    // MARK: - View configuration
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +60,7 @@ class CameraViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     // MARK: - Setup UI

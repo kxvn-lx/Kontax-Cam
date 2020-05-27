@@ -10,14 +10,14 @@ import UIKit
 
 class FilterListTableViewCell: UITableViewCell {
 
-    private let mStackView = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillProportionally)
-    private let infoStackView = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)
+    private let mStackView = SVHelper.shared.createSV(axis: .horizontal, spacing: 15, alignment: .center, distribution: .fillProportionally)
+    private let infoStackView = SVHelper.shared.createSV(axis: .vertical, spacing: 0, alignment: .leading, distribution: .fill)
     
     let filterImageView: UIImageView = {
         let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.contentMode = .scaleAspectFit
-        v.layer.cornerRadius = 10
+        v.layer.cornerRadius = 5
         v.clipsToBounds = true
         return v
     }()
@@ -25,7 +25,7 @@ class FilterListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: label.font.pointSize, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .body)
         label.textColor = .label
         return label
     }()
@@ -33,7 +33,7 @@ class FilterListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .systemGray
         label.numberOfLines = 0
         return label
@@ -64,13 +64,13 @@ class FilterListTableViewCell: UITableViewCell {
     }
     
     private func setupConstraint() {
-        let padding: CGFloat = 5
+        let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 30)
         mStackView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
+            make.edges.equalTo(self).inset(padding)
         }
         
         filterImageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(self.frame.width * 0.25)
+            make.width.height.equalTo(45)
         }
     }
 }

@@ -24,15 +24,30 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    var isFilterSelected = false
+    
     override func awakeFromNib() {
         self.addSubview(titleLabel)
         self.backgroundColor = .secondarySystemBackground
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.secondarySystemBackground.cgColor
         
         titleLabel.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(Constants.padding)
+        }
+        
+        updateStyle()
+    }
+    
+    func updateStyle() {
+        self.layer.borderColor = isFilterSelected ? UIColor.label.cgColor : UIColor.secondarySystemBackground.cgColor
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 13.0, *) {
+            if (traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection)) {
+                updateStyle()
+            }
         }
     }
 }

@@ -10,6 +10,9 @@ import UIKit
 import PanModal
 
 class FiltersNavigationViewController: UINavigationController {
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     private var isShortFormEnabled = true
     

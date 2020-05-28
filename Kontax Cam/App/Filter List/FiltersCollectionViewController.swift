@@ -17,9 +17,6 @@ protocol FilterListDelegate {
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
     private let filters: [[Filter]] = [
         [
@@ -62,7 +59,8 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         cell.titleLabel.text = currentFilter.title
         if currentFilter.title == selectedFilterName.rawValue {
-            cell.layer.borderColor = UIColor.label.cgColor
+            cell.isFilterSelected = true
+            cell.updateStyle()
         }
         
         return cell

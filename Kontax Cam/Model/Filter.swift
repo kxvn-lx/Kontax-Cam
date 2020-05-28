@@ -7,11 +7,8 @@
 //
 
 import Foundation
-import UIKit
 
 struct Filter {
     
     let title: String
-    let subtitle: String
-    let image: UIImage
 }

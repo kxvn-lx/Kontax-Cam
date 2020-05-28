@@ -19,7 +19,7 @@ extension UIApplication {
 
 // MARK: - UIViewController
 extension UIViewController {
-    func configureNavigationBar(largeTitleColor: UIColor? = nil, backgoundColor: UIColor? = nil, tintColor: UIColor? = nil, title: String? = "", preferredLargeTitle: Bool = true) {
+    func configureNavigationBar(largeTitleColor: UIColor? = nil, backgoundColor: UIColor? = nil, tintColor: UIColor? = nil, title: String? = "", preferredLargeTitle: Bool = true, removeSeparator: Bool = false) {
         
         let largeTitleColour = largeTitleColor == nil ? UIColor.label : largeTitleColor
         let backgroundColour = backgoundColor == nil ? UIColor.systemBackground : backgoundColor
@@ -31,7 +31,7 @@ extension UIViewController {
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: largeTitleColour!]
         navBarAppearance.titleTextAttributes = [.foregroundColor: largeTitleColour!]
         navBarAppearance.backgroundColor = backgroundColour
-        //        navBarAppearance.shadowColor = .clear
+        navBarAppearance.shadowColor = removeSeparator ? .clear : .systemGray
         
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.compactAppearance = navBarAppearance

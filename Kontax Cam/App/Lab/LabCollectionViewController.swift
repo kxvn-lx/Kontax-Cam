@@ -177,18 +177,6 @@ extension LabCollectionViewController {
         
     }
     
-    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        // 1
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95),
-                                                             heightDimension: .estimated(80))
-        
-        // 2
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: layoutSectionHeaderSize,
-                                                                              elementKind: UICollectionView.elementKindSectionHeader,
-                                                                              alignment: .top)
-        return layoutSectionHeader
-    }
-    
     @objc private func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

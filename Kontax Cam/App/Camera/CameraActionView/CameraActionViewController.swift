@@ -166,13 +166,13 @@ extension CameraActionViewController {
             // Filter
         case 4:
             if let parent = self.parent {
-                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filterListVC") as! FilterListTableViewController
+                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
                 vc.delegate = shutterButton
                 vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
-//
-//                let navController = UINavigationController(rootViewController: vc)
-//                self.present(navController, animated: true, completion: nil)
-                self.presentPanModal(vc)
+
+                let navController = FiltersNavigationViewController(rootViewController: vc)
+                
+                self.presentPanModal(navController)
             }
 
             // Grid

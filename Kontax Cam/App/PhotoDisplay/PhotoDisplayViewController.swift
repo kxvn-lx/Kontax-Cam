@@ -80,9 +80,15 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
             self.navigationItem.titleView = timestampTitle
         }
         
-        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
+        let cell = cell as! PhotoDisplayCollectionViewCell
+        if cell.scrollImg.zoomScale != 1.0 {
+            cell.scrollImg.setZoomScale(1.0, animated: false)
+        }
+        
+//        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
         
     }
+    
     
     private func setupUI () {
         let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
@@ -94,6 +100,7 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         
         for i in 0 ..< toolImages.count {
             let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
             btn.setImage(IconHelper.shared.getIconImage(iconName: toolImages[i]), for: .normal)
             btn.tintColor = .label
             btn.tag = i

@@ -46,15 +46,24 @@ struct TimerEngine {
         v.addSubview(timeLabel)
         
         timeLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(v)
-            make.centerY.equalTo(v).offset(-80)
+            make.center.equalToSuperview()
         }
         
         var time = currentTime!
+        
         let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+            timeLabel.alpha = 0
+            time -= 1
             DispatchQueue.main.async {
-                time -= 1
                 timeLabel.text = "\(time)"
+                
+                UIView.animate(
+                    withDuration: 0.25,
+                    animations: {
+                        timeLabel.alpha = 1
+                },
+                    completion: nil)
+                
             }
         }
         

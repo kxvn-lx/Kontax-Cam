@@ -15,7 +15,8 @@ class PhotoDisplayCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate
         let scrollImg = UIScrollView()
         scrollImg.alwaysBounceVertical = false
         scrollImg.alwaysBounceHorizontal = false
-        scrollImg.showsVerticalScrollIndicator = true
+        scrollImg.showsVerticalScrollIndicator = false
+        scrollImg.showsHorizontalScrollIndicator = false
         scrollImg.flashScrollIndicators()
         
         scrollImg.minimumZoomScale = 1.0

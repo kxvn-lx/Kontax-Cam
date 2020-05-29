@@ -24,7 +24,7 @@ struct FilterEngine {
             
             let filterObj = FilterFactory.shared.getFilter(ofFilterType: filter)
             
-            guard let editedImage = filterObj.process(imageToEdit: image) else { return nil }
+            guard let editedImage = filterObj.process(imageToEdit: image) else { fatalError("Some of the filters are not working.") }
             image = editedImage
         }
         return image

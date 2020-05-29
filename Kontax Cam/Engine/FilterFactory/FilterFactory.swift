@@ -13,7 +13,7 @@ protocol ImageFilter {
     func process(imageToEdit image: UIImage) -> UIImage?
 }
 
-enum FilterType: CaseIterable {
+enum FilterType: String, CaseIterable {
     case LUT, grain
 }
 

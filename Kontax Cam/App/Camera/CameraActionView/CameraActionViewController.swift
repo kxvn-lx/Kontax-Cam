@@ -161,7 +161,15 @@ extension CameraActionViewController {
             cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
             
             // FX
-        case 3: break
+        case 3:
+            if let parent = self.parent {
+                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
+
+                let navController = PanModalNavigationController(rootViewController: vc)
+                
+                self.presentPanModal(navController)
+            }
+
             
             // Filter
         case 4:
@@ -170,7 +178,7 @@ extension CameraActionViewController {
                 vc.delegate = shutterButton
                 vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
 
-                let navController = FiltersNavigationViewController(rootViewController: vc)
+                let navController = PanModalNavigationController(rootViewController: vc)
                 
                 self.presentPanModal(navController)
             }

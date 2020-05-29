@@ -39,11 +39,11 @@ class ModalHeaderPresentable: UICollectionReusableView {
         stackView.addArrangedSubview(separator)
         addSubview(stackView)
         
-        let titleSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillProportionally)
+        let titleSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .equalCentering)
         titleSV.addArrangedSubview(titleLabel)
         titleSV.addArrangedSubview(infoButton)
         
-        stackView.addArrangedSubview(titleSV, withMargin: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
+        stackView.addArrangedSubview(titleSV, withMargin: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: -15))
         
         separator.snp.makeConstraints { (make) in
             make.height.equalTo(1)

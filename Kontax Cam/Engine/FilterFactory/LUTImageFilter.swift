@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-enum FilterName: String, CaseIterable {
-    case KC01, KC02, KC03
-}
-
 class LUTImageFilter: ImageFilter {
     
     static var selectedLUTFilter = FilterName.KC01

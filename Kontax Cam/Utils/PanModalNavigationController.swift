@@ -1,5 +1,5 @@
 //
-//  FiltersNavigationViewController.swift
+//  PanModalNavigationController.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 28/5/20.
@@ -9,7 +9,7 @@
 import UIKit
 import PanModal
 
-class FiltersNavigationViewController: UINavigationController {
+class PanModalNavigationController: UINavigationController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -31,7 +31,7 @@ class FiltersNavigationViewController: UINavigationController {
     }
 }
 
-extension FiltersNavigationViewController: PanModalPresentable {
+extension PanModalNavigationController: PanModalPresentable {
     // MARK: - Pan Modal Presentable
     var panScrollable: UIScrollView? {
         return (topViewController as? PanModalPresentable)?.panScrollable

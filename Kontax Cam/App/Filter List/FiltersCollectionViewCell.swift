@@ -28,7 +28,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.addSubview(titleLabel)
-        self.backgroundColor = .secondarySystemBackground
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 1
         
@@ -40,7 +39,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     }
     
     func updateStyle() {
-        self.layer.borderColor = isFilterSelected ? UIColor.label.cgColor : UIColor.secondarySystemBackground.cgColor
+        self.layer.borderColor = isFilterSelected ? UIColor.label.cgColor : UIColor.clear.cgColor
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -159,6 +159,7 @@ extension UIDevice {
     
 }
 
+// MARK: - UIImage
 extension UIImage {
     
     func getFileSizeInfo(allowedUnits: ByteCountFormatter.Units = .useMB,
@@ -173,6 +174,17 @@ extension UIImage {
     private func getSizeInfo(formatter: ByteCountFormatter, compressionQuality: CGFloat = 1.0) -> String? {
         guard let imageData = jpegData(compressionQuality: compressionQuality) else { return nil }
         return formatter.string(fromByteCount: Int64(imageData.count))
+    }
+}
+
+// MARK: - String
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }
 

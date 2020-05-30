@@ -41,9 +41,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         // UICollectionView setup
         collectionView.collectionViewLayout = makeLayout()
         
-        collectionView.register(ModalHeaderPresentable.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: headerIdentifier)
+        collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
     }
     
     // MARK: UICollectionViewDataSource
@@ -90,7 +88,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         case 0: headerView.titleLabel.text = "KC Collection"
         default: break
         }
-
+        
         return headerView
     }
     

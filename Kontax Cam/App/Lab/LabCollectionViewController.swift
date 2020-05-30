@@ -26,6 +26,9 @@ class LabCollectionViewController: UICollectionViewController {
         
         // Fetch all images
         images = fetchData()
+        
+        // TODO: Check if it reflects when an image is deleted !!!!!
+        images.count == 0 ? setEmptyView() : removeEmptyView()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -34,8 +37,6 @@ class LabCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count == 0 ? setEmptyView() : removeEmptyView()
-        
         return images.count
     }
     

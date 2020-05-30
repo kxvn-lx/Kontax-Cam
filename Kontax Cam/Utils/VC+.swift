@@ -182,10 +182,21 @@ extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
     }
-
+    
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
 }
 
+// MARK: - UIView
+extension UIView {
+    /// Get the safe area layout of the device
+    /// - Returns: The safe area layout
+    func getSafeAreaInsets() -> UIEdgeInsets {
+        guard #available(iOS 11.0, *), let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else {
+            return .zero
+        }
+        return window.safeAreaInsets
+    }
+}
 

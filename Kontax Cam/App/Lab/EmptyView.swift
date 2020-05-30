@@ -10,6 +10,8 @@ import UIKit
 
 class EmptyView: UIView {
     
+    private var safeArea: UIEdgeInsets!
+    
     private let backgroundView: UIImageView = {
         let v = UIImageView()
         v.image = UIImage(named: "lab-placeholder")!
@@ -71,7 +73,7 @@ class EmptyView: UIView {
         
         mSV.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(-80)
+            make.bottom.equalToSuperview().offset(-(self.getSafeAreaInsets().bottom + 20))
             make.width.equalTo(self.frame.width * 0.9)
         }
     }

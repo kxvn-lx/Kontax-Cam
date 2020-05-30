@@ -40,6 +40,7 @@
 		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A8C1AC6247BF2BA0062ABFC /* PhotoDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C1AC5247BF2BA0062ABFC /* PhotoDisplayCollectionViewCell.swift */; };
+		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
@@ -95,6 +96,7 @@
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A8C1AC5247BF2BA0062ABFC /* PhotoDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
+		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AADEE6E247B6541009FFA52 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			children = (
 				0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */,
 				0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */,
+				0A9F7F14248200800088E053 /* EmptyView.swift */,
 			);
 			path = Lab;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
+				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */,
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,

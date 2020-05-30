@@ -34,6 +34,8 @@ class LabCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        images.count == 0 ? setEmptyView() : removeEmptyView()
+        
         return images.count
     }
     
@@ -44,9 +46,8 @@ class LabCollectionViewController: UICollectionViewController {
 
         cell.photoView.image = currentImage
 
-
         if let id = currentImage.accessibilityIdentifier {
-            let (date, _) = parseToDateTime(filename: id)
+            let date = parseToDateTime(filename: id)
             cell.dateLabel.text = date
         }
         
@@ -160,7 +161,7 @@ extension LabCollectionViewController {
     /// Parse the given encoded timestamp and render it into strings for readability
     /// - Parameter filename: The filename of the image (in timestamp format)
     /// - Returns: The parsed timestamp into Date, and time.
-    private func parseToDateTime(filename: String) -> (String, String) {
+    private func parseToDateTime(filename: String) -> String {
         let filenameArr = filename.components(separatedBy: "_")
         let timestamp = String(filenameArr[1].dropLast(4))
         
@@ -170,11 +171,19 @@ extension LabCollectionViewController {
         let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
         let date = formatter.string(from: ts)
         
-        formatter.dateFormat = "h:mm a"
-        let time = formatter.string(from: ts)
+        return date
         
-        return(date, time)
-        
+    }
+    
+    /// Setting a meaningful empty view when the collectionview is empty
+    private func setEmptyView() {
+        let v = EmptyView(frame: self.collectionView.frame)
+        self.collectionView.backgroundView = v
+    }
+    
+    /// Remove the emptyview when an item is present
+    private func removeEmptyView() {
+        self.collectionView.backgroundView = nil
     }
     
     @objc private func closeTapped() {

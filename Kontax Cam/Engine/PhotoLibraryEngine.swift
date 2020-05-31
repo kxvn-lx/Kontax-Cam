@@ -13,11 +13,8 @@ import UIKit
 class PhotoLibraryEngine {
     private let albumName = "Kontax Cam"
     private var assetCollection: PHAssetCollection!
-    var sender: UIViewController!
     
-    init(caller sender: UIViewController) {
-        
-        self.sender = sender
+    init() {
         
         if let assetCollection = fetchAssetCollectionForAlbum() {
             self.assetCollection = assetCollection
@@ -58,11 +55,6 @@ class PhotoLibraryEngine {
         if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
             print("Album created.")
             self.createAlbum()
-        } else {
-            DispatchQueue.main.async {
-                AlertHelper.shared.presentDefault(title: "We can't check for permission", message: "Please ensure the app has the required permission in oder to function properly.", to: self.sender)
-            }
-            
         }
     }
     

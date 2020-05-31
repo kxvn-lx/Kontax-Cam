@@ -42,6 +42,7 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.addSubview(toggleLabel)
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.systemBackground.cgColor
         
         toggleLabel.snp.makeConstraints { (make) in
             make.left.bottom.equalToSuperview().inset(Constants.padding)
@@ -55,9 +56,14 @@ class FXCollectionViewCell: UICollectionViewCell {
         updateStyle()
     }
     
-    func updateStyle() {
-        self.layer.borderColor = isFxSelected ? UIColor.label.cgColor : UIColor.clear.cgColor
+    func toggleSelected() {
+        isFxSelected = !isFxSelected
+        updateStyle()
+    }
+    
+    private func updateStyle() {
         updateElementStyle()
+        toggleLabel.text = isFxSelected ? "ON" : "OFF"
     }
     
     private func updateElementStyle() {

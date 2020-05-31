@@ -12,20 +12,10 @@ import PanModal
 private let reuseIdentifier = "fxCell"
 private let headerIdentifier = "fxHeader"
 
-protocol FXDelegate {
-    func didSelectFx(fxType: FilterType)
-    
-}
-
 class FXCollectionViewController: UICollectionViewController {
     
-    private let fxs: [[FX]] = [
-        [
-            .init(id: 0, title: FilterType.grain.rawValue),
-        ],
-    ]
-    
-    var delegate: FXDelegate?
+    private let fxs: [FilterType] = [.grain]
+    private var enabledFxs: [FilterType] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,30 +28,51 @@ class FXCollectionViewController: UICollectionViewController {
         collectionView.register(ModalHeaderPresentable.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: headerIdentifier)
+        
+        enabledFxs = FilterEngine.shared.allowedFilters
     }
     
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return fxs.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fxs[section].count
+        return fxs.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FXCollectionViewCell
+        let currentFx = fxs[indexPath.row]
         
-        let currentFx = fxs[indexPath.section][indexPath.row]
+        cell.titleLabel.text = currentFx.description
         
-        cell.titleLabel.text = currentFx.title.capitalizingFirstLetter()
+        if enabledFxs.contains(currentFx) {
+            cell.toggleSelected()
+        }
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.lightTaptic()
+        
+        // Update UI
+        let selectedCell = collectionView.cellForItem(at: indexPath) as! FXCollectionViewCell
+        selectedCell.toggleSelected()
+        
+        // Update datasource
+        let selectedFx = fxs[indexPath.row]
+        
+        if selectedCell.isFxSelected {
+            enabledFxs.append(selectedFx)
+        } else {
+            enabledFxs.remove(at: enabledFxs.firstIndex(of: selectedFx)!)
+        }
+        
+        enabledFxs.sort(by: { $0.rawValue < $1.rawValue })
+        FilterEngine.shared.allowedFilters = enabledFxs
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

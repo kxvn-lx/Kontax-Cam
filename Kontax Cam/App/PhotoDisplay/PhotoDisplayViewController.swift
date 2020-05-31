@@ -38,7 +38,7 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photoLibraryEngine = PhotoLibraryEngine(caller: self)
+        photoLibraryEngine = PhotoLibraryEngine()
         self.navigationController?.isToolbarHidden = false
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: makeLayout())

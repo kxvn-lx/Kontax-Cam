@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */; };
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
-		0A03EB032480AC9C001D8006 /* FX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB022480AC9C001D8006 /* FX.swift */; };
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
 		0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
@@ -69,7 +68,6 @@
 /* Begin PBXFileReference section */
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A03EB022480AC9C001D8006 /* FX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FX.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
 		0A1D97BD2477B94F00E4078F /* VC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+.swift"; sourceTree = "<group>"; };
 		0A1D97C32477BFAE00E4078F /* SVHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVHelper.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				0A4D6E59247A572A00E039FC /* Filter.swift */,
-				0A03EB022480AC9C001D8006 /* FX.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -403,7 +400,6 @@
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
-				0A03EB032480AC9C001D8006 /* FX.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,

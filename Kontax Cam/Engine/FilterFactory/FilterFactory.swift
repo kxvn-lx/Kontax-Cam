@@ -13,10 +13,6 @@ protocol ImageFilter {
     func process(imageToEdit image: UIImage) -> UIImage?
 }
 
-enum FilterType: String, CaseIterable {
-    case LUT, grain
-}
-
 class FilterFactory {
     
     static let shared = FilterFactory()

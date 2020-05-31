@@ -15,13 +15,11 @@ enum TouchEvent {
 
 class ShutterButtonViewController: UIViewController {
     
-    let filterEngine = FilterEngine()
-    
     private let animationDuration: TimeInterval = 0.1
     private let color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
     
-    var oriFrame: CGSize! // passed from parent to determined the size of the shutter button
+    var oriFrame: CGSize! // Passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
     
     override func viewDidLoad() {
@@ -64,7 +62,7 @@ class ShutterButtonViewController: UIViewController {
                 case .success(let content):
                     if let image = content.asImage {
 
-                        guard let editedImage = self.filterEngine.process(originalImage: image) else {
+                        guard let editedImage = FilterEngine.shared.process(originalImage: image) else {
                             TapticHelper.shared.errorTaptic()
                             return
                         }

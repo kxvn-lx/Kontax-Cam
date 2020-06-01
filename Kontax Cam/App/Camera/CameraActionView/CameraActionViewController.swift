@@ -201,6 +201,7 @@ extension CameraActionViewController {
             let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
             
             let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .overFullScreen
             self.present(navController, animated: true, completion: nil)
         }
     }

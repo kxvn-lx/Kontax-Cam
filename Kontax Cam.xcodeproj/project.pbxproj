@@ -31,7 +31,6 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
-		0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E59247A572A00E039FC /* Filter.swift */; };
 		0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */; };
 		0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5290A7247AB40500BA0D57 /* QuickTableViewController */; };
 		0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */; };
@@ -88,7 +87,6 @@
 		0A44B2A32476A7F100603F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A4D6E59247A572A00E039FC /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		0A4D6E5F247A5AF700E039FC /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
 		0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +170,6 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
-				0A4D6E58247A571E00E039FC /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
 				0A44B2AF2476A80700603F2C /* Engine */,
 				0A44B2AE2476A80300603F2C /* App */,
@@ -234,14 +231,6 @@
 				0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */,
 			);
 			path = "Filter List";
-			sourceTree = "<group>";
-		};
-		0A4D6E58247A571E00E039FC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0A4D6E59247A572A00E039FC /* Filter.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0A4D6E5E247A5AD500E039FC /* PhotoDisplay */ = {
@@ -388,7 +377,6 @@
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AADEE7E247BC31F009FFA52 /* PhotoPreviewViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
-				0A4D6E5A247A572A00E039FC /* Filter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
 				0A4D6E60247A5AF700E039FC /* PhotoDisplayViewController.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,

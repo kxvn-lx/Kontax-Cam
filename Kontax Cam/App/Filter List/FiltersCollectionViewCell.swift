@@ -38,7 +38,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         updateStyle()
     }
     
-    private func updateStyle() {
+    func updateStyle() {
         updateElementStyle()
     }
     

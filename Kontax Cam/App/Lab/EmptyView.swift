@@ -19,14 +19,15 @@ class EmptyView: UIView {
         return v
     }()
     private let iconImageView: UIImageView = {
-        let v = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let v = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        v.translatesAutoresizingMaskIntoConstraints = false
         v.tintColor = .label
         return v
     }()
     private let titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Take or import your photos"
-        lbl.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium)
+        lbl.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title3).pointSize, weight: .medium)
         return lbl
     }()
     private let bodyLabel: UILabel = {
@@ -58,7 +59,7 @@ class EmptyView: UIView {
         iconImageView.image = IconHelper.shared.getIconImage(iconName: "plus.circle")
         
         // setup stackview
-        mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fillProportionally)
+        mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .equalSpacing)
         mSV.addArrangedSubview(iconImageView)
         mSV.addArrangedSubview(titleLabel)
         mSV.addArrangedSubview(bodyLabel)
@@ -76,6 +77,11 @@ class EmptyView: UIView {
             make.bottom.equalToSuperview().offset(-(self.getSafeAreaInsets().bottom + 20))
             make.width.equalTo(self.frame.width * 0.9)
         }
+        
+        iconImageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(35)
+        }
+        
     }
     
 }

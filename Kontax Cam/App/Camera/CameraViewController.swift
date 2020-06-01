@@ -58,14 +58,10 @@ class CameraViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     // MARK: - Setup UI
     private func setupUI() {
         // Camera view
+        // TODO: Replace with logo
         cameraView.backgroundColor = UIColor.systemGray6
         
         // Camera Action View

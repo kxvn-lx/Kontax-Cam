@@ -22,12 +22,9 @@ enum FilterName: String, CaseIterable {
 
 class FiltersCollectionViewController: UICollectionViewController {
     
-    private let filters: [[Filter]] = [
-        [
-            .init(title: FilterName.KC01.rawValue),
-            .init(title: FilterName.KC02.rawValue),
-            .init(title: FilterName.KC03.rawValue),
-        ],
+    private let filters: [[FilterName]] = [
+        [.KC01, .KC03],
+        [.KC02],
     ]
     
     var delegate: FilterListDelegate?
@@ -59,8 +56,8 @@ class FiltersCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
         let currentFilter = filters[indexPath.section][indexPath.row]
         
-        cell.titleLabel.text = currentFilter.title
-        if currentFilter.title == selectedFilterName.rawValue {
+        cell.titleLabel.text = currentFilter.rawValue
+        if currentFilter == selectedFilterName {
             cell.isFilterSelected = true
             cell.updateStyle()
         }
@@ -71,9 +68,8 @@ class FiltersCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.lightTaptic()
         
-        guard let selectedFilterName = FilterName(rawValue: filters[indexPath.section][indexPath.row].title) else { return }
         guard let delegate = delegate else { fatalError("Delegate is nil!") }
-        delegate.didSelectFilter(filterName: selectedFilterName)
+        delegate.didSelectFilter(filterName: filters[indexPath.section][indexPath.row])
         
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -85,7 +81,8 @@ class FiltersCollectionViewController: UICollectionViewController {
         }
         
         switch indexPath.section {
-        case 0: headerView.titleLabel.text = "KC Collection"
+        case 0: headerView.titleLabel.text = "Colour"
+        case 1: headerView.titleLabel.text = "BW"
         default: break
         }
         

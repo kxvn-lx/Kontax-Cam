@@ -189,11 +189,11 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D6E53247A472100E039FC /* Filter List */,
 				0A03EAFD2480AB84001D8006 /* FX */,
 				0AADEE72247B731C009FFA52 /* Lab */,
 				0A5290A9247AB43900BA0D57 /* Settings */,
 				0A4D6E5E247A5AD500E039FC /* PhotoDisplay */,
-				0A4D6E53247A472100E039FC /* Filter List */,
 				0A1D97C22477BE7800E4078F /* Camera */,
 			);
 			path = App;

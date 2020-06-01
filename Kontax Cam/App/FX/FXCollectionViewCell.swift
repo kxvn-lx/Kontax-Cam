@@ -40,9 +40,8 @@ class FXCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.addSubview(titleLabel)
         self.addSubview(toggleLabel)
+        self.backgroundColor = .secondarySystemBackground
         self.layer.cornerRadius = 5
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.systemBackground.cgColor
         
         toggleLabel.snp.makeConstraints { (make) in
             make.left.bottom.equalToSuperview().inset(Constants.padding)
@@ -67,8 +66,10 @@ class FXCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateElementStyle() {
-        self.titleLabel.textColor = isFxSelected ? .label : .systemGray
-        self.toggleLabel.textColor = isFxSelected ? .label : .systemGray
+        self.titleLabel.textColor = isFxSelected ? .label : .systemGray4
+        self.toggleLabel.textColor = isFxSelected ? .label : .systemGray4
+        
+        self.backgroundColor = isFxSelected ? .systemGray5 : UIColor.secondarySystemBackground.withAlphaComponent(0.2)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

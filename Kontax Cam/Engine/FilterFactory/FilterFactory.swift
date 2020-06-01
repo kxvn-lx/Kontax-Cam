@@ -26,7 +26,7 @@ class FilterFactory {
     func getFilter(ofFilterType filterType: FilterType) -> ImageFilter {
         
         switch filterType {
-        case .LUT: return LUTImageFilter()
+        case .lut: return LUTImageFilter()
         case .grain: return GrainImageFilter()
         }
     }

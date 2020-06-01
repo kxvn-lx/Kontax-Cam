@@ -49,6 +49,9 @@
 		0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */; };
 		0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
+		0AF69F4424855BA5003D0155 /* ZoomTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF69F4124855BA5003D0155 /* ZoomTransitionController.swift */; };
+		0AF69F4524855BA5003D0155 /* ZoomDismissalInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF69F4224855BA5003D0155 /* ZoomDismissalInteractionController.swift */; };
+		0AF69F4624855BA5003D0155 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF69F4324855BA5003D0155 /* ZoomAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +106,9 @@
 		0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTImageFilter.swift; sourceTree = "<group>"; };
 		0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrainImageFilter.swift; sourceTree = "<group>"; };
 		0AEE932F247C983800F485C0 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
+		0AF69F4124855BA5003D0155 /* ZoomTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomTransitionController.swift; sourceTree = "<group>"; };
+		0AF69F4224855BA5003D0155 /* ZoomDismissalInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomDismissalInteractionController.swift; sourceTree = "<group>"; };
+		0AF69F4324855BA5003D0155 /* ZoomAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +260,7 @@
 		0AADEE72247B731C009FFA52 /* Lab */ = {
 			isa = PBXGroup;
 			children = (
+				0AF69F4024855BA5003D0155 /* Animation */,
 				0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */,
 				0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */,
 				0A9F7F14248200800088E053 /* EmptyView.swift */,
@@ -277,6 +284,16 @@
 				0A537D3C247E422A006E17C0 /* GPUImage.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0AF69F4024855BA5003D0155 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				0AF69F4124855BA5003D0155 /* ZoomTransitionController.swift */,
+				0AF69F4224855BA5003D0155 /* ZoomDismissalInteractionController.swift */,
+				0AF69F4324855BA5003D0155 /* ZoomAnimator.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		816177D18B28A96025786676 /* Pods */ = {
@@ -375,6 +392,7 @@
 				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
+				0AF69F4624855BA5003D0155 /* ZoomAnimator.swift in Sources */,
 				0AADEE7E247BC31F009FFA52 /* PhotoPreviewViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
@@ -385,7 +403,9 @@
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
 				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
+				0AF69F4424855BA5003D0155 /* ZoomTransitionController.swift in Sources */,
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
+				0AF69F4524855BA5003D0155 /* ZoomDismissalInteractionController.swift in Sources */,
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,

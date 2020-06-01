@@ -12,7 +12,7 @@ protocol PhotoDisplayDelegate {
     func didDeleteImage()
 }
 
-class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
+class PhotoDisplayViewController: UIViewController  {
     
     private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
     private var photoLibraryEngine: PhotoLibraryEngine!
@@ -65,36 +65,6 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         setupUI()
         
     }
-    
-    // MARK: - Collection View datasource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imgArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoDisplayCollectionViewCell
-        cell.imgView.image = imgArray[indexPath.row]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let filename = imgArray[indexPath.row].accessibilityIdentifier {
-            let timestamp = String(filename.dropFirst())
-            let ( date, time ) = parseToDateTime(filename: timestamp)
-            timestampTitle.text = "\(date)\n\(time)"
-            
-            self.navigationItem.titleView = timestampTitle
-        }
-        
-        let cell = cell as! PhotoDisplayCollectionViewCell
-        if cell.scrollImg.zoomScale != 1.0 {
-            cell.scrollImg.setZoomScale(1.0, animated: false)
-        }
-        
-//        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
-        
-    }
-    
     
     private func setupUI () {
         let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
@@ -231,5 +201,43 @@ extension PhotoDisplayViewController {
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
+    }
+}
+
+extension PhotoDisplayViewController:  UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    // MARK: - Collection View datasource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imgArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoDisplayCollectionViewCell
+        cell.imgView.image = imgArray[indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let filename = imgArray[indexPath.row].accessibilityIdentifier {
+            let timestamp = String(filename.dropFirst())
+            let ( date, time ) = parseToDateTime(filename: timestamp)
+            timestampTitle.text = "\(date)\n\(time)"
+            
+            self.navigationItem.titleView = timestampTitle
+        }
+        
+        let cell = cell as! PhotoDisplayCollectionViewCell
+        if cell.scrollImg.zoomScale != 1.0 {
+            cell.scrollImg.setZoomScale(1.0, animated: false)
+        }
+        
+        //        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
+        
+    }
+}
+
+extension PhotoDisplayViewController: UIGestureRecognizerDelegate {
+    enum ScreenMode {
+        case full, normal
     }
 }

@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 enum FilterType: Int, Equatable, CustomStringConvertible, CaseIterable {
-    case LUT, grain
+    case lut, grain
     
     var description: String {
       get {
         switch self {
-        case .LUT: return "LUT"
+        case .lut: return "LUT"
         case .grain: return "Grain"
         }
       }
@@ -42,7 +42,7 @@ class FilterEngine {
         var image = originalImage
         
         // LUT is always enabled by default
-        let lutObj = FilterFactory.shared.getFilter(ofFilterType: .LUT)
+        let lutObj = FilterFactory.shared.getFilter(ofFilterType: .lut)
         guard let editedImage = lutObj.process(imageToEdit: image) else { fatalError("LUT not working.") }
         image = editedImage
         

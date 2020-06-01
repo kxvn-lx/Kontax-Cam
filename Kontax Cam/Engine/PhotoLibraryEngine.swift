@@ -15,16 +15,26 @@ class PhotoLibraryEngine {
     private var assetCollection: PHAssetCollection!
     
     init() {
-        
         if let assetCollection = fetchAssetCollectionForAlbum() {
             self.assetCollection = assetCollection
             return
         }
-        
+
+    }
+    
+    func checkStatus( completion: @escaping ((Bool) -> ()) ) {
         if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
             self.createAlbum()
         } else {
-            PHPhotoLibrary.requestAuthorization(requestAuthorizationHandler)
+            PHPhotoLibrary.requestAuthorization { (status) in
+                if status == .authorized {
+                    print("Album created.")
+                    self.createAlbum()
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
         }
     }
     
@@ -50,14 +60,7 @@ class PhotoLibraryEngine {
             completion(result, error)
         })
     }
-    
-    private func requestAuthorizationHandler(status: PHAuthorizationStatus) {
-        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
-            print("Album created.")
-            self.createAlbum()
-        }
-    }
-    
+
     private func createAlbum() {
         PHPhotoLibrary.shared().performChanges({
             PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: self.albumName)

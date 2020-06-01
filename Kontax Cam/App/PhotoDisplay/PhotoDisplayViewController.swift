@@ -39,6 +39,12 @@ class PhotoDisplayViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
         
         photoLibraryEngine = PhotoLibraryEngine()
+        photoLibraryEngine.checkStatus { (hasUserAccess) in
+            if hasUserAccess == false {
+                AlertHelper.shared.presentDefault(title: "We can't check for permission.", message: "Please ensure that the app has the required permission.", to: self)
+            }
+        }
+        
         self.navigationController?.isToolbarHidden = false
         
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: makeLayout())

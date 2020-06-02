@@ -35,7 +35,7 @@ class ZoomDismissalInteractionController: NSObject {
         
         let anchorPoint = CGPoint(x: fromReferenceImageViewFrame.midX, y: fromReferenceImageViewFrame.midY)
         let translatedPoint = gestureRecognizer.translation(in: fromReferenceImageView)
-        let verticalDelta : CGFloat = translatedPoint.y < 0 ? 0 : translatedPoint.y
+        let verticalDelta: CGFloat = translatedPoint.y < 0 ? 0 : translatedPoint.y
 
         let backgroundAlpha = backgroundAlphaFor(view: fromVC.view, withPanningVerticalDelta: verticalDelta)
         let scale = scaleFor(view: fromVC.view, withPanningVerticalDelta: verticalDelta)
@@ -43,7 +43,9 @@ class ZoomDismissalInteractionController: NSObject {
         fromVC.view.alpha = backgroundAlpha
         
         transitionImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
-        let newCenter = CGPoint(x: anchorPoint.x + translatedPoint.x, y: anchorPoint.y + translatedPoint.y - transitionImageView.frame.height * (1 - scale) / 2.0)
+        let newXPoint = anchorPoint.x + translatedPoint.x * 0.0625
+        let newYPoint = anchorPoint.y + translatedPoint.y * 0.0625 - transitionImageView.frame.height * (1 - scale) / 2.0
+        let newCenter = CGPoint(x: newXPoint, y: newYPoint)
         transitionImageView.center = newCenter
         
         toReferenceImageView.isHidden = true
@@ -126,7 +128,7 @@ class ZoomDismissalInteractionController: NSObject {
         let finalScale: CGFloat = 0.5
         let totalAvailableScale = startingScale - finalScale
         
-        let maximumDelta = view.bounds.height / 2.0
+        let maximumDelta = view.bounds.height * 5
         let deltaAsPercentageOfMaximun = min(abs(verticalDelta) / maximumDelta, 1.0)
         
         return startingScale - (deltaAsPercentageOfMaximun * totalAvailableScale)

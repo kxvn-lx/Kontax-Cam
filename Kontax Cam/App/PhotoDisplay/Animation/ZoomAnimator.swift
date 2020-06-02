@@ -19,7 +19,7 @@ class ZoomAnimator: NSObject {
     
     weak var fromDelegate: ZoomAnimatorDelegate?
     weak var toDelegate: ZoomAnimatorDelegate?
-
+    
     var transitionImageView: UIImageView?
     var isPresenting: Bool = true
     
@@ -69,7 +69,7 @@ class ZoomAnimator: NSObject {
                         fromVC.tabBarController?.tabBar.alpha = 0
         },
                        completion: { completed in
-                    
+                        
                         self.transitionImageView?.removeFromSuperview()
                         toReferenceImageView.isHidden = false
                         fromReferenceImageView.isHidden = false
@@ -124,7 +124,6 @@ class ZoomAnimator: NSObject {
                         self.transitionImageView?.frame = finalTransitionSize
                         toVC.tabBarController?.tabBar.alpha = 1
         }, completion: { completed in
-            
             self.transitionImageView?.removeFromSuperview()
             toReferenceImageView.isHidden = false
             fromReferenceImageView.isHidden = false
@@ -132,7 +131,7 @@ class ZoomAnimator: NSObject {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             self.toDelegate?.transitionDidEndWith(zoomAnimator: self)
             self.fromDelegate?.transitionDidEndWith(zoomAnimator: self)
-
+            
         })
     }
     

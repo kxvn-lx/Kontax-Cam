@@ -273,11 +273,7 @@ extension LabCollectionViewController: ZoomAnimatorDelegate {
     }
     
     func referenceImageView(for zoomAnimator: ZoomAnimator) -> UIImageView? {
-        
-        //Get a guarded reference to the cell's UIImageView
-        let referenceImageView = getImageViewFromCollectionViewCell(for: self.selectedIndexPath)
-        
-        return referenceImageView
+        return getImageViewFromCollectionViewCell(for: self.selectedIndexPath)
     }
     
     func referenceImageViewFrameInTransitioningView(for zoomAnimator: ZoomAnimator) -> CGRect? {

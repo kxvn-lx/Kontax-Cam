@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gnO-D8-JCG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gnO-D8-JCG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -18,10 +18,26 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Photo Page Container View Controller-->
+        <scene sceneID="tND-jK-HaO">
+            <objects>
+                <viewController storyboardIdentifier="photoPageVC" id="XOf-iP-bL4" customClass="PhotoPageContainerViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GEA-Gj-ipj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="HoQ-v8-dut"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fjx-8M-0gy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jBW-bP-peI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2707" y="161"/>
+        </scene>
+        <!--FX-->
         <scene sceneID="CJD-KY-1JG">
             <objects>
-                <collectionViewController storyboardIdentifier="fxVC" id="gLW-We-W89" customClass="FXCollectionViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="fxVC" title="FX" id="gLW-We-W89" customClass="FXCollectionViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ljT-1U-1Ri">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,21 +103,6 @@
             </objects>
             <point key="canvasLocation" x="1028.985507246377" y="946.875"/>
         </scene>
-        <!--Photo Display View Controller-->
-        <scene sceneID="4zv-v7-VQR">
-            <objects>
-                <viewController storyboardIdentifier="photoDisplayVC" id="Cm4-5p-vw3" customClass="PhotoDisplayViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cmF-ar-WBT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="yFa-AX-GJQ"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D4q-p0-1gy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="946.875"/>
-        </scene>
         <!--Settings View Controller-->
         <scene sceneID="AG1-WA-tlL">
             <objects>
@@ -154,6 +155,7 @@
         <!--Navigation Controller-->
         <scene sceneID="aL6-tg-Paa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GFt-NY-Mgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gnO-D8-JCG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q07-A6-bsa">
@@ -165,9 +167,23 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="W08-oH-MbH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GFt-NY-Mgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Photo Zoom View Controller-->
+        <scene sceneID="Ez7-p3-0Ce">
+            <objects>
+                <viewController storyboardIdentifier="PhotoZoomViewController" id="IZz-Xp-4t8" customClass="PhotoZoomViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G1a-P8-JJo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gIb-eA-oFy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JH9-EC-fay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3471" y="161"/>
         </scene>
     </scenes>
 </document>

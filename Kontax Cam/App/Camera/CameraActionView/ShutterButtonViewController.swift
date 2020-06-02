@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MobileCoreServices
 
 enum TouchEvent {
     case begin, end

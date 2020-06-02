@@ -36,9 +36,11 @@ class CameraViewController: UIViewController {
     private var cameraActionView: CameraActionViewController!
     private let cameraManager = CameraManager()
     
-    // MARK: - View configuration
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Setup Camera Manager
         cameraManager.addPreviewLayerToView(self.cameraView)
@@ -55,7 +57,12 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        cameraManager.resumeCaptureSession()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cameraManager.stopCaptureSession()
     }
     
     // MARK: - Setup UI

@@ -13,7 +13,7 @@ protocol PhotoDisplayDelegate {
     func photoDisplayDidShare(photoAt index: Int)
     func photoDisplayDidSave(photoAt index: Int)
     func photoDisplayDidDelete(photoAt index: Int)
-    func photoDisplayDidChangeCell(atNewIndex index: Int)
+    func photoDisplayWillChangeCell(atNewIndex index: Int)
 }
 
 class PhotoDisplayViewController: DTPhotoViewerController {
@@ -176,8 +176,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        photoDisplayDelegate?.photoDisplayDidChangeCell(atNewIndex: indexPath.row)
-        
+        photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: indexPath.row)
     }
     
     

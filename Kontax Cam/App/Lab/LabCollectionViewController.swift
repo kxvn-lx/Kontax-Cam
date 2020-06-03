@@ -37,8 +37,10 @@ class LabCollectionViewController: UICollectionViewController {
         
         // Fetch all images
         images = fetchData()
-        
-        // TODO: Check if it reflects when an image is deleted !!!!!
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         images.count == 0 ? setEmptyView() : removeEmptyView()
     }
 
@@ -201,6 +203,36 @@ extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
 
 // MARK: - PhotoDisplayDelegate
 extension LabCollectionViewController: PhotoDisplayDelegate {
+    /// Parse the given encoded timestamp and render it into strings for readability
+    /// - Parameter filename: The filename of the image (in timestamp format)
+    /// - Returns: The parsed timestamp into Date, and time.
+    private func parseToDateTime(filename: String) -> (String, String) {
+        let filenameArr = filename.components(separatedBy: "_")
+        let timestamp = String(filenameArr[1].dropLast(4))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        
+        let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
+        let date = formatter.string(from: ts)
+        
+        formatter.dateFormat = "h:mm a"
+        let time = formatter.string(from: ts)
+        
+        return(date, time)
+        
+    }
+    
+    func photoDisplayWillChangeCell(atNewIndex index: Int) {
+        if let child = self.presentedViewController as? PhotoDisplayViewController {
+            if let timestamp = images[index].accessibilityIdentifier {
+                
+                let (date, time) = parseToDateTime(filename: timestamp)
+                child.navTitleLabel.text = "\(date)\n\(time)"
+            }
+        }
+    }
+    
     func photoDisplayDidShare(photoAt index: Int) {
         if let child = self.presentedViewController {
             ShareHelper.shared.presentShare(withImage: images[index], toView: child)

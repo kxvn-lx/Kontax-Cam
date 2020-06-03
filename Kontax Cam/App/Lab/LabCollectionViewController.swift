@@ -161,9 +161,6 @@ extension LabCollectionViewController {
 
 // MARK: DTPhotoViewerControllerDataSource
 extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
-    func photoViewerController(_ photoViewerController: DTPhotoViewerController, configureCell cell: DTPhotoCollectionViewCell, forPhotoAt index: Int) {
-    }
-
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, referencedViewForPhotoAt index: Int) -> UIView? {
         let indexPath = IndexPath(item: index, section: 0)
         if let cell = collectionView?.cellForItem(at: indexPath) as? LabCollectionViewCell {
@@ -192,7 +189,7 @@ extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
         selectedImageIndex = index
         if let collectionView = collectionView {
             let indexPath = IndexPath(item: selectedImageIndex, section: 0)
-
+            
             // If cell for selected index path is not visible
             if !collectionView.indexPathsForVisibleItems.contains(indexPath) {
                 // Scroll to make cell visible

@@ -18,15 +18,27 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     
     // MARK: - Variables
     private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
-    
+    var images: [UIImage] = []
     lazy private var navView: UIView = {
         let v = UIView()
-        v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     lazy private var toolView: UIView = {
         let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    lazy private var navTitleLabel: UILabel = {
+        let v = UILabel()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.numberOfLines = 0
+        v.font = .preferredFont(forTextStyle: .body)
+        v.textAlignment = .center
+        return v
+    }()
+    lazy private var closeButton: UIButton = {
+        let v = UIButton(type: .close)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -40,7 +52,8 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         super.viewDidLoad()
         
         registerClassPhotoViewer(PhotoDisplayCollectionViewCell.self)
-
+        self.backgroundColor = .systemBackground
+        
         setupUI()
         setupConstraint()
         setupToolbar()
@@ -51,17 +64,22 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         self.view.addSubview(navView)
         self.view.addSubview(toolView)
         
+        // Tool View
         for i in 0 ..< toolImages.count {
             let btn = UIButton()
             btn.setImage(IconHelper.shared.getIconImage(iconName: toolImages[i]), for: .normal)
             btn.tintColor = .label
             btn.tag = i
             btn.addTarget(self, action: #selector(toolButtonTapped), for: .touchUpInside)
-
+            
             toolSV.addArrangedSubview(btn)
         }
-
+        
         toolView.addSubview(toolSV)
+        
+        // Nav View
+        navView.addSubview(closeButton)
+        navView.addSubview(navTitleLabel)
     }
     
     private func setupConstraint() {
@@ -71,6 +89,15 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             make.top.equalToSuperview()
             make.height.equalTo(barHeight + self.view.getSafeAreaInsets().top)
             make.width.equalToSuperview()
+        }
+        
+        closeButton.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
+        }
+        
+        navTitleLabel.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
         }
         
         toolView.snp.makeConstraints { (make) in
@@ -90,6 +117,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
                 make.height.equalToSuperview()
             }
         })
+        
     }
     
     private func setupToolbar() {
@@ -138,6 +166,41 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             
         default: break
         }
+    }
+    
+    /// Parse the given encoded timestamp and render it into strings for readability
+    /// - Parameter filename: The filename of the image (in timestamp format)
+    /// - Returns: The parsed timestamp into Date, and time.
+    private func parseToDateTime(filename: String) -> (String, String) {
+        let filenameArr = filename.components(separatedBy: "_")
+        let timestamp = String(filenameArr[1].dropLast(4))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        
+        let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
+        let date = formatter.string(from: ts)
+        
+        formatter.dateFormat = "h:mm a"
+        let time = formatter.string(from: ts)
+        
+        return(date, time)
+        
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        guard let image = self.imageView.image, let filename = image.accessibilityIdentifier else { return }
+//        print(filename)
+//        let timestamp = String(filename.dropFirst())
+//        let ( date, time ) = parseToDateTime(filename: timestamp)
+//        navTitleLabel.text = "\(date)\n\(time)"
+//
+//        //        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
+//
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
     }
     
     // MARK: - Secondary methods
@@ -203,12 +266,12 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     
     // Hide & Show info layer view
     func reverseInfoOverlayViewDisplayStatus() {
-                if zoomScale == 1.0 {
-                    if navView.isHidden == true {
-                        showInfoOverlayView(true)
-                    } else {
-                        hideInfoOverlayView(true)
-                    }
-                }
+        if zoomScale == 1.0 {
+            if navView.isHidden == true {
+                showInfoOverlayView(true)
+            } else {
+                hideInfoOverlayView(true)
+            }
+        }
     }
 }

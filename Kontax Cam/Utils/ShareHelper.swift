@@ -24,21 +24,4 @@ struct ShareHelper {
         sender.present(vc, animated: true)
     }
     
-    /// Present a share context sheet
-    /// - Parameters:
-    ///   - image: The image that will be saved
-    ///   - vc: The view controller that will present the sheet
-    /// - Returns: The UI Menu ready to be presented
-    func presentContextShare(image: UIImage, toVC vc: UIViewController) -> UIMenu {
-        
-        let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { _ in
-            let items = [self.shareText, image] as [Any]
-            let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
-            vc.present(ac, animated: true)
-        }
-        
-        return UIMenu(title: "", children: [share])
-        
-    }
-    
 }

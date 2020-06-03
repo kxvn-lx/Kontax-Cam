@@ -24,7 +24,6 @@ class ZoomAnimator: NSObject {
     var isPresenting: Bool = true
     
     fileprivate func animateZoomInTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        
         let containerView = transitionContext.containerView
         
         guard let toVC = transitionContext.viewController(forKey: .to),

@@ -22,10 +22,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Kontax Cam requires camera access to take photo.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Kontax Cam requires access to your library to save photo.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Kontax Cam requires permission to save photo to your library.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Kontax Cam requires access to your library to save photo.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -54,7 +54,9 @@
 		<string>armv7</string>
 	</array>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

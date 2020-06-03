@@ -34,6 +34,7 @@ class LabCollectionViewController: UICollectionViewController {
         // TODO: Check if it reflects when an image is deleted !!!!!
         images.count == 0 ? setEmptyView() : removeEmptyView()
     }
+
     
     // MARK: - UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -108,7 +109,6 @@ extension LabCollectionViewController {
     }
     
     /// Helper to present the photo display VC
-    /// - Parameter indexPath: the indexpath
     private func presentPhotoDisplayVC() {
         let nav = self.navigationController
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoPageVC") as! PhotoPageContainerViewController

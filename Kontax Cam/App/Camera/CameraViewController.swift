@@ -11,9 +11,6 @@ import CameraManager
 import SnapKit
 
 class CameraViewController: UIViewController {
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
     // MARK: - Class variables
     private let cameraView = UIView()
@@ -39,7 +36,7 @@ class CameraViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNeedsStatusBarAppearanceUpdate()
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Setup Camera Manager

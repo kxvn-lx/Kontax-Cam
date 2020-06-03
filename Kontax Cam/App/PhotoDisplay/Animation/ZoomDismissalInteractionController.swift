@@ -26,17 +26,14 @@ class ZoomDismissalInteractionController: NSObject {
             let fromReferenceImageView = animator.fromDelegate?.referenceImageView(for: animator),
             let toReferenceImageView = animator.toDelegate?.referenceImageView(for: animator),
             let fromReferenceImageViewFrame = self.fromReferenceImageViewFrame,
-            let toReferenceImageViewFrame = self.toReferenceImageViewFrame else {
-                return
-        }
-        
+            let toReferenceImageViewFrame = self.toReferenceImageViewFrame else { return }
         
         fromReferenceImageView.isHidden = true
         
         let anchorPoint = CGPoint(x: fromReferenceImageViewFrame.midX, y: fromReferenceImageViewFrame.midY)
         let translatedPoint = gestureRecognizer.translation(in: fromReferenceImageView)
         let verticalDelta: CGFloat = translatedPoint.y < 0 ? 0 : translatedPoint.y
-
+        
         let backgroundAlpha = backgroundAlphaFor(view: fromVC.view, withPanningVerticalDelta: verticalDelta)
         let scale = scaleFor(view: fromVC.view, withPanningVerticalDelta: verticalDelta)
         
@@ -117,7 +114,7 @@ class ZoomDismissalInteractionController: NSObject {
         let finalAlpha: CGFloat = 0.0
         let totalAvailableAlpha = startingAlpha - finalAlpha
         
-        let maximumDelta = view.bounds.height / 4.0
+        let maximumDelta = view.bounds.height * 5
         let deltaAsPercentageOfMaximun = min(abs(verticalDelta) / maximumDelta, 1.0)
         
         return startingAlpha - (deltaAsPercentageOfMaximun * totalAvailableAlpha)

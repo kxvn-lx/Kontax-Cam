@@ -121,7 +121,7 @@ class PhotoPageContainerViewController: UIViewController {
     }
     
     @objc private func toolButtonTapped(sender: UIButton) {
-        
+        print("Tapped!")
     }
     
     /// Helper class to delete the image
@@ -165,6 +165,27 @@ class PhotoPageContainerViewController: UIViewController {
 }
 
 extension PhotoPageContainerViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        if let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer {
+            let velocity = gestureRecognizer.velocity(in: self.view)
+            
+            var velocityCheck = false
+            
+            if UIDevice.current.orientation.isLandscape {
+                velocityCheck = velocity.x < 0
+            }
+            else {
+                velocityCheck = velocity.y < 0
+            }
+            if velocityCheck {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if otherGestureRecognizer == self.currentViewController.scrollView.panGestureRecognizer {
             if self.currentViewController.scrollView.contentOffset.y == 0 {
@@ -207,8 +228,10 @@ extension PhotoPageContainerViewController: UIGestureRecognizerDelegate {
     private func changeScreenMode(to: ScreenMode) {
         if to == .full {
             self.navigationController?.setNavigationBarHidden(true, animated: true)
+            self.navigationController?.setToolbarHidden(true, animated: true)
         } else {
             self.navigationController?.setNavigationBarHidden(false, animated: true)
+            self.navigationController?.setToolbarHidden(false, animated: true)
         }
     }
 }

@@ -166,6 +166,7 @@ extension CameraActionViewController {
                 let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
 
                 let navController = PanModalNavigationController(rootViewController: vc)
+                navController.modalDestination = .fx
                 
                 self.presentPanModal(navController)
             }
@@ -179,6 +180,7 @@ extension CameraActionViewController {
                 vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
 
                 let navController = PanModalNavigationController(rootViewController: vc)
+                navController.modalDestination = .filters
                 
                 self.presentPanModal(navController)
             }
@@ -196,12 +198,13 @@ extension CameraActionViewController {
     }
     
     @objc private func labButtonTapped() {
+        self.cameraManager.stopCaptureSession()
         if let parent = self.parent {
             TapticHelper.shared.lightTaptic()
             let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
             
             let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .overFullScreen
+            navController.modalPresentationStyle = .fullScreen
             self.present(navController, animated: true, completion: nil)
         }
     }

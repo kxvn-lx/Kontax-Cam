@@ -60,11 +60,6 @@ class CameraViewController: UIViewController {
         cameraManager.resumeCaptureSession()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        cameraManager.stopCaptureSession()
-    }
-    
     // MARK: - Setup UI
     private func setupUI() {
         // Camera view

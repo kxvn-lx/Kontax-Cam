@@ -17,14 +17,18 @@ protocol FilterListDelegate {
 }
 
 enum FilterName: String, CaseIterable {
-    case KC01, KC02, KC03
+    // Colour
+    case c1, c2
+    
+    // Black and White
+    case bw1
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
     private let filters: [[FilterName]] = [
-        [.KC01, .KC03],
-        [.KC02],
+        [.c1, .c2],
+        [.bw1],
     ]
     
     var delegate: FilterListDelegate?
@@ -56,7 +60,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
         let currentFilter = filters[indexPath.section][indexPath.row]
         
-        cell.titleLabel.text = currentFilter.rawValue
+        cell.titleLabel.text = currentFilter.rawValue.uppercased()
         if currentFilter == selectedFilterName {
             cell.isFilterSelected = true
             cell.updateStyle()

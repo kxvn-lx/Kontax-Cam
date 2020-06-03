@@ -11,7 +11,7 @@ import UIKit
 
 class LUTImageFilter: ImageFilter {
     
-    static var selectedLUTFilter = FilterName.KC01
+    static var selectedLUTFilter = FilterName.c1
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -21,7 +21,7 @@ class LUTImageFilter: ImageFilter {
     ///   - image: The image that will be applied with filter
     /// - Returns: The image filtered
     func process(imageToEdit image: UIImage) -> UIImage? {
-        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter.rawValue.lowercased()) else { return nil }
+        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter.rawValue.lowercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
         let context = CIContext(options: nil)
         
         let beginImage = CIImage(image: image)

@@ -201,6 +201,12 @@ extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
 
 // MARK: - PhotoDisplayDelegate
 extension LabCollectionViewController: PhotoDisplayDelegate {
+    func photoDisplayDidShare(photoAt index: Int) {
+        if let child = self.presentedViewController {
+            ShareHelper.shared.presentShare(withImage: images[index], toView: child)
+        }
+    }
+    
     func photoDisplayDidSave(photoAt index: Int) {
         photoLibraryEngine.save(images[index]) { (success, error) in
             if let error = error {

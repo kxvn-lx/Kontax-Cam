@@ -10,6 +10,7 @@ import DTPhotoViewerController
 import UIKit
 
 protocol PhotoDisplayDelegate {
+    func photoDisplayDidShare(photoAt index: Int)
     func photoDisplayDidSave(photoAt index: Int)
     func photoDisplayDidDelete(photoAt index: Int)
 }
@@ -50,6 +51,8 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.scrollView.showsHorizontalScrollIndicator = false
         
         registerClassPhotoViewer(PhotoDisplayCollectionViewCell.self)
         self.backgroundColor = .systemBackground
@@ -145,7 +148,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     @objc private func toolButtonTapped(sender: UIButton) {
         switch sender.tag {
         case 0:
-            ShareHelper.shared.presentShare(withImage: self.imageView.image!, toView: self)
+            photoDisplayDelegate?.photoDisplayDidShare(photoAt: self.currentPhotoIndex)
             
         case 1:
             photoDisplayDelegate?.photoDisplayDidSave(photoAt: self.currentPhotoIndex)
@@ -155,7 +158,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                 self.photoDisplayDelegate?.photoDisplayDidDelete(photoAt: self.currentPhotoIndex)
-                self.reloadData()
+                self.reloadDTView()
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
@@ -187,32 +190,29 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         return(date, time)
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard let image = self.imageView.image, let filename = image.accessibilityIdentifier else { return }
-//        print(filename)
-//        let timestamp = String(filename.dropFirst())
-//        let ( date, time ) = parseToDateTime(filename: timestamp)
-//        navTitleLabel.text = "\(date)\n\(time)"
-//
-//        //        print("Image size: \(imgArray[indexPath.row].getFileSizeInfo()!)")
-//
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
+    private func reloadDTView() {
+        self.reloadData()
+        
+        let cv = self.scrollView as! UICollectionView
+        let numberOfItems = cv.numberOfItems(inSection: 0)
+        
+        if numberOfItems == 0 {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     // MARK: - Secondary methods
-    func hideInfoOverlayView(_ animated: Bool) {
+    private func hideInfoOverlayView(_ animated: Bool) {
         configureOverlayViews(hidden: true, animated: animated)
     }
     
-    func showInfoOverlayView(_ animated: Bool) {
+    private func showInfoOverlayView(_ animated: Bool) {
         configureOverlayViews(hidden: false, animated: animated)
     }
     
-    func configureOverlayViews(hidden: Bool, animated: Bool) {
+    private func configureOverlayViews(hidden: Bool, animated: Bool) {
         if hidden != navView.isHidden {
             let duration: TimeInterval = animated ? 0.2 : 0.0
             let alpha: CGFloat = hidden ? 0.0 : 1.0
@@ -265,7 +265,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     // Hide & Show info layer view
-    func reverseInfoOverlayViewDisplayStatus() {
+    private func reverseInfoOverlayViewDisplayStatus() {
         if zoomScale == 1.0 {
             if navView.isHidden == true {
                 showInfoOverlayView(true)

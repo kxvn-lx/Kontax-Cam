@@ -57,6 +57,9 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     
     var photoDisplayDelegate: PhotoDisplayDelegate?
     
+    private var willDisplayIndex: IndexPath?
+    private var endDisplayIndex: IndexPath?
+    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,9 +196,26 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: indexPath.row)
+        willDisplayIndex = indexPath
+        
+        // First tap
+        if willDisplayIndex != nil && endDisplayIndex == nil {
+            photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: indexPath.row)
+        }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        endDisplayIndex = indexPath
+        shouldDisplayTimestamp()
+    }
+
+    private func shouldDisplayTimestamp() {
+        guard let willDisplayIndex = willDisplayIndex, let endDisplayIndex = endDisplayIndex else { return }
+        
+        if willDisplayIndex != endDisplayIndex {
+            photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: willDisplayIndex.row)
+        }
+    }
     
     // MARK: - Secondary methods
     private func hideInfoOverlayView(_ animated: Bool) {

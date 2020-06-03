@@ -30,6 +30,7 @@ class CameraViewController: UIViewController {
     }()
     let rotView: UIImageView = {
         let v = UIImageView()
+        v.alpha = 0.5
         v.translatesAutoresizingMaskIntoConstraints = false
         v.image = UIImage(named: "rot")
         return v

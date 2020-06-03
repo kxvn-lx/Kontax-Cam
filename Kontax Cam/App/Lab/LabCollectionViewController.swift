@@ -158,6 +158,7 @@ extension LabCollectionViewController {
     @objc private func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+        
     }
 }
 
@@ -233,13 +234,13 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         }
     }
     
-    func photoDisplayDidShare(photoAt index: Int) {
+    func photoDisplayWillShare(photoAt index: Int) {
         if let child = self.presentedViewController {
             ShareHelper.shared.presentShare(withImage: images[index], toView: child)
         }
     }
     
-    func photoDisplayDidSave(photoAt index: Int) {
+    func photoDisplayWillSave(photoAt index: Int) {
         photoLibraryEngine.save(images[index]) { (success, error) in
             if let error = error {
                 AlertHelper.shared.presentDefault(title: "Something went wrong.", message: error.localizedDescription, to: self)
@@ -255,7 +256,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         
     }
     
-    func photoDisplayDidDelete(photoAt index: Int) {
+    func photoDisplayWillDelete(photoAt index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         
         SPAlertHelper.shared.present(title: "Image deleted.")

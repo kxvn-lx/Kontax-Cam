@@ -10,13 +10,21 @@ import DTPhotoViewerController
 import UIKit
 
 protocol PhotoDisplayDelegate {
-    func photoDisplayDidShare(photoAt index: Int)
-    func photoDisplayDidSave(photoAt index: Int)
-    func photoDisplayDidDelete(photoAt index: Int)
+    /// Tells the delegate to share the photo at index
+    func photoDisplayWillShare(photoAt index: Int)
+    /// Tells the delegate to save  the photo at index
+    func photoDisplayWillSave(photoAt index: Int)
+    /// Tells the delegate to delete  the photo at index
+    func photoDisplayWillDelete(photoAt index: Int)
+    /// Tells the delegate that a new cell will be shown
     func photoDisplayWillChangeCell(atNewIndex index: Int)
 }
 
 class PhotoDisplayViewController: DTPhotoViewerController {
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
     
     // MARK: - Variables
     private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
@@ -68,6 +76,8 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         self.view.addSubview(navView)
         self.view.addSubview(toolView)
         
+        navView.addBorder(side: .bottom, color: UIColor.quaternaryLabel, width: 1)
+        
         // Tool View
         for i in 0 ..< toolImages.count {
             let btn = UIButton()
@@ -82,6 +92,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         toolView.addSubview(toolSV)
         
         // Nav View
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         navView.addSubview(closeButton)
         navView.addSubview(navTitleLabel)
     }
@@ -96,12 +107,13 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         }
         
         closeButton.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top)
         }
         
         navTitleLabel.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top)
         }
         
         toolView.snp.makeConstraints { (make) in
@@ -149,16 +161,16 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     @objc private func toolButtonTapped(sender: UIButton) {
         switch sender.tag {
         case 0:
-            photoDisplayDelegate?.photoDisplayDidShare(photoAt: self.currentPhotoIndex)
+            photoDisplayDelegate?.photoDisplayWillShare(photoAt: self.currentPhotoIndex)
             
         case 1:
-            photoDisplayDelegate?.photoDisplayDidSave(photoAt: self.currentPhotoIndex)
+            photoDisplayDelegate?.photoDisplayWillSave(photoAt: self.currentPhotoIndex)
             
         case 2:
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-                self.photoDisplayDelegate?.photoDisplayDidDelete(photoAt: self.currentPhotoIndex)
+                self.photoDisplayDelegate?.photoDisplayWillDelete(photoAt: self.currentPhotoIndex)
                 
                 self.reloadData()
                 let cv = self.scrollView as! UICollectionView
@@ -173,6 +185,11 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             
         default: break
         }
+    }
+    
+    @objc private func closeTapped() {
+        hideInfoOverlayView(false)
+        dismiss(animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

@@ -18,6 +18,9 @@ class LabCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Making the back button nhas no title
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false)
         let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
         navigationItem.leftBarButtonItem = close
@@ -43,15 +46,9 @@ class LabCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LabCollectionViewCell
-        
         let currentImage = images[indexPath.row]
 
         cell.photoView.image = currentImage
-
-        if let id = currentImage.accessibilityIdentifier {
-            let date = parseToDateTime(filename: id)
-            cell.dateLabel.text = date
-        }
         
         return cell
     }
@@ -140,23 +137,6 @@ extension LabCollectionViewController {
         }
         
         return images
-    }
-
-    /// Parse the given encoded timestamp and render it into strings for readability
-    /// - Parameter filename: The filename of the image (in timestamp format)
-    /// - Returns: The parsed timestamp into Date, and time.
-    private func parseToDateTime(filename: String) -> String {
-        let filenameArr = filename.components(separatedBy: "_")
-        let timestamp = String(filenameArr[1].dropLast(4))
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy"
-        
-        let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
-        let date = formatter.string(from: ts)
-        
-        return date
-        
     }
     
     /// Setting a meaningful empty view when the collectionview is empty

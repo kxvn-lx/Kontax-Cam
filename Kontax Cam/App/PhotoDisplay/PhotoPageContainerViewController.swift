@@ -12,6 +12,10 @@ protocol PhotoPageContainerViewControllerDelegate: class {
     func containerViewController(_ containerViewController: PhotoPageContainerViewController, indexDidUpdate currentIndex: Int)
 }
 
+protocol PhotoPageDeleteImageDelegate {
+    func didDeleteImage()
+}
+
 class PhotoPageContainerViewController: UIViewController {
     
     private enum ScreenMode {
@@ -36,9 +40,38 @@ class PhotoPageContainerViewController: UIViewController {
     
     var transitionController = ZoomTransitionController()
     
+    private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
+    private var photoLibraryEngine: PhotoLibraryEngine!
+    private var timestampTitle: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.textAlignment = .center
+        label.textColor = .label
+        label.font = .preferredFont(forTextStyle: .body)
+        return label
+    }()
+    
+    var deleteImageDelegate: PhotoPageDeleteImageDelegate?
+    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photoLibraryEngine = PhotoLibraryEngine()
+        photoLibraryEngine.checkStatus { (hasUserAccess) in
+            if hasUserAccess == false {
+                DispatchQueue.main.async {
+                    AlertHelper.shared.presentDefault(title: "We can't check for permission.", message: "Please ensure that the app has the required permission.", to: self)
+                }
+            }
+        }
+        
+        setupView()
+        setupToolbar()
+    }
+    
+    private func setupView() {
         let optionsDict = [UIPageViewController.OptionsKey.interPageSpacing : 20]
         let pvc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: optionsDict)
         add(pvc)
@@ -61,7 +94,73 @@ class PhotoPageContainerViewController: UIViewController {
         let viewControllers = [vc]
         
         self.pageViewController.setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
+        
+        renderDateTime()
     }
+    
+    private func setupToolbar() {
+        self.navigationController?.isToolbarHidden = false
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        var items: [UIBarButtonItem] = []
+        
+        for i in 0 ..< toolImages.count {
+            let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+            btn.setImage(IconHelper.shared.getIconImage(iconName: toolImages[i]), for: .normal)
+            btn.tintColor = .label
+            btn.tag = i
+            btn.addTarget(self, action: #selector(toolButtonTapped), for: .touchUpInside)
+            
+            let toolBtn = UIBarButtonItem(customView: btn)
+            items.append(toolBtn)
+            if i != toolImages.count - 1 { items.append(flexible) }
+        }
+        
+        self.toolbarItems = items
+    }
+    
+    @objc private func toolButtonTapped(sender: UIButton) {
+        
+    }
+    
+    /// Helper class to delete the image
+    private func deleteImage(at indexPath: IndexPath) {
+
+    }
+    
+    /// Parse the given encoded timestamp and render it into strings for readability
+    /// - Parameter filename: The filename of the image (in timestamp format)
+    /// - Returns: The parsed timestamp into Date, and time.
+    private func parseToDateTime(filename: String) -> (String, String) {
+        let filenameArr = filename.components(separatedBy: "_")
+        let timestamp = String(filenameArr[1].dropLast(4))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        
+        let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
+        let date = formatter.string(from: ts)
+        
+        formatter.dateFormat = "h:mm a"
+        let time = formatter.string(from: ts)
+        
+        return(date, time)
+        
+    }
+    
+    /// Render the datetime to the navigation controller
+    private func renderDateTime() {
+        let i = nextIndex == nil ? currentIndex : nextIndex!
+        if let filename = photos[i].accessibilityIdentifier {
+            let timestamp = String(filename.dropFirst())
+            let ( date, time ) = parseToDateTime(filename: timestamp)
+            timestampTitle.text = "\(date)\n\(time)"
+            
+            self.navigationItem.titleView = timestampTitle
+        }
+    }
+    
     
 }
 
@@ -138,6 +237,7 @@ extension PhotoPageContainerViewController: UIPageViewControllerDelegate, UIPage
         self.singleTapGestureRecognizer.require(toFail: vc.doubleTapGestureRecognizer)
         vc.image = self.photos[currentIndex + 1]
         vc.index = currentIndex + 1
+        
         return vc
         
     }
@@ -154,6 +254,8 @@ extension PhotoPageContainerViewController: UIPageViewControllerDelegate, UIPage
             previousViewControllers.forEach { vc in
                 let zoomVC = vc as! PhotoZoomViewController
                 zoomVC.scrollView.zoomScale = zoomVC.scrollView.minimumZoomScale
+                
+                renderDateTime()
             }
             
             self.currentIndex = self.nextIndex!

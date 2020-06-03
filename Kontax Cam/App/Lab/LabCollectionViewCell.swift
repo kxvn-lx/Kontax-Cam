@@ -16,36 +16,12 @@ class LabCollectionViewCell: UICollectionViewCell {
         v.contentMode = .scaleAspectFit
         return v
     }()
-    let dateLabel: UILabel = {
-        let v = UILabel()
-        v.textAlignment = .center
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.font = .preferredFont(forTextStyle: .caption2)
-        return v
-    }()
-    
-    let infoSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillProportionally)
-    let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .center, distribution: .fillProportionally)
-    
     
     override func awakeFromNib() {
-        self.addSubview(mSV)
-        
-        mSV.addArrangedSubview(photoView)
-        mSV.addArrangedSubview(infoSV)
+        self.addSubview(photoView)
         
         photoView.snp.makeConstraints { (make) in
-            make.height.width.equalTo(self.frame.size.width)
-        }
-        
-        mSV.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-        }
-        
-        infoSV.addArrangedSubview(dateLabel)
-        
-        infoSV.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
         }
     }
     

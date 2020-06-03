@@ -43,8 +43,8 @@ class ZoomDismissalInteractionController: NSObject {
         fromVC.view.alpha = backgroundAlpha
         
         transitionImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
-        let newXPoint = anchorPoint.x + translatedPoint.x * 0.0625
-        let newYPoint = anchorPoint.y + translatedPoint.y * 0.0625 - transitionImageView.frame.height * (1 - scale) / 2.0
+        let newXPoint = anchorPoint.x + translatedPoint.x * 0.09375
+        let newYPoint = anchorPoint.y + translatedPoint.y * 0.09375 - transitionImageView.frame.height * (1 - scale) / 2.0
         let newCenter = CGPoint(x: newXPoint, y: newYPoint)
         transitionImageView.center = newCenter
         

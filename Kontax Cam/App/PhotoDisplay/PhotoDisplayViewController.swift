@@ -59,6 +59,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     
     private var willDisplayIndex: IndexPath?
     private var endDisplayIndex: IndexPath?
+    private var currentDisplayIndex: IndexPath?
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -176,7 +177,9 @@ class PhotoDisplayViewController: DTPhotoViewerController {
                 self.photoDisplayDelegate?.photoDisplayWillDelete(photoAt: self.currentPhotoIndex)
                 
                 self.reloadData()
+                
                 let cv = self.scrollView as! UICollectionView
+                
                 if cv.numberOfItems(inSection: 0) == 0 { self.dismiss(animated: true, completion: nil) }
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -196,16 +199,15 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath)
         willDisplayIndex = indexPath
         
-        // First tap
-        if willDisplayIndex != nil && endDisplayIndex == nil {
-            photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: indexPath.row)
-        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         endDisplayIndex = indexPath
+        print("endDisplaying: \(indexPath)")
         shouldDisplayTimestamp()
     }
 
@@ -214,6 +216,11 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         
         if willDisplayIndex != endDisplayIndex {
             photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: willDisplayIndex.row)
+            self.currentDisplayIndex = willDisplayIndex
+        } else {
+            if let c = currentDisplayIndex {
+                photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: c.row)
+            } 
         }
     }
     

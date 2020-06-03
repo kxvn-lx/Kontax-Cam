@@ -178,6 +178,7 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     }
 
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
+        self.photoDisplayWillChangeCell(atNewIndex: index)
         imageView.image = images[index]
     }
 }
@@ -217,7 +218,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
         let date = formatter.string(from: ts)
         
-        formatter.dateFormat = "h:mm a"
+        formatter.dateFormat = "h:mm:ss a"
         let time = formatter.string(from: ts)
         
         return(date, time)

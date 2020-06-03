@@ -158,7 +158,10 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                 self.photoDisplayDelegate?.photoDisplayDidDelete(photoAt: self.currentPhotoIndex)
-                self.reloadDTView()
+                
+                self.reloadData()
+                let cv = self.scrollView as! UICollectionView
+                if cv.numberOfItems(inSection: 0) == 0 { self.dismiss(animated: true, completion: nil) }
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
@@ -171,37 +174,14 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         }
     }
     
-    /// Parse the given encoded timestamp and render it into strings for readability
-    /// - Parameter filename: The filename of the image (in timestamp format)
-    /// - Returns: The parsed timestamp into Date, and time.
-    private func parseToDateTime(filename: String) -> (String, String) {
-        let filenameArr = filename.components(separatedBy: "_")
-        let timestamp = String(filenameArr[1].dropLast(4))
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy"
-        
-        let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
-        let date = formatter.string(from: ts)
-        
-        formatter.dateFormat = "h:mm a"
-        let time = formatter.string(from: ts)
-        
-        return(date, time)
-        
-    }
-
-    private func reloadDTView() {
-        self.reloadData()
-        
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cv = self.scrollView as! UICollectionView
-        let numberOfItems = cv.numberOfItems(inSection: 0)
-        
-        if numberOfItems == 0 {
-            self.dismiss(animated: true, completion: nil)
-        }
+        let cell = cv.cellForItem(at: indexPath)
+        print(self.imageView.image?.accessibilityIdentifier)
+//        print(cell.imageView.image?.accessibilityIdentifier)
         
     }
+    
     
     // MARK: - Secondary methods
     private func hideInfoOverlayView(_ animated: Bool) {

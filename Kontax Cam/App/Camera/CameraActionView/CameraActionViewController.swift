@@ -24,7 +24,7 @@ class CameraActionViewController: UIViewController {
         
     ]
     var timerEngine = TimerEngine()
-    private let shutterOffset: CGFloat = 40
+    var shutterSize: CGFloat!
     
     private let actionButtonsScrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -55,8 +55,8 @@ class CameraActionViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         shutterButton.view.snp.makeConstraints { (make) in
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(shutterOffset)
-            make.centerX.equalTo(self.view)
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(25)
+            make.centerX.equalToSuperview()
         }
         self.view.layoutIfNeeded()
     }
@@ -68,13 +68,13 @@ class CameraActionViewController: UIViewController {
         actionButtonsScrollView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width)
             make.height.equalTo(45)
-            make.top.equalTo(self.view).offset(10)
+            make.top.equalToSuperview()
         }
         
         // Adding the action buttons to the scrollView
         let actionButtons = setupActionButtons()
         var xCoord: CGFloat = 10
-        let yCoord: CGFloat = UIDevice().hasNotch ? -30 : 5
+        let yCoord: CGFloat = 5
         let buttonWidth: CGFloat = 65
         let buttonHeight: CGFloat = 35
         let gapBetweenButtons: CGFloat = 10
@@ -97,7 +97,6 @@ class CameraActionViewController: UIViewController {
         )
         
         // Shutter button
-        let shutterSize = self.view.frame.height * 0.13
         shutterButton = ShutterButtonViewController()
         shutterButton.oriFrame = CGSize(width: shutterSize, height: shutterSize)
         self.add(shutterButton)
@@ -105,12 +104,11 @@ class CameraActionViewController: UIViewController {
         // Lab button
         self.view.addSubview(labButton)
         labButton.addTarget(self, action: #selector(labButtonTapped), for: .touchUpInside)
-        let calc = shutterSize / 2 - (35 * 1.25 / 2)
         labButton.snp.makeConstraints { (make) in
-            make.width.equalTo(65 * 1.5)
-            make.height.equalTo(35 * 1.25)
-            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(40 + calc)
+            make.top.equalTo(actionButtonsScrollView.snp.bottom).offset(25 + shutterSize / 4)
             make.centerX.equalTo(self.view.frame.width * 0.25 - shutterSize / 4)
+            make.width.equalTo(buttonWidth * 1.5)
+            make.height.equalTo(buttonHeight * 1.25)
         }
     }
     

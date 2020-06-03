@@ -76,7 +76,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         self.view.addSubview(navView)
         self.view.addSubview(toolView)
         
-        navView.addBorder(side: .bottom, color: UIColor.quaternaryLabel, width: 1)
+        navView.addBorder(side: .bottom, color: .systemGray6, width: 1)
         
         // Tool View
         for i in 0 ..< toolImages.count {

@@ -37,6 +37,8 @@ class CameraViewController: UIViewController {
     private var cameraActionView: CameraActionViewController!
     private let cameraManager = CameraManager()
     
+    private var cameraActionViewHeight: CGFloat!
+    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,12 +64,17 @@ class CameraViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
+        cameraActionViewHeight = self.view.frame.height - self.view.frame.height * 0.75
+        
         // Camera view
         // TODO: Replace with logo
         cameraView.backgroundColor = UIColor.systemGray6
+        cameraView.layer.cornerRadius = 15
+        cameraView.clipsToBounds = true
         
         // Camera Action View
         cameraActionView = CameraActionViewController()
+        cameraActionView.shutterSize = (cameraActionViewHeight) * 0.5
         cameraActionView.cameraManager = cameraManager
         
         add(cameraActionView)
@@ -82,25 +89,27 @@ class CameraViewController: UIViewController {
         // Setting Button
         self.view.addSubview(settingButton)
         settingButton.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setupConstraint() {
+        cameraView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view.frame.width * 0.95)
+            make.height.equalTo(self.view.frame.height * 0.65)
+            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top * 1.5)
+            make.centerX.equalToSuperview()
+        }
+        
+        cameraActionView.view.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view.frame.width)
+            make.height.equalTo(cameraActionViewHeight)
+            make.bottom.equalToSuperview()
+        }
+        
         settingButton.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(20)
             make.height.equalTo(35)
             make.width.equalTo(65)
             make.right.equalTo(self.view).offset(-20)
-        }
-    }
-    
-    private func setupConstraint() {
-        cameraView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view.frame.width)
-            make.height.equalTo(self.view.frame.height * 0.7)
-            make.top.equalTo(self.view)
-        }
-        
-        cameraActionView.view.snp.makeConstraints { (make) in
-            make.width.equalTo(self.view.frame.width)
-            make.height.equalTo(self.view.frame.height - cameraView.frame.height)
-            make.top.equalTo(cameraView.snp_bottomMargin)
         }
     }
     

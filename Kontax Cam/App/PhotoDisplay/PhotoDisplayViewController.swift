@@ -1,0 +1,214 @@
+//
+//  PhotoDisplayViewController.swift
+//  Kontax Cam
+//
+//  Created by Kevin Laminto on 3/6/20.
+//  Copyright © 2020 Kevin Laminto. All rights reserved.
+//
+
+import DTPhotoViewerController
+import UIKit
+
+protocol PhotoDisplayDelegate {
+    func photoDisplayDidSave(photoAt index: Int)
+    func photoDisplayDidDelete(photoAt index: Int)
+}
+
+class PhotoDisplayViewController: DTPhotoViewerController {
+    
+    // MARK: - Variables
+    private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
+    
+    lazy private var navView: UIView = {
+        let v = UIView()
+        v.backgroundColor = .red
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    lazy private var toolView: UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    lazy private var toolSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillEqually)
+    lazy private var navSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillEqually)
+    
+    var photoDisplayDelegate: PhotoDisplayDelegate?
+    
+    // MARK: - View lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        registerClassPhotoViewer(PhotoDisplayCollectionViewCell.self)
+
+        setupUI()
+        setupConstraint()
+        setupToolbar()
+    }
+    
+    private func setupUI() {
+        
+        self.view.addSubview(navView)
+        self.view.addSubview(toolView)
+        
+        for i in 0 ..< toolImages.count {
+            let btn = UIButton()
+            btn.setImage(IconHelper.shared.getIconImage(iconName: toolImages[i]), for: .normal)
+            btn.tintColor = .label
+            btn.tag = i
+            btn.addTarget(self, action: #selector(toolButtonTapped), for: .touchUpInside)
+
+            toolSV.addArrangedSubview(btn)
+        }
+
+        toolView.addSubview(toolSV)
+    }
+    
+    private func setupConstraint() {
+        let barHeight = UINavigationController().navigationBar.frame.size.height
+        
+        navView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.height.equalTo(barHeight + self.view.getSafeAreaInsets().top)
+            make.width.equalToSuperview()
+        }
+        
+        toolView.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(barHeight + self.view.getSafeAreaInsets().bottom)
+        }
+        
+        toolSV.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(barHeight)
+            make.top.equalToSuperview()
+        }
+        
+        toolSV.arrangedSubviews.forEach({
+            $0.snp.makeConstraints { (make) in
+                make.height.equalToSuperview()
+            }
+        })
+    }
+    
+    private func setupToolbar() {
+        navigationController?.setToolbarHidden(false, animated: false)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        var items: [UIBarButtonItem] = []
+        
+        for i in 0 ..< toolImages.count {
+            let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+            btn.setImage(IconHelper.shared.getIconImage(iconName: toolImages[i]), for: .normal)
+            btn.tintColor = .label
+            btn.tag = i
+            btn.addTarget(self, action: #selector(toolButtonTapped), for: .touchUpInside)
+            
+            let toolBtn = UIBarButtonItem(customView: btn)
+            items.append(toolBtn)
+            if i != toolImages.count - 1 { items.append(flexible) }
+        }
+        
+        self.toolbarItems = items
+    }
+    
+    @objc private func toolButtonTapped(sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            ShareHelper.shared.presentShare(withImage: self.imageView.image!, toView: self)
+            
+        case 1:
+            photoDisplayDelegate?.photoDisplayDidSave(photoAt: self.currentPhotoIndex)
+            
+        case 2:
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+                self.photoDisplayDelegate?.photoDisplayDidDelete(photoAt: self.currentPhotoIndex)
+                self.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+            
+            self.present(alert, animated: true, completion: nil)
+            
+        default: break
+        }
+    }
+    
+    // MARK: - Secondary methods
+    func hideInfoOverlayView(_ animated: Bool) {
+        configureOverlayViews(hidden: true, animated: animated)
+    }
+    
+    func showInfoOverlayView(_ animated: Bool) {
+        configureOverlayViews(hidden: false, animated: animated)
+    }
+    
+    func configureOverlayViews(hidden: Bool, animated: Bool) {
+        if hidden != navView.isHidden {
+            let duration: TimeInterval = animated ? 0.2 : 0.0
+            let alpha: CGFloat = hidden ? 0.0 : 1.0
+            
+            setOverlayElementsHidden(isHidden: false)
+            
+            UIView.animate(withDuration: duration, animations: {
+                self.setOverlayElementsAlpha(alpha: alpha)
+            }) { (_) in
+                self.setOverlayElementsHidden(isHidden: hidden)
+            }
+        }
+    }
+    
+    private func setOverlayElementsHidden(isHidden: Bool) {
+        toolView.isHidden = isHidden
+        navView.isHidden = isHidden
+    }
+    
+    private func setOverlayElementsAlpha(alpha: CGFloat) {
+        toolView.alpha = alpha
+        navView.alpha = alpha
+    }
+    
+    override func didReceiveTapGesture() {
+        reverseInfoOverlayViewDisplayStatus()
+    }
+    
+    // MARK: - DT Delegate
+    @objc override func willZoomOnPhoto(at index: Int) {
+        hideInfoOverlayView(false)
+    }
+    
+    override func didEndZoomingOnPhoto(at index: Int, atScale scale: CGFloat) {
+        if scale == 1 {
+            showInfoOverlayView(true)
+        }
+    }
+    
+    override func didEndPresentingAnimation() {
+        showInfoOverlayView(true)
+    }
+    
+    override func willBegin(panGestureRecognizer gestureRecognizer: UIPanGestureRecognizer) {
+        hideInfoOverlayView(false)
+    }
+    
+    override func didReceiveDoubleTapGesture() {
+        hideInfoOverlayView(false)
+    }
+    
+    // Hide & Show info layer view
+    func reverseInfoOverlayViewDisplayStatus() {
+                if zoomScale == 1.0 {
+                    if navView.isHidden == true {
+                        showInfoOverlayView(true)
+                    } else {
+                        hideInfoOverlayView(true)
+                    }
+                }
+    }
+}

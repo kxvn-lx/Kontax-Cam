@@ -1,5 +1,5 @@
 //
-//  CustomPhotoCollectionViewCell.swift
+//  PhotoDisplayCollectionViewCell.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 3/6/20.
@@ -9,7 +9,7 @@
 import DTPhotoViewerController
 import UIKit
 
-class CustomPhotoCollectionViewCell: DTPhotoCollectionViewCell {
+class PhotoDisplayCollectionViewCell: DTPhotoCollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

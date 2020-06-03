@@ -14,11 +14,16 @@ private let reuseIdentifier = "labCell"
 class LabCollectionViewController: UICollectionViewController {
     
     private var images: [UIImage] = []
-//    private var selectedIndexPath: IndexPath!
     private var selectedImageIndex: Int = 0
+    private let photoLibraryEngine = PhotoLibraryEngine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        photoLibraryEngine.checkStatus { (hasUserAccess) in
+            if hasUserAccess == false {
+                AlertHelper.shared.presentDefault(title: "Looks like we can't check your permission.", message: "Please ensure that the app has sufficient permission before proceeding.", to: self)
+            }
+        }
         
         // Making the back button nhas no title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -113,7 +118,8 @@ extension LabCollectionViewController {
     /// Helper to present the photo display VC
     private func presentPhotoDisplayVC(indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
-            let viewController = CustomPhotoDisplayViewController(referencedView: cell.photoView, image: cell.photoView.image)
+            let viewController = PhotoDisplayViewController(referencedView: cell.photoView, image: cell.photoView.image)
+            viewController.photoDisplayDelegate = self
             viewController.dataSource = self
             viewController.delegate = self
             present(viewController, animated: true, completion: nil)
@@ -177,7 +183,7 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
 }
 
 // MARK: DTPhotoViewerControllerDelegate
-extension LabCollectionViewController: SimplePhotoViewerControllerDelegate {
+extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
     func photoViewerControllerDidEndPresentingAnimation(_ photoViewerController: DTPhotoViewerController) {
         photoViewerController.scrollToPhoto(at: selectedImageIndex, animated: false)
     }
@@ -194,11 +200,42 @@ extension LabCollectionViewController: SimplePhotoViewerControllerDelegate {
             }
         }
     }
-
-    func simplePhotoViewerController(_ viewController: CustomPhotoDisplayViewController, savePhotoAt index: Int) {
-        UIImageWriteToSavedPhotosAlbum(images[index], nil, nil, nil)
-    }
 }
 
+// MARK: - PhotoDisplayDelegate
+extension LabCollectionViewController: PhotoDisplayDelegate {
+    func photoDisplayDidSave(photoAt index: Int) {
+        photoLibraryEngine.save(images[index]) { (success, error) in
+            if let error = error {
+                AlertHelper.shared.presentDefault(title: "Something went wrong.", message: error.localizedDescription, to: self)
+                TapticHelper.shared.errorTaptic()
+                return
+            }
+            DispatchQueue.main.async {
+                SPAlertHelper.shared.present(title: "Saved", message: nil, preset: .done)
+            }
+            
+            TapticHelper.shared.successTaptic()
+        }
+        
+    }
+    
+    func photoDisplayDidDelete(photoAt index: Int) {
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        SPAlertHelper.shared.present(title: "Image deleted.")
+        DataEngine.shared.deleteData(imageToDelete: images[index]) { (success) in
+            if !success {
+                AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: self)
+            }
+        }
+        images.remove(at: index)
+        
+        collectionView.deleteItems(at: [indexPath])
+        collectionView.reloadData()
+    }
+    
+    
+}
 
 

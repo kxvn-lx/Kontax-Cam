@@ -18,22 +18,6 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--Photo Page Container View Controller-->
-        <scene sceneID="tND-jK-HaO">
-            <objects>
-                <viewController storyboardIdentifier="photoPageVC" id="XOf-iP-bL4" customClass="PhotoPageContainerViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GEA-Gj-ipj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="HoQ-v8-dut"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Fjx-8M-0gy"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jBW-bP-peI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2707" y="161"/>
-        </scene>
         <!--FX-->
         <scene sceneID="CJD-KY-1JG">
             <objects>
@@ -155,7 +139,6 @@
         <!--Navigation Controller-->
         <scene sceneID="aL6-tg-Paa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GFt-NY-Mgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gnO-D8-JCG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q07-A6-bsa">
@@ -167,23 +150,9 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="W08-oH-MbH"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GFt-NY-Mgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
-        </scene>
-        <!--Photo Zoom View Controller-->
-        <scene sceneID="Ez7-p3-0Ce">
-            <objects>
-                <viewController storyboardIdentifier="PhotoZoomViewController" id="IZz-Xp-4t8" customClass="PhotoZoomViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G1a-P8-JJo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="gIb-eA-oFy"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JH9-EC-fay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3471" y="161"/>
         </scene>
     </scenes>
 </document>

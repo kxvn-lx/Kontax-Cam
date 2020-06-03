@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import DTPhotoViewerController
 
 private let reuseIdentifier = "labCell"
 
 class LabCollectionViewController: UICollectionViewController {
     
     private var images: [UIImage] = []
-    private var selectedIndexPath: IndexPath!
+//    private var selectedIndexPath: IndexPath!
+    private var selectedImageIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +58,8 @@ class LabCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.lightTaptic()
-        self.selectedIndexPath = indexPath
-        self.presentPhotoDisplayVC()
+        self.selectedImageIndex = indexPath.row
+        self.presentPhotoDisplayVC(indexPath: indexPath)
     }
 }
 
@@ -109,18 +111,13 @@ extension LabCollectionViewController {
     }
     
     /// Helper to present the photo display VC
-    private func presentPhotoDisplayVC() {
-        let nav = self.navigationController
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoPageVC") as! PhotoPageContainerViewController
-        
-        nav?.delegate = vc.transitionController
-        vc.transitionController.fromDelegate = self
-        vc.transitionController.toDelegate = vc
-        vc.delegate = self
-        vc.currentIndex = self.selectedIndexPath.row
-        vc.photos = self.images
-        
-        nav?.pushViewController(vc, animated: true)
+    private func presentPhotoDisplayVC(indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
+            let viewController = CustomPhotoDisplayViewController(referencedView: cell.photoView, image: cell.photoView.image)
+            viewController.dataSource = self
+            viewController.delegate = self
+            present(viewController, animated: true, completion: nil)
+        }
 
     }
     
@@ -156,121 +153,52 @@ extension LabCollectionViewController {
     }
 }
 
-extension LabCollectionViewController: PhotoPageContainerViewControllerDelegate {
- 
-    func containerViewController(_ containerViewController: PhotoPageContainerViewController, indexDidUpdate currentIndex: Int) {
-        self.selectedIndexPath = IndexPath(row: currentIndex, section: 0)
-        self.collectionView.scrollToItem(at: self.selectedIndexPath, at: .centeredVertically, animated: false)
+// MARK: DTPhotoViewerControllerDataSource
+extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
+    func photoViewerController(_ photoViewerController: DTPhotoViewerController, configureCell cell: DTPhotoCollectionViewCell, forPhotoAt index: Int) {
+    }
+
+    func photoViewerController(_ photoViewerController: DTPhotoViewerController, referencedViewForPhotoAt index: Int) -> UIView? {
+        let indexPath = IndexPath(item: index, section: 0)
+        if let cell = collectionView?.cellForItem(at: indexPath) as? LabCollectionViewCell {
+            return cell.photoView
+        }
+
+        return nil
+    }
+
+    func numberOfItems(in photoViewerController: DTPhotoViewerController) -> Int {
+        return images.count
+    }
+
+    func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
+        imageView.image = images[index]
     }
 }
 
-extension LabCollectionViewController: ZoomAnimatorDelegate {
-    private func getImageViewFromCollectionViewCell(for selectedIndexPath: IndexPath) -> UIImageView {
-        
-        //Get the array of visible cells in the collectionView
-        let visibleCells = self.collectionView.indexPathsForVisibleItems
-        
-        //If the current indexPath is not visible in the collectionView,
-        //scroll the collectionView to the cell to prevent it from returning a nil value
-        if !visibleCells.contains(self.selectedIndexPath) {
-           
-            //Scroll the collectionView to the current selectedIndexPath which is offscreen
-            self.collectionView.scrollToItem(at: self.selectedIndexPath, at: .centeredVertically, animated: false)
-            
-            //Reload the items at the newly visible indexPaths
-            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-            self.collectionView.layoutIfNeeded()
-            
-            //Guard against nil values
-            guard let guardedCell = (self.collectionView.cellForItem(at: self.selectedIndexPath) as? LabCollectionViewCell) else {
-                //Return a default UIImageView
-                return UIImageView(frame: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 100.0, height: 100.0))
-            }
-            //The PhotoCollectionViewCell was found in the collectionView, return the image
-            return guardedCell.photoView
-        }
-        else {
-            
-            //Guard against nil return values
-            guard let guardedCell = self.collectionView.cellForItem(at: self.selectedIndexPath) as? LabCollectionViewCell else {
-                //Return a default UIImageView
-                return UIImageView(frame: CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 100.0, height: 100.0))
-            }
-            //The PhotoCollectionViewCell was found in the collectionView, return the image
-            return guardedCell.photoView
-        }
-        
+// MARK: DTPhotoViewerControllerDelegate
+extension LabCollectionViewController: SimplePhotoViewerControllerDelegate {
+    func photoViewerControllerDidEndPresentingAnimation(_ photoViewerController: DTPhotoViewerController) {
+        photoViewerController.scrollToPhoto(at: selectedImageIndex, animated: false)
     }
 
-    private func getFrameFromCollectionViewCell(for selectedIndexPath: IndexPath) -> CGRect {
-        
-        //Get the currently visible cells from the collectionView
-        let visibleCells = self.collectionView.indexPathsForVisibleItems
-        
-        //If the current indexPath is not visible in the collectionView,
-        //scroll the collectionView to the cell to prevent it from returning a nil value
-        if !visibleCells.contains(self.selectedIndexPath) {
-            
-            //Scroll the collectionView to the cell that is currently offscreen
-            self.collectionView.scrollToItem(at: self.selectedIndexPath, at: .centeredVertically, animated: false)
-            
-            //Reload the items at the newly visible indexPaths
-            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-            self.collectionView.layoutIfNeeded()
-            
-            //Prevent the collectionView from returning a nil value
-            guard let guardedCell = (self.collectionView.cellForItem(at: self.selectedIndexPath) as? LabCollectionViewCell) else {
-                return CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 100.0, height: 100.0)
+    func photoViewerController(_ photoViewerController: DTPhotoViewerController, didScrollToPhotoAt index: Int) {
+        selectedImageIndex = index
+        if let collectionView = collectionView {
+            let indexPath = IndexPath(item: selectedImageIndex, section: 0)
+
+            // If cell for selected index path is not visible
+            if !collectionView.indexPathsForVisibleItems.contains(indexPath) {
+                // Scroll to make cell visible
+                collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.bottom, animated: false)
             }
-            
-            return guardedCell.frame
-        }
-        //Otherwise the cell should be visible
-        else {
-            //Prevent the collectionView from returning a nil value
-            guard let guardedCell = (self.collectionView.cellForItem(at: self.selectedIndexPath) as? LabCollectionViewCell) else {
-                return CGRect(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY, width: 100.0, height: 100.0)
-            }
-            //The cell was found successfully
-            return guardedCell.frame
         }
     }
-    
-    func transitionWillStartWith(zoomAnimator: ZoomAnimator) {
-        
+
+    func simplePhotoViewerController(_ viewController: CustomPhotoDisplayViewController, savePhotoAt index: Int) {
+        UIImageWriteToSavedPhotosAlbum(images[index], nil, nil, nil)
     }
-    
-    func transitionDidEndWith(zoomAnimator: ZoomAnimator) {
-        let cell = self.collectionView.cellForItem(at: self.selectedIndexPath) as! LabCollectionViewCell
-        
-        let cellFrame = self.collectionView.convert(cell.frame, to: self.view)
-        
-        if cellFrame.minY < self.collectionView.contentInset.top {
-            self.collectionView.scrollToItem(at: self.selectedIndexPath, at: .top, animated: false)
-        } else if cellFrame.maxY > self.view.frame.height - self.collectionView.contentInset.bottom {
-            self.collectionView.scrollToItem(at: self.selectedIndexPath, at: .bottom, animated: false)
-        }
-    }
-    
-    func referenceImageView(for zoomAnimator: ZoomAnimator) -> UIImageView? {
-        return getImageViewFromCollectionViewCell(for: self.selectedIndexPath)
-    }
-    
-    func referenceImageViewFrameInTransitioningView(for zoomAnimator: ZoomAnimator) -> CGRect? {
-        
-        self.view.layoutIfNeeded()
-        self.collectionView.layoutIfNeeded()
-        
-        //Get a guarded reference to the cell's frame
-        let unconvertedFrame = getFrameFromCollectionViewCell(for: self.selectedIndexPath)
-        
-        let cellFrame = self.collectionView.convert(unconvertedFrame, to: self.view)
-        
-        if cellFrame.minY < self.collectionView.contentInset.top {
-            return CGRect(x: cellFrame.minX, y: self.collectionView.contentInset.top, width: cellFrame.width, height: cellFrame.height - (self.collectionView.contentInset.top - cellFrame.minY))
-        }
-        
-        return cellFrame
-    }
-    
 }
+
+
+

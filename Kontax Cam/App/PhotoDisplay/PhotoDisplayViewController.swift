@@ -13,6 +13,7 @@ protocol PhotoDisplayDelegate {
     func photoDisplayDidShare(photoAt index: Int)
     func photoDisplayDidSave(photoAt index: Int)
     func photoDisplayDidDelete(photoAt index: Int)
+    func photoDisplayDidChangeCell(atNewIndex index: Int)
 }
 
 class PhotoDisplayViewController: DTPhotoViewerController {
@@ -30,7 +31,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    lazy private var navTitleLabel: UILabel = {
+    lazy var navTitleLabel: UILabel = {
         let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.numberOfLines = 0
@@ -175,10 +176,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cv = self.scrollView as! UICollectionView
-        let cell = cv.cellForItem(at: indexPath)
-        print(self.imageView.image?.accessibilityIdentifier)
-//        print(cell.imageView.image?.accessibilityIdentifier)
+        photoDisplayDelegate?.photoDisplayDidChangeCell(atNewIndex: indexPath.row)
         
     }
     

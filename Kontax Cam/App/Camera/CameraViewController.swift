@@ -12,10 +12,6 @@ import SnapKit
 
 class CameraViewController: UIViewController {
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
     // MARK: - Class variables
     private let cameraView = UIView()
     private let settingButton: UIButton = {
@@ -65,12 +61,12 @@ class CameraViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
-        cameraActionViewHeight = self.view.frame.height - self.view.frame.height * 0.75
+        cameraActionViewHeight = (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
         
         // Camera view
         // TODO: Replace with logo
         cameraView.backgroundColor = UIColor.systemGray6
-        cameraView.layer.cornerRadius = 15
+        cameraView.layer.cornerRadius = 10
         cameraView.clipsToBounds = true
         
         // Camera Action View
@@ -96,7 +92,7 @@ class CameraViewController: UIViewController {
         cameraView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width * 0.95)
             make.height.equalTo(self.view.frame.height * 0.65)
-            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top * 1.5)
+            make.top.equalToSuperview().offset(10 + self.view.getSafeAreaInsets().top)
             make.centerX.equalToSuperview()
         }
         
@@ -107,10 +103,10 @@ class CameraViewController: UIViewController {
         }
         
         settingButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(20)
+            make.top.equalToSuperview().offset(20 + self.view.getSafeAreaInsets().top)
             make.height.equalTo(35)
             make.width.equalTo(65)
-            make.right.equalTo(self.view).offset(-20)
+            make.right.equalToSuperview().offset(-20)
         }
     }
     

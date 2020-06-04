@@ -218,8 +218,8 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         let ts = Date(timeIntervalSince1970: (timestamp as NSString).doubleValue)
         let date = formatter.string(from: ts)
         
-        formatter.dateFormat = "h:mm:ss a"
-        let time = formatter.string(from: ts)
+        formatter.dateFormat = "h:mm a"
+        let time = formatter.string(from: ts).uppercased()
         
         return(date, time)
         

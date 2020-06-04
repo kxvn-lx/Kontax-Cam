@@ -23,10 +23,11 @@ protocol PhotoDisplayDelegate {
 class PhotoDisplayViewController: DTPhotoViewerController {
     
     override var prefersStatusBarHidden: Bool {
-        return false
+        return isStatusBarHidden
     }
     
     // MARK: - Variables
+    private var isStatusBarHidden = false
     private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
     var images: [UIImage] = []
     lazy private var navView: UIView = {
@@ -102,7 +103,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     private func setupConstraint() {
-        let barHeight = UINavigationController().navigationBar.frame.size.height
+        let barHeight = UINavigationController().navigationBar.frame.size.height + 10
         
         navView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
@@ -112,12 +113,12 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         
         closeButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
-            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
         navTitleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
         toolView.snp.makeConstraints { (make) in
@@ -199,7 +200,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(indexPath)
         willDisplayIndex = indexPath
         
         
@@ -207,10 +207,9 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         endDisplayIndex = indexPath
-        print("endDisplaying: \(indexPath)")
         shouldDisplayTimestamp()
     }
-
+    
     private func shouldDisplayTimestamp() {
         guard let willDisplayIndex = willDisplayIndex, let endDisplayIndex = endDisplayIndex else { return }
         
@@ -239,9 +238,10 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             let alpha: CGFloat = hidden ? 0.0 : 1.0
             
             setOverlayElementsHidden(isHidden: false)
-            
+            isStatusBarHidden = hidden
             UIView.animate(withDuration: duration, animations: {
                 self.setOverlayElementsAlpha(alpha: alpha)
+                self.setNeedsStatusBarAppearanceUpdate()
             }) { (_) in
                 self.setOverlayElementsHidden(isHidden: hidden)
             }

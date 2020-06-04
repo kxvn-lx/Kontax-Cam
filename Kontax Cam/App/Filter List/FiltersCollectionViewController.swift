@@ -13,7 +13,8 @@ private let reuseIdentifier = "filtersCell"
 private let headerIdentifier = "filtersHeader"
 
 protocol FilterListDelegate {
-    func didSelectFilter(filterName: FilterName)
+    /// Tells the delegate that a filter has been selected
+    func filterListDidSelectFilter(withFilterName filterName: FilterName)
 }
 
 enum FilterName: String, CaseIterable {
@@ -73,7 +74,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         TapticHelper.shared.lightTaptic()
         
         guard let delegate = delegate else { fatalError("Delegate is nil!") }
-        delegate.didSelectFilter(filterName: filters[indexPath.section][indexPath.row])
+        delegate.filterListDidSelectFilter(withFilterName: filters[indexPath.section][indexPath.row])
         
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

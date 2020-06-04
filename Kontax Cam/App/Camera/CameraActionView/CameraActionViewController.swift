@@ -80,7 +80,6 @@ class CameraActionViewController: UIViewController {
         let gapBetweenButtons: CGFloat = 10
         
         for button in actionButtons {
-            button.backgroundColor = .secondarySystemBackground
             button.tintColor = .label
             button.layer.cornerRadius = 5
              

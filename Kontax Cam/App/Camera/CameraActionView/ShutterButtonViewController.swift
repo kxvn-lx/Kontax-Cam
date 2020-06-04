@@ -142,10 +142,10 @@ class ShutterButtonViewController: UIViewController {
 }
 
 extension ShutterButtonViewController: FilterListDelegate {
-    func didSelectFilter(filterName: FilterName) {
+    func filterListDidSelectFilter(withFilterName filterName: FilterName) {
         LUTImageFilter.selectedLUTFilter = filterName
         
-        let title = "\(LUTImageFilter.selectedLUTFilter.rawValue) activated"
+        let title = "\(LUTImageFilter.selectedLUTFilter.rawValue.uppercased()) activated"
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: "paintbrush"))
         }

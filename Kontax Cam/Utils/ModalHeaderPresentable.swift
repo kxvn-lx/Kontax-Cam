@@ -60,6 +60,6 @@ class ModalHeaderPresentable: UICollectionReusableView {
     
     private func style() {
         titleLabel.textColor = .label
-        titleLabel.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium)
+        titleLabel.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption1).pointSize, weight: .medium)
     }
 }

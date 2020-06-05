@@ -79,7 +79,7 @@ class EmptyView: UIView {
         }
         
         iconImageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(35)
+            make.width.height.equalTo(30)
         }
         
     }

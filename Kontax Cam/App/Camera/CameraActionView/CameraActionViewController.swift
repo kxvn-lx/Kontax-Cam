@@ -38,9 +38,10 @@ class CameraActionViewController: UIViewController {
         let btn = UIButton()
         btn.addTextWithImagePrefix(image: IconHelper.shared.getIconImage(iconName: "tray"), text: "Lab")
         btn.tintColor = .label
+        btn.layer.borderColor = UIColor.label.cgColor
+        btn.layer.borderWidth = 1
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.layer.cornerRadius = 35 / 2
-        btn.backgroundColor = .secondarySystemBackground
+        btn.backgroundColor = .clear
         return btn
     }()
     
@@ -82,7 +83,7 @@ class CameraActionViewController: UIViewController {
         for button in actionButtons {
             button.tintColor = .label
             button.layer.cornerRadius = 5
-             
+            
             actionButtonsScrollView.addSubview(button)
             
             button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)
@@ -127,6 +128,14 @@ class CameraActionViewController: UIViewController {
         
         return buttonArray
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 13.0, *) {
+            if (traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection)) {
+                labButton.layer.borderColor = UIColor.label.cgColor
+            }
+        }
+    }
 }
 
 extension CameraActionViewController {
@@ -134,7 +143,7 @@ extension CameraActionViewController {
         TapticHelper.shared.lightTaptic()
         
         switch sender.tag {
-            // Flash
+        // Flash
         case 0:
             let (image, index) = IconHelper.shared.getIconName(currentIcon: sender.imageView?.image?.accessibilityIdentifier, iconImageArray: actionButtonsIconName[sender.tag])
             sender.setImage(image, for: .normal)
@@ -146,50 +155,50 @@ extension CameraActionViewController {
             default: fatalError("Invalid index")
             }
             
-            // Timer
+        // Timer
         case 1:
             let time = timerEngine.ToggleTimer()
             let title = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
             SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: (sender.imageView?.image?.accessibilityIdentifier)!))
             
-            // Reverse camera
+        // Reverse camera
         case 2:
             let currentDevice = cameraManager.cameraDevice
             cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
             
-            // FX
+        // FX
         case 3:
             if let parent = self.parent {
                 let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
-
+                
                 let navController = PanModalNavigationController(rootViewController: vc)
                 navController.modalDestination = .fx
                 
                 self.presentPanModal(navController)
             }
-
             
-            // Filter
+            
+        // Filter
         case 4:
             if let parent = self.parent {
                 let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
                 vc.delegate = shutterButton
                 vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
-
+                
                 let navController = PanModalNavigationController(rootViewController: vc)
                 navController.modalDestination = .filters
                 
                 self.presentPanModal(navController)
             }
-
-            // Grid
+            
+        // Grid
         case 5:
             let parent = self.parent as! CameraViewController
             
             parent.rotView.isHidden = !parent.rotView.isHidden
             let title = !parent.rotView.isHidden ? "Grid enabled" : "Grid disabled"
             SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconName(currentIcon: (sender.imageView?.image?.accessibilityIdentifier)!, iconImageArray: actionButtonsIconName[sender.tag]).0)
-
+            
         default: print("No button with ID is found")
         }
     }

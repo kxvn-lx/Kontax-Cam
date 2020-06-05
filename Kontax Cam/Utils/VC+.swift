@@ -111,20 +111,6 @@ extension UIButton {
             self.bringSubviewToFront(imageView)
         }
     }
-    
-    func addTextWithImagePrefix(image: UIImage, text: String) {
-        let fullString = NSMutableAttributedString()
-        let imageAttachment = NSTextAttachment()
-        
-        imageAttachment.bounds = CGRect(x: 0, y: ((self.titleLabel?.font.capHeight)! - image.size.height).rounded() / 2, width: image.size.width, height: image.size.height)
-        imageAttachment.image = image
-        
-        let imageString = NSAttributedString(attachment: imageAttachment)
-        fullString.append(imageString)
-        fullString.append(NSAttributedString(string: "  " + text))
-        
-        self.setAttributedTitle(fullString, for: .normal)
-    }
 }
 
 // MARK: - UIViewController
@@ -146,17 +132,6 @@ extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
-}
-
-// MARK: - UIDevice
-extension UIDevice {
-    
-    /// Returns 'true' if the device has a notch
-    var hasNotch: Bool {
-        guard #available(iOS 11.0, *), let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return false }
-        return window.safeAreaInsets.top >= 44
-    }
-    
 }
 
 // MARK: - UIImage
@@ -191,6 +166,10 @@ extension String {
 // MARK: - UIView
 extension UIView {
     
+    enum BorderSide {
+        case top, bottom, left, right
+    }
+    
     /// Get the safe area layout of the device
     /// - Returns: The safe area layout
     func getSafeAreaInsets() -> UIEdgeInsets {
@@ -198,10 +177,6 @@ extension UIView {
             return .zero
         }
         return window.safeAreaInsets
-    }
-    
-    enum BorderSide {
-        case top, bottom, left, right
     }
     
     func addBorder(side: BorderSide, color: UIColor, width: CGFloat) {

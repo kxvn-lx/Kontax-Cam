@@ -29,8 +29,11 @@ class LabCollectionViewController: UICollectionViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false)
-        let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
-        navigationItem.leftBarButtonItem = close
+        
+        let closeButton = CloseButton()
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+    
         
         //UICollectionView setup
         self.collectionView.collectionViewLayout = makeLayout()

@@ -36,10 +36,9 @@ class CameraActionViewController: UIViewController {
     private var shutterButton: ShutterButtonViewController!
     private let labButton: UIButton = {
         let btn = UIButton()
-        btn.addTextWithImagePrefix(image: IconHelper.shared.getIconImage(iconName: "tray"), text: "Lab")
+        btn.setImage(IconHelper.shared.getIconImage(iconName: "tray"), for: .normal)
         btn.tintColor = .label
         btn.layer.borderColor = UIColor.label.cgColor
-        btn.layer.borderWidth = 1
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .clear
         return btn
@@ -93,7 +92,7 @@ class CameraActionViewController: UIViewController {
         
         actionButtonsScrollView.contentSize = CGSize(
             width: buttonWidth * CGFloat(actionButtons.count + 1),
-            height: UIDevice().hasNotch ? 5 : buttonHeight
+            height: buttonHeight
         )
         
         // Shutter button

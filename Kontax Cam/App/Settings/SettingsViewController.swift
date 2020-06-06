@@ -17,7 +17,6 @@ class SettingsViewController: QuickTableViewController {
         super.viewDidLoad()
         
         self.configureNavigationBar(tintColor: .label, title: "Settings", preferredLargeTitle: false, removeSeparator: true)
-        
         setupUI()
         
         // QuickTableViewController datasource
@@ -28,6 +27,16 @@ class SettingsViewController: QuickTableViewController {
         ]
     }
     
+    // MARK: - Tableview delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      super.tableView(tableView, didSelectRowAt: indexPath)
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .clear
+    }
+    
     private func setupUI() {
         let closeButton = CloseButton()
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
@@ -36,6 +45,7 @@ class SettingsViewController: QuickTableViewController {
         self.tableView.backgroundColor = .systemBackground
     }
     
+    // MARK: - onCellTapped functions
     private func appearanceCellTapped() {
         let vc = AppearanceTableViewController()
         

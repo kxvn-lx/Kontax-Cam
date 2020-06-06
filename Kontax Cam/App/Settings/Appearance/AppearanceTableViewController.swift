@@ -41,16 +41,24 @@ class AppearanceTableViewController: UITableViewController {
         default: break
         }
         
-
+        if traitCollection.userInterfaceStyle == themes[indexPath.row] {
+            cell.accessoryType = .checkmark
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Save to user defaults
+        UserDefaultsHelper.shared.setData(value: themes[indexPath.row].rawValue, key: .userAppearance)
+        
         UIApplication.shared.windows.forEach { window in
             window.overrideUserInterfaceStyle = themes[indexPath.row]
         }
         
+        navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -67,6 +75,10 @@ extension AppearanceTableViewController: PanModalPresentable {
     
     var anchorModalToLongForm: Bool {
         return false
+    }
+    
+    var longFormHeight: PanModalHeight {
+        return .contentHeight(200)
     }
     
 }

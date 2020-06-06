@@ -29,14 +29,9 @@ class ModalHeaderPresentable: UICollectionReusableView {
     }
     
     private func setup() {
-        let separator = UIView(frame: .zero)
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.backgroundColor = .quaternaryLabel
-        
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.addArrangedSubview(separator)
         addSubview(stackView)
         
         let titleSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .equalCentering)
@@ -45,15 +40,9 @@ class ModalHeaderPresentable: UICollectionReusableView {
         
         stackView.addArrangedSubview(titleSV, withMargin: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: -15))
         
-        separator.snp.makeConstraints { (make) in
-            make.height.equalTo(1)
-        }
-        
         stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
-        stackView.setCustomSpacing(10, after: separator)
         
         style()
     }

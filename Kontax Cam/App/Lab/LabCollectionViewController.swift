@@ -25,10 +25,9 @@ class LabCollectionViewController: UICollectionViewController {
             }
         }
         
-        // Making the back button nhas no title
+        // Making the back button has no title
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false)
+        self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false, removeSeparator: true)
         
         let closeButton = CloseButton()
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)

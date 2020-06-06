@@ -9,20 +9,40 @@
 import Foundation
 import UIKit
 import QuickTableViewController
+import PanModal
 
 class SettingsViewController: QuickTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Settings")
+        self.configureNavigationBar(tintColor: .label, title: "Settings", preferredLargeTitle: false, removeSeparator: true)
         
-        let close = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(closeTapped))
-        navigationItem.leftBarButtonItem = close
+        setupUI()
         
+        // QuickTableViewController datasource
         tableContents = [
-            
+            Section(title: nil, rows: [
+                NavigationRow(text: "Appearance", detailText: .value1(""), icon: nil, action: { _ in self.appearanceCellTapped() }),
+            ]),
         ]
+    }
+    
+    private func setupUI() {
+        let closeButton = CloseButton()
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+        
+        self.tableView.backgroundColor = .systemBackground
+    }
+    
+    private func appearanceCellTapped() {
+        let vc = AppearanceTableViewController()
+        
+        let navController = PanModalNavigationController(rootViewController: vc)
+        navController.modalDestination = .appearance
+        
+        self.presentPanModal(navController)
     }
     
     @objc private func closeTapped() {

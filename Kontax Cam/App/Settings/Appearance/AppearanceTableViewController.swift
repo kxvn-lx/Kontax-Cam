@@ -8,7 +8,6 @@
 
 import UIKit
 import PanModal
-
 class AppearanceTableViewController: UITableViewController {
     
     private let themes: [UIUserInterfaceStyle] = [.unspecified, .light, .dark]
@@ -41,7 +40,8 @@ class AppearanceTableViewController: UITableViewController {
         default: break
         }
         
-        if traitCollection.userInterfaceStyle == themes[indexPath.row] {
+        let appearanceValue = UIUserInterfaceStyle(rawValue: UserDefaultsHelper.shared.getData(type: Int.self, forKey: .userAppearance) ?? 0)
+        if appearanceValue! == themes[indexPath.row] {
             cell.accessoryType = .checkmark
         }
         
@@ -68,17 +68,4 @@ extension AppearanceTableViewController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return tableView
     }
-    
-    var shortFormHeight: PanModalHeight {
-        return .contentHeight(200)
-    }
-    
-    var anchorModalToLongForm: Bool {
-        return false
-    }
-    
-    var longFormHeight: PanModalHeight {
-        return .contentHeight(200)
-    }
-    
 }

@@ -134,63 +134,63 @@ extension CameraActionViewController {
         TapticHelper.shared.lightTaptic()
         
         switch sender.tag {
-        // Flash
-        case 0:
-            let (image, index) = IconHelper.shared.getIconName(currentIcon: sender.imageView?.image?.accessibilityIdentifier, iconImageArray: actionButtonsIconName[sender.tag])
-            sender.setImage(image, for: .normal)
-            
-            switch index {
-            case 1: cameraManager.flashMode = .off
-            case 2: cameraManager.flashMode = .on
-            case 3: cameraManager.flashMode = .auto
-            default: fatalError("Invalid index")
+            // Flash
+            case 0:
+                let (image, index) = IconHelper.shared.getIconName(currentIcon: sender.imageView?.image?.accessibilityIdentifier, iconImageArray: actionButtonsIconName[sender.tag])
+                sender.setImage(image, for: .normal)
+                
+                switch index {
+                    case 1: cameraManager.flashMode = .off
+                    case 2: cameraManager.flashMode = .on
+                    case 3: cameraManager.flashMode = .auto
+                    default: fatalError("Invalid index")
             }
             
-        // Timer
-        case 1:
-            let time = timerEngine.ToggleTimer()
-            let title = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
-            SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: (sender.imageView?.image?.accessibilityIdentifier)!))
+            // Timer
+            case 1:
+                let time = timerEngine.ToggleTimer()
+                let title = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
+                SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: (sender.imageView?.image?.accessibilityIdentifier)!))
             
-        // Reverse camera
-        case 2:
-            let currentDevice = cameraManager.cameraDevice
-            cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
+            // Reverse camera
+            case 2:
+                let currentDevice = cameraManager.cameraDevice
+                cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
             
-        // FX
-        case 3:
-            if let parent = self.parent {
-                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
-                
-                let navController = PanModalNavigationController(rootViewController: vc)
-                navController.modalDestination = .fx
-                
-                self.presentPanModal(navController)
+            // FX
+            case 3:
+                if let parent = self.parent {
+                    let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
+                    
+                    let navController = PanModalNavigationController(rootViewController: vc)
+                    navController.modalDestination = .fx
+                    
+                    self.presentPanModal(navController)
             }
             
             
-        // Filter
-        case 4:
-            if let parent = self.parent {
-                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
-                vc.delegate = shutterButton
-                vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
-                
-                let navController = PanModalNavigationController(rootViewController: vc)
-                navController.modalDestination = .filters
-                
-                self.presentPanModal(navController)
+            // Filter
+            case 4:
+                if let parent = self.parent {
+                    let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
+                    vc.delegate = shutterButton
+                    vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
+                    
+                    let navController = PanModalNavigationController(rootViewController: vc)
+                    navController.modalDestination = .filters
+                    
+                    self.presentPanModal(navController)
             }
             
-        // Grid
-        case 5:
-            let parent = self.parent as! CameraViewController
+            // Grid
+            case 5:
+                let parent = self.parent as! CameraViewController
+                
+                parent.rotView.isHidden = !parent.rotView.isHidden
+                let title = !parent.rotView.isHidden ? "Grid enabled" : "Grid disabled"
+                SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconName(currentIcon: (sender.imageView?.image?.accessibilityIdentifier)!, iconImageArray: actionButtonsIconName[sender.tag]).0)
             
-            parent.rotView.isHidden = !parent.rotView.isHidden
-            let title = !parent.rotView.isHidden ? "Grid enabled" : "Grid disabled"
-            SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconName(currentIcon: (sender.imageView?.image?.accessibilityIdentifier)!, iconImageArray: actionButtonsIconName[sender.tag]).0)
-            
-        default: print("No button with ID is found")
+            default: print("No button with ID is found")
         }
     }
     

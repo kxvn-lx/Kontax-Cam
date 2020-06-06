@@ -45,6 +45,17 @@ class SettingsViewController: QuickTableViewController {
         self.tableView.backgroundColor = .systemBackground
     }
     
+    // MARK: - Cell value methods
+    private func getAppearanceValue() -> String {
+        let appearanceValue = UIUserInterfaceStyle(rawValue: UserDefaultsHelper.shared.getData(type: Int.self, forKey: .userAppearance) ?? 0)
+        switch appearanceValue!.rawValue {
+            case 0: return "System"
+            case 1: return "Light"
+            case 2: return "Dark"
+            default: return "System"
+        }
+    }
+    
     // MARK: - onCellTapped functions
     private func appearanceCellTapped() {
         let vc = AppearanceTableViewController()

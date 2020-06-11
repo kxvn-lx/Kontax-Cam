@@ -180,7 +180,6 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     }
 
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
-        self.photoDisplayWillChangeCell(atNewIndex: index)
         imageView.image = images[index]
     }
 }
@@ -225,16 +224,6 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         
         return(date, time)
         
-    }
-    
-    func photoDisplayWillChangeCell(atNewIndex index: Int) {
-        if let child = self.presentedViewController as? PhotoDisplayViewController {
-            if let timestamp = images[index].accessibilityIdentifier {
-                
-                let (date, time) = parseToDateTime(filename: timestamp)
-                child.navTitleLabel.text = "\(date)\n\(time)"
-            }
-        }
     }
     
     func photoDisplayWillShare(photoAt index: Int) {

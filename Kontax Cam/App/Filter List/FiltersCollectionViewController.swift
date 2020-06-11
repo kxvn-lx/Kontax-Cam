@@ -12,7 +12,7 @@ import PanModal
 private let reuseIdentifier = "filtersCell"
 private let headerIdentifier = "filtersHeader"
 
-protocol FilterListDelegate {
+protocol FilterListDelegate: class {
     /// Tells the delegate that a filter has been selected
     func filterListDidSelectFilter(withFilterName filterName: FilterName)
 }
@@ -32,7 +32,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         [.bw1],
     ]
     
-    var delegate: FilterListDelegate?
+    weak var delegate: FilterListDelegate?
     var selectedFilterName: FilterName!
     
     override func viewDidLoad() {

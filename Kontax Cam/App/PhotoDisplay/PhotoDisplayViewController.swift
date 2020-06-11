@@ -9,15 +9,13 @@
 import DTPhotoViewerController
 import UIKit
 
-protocol PhotoDisplayDelegate {
+protocol PhotoDisplayDelegate: class {
     /// Tells the delegate to share the photo at index
     func photoDisplayWillShare(photoAt index: Int)
     /// Tells the delegate to save  the photo at index
     func photoDisplayWillSave(photoAt index: Int)
     /// Tells the delegate to delete  the photo at index
     func photoDisplayWillDelete(photoAt index: Int)
-    /// Tells the delegate that a new cell will be shown
-    func photoDisplayWillChangeCell(atNewIndex index: Int)
 }
 
 class PhotoDisplayViewController: DTPhotoViewerController {
@@ -30,37 +28,25 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     private var isStatusBarHidden = false
     private let toolImages = ["square.and.arrow.up", "square.and.arrow.down", "trash"]
     var images: [UIImage] = []
-    lazy private var navView: UIView = {
+    private lazy var navView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    lazy private var toolView: UIView = {
+    private lazy var toolView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    lazy var navTitleLabel: UILabel = {
-        let v = UILabel()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.numberOfLines = 0
-        v.font = .preferredFont(forTextStyle: .body)
-        v.textAlignment = .center
-        return v
-    }()
-    lazy private var closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let v = UIButton(type: .close)
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    lazy private var toolSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillEqually)
-    lazy private var navSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillEqually)
+    private lazy var toolSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillEqually)
+    private lazy var navSV = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillEqually)
     
-    var photoDisplayDelegate: PhotoDisplayDelegate?
-    
-    private var willDisplayIndex: IndexPath?
-    private var endDisplayIndex: IndexPath?
-    private var currentDisplayIndex: IndexPath?
+    weak var photoDisplayDelegate: PhotoDisplayDelegate?
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -81,8 +67,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         self.view.addSubview(navView)
         self.view.addSubview(toolView)
         
-        navView.addBorder(side: .bottom, color: .systemGray6, width: 1)
-        
         // Tool View
         for i in 0 ..< toolImages.count {
             let btn = UIButton()
@@ -99,7 +83,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         // Nav View
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         navView.addSubview(closeButton)
-        navView.addSubview(navTitleLabel)
     }
     
     private func setupConstraint() {
@@ -113,11 +96,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         
         closeButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(-10)
-        }
-        
-        navTitleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-10)
         }
         
@@ -197,30 +175,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     @objc private func closeTapped() {
         hideInfoOverlayView(false)
         dismiss(animated: true, completion: nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        willDisplayIndex = indexPath
-        
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        endDisplayIndex = indexPath
-        shouldDisplayTimestamp()
-    }
-    
-    private func shouldDisplayTimestamp() {
-        guard let willDisplayIndex = willDisplayIndex, let endDisplayIndex = endDisplayIndex else { return }
-        
-        if willDisplayIndex != endDisplayIndex {
-            photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: willDisplayIndex.row)
-            self.currentDisplayIndex = willDisplayIndex
-        } else {
-            if let c = currentDisplayIndex {
-                photoDisplayDelegate?.photoDisplayWillChangeCell(atNewIndex: c.row)
-            } 
-        }
     }
     
     // MARK: - Secondary methods

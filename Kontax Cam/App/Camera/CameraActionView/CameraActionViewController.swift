@@ -150,7 +150,7 @@ extension CameraActionViewController {
             case 1:
                 let time = timerEngine.ToggleTimer()
                 let title = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
-                SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconImage(iconName: (sender.imageView?.image?.accessibilityIdentifier)!))
+                SPAlertHelper.shared.present(title: title)
             
             // Reverse camera
             case 2:

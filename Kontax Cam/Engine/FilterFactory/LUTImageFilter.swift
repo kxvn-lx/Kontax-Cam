@@ -11,7 +11,7 @@ import UIKit
 
 class LUTImageFilter: ImageFilter {
     
-    static var selectedLUTFilter = FilterName.c1
+    static var selectedLUTFilter = FilterName.a1
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()

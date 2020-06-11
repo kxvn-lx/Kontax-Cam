@@ -18,18 +18,14 @@ protocol FilterListDelegate: class {
 }
 
 enum FilterName: String, CaseIterable {
-    // Colour
-    case c1, c2
-    
-    // Black and White
-    case bw1
+    // A Collection
+    case a1, a2, a3
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
     private let filters: [[FilterName]] = [
-        [.c1, .c2],
-        [.bw1],
+        [.a1, .a2, .a3]
     ]
     
     weak var delegate: FilterListDelegate?
@@ -73,8 +69,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.lightTaptic()
         
-        guard let delegate = delegate else { fatalError("Delegate is nil!") }
-        delegate.filterListDidSelectFilter(withFilterName: filters[indexPath.section][indexPath.row])
+        delegate?.filterListDidSelectFilter(withFilterName: filters[indexPath.section][indexPath.row])
         
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -86,8 +81,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         }
         
         switch indexPath.section {
-        case 0: headerView.titleLabel.text = "Colour"
-        case 1: headerView.titleLabel.text = "BW"
+        case 0: headerView.titleLabel.text = "A Collection"
         default: break
         }
         

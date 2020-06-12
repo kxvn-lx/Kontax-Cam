@@ -38,8 +38,8 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    private lazy var closeButton: UIButton = {
-        let v = UIButton(type: .close)
+    private lazy var closeButton: CloseButton = {
+        let v = CloseButton()
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()

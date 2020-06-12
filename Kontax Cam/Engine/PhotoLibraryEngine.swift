@@ -15,72 +15,64 @@ class PhotoLibraryEngine {
     private var assetCollection: PHAssetCollection!
     
     init() {
-        if let assetCollection = fetchAssetCollectionForAlbum() {
-            self.assetCollection = assetCollection
-            return
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { _ in }
         }
-
     }
     
-    func checkStatus( completion: @escaping ((Bool) -> ()) ) {
-        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
-            self.createAlbum()
+    func saveImageToAlbum(_ image: UIImage, completion: @escaping ((Bool) -> ())) {
+
+        if let collection = fetchAssetCollection() {
+            self.saveImageToAssetCollection(image, collection: collection) { (success) in
+                completion(success)
+            }
         } else {
-            PHPhotoLibrary.requestAuthorization { (status) in
-                if status == .authorized {
-                    print("Album created.")
-                    self.createAlbum()
-                    completion(true)
-                } else {
+            // Album does not exist, create it and attempt to save the image
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: self.albumName)
+            }, completionHandler: { (success: Bool, error: Error?) in
+                if let err = error {
+                    print("Could not create the album. Error: \(err)")
                     completion(false)
+                    return
                 }
-            }
+
+                if let newCollection = self.fetchAssetCollection() {
+                    self.saveImageToAssetCollection(image, collection: newCollection) { (success) in
+                        completion(success)
+                    }
+                }
+            })
         }
-    }
-    
-    /// Save the image to the library
-    /// - Parameters:
-    ///   - image: The image that will be saved
-    ///   - completion: Completion with given Bool and Error
-    /// - Returns: nil
-    func save(_ image: UIImage, completion: @escaping ((Bool, Error?) -> ())) {
-        if assetCollection == nil {
-            print("PhotoLibraryEngine: assetCollection is nil")
-            return
-        }
-        
-        PHPhotoLibrary.shared().performChanges({
-            let assetChangeRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
-            let assetPlaceHolder = assetChangeRequest.placeholderForCreatedAsset
-            let albumChangeRequest = PHAssetCollectionChangeRequest(for: self.assetCollection)
-            let enumeration: NSArray = [assetPlaceHolder!]
-            albumChangeRequest!.addAssets(enumeration)
-            
-        }, completionHandler: { result, error in
-            completion(result, error)
-        })
     }
 
-    private func createAlbum() {
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: self.albumName)
-        }) { success, error in
-            if success {
-                self.assetCollection = self.fetchAssetCollectionForAlbum()
-            } else {
-                print("error \(String(describing: error))")
-            }
-        }
+    private func fetchAssetCollection() -> PHAssetCollection? {
+
+        let fetchOption = PHFetchOptions()
+        fetchOption.predicate = NSPredicate(format: "title == '" + self.albumName + "'")
+
+        let fetchResult = PHAssetCollection.fetchAssetCollections(
+            with: PHAssetCollectionType.album,
+            subtype: PHAssetCollectionSubtype.albumRegular,
+            options: fetchOption)
+
+        return fetchResult.firstObject
     }
-    
-    private func fetchAssetCollectionForAlbum() -> PHAssetCollection? {
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.predicate = NSPredicate(format: "title = %@", albumName)
-        let collection = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
-        
-        if let _: AnyObject = collection.firstObject {
-            return collection.firstObject
-        }
-        return nil
+
+    private func saveImageToAssetCollection(_ image: UIImage, collection: PHAssetCollection, completion: @escaping ((Bool) -> ())) {
+
+        PHPhotoLibrary.shared().performChanges({
+
+            let creationRequest = PHAssetCreationRequest.creationRequestForAsset(from: image)
+            if let request = PHAssetCollectionChangeRequest(for: collection),
+                let placeHolder = creationRequest.placeholderForCreatedAsset {
+                request.addAssets([placeHolder] as NSFastEnumeration)
+            }
+        }, completionHandler: { (success: Bool, error: Error?) in
+            if let err = error {
+                print("Could not save the image. Error: \(err)")
+            }
+            completion(success)
+        })
     }
 }

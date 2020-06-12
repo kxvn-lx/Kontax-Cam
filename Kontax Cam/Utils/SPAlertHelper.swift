@@ -13,6 +13,7 @@ import UIKit
 struct SPAlertHelper {
     
     private var spAlert: SPAlertView!
+    private let duration: Double = 0.5
     
     static var shared = SPAlertHelper()
     private init() { }
@@ -31,7 +32,6 @@ struct SPAlertHelper {
             spAlert = SPAlertView(title: title, message: message, image: image)
         }
         
-        spAlert.duration = 0.5
         spAlert.present()
     }
     
@@ -44,7 +44,6 @@ struct SPAlertHelper {
     mutating func present(title: String, message: String? = nil, preset: SPAlertPreset) {
         if spAlert != nil { spAlert.dismiss() }
         spAlert = SPAlertView(title: title, message: message, preset: preset)
-        spAlert.duration = 0.5
         
         spAlert.present()
     }

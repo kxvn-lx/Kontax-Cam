@@ -131,7 +131,7 @@ class CameraActionViewController: UIViewController {
 
 extension CameraActionViewController {
     @objc private func actionButtonsTapped(sender: UIButton) {
-        TapticHelper.shared.lightTaptic()
+        TapticHelper.shared.mediumTaptic()
         
         switch sender.tag {
             // Flash
@@ -197,7 +197,7 @@ extension CameraActionViewController {
     @objc private func labButtonTapped() {
         self.cameraManager.stopCaptureSession()
         if let parent = self.parent {
-            TapticHelper.shared.lightTaptic()
+            TapticHelper.shared.mediumTaptic()
             let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
             
             let navController = UINavigationController(rootViewController: vc)

@@ -61,7 +61,7 @@ class LabCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.lightTaptic()
+        TapticHelper.shared.mediumTaptic()
         self.selectedImageIndex = indexPath.row
         self.presentPhotoDisplayVC(indexPath: indexPath)
     }

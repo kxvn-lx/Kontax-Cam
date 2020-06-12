@@ -67,7 +67,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.lightTaptic()
+        TapticHelper.shared.mediumTaptic()
         
         delegate?.filterListDidSelectFilter(withFilterName: filters[indexPath.section][indexPath.row])
         

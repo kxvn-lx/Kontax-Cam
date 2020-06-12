@@ -53,7 +53,7 @@ class FXCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.lightTaptic()
+        TapticHelper.shared.mediumTaptic()
         
         // Update UI
         let selectedCell = collectionView.cellForItem(at: indexPath) as! FXCollectionViewCell

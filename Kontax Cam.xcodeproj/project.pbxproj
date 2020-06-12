@@ -25,14 +25,13 @@
 		0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */; };
 		0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */; };
 		0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */; };
+		0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */; };
 		0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29A2476A7F000603F2C /* AppDelegate.swift */; };
 		0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29C2476A7F000603F2C /* SceneDelegate.swift */; };
 		0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29E2476A7F000603F2C /* CameraViewController.swift */; };
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
-		0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5290A7247AB40500BA0D57 /* QuickTableViewController */; };
-		0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */; };
 		0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; };
 		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
@@ -82,6 +81,7 @@
 		0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewController.swift; sourceTree = "<group>"; };
 		0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalNavigationController.swift; sourceTree = "<group>"; };
+		0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		0A44B2972476A7F000603F2C /* Kontax Cam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kontax Cam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A44B29A2476A7F000603F2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A44B29C2476A7F000603F2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +90,6 @@
 		0A44B2A32476A7F100603F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -116,7 +115,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */,
-				0A5290A8247AB40500BA0D57 /* QuickTableViewController in Frameworks */,
 				0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
 				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
@@ -254,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC54C9D248AAB5900D64D05 /* Appearance */,
-				0A5290AA247AB44600BA0D57 /* SettingsViewController.swift */,
+				0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -331,7 +329,6 @@
 				0A1D97BB2477B80D00E4078F /* CameraManager */,
 				0A1D97C02477BACE00E4078F /* SnapKit */,
 				0A1D97CF2477EFB900E4078F /* SPAlert */,
-				0A5290A7247AB40500BA0D57 /* QuickTableViewController */,
 				0A0F94CD247E501300E33AEC /* PanModal */,
 				0AEA622F24878522004B9313 /* DTPhotoViewerController */,
 			);
@@ -404,8 +401,8 @@
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
+				0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
-				0A5290AB247AB44600BA0D57 /* SettingsViewController.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
 				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
@@ -701,11 +698,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
-		};
-		0A5290A7247AB40500BA0D57 /* QuickTableViewController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A5290A6247AB40500BA0D57 /* XCRemoteSwiftPackageReference "QuickTableViewController" */;
-			productName = QuickTableViewController;
 		};
 		0AEA622F24878522004B9313 /* DTPhotoViewerController */ = {
 			isa = XCSwiftPackageProductDependency;

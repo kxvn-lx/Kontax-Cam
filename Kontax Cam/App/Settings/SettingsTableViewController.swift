@@ -1,40 +1,42 @@
 //
-//  SettingsViewController.swift
+//  SettingsTableViewController.swift
 //  Kontax Cam
 //
-//  Created by Kevin Laminto on 24/5/20.
+//  Created by Kevin Laminto on 12/6/20.
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import QuickTableViewController
-import PanModal
 
-class SettingsViewController: QuickTableViewController {
+class SettingsTableViewController: UITableViewController {
+    
+    private struct CellPath {
+        static let appearanceCell = IndexPath(row: 0, section: 0)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureNavigationBar(tintColor: .label, title: "Settings", preferredLargeTitle: false, removeSeparator: true)
-        setupUI()
         
-        // QuickTableViewController datasource
-        tableContents = [
-            Section(title: nil, rows: [
-                NavigationRow(text: "Appearance", detailText: .value1(""), icon: nil, action: { _ in self.appearanceCellTapped() }),
-            ]),
-        ]
+        setupUI()
     }
     
-    // MARK: - Tableview delegate
+    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      super.tableView(tableView, didSelectRowAt: indexPath)
-      tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath {
+        case CellPath.appearanceCell: self.appearanceCellTapped()
+        default: break
+        }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = .clear
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case CellPath.appearanceCell: cell.detailTextLabel?.text = getAppearanceValue()
+        default: break
+        }
     }
     
     private func setupUI() {
@@ -45,7 +47,11 @@ class SettingsViewController: QuickTableViewController {
         self.tableView.backgroundColor = .systemBackground
     }
     
-    // MARK: - Cell value methods
+    @objc private func closeTapped() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     private func getAppearanceValue() -> String {
         let appearanceValue = UIUserInterfaceStyle(rawValue: UserDefaultsHelper.shared.getData(type: Int.self, forKey: .userAppearance) ?? 0)
         switch appearanceValue!.rawValue {
@@ -56,7 +62,18 @@ class SettingsViewController: QuickTableViewController {
         }
     }
     
-    // MARK: - onCellTapped functions
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        let cell = tableView.cellForRow(at: CellPath.appearanceCell)
+        cell?.detailTextLabel?.text = getAppearanceValue()
+    }
+    
+}
+
+extension SettingsTableViewController {
+    
+    // MARK: - onCellTapped event Listener
     private func appearanceCellTapped() {
         let vc = AppearanceTableViewController()
         
@@ -64,10 +81,5 @@ class SettingsViewController: QuickTableViewController {
         navController.modalDestination = .appearance
         
         self.presentPanModal(navController)
-    }
-    
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
     }
 }

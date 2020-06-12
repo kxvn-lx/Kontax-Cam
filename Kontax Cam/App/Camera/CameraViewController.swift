@@ -111,7 +111,7 @@ class CameraViewController: UIViewController {
     }
     
     @objc private func settingButtonTapped() {
-        let vc = self.storyboard!.instantiateViewController(withIdentifier: "settingsVC") as! SettingsViewController
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: "settingsVC") as! SettingsTableViewController
         
         let navController = UINavigationController(rootViewController: vc)
         self.present(navController, animated: true, completion: nil)

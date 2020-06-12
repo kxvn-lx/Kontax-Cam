@@ -130,17 +130,12 @@ extension UIViewController {
 // MARK: - UIImage
 extension UIImage {
     
-    func getFileSizeInfo(allowedUnits: ByteCountFormatter.Units = .useMB,
-                         countStyle: ByteCountFormatter.CountStyle = .file) -> String? {
-        // https://developer.apple.com/documentation/foundation/bytecountformatter
+    func getFileSizeInfo(allowedUnits: ByteCountFormatter.Units = .useMB, countStyle: ByteCountFormatter.CountStyle = .file) -> String? {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = allowedUnits
         formatter.countStyle = countStyle
-        return getSizeInfo(formatter: formatter)
-    }
-    
-    private func getSizeInfo(formatter: ByteCountFormatter, compressionQuality: CGFloat = 1.0) -> String? {
-        guard let imageData = jpegData(compressionQuality: compressionQuality) else { return nil }
+        
+        guard let imageData = jpegData(compressionQuality: 1.0) else { return nil }
         return formatter.string(fromByteCount: Int64(imageData.count))
     }
 }
@@ -149,10 +144,6 @@ extension UIImage {
 extension String {
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
-    }
-    
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
     }
 }
 
@@ -168,5 +159,3 @@ extension UIView {
         return window.safeAreaInsets
     }
 }
-
-

@@ -61,14 +61,14 @@ class ShutterButtonViewController: UIViewController {
                     AlertHelper.shared.presentDefault(title: "Error", message: "Looks like there was an error capturing the image. Please try again or if problem persist, contact kevin.laminto@gmail.com", to: self)
                     
                 case .success(let content):
+                    
                     if let image = content.asImage {
-
                         guard let editedImage = FilterEngine.shared.process(originalImage: image) else {
                             TapticHelper.shared.errorTaptic()
                             return
                         }
-                    
-                        guard let data = editedImage.jpegData(compressionQuality: 0.4) else {
+
+                        guard let data = editedImage.jpegData(compressionQuality: 1.0) else {
                             TapticHelper.shared.errorTaptic()
                             return
                         }

@@ -54,7 +54,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         
         self.scrollView.showsHorizontalScrollIndicator = false
         
-        registerClassPhotoViewer(PhotoDisplayCollectionViewCell.self)
         self.backgroundColor = .systemBackground
         
         setupUI()

@@ -16,6 +16,7 @@ enum DustName: String, CaseIterable {
 class DustImageFilter: ImageFilterProtocol {
 
     private let selectedDustFilter: DustName = .dust1
+    private let dustStrength: Float = 1.0
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         
@@ -28,15 +29,15 @@ class DustImageFilter: ImageFilterProtocol {
             editedImage = outputImage.remakeOrientation(fromImage: image)
         }
         
-        let overlayBlend = OverlayBlend()
+        let lightenBlend = LightenBlend()
         let opacityBlend = OpacityAdjustment()
-        opacityBlend.opacity = 1.0
+        opacityBlend.opacity = dustStrength
         
         let imageInput = PictureInput(image: image)
         let dustInput = PictureInput(image: dustImage)
         
-        imageInput --> overlayBlend
-        dustInput --> opacityBlend --> overlayBlend --> output
+        imageInput --> lightenBlend
+        dustInput --> opacityBlend --> lightenBlend --> output
         
         imageInput.processImage(synchronously: true)
         dustInput.processImage(synchronously: true)

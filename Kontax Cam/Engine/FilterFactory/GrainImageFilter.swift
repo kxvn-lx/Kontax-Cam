@@ -17,9 +17,6 @@ class GrainImageFilter: ImageFilterProtocol {
     
     private let selectedGrainFilter: GrainName = .grain1
     
-    /// Proccess the image with the selected grain filter
-    /// - Parameter image: The image that will be overlayed with grain
-    /// - Returns: The image either exist or not
     func process(imageToEdit image: UIImage) -> UIImage? {
         guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }
 

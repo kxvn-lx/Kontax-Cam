@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 protocol ImageFilterProtocol {
+    
+    /// Proccess the image with the selected grain filter
+    /// - Parameter image: The image that will be overlayed with grain
+    /// - Returns: The image either exist or not
     func process(imageToEdit image: UIImage) -> UIImage?
 }
 

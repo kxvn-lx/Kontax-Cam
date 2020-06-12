@@ -27,7 +27,7 @@ class FilterEngine {
         // Iterate through all the selected effects
         for filter in allowedFilters {
             let filterObj = FilterFactory.shared.getFilter(ofFilterType: filter)
-            guard let editedImage = filterObj.process(imageToEdit: image) else { fatalError("Some of the filters are not working.") }
+            guard let editedImage = filterObj.process(imageToEdit: image) else { fatalError("\(filter) filter is not working.") }
             image = editedImage
         }
         return image

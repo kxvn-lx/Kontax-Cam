@@ -10,11 +10,11 @@ import UIKit
 import SnapKit
 import MobileCoreServices
 
-enum TouchEvent {
-    case begin, end
-}
-
 class ShutterButtonViewController: UIViewController {
+    
+    private enum TouchEvent {
+        case begin, end
+    }
     
     private let animationDuration: TimeInterval = 0.1
     private let color = UIColor.label

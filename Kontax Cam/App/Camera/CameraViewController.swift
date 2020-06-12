@@ -20,6 +20,7 @@ class CameraViewController: UIViewController {
         btn.tintColor = .label
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.cornerRadius = 5
+        btn.layer.cornerCurve = .continuous
         btn.addBlurEffect(style: .regular, cornerRadius: 5)
         
         return btn
@@ -64,9 +65,9 @@ class CameraViewController: UIViewController {
         cameraActionViewHeight = (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
         
         // Camera view
-        // TODO: Replace with logo
         cameraView.backgroundColor = UIColor.systemGray6
-        cameraView.layer.cornerRadius = 10
+        cameraView.layer.cornerRadius = 20
+        cameraView.layer.cornerCurve = .continuous
         cameraView.clipsToBounds = true
         
         // Camera Action View

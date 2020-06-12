@@ -14,7 +14,11 @@ class FilterEngine {
     var allowedFilters: [FilterType] = []
     
     static let shared = FilterEngine()
-    private init() { }
+    private init() {
+        guard let filtersData = UserDefaultsHelper.shared.getData(type: Any.self, forKey: .userFxList) as? NSData else { return }
+        guard let allowedFilters = try? PropertyListDecoder().decode([FilterType].self, from: filtersData as Data) else { return }
+        self.allowedFilters = allowedFilters
+    }
     
     func process(originalImage: UIImage) -> UIImage? {
         var image = originalImage

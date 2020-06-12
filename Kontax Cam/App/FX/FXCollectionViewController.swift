@@ -69,6 +69,9 @@ class FXCollectionViewController: UICollectionViewController {
         }
         
         FilterEngine.shared.allowedFilters.sort(by: { $0.rawValue < $1.rawValue })
+        
+        // Save the selection to UserDefaults
+        UserDefaultsHelper.shared.setData(value: try? PropertyListEncoder().encode(FilterEngine.shared.allowedFilters), key: .userFxList)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

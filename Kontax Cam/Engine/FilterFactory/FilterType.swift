@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FilterType: Int, CaseIterable {
+enum FilterType: Int, CaseIterable, Codable {
     case lut, grain, dust
 }
 

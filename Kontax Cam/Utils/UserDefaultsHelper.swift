@@ -12,7 +12,9 @@ struct UserDefaultsHelper {
     
     enum UserDefaultsKeys: String, CaseIterable {
         case userAppearance
-    }
+        case userFxList
+    } 
+    
     private let defaults = UserDefaults.standard
     
     static let shared = UserDefaultsHelper()

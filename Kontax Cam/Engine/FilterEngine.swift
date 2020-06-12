@@ -9,33 +9,11 @@
 import Foundation
 import UIKit
 
-enum FilterType: Int, Equatable, CustomStringConvertible, CaseIterable {
-    case lut, grain
-    
-    var description: String {
-      get {
-        switch self {
-        case .lut: return "LUT"
-        case .grain: return "Grain"
-        }
-      }
-    }
-    
-    static func < (rhs: FilterType, lhs: FilterType) -> Bool {
-        return rhs.rawValue < lhs.rawValue
-    }
-    
-    static func > (rhs: FilterType, lhs: FilterType) -> Bool {
-        return rhs.rawValue > lhs.rawValue
-    }
-}
-
 class FilterEngine {
     
     var allowedFilters: [FilterType] = []
     
     static let shared = FilterEngine()
-    
     private init() { }
     
     func process(originalImage: UIImage) -> UIImage? {

@@ -1,28 +1,26 @@
 //
-//  GrainImageFilter.swift
+//  DustImageFilter.swift
 //  Kontax Cam
 //
-//  Created by Kevin Laminto on 27/5/20.
+//  Created by Kevin Laminto on 13/6/20.
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
 import GPUImage
 import UIKit
 
-enum GrainName: String, CaseIterable {
-    case grain1
+enum DustName: String, CaseIterable {
+    case dust1
 }
 
-class GrainImageFilter: ImageFilterProtocol {
-    
-    private let selectedGrainFilter: GrainName = .grain1
-    
-    /// Proccess the image with the selected grain filter
-    /// - Parameter image: The image that will be overlayed with grain
-    /// - Returns: The image either exist or not
-    func process(imageToEdit image: UIImage) -> UIImage? {
-        guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }
+class DustImageFilter: ImageFilterProtocol {
 
+    private let selectedDustFilter: DustName = .dust1
+    
+    func process(imageToEdit image: UIImage) -> UIImage? {
+        
+        guard let dustImage = UIImage(named: selectedDustFilter.rawValue) else { fatalError("Invalid name!") }
+        
         var editedImage: UIImage?
         let output = PictureOutput()
         output.encodedImageFormat = .jpeg
@@ -35,13 +33,13 @@ class GrainImageFilter: ImageFilterProtocol {
         opacityBlend.opacity = 1.0
         
         let imageInput = PictureInput(image: image)
-        let grainInput = PictureInput(image: grainImage)
+        let dustInput = PictureInput(image: dustImage)
         
         imageInput --> overlayBlend
-        grainInput --> opacityBlend --> overlayBlend --> output
+        dustInput --> opacityBlend --> overlayBlend --> output
         
         imageInput.processImage(synchronously: true)
-        grainInput.processImage(synchronously: true)
+        dustInput.processImage(synchronously: true)
         
         return editedImage
     }

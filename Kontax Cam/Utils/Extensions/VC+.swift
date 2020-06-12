@@ -138,6 +138,10 @@ extension UIImage {
         guard let imageData = jpegData(compressionQuality: 1.0) else { return nil }
         return formatter.string(fromByteCount: Int64(imageData.count))
     }
+    
+    func remakeOrientation(fromImage image: UIImage, withScale scale: CGFloat = 1.0) -> UIImage {
+        return UIImage(cgImage: self.cgImage!, scale: scale, orientation: image.imageOrientation)
+    }
 }
 
 // MARK: - String

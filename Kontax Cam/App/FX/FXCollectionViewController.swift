@@ -14,8 +14,7 @@ private let headerIdentifier = "fxHeader"
 
 class FXCollectionViewController: UICollectionViewController {
     
-    private let fxs: [FilterType] = [.grain]
-    private var enabledFxs: [FilterType] = []
+    private let fxs: [FilterType] = [.grain, .dust]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +27,6 @@ class FXCollectionViewController: UICollectionViewController {
         collectionView.register(ModalHeaderPresentable.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: headerIdentifier)
-        
-        enabledFxs = FilterEngine.shared.allowedFilters
     }
     
     // MARK: UICollectionViewDataSource
@@ -48,7 +45,7 @@ class FXCollectionViewController: UICollectionViewController {
         
         cell.titleLabel.text = currentFx.description
         
-        if enabledFxs.contains(currentFx) {
+        if FilterEngine.shared.allowedFilters.contains(currentFx) {
             cell.toggleSelected()
         }
         
@@ -66,13 +63,12 @@ class FXCollectionViewController: UICollectionViewController {
         let selectedFx = fxs[indexPath.row]
         
         if selectedCell.isFxSelected {
-            enabledFxs.append(selectedFx)
+            FilterEngine.shared.allowedFilters.append(selectedFx)
         } else {
-            enabledFxs.remove(at: enabledFxs.firstIndex(of: selectedFx)!)
+            FilterEngine.shared.allowedFilters.remove(at: FilterEngine.shared.allowedFilters.firstIndex(of: selectedFx)!)
         }
         
-        enabledFxs.sort(by: { $0.rawValue < $1.rawValue })
-        FilterEngine.shared.allowedFilters = enabledFxs
+        FilterEngine.shared.allowedFilters.sort(by: { $0.rawValue < $1.rawValue })
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

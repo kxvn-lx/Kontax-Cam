@@ -6,10 +6,9 @@
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class LUTImageFilter: ImageFilter {
+class LUTImageFilter: ImageFilterProtocol {
     
     static var selectedLUTFilter = FilterName.a1
     

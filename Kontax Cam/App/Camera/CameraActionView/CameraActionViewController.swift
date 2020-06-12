@@ -188,7 +188,7 @@ extension CameraActionViewController {
                 
                 parent.rotView.isHidden = !parent.rotView.isHidden
                 let title = !parent.rotView.isHidden ? "Grid enabled" : "Grid disabled"
-                SPAlertHelper.shared.present(title: title, message: nil, image: IconHelper.shared.getIconName(currentIcon: (sender.imageView?.image?.accessibilityIdentifier)!, iconImageArray: actionButtonsIconName[sender.tag]).0)
+                SPAlertHelper.shared.present(title: title, message: nil)
             
             default: print("No button with ID is found")
         }

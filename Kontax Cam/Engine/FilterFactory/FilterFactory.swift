@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ImageFilter {
+protocol ImageFilterProtocol {
     func process(imageToEdit image: UIImage) -> UIImage?
 }
 
@@ -23,11 +23,12 @@ class FilterFactory {
     ///   - filterType: The type of the filter
     ///   - filterName: The image name of the ilter as specified in assets folder
     /// - Returns: The ImageFilter ready to be used
-    func getFilter(ofFilterType filterType: FilterType) -> ImageFilter {
+    func getFilter(ofFilterType filterType: FilterType) -> ImageFilterProtocol {
         
         switch filterType {
         case .lut: return LUTImageFilter()
         case .grain: return GrainImageFilter()
+        case .dust: return DustImageFilter()
         }
     }
 }

@@ -14,12 +14,14 @@ class EmptyView: UIView {
     
     private let backgroundView: UIImageView = {
         let v = UIImageView()
+        v.alpha = 0.5
         v.image = UIImage(named: "lab-placeholder")!
         v.contentMode = .scaleToFill
         return v
     }()
     private let iconImageView: UIImageView = {
         let v = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        v.image = IconHelper.shared.getIconImage(iconName: "plus.circle")
         v.translatesAutoresizingMaskIntoConstraints = false
         v.tintColor = .label
         return v
@@ -56,7 +58,6 @@ class EmptyView: UIView {
     // MARK: - Setup View
     private func setupUI() {
         self.addSubview(backgroundView)
-        iconImageView.image = IconHelper.shared.getIconImage(iconName: "plus.circle")
         
         // setup stackview
         mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .equalSpacing)
@@ -64,7 +65,7 @@ class EmptyView: UIView {
         mSV.addArrangedSubview(titleLabel)
         mSV.addArrangedSubview(bodyLabel)
         
-        backgroundView.addSubview(mSV)
+        self.addSubview(mSV)
     }
     
     private func setupConstraint() {

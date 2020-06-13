@@ -14,7 +14,7 @@ private let headerIdentifier = "fxHeader"
 
 class FXCollectionViewController: UICollectionViewController {
     
-    private let fxs: [FilterType] = [.grain, .dust]
+    private let fxs: [FilterType] = FilterType.allCases.filter({ $0.rawValue != 0 })
     
     override func viewDidLoad() {
         super.viewDidLoad()

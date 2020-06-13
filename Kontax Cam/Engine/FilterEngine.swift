@@ -20,6 +20,10 @@ class FilterEngine {
         self.allowedFilters = allowedFilters
     }
     
+    
+    /// Process the image with all the allowed filters
+    /// - Parameter originalImage: The original image
+    /// - Returns: The edited image
     func process(originalImage: UIImage) -> UIImage? {
         var image = originalImage
         

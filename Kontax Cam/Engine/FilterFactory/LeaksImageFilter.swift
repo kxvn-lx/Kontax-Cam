@@ -1,26 +1,26 @@
 //
-//  DustImageFilter.swift
+//  LeaksImageFilter.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 13/6/20.
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import GPUImage
 import UIKit
+import GPUImage
 
-enum DustName: String, CaseIterable {
-    case dust1
+enum LeaksName: String, CaseIterable {
+    case leaks1
 }
 
-class DustImageFilter: ImageFilterProtocol {
-
-    private let selectedDustFilter: DustName = .dust1
+class LeaksImageFilter: ImageFilterProtocol {
+    
+    private let selectedLeaksFilter: LeaksName = .leaks1
     private let strength: Float = 1.0
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         
-        guard let dustImage = UIImage(named: selectedDustFilter.rawValue) else { fatalError("Invalid name!") }
+        guard let leaksImage = UIImage(named: selectedLeaksFilter.rawValue) else { fatalError("Invalid name!") }
         
         var editedImage: UIImage?
         let output = PictureOutput()
@@ -29,18 +29,18 @@ class DustImageFilter: ImageFilterProtocol {
             editedImage = outputImage.remakeOrientation(fromImage: image)
         }
         
-        let blendMode = LightenBlend()
+        let blendMode = ScreenBlend()
         let opacityBlend = OpacityAdjustment()
         opacityBlend.opacity = strength
         
         let imageInput = PictureInput(image: image)
-        let dustInput = PictureInput(image: dustImage)
+        let leaksInput = PictureInput(image: leaksImage)
         
         imageInput --> blendMode
-        dustInput --> opacityBlend --> blendMode --> output
+        leaksInput --> opacityBlend --> blendMode --> output
         
         imageInput.processImage(synchronously: true)
-        dustInput.processImage(synchronously: true)
+        leaksInput.processImage(synchronously: true)
         
         return editedImage
     }

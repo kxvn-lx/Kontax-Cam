@@ -33,6 +33,7 @@ class FilterFactory {
         case .lut: return LUTImageFilter()
         case .grain: return GrainImageFilter()
         case .dust: return DustImageFilter()
+        case .leaks: return LeaksImageFilter()
         }
     }
 }

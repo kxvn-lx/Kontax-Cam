@@ -29,7 +29,14 @@ struct IconHelper {
     /// - Parameter iconName: The icon name in string format
     /// - Returns: The icon in UIImage
     func getIconImage(iconName: String) -> UIImage {
-        return (UIImage(systemName: iconName)?.withRenderingMode(.alwaysTemplate))!
+        if let systemImage = UIImage(systemName: iconName) {
+            return systemImage.withRenderingMode(.alwaysTemplate)
+        } else if let customImage = UIImage(named: iconName) {
+            return customImage
+        } else {
+            fatalError("Unable to get image")
+        }
+        
     }
     
     

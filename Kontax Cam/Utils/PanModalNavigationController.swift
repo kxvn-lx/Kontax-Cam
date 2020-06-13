@@ -42,7 +42,7 @@ extension PanModalNavigationController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return (topViewController as? PanModalPresentable)?.panScrollable
     }
-
+    
     var longFormHeight: PanModalHeight {
         switch modalDestination {
         case .filters, .fx: return .maxHeight

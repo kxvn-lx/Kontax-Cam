@@ -19,7 +19,7 @@ class CameraActionViewController: UIViewController {
         ["", "timer"],
         ["", "arrow.2.circlepath"],
         ["", "fx"],
-        ["", "paintbrush"],
+        ["", "filters.icon"],
         ["", "grid"]
         
     ]
@@ -119,6 +119,7 @@ class CameraActionViewController: UIViewController {
         for buttonIconArray in actionButtonsIconName {
             let btn = UIButton()
             btn.setImage(IconHelper.shared.getIconName(currentIcon: nil, iconImageArray: buttonIconArray).0, for: .normal)
+            btn.imageView?.contentMode = .scaleAspectFit
             btn.addTarget(self, action: #selector(actionButtonsTapped(sender:)), for: .touchUpInside)
             btn.tag = buttonTag
             buttonTag += 1

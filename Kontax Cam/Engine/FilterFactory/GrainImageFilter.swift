@@ -16,7 +16,7 @@ enum GrainName: String, CaseIterable {
 class GrainImageFilter: ImageFilterProtocol {
     
     private let selectedGrainFilter: GrainName = .grain1
-    private let strength: FLoat = 1.0
+    private let strength: Float = 1.0
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }
@@ -28,7 +28,7 @@ class GrainImageFilter: ImageFilterProtocol {
             editedImage = outputImage.remakeOrientation(fromImage: image)
         }
         
-        let blendMode = OverlayBlend()
+        let blendMode = ScreenBlend()
         let opacityBlend = OpacityAdjustment()
         opacityBlend.opacity = strength
         

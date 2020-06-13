@@ -29,7 +29,7 @@ class DustImageFilter: ImageFilterProtocol {
             editedImage = outputImage.remakeOrientation(fromImage: image)
         }
         
-        let blendMode = LightenBlend()
+        let blendMode = ScreenBlend()
         let opacityBlend = OpacityAdjustment()
         opacityBlend.opacity = strength
         

@@ -59,6 +59,7 @@ class LabCollectionViewController: UICollectionViewController {
             self.images = images
             images.count == 0 ? self.setEmptyView() : self.removeEmptyView()
             self.collectionView.reloadData()
+            self.toggleElements()
         }
         
         setupView()
@@ -78,12 +79,6 @@ class LabCollectionViewController: UICollectionViewController {
             make.width.equalTo(self.view.frame.width * 0.8)
             make.centerX.equalToSuperview()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.toggleElements()
     }
     
     // MARK: - UICollectionViewDataSource

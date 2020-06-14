@@ -14,22 +14,25 @@ private let reuseIdentifier = "labCell"
 class LabCollectionViewController: UICollectionViewController {
     
     private var isSelecting = false
+    private var imagesIndexToDelete: [IndexPath] = []
     
     private var images: [UIImage] = []
     private var selectedImageIndex: Int = 0
     private let photoLibraryEngine = PhotoLibraryEngine()
     private let selectButton: UIButton = {
         let v = UIButton()
-        v.setImage(IconHelper.shared.getIconImage(iconName: "square.and.pencil"), for: .normal)
+        v.setTitle("Select", for: .normal)
         v.titleLabel?.numberOfLines = 0
-        v.tintColor = .label
+        v.setTitleColor(.label, for: .normal)
         return v
     }()
     private let fabDeleteButton: UIButton = {
         let v = UIButton()
+        v.isEnabled = false
         v.setImage(IconHelper.shared.getIconImage(iconName: "trash"), for: .normal)
         v.tintColor = .white
         v.backgroundColor = .systemRed
+        v.alpha = 0.25
         v.isHidden = true
         return v
     }()
@@ -54,20 +57,30 @@ class LabCollectionViewController: UICollectionViewController {
         // Fetch all images
         images = fetchData()
         
+        setupView()
+        setupConstraint()
+
+    }
+    
+    private func setupView() {
         // Setup FABDeleteButton
         fabDeleteButton.addTarget(self, action: #selector(confirmDeleteTapped), for: .touchUpInside)
         self.view.addSubview(fabDeleteButton)
-        
+    }
+    
+    private func setupConstraint() {
         fabDeleteButton.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-(self.view.getSafeAreaInsets().bottom + 20))
-            make.width.height.equalTo(60)
+            make.height.equalTo(50)
+            make.width.equalTo(self.view.frame.width * 0.8)
             make.centerX.equalToSuperview()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        images.count == 0 ? setEmptyView() : removeEmptyView()
+        
+        self.toggleElements()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -90,8 +103,27 @@ class LabCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.mediumTaptic()
-        self.selectedImageIndex = indexPath.row
-        self.presentPhotoDisplayVC(indexPath: indexPath)
+        
+        if isSelecting {
+            let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
+            cell.toggleSelection()
+            
+            if self.imagesIndexToDelete.contains(indexPath) {
+                // User wished to undo tapping on cell
+                imagesIndexToDelete.remove(at: imagesIndexToDelete.firstIndex(of: indexPath)!)
+            } else {
+                // User tapped on cell
+                self.imagesIndexToDelete.append(indexPath)
+            }
+            
+            self.toggleElements()
+            
+            self.imagesIndexToDelete.sort(by: { $0.row > $1.row })
+
+        } else {
+            self.selectedImageIndex = indexPath.row
+            self.presentPhotoDisplayVC(indexPath: indexPath)
+        }
     }
 }
 
@@ -192,22 +224,24 @@ extension LabCollectionViewController {
         let duration: Double = 0.25
         
         isSelecting.toggle()
+        fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: isSelecting ? offPosition : onPosition)
         
         if isSelecting {
             selectButton.setTitle("Cancel", for: .normal)
-            selectButton.setImage(nil, for: .normal)
-            
             fabDeleteButton.isHidden = false
-            fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: offPosition)
             UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
                 self.fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: onPosition)
             }, completion: nil)
             
         } else {
-            selectButton.setTitle(nil, for: .normal)
-            selectButton.setImage(IconHelper.shared.getIconImage(iconName: "square.and.pencil"), for: .normal)
+            // Clear all pending queue of images to delete and deselect all active cell.
+            for indexPath in imagesIndexToDelete {
+                let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
+                cell.toggleSelection()
+            }
+            imagesIndexToDelete.removeAll()
             
-            fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: onPosition)
+            selectButton.setTitle("Select", for: .normal)
             UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
                 self.fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: offPosition)
             }, completion: { _ in self.fabDeleteButton.isHidden = true })
@@ -217,7 +251,50 @@ extension LabCollectionViewController {
     }
     
     @objc private func confirmDeleteTapped() {
-        print("confirm delete")
+        let message = imagesIndexToDelete.count > 1 ? "images" : "image"
+        let alert = UIAlertController(title: "Delete \(imagesIndexToDelete.count) \(message)?", message: nil, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            for indexPath in self.imagesIndexToDelete {
+                let cell = self.collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
+                cell.toggleSelection()
+                
+                DataEngine.shared.deleteData(imageToDelete: self.images[indexPath.row]) { (success) in
+                    if !success {
+                        if let child = self.presentedViewController {
+                            AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: child)
+                        }
+                        return
+                    }
+                }
+                
+                self.images.remove(at: indexPath.row)
+            }
+            
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: self.imagesIndexToDelete)
+            }) { (_) in
+                self.imagesIndexToDelete.removeAll()
+                self.selectButtonTapped()
+                
+                self.toggleElements()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func toggleElements() {
+        images.count == 0 ? setEmptyView() : removeEmptyView()
+        selectButton.isEnabled = images.count > 0
+        selectButton.alpha = selectButton.isEnabled ? 1 : 0.25
+        
+        fabDeleteButton.isEnabled = imagesIndexToDelete.count > 0
+        fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.25
     }
 }
 

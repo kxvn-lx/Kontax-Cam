@@ -19,8 +19,6 @@ class CameraViewController: UIViewController {
         btn.setImage(IconHelper.shared.getIconImage(iconName: "gear"), for: .normal)
         btn.tintColor = .label
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.layer.cornerRadius = 5
-        btn.layer.cornerCurve = .continuous
         btn.addBlurEffect(style: .regular, cornerRadius: 5)
         
         return btn
@@ -66,8 +64,6 @@ class CameraViewController: UIViewController {
         
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
-        cameraView.layer.cornerRadius = 20
-        cameraView.layer.cornerCurve = .continuous
         cameraView.clipsToBounds = true
         
         // Camera Action View

@@ -36,7 +36,7 @@ class OnboardingViewController: UIViewController {
         let v = UILabel()
         v.numberOfLines = 0
         v.textColor = .white
-        v.text = "Join the world of film instant camera —\nand start capturing today. "
+        v.text = "Join the world of film instant camera —\nand start capturing today."
         return v
     }()
     private let startButton: UIButton = {
@@ -62,6 +62,7 @@ class OnboardingViewController: UIViewController {
     }
 
     private func setupView() {
+        
         self.imageView.image = UIImage(named: imagesName[0])!
         
         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(onTransition), userInfo: nil, repeats: true)

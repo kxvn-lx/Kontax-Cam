@@ -19,7 +19,7 @@ class FXCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Effects", preferredLargeTitle: false, removeSeparator: true)
+        self.configureNavigationBar(tintColor: .label, title: "Textures", preferredLargeTitle: false, removeSeparator: true)
         
         // UICollectionView setup
         collectionView.collectionViewLayout = makeLayout()

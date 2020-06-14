@@ -196,9 +196,9 @@ extension CameraActionViewController {
     }
     
     @objc private func labButtonTapped() {
+        TapticHelper.shared.mediumTaptic()
         self.cameraManager.stopCaptureSession()
         if let parent = self.parent {
-            TapticHelper.shared.mediumTaptic()
             let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
             
             let navController = UINavigationController(rootViewController: vc)

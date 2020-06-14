@@ -55,11 +55,14 @@ class LabCollectionViewController: UICollectionViewController {
         self.collectionView.collectionViewLayout = makeLayout()
         
         // Fetch all images
-        images = fetchData()
+        fetchData { (images) in
+            self.images = images
+            images.count == 0 ? self.setEmptyView() : self.removeEmptyView()
+            self.collectionView.reloadData()
+        }
         
         setupView()
         setupConstraint()
-
     }
     
     private func setupView() {
@@ -119,7 +122,7 @@ class LabCollectionViewController: UICollectionViewController {
             self.toggleElements()
             
             self.imagesIndexToDelete.sort(by: { $0.row > $1.row })
-
+            
         } else {
             self.selectedImageIndex = indexPath.row
             self.presentPhotoDisplayVC(indexPath: indexPath)
@@ -186,19 +189,20 @@ extension LabCollectionViewController {
         
     }
     
-    private func fetchData() -> [UIImage] {
+    private func fetchData(completion: @escaping(([UIImage]) -> ())) {
         var images: [UIImage] = []
         let imageUrls = DataEngine.shared.readDataToURLs()
         
-        for url in imageUrls {
-            if let image = UIImage(contentsOfFile: url.path) {
-                let filename = url.path.replacingOccurrences(of: DataEngine.shared.getDocumentsDirectory().path, with: "", options: .literal, range: nil)
-                image.accessibilityIdentifier = filename
-                images.append(image)
+        DispatchQueue.main.async {
+            for url in imageUrls {
+                if let image = UIImage(contentsOfFile: url.path) {
+                    let filename = url.path.replacingOccurrences(of: DataEngine.shared.getDocumentsDirectory().path, with: "", options: .literal, range: nil)
+                    image.accessibilityIdentifier = filename
+                    images.append(image)
+                }
             }
+            completion(images)
         }
-        
-        return images
     }
     
     /// Setting a meaningful empty view when the collectionview is empty
@@ -355,7 +359,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 }
                 TapticHelper.shared.successTaptic()
             } else {
-
+                
                 DispatchQueue.main.async {
                     if let child = self.presentedViewController {
                         AlertHelper.shared.presentDefault(title: "Kontax Cam does not have permission.", message: "Looks like we could not save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.", to: child)

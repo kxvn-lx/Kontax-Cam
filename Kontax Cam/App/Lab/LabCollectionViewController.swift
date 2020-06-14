@@ -13,9 +13,26 @@ private let reuseIdentifier = "labCell"
 
 class LabCollectionViewController: UICollectionViewController {
     
+    private var isSelecting = false
+    
     private var images: [UIImage] = []
     private var selectedImageIndex: Int = 0
     private let photoLibraryEngine = PhotoLibraryEngine()
+    private let selectButton: UIButton = {
+        let v = UIButton()
+        v.setImage(IconHelper.shared.getIconImage(iconName: "square.and.pencil"), for: .normal)
+        v.titleLabel?.numberOfLines = 0
+        v.tintColor = .label
+        return v
+    }()
+    private let fabDeleteButton: UIButton = {
+        let v = UIButton()
+        v.setImage(IconHelper.shared.getIconImage(iconName: "trash"), for: .normal)
+        v.tintColor = .white
+        v.backgroundColor = .systemRed
+        v.isHidden = true
+        return v
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +45,30 @@ class LabCollectionViewController: UICollectionViewController {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         
+        selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: selectButton)
         
         //UICollectionView setup
         self.collectionView.collectionViewLayout = makeLayout()
         
         // Fetch all images
         images = fetchData()
+        
+        // Setup FABDeleteButton
+        fabDeleteButton.addTarget(self, action: #selector(confirmDeleteTapped), for: .touchUpInside)
+        self.view.addSubview(fabDeleteButton)
+        
+        fabDeleteButton.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-(self.view.getSafeAreaInsets().bottom + 20))
+            make.width.height.equalTo(60)
+            make.centerX.equalToSuperview()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         images.count == 0 ? setEmptyView() : removeEmptyView()
     }
-    
     
     // MARK: - UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -156,6 +184,40 @@ extension LabCollectionViewController {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    @objc private func selectButtonTapped() {
+        let onPosition: CGFloat = 0
+        let offPosition: CGFloat = 100
+        let duration: Double = 0.25
+        
+        isSelecting.toggle()
+        
+        if isSelecting {
+            selectButton.setTitle("Cancel", for: .normal)
+            selectButton.setImage(nil, for: .normal)
+            
+            fabDeleteButton.isHidden = false
+            fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: offPosition)
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+                self.fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: onPosition)
+            }, completion: nil)
+            
+        } else {
+            selectButton.setTitle(nil, for: .normal)
+            selectButton.setImage(IconHelper.shared.getIconImage(iconName: "square.and.pencil"), for: .normal)
+            
+            fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: onPosition)
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
+                self.fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: offPosition)
+            }, completion: { _ in self.fabDeleteButton.isHidden = true })
+        }
+        
+        selectButton.sizeToFit()
+    }
+    
+    @objc private func confirmDeleteTapped() {
+        print("confirm delete")
     }
 }
 

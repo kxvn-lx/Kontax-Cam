@@ -9,11 +9,7 @@
 import UIKit
 
 class FXCollectionViewCell: UICollectionViewCell {
- 
-    private struct Constants {
-        static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-    }
-    
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +25,7 @@ class FXCollectionViewCell: UICollectionViewCell {
         label.text = "OFF"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption2).pointSize, weight: .semibold)
+        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption2).pointSize, weight: .bold)
         label.textColor = .label
         label.numberOfLines = 1
         return label
@@ -44,12 +40,12 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 5
         
         toggleLabel.snp.makeConstraints { (make) in
-            make.left.bottom.equalToSuperview().inset(Constants.padding)
+            make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
         }
         
         titleLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(toggleLabel).offset(-15)
-            make.left.equalToSuperview().inset(Constants.padding)
+            make.left.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
         }
         
         updateStyle()

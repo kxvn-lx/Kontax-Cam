@@ -240,6 +240,7 @@ extension LabCollectionViewController {
                 cell.toggleSelection()
             }
             imagesIndexToDelete.removeAll()
+            toggleElements()
             
             selectButton.setTitle("Select", for: .normal)
             UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {

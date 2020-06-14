@@ -10,9 +10,18 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
     
+    private let imagesName: [String] = [
+        "onboarding1",
+        "onboarding2",
+        "onboarding3",
+        "onboarding4",
+        "onboarding5",
+        "onboarding6",
+        "onboarding7",
+    ]
+    
     private let imageView: UIImageView = {
        let v = UIImageView()
-        v.image = UIImage(named: "onboarding")!
         v.contentMode = .scaleAspectFill
         return v
     }()
@@ -39,7 +48,10 @@ class OnboardingViewController: UIViewController {
     }()
     private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)
     
+    private var timer = Timer()
+    private var photoCount = 0
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +62,10 @@ class OnboardingViewController: UIViewController {
     }
 
     private func setupView() {
+        self.imageView.image = UIImage(named: imagesName[0])!
+        
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(onTransition), userInfo: nil, repeats: true)
+        
         self.view.addSubview(imageView)
         self.view.addSubview(mSV)
         
@@ -88,6 +104,8 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc private func startButtonTapped() {
+        TapticHelper.shared.successTaptic()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "cameraVC")
         let navVC = UINavigationController(rootViewController: controller)
@@ -95,5 +113,19 @@ class OnboardingViewController: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         
         self.present(navVC, animated: true, completion: nil)
+        
+        UserDefaultsHelper.shared.setData(value: false, key: .userFirstLaunch)
+    }
+    
+    @objc private func onTransition() {
+        if photoCount < imagesName.count - 1 {
+            photoCount += 1
+        } else {
+            photoCount = 0
+        }
+
+        UIView.transition(with: self.imageView, duration: 2.0, options: .transitionCrossDissolve, animations: {
+            self.imageView.image = UIImage(named: self.imagesName[self.photoCount])
+        }, completion: nil)
     }
 }

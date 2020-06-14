@@ -28,8 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = UIWindow(windowScene: windowScene)
             
             window?.rootViewController = OnboardingViewController()
-            UserDefaultsHelper.shared.setData(value: false, key: .userFirstLaunch)
-            
             window?.makeKeyAndVisible()
         }
     }

@@ -10,7 +10,7 @@
         <!--Kontax Cam-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cameraVC" id="BYZ-38-t0r" customClass="CameraViewController" customModule="Kontax_Cam" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Kontax Cam" id="eIT-vw-h4D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

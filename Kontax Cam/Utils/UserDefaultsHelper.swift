@@ -13,6 +13,7 @@ struct UserDefaultsHelper {
     enum UserDefaultsKeys: String, CaseIterable {
         case userAppearance
         case userFxList
+        case userFirstLaunch
     } 
     
     private let defaults = UserDefaults.standard

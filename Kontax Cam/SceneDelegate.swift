@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
         if let currentTheme = UserDefaultsHelper.shared.getData(type: Int.self, forKey: .userAppearance) {
             if let theme = UIUserInterfaceStyle(rawValue: currentTheme) {
@@ -22,6 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     window.overrideUserInterfaceStyle = theme
                 }
             }
+        }
+        
+        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userFirstLaunch) ?? true {
+            self.window = UIWindow(windowScene: windowScene)
+            
+            window?.rootViewController = OnboardingViewController()
+            UserDefaultsHelper.shared.setData(value: false, key: .userFirstLaunch)
+            
+            window?.makeKeyAndVisible()
         }
     }
 

@@ -11,14 +11,16 @@ import DTPhotoViewerController
 
 private let reuseIdentifier = "labCell"
 
-class LabCollectionViewController: UICollectionViewController {
+class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
     private var isSelecting = false
     private var imagesIndexToDelete: [IndexPath] = []
     
+    private let photoLibraryEngine = PhotoLibraryEngine()
+    private let previewVC = PreviewViewController()
+    
     private var images: [UIImage] = []
     private var selectedImageIndex: Int = 0
-    private let photoLibraryEngine = PhotoLibraryEngine()
     private let selectButton: UIButton = {
         let v = UIButton()
         v.setTitle("Select", for: .normal)
@@ -55,15 +57,22 @@ class LabCollectionViewController: UICollectionViewController {
         self.collectionView.collectionViewLayout = makeLayout()
         
         // Fetch all images
-        fetchData { (images) in
-            self.images = images
-            images.count == 0 ? self.setEmptyView() : self.removeEmptyView()
-            self.collectionView.reloadData()
-            self.toggleElements()
+        fetchData { [weak self] (images) in
+            self?.images = images
+            images.count == 0 ? self?.setEmptyView() : self?.removeEmptyView()
+            self?.collectionView.reloadData()
+            self?.toggleElements()
         }
         
         setupView()
         setupConstraint()
+        
+        // Add long gesture recogniser
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.25
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionView?.addGestureRecognizer(longPressedGesture)
     }
     
     private func setupView() {
@@ -295,6 +304,32 @@ extension LabCollectionViewController {
         
         fabDeleteButton.isEnabled = imagesIndexToDelete.count > 0
         fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.25
+    }
+    
+    @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        
+        let p = gestureRecognizer.location(in: collectionView)
+        
+        switch gestureRecognizer.state {
+        case .began:
+            if let indexPath = collectionView?.indexPathForItem(at: p) {
+                TapticHelper.shared.lightTaptic()
+                let image = images[indexPath.row]
+
+                addVC(previewVC)
+                previewVC.imageView.image = image
+            }
+        case .ended:
+            previewVC.animateOut { [weak self] (_) in
+                self?.previewVC.removeVC()
+            }
+            
+        default: return
+        }
+
+        
+
+
     }
 }
 

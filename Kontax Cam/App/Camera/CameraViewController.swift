@@ -71,7 +71,7 @@ class CameraViewController: UIViewController {
         cameraActionView.shutterSize = (cameraActionViewHeight) * 0.5
         cameraActionView.cameraManager = cameraManager
         
-        add(cameraActionView)
+        addVC(cameraActionView)
         self.view.addSubview(cameraView)
         
         // RotView

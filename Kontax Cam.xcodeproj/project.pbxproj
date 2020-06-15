@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260762497179F009C26FB /* PreviewViewController.swift */; };
 		0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */; };
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A0260762497179F009C26FB /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */,
 				0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */,
 				0A9F7F14248200800088E053 /* EmptyView.swift */,
+				0A0260762497179F009C26FB /* PreviewViewController.swift */,
 			);
 			path = Lab;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */,
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,
+				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,

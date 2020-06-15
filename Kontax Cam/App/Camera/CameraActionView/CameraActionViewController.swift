@@ -98,7 +98,7 @@ class CameraActionViewController: UIViewController {
         // Shutter button
         shutterButton = ShutterButtonViewController()
         shutterButton.oriFrame = CGSize(width: shutterSize, height: shutterSize)
-        self.add(shutterButton)
+        self.addVC(shutterButton)
         
         // Lab button
         self.view.addSubview(labButton)

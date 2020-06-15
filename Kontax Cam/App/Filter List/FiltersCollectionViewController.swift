@@ -19,13 +19,13 @@ protocol FilterListDelegate: class {
 
 enum FilterName: String, CaseIterable {
     // A Collection
-    case a1, a2, a3
+    case a1, a2, a3, a4
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
     private let filters: [[FilterName]] = [
-        [.a1, .a2, .a3]
+        [.a1, .a2, .a3, .a4]
     ]
     
     weak var delegate: FilterListDelegate?

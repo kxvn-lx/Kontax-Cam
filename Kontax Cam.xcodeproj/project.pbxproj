@@ -10,6 +10,7 @@
 		0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260762497179F009C26FB /* PreviewViewController.swift */; };
 		0A02607C24972978009C26FB /* DatestampLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02607B24972978009C26FB /* DatestampLabel.swift */; };
 		0A02607E24972D13009C26FB /* Date Stamp Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A02607D24972D13009C26FB /* Date Stamp Bold.otf */; };
+		0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260812497334C009C26FB /* DatestampImageFilter.swift */; };
 		0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */; };
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
@@ -76,6 +77,7 @@
 		0A0260762497179F009C26FB /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		0A02607B24972978009C26FB /* DatestampLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatestampLabel.swift; sourceTree = "<group>"; };
 		0A02607D24972D13009C26FB /* Date Stamp Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Bold.otf"; sourceTree = "<group>"; };
+		0A0260812497334C009C26FB /* DatestampImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatestampImageFilter.swift; sourceTree = "<group>"; };
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */,
 				0AE49F172493C41C0057A729 /* DustImageFilter.swift */,
 				0A9C07622494E67B003A0D16 /* LeaksImageFilter.swift */,
+				0A0260812497334C009C26FB /* DatestampImageFilter.swift */,
 			);
 			path = FilterFactory;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
+				0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */,
 				0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */,

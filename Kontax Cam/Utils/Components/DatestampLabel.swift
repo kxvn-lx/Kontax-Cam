@@ -25,12 +25,15 @@ class DatestampLabel: UILabel {
         self.font = UIFont(name: "Date Stamp", size: UIFont.preferredFont(forTextStyle: .title3).pointSize)
         self.textColor = UIColor(displayP3Red: 249/255, green: 148/255, blue: 60/255, alpha: 1)
         self.text = getCurrentDate()
-        
+    }
+    
+    func applyGlow() {
         self.layer.shadowColor = UIColor.red.cgColor
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = .zero
         self.layer.masksToBounds = false
+        self.alpha = 0.5
     }
     
     private func getCurrentDate() -> String {

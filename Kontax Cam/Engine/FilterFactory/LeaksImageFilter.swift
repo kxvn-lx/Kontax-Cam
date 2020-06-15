@@ -9,11 +9,13 @@
 import UIKit
 import GPUImage
 
-enum LeaksName: String, CaseIterable {
-    case leaks1
-}
+
 
 class LeaksImageFilter: ImageFilterProtocol {
+    
+    private enum LeaksName: String, CaseIterable {
+        case leaks1
+    }
     
     private let selectedLeaksFilter: LeaksName = .leaks1
     private let strength: Float = 1.0

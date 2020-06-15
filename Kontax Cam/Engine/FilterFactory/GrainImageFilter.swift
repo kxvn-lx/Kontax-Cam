@@ -9,11 +9,13 @@
 import GPUImage
 import UIKit
 
-enum GrainName: String, CaseIterable {
-    case grain1
-}
 
 class GrainImageFilter: ImageFilterProtocol {
+    
+    private enum GrainName: String, CaseIterable {
+        case grain1
+    }
+
     
     private let selectedGrainFilter: GrainName = .grain1
     private let strength: Float = 1.0

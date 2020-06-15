@@ -38,6 +38,7 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.addSubview(toggleLabel)
         self.backgroundColor = .secondarySystemBackground
         self.layer.cornerRadius = 5
+        self.layer.cornerCurve = .continuous
         
         toggleLabel.snp.makeConstraints { (make) in
             make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))

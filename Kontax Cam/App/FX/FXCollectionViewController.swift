@@ -101,7 +101,7 @@ extension FXCollectionViewController {
         item.contentInsets = contentInsets
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.2),
+            widthDimension: .fractionalWidth(0.25),
             heightDimension: .fractionalWidth(0.25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         

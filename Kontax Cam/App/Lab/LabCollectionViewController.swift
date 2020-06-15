@@ -73,6 +73,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
+        
     }
     
     private func setupView() {
@@ -101,6 +102,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LabCollectionViewCell
+        
         let currentImage = images[indexPath.row]
         
         cell.photoView.image = currentImage

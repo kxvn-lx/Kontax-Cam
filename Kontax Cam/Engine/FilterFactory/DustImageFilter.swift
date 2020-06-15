@@ -9,11 +9,12 @@
 import GPUImage
 import UIKit
 
-enum DustName: String, CaseIterable {
-    case dust1
-}
 
 class DustImageFilter: ImageFilterProtocol {
+    
+    private enum DustName: String, CaseIterable {
+        case dust1
+    }
 
     private let selectedDustFilter: DustName = .dust1
     private let strength: Float = 1.0

@@ -11,7 +11,7 @@ import UIKit
 
 protocol ImageFilterProtocol {
     
-    /// Proccess the image with the selected grain filter
+    /// Proccess the image with the selected  filter
     /// - Parameter image: The image that will be overlayed with grain
     /// - Returns: The image either exist or not
     func process(imageToEdit image: UIImage) -> UIImage?
@@ -34,6 +34,7 @@ class FilterFactory {
         case .grain: return GrainImageFilter()
         case .dust: return DustImageFilter()
         case .leaks: return LeaksImageFilter()
+        case .datestamp: return DatestampImageFilter()
         }
     }
 }

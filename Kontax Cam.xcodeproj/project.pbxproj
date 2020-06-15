@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260762497179F009C26FB /* PreviewViewController.swift */; };
+		0A02607C24972978009C26FB /* DatestampLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02607B24972978009C26FB /* DatestampLabel.swift */; };
+		0A02607E24972D13009C26FB /* Date Stamp Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A02607D24972D13009C26FB /* Date Stamp Bold.otf */; };
 		0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */; };
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
@@ -72,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		0A0260762497179F009C26FB /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		0A02607B24972978009C26FB /* DatestampLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatestampLabel.swift; sourceTree = "<group>"; };
+		0A02607D24972D13009C26FB /* Date Stamp Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Bold.otf"; sourceTree = "<group>"; };
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
@@ -134,6 +138,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A026078249728C9009C26FB /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				0A02607D24972D13009C26FB /* Date Stamp Bold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		0A03EAFD2480AB84001D8006 /* FX */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +244,7 @@
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0A026078249728C9009C26FB /* Font */,
 				0A3DFB9E2493B5EF00765304 /* Extensions */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
 				0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */,
@@ -288,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
+				0A02607B24972978009C26FB /* DatestampLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -411,6 +425,7 @@
 			files = (
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
 				0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */,
+				0A02607E24972D13009C26FB /* Date Stamp Bold.otf in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +453,7 @@
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
 				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
+				0A02607C24972978009C26FB /* DatestampLabel.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
@@ -606,6 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = "Kontax Cam/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,6 +641,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = "Kontax Cam/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

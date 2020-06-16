@@ -15,20 +15,20 @@
 import UIKit
 import Foundation
 
-public class ImageCache {
+class ImageCache {
     
-    public static let publicCache = ImageCache()
+    static let shared = ImageCache()
     
     var placeholderImage = UIImage(systemName: "rectangle")!
     private let cachedImages = NSCache<NSURL, UIImage>()
     private var loadingResponses = [NSURL: [(UIImage?) -> Swift.Void]]()
     
-    public final func image(url: NSURL) -> UIImage? {
+    final func image(url: NSURL) -> UIImage? {
         return cachedImages.object(forKey: url)
     }
     /// - Tag: cache
     // Returns the cached image if available, otherwise asynchronously loads and caches it.
-    public final func load(url: NSURL, completion: @escaping (UIImage?) -> Swift.Void) {
+    final func load(url: NSURL, completion: @escaping (UIImage?) -> Swift.Void) {
         // Check for a cached image.
         if let cachedImage = image(url: url) {
             completion(cachedImage)

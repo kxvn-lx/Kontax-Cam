@@ -12,7 +12,6 @@ class Photo: Hashable {
     
     var image: UIImage!
     let url: URL!
-    let identifier = UUID()
     
     init(image: UIImage, url: URL) {
         self.image = image
@@ -20,10 +19,10 @@ class Photo: Hashable {
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(identifier)
+        hasher.combine(url)
     }
     
     static func == (lhs: Photo, rhs: Photo) -> Bool {
-        return lhs.identifier == rhs.identifier
+        return lhs.url == rhs.url
     }
 }

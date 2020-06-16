@@ -107,7 +107,10 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
         cell.photoView.image = imageObjects[indexPath.row].image
         ImageCache.shared.load(url: imageObjects[indexPath.row].url as NSURL) { (image) in
-            cell.photoView.image = image
+            DispatchQueue.main.async {
+                cell.photoView.image = image
+            }
+            
         }
         
         return cell

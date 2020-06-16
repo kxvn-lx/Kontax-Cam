@@ -7,19 +7,23 @@
 //
 
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-The ImageURLProtocol of the sample.
-*/
+ See LICENSE folder for this sample’s licensing information.
+ 
+ Abstract:
+ The ImageURLProtocol of the sample.
+ */
 import UIKit
 
 class ImageURLProtocol: URLProtocol {
-
-    var cancelledOrComplete: Bool = false
-    var block: DispatchWorkItem!
     
-    private static let queue = OS_dispatch_queue_serial(label: "com.kevinlaminto.imageLoaderURLProtocol")
+    private var cancelledOrComplete: Bool = false
+    private var block: DispatchWorkItem!
+    
+    private let queue = OS_dispatch_queue_serial(label: "com.kevinlaminto.imageLoaderURLProtocol")
+    
+    deinit {
+        print("deinit")
+    }
     
     override class func canInit(with request: URLRequest) -> Bool {
         return true
@@ -33,7 +37,7 @@ class ImageURLProtocol: URLProtocol {
         return false
     }
     
-    final override func startLoading() {
+    override func startLoading() {
         guard let reqURL = request.url, let urlClient = client else { return }
         
         block = DispatchWorkItem(block: {
@@ -47,11 +51,11 @@ class ImageURLProtocol: URLProtocol {
             self.cancelledOrComplete = true
         })
         
-        ImageURLProtocol.queue.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 500 * NSEC_PER_MSEC), execute: block)
+        queue.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 500 * NSEC_PER_MSEC), execute: block)
     }
     
-    final override func stopLoading() {
-        ImageURLProtocol.queue.async {
+    override func stopLoading() {
+        queue.async {
             if self.cancelledOrComplete == false, let cancelBlock = self.block {
                 cancelBlock.cancel()
                 self.cancelledOrComplete = true

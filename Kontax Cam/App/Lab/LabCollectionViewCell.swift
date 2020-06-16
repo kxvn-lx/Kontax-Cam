@@ -20,6 +20,8 @@ class LabCollectionViewCell: UICollectionViewCell {
     private let borderWidth: CGFloat = 5
     private let duration: Double = 0.0625
     
+    static let reuseIdentifier = "labCell"
+    
     override func awakeFromNib() {
         self.addSubview(photoView)
         

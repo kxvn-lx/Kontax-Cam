@@ -9,18 +9,10 @@
 import UIKit
 import DTPhotoViewerController
 
-private let reuseIdentifier = "labCell"
-fileprivate typealias PhotoDataSource = UICollectionViewDiffableDataSource<LabCollectionViewController.Section, Photo>
-
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
-    fileprivate enum Section {
-        case main
-    }
-    
-    private var dataSource: PhotoDataSource!
     private var imageObjects = [Photo]()
-    private let opQueue = DispatchQueue(label: "com.kevinlaminto.lazy.collection")
+    private let opQueue = DispatchQueue(label: "com.kevinlaminto.labCollectionVC.lazyLoading")
     
     private var isSelecting = false
     private var imagesIndexToDelete: [IndexPath] = []
@@ -103,7 +95,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LabCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseIdentifier, for: indexPath) as! LabCollectionViewCell
         
         cell.photoView.image = imageObjects[indexPath.row].image
         ImageCache.shared.load(url: imageObjects[indexPath.row].url as NSURL) { (image) in
@@ -308,7 +300,8 @@ extension LabCollectionViewController {
             }
         case .ended:
             previewVC.animateOut { [weak self] (_) in
-                self?.previewVC.removeVC()
+                guard let self = self else { return }
+                self.previewVC.removeVC()
             }
             
         default: return

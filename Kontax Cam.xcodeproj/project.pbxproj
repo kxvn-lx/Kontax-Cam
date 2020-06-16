@@ -253,7 +253,7 @@
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0ABD6D442497840A00C3CC4B /* CollectionViewDiffableDataSource */,
+				0ABD6D442497840A00C3CC4B /* Async Image Loading Helper */,
 				0A026078249728C9009C26FB /* Font */,
 				0A3DFB9E2493B5EF00765304 /* Extensions */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
@@ -324,13 +324,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0ABD6D442497840A00C3CC4B /* CollectionViewDiffableDataSource */ = {
+		0ABD6D442497840A00C3CC4B /* Async Image Loading Helper */ = {
 			isa = PBXGroup;
 			children = (
 				0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */,
 				0ABD6D3E249781C300C3CC4B /* ImageCache.swift */,
 			);
-			path = CollectionViewDiffableDataSource;
+			path = "Async Image Loading Helper";
 			sourceTree = "<group>";
 		};
 		0AC407C8247DE03700BB0270 /* FilterFactory */ = {

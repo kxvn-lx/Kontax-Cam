@@ -21,10 +21,6 @@ class ImageURLProtocol: URLProtocol {
     
     private let queue = OS_dispatch_queue_serial(label: "com.kevinlaminto.imageLoaderURLProtocol")
     
-    deinit {
-        print("deinit")
-    }
-    
     override class func canInit(with request: URLRequest) -> Bool {
         return true
     }
@@ -63,6 +59,7 @@ class ImageURLProtocol: URLProtocol {
         }
     }
     
+    // MARK: - Static method
     static func urlSession() -> URLSession {
         let config = URLSessionConfiguration.ephemeral
         config.protocolClasses = [ImageURLProtocol.classForCoder()]

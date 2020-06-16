@@ -6,12 +6,7 @@
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-/*
- See LICENSE folder for this sample’s licensing information.
- 
- Abstract:
- The ImageURLProtocol of the sample.
- */
+// From https://developer.apple.com/documentation/uikit/uiimage/asynchronously_loading_images_into_table_and_collection_views
 import UIKit
 
 class ImageURLProtocol: URLProtocol {

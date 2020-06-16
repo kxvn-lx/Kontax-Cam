@@ -241,6 +241,7 @@
 		0A44B2AF2476A80700603F2C /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0ABD6D442497840A00C3CC4B /* AsyncImageLoaderEngine */,
 				0AC407C8247DE03700BB0270 /* FilterFactory */,
 				0AC407C6247DDE2100BB0270 /* FilterEngine.swift */,
 				0A1D97D32477F38900E4078F /* TimerEngine.swift */,
@@ -253,7 +254,6 @@
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0ABD6D442497840A00C3CC4B /* Async Image Loading Helper */,
 				0A026078249728C9009C26FB /* Font */,
 				0A3DFB9E2493B5EF00765304 /* Extensions */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
@@ -324,13 +324,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0ABD6D442497840A00C3CC4B /* Async Image Loading Helper */ = {
+		0ABD6D442497840A00C3CC4B /* AsyncImageLoaderEngine */ = {
 			isa = PBXGroup;
 			children = (
 				0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */,
 				0ABD6D3E249781C300C3CC4B /* ImageCache.swift */,
 			);
-			path = "Async Image Loading Helper";
+			path = AsyncImageLoaderEngine;
 			sourceTree = "<group>";
 		};
 		0AC407C8247DE03700BB0270 /* FilterFactory */ = {

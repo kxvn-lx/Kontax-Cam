@@ -60,6 +60,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
 
         setupView()
         setupConstraint()
+        toggleElements()
         
         // 3. Gesture Configuration
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
@@ -136,11 +137,9 @@ extension LabCollectionViewController {
     // MARK: - CollectionView fetching and layout
     private func fetchData() {
         // Get our image URLs for processing.
-        opQueue.async {
-            let urls = DataEngine.shared.readDataToURLs()
-            for url in urls {
-                self.imageObjects.append(Photo(image: ImageCache.shared.placeholderImage, url: url))
-            }
+        let urls = DataEngine.shared.readDataToURLs()
+        for url in urls {
+            self.imageObjects.append(Photo(image: ImageCache.shared.placeholderImage, url: url))
         }
     }
     
@@ -351,7 +350,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
             self.photoLibraryEngine.saveImageToAlbum(image) { (success) in
                 if success {
                     DispatchQueue.main.async {
-                        SPAlertHelper.shared.present(title: "Saved!", message: "The photo has been saved to your camera roll.")
+                        SPAlertHelper.shared.present(title: "Saved", preset: .done)
                     }
                     TapticHelper.shared.successTaptic()
                 } else {

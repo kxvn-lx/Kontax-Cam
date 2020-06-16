@@ -34,7 +34,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         v.setImage(IconHelper.shared.getIconImage(iconName: "trash"), for: .normal)
         v.tintColor = .white
         v.backgroundColor = .systemRed
-        v.alpha = 0.25
+        v.alpha = 0.5
         v.isHidden = true
         return v
     }()
@@ -57,7 +57,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         // 2. CollectionView configuration
         self.collectionView.collectionViewLayout = makeLayout()
         fetchData()
-        
+
         setupView()
         setupConstraint()
         
@@ -67,7 +67,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
-        
     }
     
     private func setupView() {
@@ -102,7 +101,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
             DispatchQueue.main.async {
                 cell.photoView.image = image
             }
-            
         }
         
         return cell
@@ -135,15 +133,13 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
 }
 
 extension LabCollectionViewController {
-    // MARK: - CollectionView datasource
+    // MARK: - CollectionView fetching and layout
     private func fetchData() {
         // Get our image URLs for processing.
-        if imageObjects.isEmpty {
-            opQueue.async {
-                let urls = DataEngine.shared.readDataToURLs()
-                for url in urls {
-                    self.imageObjects.append(Photo(image: ImageCache.shared.placeholderImage, url: url))
-                }
+        opQueue.async {
+            let urls = DataEngine.shared.readDataToURLs()
+            for url in urls {
+                self.imageObjects.append(Photo(image: ImageCache.shared.placeholderImage, url: url))
             }
         }
     }
@@ -166,7 +162,7 @@ extension LabCollectionViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(0.425))
+            heightDimension: .fractionalWidth(0.33))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             subitem: fullPhotoItem,
@@ -212,35 +208,19 @@ extension LabCollectionViewController {
     }
     
     @objc private func selectButtonTapped() {
-        let onPosition: CGFloat = 0
-        let offPosition: CGFloat = 100
-        let duration: Double = 0.25
-        
         isSelecting.toggle()
-        fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: isSelecting ? offPosition : onPosition)
+        selectButton.setTitle(isSelecting ? "cancel" : "Select", for: .normal)
         
-        if isSelecting {
-            selectButton.setTitle("Cancel", for: .normal)
-            fabDeleteButton.isHidden = false
-            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-                self.fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: onPosition)
-            }, completion: nil)
-            
-        } else {
+        if !isSelecting {
             // Clear all pending queue of images to delete and deselect all active cell.
             for indexPath in imagesIndexToDelete {
                 let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
                 cell.toggleSelection()
             }
             imagesIndexToDelete.removeAll()
-            toggleElements()
-            
-            selectButton.setTitle("Select", for: .normal)
-            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-                self.fabDeleteButton.transform = CGAffineTransform(translationX: 0, y: offPosition)
-            }, completion: { _ in self.fabDeleteButton.isHidden = true })
         }
         
+        toggleElements()
         selectButton.sizeToFit()
     }
     
@@ -248,12 +228,14 @@ extension LabCollectionViewController {
         let message = imagesIndexToDelete.count > 1 ? "images" : "image"
         let alert = UIAlertController(title: "Delete \(imagesIndexToDelete.count) \(message)?", message: nil, preferredStyle: .actionSheet)
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
+            guard let self = self else { return }
             
             for indexPath in self.imagesIndexToDelete {
                 let cell = self.collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
                 cell.toggleSelection()
-
+                
+                DataEngine.shared.deleteData(imageURLToDelete: self.imageObjects[indexPath.row].url) { _ in () }
                 self.imageObjects.remove(at: indexPath.row)
             }
             
@@ -277,31 +259,33 @@ extension LabCollectionViewController {
     
     private func toggleElements() {
         imageObjects.count == 0 ? setEmptyView() : removeEmptyView()
+        
         selectButton.isEnabled = imageObjects.count > 0
         selectButton.alpha = selectButton.isEnabled ? 1 : 0.25
         
         fabDeleteButton.isEnabled = imagesIndexToDelete.count > 0
-        fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.25
+        fabDeleteButton.isHidden = !isSelecting
+        fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.5
     }
     
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-        
         let p = gestureRecognizer.location(in: collectionView)
         
         switch gestureRecognizer.state {
         case .began:
             if let indexPath = collectionView?.indexPathForItem(at: p) {
                 TapticHelper.shared.lightTaptic()
-                
-                ImageCache.shared.load(url: imageObjects[indexPath.row].url as NSURL) { (image) in
-                    self.addVC(self.previewVC)
+                ImageCache.shared.load(url: imageObjects[indexPath.row].url as NSURL) { [weak self] (image) in
+                    guard let self = self else { return }
+                    let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
                     self.previewVC.imageView.image = image
+                    window?.addSubview(self.previewVC.view)
                 }
             }
         case .ended:
             previewVC.animateOut { [weak self] (_) in
                 guard let self = self else { return }
-                self.previewVC.removeVC()
+                self.previewVC.view.removeFromSuperview()
             }
             
         default: return
@@ -354,26 +338,28 @@ extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
 // MARK: - PhotoDisplayDelegate
 extension LabCollectionViewController: PhotoDisplayDelegate {
     func photoDisplayWillShare(photoAt index: Int) {
-        if let child = self.presentedViewController {
-            ShareHelper.shared.presentShare(withImage: imageObjects[index].image, toView: child)
+        ImageCache.shared.load(url: imageObjects[index].url as NSURL) { [weak self] (image) in
+            guard let self = self, let image = image else { fatalError() }
+            ShareHelper.shared.presentShare(withImage: image, toView: self.presentedViewController!)
         }
     }
     
     func photoDisplayWillSave(photoAt index: Int) {
-        photoLibraryEngine.saveImageToAlbum(imageObjects[index].image) { (success) in
-            if success {
-                DispatchQueue.main.async {
-                    SPAlertHelper.shared.present(title: "Saved", message: nil, preset: .done)
-                }
-                TapticHelper.shared.successTaptic()
-            } else {
-                
-                DispatchQueue.main.async {
-                    if let child = self.presentedViewController {
-                        AlertHelper.shared.presentDefault(title: "Kontax Cam does not have permission.", message: "Looks like we could not save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.", to: child)
+        ImageCache.shared.load(url: imageObjects[index].url as NSURL) { [weak self] (image) in
+            guard let self = self, let image = image else { fatalError() }
+            
+            self.photoLibraryEngine.saveImageToAlbum(image) { (success) in
+                if success {
+                    DispatchQueue.main.async {
+                        SPAlertHelper.shared.present(title: "Saved!", message: "The photo has been saved to your camera roll.")
+                    }
+                    TapticHelper.shared.successTaptic()
+                } else {
+                    TapticHelper.shared.errorTaptic()
+                    DispatchQueue.main.async {
+                        AlertHelper.shared.presentDefault(title: "Kontax Cam does not have permission.", message: "Looks like we could not save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.", to: self.presentedViewController!)
                     }
                 }
-                TapticHelper.shared.errorTaptic()
             }
         }
     }
@@ -381,20 +367,17 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
     func photoDisplayWillDelete(photoAt index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         
-        SPAlertHelper.shared.present(title: "Image deleted.")
-        DataEngine.shared.deleteData(imageToDelete: imageObjects[index].image) { (success) in
-            if !success {
-                if let child = self.presentedViewController {
-                    AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: child)
-                }
+        DataEngine.shared.deleteData(imageURLToDelete: imageObjects[indexPath.row].url) { [weak self] (success) in
+            guard let self = self else { return }
+            if success {
+                SPAlertHelper.shared.present(title: "Image deleted.")
+                self.imageObjects.remove(at: index)
                 
+                self.collectionView.deleteItems(at: [indexPath])
+                self.collectionView.reloadData()
+            } else {
+                AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: self.presentedViewController!)
             }
         }
-        imageObjects.remove(at: index)
-        
-        collectionView.deleteItems(at: [indexPath])
-        collectionView.reloadData()
     }
-    
-    
 }

@@ -58,23 +58,13 @@ struct DataEngine {
     ///   - image: The image to be deleted
     ///   - completion: Completion handler of success
     /// - Returns: The completion handler
-    func deleteData(imageToDelete image: UIImage , completion: (Bool) -> ()) {
-        guard var imageID = image.accessibilityIdentifier else {
-            completion(false)
-            return
-        }
-        
-        imageID = String(imageID.dropFirst())
-        
+    func deleteData(imageURLToDelete url: URL , completion: (Bool) -> ()) {
         let fileManager = FileManager.default
-        let documentsPath = getDocumentsDirectory().path
-        
-        let fileURL = URL(fileURLWithPath: documentsPath).appendingPathComponent(imageID)
         
         // Delete file in document directory
-        if fileManager.fileExists(atPath: fileURL.path) {
+        if fileManager.fileExists(atPath: url.path) {
             do {
-                try fileManager.removeItem(at: fileURL)
+                try fileManager.removeItem(at: url)
                 completion(true)
             } catch {
                 print("Could not delete file: \(error)")

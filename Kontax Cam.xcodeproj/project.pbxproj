@@ -36,6 +36,7 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
+		0A4A37282497866B00556E34 /* TitleSUpplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4A37272497866B00556E34 /* TitleSUpplementaryView.swift */; };
 		0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; };
 		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
@@ -46,6 +47,9 @@
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
+		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
+		0ABD6D3F249781C300C3CC4B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3E249781C300C3CC4B /* ImageCache.swift */; };
+		0ABD6D41249781EB00C3CC4B /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */; };
 		0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C6247DDE2100BB0270 /* FilterEngine.swift */; };
 		0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C9247DE04F00BB0270 /* FilterFactory.swift */; };
 		0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */; };
@@ -101,6 +105,7 @@
 		0A44B2A32476A7F100603F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A4A37272497866B00556E34 /* TitleSUpplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSUpplementaryView.swift; sourceTree = "<group>"; };
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaksImageFilter.swift; sourceTree = "<group>"; };
@@ -110,6 +115,9 @@
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0ABD6D3E249781C300C3CC4B /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLProtocol.swift; sourceTree = "<group>"; };
 		0AC407C6247DDE2100BB0270 /* FilterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEngine.swift; sourceTree = "<group>"; };
 		0AC407C9247DE04F00BB0270 /* FilterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFactory.swift; sourceTree = "<group>"; };
 		0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTImageFilter.swift; sourceTree = "<group>"; };
@@ -204,6 +212,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0ABD6D3A2497802400C3CC4B /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
 				0A44B2AF2476A80700603F2C /* Engine */,
 				0A44B2AE2476A80300603F2C /* App */,
@@ -246,6 +255,7 @@
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0ABD6D442497840A00C3CC4B /* CollectionViewDiffableDataSource */,
 				0A026078249728C9009C26FB /* Font */,
 				0A3DFB9E2493B5EF00765304 /* Extensions */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
@@ -306,6 +316,24 @@
 				0A02607B24972978009C26FB /* DatestampLabel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0ABD6D3A2497802400C3CC4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0ABD6D3C2497803500C3CC4B /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0ABD6D442497840A00C3CC4B /* CollectionViewDiffableDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */,
+				0ABD6D3E249781C300C3CC4B /* ImageCache.swift */,
+				0A4A37272497866B00556E34 /* TitleSUpplementaryView.swift */,
+			);
+			path = CollectionViewDiffableDataSource;
 			sourceTree = "<group>";
 		};
 		0AC407C8247DE03700BB0270 /* FilterFactory */ = {
@@ -452,6 +480,7 @@
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
+				0ABD6D3F249781C300C3CC4B /* ImageCache.swift in Sources */,
 				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
 				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,
@@ -460,6 +489,8 @@
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
+				0ABD6D41249781EB00C3CC4B /* ImageURLProtocol.swift in Sources */,
+				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
@@ -478,6 +509,7 @@
 				0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */,
 				0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */,
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,
+				0A4A37282497866B00556E34 /* TitleSUpplementaryView.swift in Sources */,
 				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,
 				0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */,
 			);

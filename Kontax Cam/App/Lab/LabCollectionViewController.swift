@@ -10,8 +10,17 @@ import UIKit
 import DTPhotoViewerController
 
 private let reuseIdentifier = "labCell"
+fileprivate typealias PhotoDataSource = UICollectionViewDiffableDataSource<LabCollectionViewController.Section, Photo>
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
+    
+    fileprivate enum Section {
+        case main
+    }
+    
+    private var dataSource: PhotoDataSource! = nil
+    private var imageObjects = [Photo]()
+    private let opQueue = DispatchQueue(label: "com.kevinlaminto.lazy.collection")
     
     private var isSelecting = false
     private var imagesIndexToDelete: [IndexPath] = []
@@ -19,7 +28,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     private let photoLibraryEngine = PhotoLibraryEngine()
     private let previewVC = PreviewViewController()
     
-    private var images: [UIImage] = []
     private var selectedImageIndex: Int = 0
     private let selectButton: UIButton = {
         let v = UIButton()
@@ -39,10 +47,11 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         return v
     }()
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Making the back button has no title
+        // 1. Navigation configuration
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false, removeSeparator: true)
         
@@ -53,21 +62,19 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: selectButton)
         
-        //UICollectionView setup
+        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
+        
+        // 2. CollectionView configuration
         self.collectionView.collectionViewLayout = makeLayout()
         
-        // Fetch all images
-        fetchData { [weak self] (images) in
-            self?.images = images
-            images.count == 0 ? self?.setEmptyView() : self?.removeEmptyView()
-            self?.collectionView.reloadData()
-            self?.toggleElements()
-        }
+        configureDatasource()
+        configureHeader()
+        fetchData()
         
         setupView()
         setupConstraint()
         
-        // Add long gesture recogniser
+        // 3. Gesture Configuration
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
         longPressedGesture.minimumPressDuration = 0.25
         longPressedGesture.delegate = self
@@ -91,25 +98,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         }
     }
     
-    // MARK: - UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LabCollectionViewCell
-        
-        let currentImage = images[indexPath.row]
-        
-        cell.photoView.image = currentImage
-        
-        return cell
-    }
-    
+    // MARK: - UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.mediumTaptic()
         
@@ -126,7 +115,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
             }
             
             self.toggleElements()
-            
             self.imagesIndexToDelete.sort(by: { $0.row > $1.row })
             
         } else {
@@ -137,7 +125,56 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
 }
 
 extension LabCollectionViewController {
-    // MARK: - Class functions
+    // MARK: - CollectionView datasource
+    private func configureDatasource() {
+        dataSource = PhotoDataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, item: Photo) -> UICollectionViewCell? in
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LabCollectionViewCell
+            
+            cell.photoView.image = item.image
+            ImageCache.publicCache.load(url: item.url as NSURL) { (image) in
+                if let img = image, img != item.image {
+                    var updatedSnapshot = self.dataSource.snapshot()
+                    self.opQueue.async {
+                        let item = self.imageObjects[indexPath.row]
+                        item.image = img
+                        updatedSnapshot.reloadItems([item])
+                        self.dataSource.apply(updatedSnapshot, animatingDifferences: true)
+                    }
+                }
+            }
+            
+            return cell
+        }
+    }
+    
+    private func configureHeader() {
+        dataSource?.supplementaryViewProvider = { (
+            collectionView: UICollectionView,
+            kind: String,
+            indexPath: IndexPath) -> UICollectionReusableView? in
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier, for: indexPath)
+            return header
+        }
+    }
+    
+    private func fetchData() {
+        // Get our image URLs for processing.
+        if imageObjects.isEmpty {
+            opQueue.async {
+                let urls = DataEngine.shared.readDataToURLs()
+                for url in urls {
+                    self.imageObjects.append(Photo(image: ImageCache.publicCache.placeholderImage, url: url))
+                }
+                
+                var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
+                initialSnapshot.appendSections([.main])
+                initialSnapshot.appendItems(self.imageObjects)
+                self.dataSource.apply(initialSnapshot, animatingDifferences: true)
+            }
+        }
+    }
+    
     private func makeLayout() -> UICollectionViewLayout  {
         let margin: CGFloat = 5
         
@@ -164,24 +201,13 @@ extension LabCollectionViewController {
         )
         
         let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [makeSectionHeader()]
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
-    private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(40))
-        
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        return layoutSectionHeader
-    }
+}
+
+extension LabCollectionViewController {
     
     /// Helper to present the photo display VC
     private func presentPhotoDisplayVC(indexPath: IndexPath) {
@@ -193,22 +219,6 @@ extension LabCollectionViewController {
             present(viewController, animated: true, completion: nil)
         }
         
-    }
-    
-    private func fetchData(completion: @escaping(([UIImage]) -> ())) {
-        var images: [UIImage] = []
-        let imageUrls = DataEngine.shared.readDataToURLs()
-        
-        DispatchQueue.main.async {
-            for url in imageUrls {
-                if let image = UIImage(contentsOfFile: url.path) {
-                    let filename = url.path.replacingOccurrences(of: DataEngine.shared.getDocumentsDirectory().path, with: "", options: .literal, range: nil)
-                    image.accessibilityIdentifier = filename
-                    images.append(image)
-                }
-            }
-            completion(images)
-        }
     }
     
     /// Setting a meaningful empty view when the collectionview is empty
@@ -266,30 +276,31 @@ extension LabCollectionViewController {
         let alert = UIAlertController(title: "Delete \(imagesIndexToDelete.count) \(message)?", message: nil, preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            
             for indexPath in self.imagesIndexToDelete {
                 let cell = self.collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
                 cell.toggleSelection()
                 
-                DataEngine.shared.deleteData(imageToDelete: self.images[indexPath.row]) { (success) in
-                    if !success {
-                        if let child = self.presentedViewController {
-                            AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: child)
-                        }
-                        return
-                    }
-                }
+                //                DataEngine.shared.deleteData(imageToDelete: self.imageObjects[indexPath.row].image) { (success) in
+                //                    if !success {
+                //                        if let child = self.presentedViewController {
+                //                            AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: child)
+                //                        }
+                //                        return
+                //                    }
+                //                }
                 
-                self.images.remove(at: indexPath.row)
+//                guard let photo = self.dataSource.itemIdentifier(for: indexPath) else { return }
+//                var snapshot = self.dataSource.snapshot()
+//
+//                snapshot.deleteItems([photo])
+//
+//                self.dataSource.apply(snapshot, animatingDifferences: true)
+//                self.imagesIndexToDelete.removeAll()
+//                self.selectButtonTapped()
+//                self.toggleElements()
             }
-            
-            self.collectionView.performBatchUpdates({
-                self.collectionView.deleteItems(at: self.imagesIndexToDelete)
-            }) { (_) in
-                self.imagesIndexToDelete.removeAll()
-                self.selectButtonTapped()
-                
-                self.toggleElements()
-            }
+
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -300,8 +311,8 @@ extension LabCollectionViewController {
     }
     
     private func toggleElements() {
-        images.count == 0 ? setEmptyView() : removeEmptyView()
-        selectButton.isEnabled = images.count > 0
+        imageObjects.count == 0 ? setEmptyView() : removeEmptyView()
+        selectButton.isEnabled = imageObjects.count > 0
         selectButton.alpha = selectButton.isEnabled ? 1 : 0.25
         
         fabDeleteButton.isEnabled = imagesIndexToDelete.count > 0
@@ -316,8 +327,8 @@ extension LabCollectionViewController {
         case .began:
             if let indexPath = collectionView?.indexPathForItem(at: p) {
                 TapticHelper.shared.lightTaptic()
-                let image = images[indexPath.row]
-
+                let image = imageObjects[indexPath.row].image
+                
                 addVC(previewVC)
                 previewVC.imageView.image = image
             }
@@ -328,14 +339,10 @@ extension LabCollectionViewController {
             
         default: return
         }
-
-        
-
-
     }
 }
 
-// MARK: DTPhotoViewerControllerDataSource
+// MARK: - DTPhotoViewerControllerDataSource
 extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, referencedViewForPhotoAt index: Int) -> UIView? {
         let indexPath = IndexPath(item: index, section: 0)
@@ -347,15 +354,15 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     }
     
     func numberOfItems(in photoViewerController: DTPhotoViewerController) -> Int {
-        return images.count
+        return imageObjects.count
     }
     
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
-        imageView.image = images[index]
+        imageView.image = imageObjects[index].image
     }
 }
 
-// MARK: DTPhotoViewerControllerDelegate
+// MARK: - DTPhotoViewerControllerDelegate
 extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
     func photoViewerControllerDidEndPresentingAnimation(_ photoViewerController: DTPhotoViewerController) {
         photoViewerController.scrollToPhoto(at: selectedImageIndex, animated: false)
@@ -379,12 +386,12 @@ extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
 extension LabCollectionViewController: PhotoDisplayDelegate {
     func photoDisplayWillShare(photoAt index: Int) {
         if let child = self.presentedViewController {
-            ShareHelper.shared.presentShare(withImage: images[index], toView: child)
+            ShareHelper.shared.presentShare(withImage: imageObjects[index].image, toView: child)
         }
     }
     
     func photoDisplayWillSave(photoAt index: Int) {
-        photoLibraryEngine.saveImageToAlbum(images[index]) { (success) in
+        photoLibraryEngine.saveImageToAlbum(imageObjects[index].image) { (success) in
             if success {
                 DispatchQueue.main.async {
                     SPAlertHelper.shared.present(title: "Saved", message: nil, preset: .done)
@@ -406,7 +413,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         let indexPath = IndexPath(row: index, section: 0)
         
         SPAlertHelper.shared.present(title: "Image deleted.")
-        DataEngine.shared.deleteData(imageToDelete: images[index]) { (success) in
+        DataEngine.shared.deleteData(imageToDelete: imageObjects[index].image) { (success) in
             if !success {
                 if let child = self.presentedViewController {
                     AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: child)
@@ -414,7 +421,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 
             }
         }
-        images.remove(at: index)
+        imageObjects.remove(at: index)
         
         collectionView.deleteItems(at: [indexPath])
         collectionView.reloadData()
@@ -422,5 +429,3 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
     
     
 }
-
-

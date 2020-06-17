@@ -175,7 +175,6 @@ extension CameraActionViewController {
                 if let parent = self.parent {
                     let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
                     vc.delegate = shutterButton
-                    vc.selectedFilterName = LUTImageFilter.selectedLUTFilter
                     
                     let navController = PanModalNavigationController(rootViewController: vc)
                     navController.modalDestination = .filters

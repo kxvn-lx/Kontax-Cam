@@ -31,7 +31,6 @@ class FiltersCollectionViewController: UICollectionViewController {
     ]
     
     weak var delegate: FilterListDelegate?
-    var selectedFilterName: FilterName!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +53,12 @@ class FiltersCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if selectedFilterName == nil { fatalError("Filter name must not be nil!") }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
         let currentFilter = filters[indexPath.section][indexPath.row]
         
         cell.titleLabel.text = currentFilter.rawValue.uppercased()
-        if currentFilter == selectedFilterName {
+        if currentFilter == LUTImageFilter.selectedLUTFilter {
             cell.isFilterSelected = true
             cell.updateStyle()
         }
@@ -70,6 +68,8 @@ class FiltersCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.mediumTaptic()
+        
+        LUTImageFilter.selectedLUTFilter = filters[indexPath.section][indexPath.row]
         
         delegate?.filterListDidSelectFilter(withFilterName: filters[indexPath.section][indexPath.row])
         

@@ -26,12 +26,10 @@ struct MenuItem {
     typealias Action = ((MenuItem) -> ())
     
     var title: String?
-    var subtitle: String?
     var action: Action?
     
-    init(title: String?, subtitle: String? = nil, action: Action?) {
+    init(title: String?, action: Action?) {
         self.title = title
-        self.subtitle = subtitle
         self.action = action
     }
 }

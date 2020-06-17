@@ -19,14 +19,11 @@ class FXCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Textures", preferredLargeTitle: false, removeSeparator: true)
+        self.configureNavigationBar(tintColor: .label, title: "Effects", preferredLargeTitle: false, removeSeparator: true)
         
         // UICollectionView setup
         collectionView.collectionViewLayout = makeLayout()
-        
-        collectionView.register(ModalHeaderPresentable.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: headerIdentifier)
+        collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
     }
     
     // MARK: UICollectionViewDataSource
@@ -37,18 +34,17 @@ class FXCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fxs.count
     }
-    
+}
+
+// MARK: - Collectionview delegate
+extension FXCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FXCollectionViewCell
         let currentFx = fxs[indexPath.row]
         
         cell.titleLabel.text = currentFx.description
         
-        if FilterEngine.shared.allowedFilters.contains(currentFx) {
-            cell.toggleSelected()
-        }
-        
+        if FilterEngine.shared.allowedFilters.contains(currentFx) { cell.toggleSelected() }
         return cell
     }
     
@@ -67,7 +63,6 @@ class FXCollectionViewController: UICollectionViewController {
         } else {
             FilterEngine.shared.allowedFilters.remove(at: FilterEngine.shared.allowedFilters.firstIndex(of: selectedFx)!)
         }
-        
         FilterEngine.shared.allowedFilters.sort(by: { $0.rawValue < $1.rawValue })
         
         // Save the selection to UserDefaults
@@ -83,12 +78,10 @@ class FXCollectionViewController: UICollectionViewController {
         case 0: headerView.titleLabel.text = ""
         default: break
         }
-
+        
         return headerView
     }
-    
 }
-
 
 extension FXCollectionViewController {
     // MARK: - Class functions

@@ -17,12 +17,13 @@ class ShutterButtonViewController: UIViewController {
     }
     
     private let animationDuration: TimeInterval = 0.1
-    private let color = UIColor.label
+    private var color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
     
     var oriFrame: CGSize! // Passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,16 +37,28 @@ class ShutterButtonViewController: UIViewController {
         gesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(gesture)
         
+        setupConstraint()
+        
         touchEvent(event: .begin)
         renderSize()
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
+    private func setupConstraint() {
+        self.view.layer.cornerRadius = oriFrame.width / 2
+        innerCircle.layer.cornerRadius = oriFrame.width * 0.9 / 2
         
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            touchEvent(event: .begin)
+        self.view.snp.makeConstraints { (make) in
+            make.height.width.equalTo(oriFrame.width)
         }
+        
+        innerCircle.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(oriFrame.width * 0.9)
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        self.view.layer.borderColor = color.resolvedColor(with: self.traitCollection).cgColor
     }
     
     // MARK: - Shutter tapped
@@ -67,7 +80,7 @@ class ShutterButtonViewController: UIViewController {
                             TapticHelper.shared.errorTaptic()
                             return
                         }
-
+                        
                         guard let data = editedImage.jpegData(compressionQuality: 1.0) else {
                             TapticHelper.shared.errorTaptic()
                             return
@@ -80,6 +93,38 @@ class ShutterButtonViewController: UIViewController {
         }
     }
     
+    private func renderSize(multiplier: CGFloat = 1) {
+        innerCircle.transform = CGAffineTransform(scaleX: multiplier, y: multiplier)
+    }
+    
+    /// Tell the UI to render the layout according to the event
+    /// - Parameter event: The event. Begin: When no event detected. End: When event has ended.
+    private func touchEvent(event: TouchEvent) {
+        switch event {
+        case .begin:
+            self.view.layer.borderColor = color.resolvedColor(with: self.traitCollection).cgColor
+            innerCircle.backgroundColor = color
+            
+        case .end:
+            self.view.layer.borderColor = color.resolvedColor(with: self.traitCollection).cgColor
+            innerCircle.backgroundColor = touchedColor
+        }
+    }
+}
+
+extension ShutterButtonViewController: FilterListDelegate {
+    func filterListDidSelectFilter(withFilterName filterName: FilterName) {
+        LUTImageFilter.selectedLUTFilter = filterName
+        
+        let title = "\(LUTImageFilter.selectedLUTFilter.rawValue.uppercased()) activated"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            SPAlertHelper.shared.present(title: title)
+        }
+        
+    }
+}
+
+extension ShutterButtonViewController {
     // MARK: - Touch event listener
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         DispatchQueue.main.async {
@@ -112,44 +157,4 @@ class ShutterButtonViewController: UIViewController {
             }
         }
     }
-    
-    private func renderSize(multiplier: CGFloat = 1) {
-        self.view.snp.remakeConstraints { (make) in
-            make.height.width.equalTo( oriFrame.width )
-        }
-        self.view.layer.cornerRadius = ( oriFrame.width * multiplier ) / 2
-        
-        innerCircle.snp.remakeConstraints { (make) in
-            make.height.width.equalTo(oriFrame.width * 0.9 * multiplier)
-            make.center.equalTo(self.view)
-        }
-        innerCircle.layer.cornerRadius = ( oriFrame.width * 0.9 * multiplier ) / 2
-    }
-    
-    /// Tell the UI to render the layout according to the event
-    /// - Parameter event: The event. Begin: When no event detected. End: When event has ended.
-    private func touchEvent(event: TouchEvent) {
-        switch event {
-        case .begin:
-            self.view.layer.borderColor = color.cgColor
-            innerCircle.backgroundColor = color
-            
-        case .end:
-            self.view.layer.borderColor = color.cgColor
-            innerCircle.backgroundColor = touchedColor
-        }
-    }
 }
-
-extension ShutterButtonViewController: FilterListDelegate {
-    func filterListDidSelectFilter(withFilterName filterName: FilterName) {
-        LUTImageFilter.selectedLUTFilter = filterName
-        
-        let title = "\(LUTImageFilter.selectedLUTFilter.rawValue.uppercased()) activated"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            SPAlertHelper.shared.present(title: title)
-        }
-        
-    }
-}
-

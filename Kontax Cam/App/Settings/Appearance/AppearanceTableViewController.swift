@@ -8,6 +8,7 @@
 
 import UIKit
 import PanModal
+
 class AppearanceTableViewController: UITableViewController {
     
     private let themes: [UIUserInterfaceStyle] = [.unspecified, .light, .dark]

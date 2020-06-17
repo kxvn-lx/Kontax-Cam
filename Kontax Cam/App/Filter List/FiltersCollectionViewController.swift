@@ -19,13 +19,15 @@ protocol FilterListDelegate: class {
 
 enum FilterName: String, CaseIterable {
     // A Collection
-    case a1, a2, a3, a4
+    case a1, a2, a3, a4, a5, a6
+    case b1, b2
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
     private let filters: [[FilterName]] = [
-        [.a1, .a2, .a3, .a4]
+        [.a1, .a2, .a3, .a4, .a5, .a6],
+        [.b1, .b2],
     ]
     
     weak var delegate: FilterListDelegate?
@@ -82,6 +84,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         switch indexPath.section {
         case 0: headerView.titleLabel.text = "A Collection"
+        case 1: headerView.titleLabel.text = "B Collection"
         default: break
         }
         

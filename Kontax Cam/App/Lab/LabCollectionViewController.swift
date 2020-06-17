@@ -100,7 +100,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseIdentifier, for: indexPath) as! LabCollectionViewCell
-        
         let currentImage = imageObjects[indexPath.row]
         
         var request = ImageRequest(url: currentImage.url)
@@ -181,7 +180,6 @@ extension LabCollectionViewController {
 }
 
 extension LabCollectionViewController {
-    
     /// Helper to present the photo display VC
     private func presentPhotoDisplayVC(indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
@@ -311,7 +309,7 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     }
     
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
-        Nuke.loadImage(with: imageObjects[index].url, options: ImageLoadingOptions.shared, into: imageView)
+        loadImage(with: imageObjects[index].url, into: imageView)
     }
 }
 

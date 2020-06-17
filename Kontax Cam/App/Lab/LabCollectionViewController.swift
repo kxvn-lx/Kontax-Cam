@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import Nuke
 import DTPhotoViewerController
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
     private var imageObjects = [Photo]()
-    private let opQueue = DispatchQueue(label: "com.kevinlaminto.labCollectionVC.lazyLoading")
     
     private var isSelecting = false
     private var imagesIndexToDelete: [IndexPath] = []
@@ -68,6 +68,9 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
+
+        ImageLoadingOptions.shared.placeholder = UIImage(named: "labCellPlaceholder")!
+        ImageLoadingOptions.shared.transition = .fadeIn(duration: 0.125)
     }
     
     private func setupView() {
@@ -97,12 +100,8 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseIdentifier, for: indexPath) as! LabCollectionViewCell
         
-        cell.photoView.image = imageObjects[indexPath.row].image
-        ImageCacheEngine.shared.load(url: imageObjects[indexPath.row].url as NSURL) { (image) in
-            DispatchQueue.main.async {
-                cell.photoView.image = image
-            }
-        }
+        let currentImage = imageObjects[indexPath.row]
+        Nuke.loadImage(with: currentImage.url, options: ImageLoadingOptions.shared, into: cell.photoView)
         
         return cell
     }
@@ -139,7 +138,7 @@ extension LabCollectionViewController {
         // Get our image URLs for processing.
         let urls = DataEngine.shared.readDataToURLs()
         for url in urls {
-            self.imageObjects.append(Photo(image: ImageCacheEngine.shared.placeholderImage, url: url))
+            self.imageObjects.append(Photo(image: UIImage(named: "labCellPlaceholder")!, url: url))
         }
     }
     
@@ -274,12 +273,10 @@ extension LabCollectionViewController {
         case .began:
             if let indexPath = collectionView?.indexPathForItem(at: p) {
                 TapticHelper.shared.lightTaptic()
-                ImageCacheEngine.shared.load(url: imageObjects[indexPath.row].url as NSURL) { [weak self] (image) in
-                    guard let self = self else { return }
-                    let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-                    self.previewVC.imageView.image = image
-                    window?.addSubview(self.previewVC.view)
-                }
+                
+                let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                Nuke.loadImage(with: imageObjects[indexPath.row].url, into: self.previewVC.imageView)
+                window?.addSubview(self.previewVC.view)
             }
         case .ended:
             previewVC.animateOut { [weak self] (_) in
@@ -308,9 +305,7 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     }
     
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
-        ImageCacheEngine.shared.load(url: imageObjects[index].url as NSURL) { (image) in
-            imageView.image = image
-        }
+        Nuke.loadImage(with: imageObjects[index].url, options: ImageLoadingOptions.shared, into: imageView)
     }
 }
 
@@ -337,17 +332,15 @@ extension LabCollectionViewController: DTPhotoViewerControllerDelegate {
 // MARK: - PhotoDisplayDelegate
 extension LabCollectionViewController: PhotoDisplayDelegate {
     func photoDisplayWillShare(photoAt index: Int) {
-        ImageCacheEngine.shared.load(url: imageObjects[index].url as NSURL) { [weak self] (image) in
-            guard let self = self, let image = image else { fatalError() }
+        if let image = UIImage(contentsOfFile: imageObjects[index].url.path) {
             ShareHelper.shared.presentShare(withImage: image, toView: self.presentedViewController!)
         }
     }
     
     func photoDisplayWillSave(photoAt index: Int) {
-        ImageCacheEngine.shared.load(url: imageObjects[index].url as NSURL) { [weak self] (image) in
-            guard let self = self, let image = image else { fatalError() }
-            
-            self.photoLibraryEngine.saveImageToAlbum(image) { (success) in
+        if let image = UIImage(contentsOfFile: imageObjects[index].url.path) {
+            photoLibraryEngine.saveImageToAlbum(image) { [weak self] (success) in
+                guard let self = self else { return }
                 if success {
                     DispatchQueue.main.async {
                         SPAlertHelper.shared.present(title: "Saved", preset: .done)

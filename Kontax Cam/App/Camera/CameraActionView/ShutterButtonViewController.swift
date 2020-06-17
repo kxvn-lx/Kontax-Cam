@@ -113,12 +113,11 @@ class ShutterButtonViewController: UIViewController {
 }
 
 extension ShutterButtonViewController: FilterListDelegate {
-    func filterListDidSelectFilter(withFilterName filterName: FilterName) {
+    func filterListDidSelectFilter() {
         let title = "\(LUTImageFilter.selectedLUTFilter.rawValue.uppercased()) activated"
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             SPAlertHelper.shared.present(title: title)
         }
-        
     }
 }
 

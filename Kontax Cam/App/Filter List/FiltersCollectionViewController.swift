@@ -14,22 +14,12 @@ private let headerIdentifier = "filtersHeader"
 
 protocol FilterListDelegate: class {
     /// Tells the delegate that a filter has been selected
-    func filterListDidSelectFilter(withFilterName filterName: FilterName)
-}
-
-enum FilterName: String, CaseIterable {
-    // A Collection
-    case a1, a2, a3, a4, a5, a6
-    case b1, b2
+    func filterListDidSelectFilter()
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
-    private let filters: [[FilterName]] = [
-        [.a1, .a2, .a3, .a4, .a5, .a6],
-        [.b1, .b2],
-    ]
-    
+    var sections: [MenuSection] = []
     weak var delegate: FilterListDelegate?
     
     override func viewDidLoad() {
@@ -37,28 +27,33 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         self.configureNavigationBar(tintColor: .label, title: "Filters", preferredLargeTitle: false, removeSeparator: true)
         
-        // UICollectionView setup
+        // 1. Setup the layout
         collectionView.collectionViewLayout = makeLayout()
-        
         collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        
+        // 2. Setup datasource
+        self.populateSection()
     }
     
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return filters.count
+        return sections.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filters[section].count
+        return sections[section].items.count
     }
-    
+}
+
+// MARK: - CollectionView delegate
+extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
-        let currentFilter = filters[indexPath.section][indexPath.row]
+
+        let item = sections[indexPath.section].items[indexPath.row]
+        cell.titleLabel.text = item.title
         
-        cell.titleLabel.text = currentFilter.rawValue.uppercased()
-        if currentFilter == LUTImageFilter.selectedLUTFilter {
+        if FilterName(rawValue: item.title!) == LUTImageFilter.selectedLUTFilter {
             cell.isFilterSelected = true
             cell.updateStyle()
         }
@@ -67,30 +62,18 @@ class FiltersCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.mediumTaptic()
-        
-        LUTImageFilter.selectedLUTFilter = filters[indexPath.section][indexPath.row]
-        
-        delegate?.filterListDidSelectFilter(withFilterName: filters[indexPath.section][indexPath.row])
-        
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        let item = sections[indexPath.section].items[indexPath.row]
+        item.action?(item)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
             fatalError("Could not dequeue SectionHeader")
         }
-        
-        switch indexPath.section {
-        case 0: headerView.titleLabel.text = "A Collection"
-        case 1: headerView.titleLabel.text = "B Collection"
-        default: break
-        }
-        
+
+        headerView.titleLabel.text = sections[indexPath.section].title
         return headerView
     }
-    
 }
 
 

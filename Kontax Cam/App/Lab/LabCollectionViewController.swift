@@ -57,7 +57,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         // 2. CollectionView configuration
         self.collectionView.collectionViewLayout = makeLayout()
         fetchData()
-
+        
         setupView()
         setupConstraint()
         toggleElements()
@@ -101,7 +101,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseIdentifier, for: indexPath) as! LabCollectionViewCell
         
         let currentImage = imageObjects[indexPath.row]
-        Nuke.loadImage(with: currentImage.url, options: ImageLoadingOptions.shared, into: cell.photoView)
+        Nuke.loadImage(with: currentImage.url, into: cell.photoView)
         
         return cell
     }

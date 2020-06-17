@@ -47,7 +47,7 @@
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
 		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
-		0ABD6D3F249781C300C3CC4B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3E249781C300C3CC4B /* ImageCache.swift */; };
+		0ABD6D3F249781C300C3CC4B /* ImageCacheEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3E249781C300C3CC4B /* ImageCacheEngine.swift */; };
 		0ABD6D41249781EB00C3CC4B /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */; };
 		0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C6247DDE2100BB0270 /* FilterEngine.swift */; };
 		0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C9247DE04F00BB0270 /* FilterFactory.swift */; };
@@ -114,7 +114,7 @@
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		0ABD6D3E249781C300C3CC4B /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		0ABD6D3E249781C300C3CC4B /* ImageCacheEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheEngine.swift; sourceTree = "<group>"; };
 		0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLProtocol.swift; sourceTree = "<group>"; };
 		0AC407C6247DDE2100BB0270 /* FilterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEngine.swift; sourceTree = "<group>"; };
 		0AC407C9247DE04F00BB0270 /* FilterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFactory.swift; sourceTree = "<group>"; };
@@ -179,14 +179,6 @@
 				0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */,
 			);
 			path = CameraActionView;
-			sourceTree = "<group>";
-		};
-		0A3DFB9E2493B5EF00765304 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0A1D97BD2477B94F00E4078F /* VC+.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		0A44B28E2476A7F000603F2C = {
@@ -255,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				0A026078249728C9009C26FB /* Font */,
-				0A3DFB9E2493B5EF00765304 /* Extensions */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
 				0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */,
 				0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */,
@@ -266,6 +257,7 @@
 				0AADEE6E247B6541009FFA52 /* AlertHelper.swift */,
 				0AEE932F247C983800F485C0 /* ShareHelper.swift */,
 				0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */,
+				0A1D97BD2477B94F00E4078F /* VC+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -328,7 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				0ABD6D40249781EB00C3CC4B /* ImageURLProtocol.swift */,
-				0ABD6D3E249781C300C3CC4B /* ImageCache.swift */,
+				0ABD6D3E249781C300C3CC4B /* ImageCacheEngine.swift */,
 			);
 			path = AsyncImageLoaderEngine;
 			sourceTree = "<group>";
@@ -477,7 +469,7 @@
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
-				0ABD6D3F249781C300C3CC4B /* ImageCache.swift in Sources */,
+				0ABD6D3F249781C300C3CC4B /* ImageCacheEngine.swift in Sources */,
 				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
 				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,

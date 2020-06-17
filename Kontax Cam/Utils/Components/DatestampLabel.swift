@@ -33,7 +33,7 @@ class DatestampLabel: UILabel {
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = .zero
         self.layer.masksToBounds = false
-        self.alpha = 0.5
+        self.alpha = 1
     }
     
     private func getCurrentDate() -> String {

@@ -13,11 +13,9 @@ class DatestampImageFilter: ImageFilterProtocol {
     private let datestampLabel = DatestampLabel()
     private let strength: Float = 1.0
     
-    
     func process(imageToEdit image: UIImage) -> UIImage? {
         
         var datestampRect: CGRect!
-        
         
         switch image.imageOrientation {
         case .up, .down, .upMirrored, .downMirrored:

@@ -1,5 +1,5 @@
 //
-//  ImageCache.swift
+//  ImageCacheEngine.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 15/6/20.
@@ -10,13 +10,13 @@
 import UIKit
 import Foundation
 
-class ImageCache {
+class ImageCacheEngine {
     
     var placeholderImage = UIImage(named: "labCellPlaceholder")!
     private let cachedImages = NSCache<NSURL, UIImage>()
     private var loadingResponses = [NSURL: [(UIImage?) -> Swift.Void]]()
     
-    static let shared = ImageCache()
+    static let shared = ImageCacheEngine()
     private init() { }
     
     // MARK: - Methods

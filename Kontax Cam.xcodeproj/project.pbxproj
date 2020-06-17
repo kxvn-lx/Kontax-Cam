@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260762497179F009C26FB /* PreviewViewController.swift */; };
-		0A02607C24972978009C26FB /* DatestampLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02607B24972978009C26FB /* DatestampLabel.swift */; };
-		0A02607E24972D13009C26FB /* Date Stamp Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A02607D24972D13009C26FB /* Date Stamp Bold.otf */; };
 		0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260812497334C009C26FB /* DatestampImageFilter.swift */; };
 		0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */; };
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
@@ -38,6 +36,7 @@
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; };
 		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A9C07632494E67B003A0D16 /* LeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
@@ -78,8 +77,6 @@
 
 /* Begin PBXFileReference section */
 		0A0260762497179F009C26FB /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		0A02607B24972978009C26FB /* DatestampLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatestampLabel.swift; sourceTree = "<group>"; };
-		0A02607D24972D13009C26FB /* Date Stamp Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Bold.otf"; sourceTree = "<group>"; };
 		0A0260812497334C009C26FB /* DatestampImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatestampImageFilter.swift; sourceTree = "<group>"; };
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -105,6 +102,7 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -149,7 +147,7 @@
 		0A026078249728C9009C26FB /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				0A02607D24972D13009C26FB /* Date Stamp Bold.otf */,
+				0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -303,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
-				0A02607B24972978009C26FB /* DatestampLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -444,8 +441,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
+				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */,
-				0A02607E24972D13009C26FB /* Date Stamp Bold.otf in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,7 +471,6 @@
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
 				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
-				0A02607C24972978009C26FB /* DatestampLabel.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,

@@ -10,33 +10,52 @@ import UIKit
 
 class DatestampImageFilter: ImageFilterProtocol {
     
-    private let datestampLabel = DatestampLabel()
-    private let strength: Float = 1.0
+    private var currentDate: String = {
+        let currentDateTime = Date()
+        let userCalendar = Calendar.current
+        let requestedComponents: Set<Calendar.Component> = [.year, .month, .day]
+        
+        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+        
+        let year = String(dateTimeComponents.year!).dropFirst(2)
+        let month = String(dateTimeComponents.month!)
+        let day = String(dateTimeComponents.day!)
+        
+        return "\(day)  \(month) '\(year)"
+    }()
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         
-        var datestampRect: CGRect!
+        let xPos: CGFloat = image.size.width * 0.7
+        let yPos: CGFloat = image.size.height * 0.9
+        let fontSize: CGFloat = image.size.width * 0.038
+
+        UIGraphicsBeginImageContext(image.size)
         
-        switch image.imageOrientation {
-        case .up, .down, .upMirrored, .downMirrored:
-            // Landscape
-            datestampLabel.font = datestampLabel.font.withSize(image.size.width * 0.035)
-            datestampRect = CGRect(x: image.size.width * 0.7, y: image.size.height * 0.9, width: image.size.width, height: datestampLabel.font.lineHeight)
+        // 1. Draw the photo
+        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
+        
+        // 2. Configure datestamp
+        let rect = CGRect(x:xPos, y: yPos, width: image.size.width, height: image.size.height)
+        let renderer = UIGraphicsImageRenderer(bounds: rect)
+        
+        let datestamp = renderer.image { ctx in
+            let attrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont(name: "Date Stamp Alt", size: fontSize)!,
+                .foregroundColor: UIColor(displayP3Red: 249/255, green: 148/255, blue: 60/255, alpha: 1),
+            ]
             
-        case .left, .right, .leftMirrored, .rightMirrored:
-            // Portrait
-            datestampLabel.font = datestampLabel.font.withSize(image.size.height * 0.03)
-            datestampRect = CGRect(x: image.size.width * 0.7, y: image.size.height * 0.9, width: image.size.width, height: datestampLabel.font.lineHeight)
-            
-        default: break
+            let attributedString = NSAttributedString(string: currentDate, attributes: attrs)
+            ctx.cgContext.setShadow(offset: .zero, blur: 15, color: UIColor.red.cgColor)
+            attributedString.draw(in: rect.insetBy(dx: 50, dy: 50))
+//            for _ in 1...5 {
+//                attributedString.draw(in: rect.insetBy(dx: 50, dy: 50))
+//            }
         }
         
-        datestampLabel.applyGlow()
-        
-        UIGraphicsBeginImageContext(image.size)
-        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-        datestampLabel.drawText(in: datestampRect.integral)
-        
+        // 3. Draw the datestamp
+        datestamp.draw(in: CGRect(x: xPos, y: yPos, width: image.size.width, height: image.size.height))
+
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return result

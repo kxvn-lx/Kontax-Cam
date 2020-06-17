@@ -12,7 +12,8 @@ import DTPhotoViewerController
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
-    private var imageObjects = [Photo]()
+    var imageObjects = [Photo]()
+    private var pipeline = ImagePipeline.shared
     
     private var isSelecting = false
     private var imagesIndexToDelete: [IndexPath] = []
@@ -101,7 +102,11 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseIdentifier, for: indexPath) as! LabCollectionViewCell
         
         let currentImage = imageObjects[indexPath.row]
-        Nuke.loadImage(with: currentImage.url, into: cell.photoView)
+        
+        var request = ImageRequest(url: currentImage.url)
+        request.processors = [ImageProcessors.Resize(size: cell.bounds.size)]
+        
+        loadImage(with: request, into: cell.photoView)
         
         return cell
     }
@@ -137,6 +142,7 @@ extension LabCollectionViewController {
     private func fetchData() {
         // Get our image URLs for processing.
         let urls = DataEngine.shared.readDataToURLs()
+//        let urls = demoPhotosURLs
         for url in urls {
             self.imageObjects.append(Photo(image: UIImage(named: "labCellPlaceholder")!, url: url))
         }

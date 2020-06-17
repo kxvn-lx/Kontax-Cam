@@ -32,13 +32,6 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case CellPath.appearanceCell: cell.detailTextLabel?.text = getAppearanceValue()
-        default: break
-        }
-    }
-    
     private func setupUI() {
         let closeButton = CloseButton()
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
@@ -50,23 +43,6 @@ class SettingsTableViewController: UITableViewController {
     @objc private func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func getAppearanceValue() -> String {
-        let appearanceValue = UIUserInterfaceStyle(rawValue: UserDefaultsHelper.shared.getData(type: Int.self, forKey: .userAppearance) ?? 0)
-        switch appearanceValue!.rawValue {
-            case 0: return "System"
-            case 1: return "Light"
-            case 2: return "Dark"
-            default: return "System"
-        }
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        let cell = tableView.cellForRow(at: CellPath.appearanceCell)
-        cell?.detailTextLabel?.text = getAppearanceValue()
     }
     
 }

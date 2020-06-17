@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum FilterName: String, CaseIterable {
-    case a1, a2, a3, a4, a5, a6
-    case b1, b2
-}
-
-
 class LUTImageFilter: ImageFilterProtocol {
     
     static var selectedLUTFilter = FilterName.a1

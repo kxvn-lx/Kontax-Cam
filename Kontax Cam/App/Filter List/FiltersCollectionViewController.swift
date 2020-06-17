@@ -51,9 +51,9 @@ extension FiltersCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
 
         let item = sections[indexPath.section].items[indexPath.row]
-        cell.titleLabel.text = item.title
+        cell.titleLabel.text = item.title.uppercased()
         
-        if FilterName(rawValue: item.title!) == LUTImageFilter.selectedLUTFilter {
+        if FilterName(rawValue: item.title) == LUTImageFilter.selectedLUTFilter {
             cell.isFilterSelected = true
             cell.updateStyle()
         }

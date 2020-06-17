@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum FilterName: String, CaseIterable {
+    case a1, a2, a3, a4, a5, a6
+    case b1, b2, b3
+}
+
 extension FiltersCollectionViewController {
     
     func populateSection() {
@@ -51,6 +56,10 @@ extension FiltersCollectionViewController {
                 ),
                 MenuItem(
                     title: FilterName.b2.rawValue,
+                    action: { [weak self] in self?.didSelectItem($0) }
+                ),
+                MenuItem(
+                    title: FilterName.b3.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
             ],

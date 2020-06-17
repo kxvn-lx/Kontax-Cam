@@ -25,10 +25,10 @@ struct MenuSection {
 struct MenuItem {
     typealias Action = ((MenuItem) -> ())
     
-    var title: String?
+    var title: String
     var action: Action?
     
-    init(title: String?, action: Action?) {
+    init(title: String, action: Action?) {
         self.title = title
         self.action = action
     }

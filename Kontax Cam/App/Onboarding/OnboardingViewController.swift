@@ -36,7 +36,7 @@ class OnboardingViewController: UIViewController {
         let v = UILabel()
         v.numberOfLines = 0
         v.textColor = .white
-        v.text = "Join the world of film instant camera —\nand start capturing today."
+        v.text = "Instant camera for film and digital creators, by creators."
         return v
     }()
     private let startButton: UIButton = {

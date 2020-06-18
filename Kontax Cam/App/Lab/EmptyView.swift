@@ -35,8 +35,7 @@ class EmptyView: UIView {
     private let bodyLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = """
-        Photo taken will be processed with the selected filters and effects
-        and will be displayed here.
+        Photo taken will be processed with the selected filters and effects, and will be displayed here.
         """
         lbl.font = .preferredFont(forTextStyle: .caption1)
         lbl.numberOfLines = 0

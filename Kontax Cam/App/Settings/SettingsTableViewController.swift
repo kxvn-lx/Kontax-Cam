@@ -12,6 +12,7 @@ class SettingsTableViewController: UITableViewController {
     
     private struct CellPath {
         static let appearanceCell = IndexPath(row: 0, section: 0)
+        static let deleteImagesCell = IndexPath(row: 0, section: 1)
     }
     
     override func viewDidLoad() {
@@ -28,6 +29,14 @@ class SettingsTableViewController: UITableViewController {
         
         switch indexPath {
         case CellPath.appearanceCell: self.appearanceCellTapped()
+        case CellPath.deleteImagesCell: self.deleteImagesCellTapped()
+        default: break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case CellPath.deleteImagesCell: cell.textLabel?.textColor = .systemRed
         default: break
         }
     }
@@ -41,8 +50,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        dismissWithAnimation()
     }
     
 }
@@ -57,5 +65,28 @@ extension SettingsTableViewController {
         navController.modalDestination = .appearance
         
         self.presentPanModal(navController)
+    }
+    
+    private func deleteImagesCellTapped() {
+        let alert = UIAlertController(title: "Delete all lab images?", message: "This will free up some space in your device.", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
+            guard let self = self else { return }
+            let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            do {
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+                for fileURL in fileURLs { try FileManager.default.removeItem(at: fileURL) }
+                
+                AlertHelper.shared.presentDefault(title: "Lab images has been successfully deleted.", message: nil, to: self)
+            } catch  { print(error) }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

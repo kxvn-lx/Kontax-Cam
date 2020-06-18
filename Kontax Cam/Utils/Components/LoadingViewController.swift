@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingViewController: UIViewController {
 
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
        let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.text = "PROCESSING"

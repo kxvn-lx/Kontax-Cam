@@ -111,6 +111,10 @@ class CameraViewController: UIViewController {
         let vc = self.storyboard!.instantiateViewController(withIdentifier: "settingsVC") as! SettingsTableViewController
         
         let navController = UINavigationController(rootViewController: vc)
-        self.present(navController, animated: true, completion: nil)
+        navController.modalPresentationStyle = .overFullScreen
+        presentWithAnimation(navController)
+        
+        
+//        self.present(navController, animated: true, completion: nil)
     }
 }

@@ -65,29 +65,36 @@ class ShutterButtonViewController: UIViewController {
     /// Handles the shutter button tapped
     @objc func shutterTapped() {
         let parent = self.parent as! CameraActionViewController
+        let loadingVC = LoadingViewController()
         
         if parent.timerEngine.currentTime != 0 { parent.timerEngine.presentTimerDisplay() }
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
             parent.cameraManager.capturePictureWithCompletion({ result in
-                switch result {
-                case .failure:
-                    AlertHelper.shared.presentDefault(title: "Error", message: "Looks like there was an error capturing the image. Please try again or if problem persist, contact kevin.laminto@gmail.com", to: self)
-                    
-                case .success(let content):
-                    if let image = content.asImage {
-                        guard let editedImage = FilterEngine.shared.process(originalImage: image) else {
-                            TapticHelper.shared.errorTaptic()
-                            return
-                        }
+                parent.parent!.addVC(loadingVC)
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure:
+                        AlertHelper.shared.presentDefault(title: "Error", message: "Looks like there was an error capturing the image. Please try again or if problem persist, contact kevin.laminto@gmail.com", to: self)
                         
-                        guard let data = editedImage.jpegData(compressionQuality: 1.0) else {
-                            TapticHelper.shared.errorTaptic()
-                            return
+                    case .success(let content):
+                        if let image = content.asImage {
+                            guard let editedImage = FilterEngine.shared.process(originalImage: image) else {
+                                TapticHelper.shared.errorTaptic()
+                                return
+                            }
+                            
+                            guard let data = editedImage.jpegData(compressionQuality: 1.0) else {
+                                TapticHelper.shared.errorTaptic()
+                                return
+                            }
+                            
+                            DataEngine.shared.save(imageData: data)
+                            TapticHelper.shared.successTaptic()
+                            loadingVC.removeVC()
                         }
-                        
-                        DataEngine.shared.save(imageData: data)
                     }
                 }
+
             })
         }
     }

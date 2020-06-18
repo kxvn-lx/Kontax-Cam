@@ -15,6 +15,7 @@
 		0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */; };
 		0A1193BD249B56E30086604D /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BC249B56E30086604D /* Effect.swift */; };
 		0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */; };
+		0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193C4249B702E0086604D /* LoadingViewController.swift */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
@@ -87,6 +88,7 @@
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
 		0A1193BC249B56E30086604D /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourLeaksImageFilter.swift; sourceTree = "<group>"; };
+		0A1193C4249B702E0086604D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0A1D97BD2477B94F00E4078F /* VC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+.swift"; sourceTree = "<group>"; };
 		0A1D97C32477BFAE00E4078F /* SVHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVHelper.swift; sourceTree = "<group>"; };
 		0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
+				0A1193C4249B702E0086604D /* LoadingViewController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				0A9C07632494E67B003A0D16 /* LeaksImageFilter.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */,
+				0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,

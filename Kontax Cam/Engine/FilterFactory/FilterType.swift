@@ -9,7 +9,7 @@
 import Foundation
 
 enum FilterType: Int, CaseIterable, Codable {
-    case lut, grain, dust, leaks, datestamp
+    case lut, grain, dust, leaks, datestamp, colour
 }
 
 extension FilterType: CustomStringConvertible {
@@ -21,6 +21,7 @@ extension FilterType: CustomStringConvertible {
         case .dust: return "Dust"
         case .leaks: return "Light leaks"
         case .datestamp: return "Datestamp"
+        case .colour: return "Colour leaks"
         }
       }
     }
@@ -33,6 +34,7 @@ extension FilterType: CustomStringConvertible {
             case .dust: return "dust.icon"
             case .leaks: return "leaks.icon"
             case .datestamp: return "calendar"
+            case .colour: return "color.icon"
             }
         }
     }

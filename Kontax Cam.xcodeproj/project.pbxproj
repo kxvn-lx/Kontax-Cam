@@ -14,6 +14,7 @@
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
 		0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */; };
 		0A1193BD249B56E30086604D /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BC249B56E30086604D /* Effect.swift */; };
+		0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
@@ -85,6 +86,7 @@
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
 		0A1193BC249B56E30086604D /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
+		0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A1D97BD2477B94F00E4078F /* VC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+.swift"; sourceTree = "<group>"; };
 		0A1D97C32477BFAE00E4078F /* SVHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVHelper.swift; sourceTree = "<group>"; };
 		0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				0AE49F172493C41C0057A729 /* DustImageFilter.swift */,
 				0A9C07622494E67B003A0D16 /* LeaksImageFilter.swift */,
 				0A0260812497334C009C26FB /* DatestampImageFilter.swift */,
+				0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */,
 			);
 			path = FilterFactory;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */,
+				0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */,
 				0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */,
 				0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */,
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,

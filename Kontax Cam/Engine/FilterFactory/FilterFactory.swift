@@ -35,6 +35,7 @@ class FilterFactory {
         case .dust: return DustImageFilter()
         case .leaks: return LeaksImageFilter()
         case .datestamp: return DatestampImageFilter()
+        case .colour: return ColourLeaksImageFilter()
         }
     }
 }

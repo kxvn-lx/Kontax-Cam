@@ -12,6 +12,8 @@ import DTPhotoViewerController
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
+    private let IS_DEMO_MODE = false
+    
     var imageObjects = [Photo]()
     private var pipeline = ImagePipeline.shared
     
@@ -57,7 +59,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
         // 2. CollectionView configuration
         self.collectionView.collectionViewLayout = makeLayout()
-        fetchData()
+        fetchData(IS_DEMO_MODE)
         
         setupView()
         setupConstraint()
@@ -138,10 +140,8 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
 
 extension LabCollectionViewController {
     // MARK: - CollectionView fetching and layout
-    private func fetchData() {
-        // Get our image URLs for processing.
-//        let urls = DataEngine.shared.readDataToURLs()
-        let urls = demoPhotosURLs
+    private func fetchData(_ isDemoMode: Bool) {
+        let urls = isDemoMode ? demoPhotosURLs : DataEngine.shared.readDataToURLs()
         for url in urls {
             self.imageObjects.append(Photo(image: UIImage(named: "labCellPlaceholder")!, url: url))
         }

@@ -48,9 +48,6 @@ class DatestampImageFilter: ImageFilterProtocol {
             let attributedString = NSAttributedString(string: currentDate, attributes: attrs)
             ctx.cgContext.setShadow(offset: .zero, blur: 15, color: UIColor.red.cgColor)
             attributedString.draw(in: rect.insetBy(dx: 50, dy: 50))
-//            for _ in 1...5 {
-//                attributedString.draw(in: rect.insetBy(dx: 50, dy: 50))
-//            }
         }
         
         // 3. Draw the datestamp

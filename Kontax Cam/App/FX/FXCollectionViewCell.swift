@@ -43,7 +43,6 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.addSubview(titleLabel)
         self.addSubview(toggleLabel)
         self.addSubview(iconImageView)
-        self.backgroundColor = .secondarySystemBackground
         
         iconImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(self.frame.width * 0.2)
@@ -82,8 +81,6 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.iconImageView.tintColor = isFxSelected ? .label : .systemGray4
         self.titleLabel.textColor = isFxSelected ? .label : .systemGray4
         self.toggleLabel.textColor = isFxSelected ? .label : .systemGray4
-        
-        self.backgroundColor = isFxSelected ? .systemGray5 : UIColor.secondarySystemBackground.withAlphaComponent(0.2)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

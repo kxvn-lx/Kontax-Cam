@@ -28,8 +28,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.addSubview(titleLabel)
-        self.backgroundColor = .secondarySystemBackground
-        
         titleLabel.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(Constants.padding)
         }
@@ -43,8 +41,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     private func updateElementStyle() {
         self.titleLabel.textColor = isFilterSelected ? .label : .systemGray4
-        
-        self.backgroundColor = isFilterSelected ? .systemGray5 : UIColor.secondarySystemBackground.withAlphaComponent(0.2)
+        self.titleLabel.font = isFilterSelected ? .systemFont(ofSize: titleLabel.font.pointSize, weight: .bold) : .systemFont(ofSize: titleLabel.font.pointSize, weight: .regular)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

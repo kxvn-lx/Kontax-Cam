@@ -140,8 +140,8 @@ extension LabCollectionViewController {
     // MARK: - CollectionView fetching and layout
     private func fetchData() {
         // Get our image URLs for processing.
-        let urls = DataEngine.shared.readDataToURLs()
-//        let urls = demoPhotosURLs
+//        let urls = DataEngine.shared.readDataToURLs()
+        let urls = demoPhotosURLs
         for url in urls {
             self.imageObjects.append(Photo(image: UIImage(named: "labCellPlaceholder")!, url: url))
         }

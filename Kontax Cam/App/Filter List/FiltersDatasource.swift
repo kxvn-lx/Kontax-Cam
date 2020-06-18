@@ -71,7 +71,7 @@ extension FiltersCollectionViewController {
     fileprivate func didSelectItem(_ item: MenuItem) {
         TapticHelper.shared.mediumTaptic()
         
-        LUTImageFilter.selectedLUTFilter = FilterName(rawValue: item.title!)!
+        LUTImageFilter.selectedLUTFilter = FilterName(rawValue: item.title)!
         delegate?.filterListDidSelectFilter()
         
         navigationController?.popViewController(animated: true)

@@ -44,8 +44,6 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.addSubview(toggleLabel)
         self.addSubview(iconImageView)
         self.backgroundColor = .secondarySystemBackground
-        self.layer.cornerRadius = 5
-        self.layer.cornerCurve = .continuous
         
         iconImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(self.frame.width * 0.2)
@@ -61,6 +59,12 @@ class FXCollectionViewCell: UICollectionViewCell {
             make.left.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
         }
         
+        updateStyle()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isFxSelected = false
         updateStyle()
     }
     

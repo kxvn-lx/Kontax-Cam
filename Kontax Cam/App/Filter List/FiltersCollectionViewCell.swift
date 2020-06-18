@@ -28,8 +28,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.addSubview(titleLabel)
-        self.layer.cornerRadius = 5
-        self.layer.cornerCurve = .continuous
         self.backgroundColor = .secondarySystemBackground
         
         titleLabel.snp.makeConstraints { (make) in

@@ -28,15 +28,15 @@ class EmptyView: UIView {
     }()
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Take or import your photos"
+        lbl.text = "Start by taking a photo"
         lbl.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title3).pointSize, weight: .medium)
         return lbl
     }()
     private let bodyLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = """
-        Start by taking a photo or importing them from your camera roll.
-        Imported photo will automatically be applied with the selected filter and effects.
+        Photo taken will be processed with the selected filters and effects
+        and will be displayed here.
         """
         lbl.font = .preferredFont(forTextStyle: .caption1)
         lbl.numberOfLines = 0

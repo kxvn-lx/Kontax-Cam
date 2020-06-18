@@ -9,7 +9,7 @@
 import UIKit
 
 class FXCollectionViewCell: UICollectionViewCell {
-
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +19,13 @@ class FXCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
-    
+    let iconImageView: UIImageView = {
+        let v = UIImageView()
+        v.tintColor = .label
+        v.contentMode = .scaleAspectFit
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
     let toggleLabel: UILabel = {
         let label = UILabel()
         label.text = "OFF"
@@ -36,9 +42,15 @@ class FXCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.addSubview(titleLabel)
         self.addSubview(toggleLabel)
+        self.addSubview(iconImageView)
         self.backgroundColor = .secondarySystemBackground
         self.layer.cornerRadius = 5
         self.layer.cornerCurve = .continuous
+        
+        iconImageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(self.frame.width * 0.2)
+            make.left.top.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
+        }
         
         toggleLabel.snp.makeConstraints { (make) in
             make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
@@ -53,7 +65,7 @@ class FXCollectionViewCell: UICollectionViewCell {
     }
     
     func toggleSelected() {
-        isFxSelected = !isFxSelected
+        isFxSelected.toggle()
         updateStyle()
     }
     
@@ -63,6 +75,7 @@ class FXCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateElementStyle() {
+        self.iconImageView.tintColor = isFxSelected ? .label : .systemGray4
         self.titleLabel.textColor = isFxSelected ? .label : .systemGray4
         self.toggleLabel.textColor = isFxSelected ? .label : .systemGray4
         

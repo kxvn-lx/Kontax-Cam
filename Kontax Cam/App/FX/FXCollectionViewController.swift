@@ -14,7 +14,7 @@ private let headerIdentifier = "fxHeader"
 
 class FXCollectionViewController: UICollectionViewController {
     
-    private let fxs: [FilterType] = FilterType.allCases.filter({ $0.rawValue != 0 })
+    private let effects: [Effect] = FilterType.allCases.map({ Effect(name: $0, icon: $0.iconName) }).filter({ $0.name != FilterType.lut })
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class FXCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fxs.count
+        return effects.count
     }
 }
 
@@ -40,11 +40,12 @@ class FXCollectionViewController: UICollectionViewController {
 extension FXCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FXCollectionViewCell
-        let currentFx = fxs[indexPath.row]
+        let currentFx = effects[indexPath.row]
         
-        cell.titleLabel.text = currentFx.description
+        cell.titleLabel.text = currentFx.name.description
+        cell.iconImageView.image = IconHelper.shared.getIconImage(iconName: currentFx.icon)
         
-        if FilterEngine.shared.allowedFilters.contains(currentFx) { cell.toggleSelected() }
+        if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.toggleSelected() }
         return cell
     }
     
@@ -56,12 +57,12 @@ extension FXCollectionViewController {
         selectedCell.toggleSelected()
         
         // Update datasource
-        let selectedFx = fxs[indexPath.row]
+        let selectedFx = effects[indexPath.row]
         
         if selectedCell.isFxSelected {
-            FilterEngine.shared.allowedFilters.append(selectedFx)
+            FilterEngine.shared.allowedFilters.append(selectedFx.name)
         } else {
-            FilterEngine.shared.allowedFilters.remove(at: FilterEngine.shared.allowedFilters.firstIndex(of: selectedFx)!)
+            FilterEngine.shared.allowedFilters.remove(at: FilterEngine.shared.allowedFilters.firstIndex(of: selectedFx.name)!)
         }
         FilterEngine.shared.allowedFilters.sort(by: { $0.rawValue < $1.rawValue })
         

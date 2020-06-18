@@ -24,6 +24,18 @@ extension FilterType: CustomStringConvertible {
         }
       }
     }
+    
+    var iconName: String {
+        get {
+            switch self {
+            case .lut: return ""
+            case .grain: return "grain.icon"
+            case .dust: return "dust.icon"
+            case .leaks: return "leaks.icon"
+            case .datestamp: return "calendar"
+            }
+        }
+    }
 }
 
 extension FilterType: Equatable {

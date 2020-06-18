@@ -13,6 +13,7 @@
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
 		0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */; };
+		0A1193BD249B56E30086604D /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BC249B56E30086604D /* Effect.swift */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
@@ -83,6 +84,7 @@
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
+		0A1193BC249B56E30086604D /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		0A1D97BD2477B94F00E4078F /* VC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+.swift"; sourceTree = "<group>"; };
 		0A1D97C32477BFAE00E4078F /* SVHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVHelper.swift; sourceTree = "<group>"; };
 		0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			children = (
 				0A334626249A4E4E00FE8BCE /* Menu.swift */,
 				0ABD6D3C2497803500C3CC4B /* Photo.swift */,
+				0A1193BC249B56E30086604D /* Effect.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
 				0A334627249A4E4E00FE8BCE /* Menu.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,
+				0A1193BD249B56E30086604D /* Effect.swift in Sources */,
 				0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */,
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,

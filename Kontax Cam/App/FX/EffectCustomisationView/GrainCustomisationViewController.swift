@@ -25,7 +25,7 @@ class GrainCustomisationViewController: UIViewController {
     private let slider: UISlider = {
         let v = UISlider()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.minimumValue = 0
+        v.minimumValue = 1
         v.maximumValue = 10
         v.isContinuous = true
         v.tintColor = .label
@@ -46,8 +46,8 @@ class GrainCustomisationViewController: UIViewController {
         setupConstraint()
         
         // Overwrite the strengthLabel and slider to match UserDefaults
-        strengthLabel.text = "Strength: +\(UserDefaultsHelper.shared.getData(type: Float.self, forKey: .userGrainValue) ?? 10)"
-        slider.setValue(UserDefaultsHelper.shared.getData(type: Float.self, forKey: .userGrainValue) ?? 10, animated: true)
+        strengthLabel.text = "Strength: +10.0"
+        slider.setValue(10, animated: true)
         
         // Add event listener for the slider
         slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
@@ -56,7 +56,7 @@ class GrainCustomisationViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        print(RangeConverterHelper.shared.convert(slider.value, fromOldRange: [slider.minimumValue, slider.maximumValue], toNewRange: [0, 1]))
+        
     }
     
     private func setupView() {

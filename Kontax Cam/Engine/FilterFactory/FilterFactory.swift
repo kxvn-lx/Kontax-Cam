@@ -33,9 +33,9 @@ class FilterFactory {
         case .lut: return LUTImageFilter()
         case .grain: return GrainImageFilter()
         case .dust: return DustImageFilter()
-        case .leaks: return LeaksImageFilter()
+        case .lightleaks: return LightLeaksImageFilter()
         case .datestamp: return DatestampImageFilter()
-        case .colour: return ColourLeaksImageFilter()
+        case .colourleaks: return ColourLeaksImageFilter()
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LeaksImageFilter.swift
+//  LightLeaksImageFilter.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 13/6/20.
@@ -11,14 +11,14 @@ import GPUImage
 
 
 
-class LeaksImageFilter: ImageFilterProtocol {
+class LightLeaksImageFilter: ImageFilterProtocol {
     
     private enum LeaksName: String, CaseIterable {
         case leaks1
     }
     
     private let selectedLeaksFilter: LeaksName = .leaks1
-    private let strength: Float = 1.0
+    private let strength: CGFloat = 1.0
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         
@@ -32,11 +32,9 @@ class LeaksImageFilter: ImageFilterProtocol {
         }
         
         let blendMode = ScreenBlend()
-        let opacityBlend = OpacityAdjustment()
-        opacityBlend.opacity = strength
         
         let imageInput = PictureInput(image: image)
-        let leaksInput = PictureInput(image: leaksImage)
+        let leaksInput = PictureInput(image: leaksImage.alpha(strength))
         
         imageInput --> blendMode
         leaksInput --> opacityBlend --> blendMode --> output

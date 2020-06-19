@@ -12,7 +12,7 @@ import UIKit
 class ColourLeaksImageFilter: ImageFilterProtocol {
     
     private let selectedColourLeaksFilter: UIColor = .red
-    private let strength: Float = 1.0
+    private let strength: CGFloat = 1.0
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         var editedImage: UIImage?
@@ -23,14 +23,12 @@ class ColourLeaksImageFilter: ImageFilterProtocol {
         }
         
         let blendMode = DarkenBlend()
-        let opacityBlend = OpacityAdjustment()
-        opacityBlend.opacity = strength
         
         let imageInput = PictureInput(image: image)
-        let colourLeaksInput = PictureInput(image: renderImage(fromColor: selectedColourLeaksFilter, withSize: image.size))
+        let colourLeaksInput = PictureInput(image: renderImage(fromColor: selectedColourLeaksFilter, withSize: image.size).alpha(strength))
         
         imageInput --> blendMode
-        colourLeaksInput --> opacityBlend --> blendMode --> output
+        colourLeaksInput --> blendMode --> output
         
         imageInput.processImage(synchronously: true)
         colourLeaksInput.processImage(synchronously: true)

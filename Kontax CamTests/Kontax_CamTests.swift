@@ -28,13 +28,13 @@ class KontaxCam_UnitTest: XCTestCase {
     func testRangeConverter() {
         // 1. Given
         let oldValue: Float = 5
-        let outcomedNewValue: Float = 0.5
+        let resultValue: Float = 0.5
         
         // 2. When
-        let valueToBeTested: Float = sut.convert(oldValue, fromOldRange: [0, 10], toNewRange: [0, 1])
+        let guess: Float = sut.convert(oldValue, fromOldRange: [0, 10], toNewRange: [0, 1])
         
         // 3. Then
-        XCTAssertEqual(valueToBeTested, outcomedNewValue, "RangeConverter should follow Linear Conversion pattern!")
+        XCTAssertEqual(guess, resultValue, "RangeConverter should follow Linear Conversion pattern!")
     }
     
     

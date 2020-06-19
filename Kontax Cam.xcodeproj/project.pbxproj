@@ -59,6 +59,7 @@
 		0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */; };
 		0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */; };
 		0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */; };
+		0AC8F9FA249CE8AC0068E54F /* Kontax_CamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */; };
 		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
 		0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F172493C41C0057A729 /* DustImageFilter.swift */; };
@@ -68,6 +69,16 @@
 		0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0AC8F9FC249CE8AC0068E54F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A44B28F2476A7F000603F2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A44B2962476A7F000603F2C;
+			remoteInfo = "Kontax Cam";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0AC407E9247E383E00BB0270 /* CopyFiles */ = {
@@ -131,6 +142,9 @@
 		0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTImageFilter.swift; sourceTree = "<group>"; };
 		0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrainImageFilter.swift; sourceTree = "<group>"; };
 		0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
+		0AC8F9F7249CE8AC0068E54F /* Kontax CamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kontax CamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kontax_CamTests.swift; sourceTree = "<group>"; };
+		0AC8F9FB249CE8AC0068E54F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoImagesURLs.swift; sourceTree = "<group>"; };
 		0AE49F172493C41C0057A729 /* DustImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustImageFilter.swift; sourceTree = "<group>"; };
@@ -152,6 +166,13 @@
 				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
 				0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AC8F9F4249CE8AC0068E54F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				0A44B2992476A7F000603F2C /* Kontax Cam */,
+				0AC8F9F8249CE8AC0068E54F /* Kontax CamTests */,
 				0A44B2982476A7F000603F2C /* Products */,
 				816177D18B28A96025786676 /* Pods */,
 				0AC407E5247E381000BB0270 /* Frameworks */,
@@ -216,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				0A44B2972476A7F000603F2C /* Kontax Cam.app */,
+				0AC8F9F7249CE8AC0068E54F /* Kontax CamTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,6 +395,15 @@
 			path = Appearance;
 			sourceTree = "<group>";
 		};
+		0AC8F9F8249CE8AC0068E54F /* Kontax CamTests */ = {
+			isa = PBXGroup;
+			children = (
+				0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */,
+				0AC8F9FB249CE8AC0068E54F /* Info.plist */,
+			);
+			path = "Kontax CamTests";
+			sourceTree = "<group>";
+		};
 		0AEBF1FB2495BCB7007CFAC6 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,18 +448,40 @@
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0AC8F9F6249CE8AC0068E54F /* Kontax CamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0AC8F9FE249CE8AC0068E54F /* Build configuration list for PBXNativeTarget "Kontax CamTests" */;
+			buildPhases = (
+				0AC8F9F3249CE8AC0068E54F /* Sources */,
+				0AC8F9F4249CE8AC0068E54F /* Frameworks */,
+				0AC8F9F5249CE8AC0068E54F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0AC8F9FD249CE8AC0068E54F /* PBXTargetDependency */,
+			);
+			name = "Kontax CamTests";
+			productName = "Kontax CamTests";
+			productReference = 0AC8F9F7249CE8AC0068E54F /* Kontax CamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0A44B28F2476A7F000603F2C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Kevin Laminto";
 				TargetAttributes = {
 					0A44B2962476A7F000603F2C = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					0AC8F9F6249CE8AC0068E54F = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 0A44B2962476A7F000603F2C;
 					};
 				};
 			};
@@ -453,6 +507,7 @@
 			projectRoot = "";
 			targets = (
 				0A44B2962476A7F000603F2C /* Kontax Cam */,
+				0AC8F9F6249CE8AC0068E54F /* Kontax CamTests */,
 			);
 		};
 /* End PBXProject section */
@@ -466,6 +521,13 @@
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AC8F9F5249CE8AC0068E54F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +589,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0AC8F9F3249CE8AC0068E54F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AC8F9FA249CE8AC0068E54F /* Kontax_CamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0AC8F9FD249CE8AC0068E54F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A44B2962476A7F000603F2C /* Kontax Cam */;
+			targetProxy = 0AC8F9FC249CE8AC0068E54F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0A44B2A02476A7F000603F2C /* Main.storyboard */ = {
@@ -599,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -653,7 +731,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -701,6 +779,48 @@
 			};
 			name = Release;
 		};
+		0AC8F9FF249CE8AC0068E54F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D87H8GPTK2;
+				INFOPLIST_FILE = "Kontax CamTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinlaminto.Kontax-CamTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kontax Cam.app/Kontax Cam";
+			};
+			name = Debug;
+		};
+		0AC8FA00249CE8AC0068E54F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D87H8GPTK2;
+				INFOPLIST_FILE = "Kontax CamTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kevinlaminto.Kontax-CamTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kontax Cam.app/Kontax Cam";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -718,6 +838,15 @@
 			buildConfigurations = (
 				0A44B2AC2476A7F100603F2C /* Debug */,
 				0A44B2AD2476A7F100603F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0AC8F9FE249CE8AC0068E54F /* Build configuration list for PBXNativeTarget "Kontax CamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AC8F9FF249CE8AC0068E54F /* Debug */,
+				0AC8FA00249CE8AC0068E54F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

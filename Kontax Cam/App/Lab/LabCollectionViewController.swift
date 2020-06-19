@@ -109,6 +109,8 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
         loadImage(with: request, into: cell.photoView)
         
+        if imagesIndexToDelete.contains(indexPath) { cell.toggleSelection() }
+        
         return cell
     }
     
@@ -216,9 +218,11 @@ extension LabCollectionViewController {
         if !isSelecting {
             // Clear all pending queue of images to delete and deselect all active cell.
             for indexPath in imagesIndexToDelete {
-                let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
-                cell.toggleSelection()
+                if let cell = collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
+                    cell.toggleSelection()
+                }
             }
+            self.collectionView.reloadData()
             imagesIndexToDelete.removeAll()
         }
         
@@ -234,8 +238,10 @@ extension LabCollectionViewController {
             guard let self = self else { return }
             
             for indexPath in self.imagesIndexToDelete {
-                let cell = self.collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
-                cell.toggleSelection()
+                if let cell = self.collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
+                    cell.toggleSelection()
+                }
+                
                 
                 DataEngine.shared.deleteData(imageURLToDelete: self.imageObjects[indexPath.row].url) { _ in () }
                 self.imageObjects.remove(at: indexPath.row)
@@ -248,6 +254,7 @@ extension LabCollectionViewController {
                     self.imagesIndexToDelete.removeAll()
                     self.selectButtonTapped()
                     self.toggleElements()
+                    self.collectionView.reloadData()
                 } else { fatalError() }
             }
         }

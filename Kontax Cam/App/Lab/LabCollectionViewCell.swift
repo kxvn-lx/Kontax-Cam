@@ -17,7 +17,7 @@ class LabCollectionViewCell: UICollectionViewCell {
         return v
     }()
     private var isUserSelected = false
-    private let borderWidth: CGFloat = 5
+    private let borderWidth: CGFloat = 2
     private let duration: Double = 0.0625
     
     static let reuseIdentifier = "labCell"
@@ -33,7 +33,19 @@ class LabCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func toggleSelection() {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isUserSelected = false
+        toggleSelection(override: true)
+    }
+    
+    func toggleSelection(override: Bool = false) {
+        
+        if override {
+            self.layer.borderWidth = 0
+            return
+        }
+        
         isUserSelected.toggle()
         
         if isUserSelected {

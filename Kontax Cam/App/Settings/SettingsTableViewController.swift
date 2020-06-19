@@ -62,7 +62,6 @@ extension SettingsTableViewController {
         let vc = AppearanceTableViewController()
         
         let navController = PanModalNavigationController(rootViewController: vc)
-        navController.modalDestination = .appearance
         
         self.presentPanModal(navController)
     }

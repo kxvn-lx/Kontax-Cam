@@ -11,8 +11,8 @@ import PanModal
 
 class PanModalNavigationController: UINavigationController {
     
-    enum ModalDestination {
-        case fx, filters, appearance
+    enum SpecialModalDestination {
+        case filters
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -20,7 +20,7 @@ class PanModalNavigationController: UINavigationController {
     }
     
     private var isShortFormEnabled = true
-    var modalDestination: ModalDestination!
+    var modalDestination: SpecialModalDestination!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,17 +46,14 @@ extension PanModalNavigationController: PanModalPresentable {
     var longFormHeight: PanModalHeight {
         switch modalDestination {
         case .filters: return .maxHeight
-        case .appearance, .fx: return .contentHeight(200)
-        default: fatalError("Please specify modal destination")
+        default: return .contentHeight(200)
         }
     }
     
     var shortFormHeight: PanModalHeight {
         switch modalDestination {
         case .filters: return .contentHeight(250)
-        case .fx: return .contentHeight(200)
-        case .appearance: return .contentHeight(200)
-        default: fatalError("Please specify modal destination")
+        default: return .contentHeight(200)
         }
     }
     

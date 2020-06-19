@@ -16,9 +16,8 @@ class GrainImageFilter: ImageFilterProtocol {
         case grain1
     }
 
-    
     private let selectedGrainFilter: GrainName = .grain1
-    private let strength: Float = 1.0
+    private let strength: Float = UserDefaultsHelper.shared.getData(type: Float.self, forKey: .userGrainValue) ?? 1
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }

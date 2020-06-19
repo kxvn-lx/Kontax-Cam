@@ -12,8 +12,11 @@ import PanModal
 private let reuseIdentifier = "fxCell"
 private let headerIdentifier = "fxHeader"
 
-class FXCollectionViewController: UICollectionViewController {
+class FXCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
+    private struct CellPath {
+        static let grainCell = IndexPath(row: 2, section: 0)
+    }
     private let effects: [Effect] = FilterType.allCases.map({ Effect(name: $0, icon: $0.iconName) }).filter({ $0.name != FilterType.lut })
     
     override func viewDidLoad() {
@@ -24,6 +27,13 @@ class FXCollectionViewController: UICollectionViewController {
         // UICollectionView setup
         collectionView.collectionViewLayout = makeLayout()
         collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        
+        // Setup Long press gesture
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delegate = self
+        lpgr.delaysTouchesBegan = true
+        self.collectionView?.addGestureRecognizer(lpgr)
     }
     
     // MARK: UICollectionViewDataSource
@@ -33,6 +43,24 @@ class FXCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return effects.count
+    }
+    
+    @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        let p = gestureRecognizer.location(in: collectionView)
+        
+        switch gestureRecognizer.state {
+        case .began:
+            if let indexPath = collectionView?.indexPathForItem(at: p) {
+                TapticHelper.shared.lightTaptic()
+                
+                switch indexPath {
+                case CellPath.grainCell: presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
+                default: break
+                }
+
+            }
+        default: return
+        }
     }
 }
 

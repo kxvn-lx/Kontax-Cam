@@ -164,7 +164,6 @@ extension CameraActionViewController {
                     let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
                     
                     let navController = PanModalNavigationController(rootViewController: vc)
-                    navController.modalDestination = .fx
                     
                     self.presentPanModal(navController)
             }

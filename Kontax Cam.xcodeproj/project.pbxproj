@@ -16,6 +16,7 @@
 		0A1193BD249B56E30086604D /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BC249B56E30086604D /* Effect.swift */; };
 		0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */; };
 		0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193C4249B702E0086604D /* LoadingViewController.swift */; };
+		0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */; };
 		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
@@ -41,6 +42,7 @@
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; };
 		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
 		0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 0A73C4D12499EEF900E46E9A /* Nuke */; };
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
@@ -89,6 +91,7 @@
 		0A1193BC249B56E30086604D /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A1193C4249B702E0086604D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrainCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A1D97BD2477B94F00E4078F /* VC+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+.swift"; sourceTree = "<group>"; };
 		0A1D97C32477BFAE00E4078F /* SVHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVHelper.swift; sourceTree = "<group>"; };
 		0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaksImageFilter.swift; sourceTree = "<group>"; };
@@ -165,10 +169,19 @@
 		0A03EAFD2480AB84001D8006 /* FX */ = {
 			isa = PBXGroup;
 			children = (
+				0A11FE5E249CB6CB00016E74 /* EffectCustomisationView */,
 				0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */,
 				0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */,
 			);
 			path = FX;
+			sourceTree = "<group>";
+		};
+		0A11FE5E249CB6CB00016E74 /* EffectCustomisationView */ = {
+			isa = PBXGroup;
+			children = (
+				0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */,
+			);
+			path = EffectCustomisationView;
 			sourceTree = "<group>";
 		};
 		0A1D97C22477BE7800E4078F /* Camera */ = {
@@ -265,6 +278,7 @@
 				0AEE932F247C983800F485C0 /* ShareHelper.swift */,
 				0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */,
 				0A1D97BD2477B94F00E4078F /* VC+.swift */,
+				0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -472,6 +486,7 @@
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */,
 				0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */,
+				0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
@@ -499,6 +514,7 @@
 				0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */,
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
+				0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */,

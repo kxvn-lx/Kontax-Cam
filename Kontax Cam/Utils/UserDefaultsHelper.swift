@@ -11,9 +11,9 @@ import Foundation
 struct UserDefaultsHelper {
     
     enum UserDefaultsKeys: String, CaseIterable {
-        case userAppearance
-        case userFxList
-        case userFirstLaunch
+        case userAppearance, userFxList, userFirstLaunch
+
+        case userGrainValue
     } 
     
     private let defaults = UserDefaults.standard

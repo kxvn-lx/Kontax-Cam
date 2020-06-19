@@ -17,48 +17,48 @@ extension FiltersCollectionViewController {
     
     func populateSection() {
         
-        let aSection = MenuSection(
+        let aSection = FilterSection(
             title: "A Collection",
             items: [
-                MenuItem(
+                FilterItem(
                     title: FilterName.a1.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.a2.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.a3.rawValue,
                      action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.a4.rawValue,
                      action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.a5.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.a6.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 )
             ],
            action: nil)
         
-        let bSection = MenuSection(
+        let bSection = FilterSection(
             title: "B Collection",
             items: [
-                MenuItem(
+                FilterItem(
                     title: FilterName.b1.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.b2.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
-                MenuItem(
+                FilterItem(
                     title: FilterName.b3.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
                 ),
@@ -68,7 +68,7 @@ extension FiltersCollectionViewController {
         self.sections = [aSection, bSection]
     }
     
-    fileprivate func didSelectItem(_ item: MenuItem) {
+    fileprivate func didSelectItem(_ item: FilterItem) {
         TapticHelper.shared.mediumTaptic()
         
         LUTImageFilter.selectedLUTFilter = FilterName(rawValue: item.title)!

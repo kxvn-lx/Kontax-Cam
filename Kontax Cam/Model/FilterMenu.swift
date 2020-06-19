@@ -1,5 +1,5 @@
 //
-//  Menu.swift
+//  FilterMenu.swift
 //  Kontax Cam
 //
 //  Created by Kevin Laminto on 17/6/20.
@@ -8,22 +8,22 @@
 
 import Foundation
 
-struct MenuSection {
-    typealias Action = ((MenuSection) -> ())
+struct FilterSection {
+    typealias Action = ((FilterSection) -> ())
     
     var title: String
-    var items: [MenuItem]
+    var items: [FilterItem]
     var action: Action?
     
-    init(title: String, items: [MenuItem], action: Action?) {
+    init(title: String, items: [FilterItem], action: Action?) {
         self.title = title
         self.items = items
         self.action = action
     }
 }
 
-struct MenuItem {
-    typealias Action = ((MenuItem) -> ())
+struct FilterItem {
+    typealias Action = ((FilterItem) -> ())
     
     var title: String
     var action: Action?

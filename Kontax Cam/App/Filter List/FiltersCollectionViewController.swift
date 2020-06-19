@@ -19,7 +19,7 @@ protocol FilterListDelegate: class {
 
 class FiltersCollectionViewController: UICollectionViewController {
     
-    var sections: [MenuSection] = []
+    var sections: [FilterSection] = []
     weak var delegate: FilterListDelegate?
     
     override func viewDidLoad() {

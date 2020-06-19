@@ -71,6 +71,8 @@ class ShutterButtonViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
             parent.cameraManager.capturePictureWithCompletion({ result in
                 parent.parent!.addVC(loadingVC)
+                parent.cameraManager.stopCaptureSession()
+                
                 DispatchQueue.main.async {
                     switch result {
                     case .failure:
@@ -91,6 +93,7 @@ class ShutterButtonViewController: UIViewController {
                             DataEngine.shared.save(imageData: data)
                             TapticHelper.shared.successTaptic()
                             loadingVC.removeVC()
+                            parent.cameraManager.resumeCaptureSession()
                         }
                     }
                 }

@@ -9,7 +9,8 @@
 import Foundation
 
 enum FilterType: Int, CaseIterable, Codable {
-    case lut, grain, dust, leaks, datestamp, colour
+    case lut
+    case colour, datestamp, grain, dust, leaks
 }
 
 extension FilterType: CustomStringConvertible {

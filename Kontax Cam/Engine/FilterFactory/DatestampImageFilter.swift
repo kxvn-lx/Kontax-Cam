@@ -36,7 +36,7 @@ class DatestampImageFilter: ImageFilterProtocol {
         image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         
         // 2. Configure datestamp
-        let rect = CGRect(x:xPos, y: yPos, width: image.size.width, height: image.size.height)
+        let rect = CGRect(x: 0, y: 0, width: 1000, height: 200)
         let renderer = UIGraphicsImageRenderer(bounds: rect)
         
         let datestamp = renderer.image { ctx in
@@ -47,11 +47,11 @@ class DatestampImageFilter: ImageFilterProtocol {
             
             let attributedString = NSAttributedString(string: currentDate, attributes: attrs)
             ctx.cgContext.setShadow(offset: .zero, blur: 15, color: UIColor.red.cgColor)
-            attributedString.draw(in: rect.insetBy(dx: 50, dy: 50))
+            attributedString.draw(in: rect)
         }
         
         // 3. Draw the datestamp
-        datestamp.draw(in: CGRect(x: xPos, y: yPos, width: image.size.width, height: image.size.height))
+        datestamp.draw(in: CGRect(x: xPos, y: yPos, width: rect.width, height: rect.height))
 
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

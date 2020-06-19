@@ -12,9 +12,11 @@ import UIKit
 class ColourLeaksImageFilter: ImageFilterProtocol {
     
     private let selectedColourLeaksFilter: UIColor = .red
-    private let strength: CGFloat = 1.0
+    private let strength: CGFloat = FilterStrength.colourleaks
     
     func process(imageToEdit image: UIImage) -> UIImage? {
+        print("Applying colourleaks with strength of: \(String(describing: strength))")
+        
         var editedImage: UIImage?
         let output = PictureOutput()
         output.encodedImageFormat = .jpeg

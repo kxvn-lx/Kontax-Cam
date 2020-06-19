@@ -6,7 +6,7 @@
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct RangeConverterHelper {
     
@@ -20,7 +20,7 @@ struct RangeConverterHelper {
     ///   - oldRange: The old range array. MUST be only consisting of 2 value. [oldMin, oldMax]
     ///   - newRange: The new range arary. MUSt be only consisting of 2 value. [newMin, newMax]
     /// - Returns: <#description#>
-    func convert(_ oldValue: Float, fromOldRange oldRange: [Float], toNewRange newRange: [Float]) -> Float {
+    func convert(_ oldValue: CGFloat, fromOldRange oldRange: [CGFloat], toNewRange newRange: [CGFloat]) -> CGFloat {
         guard oldRange.count == 2, newRange.count == 2 else { fatalError("The ranges must only consist of 2 value.") }
         
         let oldRangeDiff = oldRange[1] - oldRange[0]

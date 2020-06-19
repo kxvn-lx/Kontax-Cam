@@ -18,11 +18,11 @@ class LightLeaksImageFilter: ImageFilterProtocol {
     }
     
     private let selectedLeaksFilter: LeaksName = .leaks1
-    private let strength: CGFloat = 1.0
+    private let strength: CGFloat = FilterStrength.lightleaks
     
     func process(imageToEdit image: UIImage) -> UIImage? {
-        
         guard let leaksImage = UIImage(named: selectedLeaksFilter.rawValue) else { fatalError("Invalid name!") }
+        print("Applying lightleaks with strength of: \(String(describing: strength))")
         
         var editedImage: UIImage?
         let output = PictureOutput()

@@ -17,11 +17,11 @@ class DustImageFilter: ImageFilterProtocol {
     }
 
     private let selectedDustFilter: DustName = .dust1
-    private let strength: CGFloat = 1.0
+    private let strength: CGFloat = FilterStrength.dust
     
     func process(imageToEdit image: UIImage) -> UIImage? {
-        
         guard let dustImage = UIImage(named: selectedDustFilter.rawValue) else { fatalError("Invalid name!") }
+        print("Applying dust with strength of: \(String(describing: strength))")
         
         var editedImage: UIImage?
         let output = PictureOutput()

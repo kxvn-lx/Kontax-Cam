@@ -17,11 +17,10 @@ class GrainImageFilter: ImageFilterProtocol {
     }
 
     private let selectedGrainFilter: GrainName = .grain1
-    private var strength: CGFloat = 1.0
+    private var strength: CGFloat = RangeConverterHelper.shared.convert(FilterStrength.grain, fromOldRange: [0, 10], toNewRange: [0, 1])
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }
-        
         print("Applying grain with strength of: \(String(describing: strength))")
 
         var editedImage: UIImage?

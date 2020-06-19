@@ -48,6 +48,7 @@
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
+		0AA8F0F2249D017D00B07519 /* FilterStrength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8F0F1249D017D00B07519 /* FilterStrength.swift */; };
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
@@ -131,6 +132,7 @@
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0AA8F0F1249D017D00B07519 /* FilterStrength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStrength.swift; sourceTree = "<group>"; };
 		0AADEE6E247B6541009FFA52 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
@@ -336,11 +338,11 @@
 		0AADEE72247B731C009FFA52 /* Lab */ = {
 			isa = PBXGroup;
 			children = (
-				0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */,
 				0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */,
 				0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */,
 				0A9F7F14248200800088E053 /* EmptyView.swift */,
 				0A0260762497179F009C26FB /* PreviewViewController.swift */,
+				0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */,
 			);
 			path = Lab;
 			sourceTree = "<group>";
@@ -375,6 +377,7 @@
 				0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */,
 				0A0260812497334C009C26FB /* DatestampImageFilter.swift */,
 				0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */,
+				0AA8F0F1249D017D00B07519 /* FilterStrength.swift */,
 			);
 			path = FilterFactory;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
+				0AA8F0F2249D017D00B07519 /* FilterStrength.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
 				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,

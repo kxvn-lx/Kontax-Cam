@@ -377,6 +377,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 self.imageObjects.remove(at: index)
                 
                 self.collectionView.deleteItems(at: [indexPath])
+                self.toggleElements()
                 self.collectionView.reloadData()
             } else {
                 AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: self.presentedViewController!)

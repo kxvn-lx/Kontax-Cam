@@ -45,8 +45,8 @@ extension PanModalNavigationController: PanModalPresentable {
     
     var longFormHeight: PanModalHeight {
         switch modalDestination {
-        case .filters, .fx: return .maxHeight
-        case .appearance: return .contentHeight(200)
+        case .filters: return .maxHeight
+        case .appearance, .fx: return .contentHeight(200)
         default: fatalError("Please specify modal destination")
         }
     }

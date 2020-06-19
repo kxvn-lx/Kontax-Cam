@@ -52,19 +52,13 @@ extension FXCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         TapticHelper.shared.mediumTaptic()
         
-        // Update UI
+        // 1. Update UI
         let selectedCell = collectionView.cellForItem(at: indexPath) as! FXCollectionViewCell
         selectedCell.toggleSelected()
         
-        // Update datasource
+        // 2. Update datasource
         let selectedFx = effects[indexPath.row]
-        
-        if selectedCell.isFxSelected {
-            FilterEngine.shared.allowedFilters.append(selectedFx.name)
-        } else {
-            FilterEngine.shared.allowedFilters.remove(at: FilterEngine.shared.allowedFilters.firstIndex(of: selectedFx.name)!)
-        }
-        FilterEngine.shared.allowedFilters.sort(by: { $0.rawValue < $1.rawValue })
+        smartAppend(selectedCell, selectedFx)
         
         // Save the selection to UserDefaults
         UserDefaultsHelper.shared.setData(value: try? PropertyListEncoder().encode(FilterEngine.shared.allowedFilters), key: .userFxList)
@@ -74,13 +68,22 @@ extension FXCollectionViewController {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
             fatalError("Could not dequeue SectionHeader")
         }
-        
-        switch indexPath.section {
-        case 0: headerView.titleLabel.text = ""
-        default: break
-        }
+        headerView.titleLabel.text = "Tip: Long press to customise the effect."
         
         return headerView
+    }
+    
+    /// Append the selecteed FX to the allowed filters list. If exist, simply remove it.
+    /// - Parameters:
+    ///   - selectedCell: The selected cell
+    ///   - selectedFx: The selected Effects
+    private func smartAppend(_ selectedCell: FXCollectionViewCell, _ selectedFx: Effect) {
+        if selectedCell.isFxSelected {
+            FilterEngine.shared.allowedFilters.append(selectedFx.name)
+        } else {
+            FilterEngine.shared.allowedFilters.remove(at: FilterEngine.shared.allowedFilters.firstIndex(of: selectedFx.name)!)
+        }
+        FilterEngine.shared.allowedFilters.sort(by: { $0.rawValue < $1.rawValue })
     }
 }
 

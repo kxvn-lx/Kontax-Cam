@@ -1,2 +1,34 @@
-# Kontax-Cam
-Instant camera with film presets written in swift.
+[![Swift 5.2](https://img.shields.io/badge/swift-5.2-ED523F.svg?style=flat)](https://swift.org/download/)
+
+# Kontax Cam
+Kontax Cam is an instant camera built 100% using Swift for iOS. You can take your photos with the filters personally made and cloned from my own lightroom preset that I used for my photography. You can also apply some filters to make it look like a film photo, or customise it to look digital-film.
+
+![image1](/images/image1.png)
+
+
+## Features
+
+ - [x] Instant camera that just works.
+ - [x] Multiple filter presets made personally by me. (Will be adding more!)
+ - [x] Multiple effects to make your photo pop.
+ - [x] Custom photo viewer
+ - [x] Multiple flash mode
+ - [x] Timer
+ - [x] Front and back camera support
+ - [x] Rule of third grid line
+ - [ ] Access wide angle lens for iPhone 11+ or the telephoto lens
+ 
+ ## Future ideas
+ 
+ - [ ] Improve app to use less memory ⚠️ (In need of a help!)
+
+## Installation
+**Requirements**
+
+ - Deployment target iOS 13+
+ - Swift 5+
+ - XCode 11+
+ 
+**How to**
+1. Clone the repo
+2. Open KontaxCam.xcworkspace

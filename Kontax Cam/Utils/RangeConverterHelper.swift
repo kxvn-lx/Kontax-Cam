@@ -19,7 +19,7 @@ struct RangeConverterHelper {
     ///   - oldValue: The old value. This value will then be converted to the enw range value.
     ///   - oldRange: The old range array. MUST be only consisting of 2 value. [oldMin, oldMax]
     ///   - newRange: The new range arary. MUSt be only consisting of 2 value. [newMin, newMax]
-    /// - Returns: <#description#>
+    /// - Returns: The converted value
     func convert(_ oldValue: CGFloat, fromOldRange oldRange: [CGFloat], toNewRange newRange: [CGFloat]) -> CGFloat {
         guard oldRange.count == 2, newRange.count == 2 else { fatalError("The ranges must only consist of 2 value.") }
         

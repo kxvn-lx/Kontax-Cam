@@ -56,7 +56,8 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                         TapticHelper.shared.lightTaptic()
                         
                         switch indexPath {
-                        case CellPath.grainCell: presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
+                        case CellPath.grainCell:
+                            presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
                         default: break
                         }
                     }

@@ -18,8 +18,9 @@ class GrainImageFilter: ImageFilterProtocol {
     
     private let selectedGrainFilter: GrainName = .grain1
     private var strength: CGFloat = {
-        return RangeConverterHelper.shared.convert(FilterStrength.strengthMap[.grain]!, fromOldRange: [0, 10], toNewRange: [0, 1])
+        return RangeConverterHelper.shared.convert(FilterValue.valueMap[.grain]!, fromOldRange: [0, 10], toNewRange: [0, 1])
     }()
+
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }

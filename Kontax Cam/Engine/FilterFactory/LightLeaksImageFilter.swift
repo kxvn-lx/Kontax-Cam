@@ -19,7 +19,7 @@ class LightLeaksImageFilter: ImageFilterProtocol {
     
     private let selectedLeaksFilter: LeaksName = .leaks1
     private var strength: CGFloat = {
-        return RangeConverterHelper.shared.convert(FilterStrength.strengthMap[.lightleaks]!, fromOldRange: [0, 10], toNewRange: [0, 1])
+        return RangeConverterHelper.shared.convert(FilterValue.valueMap[.lightleaks]!, fromOldRange: [0, 10], toNewRange: [0, 1])
     }()
     
     func process(imageToEdit image: UIImage) -> UIImage? {

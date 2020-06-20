@@ -18,7 +18,7 @@ class DustImageFilter: ImageFilterProtocol {
 
     private let selectedDustFilter: DustName = .dust1
     private var strength: CGFloat = {
-        return RangeConverterHelper.shared.convert(FilterStrength.strengthMap[.dust]!, fromOldRange: [0, 10], toNewRange: [0, 1])
+        return RangeConverterHelper.shared.convert(FilterValue.valueMap[.dust]!, fromOldRange: [0, 10], toNewRange: [0, 1])
     }()
     
     func process(imageToEdit image: UIImage) -> UIImage? {

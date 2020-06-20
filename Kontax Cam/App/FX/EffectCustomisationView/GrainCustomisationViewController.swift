@@ -46,18 +46,18 @@ class GrainCustomisationViewController: UIViewController {
         setupConstraint()
         
         // Overwrite the strengthLabel and slider to match UserDefaults
-        strengthLabel.text = "Strength: +\(FilterStrength.strengthMap[.grain]!)"
-        slider.setValue(Float(FilterStrength.strengthMap[.grain]!), animated: true)
+        strengthLabel.text = "Strength: +\(FilterValue.valueMap[.grain]!)"
+        slider.setValue(Float(FilterValue.valueMap[.grain]!), animated: true)
         
         // Add event listener for the slider
         slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         TapticHelper.shared.lightTaptic()
-        FilterStrength.strengthMap[.grain] = CGFloat(slider.value)
-        print("Grain strength new value: \(FilterStrength.strengthMap[.grain]!)")
+        FilterValue.valueMap[.grain] = CGFloat(slider.value)
+        print("Grain strength new value: \(FilterValue.valueMap[.grain]!)")
     }
     
     private func setupView() {

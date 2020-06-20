@@ -61,7 +61,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                 
                 switch indexPath {
                 case CellPath.colourleaksCell:
-                    presentPanModal(PanModalNavigationController(rootViewController: ColourleaksCustomisationCollectionViewController(collectionViewLayout: makeLayout(withHeader: false))))
+                    presentPanModal(PanModalNavigationController(rootViewController: ColourleaksCustomisationViewController()))
                     
                 case CellPath.grainCell:
                     presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
@@ -129,7 +129,7 @@ extension FXCollectionViewController {
 
 extension FXCollectionViewController {
     // MARK: - Class functions
-    private func createSection(withHeader: Bool) -> NSCollectionLayoutSection {
+    private func createSection() -> NSCollectionLayoutSection {
         let contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -145,16 +145,13 @@ extension FXCollectionViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
         section.orthogonalScrollingBehavior = .groupPaging
-        if withHeader {
-            section.boundarySupplementaryItems = [makeSectionHeader()]
-        }
         
         return section
     }
     
-    private func makeLayout(withHeader: Bool = true) -> UICollectionViewLayout  {
+    private func makeLayout() -> UICollectionViewLayout  {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnv: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            return self.createSection(withHeader: withHeader)
+            return self.createSection()
         }
         
         // Configure the Layout with interSectionSpacing

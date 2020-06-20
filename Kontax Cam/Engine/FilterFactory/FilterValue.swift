@@ -35,7 +35,7 @@ struct FilterValue {
             var displayValue: UIColor {
                 get {
                     switch self {
-                    case .random: return .systemGray5
+                    case .random: return .systemGray
                     case .red: return UIColor(displayP3Red: 173/255, green: 36/255, blue: 41/255, alpha: 1)
                     case .green: return UIColor(displayP3Red: 6/255, green: 81/255, blue: 37/255, alpha: 1)
                     case .blue: return UIColor(displayP3Red: 5/255, green: 42/255, blue: 83/255, alpha: 1)

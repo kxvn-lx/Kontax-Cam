@@ -145,6 +145,7 @@ extension FXCollectionViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
         section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [makeSectionHeader()]
         
         return section
     }

@@ -50,6 +50,7 @@
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
+		0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */; };
 		0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8F0F1249D017D00B07519 /* FilterValue.swift */; };
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
@@ -136,6 +137,7 @@
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
+		0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisationControlHeaderView.swift; sourceTree = "<group>"; };
 		0AA8F0F1249D017D00B07519 /* FilterValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterValue.swift; sourceTree = "<group>"; };
 		0AADEE6E247B6541009FFA52 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 			children = (
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
 				0A1193C4249B702E0086604D /* LoadingViewController.swift */,
+				0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
+				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,
 				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,

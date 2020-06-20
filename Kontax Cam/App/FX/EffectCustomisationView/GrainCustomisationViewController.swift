@@ -12,16 +12,7 @@ import PanModal
 class GrainCustomisationViewController: UIViewController {
     
     private let step: Float = 1
-    
-    private let strengthLabel: UILabel = {
-       let v = UILabel()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.textColor = .label
-        v.textAlignment = .left
-        v.text = "+0"
-        v.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption1).pointSize, weight: .medium)
-        return v
-    }()
+
     private let slider: UISlider = {
         let v = UISlider()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +27,7 @@ class GrainCustomisationViewController: UIViewController {
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
+    private let controlView = CustomisationControlHeaderView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,38 +38,35 @@ class GrainCustomisationViewController: UIViewController {
         setupConstraint()
         
         // Overwrite the strengthLabel and slider
-        strengthLabel.text = "Strength: +\(FilterValue.Grain.strength)"
+        controlView.controlTitleLabel.text = "Strength: +\(FilterValue.Grain.strength)"
         slider.setValue(Float(FilterValue.Grain.strength), animated: true)
         
         // Add event listener for the slider
         slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        TapticHelper.shared.lightTaptic()
-        FilterValue.Grain.strength = CGFloat(slider.value)
-        print("Grain strength new value: \(FilterValue.Grain.strength)")
-        SPAlertHelper.shared.present(title: "Grain set to: \(slider.value)")
+        
+        // Setup delegate
+        controlView.delegate = self
     }
     
     private func setupView() {
-        view.addSubview(strengthLabel)
         view.addSubview(containerView)
+        view.addSubview(controlView)
         
         containerView.addSubview(slider)
     }
     
     private func setupConstraint() {
-        strengthLabel.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0))
+        controlView.snp.makeConstraints { (make) in
+            make.top.centerX.equalToSuperview()
+            make.width.equalTo(self.view.frame.width * 0.85)
+            make.height.equalTo(40)
         }
         
         containerView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height.equalTo(140)
+            make.height.equalTo(115)
             make.centerX.equalToSuperview()
-            make.top.equalTo(strengthLabel.snp.bottom)
+            make.top.equalTo(controlView.snp.bottom)
         }
         
         slider.snp.makeConstraints { (make) in
@@ -90,7 +79,7 @@ class GrainCustomisationViewController: UIViewController {
         let roundedStepValue = round(sender.value / step) * step
         sender.value = roundedStepValue
         DispatchQueue.main.async {
-            self.strengthLabel.text = "Strength: +\(roundedStepValue)"
+            self.controlView.controlTitleLabel.text = "Strength: +\(roundedStepValue)"
         }
     }
 }
@@ -98,5 +87,15 @@ class GrainCustomisationViewController: UIViewController {
 extension GrainCustomisationViewController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return nil
+    }
+}
+
+extension GrainCustomisationViewController: CustomisationControlProtocol {
+    func didTapOk() {
+        TapticHelper.shared.lightTaptic()
+        FilterValue.Grain.strength = CGFloat(slider.value)
+        print("Grain strength new value: \(FilterValue.Grain.strength)")
+        SPAlertHelper.shared.present(title: "Grain set to: \(slider.value)")
+        dismiss(animated: true, completion: nil)
     }
 }

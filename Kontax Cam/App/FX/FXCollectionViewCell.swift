@@ -10,6 +10,14 @@ import UIKit
 
 class FXCollectionViewCell: UICollectionViewCell {
     
+    let isEditedView: UIView = {
+        let v = UIView()
+        v.layer.cornerRadius = 5 / 2
+        v.backgroundColor = .darkGray
+        v.isHidden = true
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,19 +50,28 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.addSubview(titleLabel)
         self.addSubview(toggleLabel)
         self.addSubview(iconImageView)
+        self.addSubview(isEditedView)
+        
+        isEditedView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(5)
+            make.top.equalToSuperview()
+        }
         
         iconImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(self.frame.width * 0.2)
-            make.left.top.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
-        }
-        
-        toggleLabel.snp.makeConstraints { (make) in
-            make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(22.5)
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(toggleLabel).offset(-15)
-            make.left.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
+            make.centerX.equalToSuperview()
+            make.top.equalTo(iconImageView.snp.bottom).offset(7.5)
+        }
+        
+        toggleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom)
         }
         
         updateStyle()
@@ -63,6 +80,7 @@ class FXCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isFxSelected = false
+        isEditedView.isHidden = true
         updateStyle()
     }
     

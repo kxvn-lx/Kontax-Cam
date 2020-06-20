@@ -23,7 +23,6 @@ class ColourleaksCustomisationCollectionViewController: UICollectionViewControll
     }
     
     // MARK: UICollectionViewDataSource
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

@@ -22,6 +22,7 @@ struct RangeConverterHelper {
     /// - Returns: The converted value
     func convert(_ oldValue: CGFloat, fromOldRange oldRange: [CGFloat], toNewRange newRange: [CGFloat]) -> CGFloat {
         guard oldRange.count == 2, newRange.count == 2 else { fatalError("The ranges must only consist of 2 value.") }
+        guard oldRange[1] > oldRange[0], newRange[1] > newRange[0] else { fatalError("The last index must be bigger!") }
         
         let oldRangeDiff = oldRange[1] - oldRange[0]
         let newRangeDiff = newRange[1] - newRange[0]

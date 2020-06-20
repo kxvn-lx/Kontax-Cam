@@ -32,3 +32,7 @@ Kontax Cam is an instant camera built 100% using Swift for iOS. You can take you
 **How to**
 1. Clone the repo
 2. Open KontaxCam.xcworkspace
+
+
+## Acknowledgment
+This project uses [GPUImage 3](https://github.com/BradLarson/GPUImage3) to do all the heavy-lifting image-side. 

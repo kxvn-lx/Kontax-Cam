@@ -1,16 +1,16 @@
 //
-//  GrainCustomisationViewController.swift
+//  DustCustomisationViewController.swift
 //  Kontax Cam
 //
-//  Created by Kevin Laminto on 19/6/20.
+//  Created by Kevin Laminto on 21/6/20.
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
 import UIKit
 import PanModal
 
-class GrainCustomisationViewController: UIViewController {
-    
+class DustCustomisationViewController: UIViewController {
+
     private let step: Float = 1
     
     private let strengthLabel: UILabel = {
@@ -39,15 +39,15 @@ class GrainCustomisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar(tintColor: .label, title: "Grain", preferredLargeTitle: false, removeSeparator: true)
+        self.configureNavigationBar(tintColor: .label, title: "Dust", preferredLargeTitle: false, removeSeparator: true)
         self.view.backgroundColor = .systemBackground
         
         setupView()
         setupConstraint()
         
         // Overwrite the strengthLabel and slider
-        strengthLabel.text = "Strength: +\(FilterValue.Grain.strength)"
-        slider.setValue(Float(FilterValue.Grain.strength), animated: true)
+        strengthLabel.text = "Strength: +\(FilterValue.Dust.strength)"
+        slider.setValue(Float(FilterValue.Dust.strength), animated: true)
         
         // Add event listener for the slider
         slider.addTarget(self, action: #selector(sliderValueDidChange), for: .valueChanged)
@@ -56,9 +56,9 @@ class GrainCustomisationViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         TapticHelper.shared.lightTaptic()
-        FilterValue.Grain.strength = CGFloat(slider.value)
-        print("Grain strength new value: \(FilterValue.Grain.strength)")
-        SPAlertHelper.shared.present(title: "Grain set to: \(slider.value)")
+        FilterValue.Dust.strength = CGFloat(slider.value)
+        print("Dust strength new value: \(FilterValue.Dust.strength)")
+        SPAlertHelper.shared.present(title: "Dust set to: \(slider.value)")
     }
     
     private func setupView() {
@@ -95,7 +95,7 @@ class GrainCustomisationViewController: UIViewController {
     }
 }
 
-extension GrainCustomisationViewController: PanModalPresentable {
+extension DustCustomisationViewController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return nil
     }

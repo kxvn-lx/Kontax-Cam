@@ -12,12 +12,14 @@ import PanModal
 private let reuseIdentifier = "fxCell"
 private let headerIdentifier = "fxHeader"
 
+private struct CellPath {
+    static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
+    static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
+    static let dustCell = IndexPath(row: FilterType.allCases.firstIndex(of: .dust)! - 1, section: 0)
+}
+
 class FXCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
-    private struct CellPath {
-        static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
-        static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
-    }
     private let effects: [Effect] = FilterType.allCases.map({ Effect(name: $0, icon: $0.iconName) }).filter({ $0.name != FilterType.lut })
     
     override func viewDidLoad() {
@@ -51,19 +53,22 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         
         switch gestureRecognizer.state {
         case .began:
-            if let indexPath = collectionView?.indexPathForItem(at: p) {
-                if let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell {
-                    if cell.isFxSelected {
-                        TapticHelper.shared.lightTaptic()
-                        
-                        switch indexPath {
-                        case CellPath.colourleaksCell:
-                            presentPanModal(PanModalNavigationController(rootViewController: ColourleaksCustomisationCollectionViewController(collectionViewLayout: makeLayout(withHeader: false))))
-                        case CellPath.grainCell:
-                            presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
-                        default: break
-                        }
-                    }
+            guard let indexPath = collectionView?.indexPathForItem(at: p) else { return }
+            guard let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell else { return }
+            
+            if cell.isFxSelected {
+                TapticHelper.shared.lightTaptic()
+                
+                switch indexPath {
+                case CellPath.colourleaksCell:
+                    presentPanModal(PanModalNavigationController(rootViewController: ColourleaksCustomisationCollectionViewController(collectionViewLayout: makeLayout(withHeader: false))))
+                    
+                case CellPath.grainCell:
+                    presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
+                    
+                case CellPath.dustCell:
+                    presentPanModal(PanModalNavigationController(rootViewController: DustCustomisationViewController()))
+                default: break
                 }
             }
         default: return

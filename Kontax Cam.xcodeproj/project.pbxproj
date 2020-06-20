@@ -49,6 +49,7 @@
 		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
+		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
 		0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8F0F1249D017D00B07519 /* FilterValue.swift */; };
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
@@ -134,6 +135,7 @@
 		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
 		0AA8F0F1249D017D00B07519 /* FilterValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterValue.swift; sourceTree = "<group>"; };
 		0AADEE6E247B6541009FFA52 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */,
 				0A6B878C249E00C0001745B1 /* ColourleaksCustomisationCollectionViewController.swift */,
+				0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */,
 			);
 			path = EffectCustomisationView;
 			sourceTree = "<group>";
@@ -285,8 +288,8 @@
 				0AC407C8247DE03700BB0270 /* FilterFactory */,
 				0AC407C6247DDE2100BB0270 /* FilterEngine.swift */,
 				0A1D97D32477F38900E4078F /* TimerEngine.swift */,
-				0AADEE70247B6987009FFA52 /* DataEngine.swift */,
 				0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */,
+				0AADEE70247B6987009FFA52 /* DataEngine.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
+				0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */,
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationCollectionViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,

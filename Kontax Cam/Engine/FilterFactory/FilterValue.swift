@@ -50,6 +50,10 @@ struct FilterValue {
         static var strength: CGFloat = 10
     }
     
+    struct Dust {
+        static var strength: CGFloat = 10
+    }
+    
     
     private init() { }
 }

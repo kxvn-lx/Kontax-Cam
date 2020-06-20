@@ -36,7 +36,6 @@ class FXCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 1
         return label
     }()
-    
     var isFxSelected = false
     
     override func awakeFromNib() {

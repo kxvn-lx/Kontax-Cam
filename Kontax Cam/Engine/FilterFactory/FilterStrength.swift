@@ -10,10 +10,10 @@ import UIKit
 
 struct FilterStrength {
     
-    static var grain: CGFloat = 10.0
-    static var colourleaks: CGFloat = 10.0
-    static var dust: CGFloat = 10.0
-    static var lightleaks: CGFloat = 10.0
+    static var strengthMap: [FilterType: CGFloat] = [.grain: 10.0,
+                                                     .colourleaks: 10.0,
+                                                     .dust: 10.0,
+                                                     .lightleaks: 10.0]
     
     private init() { }
 }

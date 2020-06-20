@@ -51,13 +51,16 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         switch gestureRecognizer.state {
         case .began:
             if let indexPath = collectionView?.indexPathForItem(at: p) {
-                TapticHelper.shared.lightTaptic()
-                
-                switch indexPath {
-                case CellPath.grainCell: presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
-                default: break
+                if let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell {
+                    if cell.isFxSelected {
+                        TapticHelper.shared.lightTaptic()
+                        
+                        switch indexPath {
+                        case CellPath.grainCell: presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
+                        default: break
+                        }
+                    }
                 }
-
             }
         default: return
         }
@@ -72,7 +75,7 @@ extension FXCollectionViewController {
         
         cell.titleLabel.text = currentFx.name.description
         cell.iconImageView.image = IconHelper.shared.getIconImage(iconName: currentFx.icon)
-        
+
         if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.toggleSelected() }
         return cell
     }
@@ -96,7 +99,7 @@ extension FXCollectionViewController {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
             fatalError("Could not dequeue SectionHeader")
         }
-        headerView.titleLabel.text = "Tip: Long press to customise the effect."
+        headerView.titleLabel.text = "Long press an active effect to customise it."
         
         return headerView
     }

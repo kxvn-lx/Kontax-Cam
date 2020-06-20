@@ -8,32 +8,49 @@
 
 import UIKit
 
+/// Parent struct of all the changeable value of the effects.
 struct FilterValue {
     
-    enum Colourleak: CaseIterable {
-        case random, red, green, blue
+    /// Colourleaks component. Stores the selected value, along its options.
+    struct Colourleaks {
+        // Red by default
+        static var selectedColourValue: ColourValue = .red
         
-        var value: UIColor {
-            get {
-                switch self {
-                case .random: return Colourleak.allCases.dropFirst().randomElement()!.value
-                case .red: return .red
-                case .green: return .green
-                case .blue: return .blue
+        enum ColourValue: String, CaseIterable {
+            case random, red, green, blue
+            
+            // Value for the engine
+            var value: UIColor {
+                get {
+                    switch self {
+                    case .random: return ColourValue.allCases.dropFirst().randomElement()!.value
+                    case .red: return .red
+                    case .green: return .green
+                    case .blue: return .blue
+                    }
+                }
+            }
+            
+            // Value for UI. This means to display a friendlier colour.
+            var displayValue: UIColor {
+                get {
+                    switch self {
+                    case .random: return .systemGray5
+                    case .red: return UIColor(displayP3Red: 173/255, green: 36/255, blue: 41/255, alpha: 1)
+                    case .green: return UIColor(displayP3Red: 6/255, green: 81/255, blue: 37/255, alpha: 1)
+                    case .blue: return UIColor(displayP3Red: 5/255, green: 42/255, blue: 83/255, alpha: 1)
+                    }
                 }
             }
         }
     }
     
-    enum Datestamp: CaseIterable {
-        case oldschool, current
+    /// Grain component. Stores its strength value.
+    struct Grain {
+        static var strength: CGFloat = 10
     }
     
-    static var valueMap: [FilterType: CGFloat] = [.grain: 10.0,
-                                                  .colourleaks: 10.0,
-                                                  .dust: 10.0,
-                                                  .lightleaks: 10.0]
-
+    
     private init() { }
 }
 

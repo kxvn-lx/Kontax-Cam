@@ -11,13 +11,11 @@ import UIKit
 
 class ColourLeaksImageFilter: ImageFilterProtocol {
     
-    private let selectedColourLeaksFilter = FilterValue.Colourleak.red.value
-    private var strength: CGFloat = {
-        return RangeConverterHelper.shared.convert(FilterValue.valueMap[.colourleaks]!, fromOldRange: [0, 10], toNewRange: [0, 1])
-    }()
+    private let selectedColourLeaksFilter = FilterValue.Colourleaks.selectedColourValue
+    private var strength: CGFloat = 1.0
     
     func process(imageToEdit image: UIImage) -> UIImage? {
-        print("Applying colourleaks with strength of: \(String(describing: strength))")
+        print("applying colour leaks value: \(selectedColourLeaksFilter.rawValue)")
         
         var editedImage: UIImage?
         let output = PictureOutput()
@@ -29,7 +27,7 @@ class ColourLeaksImageFilter: ImageFilterProtocol {
         let blendMode = DarkenBlend()
         
         let imageInput = PictureInput(image: image)
-        let colourLeaksInput = PictureInput(image: renderImage(fromColor: selectedColourLeaksFilter, withSize: image.size).alpha(strength))
+        let colourLeaksInput = PictureInput(image: renderImage(fromColor: selectedColourLeaksFilter.value, withSize: image.size).alpha(strength))
         
         imageInput --> blendMode
         colourLeaksInput --> blendMode --> output

@@ -18,7 +18,7 @@ class GrainImageFilter: ImageFilterProtocol {
     
     private let selectedGrainFilter: GrainName = .grain1
     private var strength: CGFloat = {
-        return RangeConverterHelper.shared.convert(FilterValue.valueMap[.grain]!, fromOldRange: [0, 10], toNewRange: [0, 1])
+        return RangeConverterHelper.shared.convert(FilterValue.Grain.strength, fromOldRange: [0, 10], toNewRange: [0, 1])
     }()
 
     

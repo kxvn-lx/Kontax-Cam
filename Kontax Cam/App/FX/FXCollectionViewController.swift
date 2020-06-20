@@ -15,7 +15,8 @@ private let headerIdentifier = "fxHeader"
 class FXCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
     private struct CellPath {
-        static let grainCell = IndexPath(row: 2, section: 0)
+        static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
+        static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
     }
     private let effects: [Effect] = FilterType.allCases.map({ Effect(name: $0, icon: $0.iconName) }).filter({ $0.name != FilterType.lut })
     
@@ -56,6 +57,8 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                         TapticHelper.shared.lightTaptic()
                         
                         switch indexPath {
+                        case CellPath.colourleaksCell:
+                            presentPanModal(PanModalNavigationController(rootViewController: ColourleaksCustomisationCollectionViewController(collectionViewLayout: makeLayout(withHeader: false))))
                         case CellPath.grainCell:
                             presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
                         default: break
@@ -76,7 +79,7 @@ extension FXCollectionViewController {
         
         cell.titleLabel.text = currentFx.name.description
         cell.iconImageView.image = IconHelper.shared.getIconImage(iconName: currentFx.icon)
-
+        
         if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.toggleSelected() }
         return cell
     }
@@ -93,14 +96,14 @@ extension FXCollectionViewController {
         smartAppend(selectedCell, selectedFx)
         
         // Save the selection to UserDefaults
-//        UserDefaultsHelper.shared.setData(value: try? PropertyListEncoder().encode(FilterEngine.shared.allowedFilters), key: .userFxList)
+        //        UserDefaultsHelper.shared.setData(value: try? PropertyListEncoder().encode(FilterEngine.shared.allowedFilters), key: .userFxList)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
             fatalError("Could not dequeue SectionHeader")
         }
-        headerView.titleLabel.text = "Long press an active effect to customise it."
+        headerView.titleLabel.text = "Long press any active effects to customise it."
         
         return headerView
     }
@@ -121,7 +124,7 @@ extension FXCollectionViewController {
 
 extension FXCollectionViewController {
     // MARK: - Class functions
-    private func createSection() -> NSCollectionLayoutSection {
+    private func createSection(withHeader: Bool) -> NSCollectionLayoutSection {
         let contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -137,14 +140,16 @@ extension FXCollectionViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
         section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [makeSectionHeader()]
+        if withHeader {
+            section.boundarySupplementaryItems = [makeSectionHeader()]
+        }
         
         return section
     }
     
-    private func makeLayout() -> UICollectionViewLayout  {
+    private func makeLayout(withHeader: Bool = true) -> UICollectionViewLayout  {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnv: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            return self.createSection()
+            return self.createSection(withHeader: withHeader)
         }
         
         // Configure the Layout with interSectionSpacing

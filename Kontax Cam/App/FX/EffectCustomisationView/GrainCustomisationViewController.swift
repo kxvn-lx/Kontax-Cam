@@ -55,6 +55,7 @@ class GrainCustomisationViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        TapticHelper.shared.lightTaptic()
         FilterStrength.strengthMap[.grain] = CGFloat(slider.value)
         print("Grain strength new value: \(FilterStrength.strengthMap[.grain]!)")
     }

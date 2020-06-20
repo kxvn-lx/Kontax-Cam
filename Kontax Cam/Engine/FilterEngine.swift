@@ -15,9 +15,9 @@ class FilterEngine {
     
     static let shared = FilterEngine()
     private init() {
-        guard let filtersData = UserDefaultsHelper.shared.getData(type: Any.self, forKey: .userFxList) as? NSData else { return }
-        guard let allowedFilters = try? PropertyListDecoder().decode([FilterType].self, from: filtersData as Data) else { return }
-        self.allowedFilters = allowedFilters
+//        guard let filtersData = UserDefaultsHelper.shared.getData(type: Any.self, forKey: .userFxList) as? NSData else { return }
+//        guard let allowedFilters = try? PropertyListDecoder().decode([FilterType].self, from: filtersData as Data) else { return }
+//        self.allowedFilters = allowedFilters
     }
     
     
@@ -35,11 +35,11 @@ class FilterEngine {
         
         // Iterate through all the selected effects
         for filter in allowedFilters {
-            print("Current filter: \(filter.description)")
+            print("🛠 Current filter: \(filter.description)")
             let filterObj = FilterFactory.shared.getFilter(ofFilterType: filter)
             guard let editedImage = filterObj.process(imageToEdit: image) else { fatalError("\(filter) filter is not working.") }
             image = editedImage
-            print("\(filter.description) finished.")
+            print("✅ \(filter.description) finished.")
         }
         return image
     }

@@ -33,7 +33,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         
         // Setup Long press gesture
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        lpgr.minimumPressDuration = 0.5
+        lpgr.minimumPressDuration = 0.25
         lpgr.delegate = self
         lpgr.delaysTouchesBegan = true
         self.collectionView?.addGestureRecognizer(lpgr)

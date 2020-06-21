@@ -90,7 +90,7 @@ extension DustCustomisationViewController: PanModalPresentable {
 }
 
 extension DustCustomisationViewController: CustomisationControlProtocol {
-    func didTapOk() {
+    func didTapDone() {
         TapticHelper.shared.lightTaptic()
         FilterValue.Dust.strength = CGFloat(slider.value)
         print("Dust strength new value: \(FilterValue.Dust.strength)")

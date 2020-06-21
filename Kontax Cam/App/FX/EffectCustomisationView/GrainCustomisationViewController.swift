@@ -91,7 +91,7 @@ extension GrainCustomisationViewController: PanModalPresentable {
 }
 
 extension GrainCustomisationViewController: CustomisationControlProtocol {
-    func didTapOk() {
+    func didTapDone() {
         TapticHelper.shared.lightTaptic()
         FilterValue.Grain.strength = CGFloat(slider.value)
         print("Grain strength new value: \(FilterValue.Grain.strength)")

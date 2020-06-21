@@ -9,7 +9,8 @@
 import UIKit
 
 protocol CustomisationControlProtocol: class {
-    func didTapOk()
+    /// Called when the done button is pressed
+    func didTapDone()
 }
 
 class CustomisationControlHeaderView: UIView {
@@ -56,7 +57,7 @@ class CustomisationControlHeaderView: UIView {
     }
     
     @objc func okTapped() {
-        delegate?.didTapOk()
+        delegate?.didTapDone()
     }
     
 }

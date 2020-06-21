@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class ColourleaksCustomisationViewController: UIViewController {
     
     private let colourleaks = FilterValue.Colourleaks.ColourValue.allCases
+    private let controlView = CustomisationControlHeaderView()
     private var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -21,23 +22,42 @@ class ColourleaksCustomisationViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        controlView.delegate = self
         
         self.collectionView!.register(ColourleaksCustomisationCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.configureNavigationBar(tintColor: .label, title: "Colour leaks", preferredLargeTitle: false, removeSeparator: true)
-        self.collectionView.backgroundColor = .systemBackground
+        self.view.backgroundColor = .systemBackground
+        self.collectionView.backgroundColor = .clear
         
         setupView()
         setupConstraint()
     }
     
     private func setupView() {
+        view.addSubview(controlView)
         view.addSubview(collectionView)
+        
+        controlView.controlTitleLabel.isHidden = true
+        controlView.controlTitleLabel.removeFromSuperview()
     }
     
     private func setupConstraint() {
-        collectionView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        controlView.snp.makeConstraints { (make) in
+            make.top.centerX.equalToSuperview()
+            make.width.equalTo(self.view.frame.width * 0.85)
+            make.height.equalTo(40)
         }
+        
+        collectionView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(115)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(controlView.snp.bottom)
+        }
+        
+        //        collectionView.snp.makeConstraints { (make) in
+        //            make.edges.equalToSuperview()
+        //        }
     }
     
     private func createSection(withHeader: Bool) -> NSCollectionLayoutSection {
@@ -88,23 +108,33 @@ extension ColourleaksCustomisationViewController: UICollectionViewDelegate, UICo
         
         let selectedValue = FilterValue.Colourleaks.selectedColourValue
         cell.colourView.backgroundColor = colourleaks[indexPath.row].displayValue
-        cell.wrappingView.layer.borderColor =  selectedValue.rawValue == colourleaks[indexPath.row].rawValue ? selectedValue.displayValue.cgColor : UIColor.clear.cgColor
+        if colourleaks[indexPath.row] == selectedValue {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            cell.isSelected = true
+        }
         
         if colourleaks[indexPath.row] == FilterValue.Colourleaks.ColourValue.random {
             cell.colourView.image = IconHelper.shared.getIconImage(iconName: "shuffle")
-            cell.colourView.backgroundColor = .clear
+            cell.colourView.backgroundColor = nil
             return cell
         }
-
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.mediumTaptic()
+        TapticHelper.shared.lightTaptic()
+    }
+}
+
+extension ColourleaksCustomisationViewController: CustomisationControlProtocol {
+    func didTapDone() {
+        TapticHelper.shared.lightTaptic()
+        let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first!
         
-        FilterValue.Colourleaks.selectedColourValue = colourleaks[indexPath.row]
-        print("colour leaks new value: \(colourleaks[indexPath.row].rawValue)")
-        SPAlertHelper.shared.present(title: "Colour leaks set to: \(colourleaks[indexPath.row].rawValue.capitalizingFirstLetter())")
+        FilterValue.Colourleaks.selectedColourValue = colourleaks[selectedIndexPath!.row]
+        print("colour leaks new value: \(colourleaks[selectedIndexPath!.row].rawValue)")
+        SPAlertHelper.shared.present(title: "Colour leaks set to: \(colourleaks[selectedIndexPath!.row].rawValue.capitalizingFirstLetter())")
         dismiss(animated: true, completion: nil)
     }
 }
@@ -112,9 +142,24 @@ extension ColourleaksCustomisationViewController: UICollectionViewDelegate, UICo
 // MARK: - Custom cell class
 class ColourleaksCustomisationCell: UICollectionViewCell {
     
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected {
+                if let bg = self.colourView.backgroundColor {
+                    self.wrappingView.layer.borderColor = bg.cgColor
+                } else {
+                    self.wrappingView.layer.borderColor = self.colourView.tintColor.cgColor
+                }
+            } else {
+                self.wrappingView.layer.borderColor = UIColor.clear.cgColor
+            }
+        }
+    }
+    
     let wrappingView: UIImageView = {
         let v = UIImageView()
         v.layer.borderWidth = 1
+        v.layer.borderColor = UIColor.clear.cgColor
         v.layer.cornerRadius = 40 / 2
         v.clipsToBounds = true
         return v
@@ -147,6 +192,5 @@ class ColourleaksCustomisationCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 

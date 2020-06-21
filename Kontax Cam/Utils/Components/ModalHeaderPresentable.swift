@@ -15,7 +15,7 @@ class ModalHeaderPresentable: UICollectionReusableView {
     let infoButton: UIButton = {
         let btn = UIButton(type: .detailDisclosure)
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.tintColor = .label
+        btn.tintColor = UIColor.label.withAlphaComponent(0.5)
         return btn
     }()
     

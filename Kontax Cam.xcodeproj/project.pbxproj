@@ -302,7 +302,6 @@
 				0A026078249728C9009C26FB /* Font */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
 				0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */,
-				0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */,
 				0A1D97C32477BFAE00E4078F /* SVHelper.swift */,
 				0A1D97CC2477DDB900E4078F /* IconHelper.swift */,
 				0A1D97D12477F21C00E4078F /* TapticHelper.swift */,
@@ -358,6 +357,7 @@
 		0AB96FFA248A99E400F1FF3C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */,
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
 				0A1193C4249B702E0086604D /* LoadingViewController.swift */,
 				0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */,

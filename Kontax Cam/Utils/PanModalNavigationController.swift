@@ -61,6 +61,14 @@ extension PanModalNavigationController: PanModalPresentable {
         return false
     }
     
+    var cornerRadius: CGFloat {
+        return 0
+    }
+    
+    var showDragIndicator: Bool {
+        return false
+    }
+    
     func willTransition(to state: PanModalPresentationController.PresentationState) {
         guard isShortFormEnabled, case .longForm = state
             else { return }

@@ -54,10 +54,6 @@ class ColourleaksCustomisationViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(controlView.snp.bottom)
         }
-        
-        //        collectionView.snp.makeConstraints { (make) in
-        //            make.edges.equalToSuperview()
-        //        }
     }
     
     private func createSection(withHeader: Bool) -> NSCollectionLayoutSection {
@@ -142,6 +138,11 @@ extension ColourleaksCustomisationViewController: CustomisationControlProtocol {
 // MARK: - Custom cell class
 class ColourleaksCustomisationCell: UICollectionViewCell {
     
+    private let bigRadius: CGFloat = 30
+    private var smallRadius: CGFloat {
+        return bigRadius - 10
+    }
+    
     override var isSelected: Bool {
         didSet {
             if self.isSelected {
@@ -160,31 +161,31 @@ class ColourleaksCustomisationCell: UICollectionViewCell {
         let v = UIImageView()
         v.layer.borderWidth = 1
         v.layer.borderColor = UIColor.clear.cgColor
-        v.layer.cornerRadius = 40 / 2
         v.clipsToBounds = true
         return v
     }()
     let colourView: UIImageView = {
         let v = UIImageView()
         v.tintColor = .systemGray
-        v.layer.cornerRadius = 30 / 2
         v.clipsToBounds = true
         return v
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        wrappingView.layer.cornerRadius = bigRadius / 2
+        colourView.layer.cornerRadius = smallRadius / 2
         
         addSubview(wrappingView)
         wrappingView.addSubview(colourView)
         
         wrappingView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(40)
+            make.width.height.equalTo(bigRadius)
             make.center.equalToSuperview()
         }
         
         colourView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(smallRadius)
             make.center.equalToSuperview()
         }
     }

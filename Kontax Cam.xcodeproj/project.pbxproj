@@ -40,6 +40,7 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
+		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
 		0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; };
 		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
@@ -129,6 +130,7 @@
 		0A44B2A32476A7F100603F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */,
 				0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */,
 				0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */,
+				0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */,
 			);
 			path = EffectCustomisationView;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
+				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,
 				0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */,

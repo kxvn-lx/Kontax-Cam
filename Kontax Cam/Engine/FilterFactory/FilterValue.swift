@@ -46,14 +46,22 @@ struct FilterValue {
     }
     
     /// Grain component. Stores its strength value.
+    /// Can be improved in the future to include more attributes. (Maybe variety of dust? randomise option?
     struct Grain {
         static var strength: CGFloat = 10
     }
     
+    /// Dust component. Stores its strength value.
+    /// Can be improved in the future to include more attributes. (Maybe variety of dust? randomise option?
     struct Dust {
         static var strength: CGFloat = 10
     }
     
+    /// Lightleaks component. Stores its strength value.
+    /// Can be improved in the future to include more attributes. (Maybe variety of lightleaks? randomise option?
+    struct Lightleaks {
+        static var strength: CGFloat = 10
+    }
     
     private init() { }
 }

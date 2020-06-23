@@ -16,6 +16,7 @@ private struct CellPath {
     static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
     static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
     static let dustCell = IndexPath(row: FilterType.allCases.firstIndex(of: .dust)! - 1, section: 0)
+    static let lightleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .lightleaks)! - 1, section: 0)
 }
 
 class FXCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
@@ -68,6 +69,10 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                     
                 case CellPath.dustCell:
                     presentPanModal(PanModalNavigationController(rootViewController: DustCustomisationViewController()))
+                    
+                case CellPath.lightleaksCell:
+                    presentPanModal(PanModalNavigationController(rootViewController: LightleaksCustomisationViewController()))
+                    
                 default: break
                 }
             }

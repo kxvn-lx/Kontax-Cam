@@ -17,6 +17,7 @@ private struct CellPath {
     static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
     static let dustCell = IndexPath(row: FilterType.allCases.firstIndex(of: .dust)! - 1, section: 0)
     static let lightleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .lightleaks)! - 1, section: 0)
+    static let datestampCell = IndexPath(row: FilterType.allCases.firstIndex(of: .datestamp)! - 1, section: 0)
 }
 
 class FXCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
@@ -74,6 +75,10 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                     
                 case CellPath.lightleaksCell:
                     presentPanModal(PanModalNavigationController(rootViewController: LightleaksCustomisationViewController()))
+                    
+                case CellPath.datestampCell:
+                    TapticHelper.shared.errorTaptic()
+                    SPAlertHelper.shared.present(title: "No customisation available.")
                     
                 default: break
                 }

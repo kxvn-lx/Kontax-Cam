@@ -24,7 +24,7 @@ class CameraActionViewController: UIViewController {
         
     ]
     var timerEngine = TimerEngine()
-    var shutterSize: CGFloat!
+    var shutterSize: CGFloat! // Passed from parent
     
     private let actionButtonsScrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -75,14 +75,12 @@ class CameraActionViewController: UIViewController {
         let actionButtons = setupActionButtons()
         var xCoord: CGFloat = 10
         let yCoord: CGFloat = 5
-        let buttonWidth: CGFloat = 65
+        let buttonWidth: CGFloat = self.view.frame.width * 0.175
         let buttonHeight: CGFloat = 35
         let gapBetweenButtons: CGFloat = 10
         
         for button in actionButtons {
             button.tintColor = .label
-            button.layer.cornerRadius = 5
-            
             actionButtonsScrollView.addSubview(button)
             
             button.frame = CGRect(x: xCoord, y: yCoord, width: buttonWidth, height: buttonHeight)

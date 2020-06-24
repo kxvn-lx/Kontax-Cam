@@ -27,7 +27,8 @@ class CustomisationControlHeaderView: UIView {
     let okButton: UIButton = {
         let v = UIButton()
         v.setTitle("Done", for: .normal)
-        v.tintColor = .label
+        v.titleLabel?.font = .preferredFont(forTextStyle: .callout)
+        v.setTitleColor(.label, for: .normal)
         return v
     }()
     

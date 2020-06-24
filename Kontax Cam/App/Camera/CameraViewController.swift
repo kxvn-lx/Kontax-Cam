@@ -33,7 +33,9 @@ class CameraViewController: UIViewController {
     private var cameraActionView: CameraActionViewController!
     private let cameraManager = CameraManager()
     
-    private var cameraActionViewHeight: CGFloat!
+    private var cameraActionViewHeight: CGFloat {
+        return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
+    }
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -60,15 +62,13 @@ class CameraViewController: UIViewController {
     
     // MARK: - Setup UI
     private func setupUI() {
-        cameraActionViewHeight = (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
-        
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
         cameraView.clipsToBounds = true
         
         // Camera Action View
         cameraActionView = CameraActionViewController()
-        cameraActionView.shutterSize = (cameraActionViewHeight) * 0.5
+        cameraActionView.shutterSize = (cameraActionViewHeight) * 0.4
         cameraActionView.cameraManager = cameraManager
         
         addVC(cameraActionView)

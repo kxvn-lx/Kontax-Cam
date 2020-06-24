@@ -12,7 +12,7 @@ import DTPhotoViewerController
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
-    private let IS_DEMO_MODE = false
+    private let IS_DEMO_MODE = true
     
     var imageObjects = [Photo]()
     private var pipeline = ImagePipeline.shared

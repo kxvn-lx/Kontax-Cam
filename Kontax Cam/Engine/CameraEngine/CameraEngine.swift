@@ -228,12 +228,14 @@ class CameraEngine: NSObject {
         }
     }
     
+    /// Attach focus gesture to the view.
     private func attachFocus(_ view: UIView) {
         // Add tap to focus gesture
         let focusTapGesture = UITapGestureRecognizer(target: self, action: #selector(onFocusTapped))
         view.addGestureRecognizer(focusTapGesture)
     }
     
+    /// Runs when user tap to focus
     @objc private func onFocusTapped(_ recognizer: UITapGestureRecognizer) {
         guard let view = recognizer.view, let validPreviewLayer = cameraPreviewLayer, let validDevice = currentCamera else { return }
         let pointInPreviewLayer = view.layer.convert(recognizer.location(in: view), to: cameraPreviewLayer)
@@ -265,6 +267,7 @@ class CameraEngine: NSObject {
         }
     }
     
+    /// Show the focus circle and its animation
     private func showFocusCircle(atPoint point: CGPoint, inLayer layer: CALayer) {
         // Remove previous focus circle
         if let lastFocusCircle = lastFocusCircle {

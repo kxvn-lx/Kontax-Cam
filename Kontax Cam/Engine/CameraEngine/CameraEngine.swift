@@ -26,8 +26,11 @@ class CameraEngine: NSObject {
     private var backCamera: AVCaptureDevice?
     private var frontCamera: AVCaptureDevice?
     private var currentCamera: AVCaptureDevice?
-
-    private var photoOutput: AVCapturePhotoOutput?
+    
+    private let dataOutputQueue = DispatchQueue(label: "VideoDataQueue", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
+    
+    private let photoDataOutput = AVCapturePhotoOutput()
+    private let videoDataOutput = AVCaptureVideoDataOutput()
     private var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
     private var captureImageCompletion: ((UIImage?) -> Void)?
@@ -69,7 +72,7 @@ class CameraEngine: NSObject {
     func captureImage(completion: @escaping (UIImage?) -> Void) {
         let settings = AVCapturePhotoSettings()
         settings.flashMode = flashMode
-        photoOutput?.capturePhoto(with: settings, delegate: self)
+        photoDataOutput.capturePhoto(with: settings, delegate: self)
         self.captureImageCompletion = completion
     }
     
@@ -144,13 +147,32 @@ class CameraEngine: NSObject {
     private func setupInputOutput() {
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
-            captureSession.addInput(captureDeviceInput)
-            photoOutput = AVCapturePhotoOutput()
-            photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
-            captureSession.addOutput(photoOutput!)
+            
+            captureSession.beginConfiguration()
+            
+            // Setup video input
+            if captureSession.canAddInput(captureDeviceInput) {
+                captureSession.addInput(captureDeviceInput)
+            }
+            
+            // Setup video data output
+            if captureSession.canAddOutput(videoDataOutput) {
+                captureSession.addOutput(videoDataOutput)
+                videoDataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
+                videoDataOutput.setSampleBufferDelegate(self, queue: dataOutputQueue)
+            }
+            
+            // Setup photo data output
+            if captureSession.canAddOutput(photoDataOutput) {
+                captureSession.addOutput(photoDataOutput)
+                
+                photoDataOutput.isHighResolutionCaptureEnabled = true
+                photoDataOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
+            }
         } catch {
             print(error)
         }
+        captureSession.commitConfiguration()
     }
     
     private func setupPreviewLayer() {
@@ -278,9 +300,9 @@ class CameraEngine: NSObject {
         // Draw the focus circle
         let shapeLayer = CAShapeLayer()
         let center = point
-
+        
         let circulPath = UIBezierPath(arcCenter: center, radius: 30, startAngle: 0, endAngle: 2.0 * CGFloat.pi, clockwise: true)
-
+        
         shapeLayer.path = circulPath.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = UIColor(red: 1, green: 0.83, blue: 0, alpha: 0.95).cgColor
@@ -313,13 +335,13 @@ class CameraEngine: NSObject {
         
         CATransaction.commit()
     }
-
+    
 }
 
-extension CameraEngine: AVCapturePhotoCaptureDelegate {
+extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         var capturedImage: UIImage?
-
+        
         if let data = photo.fileDataRepresentation() {
             if let image = UIImage(data: data) {
                 capturedImage = fixOrientation(withImage: image)
@@ -327,5 +349,13 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate {
         }
         
         captureImageCompletion!(capturedImage)
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        renderVideo(sampleBuffer: sampleBuffer)
+    }
+    
+    private func renderVideo(sampleBuffer: CMSampleBuffer) {
+        
     }
 }

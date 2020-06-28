@@ -70,7 +70,6 @@ class ShutterButtonViewController: UIViewController {
         if parent.timerEngine.currentTime != 0 { parent.timerEngine.presentTimerDisplay() }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
-            
             parent.cameraEngine?.captureImage(completion: { [weak self] (capturedImage) in
                 guard let self = self, let image = capturedImage else { return }
                 

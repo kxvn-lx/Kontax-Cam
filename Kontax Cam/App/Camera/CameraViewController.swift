@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CameraManager
 import SnapKit
 
 class CameraViewController: UIViewController {
@@ -33,7 +32,6 @@ class CameraViewController: UIViewController {
         return v
     }()
     private var cameraActionView: CameraActionViewController!
-    private let cameraManager = CameraManager()
     
     private var cameraActionViewHeight: CGFloat {
         return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
@@ -59,7 +57,6 @@ class CameraViewController: UIViewController {
         super.viewDidDisappear(animated)
         cameraEngine.stopCaptureSession()
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

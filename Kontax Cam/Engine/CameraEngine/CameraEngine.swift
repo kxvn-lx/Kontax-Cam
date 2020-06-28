@@ -26,7 +26,7 @@ class CameraEngine: NSObject {
     private var backCamera: AVCaptureDevice?
     private var frontCamera: AVCaptureDevice?
     private var currentCamera: AVCaptureDevice?
-    
+
     private var photoOutput: AVCapturePhotoOutput?
     private var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
@@ -35,17 +35,13 @@ class CameraEngine: NSObject {
     private var deviceOrientation: UIDeviceOrientation = .portrait
     private var cameraIsObservingDeviceOrientation = false
     
-    var shouldRespondToOrientationChanges = true {
-        didSet {
-            if shouldRespondToOrientationChanges {
-                _startFollowingDeviceOrientation()
-            } else {
-                _stopFollowingDeviceOrientation()
-            }
-        }
-    }
-    
     private var coreMotionManager: CMMotionManager!
+    
+    private var lastFocusCircle: CAShapeLayer?
+    private var lastFocusPoint: CGPoint?
+    
+    private var focusMode: AVCaptureDevice.FocusMode = .continuousAutoFocus
+    private var exposureMode: AVCaptureDevice.ExposureMode = .continuousAutoExposure
     
     var flashMode: AVCaptureDevice.FlashMode = .off
     
@@ -58,10 +54,6 @@ class CameraEngine: NSObject {
         setupPreviewLayer()
     }
     
-    deinit {
-        _stopFollowingDeviceOrientation()
-    }
-    
     // MARK: - Public methods
     /// Add the camera preview layer to the given view
     /// - Parameter view: The view that will receive the camera preview layer
@@ -70,6 +62,7 @@ class CameraEngine: NSObject {
         cameraPreviewLayer!.frame = view.bounds
         
         startRunningCaptureSession()
+        attachFocus(view)
     }
     
     /// Capture the image
@@ -92,7 +85,7 @@ class CameraEngine: NSObject {
         _stopFollowingDeviceOrientation()
     }
     
-    // Switch the camera between front and back
+    /// Switch the camera between front and back
     func switchCamera() {
         captureSession.removeInput(captureSession.inputs.first!)
         do {
@@ -206,7 +199,7 @@ class CameraEngine: NSObject {
     }
     
     private func _startFollowingDeviceOrientation() {
-        if shouldRespondToOrientationChanges, !cameraIsObservingDeviceOrientation {
+        if !cameraIsObservingDeviceOrientation {
             coreMotionManager = CMMotionManager()
             coreMotionManager.deviceMotionUpdateInterval = 1 / 30.0
             if coreMotionManager.isDeviceMotionAvailable {
@@ -233,6 +226,89 @@ class CameraEngine: NSObject {
             coreMotionManager.stopDeviceMotionUpdates()
             cameraIsObservingDeviceOrientation = false
         }
+    }
+    
+    private func attachFocus(_ view: UIView) {
+        // Add tap to focus gesture
+        let focusTapGesture = UITapGestureRecognizer(target: self, action: #selector(onFocusTapped))
+        view.addGestureRecognizer(focusTapGesture)
+    }
+    
+    @objc private func onFocusTapped(_ recognizer: UITapGestureRecognizer) {
+        guard let view = recognizer.view, let validPreviewLayer = cameraPreviewLayer, let validDevice = currentCamera else { return }
+        let pointInPreviewLayer = view.layer.convert(recognizer.location(in: view), to: cameraPreviewLayer)
+        let pointOfInterest = validPreviewLayer.captureDevicePointConverted(fromLayerPoint: pointInPreviewLayer)
+        
+        do {
+            try validDevice.lockForConfiguration()
+            showFocusCircle(atPoint: pointInPreviewLayer, inLayer: validPreviewLayer)
+            
+            if validDevice.isFocusPointOfInterestSupported {
+                validDevice.focusPointOfInterest = pointOfInterest
+            }
+            
+            if validDevice.isExposurePointOfInterestSupported {
+                validDevice.exposurePointOfInterest = pointOfInterest
+            }
+            
+            if validDevice.isFocusModeSupported(focusMode) {
+                validDevice.focusMode = focusMode
+            }
+            
+            if validDevice.isExposureModeSupported(exposureMode) {
+                validDevice.exposureMode = exposureMode
+            }
+            
+            validDevice.unlockForConfiguration()
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func showFocusCircle(atPoint point: CGPoint, inLayer layer: CALayer) {
+        // Remove previous focus circle
+        if let lastFocusCircle = lastFocusCircle {
+            lastFocusCircle.removeFromSuperlayer()
+            self.lastFocusCircle = nil
+        }
+        
+        // Draw the focus circle
+        let shapeLayer = CAShapeLayer()
+        let center = point
+
+        let circulPath = UIBezierPath(arcCenter: center, radius: 30, startAngle: 0, endAngle: 2.0 * CGFloat.pi, clockwise: true)
+
+        shapeLayer.path = circulPath.cgPath
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = UIColor(red: 1, green: 0.83, blue: 0, alpha: 0.95).cgColor
+        shapeLayer.lineWidth = 1.0
+        
+        layer.addSublayer(shapeLayer)
+        lastFocusCircle = shapeLayer
+        lastFocusPoint = point
+        
+        // Set fadeout animation
+        CATransaction.begin()
+        
+        CATransaction.setAnimationDuration(0.2)
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut))
+        
+        CATransaction.setCompletionBlock {
+            if shapeLayer.superlayer != nil {
+                shapeLayer.removeFromSuperlayer()
+                self.lastFocusCircle = nil
+            }
+        }
+        
+        let disappearOpacityAnimation = CABasicAnimation(keyPath: "opacity")
+        disappearOpacityAnimation.fromValue = 1.0
+        disappearOpacityAnimation.toValue = 0.0
+        disappearOpacityAnimation.beginTime = CACurrentMediaTime() + 0.8
+        disappearOpacityAnimation.fillMode = CAMediaTimingFillMode.forwards
+        disappearOpacityAnimation.isRemovedOnCompletion = false
+        shapeLayer.add(disappearOpacityAnimation, forKey: "opacity")
+        
+        CATransaction.commit()
     }
 
 }

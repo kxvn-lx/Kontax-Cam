@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import CameraManager
 
 class CameraActionViewController: UIViewController {
     

@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "CameraManager",
-        "repositoryURL": "https://github.com/imaginary-cloud/CameraManager",
-        "state": {
-          "branch": null,
-          "revision": "30584f3b8fcb47ed778b172b8727b10854704927",
-          "version": "5.1.3"
-        }
-      },
-      {
         "package": "DTPhotoViewerController",
         "repositoryURL": "https://github.com/tungvoduc/DTPhotoViewerController",
         "state": {

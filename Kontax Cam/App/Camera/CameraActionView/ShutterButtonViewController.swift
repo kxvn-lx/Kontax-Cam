@@ -42,7 +42,7 @@ class ShutterButtonViewController: UIViewController {
         touchEvent(event: .begin)
         renderSize()
     }
-    
+
     private func setupConstraint() {
         self.view.layer.cornerRadius = oriFrame.width / 2
         innerCircle.layer.cornerRadius = oriFrame.width * 0.9 / 2

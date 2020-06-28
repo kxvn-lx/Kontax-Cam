@@ -54,11 +54,38 @@ class CameraEngine: NSObject {
         setupDevice()
         setupInputOutput()
         setupPreviewLayer()
-        
-        _startFollowingDeviceOrientation()
     }
     
     deinit {
+        _stopFollowingDeviceOrientation()
+    }
+    
+    // MARK: - Public methods
+    /// Add the camera preview layer to the given view
+    /// - Parameter view: The view that will receive the camera preview layer
+    func addPreviewLayer(toView view: UIView) {
+        view.layer.addSublayer(cameraPreviewLayer!)
+        cameraPreviewLayer!.frame = view.bounds
+        
+        startRunningCaptureSession()
+    }
+    
+    /// Capture the image
+    func captureImage(completion: @escaping (UIImage?) -> Void) {
+        let settings = AVCapturePhotoSettings()
+        photoOutput?.capturePhoto(with: settings, delegate: self)
+        self.captureImageCompletion = completion
+    }
+    
+    /// Resume the capture session
+    func startCaptureSession() {
+        captureSession.startRunning()
+        _startFollowingDeviceOrientation()
+    }
+    
+    /// Stop the capture session, for performance
+    func stopCaptureSession() {
+        captureSession.stopRunning()
         _stopFollowingDeviceOrientation()
     }
     
@@ -190,23 +217,7 @@ class CameraEngine: NSObject {
             cameraIsObservingDeviceOrientation = false
         }
     }
-    
-    // MARK: - Public methods
-    /// Add the camera preview layer to the given view
-    /// - Parameter view: The view that will receive the camera preview layer
-    func addPreviewLayer(toView view: UIView) {
-        view.layer.addSublayer(cameraPreviewLayer!)
-        cameraPreviewLayer!.frame = view.bounds
-        
-        startRunningCaptureSession()
-    }
-    
-    /// Capture the image
-    func captureImage(completion: @escaping (UIImage?) -> Void) {
-        let settings = AVCapturePhotoSettings()
-        photoOutput?.capturePhoto(with: settings, delegate: self)
-        self.captureImageCompletion = completion
-    }
+
 }
 
 extension CameraEngine: AVCapturePhotoCaptureDelegate {

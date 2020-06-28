@@ -71,6 +71,26 @@ class PreviewMetalView: MTKView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func texturePointForView(point: CGPoint) -> CGPoint? {
+        var result: CGPoint?
+        guard let transform = textureTranform else {
+            return result
+        }
+        let transformPoint = point.applying(transform)
+        
+        if CGRect(origin: .zero, size: CGSize(width: textureWidth, height: textureHeight)).contains(transformPoint) {
+            result = transformPoint
+        } else {
+            print("Invalid point \(point) result point \(transformPoint)")
+        }
+        
+        return result
+    }
+    
+    func flushTextureCache() {
+        textureCache = nil
+    }
+    
     // MARK: - Private methods
     private func configureMetal() {
         let defaultLibrary = device!.makeDefaultLibrary()!
@@ -105,22 +125,6 @@ class PreviewMetalView: MTKView {
         }
     }
     
-    func texturePointForView(point: CGPoint) -> CGPoint? {
-        var result: CGPoint?
-        guard let transform = textureTranform else {
-            return result
-        }
-        let transformPoint = point.applying(transform)
-        
-        if CGRect(origin: .zero, size: CGSize(width: textureWidth, height: textureHeight)).contains(transformPoint) {
-            result = transformPoint
-        } else {
-            print("Invalid point \(point) result point \(transformPoint)")
-        }
-        
-        return result
-    }
-    
     private func viewPointForTexture(point: CGPoint) -> CGPoint? {
         var result: CGPoint?
         guard let transform = textureTranform?.inverted() else {
@@ -135,10 +139,6 @@ class PreviewMetalView: MTKView {
         }
         
         return result
-    }
-    
-    private func flushTextureCache() {
-        textureCache = nil
     }
     
     private func setupTransform(width: Int, height: Int, mirroring: Bool, rotation: Rotation) {

@@ -117,6 +117,7 @@ class CameraEngine: NSObject {
         }
     }
     
+    /// Check for user permission to use the camera
     private func checkPermission() {
         // Check video authorization status, video access is required
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -141,6 +142,10 @@ class CameraEngine: NSObject {
         }
     }
     
+    /// Setup the capture session for the custom camera.
+    ///
+    /// First, set the device to be back camera by default, And then we create the input and output stream.
+    /// We added video input and output for the live rendering of filters, whilst photo is for exporting only.
     private func setupCaptureSession() {
         captureSession.sessionPreset = .photo
         
@@ -187,10 +192,12 @@ class CameraEngine: NSObject {
         captureSession.commitConfiguration()
     }
     
+    /// Tells the class to start the session
     private func startRunningCaptureSession() {
         captureSession.startRunning()
     }
     
+    /// Fix the captured image to properly follows the device
     private func fixOrientation(withImage image: UIImage) -> UIImage {
         guard let cgImage = image.cgImage else { return image }
         
@@ -266,9 +273,7 @@ class CameraEngine: NSObject {
     /// Runs when user tap to focus
     @objc private func onFocusTapped(_ recognizer: UITapGestureRecognizer) {
         let location = recognizer.location(in: previewView)
-        guard let texturePoint = previewView!.texturePointForView(point: location) else {
-            return
-        }
+        guard let texturePoint = previewView!.texturePointForView(point: location) else { return }
         
         let textureRect = CGRect(origin: texturePoint, size: .zero)
         let deviceRect = videoDataOutput.metadataOutputRectConverted(fromOutputRect: textureRect)

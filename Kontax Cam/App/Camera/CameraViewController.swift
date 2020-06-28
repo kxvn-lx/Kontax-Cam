@@ -57,6 +57,8 @@ class CameraViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         cameraEngine.stopCaptureSession()
+        self.cameraView.pixelBuffer = nil
+        self.cameraView.flushTextureCache()
     }
     
     override func viewDidLayoutSubviews() {

@@ -9,6 +9,7 @@
 import AVFoundation
 import CoreMotion
 import UIKit
+import MetalKit
 
 class CameraEngine: NSObject {
     private enum SessionSetupResult {
@@ -31,7 +32,6 @@ class CameraEngine: NSObject {
     
     private let photoDataOutput = AVCapturePhotoOutput()
     private let videoDataOutput = AVCaptureVideoDataOutput()
-    private var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
     private var captureImageCompletion: ((UIImage?) -> Void)?
     
@@ -48,21 +48,20 @@ class CameraEngine: NSObject {
     
     var flashMode: AVCaptureDevice.FlashMode = .off
     
+    var previewView: PreviewMetalView?
+    
     override init() {
         super.init()
         checkPermission()
         setupCaptureSession()
-        setupDevice()
-        setupInputOutput()
-        setupPreviewLayer()
     }
     
     // MARK: - Public methods
     /// Add the camera preview layer to the given view
     /// - Parameter view: The view that will receive the camera preview layer
     func addPreviewLayer(toView view: UIView) {
-        view.layer.addSublayer(cameraPreviewLayer!)
-        cameraPreviewLayer!.frame = view.bounds
+        self.previewView = view as? PreviewMetalView
+        setPreviewViewOrientation()
         
         startRunningCaptureSession()
         attachFocus(view)
@@ -103,6 +102,21 @@ class CameraEngine: NSObject {
     }
     
     // MARK: - Private methods
+    /// Setup previewView orientation
+    private func setPreviewViewOrientation() {
+        let interfaceOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        if let unwrappedVideoDataOutputConnection = self.videoDataOutput.connection(with: .video) {
+            let videoDevicePosition = currentCamera?.position
+            let rotation = PreviewMetalView.Rotation(with: interfaceOrientation!,
+                                                     videoOrientation: unwrappedVideoDataOutputConnection.videoOrientation,
+                                                     cameraPosition: videoDevicePosition!)
+            self.previewView?.mirroring = (videoDevicePosition == .front)
+            if let rotation = rotation {
+                self.previewView!.rotation = rotation
+            }
+        }
+    }
+    
     private func checkPermission() {
         // Check video authorization status, video access is required
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -129,9 +143,8 @@ class CameraEngine: NSObject {
     
     private func setupCaptureSession() {
         captureSession.sessionPreset = .photo
-    }
-    
-    private func setupDevice() {
+        
+        // Setup device
         let devices = videoDeviceDiscoverySession.devices
         for device in devices {
             if device.position == .back {
@@ -142,9 +155,8 @@ class CameraEngine: NSObject {
         }
         
         currentCamera = backCamera
-    }
-    
-    private func setupInputOutput() {
+        
+        // Setup Input and Output
         do {
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             
@@ -173,12 +185,6 @@ class CameraEngine: NSObject {
             print(error)
         }
         captureSession.commitConfiguration()
-    }
-    
-    private func setupPreviewLayer() {
-        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraPreviewLayer?.videoGravity = .resizeAspectFill
-        cameraPreviewLayer?.connection?.videoOrientation = .portrait
     }
     
     private func startRunningCaptureSession() {
@@ -259,33 +265,45 @@ class CameraEngine: NSObject {
     
     /// Runs when user tap to focus
     @objc private func onFocusTapped(_ recognizer: UITapGestureRecognizer) {
-        guard let view = recognizer.view, let validPreviewLayer = cameraPreviewLayer, let validDevice = currentCamera else { return }
-        let pointInPreviewLayer = view.layer.convert(recognizer.location(in: view), to: cameraPreviewLayer)
-        let pointOfInterest = validPreviewLayer.captureDevicePointConverted(fromLayerPoint: pointInPreviewLayer)
+        let location = recognizer.location(in: previewView)
+        guard let texturePoint = previewView!.texturePointForView(point: location) else {
+            return
+        }
+        
+        let textureRect = CGRect(origin: texturePoint, size: .zero)
+        let deviceRect = videoDataOutput.metadataOutputRectConverted(fromOutputRect: textureRect)
+        
+        // Show the focus ring
+        if let view = recognizer.view {
+            let pointInPreviewLayer = view.layer.convert(recognizer.location(in: view), to: previewView!.layer)
+            showFocusCircle(atPoint: pointInPreviewLayer, inLayer: previewView!.layer)
+        }
+        
+        // Do the actual focus
+        focus(with: .autoFocus, exposureMode: .autoExpose, at: deviceRect.origin, monitorSubjectAreaChange: true)
+    }
+    
+    /// Focus on the given point
+    private func focus(with focusMode: AVCaptureDevice.FocusMode, exposureMode: AVCaptureDevice.ExposureMode, at devicePoint: CGPoint, monitorSubjectAreaChange: Bool) {
+        
+        let videoDevice = currentCamera!
         
         do {
-            try validDevice.lockForConfiguration()
-            showFocusCircle(atPoint: pointInPreviewLayer, inLayer: validPreviewLayer)
-            
-            if validDevice.isFocusPointOfInterestSupported {
-                validDevice.focusPointOfInterest = pointOfInterest
+            try videoDevice.lockForConfiguration()
+            if videoDevice.isFocusPointOfInterestSupported && videoDevice.isFocusModeSupported(focusMode) {
+                videoDevice.focusPointOfInterest = devicePoint
+                videoDevice.focusMode = focusMode
             }
             
-            if validDevice.isExposurePointOfInterestSupported {
-                validDevice.exposurePointOfInterest = pointOfInterest
+            if videoDevice.isExposurePointOfInterestSupported && videoDevice.isExposureModeSupported(exposureMode) {
+                videoDevice.exposurePointOfInterest = devicePoint
+                videoDevice.exposureMode = exposureMode
             }
             
-            if validDevice.isFocusModeSupported(focusMode) {
-                validDevice.focusMode = focusMode
-            }
-            
-            if validDevice.isExposureModeSupported(exposureMode) {
-                validDevice.exposureMode = exposureMode
-            }
-            
-            validDevice.unlockForConfiguration()
+            videoDevice.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
+            videoDevice.unlockForConfiguration()
         } catch {
-            print(error)
+            print("Could not lock device for configuration: \(error)")
         }
     }
     
@@ -300,7 +318,6 @@ class CameraEngine: NSObject {
         // Draw the focus circle
         let shapeLayer = CAShapeLayer()
         let center = point
-        
         let circulPath = UIBezierPath(arcCenter: center, radius: 30, startAngle: 0, endAngle: 2.0 * CGFloat.pi, clockwise: true)
         
         shapeLayer.path = circulPath.cgPath
@@ -355,7 +372,13 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
         renderVideo(sampleBuffer: sampleBuffer)
     }
     
+    /// Render the raw buffer into a filtered buffer
     private func renderVideo(sampleBuffer: CMSampleBuffer) {
+        guard let videoPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer), let formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer) else {
+            return
+        }
         
+        let finalVideoPixelBuffer = videoPixelBuffer
+        previewView?.pixelBuffer = finalVideoPixelBuffer
     }
 }

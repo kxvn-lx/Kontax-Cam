@@ -27,6 +27,9 @@
 		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D32477F38900E4078F /* TimerEngine.swift */; };
 		0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */; };
+		0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490A24A8A49B00168225 /* PreviewMetalView.swift */; };
+		0A31491324A8CCC000168225 /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490F24A8CCC000168225 /* Mixer.metal */; };
+		0A31491424A8CCC000168225 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A31491024A8CCC000168225 /* PassThrough.metal */; };
 		0A334627249A4E4E00FE8BCE /* FilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A334626249A4E4E00FE8BCE /* FilterMenu.swift */; };
 		0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */; };
 		0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */; };
@@ -116,6 +119,9 @@
 		0A1D97D12477F21C00E4078F /* TapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticHelper.swift; sourceTree = "<group>"; };
 		0A1D97D32477F38900E4078F /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
 		0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryEngine.swift; sourceTree = "<group>"; };
+		0A31490A24A8A49B00168225 /* PreviewMetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMetalView.swift; sourceTree = "<group>"; };
+		0A31490F24A8CCC000168225 /* Mixer.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
+		0A31491024A8CCC000168225 /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		0A334626249A4E4E00FE8BCE /* FilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenu.swift; sourceTree = "<group>"; };
 		0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersDatasource.swift; sourceTree = "<group>"; };
 		0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewController.swift; sourceTree = "<group>"; };
@@ -221,8 +227,9 @@
 		0A1D97C22477BE7800E4078F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				0A1D97C92477CB9C00E4078F /* CameraActionView */,
+				0A31490A24A8A49B00168225 /* PreviewMetalView.swift */,
 				0A44B29E2476A7F000603F2C /* CameraViewController.swift */,
+				0A1D97C92477CB9C00E4078F /* CameraActionView */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -234,6 +241,15 @@
 				0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */,
 			);
 			path = CameraActionView;
+			sourceTree = "<group>";
+		};
+		0A31490C24A8CCC000168225 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				0A31490F24A8CCC000168225 /* Mixer.metal */,
+				0A31491024A8CCC000168225 /* PassThrough.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 		0A44B28E2476A7F000603F2C = {
@@ -423,6 +439,7 @@
 		0AD2929224A78FCE00320BC4 /* CameraEngine */ = {
 			isa = PBXGroup;
 			children = (
+				0A31490C24A8CCC000168225 /* Shaders */,
 				0AD2929324A78FDA00320BC4 /* CameraEngine.swift */,
 			);
 			path = CameraEngine;
@@ -560,12 +577,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A31491324A8CCC000168225 /* Mixer.metal in Sources */,
+				0A31491424A8CCC000168225 /* PassThrough.metal in Sources */,
 				0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */,
 				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
+				0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */,
 				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,
 				0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,

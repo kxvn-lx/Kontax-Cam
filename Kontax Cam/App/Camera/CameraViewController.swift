@@ -14,7 +14,8 @@ class CameraViewController: UIViewController {
     // MARK: - Class variables
     private let cameraEngine = CameraEngine()
     
-    private let cameraView = UIView()
+    private let cameraView = PreviewMetalView(frame: .zero, device: MTLCreateSystemDefaultDevice())
+    
     private let settingButton: UIButton = {
         let btn = UIButton()
         btn.setImage(IconHelper.shared.getIconImage(iconName: "gear"), for: .normal)
@@ -67,6 +68,7 @@ class CameraViewController: UIViewController {
     private func setupUI() {
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
+        cameraView.isUserInteractionEnabled = true
         
         // Camera Action View
         cameraActionView = CameraActionViewController()

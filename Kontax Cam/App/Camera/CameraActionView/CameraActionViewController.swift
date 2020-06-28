@@ -139,9 +139,9 @@ extension CameraActionViewController {
             sender.setImage(image, for: .normal)
             
             switch index {
-                //                    case 1: cameraManager.flashMode = .off
-                //                    case 2: cameraManager.flashMode = .on
-            //                    case 3: cameraManager.flashMode = .auto
+            case 1: cameraEngine?.flashMode = .off
+            case 2: cameraEngine?.flashMode = .on
+            case 3: cameraEngine?.flashMode = .auto
             default: fatalError("Invalid index")
             }
             

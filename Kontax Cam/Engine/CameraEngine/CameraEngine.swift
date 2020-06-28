@@ -47,6 +47,8 @@ class CameraEngine: NSObject {
     
     private var coreMotionManager: CMMotionManager!
     
+    var flashMode: AVCaptureDevice.FlashMode = .off
+    
     override init() {
         super.init()
         checkPermission()
@@ -73,6 +75,7 @@ class CameraEngine: NSObject {
     /// Capture the image
     func captureImage(completion: @escaping (UIImage?) -> Void) {
         let settings = AVCapturePhotoSettings()
+        settings.flashMode = flashMode
         photoOutput?.capturePhoto(with: settings, delegate: self)
         self.captureImageCompletion = completion
     }
@@ -93,9 +96,11 @@ class CameraEngine: NSObject {
     func switchCamera() {
         captureSession.removeInput(captureSession.inputs.first!)
         do {
-            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera?.position == AVCaptureDevice.Position.back ? frontCamera! : backCamera!)
+            let newCamera = currentCamera?.position == AVCaptureDevice.Position.back ? frontCamera! : backCamera!
+            
+            let captureDeviceInput = try AVCaptureDeviceInput(device: newCamera)
             captureSession.addInput(captureDeviceInput)
-            currentCamera = currentCamera?.position == AVCaptureDevice.Position.back ? frontCamera! : backCamera!
+            currentCamera = newCamera
         } catch {
             print(error)
         }

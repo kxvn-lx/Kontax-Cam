@@ -96,6 +96,8 @@ class CameraEngine: NSObject {
             let captureDeviceInput = try AVCaptureDeviceInput(device: newCamera)
             captureSession.addInput(captureDeviceInput)
             currentCamera = newCamera
+            
+            setPreviewViewOrientation()
         } catch {
             print(error)
         }
@@ -110,7 +112,7 @@ class CameraEngine: NSObject {
             let rotation = PreviewMetalView.Rotation(with: interfaceOrientation!,
                                                      videoOrientation: unwrappedVideoDataOutputConnection.videoOrientation,
                                                      cameraPosition: videoDevicePosition!)
-            self.previewView?.mirroring = (videoDevicePosition == .front)
+            self.previewView?.mirroring = videoDevicePosition == .front
             if let rotation = rotation {
                 self.previewView!.rotation = rotation
             }

@@ -89,6 +89,18 @@ class CameraEngine: NSObject {
         _stopFollowingDeviceOrientation()
     }
     
+    // Switch the camera between front and back
+    func switchCamera() {
+        captureSession.removeInput(captureSession.inputs.first!)
+        do {
+            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera?.position == AVCaptureDevice.Position.back ? frontCamera! : backCamera!)
+            captureSession.addInput(captureDeviceInput)
+            currentCamera = currentCamera?.position == AVCaptureDevice.Position.back ? frontCamera! : backCamera!
+        } catch {
+            print(error)
+        }
+    }
+    
     // MARK: - Private methods
     private func checkPermission() {
         // Check video authorization status, video access is required
@@ -156,7 +168,7 @@ class CameraEngine: NSObject {
     private func fixOrientation(withImage image: UIImage) -> UIImage {
         guard let cgImage = image.cgImage else { return image }
         
-        var isMirrored = false
+        var isMirrored = !(currentCamera!.position == AVCaptureDevice.Position.back)
         let orientation = image.imageOrientation
         if orientation == .rightMirrored
             || orientation == .leftMirrored

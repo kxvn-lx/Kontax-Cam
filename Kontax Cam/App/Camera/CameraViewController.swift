@@ -44,13 +44,6 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        // Setup Camera Manager
-//        cameraManager.addPreviewLayerToView(self.cameraView)
-//        // By default, don't store to device
-//        cameraManager.writeFilesToPhoneLibrary = false
-//        cameraManager.shouldFlipFrontCameraImage = true
-//        cameraManager.shouldKeepViewAtOrientationChanges = true
-        
         setupUI()
         setupConstraint()
         

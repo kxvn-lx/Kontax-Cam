@@ -157,12 +157,13 @@ class PreviewMetalView: MTKView {
             case .rotate0Degrees, .rotate180Degrees:
                 scaleX = Float(internalBounds.width / CGFloat(textureWidth))
                 scaleY = Float(internalBounds.height / CGFloat(textureHeight))
-                
+
             case .rotate90Degrees, .rotate270Degrees:
                 scaleX = Float(internalBounds.width / CGFloat(textureHeight))
                 scaleY = Float(internalBounds.height / CGFloat(textureWidth))
             }
         }
+        
         // Resize aspect ratio.
         resizeAspect = min(scaleX, scaleY)
         if scaleX < scaleY {

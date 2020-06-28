@@ -44,7 +44,7 @@ class CameraActionViewController: UIViewController {
         return btn
     }()
     
-    var cameraManager: CameraManager! // Passed from parent
+    weak var cameraEngine: CameraEngine? // Passed from parent
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,9 +139,9 @@ extension CameraActionViewController {
                 sender.setImage(image, for: .normal)
                 
                 switch index {
-                    case 1: cameraManager.flashMode = .off
-                    case 2: cameraManager.flashMode = .on
-                    case 3: cameraManager.flashMode = .auto
+//                    case 1: cameraManager.flashMode = .off
+//                    case 2: cameraManager.flashMode = .on
+//                    case 3: cameraManager.flashMode = .auto
                     default: fatalError("Invalid index")
             }
             
@@ -152,9 +152,9 @@ extension CameraActionViewController {
                 SPAlertHelper.shared.present(title: title)
             
             // Reverse camera
-            case 2:
-                let currentDevice = cameraManager.cameraDevice
-                cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
+            case 2: break
+//                let currentDevice = cameraManager.cameraDevice
+//                cameraManager.cameraDevice = currentDevice == CameraDevice.back ? .front : .back
             
             // FX
             case 3:
@@ -193,7 +193,7 @@ extension CameraActionViewController {
     
     @objc private func labButtonTapped() {
         TapticHelper.shared.mediumTaptic()
-        self.cameraManager.stopCaptureSession()
+//        self.cameraManager.stopCaptureSession()
         if let parent = self.parent {
             let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
             

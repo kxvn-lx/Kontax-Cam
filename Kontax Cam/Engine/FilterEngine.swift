@@ -14,11 +14,7 @@ class FilterEngine {
     var allowedFilters: [FilterType] = []
     
     static let shared = FilterEngine()
-    private init() {
-//        guard let filtersData = UserDefaultsHelper.shared.getData(type: Any.self, forKey: .userFxList) as? NSData else { return }
-//        guard let allowedFilters = try? PropertyListDecoder().decode([FilterType].self, from: filtersData as Data) else { return }
-//        self.allowedFilters = allowedFilters
-    }
+    private init() { }
     
     
     /// Process the image with all the allowed filters

@@ -13,6 +13,8 @@ import SnapKit
 class CameraViewController: UIViewController {
     
     // MARK: - Class variables
+    private let cameraEngine = CameraEngine()
+    
     private let cameraView = UIView()
     private let settingButton: UIButton = {
         let btn = UIButton()
@@ -43,11 +45,11 @@ class CameraViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Setup Camera Manager
-        cameraManager.addPreviewLayerToView(self.cameraView)
-        // By default, don't store to device
-        cameraManager.writeFilesToPhoneLibrary = false
-        cameraManager.shouldFlipFrontCameraImage = true
-        cameraManager.shouldKeepViewAtOrientationChanges = true
+//        cameraManager.addPreviewLayerToView(self.cameraView)
+//        // By default, don't store to device
+//        cameraManager.writeFilesToPhoneLibrary = false
+//        cameraManager.shouldFlipFrontCameraImage = true
+//        cameraManager.shouldKeepViewAtOrientationChanges = true
         
         setupUI()
         setupConstraint()
@@ -57,19 +59,23 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraManager.resumeCaptureSession()
+//        cameraManager.resumeCaptureSession()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        cameraEngine.addPreviewLayer(toView: cameraView)
     }
     
     // MARK: - Setup UI
     private func setupUI() {
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
-        cameraView.clipsToBounds = true
         
         // Camera Action View
         cameraActionView = CameraActionViewController()
         cameraActionView.shutterSize = (cameraActionViewHeight) * 0.4
-        cameraActionView.cameraManager = cameraManager
+        cameraActionView.cameraEngine = self.cameraEngine
         
         addVC(cameraActionView)
         self.view.addSubview(cameraView)

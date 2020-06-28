@@ -66,6 +66,7 @@
 		0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */; };
 		0AC8F9FA249CE8AC0068E54F /* Kontax_CamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */; };
 		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
+		0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2929324A78FDA00320BC4 /* CameraEngine.swift */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
 		0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F172493C41C0057A729 /* DustImageFilter.swift */; };
 		0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F192493C7B50057A729 /* FilterType.swift */; };
@@ -156,6 +157,7 @@
 		0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kontax_CamTests.swift; sourceTree = "<group>"; };
 		0AC8F9FB249CE8AC0068E54F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		0AD2929324A78FDA00320BC4 /* CameraEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
 		0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoImagesURLs.swift; sourceTree = "<group>"; };
 		0AE49F172493C41C0057A729 /* DustImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustImageFilter.swift; sourceTree = "<group>"; };
 		0AE49F192493C7B50057A729 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		0A44B2AF2476A80700603F2C /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0AD2929224A78FCE00320BC4 /* CameraEngine */,
 				0AC407C8247DE03700BB0270 /* FilterFactory */,
 				0AC407C6247DDE2100BB0270 /* FilterEngine.swift */,
 				0A1D97D32477F38900E4078F /* TimerEngine.swift */,
@@ -417,6 +420,14 @@
 				0AC8F9FB249CE8AC0068E54F /* Info.plist */,
 			);
 			path = "Kontax CamTests";
+			sourceTree = "<group>";
+		};
+		0AD2929224A78FCE00320BC4 /* CameraEngine */ = {
+			isa = PBXGroup;
+			children = (
+				0AD2929324A78FDA00320BC4 /* CameraEngine.swift */,
+			);
+			path = CameraEngine;
 			sourceTree = "<group>";
 		};
 		0AEBF1FB2495BCB7007CFAC6 /* Onboarding */ = {
@@ -597,6 +608,7 @@
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 				0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */,
+				0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */,

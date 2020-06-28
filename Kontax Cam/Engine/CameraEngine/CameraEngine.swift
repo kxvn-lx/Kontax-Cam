@@ -287,7 +287,7 @@ class CameraEngine: NSObject {
         }
         
         // Do the actual focus
-        focus(with: .autoFocus, exposureMode: .autoExpose, at: deviceRect.origin, monitorSubjectAreaChange: true)
+        focus(with: .autoFocus, exposureMode: .continuousAutoExposure, at: deviceRect.origin, monitorSubjectAreaChange: true)
     }
     
     /// Focus on the given point

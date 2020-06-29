@@ -46,7 +46,19 @@ class CameraEngine: NSObject {
     private var focusMode: AVCaptureDevice.FocusMode = .continuousAutoFocus
     private var exposureMode: AVCaptureDevice.ExposureMode = .continuousAutoExposure
     
+    private var captureView: UIView = {
+        let v = UIView()
+        v.layer.opacity = 0
+        v.backgroundColor = .black
+        return v
+    }()
+    
     var flashMode: AVCaptureDevice.FlashMode = .off
+    var isCapturing = false {
+        didSet {
+            showCaptureAnimation()
+        }
+    }
     
     var previewView: PreviewMetalView?
     
@@ -72,6 +84,7 @@ class CameraEngine: NSObject {
         let settings = AVCapturePhotoSettings()
         settings.flashMode = flashMode
         photoDataOutput.capturePhoto(with: settings, delegate: self)
+        isCapturing.toggle()
         self.captureImageCompletion = completion
     }
     
@@ -360,6 +373,27 @@ class CameraEngine: NSObject {
         CATransaction.commit()
     }
     
+    /// Show the capture animation
+    private func showCaptureAnimation() {
+        let duration: Double = 0.0625
+        if previewView != nil {
+            if isCapturing {
+                captureView.frame = previewView!.bounds
+                previewView!.addSubview(captureView)
+                UIView.animate(withDuration: duration) {
+                    self.captureView.layer.opacity = 1
+                }
+            } else {
+                UIView.animate(withDuration: duration, animations: {
+                    self.captureView.layer.opacity = 0
+                }) { (_) in
+                    self.captureView.removeFromSuperview()
+                }
+            }
+            
+        }
+    }
+    
 }
 
 extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -371,7 +405,6 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
                 capturedImage = fixOrientation(withImage: image)
             }
         }
-        
         captureImageCompletion!(capturedImage)
     }
     

@@ -17,7 +17,6 @@
 		0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */; };
 		0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193C4249B702E0086604D /* LoadingViewController.swift */; };
 		0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */; };
-		0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97BB2477B80D00E4078F /* CameraManager */; };
 		0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97BD2477B94F00E4078F /* VC+.swift */; };
 		0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97C02477BACE00E4078F /* SnapKit */; };
 		0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97C32477BFAE00E4078F /* SVHelper.swift */; };
@@ -28,6 +27,9 @@
 		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D32477F38900E4078F /* TimerEngine.swift */; };
 		0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */; };
+		0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490A24A8A49B00168225 /* PreviewMetalView.swift */; };
+		0A31491324A8CCC000168225 /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490F24A8CCC000168225 /* Mixer.metal */; };
+		0A31491424A8CCC000168225 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A31491024A8CCC000168225 /* PassThrough.metal */; };
 		0A334627249A4E4E00FE8BCE /* FilterMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A334626249A4E4E00FE8BCE /* FilterMenu.swift */; };
 		0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */; };
 		0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */; };
@@ -66,6 +68,7 @@
 		0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */; };
 		0AC8F9FA249CE8AC0068E54F /* Kontax_CamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */; };
 		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
+		0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2929324A78FDA00320BC4 /* CameraEngine.swift */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
 		0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F172493C41C0057A729 /* DustImageFilter.swift */; };
 		0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F192493C7B50057A729 /* FilterType.swift */; };
@@ -116,6 +119,9 @@
 		0A1D97D12477F21C00E4078F /* TapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticHelper.swift; sourceTree = "<group>"; };
 		0A1D97D32477F38900E4078F /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
 		0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryEngine.swift; sourceTree = "<group>"; };
+		0A31490A24A8A49B00168225 /* PreviewMetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMetalView.swift; sourceTree = "<group>"; };
+		0A31490F24A8CCC000168225 /* Mixer.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
+		0A31491024A8CCC000168225 /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		0A334626249A4E4E00FE8BCE /* FilterMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenu.swift; sourceTree = "<group>"; };
 		0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersDatasource.swift; sourceTree = "<group>"; };
 		0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 		0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kontax_CamTests.swift; sourceTree = "<group>"; };
 		0AC8F9FB249CE8AC0068E54F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		0AD2929324A78FDA00320BC4 /* CameraEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
 		0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoImagesURLs.swift; sourceTree = "<group>"; };
 		0AE49F172493C41C0057A729 /* DustImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustImageFilter.swift; sourceTree = "<group>"; };
 		0AE49F192493C7B50057A729 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
@@ -174,7 +181,6 @@
 				0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
 				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
-				0A1D97BC2477B80D00E4078F /* CameraManager in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,8 +227,9 @@
 		0A1D97C22477BE7800E4078F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				0A1D97C92477CB9C00E4078F /* CameraActionView */,
 				0A44B29E2476A7F000603F2C /* CameraViewController.swift */,
+				0A31490A24A8A49B00168225 /* PreviewMetalView.swift */,
+				0A1D97C92477CB9C00E4078F /* CameraActionView */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -234,6 +241,15 @@
 				0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */,
 			);
 			path = CameraActionView;
+			sourceTree = "<group>";
+		};
+		0A31490C24A8CCC000168225 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				0A31490F24A8CCC000168225 /* Mixer.metal */,
+				0A31491024A8CCC000168225 /* PassThrough.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 		0A44B28E2476A7F000603F2C = {
@@ -290,6 +306,7 @@
 		0A44B2AF2476A80700603F2C /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0AD2929224A78FCE00320BC4 /* CameraEngine */,
 				0AC407C8247DE03700BB0270 /* FilterFactory */,
 				0AC407C6247DDE2100BB0270 /* FilterEngine.swift */,
 				0A1D97D32477F38900E4078F /* TimerEngine.swift */,
@@ -419,6 +436,15 @@
 			path = "Kontax CamTests";
 			sourceTree = "<group>";
 		};
+		0AD2929224A78FCE00320BC4 /* CameraEngine */ = {
+			isa = PBXGroup;
+			children = (
+				0A31490C24A8CCC000168225 /* Shaders */,
+				0AD2929324A78FDA00320BC4 /* CameraEngine.swift */,
+			);
+			path = CameraEngine;
+			sourceTree = "<group>";
+		};
 		0AEBF1FB2495BCB7007CFAC6 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,7 +478,6 @@
 			);
 			name = "Kontax Cam";
 			packageProductDependencies = (
-				0A1D97BB2477B80D00E4078F /* CameraManager */,
 				0A1D97C02477BACE00E4078F /* SnapKit */,
 				0A1D97CF2477EFB900E4078F /* SPAlert */,
 				0A0F94CD247E501300E33AEC /* PanModal */,
@@ -510,7 +535,6 @@
 			);
 			mainGroup = 0A44B28E2476A7F000603F2C;
 			packageReferences = (
-				0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */,
 				0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */,
 				0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */,
@@ -553,12 +577,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A31491324A8CCC000168225 /* Mixer.metal in Sources */,
+				0A31491424A8CCC000168225 /* PassThrough.metal in Sources */,
 				0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */,
 				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
+				0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */,
 				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,
 				0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
@@ -597,6 +624,7 @@
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 				0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */,
+				0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */,
@@ -884,14 +912,6 @@
 				minimumVersion = 1.2.7;
 			};
 		};
-		0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/imaginary-cloud/CameraManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.3;
-			};
-		};
 		0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -931,11 +951,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */;
 			productName = PanModal;
-		};
-		0A1D97BB2477B80D00E4078F /* CameraManager */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A1D97BA2477B80D00E4078F /* XCRemoteSwiftPackageReference "CameraManager" */;
-			productName = CameraManager;
 		};
 		0A1D97C02477BACE00E4078F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

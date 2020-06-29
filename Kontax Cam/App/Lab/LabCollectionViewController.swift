@@ -12,7 +12,7 @@ import DTPhotoViewerController
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
-    private let IS_DEMO_MODE = true
+    private let IS_DEMO_MODE = false
     
     var imageObjects = [Photo]()
     private var pipeline = ImagePipeline.shared
@@ -241,7 +241,6 @@ extension LabCollectionViewController {
                 if let cell = self.collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
                     cell.toggleSelection()
                 }
-                
                 
                 DataEngine.shared.deleteData(imageURLToDelete: self.imageObjects[indexPath.row].url) { _ in () }
                 self.imageObjects.remove(at: indexPath.row)

@@ -42,7 +42,7 @@ class ShutterButtonViewController: UIViewController {
         touchEvent(event: .begin)
         renderSize()
     }
-    
+
     private func setupConstraint() {
         self.view.layer.cornerRadius = oriFrame.width / 2
         innerCircle.layer.cornerRadius = oriFrame.width * 0.9 / 2
@@ -67,40 +67,24 @@ class ShutterButtonViewController: UIViewController {
         self.view.isUserInteractionEnabled = false
         let parent = self.parent as! CameraActionViewController
         let loadingVC = LoadingViewController()
-        
         if parent.timerEngine.currentTime != 0 { parent.timerEngine.presentTimerDisplay() }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
-            parent.cameraManager.capturePictureWithCompletion({ [weak self] result in
-                guard let self = self else { return }
+            parent.cameraEngine?.captureImage(completion: { [weak self] (capturedImage) in
+                guard let self = self, let image = capturedImage else { return }
                 parent.parent!.addVC(loadingVC)
-                parent.cameraManager.stopCaptureSession()
-
+                
                 DispatchQueue.main.async {
-                    switch result {
-                    case .failure:
-                        AlertHelper.shared.presentDefault(title: "Error", message: "Looks like there was an error capturing the image. Please try again or if problem persist, contact kevin.laminto@gmail.com", to: self)
-
-                    case .success(let content):
-                        if let image = content.asImage {
-                            guard let editedImage = FilterEngine.shared.process(originalImage: image) else {
-                                TapticHelper.shared.errorTaptic()
-                                return
-                            }
-
-                            guard let data = editedImage.jpegData(compressionQuality: 1.0) else {
-                                TapticHelper.shared.errorTaptic()
-                                return
-                            }
-
-                            DataEngine.shared.save(imageData: data)
-                            TapticHelper.shared.successTaptic()
-
-                            loadingVC.removeVC()
-                            parent.cameraManager.resumeCaptureSession()
-                        }
-                    }
-                    self.view.isUserInteractionEnabled = true
+                    guard let editedImage = FilterEngine.shared.process(originalImage: image) else { return }
+                    
+                    guard let editedData = editedImage.jpegData(compressionQuality: 1.0) else { return }
+                    DataEngine.shared.save(imageData: editedData)
+                    
+                    TapticHelper.shared.successTaptic()
+                    loadingVC.removeVC()
+                    parent.cameraEngine?.isCapturing = false
                 }
+                self.view.isUserInteractionEnabled = true
             })
         }
     }

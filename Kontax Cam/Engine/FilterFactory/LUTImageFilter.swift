@@ -15,26 +15,36 @@ class LUTImageFilter: ImageFilterProtocol {
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
     
-    /// Apply filter to the given image
-    /// - Parameters:
-    ///   - image: The image that will be applied with filter
-    /// - Returns: The image filtered
-    func process(imageToEdit image: UIImage) -> UIImage? {
+    func process(imageToEdit uiImage: UIImage) -> UIImage? {
         guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter.rawValue.lowercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
         let context = CIContext(options: nil)
         
-        let beginImage = CIImage(image: image)
+        let beginImage = CIImage(image: uiImage)
         let filter = makeFilter(from: lutImage)
         filter.setValue(beginImage, forKey: kCIInputImageKey)
         
         if let output = filter.outputImage {
             if let cgImg = context.createCGImage(output, from: output.extent) {
-                let processedImage = UIImage(cgImage: cgImg, scale: 1.0, orientation: image.imageOrientation)
+                let processedImage = UIImage(cgImage: cgImg, scale: 1.0, orientation: uiImage.imageOrientation)
                 return processedImage
             }
         }
         
         return nil
+    }
+    
+    /// Apply filter to the given CIImage
+    /// - Parameter ciImage: The CIImage that will be applied with the filter
+    /// - Returns: The CIImage filtered
+    func process(imageToEdit ciImage: CIImage) -> CIImage? {
+        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter.rawValue.lowercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
+        
+        var filteredImage: CIImage?
+        
+        let filter = makeFilter(from: lutImage)
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        filteredImage = filter.outputImage
+        return filteredImage
     }
     
     /// Create a CIFilter based on the given ColourCube

@@ -7,13 +7,15 @@
 //
 
 import UIKit
-import CameraManager
 import SnapKit
 
 class CameraViewController: UIViewController {
     
     // MARK: - Class variables
-    private let cameraView = UIView()
+    private let cameraEngine = CameraEngine()
+    
+    private let cameraView = PreviewMetalView(frame: .zero, device: MTLCreateSystemDefaultDevice())
+    
     private let settingButton: UIButton = {
         let btn = UIButton()
         btn.setImage(IconHelper.shared.getIconImage(iconName: "gear"), for: .normal)
@@ -31,7 +33,6 @@ class CameraViewController: UIViewController {
         return v
     }()
     private var cameraActionView: CameraActionViewController!
-    private let cameraManager = CameraManager()
     
     private var cameraActionViewHeight: CGFloat {
         return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
@@ -42,13 +43,6 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        // Setup Camera Manager
-        cameraManager.addPreviewLayerToView(self.cameraView)
-        // By default, don't store to device
-        cameraManager.writeFilesToPhoneLibrary = false
-        cameraManager.shouldFlipFrontCameraImage = true
-        cameraManager.shouldKeepViewAtOrientationChanges = true
-        
         setupUI()
         setupConstraint()
         
@@ -57,19 +51,31 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraManager.resumeCaptureSession()
+        cameraEngine.startCaptureSession()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cameraEngine.stopCaptureSession()
+        self.cameraView.pixelBuffer = nil
+        self.cameraView.flushTextureCache()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        cameraEngine.addPreviewLayer(toView: cameraView)
     }
     
     // MARK: - Setup UI
     private func setupUI() {
         // Camera view
         cameraView.backgroundColor = UIColor.systemGray6
-        cameraView.clipsToBounds = true
+        cameraView.isUserInteractionEnabled = true
         
         // Camera Action View
         cameraActionView = CameraActionViewController()
         cameraActionView.shutterSize = (cameraActionViewHeight) * 0.4
-        cameraActionView.cameraManager = cameraManager
+        cameraActionView.cameraEngine = self.cameraEngine
         
         addVC(cameraActionView)
         self.view.addSubview(cameraView)

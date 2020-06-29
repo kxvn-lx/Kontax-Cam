@@ -242,7 +242,6 @@ extension LabCollectionViewController {
                     cell.toggleSelection()
                 }
                 
-                
                 DataEngine.shared.deleteData(imageURLToDelete: self.imageObjects[indexPath.row].url) { _ in () }
                 self.imageObjects.remove(at: indexPath.row)
             }

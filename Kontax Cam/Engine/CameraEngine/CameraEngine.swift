@@ -414,11 +414,7 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
     
     /// Render the raw buffer into a filtered buffer
     private func renderVideo(sampleBuffer: CMSampleBuffer) {
-        guard let videoPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer), let formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer) else {
-            return
-        }
-        
-        let finalVideoPixelBuffer = videoPixelBuffer
-        previewView?.pixelBuffer = finalVideoPixelBuffer
+        guard let videoPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        previewView?.pixelBuffer = videoPixelBuffer
     }
 }

@@ -227,8 +227,8 @@
 		0A1D97C22477BE7800E4078F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				0A31490A24A8A49B00168225 /* PreviewMetalView.swift */,
 				0A44B29E2476A7F000603F2C /* CameraViewController.swift */,
+				0A31490A24A8A49B00168225 /* PreviewMetalView.swift */,
 				0A1D97C92477CB9C00E4078F /* CameraActionView */,
 			);
 			path = Camera;

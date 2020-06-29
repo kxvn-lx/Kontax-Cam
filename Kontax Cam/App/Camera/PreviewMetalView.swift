@@ -166,12 +166,19 @@ class PreviewMetalView: MTKView {
         
         // Resize aspect ratio.
         resizeAspect = min(scaleX, scaleY)
+        var factor: Float
+        
+        // Little hack to make sure it fills the view
         if scaleX < scaleY {
-            scaleY = scaleX / scaleY
-            scaleX = 1.0
-        } else {
-            scaleX = scaleY / scaleX
+            factor = scaleX / scaleY
+            
             scaleY = 1.0
+            scaleX = 1.0 + (1.0 - factor)
+        } else {
+            factor = scaleY / scaleX
+            
+            scaleX = 1.0
+            scaleY = 1.0 + (1.0 - factor)
         }
         
         if textureMirroring {

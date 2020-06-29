@@ -27,6 +27,7 @@
 		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D32477F38900E4078F /* TimerEngine.swift */; };
 		0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */; };
+		0A30641424A9BA5A005C9033 /* FilterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30641324A9BA5A005C9033 /* FilterRenderer.swift */; };
 		0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490A24A8A49B00168225 /* PreviewMetalView.swift */; };
 		0A31491324A8CCC000168225 /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490F24A8CCC000168225 /* Mixer.metal */; };
 		0A31491424A8CCC000168225 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A31491024A8CCC000168225 /* PassThrough.metal */; };
@@ -119,6 +120,7 @@
 		0A1D97D12477F21C00E4078F /* TapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticHelper.swift; sourceTree = "<group>"; };
 		0A1D97D32477F38900E4078F /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
 		0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryEngine.swift; sourceTree = "<group>"; };
+		0A30641324A9BA5A005C9033 /* FilterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterRenderer.swift; sourceTree = "<group>"; };
 		0A31490A24A8A49B00168225 /* PreviewMetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMetalView.swift; sourceTree = "<group>"; };
 		0A31490F24A8CCC000168225 /* Mixer.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
 		0A31491024A8CCC000168225 /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
@@ -439,8 +441,9 @@
 		0AD2929224A78FCE00320BC4 /* CameraEngine */ = {
 			isa = PBXGroup;
 			children = (
-				0A31490C24A8CCC000168225 /* Shaders */,
 				0AD2929324A78FDA00320BC4 /* CameraEngine.swift */,
+				0A30641324A9BA5A005C9033 /* FilterRenderer.swift */,
+				0A31490C24A8CCC000168225 /* Shaders */,
 			);
 			path = CameraEngine;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */,
+				0A30641424A9BA5A005C9033 /* FilterRenderer.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
 				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,

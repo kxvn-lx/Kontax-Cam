@@ -9,7 +9,6 @@
 import GPUImage
 import UIKit
 
-
 class GrainImageFilter: ImageFilterProtocol {
     
     private enum GrainName: String, CaseIterable {
@@ -20,7 +19,6 @@ class GrainImageFilter: ImageFilterProtocol {
     private var strength: CGFloat = {
         return RangeConverterHelper.shared.convert(FilterValue.Grain.strength, fromOldRange: [0, 10], toNewRange: [0, 1])
     }()
-
     
     func process(imageToEdit image: UIImage) -> UIImage? {
         guard let grainImage = UIImage(named: selectedGrainFilter.rawValue) else { fatalError("Invalid name!") }

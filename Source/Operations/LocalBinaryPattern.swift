@@ -13,6 +13,6 @@
  */
 public class LocalBinaryPattern: TextureSamplingOperation {
     public init() {
-        super.init(fragmentFunctionName:"localBinaryPatternFragment")
+        super.init(fragmentFunctionName: "localBinaryPatternFragment")
     }
 }

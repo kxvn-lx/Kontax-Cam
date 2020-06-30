@@ -9,7 +9,7 @@ public class HighPassFilter: OperationGroup {
         
         ({strength = 0.5})()
         
-        self.configureGroup{input, output in
+        self.configureGroup {input, output in
             input --> self.differenceBlend
             input --> self.lowPass --> self.differenceBlend --> output
         }

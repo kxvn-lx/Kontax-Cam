@@ -1,11 +1,11 @@
 import Foundation
 
 public class MotionBlur: BasicOperation {
-    public var blurSize:Float = 2.5
-    public var blurAngle:Float = 0.0
+    public var blurSize: Float = 2.5
+    public var blurAngle: Float = 0.0
     
     public init() {
-        super.init(vertexFunctionName:"motionBlurVertex", fragmentFunctionName:"motionBlurFragment", numberOfInputs:1)
+        super.init(vertexFunctionName: "motionBlurVertex", fragmentFunctionName: "motionBlurFragment", numberOfInputs: 1)
     }
     
 //    override func configureFramebufferSpecificUniforms(_ inputFramebuffer:Framebuffer) {

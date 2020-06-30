@@ -1,12 +1,12 @@
 import QuartzCore
 
 public struct Matrix4x4 {
-    public let m11:Float, m12:Float, m13:Float, m14:Float
-    public let m21:Float, m22:Float, m23:Float, m24:Float
-    public let m31:Float, m32:Float, m33:Float, m34:Float
-    public let m41:Float, m42:Float, m43:Float, m44:Float
+    public let m11: Float, m12: Float, m13: Float, m14: Float
+    public let m21: Float, m22: Float, m23: Float, m24: Float
+    public let m31: Float, m32: Float, m33: Float, m34: Float
+    public let m41: Float, m42: Float, m43: Float, m44: Float
     
-    public init(rowMajorValues:[Float]) {
+    public init(rowMajorValues: [Float]) {
         guard rowMajorValues.count > 15 else { fatalError("Tried to initialize a 4x4 matrix with fewer than 16 values") }
         
         self.m11 = rowMajorValues[0]
@@ -30,18 +30,18 @@ public struct Matrix4x4 {
         self.m44 = rowMajorValues[15]
     }
     
-    public static let identity = Matrix4x4(rowMajorValues:[1.0, 0.0, 0.0, 0.0,
+    public static let identity = Matrix4x4(rowMajorValues: [1.0, 0.0, 0.0, 0.0,
                                                            0.0, 1.0, 0.0, 0.0,
                                                            0.0, 0.0, 1.0, 0.0,
                                                            0.0, 0.0, 0.0, 1.0])
 }
 
 public struct Matrix3x3 {
-    public let m11:Float, m12:Float, m13:Float
-    public let m21:Float, m22:Float, m23:Float
-    public let m31:Float, m32:Float, m33:Float
+    public let m11: Float, m12: Float, m13: Float
+    public let m21: Float, m22: Float, m23: Float
+    public let m31: Float, m32: Float, m33: Float
     
-    public init(rowMajorValues:[Float]) {
+    public init(rowMajorValues: [Float]) {
         guard rowMajorValues.count > 8 else { fatalError("Tried to initialize a 3x3 matrix with fewer than 9 values") }
         
         self.m11 = rowMajorValues[0]
@@ -57,16 +57,16 @@ public struct Matrix3x3 {
         self.m33 = rowMajorValues[8]
     }
     
-    public static let identity = Matrix3x3(rowMajorValues:[1.0, 0.0, 0.0,
+    public static let identity = Matrix3x3(rowMajorValues: [1.0, 0.0, 0.0,
                                                            0.0, 1.0, 0.0,
                                                            0.0, 0.0, 1.0])
     
-    public static let centerOnly = Matrix3x3(rowMajorValues:[0.0, 0.0, 0.0,
+    public static let centerOnly = Matrix3x3(rowMajorValues: [0.0, 0.0, 0.0,
                                                              0.0, 1.0, 0.0,
                                                              0.0, 0.0, 0.0])
 }
 
-func orthographicMatrix(_ left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float, anchorTopLeft:Bool = false) -> Matrix4x4 {
+func orthographicMatrix(_ left: Float, right: Float, bottom: Float, top: Float, near: Float, far: Float, anchorTopLeft: Bool = false) -> Matrix4x4 {
     let r_l = right - left
     let t_b = top - bottom
     let f_n = far - near
@@ -74,8 +74,8 @@ func orthographicMatrix(_ left:Float, right:Float, bottom:Float, top:Float, near
     var ty = -(top + bottom) / (top - bottom)
     let tz = -(far + near) / (far - near)
     
-    let scale:Float
-    if (anchorTopLeft) {
+    let scale: Float
+    if anchorTopLeft {
         scale = 4.0
         tx = -1.0
         ty = -1.0
@@ -83,16 +83,15 @@ func orthographicMatrix(_ left:Float, right:Float, bottom:Float, top:Float, near
         scale = 2.0
     }
     
-    return Matrix4x4(rowMajorValues:[
+    return Matrix4x4(rowMajorValues: [
         scale / r_l, 0.0, 0.0, tx,
         0.0, scale / t_b, 0.0, ty,
         0.0, 0.0, scale / f_n, tz,
         0.0, 0.0, 0.0, 1.0])
 }
 
-
 public extension Matrix4x4 {
-    init (_ transform3D:CATransform3D) {
+    init (_ transform3D: CATransform3D) {
         self.m11 = Float(transform3D.m11)
         self.m12 = Float(transform3D.m12)
         self.m13 = Float(transform3D.m13)
@@ -114,7 +113,7 @@ public extension Matrix4x4 {
         self.m44 = Float(transform3D.m44)
     }
     
-    init (_ transform:CGAffineTransform) {
+    init (_ transform: CGAffineTransform) {
         self.init(CATransform3DMakeAffineTransform(transform))
     }
 }

@@ -42,7 +42,7 @@ class DatestampImageFilter: ImageFilterProtocol {
         let datestamp = renderer.image { ctx in
             let attrs: [NSAttributedString.Key: Any] = [
                 .font: UIFont(name: "Date Stamp Alt", size: fontSize)!,
-                .foregroundColor: UIColor(displayP3Red: 249/255, green: 148/255, blue: 60/255, alpha: 1),
+                .foregroundColor: UIColor(displayP3Red: 249/255, green: 148/255, blue: 60/255, alpha: 1)
             ]
             
             let attributedString = NSAttributedString(string: currentDate, attributes: attrs)

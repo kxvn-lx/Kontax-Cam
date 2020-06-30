@@ -5,7 +5,7 @@ open class TextureSamplingOperation: BasicOperation {
                 fragmentFunctionName: String,
                 numberOfInputs: UInt = 1,
                 operationName: String = #file) {
-        super.init(vertexFunctionName:vertexFunctionName, fragmentFunctionName:fragmentFunctionName, numberOfInputs:numberOfInputs, operationName:operationName)
+        super.init(vertexFunctionName: vertexFunctionName, fragmentFunctionName: fragmentFunctionName, numberOfInputs: numberOfInputs, operationName: operationName)
         self.useNormalizedTextureCoordinates = false
     }    
 }

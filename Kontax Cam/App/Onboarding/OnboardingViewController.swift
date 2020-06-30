@@ -17,7 +17,7 @@ class OnboardingViewController: UIViewController {
         "onboarding4",
         "onboarding5",
         "onboarding6",
-        "onboarding7",
+        "onboarding7"
     ]
     
     private let imageView: UIImageView = {

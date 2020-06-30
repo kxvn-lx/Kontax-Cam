@@ -9,8 +9,6 @@
 import UIKit
 import GPUImage
 
-
-
 class LightLeaksImageFilter: ImageFilterProtocol {
     
     private enum LeaksName: String, CaseIterable {

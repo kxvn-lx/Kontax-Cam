@@ -78,7 +78,7 @@ extension SettingsTableViewController {
                 for fileURL in fileURLs { try FileManager.default.removeItem(at: fileURL) }
                 
                 AlertHelper.shared.presentDefault(title: "Lab images has been successfully deleted.", message: nil, to: self)
-            } catch  { print(error) }
+            } catch { print(error) }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

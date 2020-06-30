@@ -9,10 +9,13 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>GPUImage_macOS.xcscheme_^#shared#^_</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>BCE0BE8B20D6E2B80006E120</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

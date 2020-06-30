@@ -14,7 +14,6 @@ struct SVHelper {
     static let shared = SVHelper()
     private init() { }
     
-    
     /// Create a stackview complete with its property
     /// - Parameters:
     ///   - axis: The axis of the Stack view

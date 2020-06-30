@@ -23,7 +23,6 @@ class ColourleaksCustomisationCollectionViewController: UICollectionViewControll
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }

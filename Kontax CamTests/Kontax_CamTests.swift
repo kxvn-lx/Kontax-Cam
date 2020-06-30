@@ -37,5 +37,4 @@ class KontaxCam_UnitTest: XCTestCase {
         XCTAssertEqual(guess, resultValue, "RangeConverter should follow Linear Conversion pattern!")
     }
     
-    
 }

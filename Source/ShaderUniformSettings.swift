@@ -2,18 +2,18 @@ import Foundation
 import Metal
 
 public class ShaderUniformSettings {
-    private var uniformValues:[Float] = []
-    private var uniformValueOffsets:[Int] = []
-    public var colorUniformsUseAlpha:Bool = false
+    private var uniformValues: [Float] = []
+    private var uniformValueOffsets: [Int] = []
+    public var colorUniformsUseAlpha: Bool = false
     let shaderUniformSettingsQueue = DispatchQueue(
         label: "com.sunsetlakesoftware.GPUImage.shaderUniformSettings",
         attributes: [])
-    let uniformLookupTable:[String:Int]
+    let uniformLookupTable: [String: Int]
 
-    public init(uniformLookupTable:[String:(Int, MTLDataType)]) {
-        var convertedLookupTable:[String:Int] = [:]
+    public init(uniformLookupTable: [String: (Int, MTLDataType)]) {
+        var convertedLookupTable: [String: Int] = [:]
         
-        var orderedDatatypes = [MTLDataType](repeating:.float, count:uniformLookupTable.count)
+        var orderedDatatypes = [MTLDataType](repeating: .float, count: uniformLookupTable.count)
         
         for (key, value) in uniformLookupTable {
             let (index, dataType) = value
@@ -24,14 +24,14 @@ public class ShaderUniformSettings {
         self.uniformLookupTable = convertedLookupTable
 
         for dataType in orderedDatatypes {
-            self.appendBufferSpace(for:dataType)
+            self.appendBufferSpace(for: dataType)
         }
     }
     
-    public var usesAspectRatio:Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
+    public var usesAspectRatio: Bool { get { return self.uniformLookupTable["aspectRatio"] != nil } }
     
-    private func internalIndex(for index:Int) -> Int {
-        if (index == 0) {
+    private func internalIndex(for index: Int) -> Int {
+        if index == 0 {
             return 0
         } else {
             return uniformValueOffsets[index - 1]
@@ -41,29 +41,29 @@ public class ShaderUniformSettings {
     // MARK: -
     // MARK: Subscript access
     
-    public subscript(key:String) -> Float {
+    public subscript(key: String) -> Float {
         get {
             guard let index = uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-            return uniformValues[internalIndex(for:index)]
+            return uniformValues[internalIndex(for: index)]
         }
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-                self.uniformValues[self.internalIndex(for:index)] = newValue
+                self.uniformValues[self.internalIndex(for: index)] = newValue
             }
         }
     }
 
-    public subscript(key:String) -> Color {
+    public subscript(key: String) -> Color {
         get {
             // TODO: Fix this
             return Color(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         }
         set(newValue) {
             shaderUniformSettingsQueue.async {
-                let floatArray:[Float]
+                let floatArray: [Float]
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-                let startingIndex = self.internalIndex(for:index)
+                let startingIndex = self.internalIndex(for: index)
                 if self.colorUniformsUseAlpha {
                     floatArray = newValue.toFloatArrayWithAlpha()
                     self.uniformValues[startingIndex] = floatArray[0]
@@ -80,7 +80,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(key:String) -> Position {
+    public subscript(key: String) -> Position {
         get {
             // TODO: Fix this
             return Position(0.0, 0.0)
@@ -89,7 +89,7 @@ public class ShaderUniformSettings {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-                var currentIndex = self.internalIndex(for:index)
+                var currentIndex = self.internalIndex(for: index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
                     currentIndex += 1
@@ -98,16 +98,16 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(key:String) -> Size {
+    public subscript(key: String) -> Size {
         get {
             // TODO: Fix this
-            return Size(width:0.0, height:0.0)
+            return Size(width: 0.0, height: 0.0)
         }
         set(newValue) {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-                var currentIndex = self.internalIndex(for:index)
+                var currentIndex = self.internalIndex(for: index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
                     currentIndex += 1
@@ -116,7 +116,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(key:String) -> Matrix3x3 {
+    public subscript(key: String) -> Matrix3x3 {
         get {
             // TODO: Fix this
             return Matrix3x3.identity
@@ -125,7 +125,7 @@ public class ShaderUniformSettings {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-                var currentIndex = self.internalIndex(for:index)
+                var currentIndex = self.internalIndex(for: index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
                     currentIndex += 1
@@ -134,7 +134,7 @@ public class ShaderUniformSettings {
         }
     }
 
-    public subscript(key:String) -> Matrix4x4 {
+    public subscript(key: String) -> Matrix4x4 {
         get {
             // TODO: Fix this
             return Matrix4x4.identity
@@ -143,7 +143,7 @@ public class ShaderUniformSettings {
             shaderUniformSettingsQueue.async {
                 let floatArray = newValue.toFloatArray()
                 guard let index = self.uniformLookupTable[key] else {fatalError("Tried to access value of missing uniform: \(key), make sure this is present and used in your shader.")}
-                var currentIndex = self.internalIndex(for:index)
+                var currentIndex = self.internalIndex(for: index)
                 for floatValue in floatArray {
                     self.uniformValues[currentIndex] = floatValue
                     currentIndex += 1
@@ -155,8 +155,8 @@ public class ShaderUniformSettings {
     // MARK: -
     // MARK: Uniform buffer memory management
     
-    func appendBufferSpace(for dataType:MTLDataType) {
-        let uniformSize:Int
+    func appendBufferSpace(for dataType: MTLDataType) {
+        let uniformSize: Int
         switch dataType {
             case .float: uniformSize = 1
             case .float2: uniformSize = 2
@@ -166,19 +166,19 @@ public class ShaderUniformSettings {
             case .float4x4: uniformSize = 16
             default: fatalError("Uniform data type of value: \(dataType.rawValue) not supported")
         }
-        let blankValues = [Float](repeating:0.0, count:uniformSize)
+        let blankValues = [Float](repeating: 0.0, count: uniformSize)
 
-        let lastOffset = alignPackingForOffset(uniformSize:uniformSize, lastOffset:uniformValueOffsets.last ?? 0)
-        uniformValues.append(contentsOf:blankValues)
+        let lastOffset = alignPackingForOffset(uniformSize: uniformSize, lastOffset: uniformValueOffsets.last ?? 0)
+        uniformValues.append(contentsOf: blankValues)
         uniformValueOffsets.append(lastOffset + uniformSize)
     }
     
-    func alignPackingForOffset(uniformSize:Int, lastOffset:Int) -> Int {
+    func alignPackingForOffset(uniformSize: Int, lastOffset: Int) -> Int {
         let floatAlignment = (lastOffset + uniformSize) % 4
         let previousFloatAlignment = lastOffset % 4
-        if (uniformSize > 1) && (floatAlignment != 0) && (previousFloatAlignment != 0){
+        if (uniformSize > 1) && (floatAlignment != 0) && (previousFloatAlignment != 0) {
             let paddingToAlignment = 4 - floatAlignment
-            uniformValues.append(contentsOf:[Float](repeating:0.0, count:paddingToAlignment))
+            uniformValues.append(contentsOf: [Float](repeating: 0.0, count: paddingToAlignment))
             uniformValueOffsets[uniformValueOffsets.count - 1] = lastOffset + paddingToAlignment
             return lastOffset + paddingToAlignment
         } else {
@@ -186,9 +186,9 @@ public class ShaderUniformSettings {
         }
     }
 
-    public func restoreShaderSettings(renderEncoder:MTLRenderCommandEncoder) {
+    public func restoreShaderSettings(renderEncoder: MTLRenderCommandEncoder) {
         shaderUniformSettingsQueue.sync {
-            guard (uniformValues.count > 0) else { return }
+            guard uniformValues.count > 0 else { return }
             
             let uniformBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: uniformValues,
                                                                              length: uniformValues.count * MemoryLayout<Float>.size,
@@ -202,13 +202,13 @@ public protocol UniformConvertible {
     func toFloatArray() -> [Float]
 }
 
-extension Float:UniformConvertible {
+extension Float: UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [self]
     }
 }
 
-extension Double:UniformConvertible {
+extension Double: UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [Float(self)]
     }
@@ -224,7 +224,7 @@ extension Color {
     }
 }
 
-extension Position:UniformConvertible {
+extension Position: UniformConvertible {
     public func toFloatArray() -> [Float] {
         if let z = self.z {
             return [self.x, self.y, z, 0.0]
@@ -234,7 +234,7 @@ extension Position:UniformConvertible {
     }
 }
 
-extension Matrix3x3:UniformConvertible {
+extension Matrix3x3: UniformConvertible {
     public func toFloatArray() -> [Float] {
         // Row major, with zero-padding
         return [m11, m12, m13, 0.0, m21, m22, m23, 0.0, m31, m32, m33, 0.0]
@@ -242,7 +242,7 @@ extension Matrix3x3:UniformConvertible {
     }
 }
 
-extension Matrix4x4:UniformConvertible {
+extension Matrix4x4: UniformConvertible {
     public func toFloatArray() -> [Float] {
         // Row major
         return [m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44]
@@ -250,9 +250,8 @@ extension Matrix4x4:UniformConvertible {
     }
 }
 
-extension Size:UniformConvertible {
+extension Size: UniformConvertible {
     public func toFloatArray() -> [Float] {
         return [self.width, self.height]
     }
 }
-

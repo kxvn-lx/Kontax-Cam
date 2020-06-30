@@ -37,7 +37,6 @@ extension UIViewController {
     }
 }
 
-
 // MARK: - UIStackView
 extension UIStackView {
     func addBackground(color: UIColor, cornerRadius: CGFloat? = 0) {
@@ -158,7 +157,7 @@ extension UIImage {
         return UIImage(cgImage: self.cgImage!, scale: scale, orientation: image.imageOrientation)
     }
     
-    func alpha(_ value:CGFloat) -> UIImage {
+    func alpha(_ value: CGFloat) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()

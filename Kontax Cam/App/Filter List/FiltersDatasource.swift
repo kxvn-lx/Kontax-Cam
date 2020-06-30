@@ -61,7 +61,7 @@ extension FiltersCollectionViewController {
                 FilterItem(
                     title: FilterName.b3.rawValue,
                     action: { [weak self] in self?.didSelectItem($0) }
-                ),
+                )
             ],
            action: nil)
         

@@ -65,4 +65,3 @@ struct FilterValue {
     
     private init() { }
 }
-

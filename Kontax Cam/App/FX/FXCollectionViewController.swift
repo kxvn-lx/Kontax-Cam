@@ -162,8 +162,8 @@ extension FXCollectionViewController {
         return section
     }
     
-    private func makeLayout() -> UICollectionViewLayout  {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnv: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+    private func makeLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (_: Int, _: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             return self.createSection()
         }
         
@@ -194,4 +194,3 @@ extension FXCollectionViewController: PanModalPresentable {
         return collectionView
     }
 }
-

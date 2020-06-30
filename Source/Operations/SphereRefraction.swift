@@ -1,10 +1,10 @@
 public class SphereRefraction: BasicOperation {
-    public var radius:Float = 0.25 { didSet { uniformSettings["radius"] = radius } }
-    public var refractiveIndex:Float = 0.71 { didSet { uniformSettings["refractiveIndex"] = refractiveIndex } }
-    public var center:Position = Position.center { didSet { uniformSettings["center"] = center } }
+    public var radius: Float = 0.25 { didSet { uniformSettings["radius"] = radius } }
+    public var refractiveIndex: Float = 0.71 { didSet { uniformSettings["refractiveIndex"] = refractiveIndex } }
+    public var center: Position = Position.center { didSet { uniformSettings["center"] = center } }
     
     public init() {
-        super.init(fragmentFunctionName:"sphereRefractionFragment", numberOfInputs:1)
+        super.init(fragmentFunctionName: "sphereRefractionFragment", numberOfInputs: 1)
         
         ({radius = 0.25})()
         ({refractiveIndex = 0.71})()

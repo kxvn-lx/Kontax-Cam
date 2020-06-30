@@ -175,10 +175,11 @@ class CameraEngine: NSObject {
         }
         
         currentCamera = backCamera
-        
+        guard let currentCamera = currentCamera else { return }
         // Setup Input and Output
+        
         do {
-            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
+            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera)
             
             captureSession.beginConfiguration()
             

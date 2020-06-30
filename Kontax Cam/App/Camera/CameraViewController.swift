@@ -120,7 +120,6 @@ class CameraViewController: UIViewController {
         navController.modalPresentationStyle = .overFullScreen
         presentWithAnimation(navController)
         
-        
 //        self.present(navController, animated: true, completion: nil)
     }
 }

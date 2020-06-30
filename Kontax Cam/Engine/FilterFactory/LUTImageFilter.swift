@@ -56,9 +56,9 @@ class LUTImageFilter: ImageFilterProtocol {
         
         let filterName = "CIColorCubeWithColorSpace"
         let filterParams: [String: Any] =
-            ["inputCubeDimension" : dimension,
-             "inputCubeData" : data,
-             "inputColorSpace" : colorSpace]
+            ["inputCubeDimension": dimension,
+             "inputCubeData": data,
+             "inputColorSpace": colorSpace]
         
         let filter = CIFilter(name: filterName, parameters: filterParams)
         

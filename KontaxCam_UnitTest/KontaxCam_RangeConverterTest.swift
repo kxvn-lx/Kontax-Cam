@@ -23,6 +23,4 @@ class KontaxCam_UnitTest: XCTestCase {
         super.tearDown()
     }
     
-    
-    
 }

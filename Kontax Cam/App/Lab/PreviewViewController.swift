@@ -51,7 +51,7 @@ class PreviewViewController: UIViewController {
         }
     }
     
-    func animateOut(completion: @escaping ((Bool) -> ())) {        
+    func animateOut(completion: @escaping ((Bool) -> Void)) {        
         UIView.animate(withDuration: duration, animations: {
             self.view.backgroundColor = .clear
             self.imageView.transform = CGAffineTransform(scaleX: 0, y: 0)

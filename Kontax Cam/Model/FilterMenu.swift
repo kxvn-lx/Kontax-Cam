@@ -9,7 +9,7 @@
 import Foundation
 
 struct FilterSection {
-    typealias Action = ((FilterSection) -> ())
+    typealias Action = ((FilterSection) -> Void)
     
     var title: String
     var items: [FilterItem]
@@ -23,7 +23,7 @@ struct FilterSection {
 }
 
 struct FilterItem {
-    typealias Action = ((FilterItem) -> ())
+    typealias Action = ((FilterItem) -> Void)
     
     var title: String
     var action: Action?

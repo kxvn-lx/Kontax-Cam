@@ -16,7 +16,6 @@ class FilterEngine {
     static let shared = FilterEngine()
     private init() { }
     
-    
     /// Process the image with all the allowed filters
     /// - Parameter originalImage: The original image
     /// - Returns: The edited image

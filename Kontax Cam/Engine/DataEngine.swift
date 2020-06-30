@@ -58,7 +58,7 @@ struct DataEngine {
     ///   - image: The image to be deleted
     ///   - completion: Completion handler of success
     /// - Returns: The completion handler
-    func deleteData(imageURLToDelete url: URL , completion: (Bool) -> ()) {
+    func deleteData(imageURLToDelete url: URL, completion: (Bool) -> Void) {
         let fileManager = FileManager.default
         
         // Delete file in document directory

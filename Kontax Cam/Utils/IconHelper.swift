@@ -14,7 +14,6 @@ struct IconHelper {
     static let shared = IconHelper()
     private init () { }
     
-    
     /// Get the icon name along with the other state of the icon.
     ///
     /// This is a custom function created to support multi icon toggle on each buttons.
@@ -25,7 +24,7 @@ struct IconHelper {
     /// - Returns: The icon and its index value according to the array.
     func getIconName(currentIcon: String?, iconImageArray: [String]) -> (UIImage, Int?) {
         let currentIcon = currentIcon == nil ? iconImageArray[0] : currentIcon
-        var nextIndex = iconImageArray.firstIndex{ $0 == currentIcon }! + 1
+        var nextIndex = iconImageArray.firstIndex { $0 == currentIcon }! + 1
         nextIndex = nextIndex >= iconImageArray.count ? 1 : nextIndex
         
         let image = IconHelper.shared.getIconImage(iconName: iconImageArray[nextIndex])
@@ -47,6 +46,5 @@ struct IconHelper {
         }
         
     }
-    
     
 }

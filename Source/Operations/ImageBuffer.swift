@@ -1,16 +1,16 @@
 public class ImageBuffer: ImageProcessingOperation {
     // TODO: Dynamically release textures on buffer resize
-    public var bufferSize:UInt = 1
+    public var bufferSize: UInt = 1
     public var activatePassthroughOnNextFrame = true
     
-    public let maximumInputs:UInt = 1
+    public let maximumInputs: UInt = 1
     public let targets = TargetContainer()
     public let sources = SourceContainer()
     var bufferedTextures = [Texture]()
 
     public func newTextureAvailable(_ texture: Texture, fromSourceIndex: UInt) {
         bufferedTextures.append(texture)
-        if (bufferedTextures.count > Int(bufferSize)) {
+        if bufferedTextures.count > Int(bufferSize) {
             let releasedTexture = bufferedTextures.removeFirst()
             updateTargetsWithTexture(releasedTexture)
         } else if activatePassthroughOnNextFrame {
@@ -20,7 +20,7 @@ public class ImageBuffer: ImageProcessingOperation {
         }
     }
     
-    public func transmitPreviousImage(to target:ImageConsumer, atIndex:UInt) {
+    public func transmitPreviousImage(to target: ImageConsumer, atIndex: UInt) {
         // Buffers most likely won't need this
     }
 }

@@ -75,8 +75,8 @@ class ColourleaksCustomisationViewController: UIViewController {
         return section
     }
     
-    private func makeLayout(withHeader: Bool = true) -> UICollectionViewLayout  {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnv: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+    private func makeLayout(withHeader: Bool = true) -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (_: Int, _: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             return self.createSection(withHeader: withHeader)
         }
         
@@ -194,4 +194,3 @@ class ColourleaksCustomisationCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

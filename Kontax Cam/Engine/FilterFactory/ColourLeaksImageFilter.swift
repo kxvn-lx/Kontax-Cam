@@ -35,7 +35,6 @@ class ColourLeaksImageFilter: ImageFilterProtocol {
         imageInput.processImage(synchronously: true)
         colourLeaksInput.processImage(synchronously: true)
         
-        
         return editedImage
     }
     

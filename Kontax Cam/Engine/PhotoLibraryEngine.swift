@@ -20,8 +20,7 @@ class PhotoLibraryEngine {
         }
     }
     
-    func saveImageToAlbum(_ image: UIImage, completion: @escaping ((Bool) -> ())) {
-
+    func saveImageToAlbum(_ image: UIImage, completion: @escaping ((Bool) -> Void)) {
         if let collection = fetchAssetCollection() {
             self.saveImageToAssetCollection(image, collection: collection) { (success) in
                 completion(success)
@@ -47,7 +46,6 @@ class PhotoLibraryEngine {
     }
 
     private func fetchAssetCollection() -> PHAssetCollection? {
-
         let fetchOption = PHFetchOptions()
         fetchOption.predicate = NSPredicate(format: "title == '" + self.albumName + "'")
 
@@ -59,7 +57,7 @@ class PhotoLibraryEngine {
         return fetchResult.firstObject
     }
 
-    private func saveImageToAssetCollection(_ image: UIImage, collection: PHAssetCollection, completion: @escaping ((Bool) -> ())) {
+    private func saveImageToAssetCollection(_ image: UIImage, collection: PHAssetCollection, completion: @escaping ((Bool) -> Void)) {
 
         PHPhotoLibrary.shared().performChanges({
 

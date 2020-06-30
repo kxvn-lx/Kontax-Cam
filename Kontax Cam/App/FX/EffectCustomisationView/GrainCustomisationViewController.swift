@@ -75,7 +75,7 @@ class GrainCustomisationViewController: UIViewController {
         }
     }
     
-    @objc private func sliderValueDidChange(_ sender:UISlider!) {
+    @objc private func sliderValueDidChange(_ sender: UISlider!) {
         let roundedStepValue = round(sender.value / step) * step
         sender.value = roundedStepValue
         DispatchQueue.main.async {

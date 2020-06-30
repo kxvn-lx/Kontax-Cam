@@ -164,7 +164,6 @@ extension CameraActionViewController {
                 self.presentPanModal(navController)
             }
             
-            
         // Filter
         case 4:
             if let parent = self.parent {

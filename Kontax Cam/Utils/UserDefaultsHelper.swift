@@ -20,7 +20,6 @@ struct UserDefaultsHelper {
     static let shared = UserDefaultsHelper()
     private init() { }
     
-    
     /// Set the UserDefaults data to the device.
     /// - Parameters:
     ///   - value: The value that will be stored.

@@ -2,7 +2,7 @@ import Foundation
 import Metal
 
 // OpenGL uses a bottom-left origin while Metal uses a top-left origin.
-public let standardImageVertices:[Float] = [-1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0]
+public let standardImageVertices: [Float] = [-1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0]
 
 extension MTLCommandBuffer {
     func clear(with color: Color, outputTexture: Texture) {
@@ -24,12 +24,11 @@ extension MTLCommandBuffer {
         renderEncoder.endEncoding()
     }
     
-    func renderQuad(pipelineState:MTLRenderPipelineState, uniformSettings:ShaderUniformSettings? = nil, inputTextures:[UInt:Texture], useNormalizedTextureCoordinates:Bool = true, imageVertices:[Float] = standardImageVertices, outputTexture:Texture, outputOrientation:ImageOrientation = .portrait) {
+    func renderQuad(pipelineState: MTLRenderPipelineState, uniformSettings: ShaderUniformSettings? = nil, inputTextures: [UInt: Texture], useNormalizedTextureCoordinates: Bool = true, imageVertices: [Float] = standardImageVertices, outputTexture: Texture, outputOrientation: ImageOrientation = .portrait) {
         let vertexBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: imageVertices,
                                                                         length: imageVertices.count * MemoryLayout<Float>.size,
                                                                         options: [])!
         vertexBuffer.label = "Vertices"
-        
         
         let renderPass = MTLRenderPassDescriptor()
         renderPass.colorAttachments[0].texture = outputTexture.texture
@@ -47,7 +46,7 @@ extension MTLCommandBuffer {
         for textureIndex in 0..<inputTextures.count {
             let currentTexture = inputTextures[UInt(textureIndex)]!
             
-            let inputTextureCoordinates = currentTexture.textureCoordinates(for:outputOrientation, normalized:useNormalizedTextureCoordinates)
+            let inputTextureCoordinates = currentTexture.textureCoordinates(for: outputOrientation, normalized: useNormalizedTextureCoordinates)
             let textureBuffer = sharedMetalRenderingDevice.device.makeBuffer(bytes: inputTextureCoordinates,
                                                                              length: inputTextureCoordinates.count * MemoryLayout<Float>.size,
                                                                              options: [])!
@@ -62,7 +61,7 @@ extension MTLCommandBuffer {
     }
 }
 
-func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName:String, fragmentFunctionName:String, operationName:String) -> (MTLRenderPipelineState, [String:(Int, MTLDataType)]) {
+func generateRenderPipelineState(device: MetalRenderingDevice, vertexFunctionName: String, fragmentFunctionName: String, operationName: String) -> (MTLRenderPipelineState, [String: (Int, MTLDataType)]) {
     guard let vertexFunction = device.shaderLibrary.makeFunction(name: vertexFunctionName) else {
         fatalError("\(operationName): could not compile vertex function \(vertexFunctionName)")
     }
@@ -78,10 +77,10 @@ func generateRenderPipelineState(device:MetalRenderingDevice, vertexFunctionName
     descriptor.fragmentFunction = fragmentFunction
     
     do {
-        var reflection:MTLAutoreleasedRenderPipelineReflection?
+        var reflection: MTLAutoreleasedRenderPipelineReflection?
         let pipelineState = try device.device.makeRenderPipelineState(descriptor: descriptor, options: [.bufferTypeInfo, .argumentInfo], reflection: &reflection)
 
-        var uniformLookupTable:[String:(Int, MTLDataType)] = [:]
+        var uniformLookupTable: [String: (Int, MTLDataType)] = [:]
         if let fragmentArguments = reflection?.fragmentArguments {
             for fragmentArgument in fragmentArguments where fragmentArgument.type == .buffer {
                 if

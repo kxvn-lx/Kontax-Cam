@@ -149,7 +149,7 @@ extension LabCollectionViewController {
         }
     }
     
-    private func makeLayout() -> UICollectionViewLayout  {
+    private func makeLayout() -> UICollectionViewLayout {
         let margin: CGFloat = 5
         
         let itemSize = NSCollectionLayoutSize(

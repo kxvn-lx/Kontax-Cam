@@ -9,7 +9,6 @@
 import GPUImage
 import UIKit
 
-
 class DustImageFilter: ImageFilterProtocol {
     
     private enum DustName: String, CaseIterable {

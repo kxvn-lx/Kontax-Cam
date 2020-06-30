@@ -1,6 +1,6 @@
 public class Sharpen: BasicOperation {
-    public var sharpness:Float = 0.0 { didSet { uniformSettings["sharpness"] = sharpness } }
-    public var overriddenTexelSize:Size?
+    public var sharpness: Float = 0.0 { didSet { uniformSettings["sharpness"] = sharpness } }
+    public var overriddenTexelSize: Size?
     
     public init() {
         super.init(vertexFunctionName: "sharpenVertex", fragmentFunctionName: "sharpenFragment", numberOfInputs: 1)

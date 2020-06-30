@@ -35,7 +35,6 @@ struct SPAlertHelper {
         spAlert.present()
     }
     
-    
     /// Present an SPAlert with the preset
     /// - Parameters:
     ///   - title: The title of the content

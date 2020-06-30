@@ -6,6 +6,6 @@ public class MissEtikateFilter: LookupFilter {
     public override init() {
         super.init()
         
-        ({lookupImage = PictureInput(imageName:"lookup_miss_etikate.png")})()
+        ({lookupImage = PictureInput(imageName: "lookup_miss_etikate.png")})()
     }
 }

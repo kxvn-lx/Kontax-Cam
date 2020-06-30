@@ -102,7 +102,7 @@ class FXCollectionViewCell: UICollectionViewCell {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if #available(iOS 13.0, *) {
-            if (traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection)) {
+            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
                 updateStyle()
             }
         }

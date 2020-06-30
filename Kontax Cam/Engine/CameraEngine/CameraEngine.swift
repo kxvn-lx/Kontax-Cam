@@ -81,6 +81,11 @@ class CameraEngine: NSObject {
     
     /// Capture the image
     func captureImage(completion: @escaping (UIImage?) -> Void) {
+        if currentCamera == nil {
+            print("❗️Unable to capture image")
+            return
+        }
+        
         let settings = AVCapturePhotoSettings()
         settings.flashMode = flashMode
         photoDataOutput.capturePhoto(with: settings, delegate: self)
@@ -102,7 +107,11 @@ class CameraEngine: NSObject {
     
     /// Switch the camera between front and back
     func switchCamera() {
-        captureSession.removeInput(captureSession.inputs.first!)
+        guard let input = captureSession.inputs.first else {
+            print("❗️No input detected")
+            return
+        }
+        captureSession.removeInput(input)
         do {
             let newCamera = currentCamera?.position == AVCaptureDevice.Position.back ? frontCamera! : backCamera!
             
@@ -175,7 +184,10 @@ class CameraEngine: NSObject {
         }
         
         currentCamera = backCamera
-        guard let currentCamera = currentCamera else { return }
+        guard let currentCamera = currentCamera else {
+            print("❗️No camera found")
+            return
+        }
         // Setup Input and Output
         
         do {

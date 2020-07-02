@@ -35,7 +35,6 @@
 		0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */; };
 		0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */; };
 		0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */; };
-		0A43068024ADB20E00CA2E0F /* Mixer.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A43067E24ADB20E00CA2E0F /* Mixer.metal */; };
 		0A43068124ADB20E00CA2E0F /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A43067F24ADB20E00CA2E0F /* PassThrough.metal */; };
 		0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29A2476A7F000603F2C /* AppDelegate.swift */; };
 		0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29C2476A7F000603F2C /* SceneDelegate.swift */; };
@@ -129,7 +128,6 @@
 		0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalNavigationController.swift; sourceTree = "<group>"; };
 		0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		0A43067E24ADB20E00CA2E0F /* Mixer.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Mixer.metal; sourceTree = "<group>"; };
 		0A43067F24ADB20E00CA2E0F /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		0A44B2972476A7F000603F2C /* Kontax Cam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kontax Cam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A44B29A2476A7F000603F2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 		0A31490C24A8CCC000168225 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				0A43067E24ADB20E00CA2E0F /* Mixer.metal */,
 				0A43067F24ADB20E00CA2E0F /* PassThrough.metal */,
 			);
 			path = Shaders;
@@ -657,7 +654,6 @@
 				0A334627249A4E4E00FE8BCE /* FilterMenu.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,
 				0A1193BD249B56E30086604D /* Effect.swift in Sources */,
-				0A43068024ADB20E00CA2E0F /* Mixer.metal in Sources */,
 				0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */,
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+Taken from Apple's AVCAMFilter
 
 Abstract:
 Pass-through shader (used for preview).

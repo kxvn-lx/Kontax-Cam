@@ -7,14 +7,16 @@
 
 import CoreMedia
 
+// Modified from AVCAMFilter by Apple
+// https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/avcamfilter_applying_filters_to_a_capture_stream
 protocol FilterRenderer: class {
-    var description: String { get }
     var isPrepared: Bool { get }
-    // The format description of the output pixel buffers.
-    var outputFormatDescription: CMFormatDescription? { get }
-    // The format description of the input pixel buffers.
-    var inputFormatDescription: CMFormatDescription? { get }
-    // Render the pixel buffer.
+    var filterName: FilterName { get set }
+    
+    var outputFormatDescription: CMFormatDescription? { get } // The format description of the output pixel buffers.
+    var inputFormatDescription: CMFormatDescription? { get } // The format description of the input pixel buffers.
+    
+    /// Render the pixel buffer.
     func render(pixelBuffer: CVPixelBuffer) -> CVPixelBuffer?
     
     /// Prepare resources.

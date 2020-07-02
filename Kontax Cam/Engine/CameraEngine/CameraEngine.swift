@@ -11,6 +11,8 @@ import CoreMotion
 import UIKit
 import MetalKit
 
+// Inspired by CameraManager
+// https://github.com/imaginary-cloud/CameraManager
 class CameraEngine: NSObject {
     private enum SessionSetupResult {
         case success
@@ -61,6 +63,7 @@ class CameraEngine: NSObject {
     }
     
     var previewView: PreviewMetalView?
+    let filter = LUTRender(filterName: .a1)
     
     override init() {
         super.init()
@@ -427,7 +430,18 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
     
     /// Render the raw buffer into a filtered buffer
     private func renderVideo(sampleBuffer: CMSampleBuffer) {
-        guard let videoPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        previewView?.pixelBuffer = videoPixelBuffer
+        guard
+            let videoPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer),
+            let formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer) else { return }
+        
+        var finalVideoPixelBuffer = videoPixelBuffer
+        
+        if !filter.isPrepared {
+            filter.prepare(with: formatDescription, outputRetainedBufferCountHint: 3)
+        }
+        guard let filteredBuffer = filter.render(pixelBuffer: finalVideoPixelBuffer) else { return }
+        
+        finalVideoPixelBuffer = filteredBuffer
+        previewView?.pixelBuffer = finalVideoPixelBuffer
     }
 }

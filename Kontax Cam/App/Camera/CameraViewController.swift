@@ -13,7 +13,6 @@ class CameraViewController: UIViewController {
     
     // MARK: - Class variables
     private let cameraEngine = CameraEngine()
-    
     private let cameraView = PreviewMetalView(frame: .zero, device: MTLCreateSystemDefaultDevice())
     
     private let settingButton: UIButton = {

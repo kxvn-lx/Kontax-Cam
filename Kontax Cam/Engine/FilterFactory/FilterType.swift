@@ -15,7 +15,6 @@ enum FilterType: Int, CaseIterable, Codable {
 
 extension FilterType: CustomStringConvertible {
     var description: String {
-      get {
         switch self {
         case .lut: return "LUT"
         case .grain: return "Grain"
@@ -24,19 +23,16 @@ extension FilterType: CustomStringConvertible {
         case .datestamp: return "Datestamp"
         case .colourleaks: return "Colour leaks"
         }
-      }
     }
     
     var iconName: String {
-        get {
-            switch self {
-            case .lut: return ""
-            case .grain: return "grain.icon"
-            case .dust: return "dust.icon"
-            case .lightleaks: return "leaks.icon"
-            case .datestamp: return "calendar"
-            case .colourleaks: return "color.icon"
-            }
+        switch self {
+        case .lut: return ""
+        case .grain: return "grain.icon"
+        case .dust: return "dust.icon"
+        case .lightleaks: return "leaks.icon"
+        case .datestamp: return "calendar"
+        case .colourleaks: return "color.icon"
         }
     }
 }

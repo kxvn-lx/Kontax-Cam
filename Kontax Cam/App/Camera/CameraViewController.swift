@@ -12,6 +12,8 @@ import SnapKit
 class CameraViewController: UIViewController {
     
     // MARK: - Class variables
+    var currentCollection = FilterCollection.aCollection
+    
     private let cameraEngine = CameraEngine()
     private let cameraView = PreviewMetalView(frame: .zero, device: MTLCreateSystemDefaultDevice())
     
@@ -113,5 +115,21 @@ class CameraViewController: UIViewController {
         presentWithAnimation(navController)
         
 //        self.present(navController, animated: true, completion: nil)
+    }
+    
+    /// Reset the camera view to improve performance
+    func resetCameraView() {
+        cameraView.pixelBuffer = nil
+        cameraView.flushTextureCache()
+    }
+}
+
+extension CameraViewController: FilterListDelegate {
+    func filterListDidSelectCollection(_ collection: FilterCollection) {
+        currentCollection = collection
+        let title = "\(currentCollection.name) activated"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            SPAlertHelper.shared.present(title: title)
+        }
     }
 }

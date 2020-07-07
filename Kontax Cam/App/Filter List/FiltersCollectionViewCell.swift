@@ -94,7 +94,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     /// Gives a selected cell a style.
     private func setCellSelected() {
-        layer.borderWidth = isSelected ? 1 : 0
+        layer.borderWidth = isSelected ? 2 : 0
         collectionNameLabel.font = .preferredFont(forTextStyle: isSelected ? .headline : .body)
     }
     

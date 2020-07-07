@@ -13,31 +13,23 @@ enum FilterName: String, CaseIterable {
     case b1, b2, b3
 }
 
-struct FilterCollection {
+struct FilterCollection: Equatable {
     var name: String
     var image: UIImage
     var filters: [FilterName]
+    
+    static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
+        return rhs.name == lhs.name
+    }
+    
+    static let aCollection = FilterCollection(name: "A Collection", image: UIImage(named: "ACollection")!, filters: [.a1, .a2, .a3, .a4, .a5, .a6])
 }
 
 extension FiltersCollectionViewController {
     
     func populateSection() {
-        
-        
-        let a = FilterCollection(name: "A Collection", image: UIImage(named: "ACollection")!, filters: [.a1, .a2, .a3, .a4, .a5, .a6])
         let b = FilterCollection(name: "B Collection", image: UIImage(named: "collection-placeholder")!, filters: [.b2, .b2, .b3])
         
-        self.filterSections = [a, b]
-        
+        self.filterCollections = [FilterCollection.aCollection, b]
     }
-    
-//    fileprivate func didSelectItem(_ item: FilterItem) {
-//        TapticHelper.shared.mediumTaptic()
-//
-//        LUTImageFilter.selectedLUTFilter = FilterName(rawValue: item.title)!
-//        delegate?.filterListDidSelectFilter()
-//
-//        navigationController?.popViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
-//    }
 }

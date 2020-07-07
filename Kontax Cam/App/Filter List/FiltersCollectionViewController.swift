@@ -13,13 +13,14 @@ private let reuseIdentifier = "filtersCell"
 private let headerIdentifier = "filtersHeader"
 
 protocol FilterListDelegate: class {
-    /// Tells the delegate that a filter has been selected
-    func filterListDidSelectFilter()
+    /// Tells the delegate that a filter collection has been selected
+    func filterListDidSelectCollection(_ collection: FilterCollection)
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
-    var filterSections = [FilterCollection]()
+    var filterCollections = [FilterCollection]()
+    var selectedCollection = FilterCollection.aCollection
     weak var delegate: FilterListDelegate?
     
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         // 2. Setup datasource
         self.populateSection()
+        print(selectedCollection)
     }
     
     // MARK: UICollectionViewDataSource
@@ -41,7 +43,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterSections.count
+        return filterCollections.count
     }
 }
 
@@ -50,15 +52,20 @@ extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
 
-        let item = filterSections[indexPath.row]
+        let item = filterCollections[indexPath.row]
         cell.collectionNameLabel.text = item.name
         cell.imageView.image = item.image
+        
+        cell.isSelected = item == selectedCollection
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        TapticHelper.shared.mediumTaptic()
+        delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
 

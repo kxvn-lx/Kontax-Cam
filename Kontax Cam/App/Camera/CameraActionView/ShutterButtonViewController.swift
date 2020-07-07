@@ -109,15 +109,6 @@ class ShutterButtonViewController: UIViewController {
     }
 }
 
-extension ShutterButtonViewController: FilterListDelegate {
-    func filterListDidSelectFilter() {
-        let title = "\(LUTImageFilter.selectedLUTFilter.rawValue.uppercased()) activated"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            SPAlertHelper.shared.present(title: title)
-        }
-    }
-}
-
 extension ShutterButtonViewController {
     // MARK: - Touch event listener
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

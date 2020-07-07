@@ -19,7 +19,7 @@ protocol FilterListDelegate: class {
 
 class FiltersCollectionViewController: UICollectionViewController {
     
-    var sections: [FilterSection] = []
+    var filterSections = [FilterCollection]()
     weak var delegate: FilterListDelegate?
     
     override func viewDidLoad() {
@@ -37,11 +37,11 @@ class FiltersCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count
+        return filterSections.count
     }
 }
 
@@ -50,24 +50,15 @@ extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
 
-        let item = sections[indexPath.section].items[indexPath.row]
-        cell.collectionNameLabel.text = item.title.uppercased()
+        let item = filterSections[indexPath.row]
+        cell.collectionNameLabel.text = item.name
+        cell.imageView.image = item.image
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = sections[indexPath.section].items[indexPath.row]
-        item.action?(item)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
-            fatalError("Could not dequeue SectionHeader")
-        }
 
-        headerView.titleLabel.text = sections[indexPath.section].title
-        return headerView
     }
 }
 
@@ -83,7 +74,7 @@ extension FiltersCollectionViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(0.55))
+            heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
@@ -103,19 +94,6 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
-    }
-    
-    private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(40))
-        
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        return layoutSectionHeader
     }
 }
 

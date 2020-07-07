@@ -51,12 +51,9 @@ extension FiltersCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
 
         let item = sections[indexPath.section].items[indexPath.row]
-        cell.titleLabel.text = item.title.uppercased()
+        cell.collectionNameLabel.text = item.title.uppercased()
         
-        if FilterName(rawValue: item.title) == LUTImageFilter.selectedLUTFilter {
-            cell.isFilterSelected = true
-            cell.updateStyle()
-        }
+        cell.backgroundColor = .systemGray5
         
         return cell
     }
@@ -79,7 +76,7 @@ extension FiltersCollectionViewController {
 extension FiltersCollectionViewController {
     // MARK: - Class functions
     private func createSection() -> NSCollectionLayoutSection {
-        let contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5)
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -87,14 +84,12 @@ extension FiltersCollectionViewController {
         item.contentInsets = contentInsets
         
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.2),
-            heightDimension: .fractionalWidth(0.25))
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(0.55))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [makeSectionHeader()]
         
         return section
     }

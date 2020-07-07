@@ -52,7 +52,7 @@ extension PanModalNavigationController: PanModalPresentable {
     
     var shortFormHeight: PanModalHeight {
         switch modalDestination {
-        case .filters: return .contentHeight(250)
+        case .filters: return .maxHeight
         default: return .contentHeight(200)
         }
     }

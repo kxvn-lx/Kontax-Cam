@@ -14,41 +14,91 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
     
-    let titleLabel: UILabel = {
+    let imageView1: UIImageView = {
+        let imageView1 = UIImageView()
+        imageView1.backgroundColor = .orange
+        return imageView1
+    }()
+    let imageView2: UIImageView = {
+        let imageView2 = UIImageView()
+        imageView2.backgroundColor = .orange
+        return imageView2
+    }()
+    let imageView3: UIImageView = {
+        let imageView3 = UIImageView()
+        imageView3.backgroundColor = .orange
+        return imageView3
+    }()
+    let collectionNameLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .label
-        label.numberOfLines = 0
+        label.font = .preferredFont(forTextStyle: .headline)
         return label
     }()
-    
-    var isFilterSelected = false
+    let infoButton: UIButton = {
+        let button = UIButton(type: .detailDisclosure)
+        button.tintColor = UIColor.label.withAlphaComponent(0.5)
+        return button
+    }()
+    let mSV: UIStackView = {
+        return SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .equalSpacing)
+    }()
+    let nameLabelView: UIView = {
+        let view = UIView()
+        return view
+    }()
     
     override func awakeFromNib() {
-        self.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(Constants.padding)
+        setupView()
+        setupConstraint()
+    }
+    
+    private func setupView() {
+        mSV.addArrangedSubview(imageView1)
+        mSV.addArrangedSubview(imageView2)
+        mSV.addArrangedSubview(imageView3)
+        
+        nameLabelView.addSubview(collectionNameLabel)
+        nameLabelView.addSubview(infoButton)
+        
+        addSubview(mSV)
+        addSubview(nameLabelView)
+    }
+    
+    private func setupConstraint() {
+        mSV.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(15)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.9)
         }
         
-        updateStyle()
+        mSV.arrangedSubviews.forEach({
+            $0.snp.makeConstraints { (make) in
+                make.height.equalTo(100)
+                make.width.equalTo(90)
+            }
+        })
+        
+        nameLabelView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
+        
+        collectionNameLabel.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(21)
+        }
+        
+        infoButton.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-21)
+        }
     }
     
-    func updateStyle() {
-        updateElementStyle()
-    }
-    
-    private func updateElementStyle() {
-        self.titleLabel.textColor = isFilterSelected ? .label : .systemGray4
-        self.titleLabel.font = isFilterSelected ? .systemFont(ofSize: titleLabel.font.pointSize, weight: .bold) : .systemFont(ofSize: titleLabel.font.pointSize, weight: .regular)
-    }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateStyle()
-            }
+            
         }
     }
 }

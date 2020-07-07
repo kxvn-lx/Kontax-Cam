@@ -31,7 +31,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     }()
     let collectionNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
         return label
     }()
     let infoButton: UIButton = {
@@ -47,9 +46,21 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            setCellSelected()
+        }
+    }
+    
     override func awakeFromNib() {
+        super.awakeFromNib()
         setupView()
         setupConstraint()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isSelected = false
     }
     
     private func setupView() {
@@ -95,10 +106,20 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /// Gives a selected cell a style.
+    private func setCellSelected() {
+        layer.borderWidth = isSelected ? 1 : 0
+        layer.borderColor = UIColor.label.cgColor
+        
+        nameLabelView.backgroundColor = isSelected ? .label : .clear
+        collectionNameLabel.textColor = isSelected ? .systemBackground : .label
+        infoButton.tintColor =  isSelected ? UIColor.systemBackground.withAlphaComponent(0.5) : UIColor.label.withAlphaComponent(0.5)
+    }
+    
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if #available(iOS 13.0, *) {
-            
+            setCellSelected()
         }
     }
 }

@@ -53,8 +53,6 @@ extension FiltersCollectionViewController {
         let item = sections[indexPath.section].items[indexPath.row]
         cell.collectionNameLabel.text = item.title.uppercased()
         
-        cell.backgroundColor = .systemGray5
-        
         return cell
     }
     

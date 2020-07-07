@@ -63,7 +63,7 @@ class CameraEngine: NSObject {
     }
     
     var previewView: PreviewMetalView?
-    let filter = LUTRender(filterName: .a1)
+    let filter = LUTRender(filterName: .a4)
     
     override init() {
         super.init()
@@ -92,7 +92,6 @@ class CameraEngine: NSObject {
         let settings = AVCapturePhotoSettings()
         settings.flashMode = flashMode
         photoDataOutput.capturePhoto(with: settings, delegate: self)
-        isCapturing.toggle()
         self.captureImageCompletion = completion
     }
     

@@ -129,7 +129,10 @@ class CameraEngine: NSObject {
     
     /// Render new filter if needed
     func renderNewFilter(withFilterName filterName: FilterName) {
-        filter._renderNewFilter(filterName)
+        dataOutputQueue.async {
+            self.filter.reset()
+            self.filter._renderNewFilter(filterName)
+        }
     }
     
     // MARK: - Private methods

@@ -145,5 +145,6 @@ extension CameraViewController: FilterListDelegate {
 extension CameraViewController: FiltersGestureDelegate {
     func didChangeFilter(withNewIndex newIndex: Int) {
         cameraEngine.renderNewFilter(withFilterName: currentCollection.filters[newIndex])
+        LUTImageFilter.selectedLUTFilter = currentCollection.filters[newIndex]
     }
 }

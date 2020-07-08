@@ -63,7 +63,7 @@ class CameraEngine: NSObject {
     }
     
     var previewView: PreviewMetalView?
-    let filter = LUTRender(filterName: .a4)
+    let filter = LUTRender()
     
     override init() {
         super.init()
@@ -125,6 +125,11 @@ class CameraEngine: NSObject {
         } catch {
             print(error)
         }
+    }
+    
+    /// Render new filter if needed
+    func renderNewFilter(withFilterName filterName: FilterName) {
+        filter._renderNewFilter(filterName)
     }
     
     // MARK: - Private methods

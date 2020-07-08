@@ -25,8 +25,12 @@ class LUTRender: FilterRenderer {
     private(set) var outputFormatDescription: CMFormatDescription?
     private(set) var inputFormatDescription: CMFormatDescription?
     
-    init(filterName: FilterName = .a1) {
-        self.filterName = filterName
+    init() {
+        self.filterName = .a2
+    }
+    
+    func _renderNewFilter(_ filterName: FilterName) {
+        print("Rendering: \(filterName.rawValue)")
     }
     
     // MARK: - Protocol methods

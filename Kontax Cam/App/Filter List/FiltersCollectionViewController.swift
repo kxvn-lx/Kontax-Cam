@@ -34,7 +34,6 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         // 2. Setup datasource
         self.populateSection()
-        print(selectedCollection)
     }
     
     // MARK: UICollectionViewDataSource

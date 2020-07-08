@@ -12,8 +12,13 @@ import SnapKit
 class CameraViewController: UIViewController {
     
     // MARK: - Class variables
-    var currentCollection = FilterCollection.aCollection
+    var currentCollection = FilterCollection.aCollection {
+        didSet {
+            filtersGestureEngine.collectionCount = currentCollection.filters.count
+        }
+    }
     
+    private var filtersGestureEngine: FiltersGestureEngine!
     private let cameraEngine = CameraEngine()
     private let cameraView = PreviewMetalView(frame: .zero, device: MTLCreateSystemDefaultDevice())
     
@@ -48,6 +53,9 @@ class CameraViewController: UIViewController {
         setupConstraint()
         
         self.view.backgroundColor = .systemBackground
+        
+        filtersGestureEngine = FiltersGestureEngine(previewView: cameraView)
+        filtersGestureEngine.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,5 +139,11 @@ extension CameraViewController: FilterListDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             SPAlertHelper.shared.present(title: title)
         }
+    }
+}
+
+extension CameraViewController: FiltersGestureDelegate {
+    func didChangeFilter(withNewIndex newIndex: Int) {
+        cameraEngine.renderNewFilter(withFilterName: currentCollection.filters[newIndex])
     }
 }

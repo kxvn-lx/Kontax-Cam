@@ -10,7 +10,7 @@ import UIKit
 
 protocol FiltersGestureDelegate: class {
     /// Called everytime the gesture detect a new change in the gesture
-    func didChangeFilter(withNewIndex newIndex: Int)
+    func didSwipeToChangeFilter(withNewIndex newIndex: Int)
 }
 
 class FiltersGestureEngine {
@@ -23,7 +23,6 @@ class FiltersGestureEngine {
     
     init(previewView: UIView) {
         self.previewView = previewView
-        
         attachGesture()
     }
     
@@ -46,6 +45,6 @@ class FiltersGestureEngine {
             filterIndex = (filterIndex + collectionCount - 1) % collectionCount
         }
         
-        delegate?.didChangeFilter(withNewIndex: filterIndex)
+        delegate?.didSwipeToChangeFilter(withNewIndex: filterIndex)
     }
 }

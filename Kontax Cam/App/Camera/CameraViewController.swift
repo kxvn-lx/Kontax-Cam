@@ -44,6 +44,8 @@ class CameraViewController: UIViewController {
         return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
     }
     
+    private var filterLabelView = FilterLabelView()
+    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +93,9 @@ class CameraViewController: UIViewController {
         // Setting Button
         self.view.addSubview(settingButton)
         settingButton.addTarget(self, action: #selector(settingButtonTapped), for: .touchUpInside)
+        
+        // Filter label view
+        cameraView.addSubview(filterLabelView)
     }
     
     private func setupConstraint() {
@@ -112,6 +117,12 @@ class CameraViewController: UIViewController {
             make.height.equalTo(35)
             make.width.equalTo(65)
             make.right.equalToSuperview().offset(-20)
+        }
+        
+        filterLabelView.snp.makeConstraints { (make) in
+            make.height.equalTo(40)
+            make.width.equalTo(40)
+            make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
         }
     }
     
@@ -143,8 +154,10 @@ extension CameraViewController: FilterListDelegate {
 }
 
 extension CameraViewController: FiltersGestureDelegate {
-    func didChangeFilter(withNewIndex newIndex: Int) {
+    func didSwipeToChangeFilter(withNewIndex newIndex: Int) {
         cameraEngine.renderNewFilter(withFilterName: currentCollection.filters[newIndex])
         LUTImageFilter.selectedLUTFilter = currentCollection.filters[newIndex]
+        
+        filterLabelView.titleLabel.text = currentCollection.filters[newIndex].rawValue.uppercased()
     }
 }

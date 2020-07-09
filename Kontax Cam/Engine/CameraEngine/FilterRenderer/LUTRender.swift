@@ -30,7 +30,6 @@ class LUTRender: FilterRenderer {
     }
     
     func _renderNewFilter(_ filterName: FilterName) {
-        print("Rendering: \(filterName.rawValue)")
         self.filterName = filterName
     }
     

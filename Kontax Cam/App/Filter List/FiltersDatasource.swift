@@ -28,7 +28,7 @@ struct FilterCollection: Equatable {
 extension FiltersCollectionViewController {
     
     func populateSection() {
-        let b = FilterCollection(name: "B Collection", image: UIImage(named: "collection-placeholder")!, filters: [.b2, .b2, .b3])
+        let b = FilterCollection(name: "B Collection", image: UIImage(named: "collection-placeholder")!, filters: [.b1, .b2, .b3])
         
         self.filterCollections = [FilterCollection.aCollection, b]
     }

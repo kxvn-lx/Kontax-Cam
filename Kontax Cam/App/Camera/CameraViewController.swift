@@ -12,11 +12,7 @@ import SnapKit
 class CameraViewController: UIViewController {
     
     // MARK: - Class variables
-    var currentCollection = FilterCollection.aCollection {
-        didSet {
-            filtersGestureEngine.collectionCount = currentCollection.filters.count
-        }
-    }
+    var currentCollection = FilterCollection.aCollection
     
     private var filtersGestureEngine: FiltersGestureEngine!
     private let cameraEngine = CameraEngine()
@@ -120,8 +116,8 @@ class CameraViewController: UIViewController {
         }
         
         filterLabelView.snp.makeConstraints { (make) in
-            make.height.equalTo(40)
-            make.width.equalTo(40)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
             make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
         }
     }
@@ -132,8 +128,6 @@ class CameraViewController: UIViewController {
         let navController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .overFullScreen
         presentWithAnimation(navController)
-        
-//        self.present(navController, animated: true, completion: nil)
     }
     
     /// Reset the camera view to improve performance
@@ -150,6 +144,11 @@ extension CameraViewController: FilterListDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             SPAlertHelper.shared.present(title: title)
         }
+        
+        filtersGestureEngine.collectionCount = currentCollection.filters.count
+        cameraEngine.renderNewFilter(withFilterName: currentCollection.filters.first!)
+        filterLabelView.titleLabel.text = currentCollection.filters.first!.rawValue.uppercased()
+        LUTImageFilter.selectedLUTFilter = currentCollection.filters.first!
     }
 }
 

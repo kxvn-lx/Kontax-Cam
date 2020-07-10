@@ -19,7 +19,12 @@ class FiltersGestureEngine {
     weak var delegate: FiltersGestureDelegate?
     var filterIndex = 0
     
-    var collectionCount = FilterCollection.aCollection.filters.count
+    var collectionCount = FilterCollection.aCollection.filters.count {
+        didSet {
+            // Reset the index to 0 again.
+            filterIndex = 0
+        }
+    }
     
     init(previewView: UIView) {
         self.previewView = previewView

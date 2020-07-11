@@ -59,8 +59,6 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
             guard let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell else { return }
             
             if cell.isFxSelected {
-                TapticHelper.shared.lightTaptic()
-                
                 // Multiple designated view controllers for each customisation for the future. Maybe we need to add a new customisation option only to a specific effects?
                 // Perhaps there is a better way on doing this.
                 switch indexPath {

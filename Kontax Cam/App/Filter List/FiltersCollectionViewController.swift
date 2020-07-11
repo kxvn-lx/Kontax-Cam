@@ -13,19 +13,20 @@ private let reuseIdentifier = "filtersCell"
 private let headerIdentifier = "filtersHeader"
 
 protocol FilterListDelegate: class {
-    /// Tells the delegate that a filter has been selected
-    func filterListDidSelectFilter()
+    /// Tells the delegate that a filter collection has been selected
+    func filterListDidSelectCollection(_ collection: FilterCollection)
 }
 
 class FiltersCollectionViewController: UICollectionViewController {
     
-    var sections: [FilterSection] = []
+    var filterCollections = [FilterCollection]()
+    var selectedCollection = FilterCollection.aCollection
     weak var delegate: FilterListDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Filters", preferredLargeTitle: false, removeSeparator: true)
+        self.configureNavigationBar(tintColor: .label, title: "Filter collections", preferredLargeTitle: false, removeSeparator: true)
         
         // 1. Setup the layout
         collectionView.collectionViewLayout = makeLayout()
@@ -37,11 +38,11 @@ class FiltersCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].items.count
+        return filterCollections.count
     }
 }
 
@@ -50,26 +51,20 @@ extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
 
-        let item = sections[indexPath.section].items[indexPath.row]
-        cell.collectionNameLabel.text = item.title.uppercased()
+        let item = filterCollections[indexPath.row]
+        cell.collectionNameLabel.text = item.name
+        cell.imageView.image = item.image
         
-        cell.backgroundColor = .systemGray5
+        cell.isSelected = item == selectedCollection
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = sections[indexPath.section].items[indexPath.row]
-        item.action?(item)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
-            fatalError("Could not dequeue SectionHeader")
-        }
-
-        headerView.titleLabel.text = sections[indexPath.section].title
-        return headerView
+        TapticHelper.shared.mediumTaptic()
+        delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -85,7 +80,7 @@ extension FiltersCollectionViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(0.55))
+            heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
@@ -105,19 +100,6 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
-    }
-    
-    private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(40))
-        
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        return layoutSectionHeader
     }
 }
 

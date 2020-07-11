@@ -11,13 +11,15 @@ import GPUImage
 
 class LUTImageFilter: ImageFilterProtocol {
     
-    static var selectedLUTFilter = FilterName.a1
+    static var selectedLUTFilter: FilterName? = FilterName.a1
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
     
     func process(imageToEdit uiImage: UIImage) -> UIImage? {
-        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter.rawValue.lowercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
+        if LUTImageFilter.selectedLUTFilter == nil { return uiImage }
+        
+        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter!.rawValue.lowercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
         let context = CIContext(options: nil)
 
         let beginImage = CIImage(image: uiImage)

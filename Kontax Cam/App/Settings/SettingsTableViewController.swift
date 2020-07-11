@@ -60,9 +60,7 @@ extension SettingsTableViewController {
     // MARK: - onCellTapped event Listener
     private func appearanceCellTapped() {
         let vc = AppearanceTableViewController()
-        
         let navController = PanModalNavigationController(rootViewController: vc)
-        
         self.presentPanModal(navController)
     }
     

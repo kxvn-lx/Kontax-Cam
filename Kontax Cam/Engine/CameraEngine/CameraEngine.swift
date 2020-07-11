@@ -62,8 +62,9 @@ class CameraEngine: NSObject {
         }
     }
     
+    var showFilter = false
     var previewView: PreviewMetalView?
-    let filter = LUTRender(filterName: .a4)
+    let filter = LUTRender()
     
     override init() {
         super.init()
@@ -124,6 +125,14 @@ class CameraEngine: NSObject {
             setPreviewViewOrientation()
         } catch {
             print(error)
+        }
+    }
+    
+    /// Render new filter if needed
+    func renderNewFilter(withFilterName filterName: FilterName) {
+        dataOutputQueue.async {
+            self.filter.reset()
+            self.filter._renderNewFilter(filterName)
         }
     }
     
@@ -435,12 +444,15 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
         
         var finalVideoPixelBuffer = videoPixelBuffer
         
-        if !filter.isPrepared {
-            filter.prepare(with: formatDescription, outputRetainedBufferCountHint: 3)
+        if showFilter {
+            if !filter.isPrepared {
+                filter.prepare(with: formatDescription, outputRetainedBufferCountHint: 3)
+            }
+            guard let filteredBuffer = filter.render(pixelBuffer: finalVideoPixelBuffer) else { return }
+            
+            finalVideoPixelBuffer = filteredBuffer
         }
-        guard let filteredBuffer = filter.render(pixelBuffer: finalVideoPixelBuffer) else { return }
-        
-        finalVideoPixelBuffer = filteredBuffer
+
         previewView?.pixelBuffer = finalVideoPixelBuffer
     }
 }

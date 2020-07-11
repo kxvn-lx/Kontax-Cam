@@ -40,7 +40,6 @@ class LabCollectionViewCell: UICollectionViewCell {
     }
     
     func toggleSelection(override: Bool = false) {
-        
         if override {
             self.layer.borderWidth = 0
             return

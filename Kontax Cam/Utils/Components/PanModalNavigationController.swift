@@ -15,10 +15,6 @@ class PanModalNavigationController: UINavigationController {
         case filters
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
     private var isShortFormEnabled = true
     var modalDestination: SpecialModalDestination!
     

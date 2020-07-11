@@ -129,8 +129,6 @@ class CameraActionViewController: UIViewController {
 
 extension CameraActionViewController {
     @objc private func actionButtonsTapped(sender: UIButton) {
-        TapticHelper.shared.mediumTaptic()
-        
         switch sender.tag {
         // Flash
         case 0:
@@ -156,25 +154,23 @@ extension CameraActionViewController {
             
         // FX
         case 3:
-            if let parent = self.parent {
-                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
-                
-                let navController = PanModalNavigationController(rootViewController: vc)
-                
-                self.presentPanModal(navController)
-            }
+            let parent = self.parent as! CameraViewController
+            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
+            
+            let navController = PanModalNavigationController(rootViewController: vc)
+            self.presentPanModal(navController)
             
         // Filter
         case 4:
-            if let parent = self.parent {
-                let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
-                vc.delegate = shutterButton
-                
-                let navController = PanModalNavigationController(rootViewController: vc)
-                navController.modalDestination = .filters
-                
-                self.presentPanModal(navController)
-            }
+            let parent = self.parent as! CameraViewController
+            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
+            vc.delegate = parent
+            vc.selectedCollection = parent.currentCollection
+            
+            let navController = PanModalNavigationController(rootViewController: vc)
+            navController.modalDestination = .filters
+            
+            self.presentPanModal(navController)
             
         // Grid
         case 5:
@@ -189,14 +185,14 @@ extension CameraActionViewController {
     }
     
     @objc private func labButtonTapped() {
-        TapticHelper.shared.mediumTaptic()
-        //        self.cameraManager.stopCaptureSession()
-        if let parent = self.parent {
-            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
-            
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            self.present(navController, animated: true, completion: nil)
-        }
+        let parent = self.parent as! CameraViewController
+        cameraEngine?.stopCaptureSession()
+        parent.resetCameraView()
+        
+        let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
+        
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .fullScreen
+        self.present(navController, animated: true, completion: nil)
     }
 }

@@ -6,75 +6,32 @@
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum FilterName: String, CaseIterable {
     case a1, a2, a3, a4, a5, a6
     case b1, b2, b3
 }
 
-extension FiltersCollectionViewController {
+struct FilterCollection: Equatable {
+    var name: String
+    var image: UIImage
+    var filters: [FilterName]
     
-    func populateSection() {
-        
-        let aSection = FilterSection(
-            title: "A Collection",
-            items: [
-                FilterItem(
-                    title: FilterName.a1.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.a2.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.a3.rawValue,
-                     action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.a4.rawValue,
-                     action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.a5.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.a6.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                )
-            ],
-           action: nil)
-        
-        let bSection = FilterSection(
-            title: "B Collection",
-            items: [
-                FilterItem(
-                    title: FilterName.b1.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.b2.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                ),
-                FilterItem(
-                    title: FilterName.b3.rawValue,
-                    action: { [weak self] in self?.didSelectItem($0) }
-                )
-            ],
-           action: nil)
-        
-        self.sections = [aSection, bSection]
+    static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
+        return rhs.name == lhs.name
     }
     
-    fileprivate func didSelectItem(_ item: FilterItem) {
-        TapticHelper.shared.mediumTaptic()
+    static let aCollection = FilterCollection(name: "A Collection", image: UIImage(named: "ACollection")!, filters: [.a1, .a2, .a3, .a4, .a5, .a6])
+}
+
+extension FiltersCollectionViewController {
+    
+    /// Populate the filters collection list
+    func populateSection() {
+        // Use placeholder image since this collection is not complete yet
+        let b = FilterCollection(name: "B Collection", image: UIImage(named: "collection-placeholder")!, filters: [.b1, .b2, .b3])
         
-        LUTImageFilter.selectedLUTFilter = FilterName(rawValue: item.title)!
-        delegate?.filterListDidSelectFilter()
-        
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        self.filterCollections = [FilterCollection.aCollection, b]
     }
 }

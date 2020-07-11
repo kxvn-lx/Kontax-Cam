@@ -117,15 +117,10 @@ extension ColourleaksCustomisationViewController: UICollectionViewDelegate, UICo
         
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.lightTaptic()
-    }
 }
 
 extension ColourleaksCustomisationViewController: CustomisationControlProtocol {
     func didTapDone() {
-        TapticHelper.shared.lightTaptic()
         let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first!
         
         FilterValue.Colourleaks.selectedColourValue = colourleaks[selectedIndexPath!.row]

@@ -14,24 +14,13 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
     
-    let imageView1: UIImageView = {
-        let imageView1 = UIImageView()
-        imageView1.backgroundColor = .orange
-        return imageView1
-    }()
-    let imageView2: UIImageView = {
-        let imageView2 = UIImageView()
-        imageView2.backgroundColor = .orange
-        return imageView2
-    }()
-    let imageView3: UIImageView = {
-        let imageView3 = UIImageView()
-        imageView3.backgroundColor = .orange
-        return imageView3
+    let imageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
     }()
     let collectionNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
         return label
     }()
     let infoButton: UIButton = {
@@ -39,44 +28,53 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         button.tintColor = UIColor.label.withAlphaComponent(0.5)
         return button
     }()
-    let mSV: UIStackView = {
-        return SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .equalSpacing)
-    }()
     let nameLabelView: UIView = {
         let view = UIView()
         return view
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            setCellSelected()
+        }
+    }
+    
     override func awakeFromNib() {
+        super.awakeFromNib()
         setupView()
         setupConstraint()
+        layer.borderColor = UIColor.label.cgColor
+        
+        // Setup blur view
+        nameLabelView.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabelView.insertSubview(blurView, at: 0)
+        
+        blurView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isSelected = false
     }
     
     private func setupView() {
-        mSV.addArrangedSubview(imageView1)
-        mSV.addArrangedSubview(imageView2)
-        mSV.addArrangedSubview(imageView3)
-        
         nameLabelView.addSubview(collectionNameLabel)
         nameLabelView.addSubview(infoButton)
+        infoButton.isHidden = true // Hidden until functionality is added
         
-        addSubview(mSV)
+        addSubview(imageView)
         addSubview(nameLabelView)
     }
     
     private func setupConstraint() {
-        mSV.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(15)
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.9)
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
-        
-        mSV.arrangedSubviews.forEach({
-            $0.snp.makeConstraints { (make) in
-                make.height.equalTo(100)
-                make.width.equalTo(90)
-            }
-        })
         
         nameLabelView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -95,10 +93,15 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /// Gives a selected cell a style.
+    private func setCellSelected() {
+        layer.borderWidth = isSelected ? 2 : 0
+        collectionNameLabel.font = .preferredFont(forTextStyle: isSelected ? .headline : .body)
+    }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if #available(iOS 13.0, *) {
-            
+            layer.borderColor = UIColor.label.cgColor
         }
     }
 }

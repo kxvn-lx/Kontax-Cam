@@ -20,9 +20,11 @@ Kontax Cam is an instant camera built 100% using Swift for iOS. You can take you
  - [ ] Access wide angle lens for iPhone 11+ or the telephoto lens
  
  ## Future ideas
+ I'm always open for suggestion! Feel free to message me or submit a PR :D
  
  - [ ] Improve app to use less memory ⚠️ (In need of a help!)
  - [ ] Improve the app architecture
+ - [ ] Better app icon (Im not an artist guy, if someone could help that'd be great <3)
 
 ## Installation
 **Requirements**

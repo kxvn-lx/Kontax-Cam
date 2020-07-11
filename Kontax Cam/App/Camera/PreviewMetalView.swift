@@ -65,6 +65,7 @@ class PreviewMetalView: MTKView {
         configureMetal()
         createTextureCache()
         colorPixelFormat = .bgra8Unorm
+        layer.masksToBounds = true
     }
     
     required init(coder: NSCoder) {

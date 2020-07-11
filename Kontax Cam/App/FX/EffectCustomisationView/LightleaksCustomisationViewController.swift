@@ -86,7 +86,6 @@ class LightleaksCustomisationViewController: UIViewController {
 
 extension LightleaksCustomisationViewController: CustomisationControlProtocol {
     func didTapDone() {
-        TapticHelper.shared.lightTaptic()
         FilterValue.Lightleaks.strength = CGFloat(slider.value)
         print("Lightleaks strength new value: \(FilterValue.Dust.strength)")
         SPAlertHelper.shared.present(title: "Light leaks set to: \(slider.value)")

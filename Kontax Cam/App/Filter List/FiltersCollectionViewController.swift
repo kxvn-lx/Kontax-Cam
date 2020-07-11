@@ -26,7 +26,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Filters", preferredLargeTitle: false, removeSeparator: true)
+        self.configureNavigationBar(tintColor: .label, title: "Filter collections", preferredLargeTitle: false, removeSeparator: true)
         
         // 1. Setup the layout
         collectionView.collectionViewLayout = makeLayout()

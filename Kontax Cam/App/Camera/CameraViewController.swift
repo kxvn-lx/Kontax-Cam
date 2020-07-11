@@ -127,8 +127,8 @@ class CameraViewController: UIViewController {
         }
         
         filterLabelView.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
-            make.width.equalTo(50)
+            make.height.equalTo(45)
+            make.width.equalTo(45)
             make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
         }
     }

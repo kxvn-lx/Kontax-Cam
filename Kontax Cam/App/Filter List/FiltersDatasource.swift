@@ -27,7 +27,9 @@ struct FilterCollection: Equatable {
 
 extension FiltersCollectionViewController {
     
+    /// Populate the filters collection list
     func populateSection() {
+        // Use placeholder image since this collection is not complete yet
         let b = FilterCollection(name: "B Collection", image: UIImage(named: "collection-placeholder")!, filters: [.b1, .b2, .b3])
         
         self.filterCollections = [FilterCollection.aCollection, b]

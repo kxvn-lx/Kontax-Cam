@@ -62,6 +62,7 @@ class CameraEngine: NSObject {
         }
     }
     
+    var showFilter = false
     var previewView: PreviewMetalView?
     let filter = LUTRender()
     
@@ -443,12 +444,15 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
         
         var finalVideoPixelBuffer = videoPixelBuffer
         
-        if !filter.isPrepared {
-            filter.prepare(with: formatDescription, outputRetainedBufferCountHint: 3)
+        if showFilter {
+            if !filter.isPrepared {
+                filter.prepare(with: formatDescription, outputRetainedBufferCountHint: 3)
+            }
+            guard let filteredBuffer = filter.render(pixelBuffer: finalVideoPixelBuffer) else { return }
+            
+            finalVideoPixelBuffer = filteredBuffer
         }
-        guard let filteredBuffer = filter.render(pixelBuffer: finalVideoPixelBuffer) else { return }
-        
-        finalVideoPixelBuffer = filteredBuffer
+
         previewView?.pixelBuffer = finalVideoPixelBuffer
     }
 }

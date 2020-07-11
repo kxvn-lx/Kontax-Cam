@@ -12,7 +12,7 @@ class FilterLabelView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "A1"
+        label.text = "OFF"
         label.textColor = .label
         label.font = .preferredFont(forTextStyle: .body)
         return label

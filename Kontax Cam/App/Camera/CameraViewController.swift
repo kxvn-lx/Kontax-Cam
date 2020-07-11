@@ -145,7 +145,8 @@ extension CameraViewController: FilterListDelegate {
             SPAlertHelper.shared.present(title: title)
         }
         
-        filtersGestureEngine.collectionCount = currentCollection.filters.count
+        cameraEngine.showFilter = true
+        filtersGestureEngine.collectionCount = currentCollection.filters.count + 1
         cameraEngine.renderNewFilter(withFilterName: currentCollection.filters.first!)
         filterLabelView.titleLabel.text = currentCollection.filters.first!.rawValue.uppercased()
         LUTImageFilter.selectedLUTFilter = currentCollection.filters.first!
@@ -154,9 +155,15 @@ extension CameraViewController: FilterListDelegate {
 
 extension CameraViewController: FiltersGestureDelegate {
     func didSwipeToChangeFilter(withNewIndex newIndex: Int) {
-        cameraEngine.renderNewFilter(withFilterName: currentCollection.filters[newIndex])
-        LUTImageFilter.selectedLUTFilter = currentCollection.filters[newIndex]
-        
-        filterLabelView.titleLabel.text = currentCollection.filters[newIndex].rawValue.uppercased()
+        cameraEngine.showFilter = newIndex > 0
+        if newIndex > 0 {
+            cameraEngine.renderNewFilter(withFilterName: currentCollection.filters[newIndex - 1])
+            LUTImageFilter.selectedLUTFilter = currentCollection.filters[newIndex - 1]
+            
+            filterLabelView.titleLabel.text = currentCollection.filters[newIndex - 1].rawValue.uppercased()
+        } else {
+            LUTImageFilter.selectedLUTFilter = nil
+            filterLabelView.titleLabel.text = "OFF"
+        }
     }
 }

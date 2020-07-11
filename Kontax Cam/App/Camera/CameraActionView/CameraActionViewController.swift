@@ -129,8 +129,6 @@ class CameraActionViewController: UIViewController {
 
 extension CameraActionViewController {
     @objc private func actionButtonsTapped(sender: UIButton) {
-        TapticHelper.shared.mediumTaptic()
-        
         switch sender.tag {
         // Flash
         case 0:
@@ -187,8 +185,6 @@ extension CameraActionViewController {
     }
     
     @objc private func labButtonTapped() {
-        TapticHelper.shared.mediumTaptic()
-        
         let parent = self.parent as! CameraViewController
         cameraEngine?.stopCaptureSession()
         parent.resetCameraView()

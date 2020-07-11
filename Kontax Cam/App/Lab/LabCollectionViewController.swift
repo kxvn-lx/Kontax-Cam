@@ -115,9 +115,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     }
     
     // MARK: - UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.mediumTaptic()
-        
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
         if isSelecting {
             let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
             cell.toggleSelection()
@@ -191,7 +189,6 @@ extension LabCollectionViewController {
             viewController.delegate = self
             present(viewController, animated: true, completion: nil)
         }
-        
     }
     
     /// Setting a meaningful empty view when the collectionview is empty

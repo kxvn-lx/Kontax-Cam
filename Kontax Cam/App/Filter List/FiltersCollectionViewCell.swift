@@ -65,6 +65,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     private func setupView() {
         nameLabelView.addSubview(collectionNameLabel)
         nameLabelView.addSubview(infoButton)
+        infoButton.isHidden = true // Hidden until functionality is added
         
         addSubview(imageView)
         addSubview(nameLabelView)

@@ -27,6 +27,12 @@ class CameraViewController: UIViewController {
         
         return btn
     }()
+    private var cameraActionView: CameraActionViewController!
+    private var cameraActionViewHeight: CGFloat {
+        return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
+    }
+    private var filterLabelView = FilterLabelView()
+    
     let rotView: UIImageView = {
         let v = UIImageView()
         v.alpha = 0.5
@@ -34,13 +40,6 @@ class CameraViewController: UIViewController {
         v.image = UIImage(named: "rot")
         return v
     }()
-    private var cameraActionView: CameraActionViewController!
-    
-    private var cameraActionViewHeight: CGFloat {
-        return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
-    }
-    
-    private var filterLabelView = FilterLabelView()
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -59,6 +58,18 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraEngine.startCaptureSession()
+        
+        // Show tutorial if first visit
+        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
+            }
+            AlertHelper.shared.presentWithCustomAction(
+                title: "Swipe gesture",
+                message: "Swipe left or right to live preview all the available filters in the collection.",
+                withCustomAction: [okAction],
+                to: self)
+        }
     }
     
     override func viewDidLayoutSubviews() {

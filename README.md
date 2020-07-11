@@ -9,6 +9,7 @@ Kontax Cam is an instant camera built 100% using Swift for iOS. You can take you
 ## Features
 
  - [x] Instant camera that just works.
+ - [x] Gesture-based app, swipe left or right to change the filter
  - [x] Multiple filter presets made personally by me. (Will be adding more!)
  - [x] Multiple effects to make your photo pop.
  - [x] Custom photo viewer
@@ -21,6 +22,7 @@ Kontax Cam is an instant camera built 100% using Swift for iOS. You can take you
  ## Future ideas
  
  - [ ] Improve app to use less memory ⚠️ (In need of a help!)
+ - [ ] Improve the app architecture
 
 ## Installation
 **Requirements**

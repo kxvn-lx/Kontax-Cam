@@ -100,7 +100,7 @@ extension FXCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.mediumTaptic()
+        TapticHelper.shared.lightTaptic()
         
         // 1. Update UI
         let selectedCell = collectionView.cellForItem(at: indexPath) as! FXCollectionViewCell
@@ -109,9 +109,6 @@ extension FXCollectionViewController {
         // 2. Update datasource
         let selectedFx = effects[indexPath.row]
         smartAppend(selectedCell, selectedFx)
-        
-        // Save the selection to UserDefaults
-        //        UserDefaultsHelper.shared.setData(value: try? PropertyListEncoder().encode(FilterEngine.shared.allowedFilters), key: .userFxList)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

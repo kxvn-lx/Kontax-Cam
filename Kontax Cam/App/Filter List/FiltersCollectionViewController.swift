@@ -61,7 +61,6 @@ extension FiltersCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        TapticHelper.shared.mediumTaptic()
         delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

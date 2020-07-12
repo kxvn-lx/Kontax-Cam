@@ -65,6 +65,10 @@ extension PanModalNavigationController: PanModalPresentable {
         return false
     }
     
+    var isHapticFeedbackEnabled: Bool {
+        return false
+    }
+    
     func willTransition(to state: PanModalPresentationController.PresentationState) {
         guard isShortFormEnabled, case .longForm = state
             else { return }

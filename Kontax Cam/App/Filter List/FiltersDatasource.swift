@@ -9,29 +9,34 @@
 import UIKit
 
 enum FilterName: String, CaseIterable {
-    case a1, a2, a3, a4, a5, a6
-    case b1, b2, b3
+    case A1, A2, A3, A4, A5
+    case B1, B2, B3, B4, B5
+    case C1, C2, C3, C4
+    case BW1, BW2, BW3
 }
 
 struct FilterCollection: Equatable {
     var name: String
-    var image: UIImage
+    var image: UIImage = FilterCollection.placeholderImage
     var filters: [FilterName]
     
     static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
         return rhs.name == lhs.name
     }
     
-    static let aCollection = FilterCollection(name: "A Collection", image: UIImage(named: "ACollection")!, filters: [.a1, .a2, .a3, .a4, .a5, .a6])
+    static let aCollection = FilterCollection(name: "A Collection", filters: [.A1, .A2, .A3, .A4, .A5])
+    static let placeholderImage = UIImage(named: "collection-placeholder")!
 }
 
 extension FiltersCollectionViewController {
     
     /// Populate the filters collection list
     func populateSection() {
-        // Use placeholder image since this collection is not complete yet
-        let b = FilterCollection(name: "B Collection", image: UIImage(named: "collection-placeholder")!, filters: [.b1, .b2, .b3])
+        // Use placeholder image temporarily (unless someone wishes to contribute on a photo 😊)
+        let b = FilterCollection(name: "B Collection", filters: [.B1, .B2, .B3, .B4, .B5])
+        let c = FilterCollection(name: "C Collection", filters: [.C1, .C2, .C3, .C4])
+        let bw = FilterCollection(name: "BW Collection", filters: [.BW1, .BW2, .BW3])
         
-        self.filterCollections = [FilterCollection.aCollection, b]
+        self.filterCollections = [FilterCollection.aCollection, b, c, bw]
     }
 }

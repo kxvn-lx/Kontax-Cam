@@ -11,7 +11,7 @@ import GPUImage
 
 class LUTImageFilter: ImageFilterProtocol {
     
-    static var selectedLUTFilter: FilterName? = FilterName.a1
+    static var selectedLUTFilter: FilterName? = FilterName.A1
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -40,7 +40,7 @@ class LUTImageFilter: ImageFilterProtocol {
     /// - Parameter filterName: The filter name
     /// - Returns: The CIFilter of the given filter
     func convertToCIFilter(withName filterName: FilterName) -> CIFilter {
-        guard let lutImage = UIImage(named: filterName.rawValue.lowercased()) else {
+        guard let lutImage = UIImage(named: filterName.rawValue) else {
             fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.")
         }
         return makeFilter(from: lutImage)

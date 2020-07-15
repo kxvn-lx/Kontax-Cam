@@ -26,7 +26,7 @@ class LUTRender: FilterRenderer {
     private(set) var inputFormatDescription: CMFormatDescription?
     
     init() {
-        self.filterName = .a1
+        self.filterName = .A1
     }
     
     func _renderNewFilter(_ filterName: FilterName) {

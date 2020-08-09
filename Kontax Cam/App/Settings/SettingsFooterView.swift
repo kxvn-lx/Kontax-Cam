@@ -61,6 +61,7 @@ class SettingsFooterView: UIView {
         mStackView.axis = .vertical
         mStackView.alignment = .center
         
+        mStackView.setCustomSpacing(10, after: iconImageView)
         mStackView.setCustomSpacing(10, after: appVersionLabel)
         
         addSubview(mStackView)

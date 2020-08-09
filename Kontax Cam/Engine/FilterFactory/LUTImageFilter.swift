@@ -11,7 +11,7 @@ import GPUImage
 
 class LUTImageFilter: ImageFilterProtocol {
     
-    static var selectedLUTFilter: FilterName? = FilterName.A1
+    static var selectedLUTFilter: FilterName? = nil
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()

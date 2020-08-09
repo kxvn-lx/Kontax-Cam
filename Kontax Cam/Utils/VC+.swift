@@ -185,3 +185,13 @@ extension UIView {
         return window.safeAreaInsets
     }
 }
+
+extension UIApplication {
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+    
+    var keyWindow: UIWindow? {
+        return UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+    }
+}

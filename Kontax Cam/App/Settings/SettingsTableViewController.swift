@@ -39,6 +39,7 @@ class SettingsTableViewController: UITableViewController {
         case CellPath.deleteImagesCell: cell.textLabel?.textColor = .systemRed
         default: break
         }
+        cell.backgroundColor = .systemGray6
     }
     
     private func setupUI() {
@@ -47,6 +48,8 @@ class SettingsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         
         self.tableView.backgroundColor = .systemBackground
+        
+        self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 150))
     }
     
     @objc private func closeTapped() {

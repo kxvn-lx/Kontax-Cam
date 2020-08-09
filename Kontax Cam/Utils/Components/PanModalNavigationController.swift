@@ -62,7 +62,7 @@ extension PanModalNavigationController: PanModalPresentable {
     }
     
     var showDragIndicator: Bool {
-        return false
+        return true
     }
     
     var isHapticFeedbackEnabled: Bool {

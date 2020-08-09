@@ -19,7 +19,7 @@ class LUTImageFilter: ImageFilterProtocol {
     func process(imageToEdit uiImage: UIImage) -> UIImage? {
         if LUTImageFilter.selectedLUTFilter == nil { return uiImage }
         
-        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter!.rawValue.lowercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
+        guard let lutImage = UIImage(named: LUTImageFilter.selectedLUTFilter!.rawValue.uppercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
         let context = CIContext(options: nil)
 
         let beginImage = CIImage(image: uiImage)

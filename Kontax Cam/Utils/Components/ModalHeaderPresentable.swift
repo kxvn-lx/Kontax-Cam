@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol ModalHeaderProtocol: class {
+    func didTapInfo()
+}
+
 class ModalHeaderPresentable: UICollectionReusableView {
     
     let titleLabel = UILabel()
@@ -18,6 +22,8 @@ class ModalHeaderPresentable: UICollectionReusableView {
         btn.tintColor = UIColor.label.withAlphaComponent(0.5)
         return btn
     }()
+    
+    weak var delegate: ModalHeaderProtocol?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,11 +50,17 @@ class ModalHeaderPresentable: UICollectionReusableView {
             make.edges.equalToSuperview()
         }
         
+        infoButton.addTarget(delegate, action: #selector(infoButtonTapped), for: .touchUpInside)
+        
         style()
     }
     
     private func style() {
         titleLabel.textColor = .label
         titleLabel.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption1).pointSize, weight: .medium)
+    }
+    
+    @objc private func infoButtonTapped() {
+        self.delegate?.didTapInfo()
     }
 }

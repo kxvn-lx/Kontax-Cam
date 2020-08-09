@@ -115,7 +115,9 @@ extension FXCollectionViewController {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
             fatalError("Could not dequeue SectionHeader")
         }
+        headerView.delegate = self
         headerView.titleLabel.text = "Long press any active effects to customise it."
+        
         
         return headerView
     }
@@ -187,5 +189,13 @@ extension FXCollectionViewController {
 extension FXCollectionViewController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return collectionView
+    }
+}
+
+extension FXCollectionViewController: ModalHeaderProtocol {
+    func didTapInfo() {
+        let fxInfoVC = FXInfoViewController()
+        let navController = UINavigationController(rootViewController: fxInfoVC)
+        self.present(navController, animated: true, completion: nil)
     }
 }

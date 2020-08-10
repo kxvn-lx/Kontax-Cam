@@ -37,29 +37,31 @@ class AppIconsTableViewController: UITableViewController {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return IconNames.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AppIconsTableViewCell.ReuseIdentifier, for: indexPath) as! AppIconsTableViewCell
-
+        
         cell.iconName = IconNames.allCases[indexPath.row]
-
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         if UIApplication.shared.supportsAlternateIcons {
-            UIApplication.shared.setAlternateIconName(IconNames.allCases[indexPath.row].getIconName(forIconImageView: false), completionHandler: nil)
+            UIApplication.shared.setAlternateIconName(IconNames.allCases[indexPath.row].getIconName(forIconImageView: false)) { (error) in
+                if let error = error {
+                    AlertHelper.shared.presentDefault(title: error.localizedDescription, message: nil, to: self)
+                }
+            }
         }
     }
     
@@ -92,8 +94,15 @@ class AppIconsTableViewCell: UITableViewCell {
         }
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        accessoryType = selected ? .checkmark : .none
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         setupView()
         setupConstraint()
     }

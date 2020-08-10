@@ -28,6 +28,15 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+            <key>Eternal sleep</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Eternal sleep</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
 			<key>lanigirO xatnoK</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

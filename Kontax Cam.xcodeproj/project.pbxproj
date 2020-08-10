@@ -80,6 +80,14 @@
 		0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
 		0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */; };
+		0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */; };
+		0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F624E0F73B00BE288A /* Bloodlust.png */; };
+		0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */; };
+		0AF619FF24E0F73C00BE288A /* A fine day.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F824E0F73B00BE288A /* A fine day.png */; };
+		0AF61A0024E0F73C00BE288A /* Summer vibes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F924E0F73B00BE288A /* Summer vibes.png */; };
+		0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FA24E0F73B00BE288A /* Sunshine.png */; };
+		0AF61A0224E0F73C00BE288A /* Kontax Original.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FB24E0F73B00BE288A /* Kontax Original.png */; };
+		0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FC24E0F73C00BE288A /* Eternal sleep.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +185,14 @@
 		0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0AEE932F247C983800F485C0 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersGestureEngine.swift; sourceTree = "<group>"; };
+		0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconsTableViewController.swift; sourceTree = "<group>"; };
+		0AF619F624E0F73B00BE288A /* Bloodlust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bloodlust.png; sourceTree = "<group>"; };
+		0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanigirO xatnoK.png"; sourceTree = "<group>"; };
+		0AF619F824E0F73B00BE288A /* A fine day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "A fine day.png"; sourceTree = "<group>"; };
+		0AF619F924E0F73B00BE288A /* Summer vibes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Summer vibes.png"; sourceTree = "<group>"; };
+		0AF619FA24E0F73B00BE288A /* Sunshine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sunshine.png; sourceTree = "<group>"; };
+		0AF619FB24E0F73B00BE288A /* Kontax Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kontax Original.png"; sourceTree = "<group>"; };
+		0AF619FC24E0F73C00BE288A /* Eternal sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eternal sleep.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +300,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0AF619F524E0F6EA00BE288A /* App icons */,
 				0ABD6D3A2497802400C3CC4B /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
 				0A44B2AF2476A80700603F2C /* Engine */,
@@ -441,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */,
+				0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */,
 			);
 			path = Appearance;
 			sourceTree = "<group>";
@@ -471,6 +489,20 @@
 				0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0AF619F524E0F6EA00BE288A /* App icons */ = {
+			isa = PBXGroup;
+			children = (
+				0AF619F824E0F73B00BE288A /* A fine day.png */,
+				0AF619F624E0F73B00BE288A /* Bloodlust.png */,
+				0AF619FC24E0F73C00BE288A /* Eternal sleep.png */,
+				0AF619FB24E0F73B00BE288A /* Kontax Original.png */,
+				0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */,
+				0AF619F924E0F73B00BE288A /* Summer vibes.png */,
+				0AF619FA24E0F73B00BE288A /* Sunshine.png */,
+			);
+			path = "App icons";
 			sourceTree = "<group>";
 		};
 		816177D18B28A96025786676 /* Pods */ = {
@@ -577,9 +609,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF61A0224E0F73C00BE288A /* Kontax Original.png in Resources */,
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
+				0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
+				0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */,
+				0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */,
 				0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */,
+				0AF619FF24E0F73C00BE288A /* A fine day.png in Resources */,
+				0AF61A0024E0F73C00BE288A /* Summer vibes.png in Resources */,
+				0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +696,7 @@
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
+				0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */,
 				0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */,

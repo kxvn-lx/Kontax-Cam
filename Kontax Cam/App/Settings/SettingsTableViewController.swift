@@ -12,6 +12,7 @@ class SettingsTableViewController: UITableViewController {
     
     private struct CellPath {
         static let appearanceCell = IndexPath(row: 0, section: 0)
+        static let appIconsCell = IndexPath(row: 1, section: 0)
         static let deleteImagesCell = IndexPath(row: 0, section: 1)
     }
     
@@ -30,6 +31,7 @@ class SettingsTableViewController: UITableViewController {
         switch indexPath {
         case CellPath.appearanceCell: self.appearanceCellTapped()
         case CellPath.deleteImagesCell: self.deleteImagesCellTapped()
+        case CellPath.appIconsCell: self.appIconsCellTapped()
         default: break
         }
     }
@@ -88,5 +90,11 @@ extension SettingsTableViewController {
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func appIconsCellTapped() {
+        let vc = AppIconsTableViewController(style: .insetGrouped)
+        let navController = UINavigationController(rootViewController: vc)
+        self.present(navController, animated: true, completion: nil)
     }
 }

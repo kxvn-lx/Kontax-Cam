@@ -28,20 +28,11 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-            <key>Eternal sleep</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>Eternal sleep</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-			<key>lanigirO xatnoK</key>
+			<key>Eternal sleep</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>lanigirO xatnoK</string>
+					<string>Eternal sleep</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -60,6 +51,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Sunshine</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>lanigirO xatnoK</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>lanigirO xatnoK</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

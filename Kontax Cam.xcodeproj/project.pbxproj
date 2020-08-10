@@ -381,7 +381,7 @@
 		0A5290A9247AB43900BA0D57 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				0AC54C9D248AAB5900D64D05 /* Appearance */,
+				0AC54C9D248AAB5900D64D05 /* Sub-settings View */,
 				0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */,
 				0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */,
 			);
@@ -454,13 +454,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0AC54C9D248AAB5900D64D05 /* Appearance */ = {
+		0AC54C9D248AAB5900D64D05 /* Sub-settings View */ = {
 			isa = PBXGroup;
 			children = (
 				0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */,
 				0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */,
 			);
-			path = Appearance;
+			path = "Sub-settings View";
 			sourceTree = "<group>";
 		};
 		0AC8F9F8249CE8AC0068E54F /* Kontax CamTests */ = {

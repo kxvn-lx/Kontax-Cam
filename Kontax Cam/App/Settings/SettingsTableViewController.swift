@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import SafariServices
+import MessageUI
 
 class SettingsTableViewController: UITableViewController {
     
     private struct CellPath {
         static let appearanceCell = IndexPath(row: 0, section: 0)
         static let appIconsCell = IndexPath(row: 1, section: 0)
-        static let deleteImagesCell = IndexPath(row: 0, section: 1)
+        static let deleteImagesCell = IndexPath(row: 0, section: 2)
+        static let sourceCodeCell = IndexPath(row: 0, section: 1)
+        static let twitterCell = IndexPath(row: 1, section: 1)
+        static let emailCell = IndexPath(row: 2, section: 1)
     }
     
     override func viewDidLoad() {
@@ -32,6 +37,9 @@ class SettingsTableViewController: UITableViewController {
         case CellPath.appearanceCell: self.appearanceCellTapped()
         case CellPath.deleteImagesCell: self.deleteImagesCellTapped()
         case CellPath.appIconsCell: self.appIconsCellTapped()
+        case CellPath.sourceCodeCell: self.sourceCodeCellTapped()
+        case CellPath.twitterCell: self.twitterCellTapped()
+        case CellPath.emailCell: self.reportABugCellTapped()
         default: break
         }
     }
@@ -96,5 +104,43 @@ extension SettingsTableViewController {
         let vc = AppIconsTableViewController(style: .insetGrouped)
         let navController = UINavigationController(rootViewController: vc)
         self.present(navController, animated: true, completion: nil)
+    }
+    
+    private func twitterCellTapped() {
+        if let url = URL(string: "https://twitter.com/kevinlx_") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                let sfSafariVC = SFSafariViewController(url: url)
+                present(sfSafariVC, animated: true)
+            }
+        }
+    }
+    
+    private func sourceCodeCellTapped() {
+        if let url = URL(string: "https://github.com/kxvn-lx/Kontax-Cam") {
+            let sfSafariVC = SFSafariViewController(url: url)
+            present(sfSafariVC, animated: true)
+        }
+    }
+    
+    private func reportABugCellTapped() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["kevinlaminto.dev@gmail.com"])
+            mail.setSubject("[Kontax-Cam] Hi there! ✉️")
+            
+            present(mail, animated: true)
+        } else {
+            AlertHelper.shared.presentDefault(title: "No mail account.", message: "Please configure a mail account in order to send email. Or, manually email it to kevinlaminto.dev@gmail.com", to: self)
+        }
+
+    }
+}
+
+extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

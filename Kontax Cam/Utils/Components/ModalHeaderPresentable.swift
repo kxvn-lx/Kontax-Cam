@@ -15,7 +15,12 @@ protocol ModalHeaderProtocol: class {
 
 class ModalHeaderPresentable: UICollectionReusableView {
     
-    let titleLabel = UILabel()
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption1).pointSize, weight: .medium)
+        return label
+    }()
     let infoButton: UIButton = {
         let btn = UIButton(type: .detailDisclosure)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -51,13 +56,6 @@ class ModalHeaderPresentable: UICollectionReusableView {
         }
         
         infoButton.addTarget(delegate, action: #selector(infoButtonTapped), for: .touchUpInside)
-        
-        style()
-    }
-    
-    private func style() {
-        titleLabel.textColor = .label
-        titleLabel.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption1).pointSize, weight: .medium)
     }
     
     @objc private func infoButtonTapped() {

@@ -50,7 +50,7 @@ class FiltersCollectionViewController: UICollectionViewController {
 extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
-
+        
         let item = filterCollections[indexPath.row]
         cell.collectionNameLabel.text = item.name
         cell.imageView.image = item.image
@@ -64,6 +64,18 @@ extension FiltersCollectionViewController {
         delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
+            fatalError("Could not dequeue SectionHeader")
+        }
+        
+        headerView.titleLabel.text = "If you want your photos to be included on the front cover of the filter collections, please submit them to kevinlaminto.dev@gmail.com along with the filter used for the photo."
+        headerView.titleLabel.numberOfLines = 0
+        headerView.infoButton.isHidden = true
+        
+        return headerView
     }
 }
 
@@ -84,6 +96,7 @@ extension FiltersCollectionViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
+        section.boundarySupplementaryItems = [makeSectionHeader()]
         
         return section
     }
@@ -99,6 +112,19 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
+    }
+    
+    private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(40))
+        
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: layoutSectionHeaderSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        return layoutSectionHeader
     }
 }
 

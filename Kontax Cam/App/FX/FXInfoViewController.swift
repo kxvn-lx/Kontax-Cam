@@ -39,7 +39,7 @@ class FXInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.configureNavigationBar(tintColor: .label, title: "Effects information", preferredLargeTitle: true, removeSeparator: true)
+        self.configureNavigationBar(tintColor: .label, title: "Effects information", preferredLargeTitle: false, removeSeparator: true)
         self.tableView.register(FXInfoTableViewCell.self, forCellReuseIdentifier: FXInfoTableViewCell.ReuseIdentifier)
         setupView()
         setupConstraint()

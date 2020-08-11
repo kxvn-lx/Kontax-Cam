@@ -45,10 +45,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case CellPath.deleteImagesCell: cell.textLabel?.textColor = .systemRed
-        default: break
-        }
         cell.backgroundColor = .systemGray6
     }
     

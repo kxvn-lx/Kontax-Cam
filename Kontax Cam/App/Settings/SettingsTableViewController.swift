@@ -18,7 +18,8 @@ class SettingsTableViewController: UITableViewController {
         static let deleteImagesCell = IndexPath(row: 0, section: 2)
         static let sourceCodeCell = IndexPath(row: 0, section: 1)
         static let twitterCell = IndexPath(row: 1, section: 1)
-        static let emailCell = IndexPath(row: 2, section: 1)
+        static let emailCell = IndexPath(row: 3, section: 1)
+        static let instagramCell = IndexPath(row: 2, section: 1)
     }
     
     override func viewDidLoad() {
@@ -40,6 +41,7 @@ class SettingsTableViewController: UITableViewController {
         case CellPath.sourceCodeCell: self.sourceCodeCellTapped()
         case CellPath.twitterCell: self.twitterCellTapped()
         case CellPath.emailCell: self.reportABugCellTapped()
+        case CellPath.instagramCell: self.instagramCellTapped()
         default: break
         }
     }
@@ -132,6 +134,17 @@ extension SettingsTableViewController {
             AlertHelper.shared.presentDefault(title: "No mail account.", message: "Please configure a mail account in order to send email. Or, manually email it to kevinlaminto.dev@gmail.com", to: self)
         }
 
+    }
+    
+    private func instagramCellTapped() {
+        if let url = URL(string: "https://instagram.com/kxvn.lx") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                let sfSafariVC = SFSafariViewController(url: url)
+                present(sfSafariVC, animated: true)
+            }
+        }
     }
 }
 

@@ -24,6 +24,8 @@ If you want to contribute or push some fun little features, feel free to submit 
  I'm always open for suggestion! Feel free to message me or submit a PR :D
  
  - [ ] Improve app to use less memory ⚠️ (In need of a help!)
+ - [ ] Any improvements
+ - [ ] Our very own ImageEngine (not relying on GPUImage)
  - [ ] Improve the app architecture
  - [ ] MOAR APP ICONS
 

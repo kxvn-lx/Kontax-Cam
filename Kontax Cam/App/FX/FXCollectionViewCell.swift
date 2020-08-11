@@ -9,15 +9,7 @@
 import UIKit
 
 class FXCollectionViewCell: UICollectionViewCell {
-    
-    let isEditedView: UIView = {
-        let v = UIView()
-        v.layer.cornerRadius = 5 / 2
-        v.backgroundColor = .darkGray
-        v.isHidden = true
-        v.translatesAutoresizingMaskIntoConstraints = false
-        return v
-    }()
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -50,14 +42,6 @@ class FXCollectionViewCell: UICollectionViewCell {
         self.addSubview(titleLabel)
         self.addSubview(toggleLabel)
         self.addSubview(iconImageView)
-        self.addSubview(isEditedView)
-        
-        isEditedView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(5)
-            make.top.equalToSuperview()
-        }
-        
         iconImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(self.frame.width * 0.2)
             make.centerX.equalToSuperview()
@@ -80,7 +64,6 @@ class FXCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isFxSelected = false
-        isEditedView.isHidden = true
         updateStyle()
     }
     

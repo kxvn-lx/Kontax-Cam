@@ -49,6 +49,9 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         // 1. Navigation configuration
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false, removeSeparator: true)
+        self.collectionView.backgroundColor = .systemBackground
+        
+        self.collectionView.register(LabCollectionViewCell.self, forCellWithReuseIdentifier: LabCollectionViewCell.ReuseIdentifier)
         
         let closeButton = CloseButton()
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
@@ -90,8 +93,10 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
             make.centerX.equalToSuperview()
         }
     }
-    
-    // MARK: - UICollectionViewDataSource
+}
+
+// MARK: - UICollectionView delegate and datasource
+extension LabCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.imageObjects.count
     }
@@ -101,7 +106,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.reuseIdentifier, for: indexPath) as! LabCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.ReuseIdentifier, for: indexPath) as! LabCollectionViewCell
         let currentImage = imageObjects[indexPath.row]
         
         var request = ImageRequest(url: currentImage.url)
@@ -114,8 +119,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         return cell
     }
     
-    // MARK: - UICollectionViewDelegate
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isSelecting {
             let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
             cell.toggleSelection()
@@ -202,15 +206,17 @@ extension LabCollectionViewController {
         self.collectionView.backgroundView = nil
     }
     
+    /// Close button tapped method
     @objc private func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
         
     }
     
+    /// Select button tapped method
     @objc private func selectButtonTapped() {
         isSelecting.toggle()
-        selectButton.setTitle(isSelecting ? "cancel" : "Select", for: .normal)
+        selectButton.setTitle(isSelecting ? "Cancel" : "Select", for: .normal)
         
         if !isSelecting {
             // Clear all pending queue of images to delete and deselect all active cell.
@@ -227,6 +233,7 @@ extension LabCollectionViewController {
         selectButton.sizeToFit()
     }
     
+    /// Called when user want to confirm deletion
     @objc private func confirmDeleteTapped() {
         let message = imagesIndexToDelete.count > 1 ? "images" : "image"
         let alert = UIAlertController(title: "Delete \(imagesIndexToDelete.count) \(message)?", message: nil, preferredStyle: .actionSheet)

@@ -9,7 +9,6 @@
 import UIKit
 import PanModal
 
-private let reuseIdentifier = "fxCell"
 private let headerIdentifier = "fxHeader"
 
 private struct CellPath {
@@ -28,10 +27,12 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         super.viewDidLoad()
         
         self.configureNavigationBar(tintColor: .label, title: "Effects", preferredLargeTitle: false, removeSeparator: true)
+        self.collectionView.backgroundColor = .systemBackground
         
         // UICollectionView setup
         collectionView.collectionViewLayout = makeLayout()
         collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.register(FXCollectionViewCell.self, forCellWithReuseIdentifier: FXCollectionViewCell.ReuseIdentifier)
         
         // Setup Long press gesture
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -89,7 +90,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
 // MARK: - Collectionview delegate
 extension FXCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FXCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FXCollectionViewCell.ReuseIdentifier, for: indexPath) as! FXCollectionViewCell
         let currentFx = effects[indexPath.row]
         
         cell.titleLabel.text = currentFx.name.description

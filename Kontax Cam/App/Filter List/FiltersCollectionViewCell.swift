@@ -10,6 +10,8 @@ import UIKit
 
 class FiltersCollectionViewCell: UICollectionViewCell {
     
+    static let ReuseIdentifier = "filtersCell"
+    
     private struct Constants {
         static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
@@ -17,6 +19,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     let imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     let collectionNameLabel: UILabel = {
@@ -39,8 +42,8 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
         setupConstraint()
         layer.borderColor = UIColor.label.cgColor
@@ -55,6 +58,10 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         blurView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func prepareForReuse() {

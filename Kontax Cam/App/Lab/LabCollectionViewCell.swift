@@ -20,9 +20,10 @@ class LabCollectionViewCell: UICollectionViewCell {
     private let borderWidth: CGFloat = 2
     private let duration: Double = 0.0625
     
-    static let reuseIdentifier = "labCell"
+    static let ReuseIdentifier = "labCell"
     
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.addSubview(photoView)
         
         self.layer.borderColor = UIColor.label.cgColor
@@ -31,6 +32,10 @@ class LabCollectionViewCell: UICollectionViewCell {
         photoView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func prepareForReuse() {

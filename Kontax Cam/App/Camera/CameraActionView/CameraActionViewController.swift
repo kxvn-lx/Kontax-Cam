@@ -154,16 +154,14 @@ extension CameraActionViewController {
             
         // FX
         case 3:
-            let parent = self.parent as! CameraViewController
-            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "fxVC") as! FXCollectionViewController
-            
+            let vc = FXCollectionViewController(collectionViewLayout: UICollectionViewLayout())
             let navController = PanModalNavigationController(rootViewController: vc)
             self.presentPanModal(navController)
             
         // Filter
         case 4:
             let parent = self.parent as! CameraViewController
-            let vc = parent.storyboard!.instantiateViewController(withIdentifier: "filtersVC") as! FiltersCollectionViewController
+            let vc = FiltersCollectionViewController(collectionViewLayout: UICollectionViewLayout())
             vc.delegate = parent
             vc.selectedCollection = parent.currentCollection
             
@@ -189,7 +187,7 @@ extension CameraActionViewController {
         cameraEngine?.stopCaptureSession()
         parent.resetCameraView()
         
-        let vc = parent.storyboard!.instantiateViewController(withIdentifier: "labVC") as! LabCollectionViewController
+        let vc = LabCollectionViewController(collectionViewLayout: UICollectionViewLayout())
         
         let navController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .fullScreen

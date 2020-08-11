@@ -9,7 +9,6 @@
 import UIKit
 import PanModal
 
-private let reuseIdentifier = "filtersCell"
 private let headerIdentifier = "filtersHeader"
 
 protocol FilterListDelegate: class {
@@ -27,10 +26,12 @@ class FiltersCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.configureNavigationBar(tintColor: .label, title: "Filter collections", preferredLargeTitle: false, removeSeparator: true)
+        self.collectionView.backgroundColor = .systemBackground
         
         // 1. Setup the layout
         collectionView.collectionViewLayout = makeLayout()
         collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.register(FiltersCollectionViewCell.self, forCellWithReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier)
         
         // 2. Setup datasource
         self.populateSection()
@@ -49,7 +50,7 @@ class FiltersCollectionViewController: UICollectionViewController {
 // MARK: - CollectionView delegate
 extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
         
         let item = filterCollections[indexPath.row]
         cell.collectionNameLabel.text = item.name

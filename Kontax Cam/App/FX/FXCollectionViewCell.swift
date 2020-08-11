@@ -10,6 +10,8 @@ import UIKit
 
 class FXCollectionViewCell: UICollectionViewCell {
 
+    static let ReuseIdentifier = "FxCell"
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +40,9 @@ class FXCollectionViewCell: UICollectionViewCell {
     }()
     var isFxSelected = false
     
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
         self.addSubview(titleLabel)
         self.addSubview(toggleLabel)
         self.addSubview(iconImageView)
@@ -59,6 +63,10 @@ class FXCollectionViewCell: UICollectionViewCell {
         }
         
         updateStyle()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func prepareForReuse() {

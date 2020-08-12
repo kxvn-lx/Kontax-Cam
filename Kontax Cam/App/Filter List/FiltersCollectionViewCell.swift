@@ -36,6 +36,8 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    var buttonTapped: (() -> Void)? = nil
+    
     override var isSelected: Bool {
         didSet {
             setCellSelected()
@@ -72,10 +74,11 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     private func setupView() {
         nameLabelView.addSubview(collectionNameLabel)
         nameLabelView.addSubview(infoButton)
-        infoButton.isHidden = true // Hidden until functionality is added
         
         addSubview(imageView)
         addSubview(nameLabelView)
+        
+        infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
     }
     
     private func setupConstraint() {
@@ -109,6 +112,12 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if #available(iOS 13.0, *) {
             layer.borderColor = UIColor.label.cgColor
+        }
+    }
+    
+    @objc private func infoButtonTapped() {
+        if let buttonAction = buttonTapped {
+            buttonAction()
         }
     }
 }

@@ -42,15 +42,6 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         self.collectionView?.addGestureRecognizer(lpgr)
     }
     
-    // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return effects.count
-    }
-    
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         let p = gestureRecognizer.location(in: collectionView)
         
@@ -87,8 +78,16 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
     }
 }
 
-// MARK: - Collectionview delegate
+// MARK: - Collectionview delegate and datasource
 extension FXCollectionViewController {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return effects.count
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FXCollectionViewCell.ReuseIdentifier, for: indexPath) as! FXCollectionViewCell
         let currentFx = effects[indexPath.row]

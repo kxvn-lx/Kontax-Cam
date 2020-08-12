@@ -81,11 +81,8 @@ class FXCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateStyle() {
-        updateElementStyle()
         toggleLabel.text = isFxSelected ? "ON" : "OFF"
-    }
-    
-    private func updateElementStyle() {
+        
         self.iconImageView.tintColor = isFxSelected ? .label : .systemGray4
         self.titleLabel.textColor = isFxSelected ? .label : .systemGray4
         self.toggleLabel.textColor = isFxSelected ? .label : .systemGray4
@@ -98,5 +95,4 @@ class FXCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
 }

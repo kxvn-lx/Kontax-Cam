@@ -26,7 +26,7 @@ struct FXInfo: Codable, Hashable {
 class FXInfoViewController: UIViewController {
     
     private let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
@@ -121,11 +121,8 @@ extension FXInfoViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FXInfoTableViewCell.ReuseIdentifier) as? FXInfoTableViewCell else {
                 return nil
             }
-            
-            cell.titleLabel.text = fxInfo.title
-            
-            cell.iconImageView.image = UIImage(named: fxInfo.iconName) ?? UIImage(systemName: fxInfo.iconName)
-            cell.descriptionLabel.text = fxInfo.description
+
+            cell.fxInfo = fxInfo
             
             return cell
         })
@@ -149,18 +146,18 @@ extension FXInfoViewController: UITableViewDelegate {
 class FXInfoTableViewCell: UITableViewCell {
     
     static let ReuseIdentifier = "FXInfoCell"
-    let iconImageView: UIImageView = {
+    private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .label
         return imageView
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
         return label
     }()
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .preferredFont(forTextStyle: .caption1)
@@ -168,6 +165,14 @@ class FXInfoTableViewCell: UITableViewCell {
         return label
     }()
     private var mStackView: UIStackView!
+    
+    var fxInfo: FXInfo! {
+        didSet {
+            titleLabel.text = fxInfo.title
+            iconImageView.image = UIImage(named: fxInfo.iconName) ?? UIImage(systemName: fxInfo.iconName)
+            descriptionLabel.text = fxInfo.description
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

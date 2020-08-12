@@ -58,6 +58,10 @@ extension FiltersCollectionViewController {
         
         cell.isSelected = item == selectedCollection
         
+        cell.buttonTapped = {
+            AlertHelper.shared.presentDefault(title: "Future feature!", message: "This feature will allow you to view what the filters does with example photos", to: self)
+        }
+        
         return cell
     }
     
@@ -118,7 +122,7 @@ extension FiltersCollectionViewController {
     private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let layoutSectionHeaderSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(40))
+            heightDimension: .absolute(100))
         
         let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: layoutSectionHeaderSize,

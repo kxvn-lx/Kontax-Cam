@@ -183,8 +183,8 @@ extension LabCollectionViewController {
     }
 }
 
+// MARK: - Helper methods
 extension LabCollectionViewController {
-    /// Helper to present the photo display VC
     private func presentPhotoDisplayVC(indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
             let viewController = PhotoDisplayViewController(referencedView: cell.photoView, image: cell.photoView.image)

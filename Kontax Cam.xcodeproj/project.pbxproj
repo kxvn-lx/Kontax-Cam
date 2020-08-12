@@ -318,7 +318,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				0A4D6E53247A472100E039FC /* Filter List */,
+				0A4D6E53247A472100E039FC /* Filter collections */,
 				0A03EAFD2480AB84001D8006 /* FX */,
 				0AADEE72247B731C009FFA52 /* Lab */,
 				0AEBF1FB2495BCB7007CFAC6 /* Onboarding */,
@@ -360,14 +360,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		0A4D6E53247A472100E039FC /* Filter List */ = {
+		0A4D6E53247A472100E039FC /* Filter collections */ = {
 			isa = PBXGroup;
 			children = (
 				0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */,
 				0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */,
 				0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */,
 			);
-			path = "Filter List";
+			path = "Filter collections";
 			sourceTree = "<group>";
 		};
 		0A4D6E5E247A5AD500E039FC /* PhotoDisplay */ = {

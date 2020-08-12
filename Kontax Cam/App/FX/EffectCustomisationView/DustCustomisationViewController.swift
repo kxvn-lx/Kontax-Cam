@@ -31,7 +31,7 @@ class DustCustomisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar(tintColor: .label, title: "Dust", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Dust")
         self.view.backgroundColor = .systemBackground
         
         setupView()
@@ -93,7 +93,8 @@ extension DustCustomisationViewController: CustomisationControlProtocol {
     func didTapDone() {
         FilterValue.Dust.strength = CGFloat(slider.value)
         print("Dust strength new value: \(FilterValue.Dust.strength)")
-        SPAlertHelper.shared.present(title: "Dust set to: \(slider.value)")
+        
+        TapticHelper.shared.successTaptic()
         dismiss(animated: true, completion: nil)
     }
 }

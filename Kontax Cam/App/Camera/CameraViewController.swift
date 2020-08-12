@@ -151,10 +151,6 @@ class CameraViewController: UIViewController {
 extension CameraViewController: FilterListDelegate {
     func filterListDidSelectCollection(_ collection: FilterCollection) {
         currentCollection = collection
-        let title = "\(currentCollection.name) activated"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            SPAlertHelper.shared.present(title: title)
-        }
         
         cameraEngine.showFilter = true
         filtersGestureEngine.collectionCount = currentCollection.filters.count + 1

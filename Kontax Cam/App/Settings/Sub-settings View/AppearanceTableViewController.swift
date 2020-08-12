@@ -7,31 +7,60 @@
 //
 
 import UIKit
-import PanModal
 
-class AppearanceTableViewController: UITableViewController {
+class AppearanceTableViewController: UIViewController {
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        return tableView
+    }()
     
     private let themes: [UIUserInterfaceStyle] = [.unspecified, .light, .dark]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Appearance", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Appearance", backgroundColor: .systemGroupedBackground)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "appearanceCell")
         
-        self.tableView.separatorStyle = .none
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        setupView()
+        setupConstraint()
     }
+    
+    private func setupView() {
+        self.view.addSubview(tableView)
+        
+        let closeButton = CloseButton()
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+    }
+    
+    private func setupConstraint() {
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    @objc private func closeTapped() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+}
 
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
+extension AppearanceTableViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return themes.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "appearanceCell", for: indexPath)
 
         switch themes[indexPath.row].rawValue {
@@ -49,7 +78,7 @@ class AppearanceTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         // Save to user defaults
@@ -61,12 +90,5 @@ class AppearanceTableViewController: UITableViewController {
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
-    }
-
-}
-
-extension AppearanceTableViewController: PanModalPresentable {
-    var panScrollable: UIScrollView? {
-        return tableView
     }
 }

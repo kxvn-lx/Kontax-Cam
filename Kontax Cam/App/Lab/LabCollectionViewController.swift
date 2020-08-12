@@ -47,8 +47,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         super.viewDidLoad()
         
         // 1. Navigation configuration
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.configureNavigationBar(tintColor: .label, title: "Lab", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Lab")
         self.collectionView.backgroundColor = .systemBackground
         
         self.collectionView.register(LabCollectionViewCell.self, forCellWithReuseIdentifier: LabCollectionViewCell.ReuseIdentifier)
@@ -357,8 +356,9 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 guard let self = self else { return }
                 if success {
                     DispatchQueue.main.async {
-                        SPAlertHelper.shared.present(title: "Saved", preset: .done)
+                        AlertHelper.shared.presentOKAction(withTitle: "Saved!", andMessage: "The photo has been successfully saved to your camera roll.", to: self.presentedViewController)
                     }
+
                     TapticHelper.shared.successTaptic()
                 } else {
                     TapticHelper.shared.errorTaptic()
@@ -376,7 +376,6 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
         DataEngine.shared.deleteData(imageURLToDelete: imageObjects[indexPath.row].url) { [weak self] (success) in
             guard let self = self else { return }
             if success {
-                SPAlertHelper.shared.present(title: "Image deleted.")
                 self.imageObjects.remove(at: index)
                 
                 self.collectionView.deleteItems(at: [indexPath])

@@ -25,7 +25,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureNavigationBar(tintColor: .label, title: "Settings", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Settings")
         
         setupUI()
     }
@@ -71,8 +71,8 @@ extension SettingsTableViewController {
     // MARK: - onCellTapped event Listener
     private func appearanceCellTapped() {
         let vc = AppearanceTableViewController()
-        let navController = PanModalNavigationController(rootViewController: vc)
-        self.presentPanModal(navController)
+        let navController = UINavigationController(rootViewController: vc)
+        self.present(navController, animated: true, completion: nil)
     }
     
     private func deleteImagesCellTapped() {

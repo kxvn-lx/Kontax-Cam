@@ -27,7 +27,6 @@ class FXInfoViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
@@ -39,7 +38,7 @@ class FXInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.configureNavigationBar(tintColor: .label, title: "Effects information", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Effects information")
         self.tableView.register(FXInfoTableViewCell.self, forCellReuseIdentifier: FXInfoTableViewCell.ReuseIdentifier)
         setupView()
         setupConstraint()
@@ -185,7 +184,6 @@ class FXInfoTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        self.backgroundColor = .clear
         mStackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel, descriptionLabel])
         mStackView.alignment = .leading
         mStackView.axis = .vertical

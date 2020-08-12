@@ -143,8 +143,12 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     
     @objc private func toolButtonTapped(sender: UIButton) {
         switch sender.tag {
-        case 0: photoDisplayDelegate?.photoDisplayWillShare(photoAt: self.currentPhotoIndex)
-        case 1: photoDisplayDelegate?.photoDisplayWillSave(photoAt: self.currentPhotoIndex)
+        case 0:
+            photoDisplayDelegate?.photoDisplayWillShare(photoAt: self.currentPhotoIndex)
+            
+        case 1:
+            photoDisplayDelegate?.photoDisplayWillSave(photoAt: self.currentPhotoIndex)
+            
         case 2:
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             

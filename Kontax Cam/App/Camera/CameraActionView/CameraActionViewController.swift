@@ -174,10 +174,7 @@ extension CameraActionViewController {
         // Grid
         case 5:
             let parent = self.parent as! CameraViewController
-            
             parent.rotView.isHidden = !parent.rotView.isHidden
-            let title = !parent.rotView.isHidden ? "Grid enabled" : "Grid disabled"
-            SPAlertHelper.shared.present(title: title, message: nil)
             
         default: print("No button with ID is found")
         }

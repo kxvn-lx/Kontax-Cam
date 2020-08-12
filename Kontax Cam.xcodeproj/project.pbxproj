@@ -23,7 +23,6 @@
 		0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */; };
 		0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */; };
 		0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CC2477DDB900E4078F /* IconHelper.swift */; };
-		0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D97CF2477EFB900E4078F /* SPAlert */; };
 		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D32477F38900E4078F /* TimerEngine.swift */; };
 		0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */; };
@@ -51,7 +50,6 @@
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
 		0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 0A73C4D12499EEF900E46E9A /* Nuke */; };
 		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
-		0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86E467247A350B00937CFC /* SPAlertHelper.swift */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
@@ -155,7 +153,6 @@
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A82B83324AC406600673F1A /* LUTRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTRender.swift; sourceTree = "<group>"; };
-		0A86E467247A350B00937CFC /* SPAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAlertHelper.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +201,6 @@
 				0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */,
 				0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
-				0A1D97D02477EFB900E4078F /* SPAlert in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,7 +346,6 @@
 				0A1D97C32477BFAE00E4078F /* SVHelper.swift */,
 				0A1D97CC2477DDB900E4078F /* IconHelper.swift */,
 				0A1D97D12477F21C00E4078F /* TapticHelper.swift */,
-				0A86E467247A350B00937CFC /* SPAlertHelper.swift */,
 				0AADEE6E247B6541009FFA52 /* AlertHelper.swift */,
 				0AEE932F247C983800F485C0 /* ShareHelper.swift */,
 				0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */,
@@ -532,7 +527,6 @@
 			name = "Kontax Cam";
 			packageProductDependencies = (
 				0A1D97C02477BACE00E4078F /* SnapKit */,
-				0A1D97CF2477EFB900E4078F /* SPAlert */,
 				0A0F94CD247E501300E33AEC /* PanModal */,
 				0AEA622F24878522004B9313 /* DTPhotoViewerController */,
 				0A73C4D12499EEF900E46E9A /* Nuke */,
@@ -589,7 +583,6 @@
 			mainGroup = 0A44B28E2476A7F000603F2C;
 			packageReferences = (
 				0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */,
-				0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */,
 				0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */,
 				0AEA622E24878522004B9313 /* XCRemoteSwiftPackageReference "DTPhotoViewerController" */,
 				0A73C4D02499EEF900E46E9A /* XCRemoteSwiftPackageReference "Nuke" */,
@@ -676,7 +669,6 @@
 				0A1D97BE2477B94F00E4078F /* VC+.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
-				0A86E468247A350B00937CFC /* SPAlertHelper.swift in Sources */,
 				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
 				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,
 				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
@@ -1006,14 +998,6 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.4;
-			};
-		};
 		0A73C4D02499EEF900E46E9A /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
@@ -1042,11 +1026,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		0A1D97CF2477EFB900E4078F /* SPAlert */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A1D97CE2477EFB900E4078F /* XCRemoteSwiftPackageReference "SPAlert" */;
-			productName = SPAlert;
 		};
 		0A73C4D12499EEF900E46E9A /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;

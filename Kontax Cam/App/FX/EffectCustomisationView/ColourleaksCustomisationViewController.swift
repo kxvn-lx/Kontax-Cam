@@ -25,7 +25,7 @@ class ColourleaksCustomisationViewController: UIViewController {
         controlView.delegate = self
         
         self.collectionView!.register(ColourleaksCustomisationCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        self.configureNavigationBar(tintColor: .label, title: "Colour leaks", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Colour leaks")
         self.view.backgroundColor = .systemBackground
         self.collectionView.backgroundColor = .clear
         
@@ -125,7 +125,8 @@ extension ColourleaksCustomisationViewController: CustomisationControlProtocol {
         
         FilterValue.Colourleaks.selectedColourValue = colourleaks[selectedIndexPath!.row]
         print("colour leaks new value: \(colourleaks[selectedIndexPath!.row].rawValue)")
-        SPAlertHelper.shared.present(title: "Colour leaks set to: \(colourleaks[selectedIndexPath!.row].rawValue.capitalizingFirstLetter())")
+        
+        TapticHelper.shared.successTaptic()
         dismiss(animated: true, completion: nil)
     }
 }

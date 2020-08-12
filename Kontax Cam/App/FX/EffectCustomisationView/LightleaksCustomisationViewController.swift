@@ -30,7 +30,7 @@ class LightleaksCustomisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar(tintColor: .label, title: "Light leaks", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Light leaks")
         self.view.backgroundColor = .systemBackground
         
         setupView()
@@ -88,7 +88,7 @@ extension LightleaksCustomisationViewController: CustomisationControlProtocol {
     func didTapDone() {
         FilterValue.Lightleaks.strength = CGFloat(slider.value)
         print("Lightleaks strength new value: \(FilterValue.Dust.strength)")
-        SPAlertHelper.shared.present(title: "Light leaks set to: \(slider.value)")
+        TapticHelper.shared.successTaptic()
         dismiss(animated: true, completion: nil)
     }
 }

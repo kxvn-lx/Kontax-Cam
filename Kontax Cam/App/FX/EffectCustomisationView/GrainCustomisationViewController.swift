@@ -31,7 +31,7 @@ class GrainCustomisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar(tintColor: .label, title: "Grain", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("Grain")
         self.view.backgroundColor = .systemBackground
         
         setupView()
@@ -94,7 +94,8 @@ extension GrainCustomisationViewController: CustomisationControlProtocol {
     func didTapDone() {
         FilterValue.Grain.strength = CGFloat(slider.value)
         print("Grain strength new value: \(FilterValue.Grain.strength)")
-        SPAlertHelper.shared.present(title: "Grain set to: \(slider.value)")
+        
+        TapticHelper.shared.successTaptic()
         dismiss(animated: true, completion: nil)
     }
 }

@@ -30,7 +30,7 @@ class AppIconsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationBar(tintColor: .label, title: "App icons", preferredLargeTitle: false, removeSeparator: true)
+        self.setNavigationBarTitle("App icons", backgroundColor: .systemGroupedBackground)
         self.tableView.register(AppIconsTableViewCell.self, forCellReuseIdentifier: AppIconsTableViewCell.ReuseIdentifier)
         
         let closeButton = CloseButton()

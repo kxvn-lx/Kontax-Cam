@@ -57,7 +57,7 @@ class SettingsTableViewController: UITableViewController {
         
         self.tableView.backgroundColor = .systemBackground
         
-        self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 150))
+        self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 250))
     }
     
     @objc private func closeTapped() {
@@ -86,7 +86,7 @@ extension SettingsTableViewController {
                 let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
                 for fileURL in fileURLs { try FileManager.default.removeItem(at: fileURL) }
                 
-                AlertHelper.shared.presentDefault(title: "Lab images has been successfully deleted.", message: nil, to: self)
+                AlertHelper.shared.presentOKAction(withTitle: "Lab images has been successfully deleted.", to: self)
             } catch { print(error) }
         }
         
@@ -131,7 +131,7 @@ extension SettingsTableViewController {
             
             present(mail, animated: true)
         } else {
-            AlertHelper.shared.presentDefault(title: "No mail account.", message: "Please configure a mail account in order to send email. Or, manually email it to kevinlaminto.dev@gmail.com", to: self)
+            AlertHelper.shared.presentOKAction(withTitle: "No mail account.", andMessage: "Please configure a mail account in order to send email. Or, manually email it to kevinlaminto.dev@gmail.com", to: self)
         }
 
     }

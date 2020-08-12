@@ -95,7 +95,7 @@ extension FXCollectionViewController {
         cell.titleLabel.text = currentFx.name.description
         cell.iconImageView.image = IconHelper.shared.getIconImage(iconName: currentFx.icon)
         
-        if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.toggleSelected() }
+        if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.isFxSelected.toggle() }
         return cell
     }
     
@@ -104,7 +104,7 @@ extension FXCollectionViewController {
         
         // 1. Update UI
         let selectedCell = collectionView.cellForItem(at: indexPath) as! FXCollectionViewCell
-        selectedCell.toggleSelected()
+        selectedCell.isFxSelected.toggle()
         
         // 2. Update datasource
         let selectedFx = effects[indexPath.row]

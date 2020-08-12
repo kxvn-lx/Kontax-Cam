@@ -363,7 +363,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 } else {
                     TapticHelper.shared.errorTaptic()
                     DispatchQueue.main.async {
-                        AlertHelper.shared.presentDefault(title: "Kontax Cam does not have permission.", message: "Looks like we could not save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.", to: self.presentedViewController!)
+                        AlertHelper.shared.presentOKAction(withTitle: "Kontax Cam does not have permission.", andMessage: "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.", to: self.presentedViewController)
                     }
                 }
             }
@@ -383,7 +383,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 self.toggleElements()
                 self.collectionView.reloadData()
             } else {
-                AlertHelper.shared.presentDefault(title: "Something went wrong.", message: "We are unable to delete the image.", to: self.presentedViewController!)
+                AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.", andMessage: "We are unable to delete the image", to: self.presentedViewController)
             }
         }
     }

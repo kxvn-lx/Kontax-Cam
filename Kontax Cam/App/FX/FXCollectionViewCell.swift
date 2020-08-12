@@ -12,6 +12,14 @@ class FXCollectionViewCell: UICollectionViewCell {
 
     static let ReuseIdentifier = "FxCell"
     
+    let isActiveView: UIView = {
+        let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 5, height: 5)))
+        view.isHidden = true
+        view.layer.cornerRadius = view.frame.size.height / 2
+        view.backgroundColor = .label
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,24 +36,35 @@ class FXCollectionViewCell: UICollectionViewCell {
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
-    let toggleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "OFF"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption2).pointSize, weight: .bold)
-        label.textColor = .label
-        label.numberOfLines = 1
-        return label
-    }()
-    var isFxSelected = false
+    var isFxSelected = false {
+        didSet {
+            isActiveView.isHidden = !isFxSelected
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubview(titleLabel)
-        self.addSubview(toggleLabel)
+        setupView()
+        setupConstraint()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isFxSelected = false
+    }
+    
+    private func setupView() {
         self.addSubview(iconImageView)
+        self.addSubview(titleLabel)
+        self.addSubview(isActiveView)
+    }
+    
+    private func setupConstraint() {
         iconImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(self.frame.width * 0.2)
             make.centerX.equalToSuperview()
@@ -57,42 +76,10 @@ class FXCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(iconImageView.snp.bottom).offset(7.5)
         }
         
-        toggleLabel.snp.makeConstraints { (make) in
+        isActiveView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom)
-        }
-        
-        updateStyle()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        isFxSelected = false
-        updateStyle()
-    }
-    
-    func toggleSelected() {
-        isFxSelected.toggle()
-        updateStyle()
-    }
-    
-    private func updateStyle() {
-        toggleLabel.text = isFxSelected ? "ON" : "OFF"
-        
-        self.iconImageView.tintColor = isFxSelected ? .label : .systemGray4
-        self.titleLabel.textColor = isFxSelected ? .label : .systemGray4
-        self.toggleLabel.textColor = isFxSelected ? .label : .systemGray4
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if #available(iOS 13.0, *) {
-            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-                updateStyle()
-            }
+            make.width.height.equalTo(5)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
         }
     }
 }

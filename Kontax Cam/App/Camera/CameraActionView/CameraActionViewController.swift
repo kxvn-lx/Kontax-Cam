@@ -15,7 +15,7 @@ class CameraActionViewController: UIViewController {
     /// To change the order, re-arrange this array and the case index on the @objc function.
     private let actionButtonsIconName: [[String]] = [
         ["", "bolt.slash", "bolt", "bolt.badge.a"],
-        ["", "timer"],
+        ["", "timer.icon", "timer3.icon", "timer5.icon"],
         ["", "arrow.2.circlepath"],
         ["", "fx"],
         ["", "filters.icon"],
@@ -144,9 +144,10 @@ extension CameraActionViewController {
             
         // Timer
         case 1:
-            let time = timerEngine.ToggleTimer()
-            let title = time == 0 ? "Timer: Off" : "Timer: \(time) seconds"
-            SPAlertHelper.shared.present(title: title)
+            let (image, _) = IconHelper.shared.getIconName(currentIcon: sender.imageView?.image?.accessibilityIdentifier, iconImageArray: actionButtonsIconName[sender.tag])
+            sender.setImage(image, for: .normal)
+            
+            timerEngine.ToggleTimer()
             
         // Reverse camera
         case 2:

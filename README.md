@@ -28,6 +28,7 @@ If you want to contribute or push some fun little features, feel free to submit 
  - [ ] Our very own ImageEngine (not relying on GPUImage)
  - [ ] Improve the app architecture
  - [ ] MOAR APP ICONS
+ - [ ] Custom icons for timer, and all effects (or suggest!)
 
 ## Installation
 **Requirements**

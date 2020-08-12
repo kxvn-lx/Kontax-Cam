@@ -59,7 +59,7 @@ class AppIconsTableViewController: UITableViewController {
         if UIApplication.shared.supportsAlternateIcons {
             UIApplication.shared.setAlternateIconName(IconNames.allCases[indexPath.row].getIconName(forIconImageView: false)) { (error) in
                 if let error = error {
-                    AlertHelper.shared.presentDefault(title: error.localizedDescription, message: nil, to: self)
+                    AlertHelper.shared.presentOKAction(withTitle: error.localizedDescription, to: self)
                 }
             }
         }

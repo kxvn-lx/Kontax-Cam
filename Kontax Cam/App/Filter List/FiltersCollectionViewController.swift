@@ -59,7 +59,7 @@ extension FiltersCollectionViewController {
         cell.isSelected = item == selectedCollection
         
         cell.buttonTapped = {
-            AlertHelper.shared.presentDefault(title: "Future feature!", message: "This feature will allow you to view what the filters does with example photos", to: self)
+            AlertHelper.shared.presentOKAction(withTitle: "Future featured detected (:", andMessage: "This feature will allow you to view what the filters does with example photos.", to: self)
         }
         
         return cell

@@ -21,12 +21,10 @@ struct TimerEngine {
     
     /// Toggle the timer (Switching between the states)
     /// - Returns: The timer in Int (seconds)
-    mutating func ToggleTimer() -> Int {
+    mutating func ToggleTimer() {
         var nextIndex = allowedTime.firstIndex(of: currentTime)! + 1
         nextIndex = nextIndex >= allowedTime.count ? 0 : nextIndex
         currentTime = allowedTime[nextIndex]
-        
-        return currentTime
     }
     
     /// Present the timer to the key window

@@ -69,8 +69,7 @@ class FXInfoViewController: UIViewController {
                 iconName: "color.icon",
                 title: "Colour leaks",
                 description: """
-                Colour leaks add a gorgeous film colour overlay into your photo.
-                Currently Kontax Cam provides three different colours: red, green, and blue.
+                Colour leaks add a gorgeous film colour overlay into your photo. Currently Kontax Cam provides three different colours: red, green, and blue.
                 """),
             FXInfo(
                 iconName: "calendar",
@@ -94,8 +93,7 @@ class FXInfoViewController: UIViewController {
                 iconName: "leaks.icon",
                 title: "Light leaks",
                 description: """
-                Light leaks makes your photo pop with custom made film light leaks.
-                This effect best used with a film/vintage filter rather than modern one. But then, you can always experiment!
+                Light leaks makes your photo pop with custom made film light leaks. This effect best used with a film/vintage filter rather than modern one. But then, you can always experiment!
                 """),
         ]
         

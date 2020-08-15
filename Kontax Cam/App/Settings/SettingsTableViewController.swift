@@ -19,7 +19,7 @@ class SettingsTableViewController: UITableViewController {
         static let sourceCodeCell = IndexPath(row: 0, section: 1)
         static let twitterCell = IndexPath(row: 1, section: 1)
         static let emailCell = IndexPath(row: 3, section: 1)
-        static let instagramCell = IndexPath(row: 2, section: 1)
+        static let websiteCell = IndexPath(row: 2, section: 1)
     }
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class SettingsTableViewController: UITableViewController {
         case CellPath.sourceCodeCell: self.sourceCodeCellTapped()
         case CellPath.twitterCell: self.twitterCellTapped()
         case CellPath.emailCell: self.reportABugCellTapped()
-        case CellPath.instagramCell: self.instagramCellTapped()
+        case CellPath.websiteCell: self.websiteCellTapped()
         default: break
         }
     }
@@ -136,8 +136,8 @@ extension SettingsTableViewController {
 
     }
     
-    private func instagramCellTapped() {
-        if let url = URL(string: "https://instagram.com/kxvn.lx") {
+    private func websiteCellTapped() {
+        if let url = URL(string: "https://kontaxcam.netlify.app") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {

@@ -9,8 +9,6 @@
 import UIKit
 import PanModal
 
-private let headerIdentifier = "filtersHeader"
-
 protocol FilterListDelegate: class {
     /// Tells the delegate that a filter collection has been selected
     func filterListDidSelectCollection(_ collection: FilterCollection)
@@ -30,11 +28,13 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         // 1. Setup the layout
         collectionView.collectionViewLayout = makeLayout()
-        collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         collectionView.register(FiltersCollectionViewCell.self, forCellWithReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier)
         
         // 2. Setup datasource
         self.populateSection()
+        
+        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
+        self.navigationItem.rightBarButtonItem = infoButton
     }
     
     // MARK: UICollectionViewDataSource
@@ -44,6 +44,10 @@ class FiltersCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filterCollections.count
+    }
+    
+    @objc private func infoButtonTapped() {
+        AlertHelper.shared.presentOKAction(withTitle: "#TakenWithKontaxCam", andMessage: "Send your photos taken with Kontax Cam via email if you wished to be featured on the collection's cover page.", to: self)
     }
 }
 
@@ -70,22 +74,9 @@ extension FiltersCollectionViewController {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
-            fatalError("Could not dequeue SectionHeader")
-        }
-        
-        headerView.titleLabel.text = "If you want your photos to be included on the front cover of the filter collections, please submit them to kevinlaminto.dev@gmail.com along with the filter used for the photo."
-        headerView.titleLabel.numberOfLines = 0
-        headerView.infoButton.isHidden = true
-        
-        return headerView
-    }
 }
 
 extension FiltersCollectionViewController {
-    // MARK: - Class functions
     private func createSection() -> NSCollectionLayoutSection {
         let contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 5, bottom: 20, trailing: 5)
         
@@ -101,7 +92,6 @@ extension FiltersCollectionViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
-        section.boundarySupplementaryItems = [makeSectionHeader()]
         
         return section
     }
@@ -117,19 +107,6 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
-    }
-    
-    private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(100))
-        
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        return layoutSectionHeader
     }
 }
 

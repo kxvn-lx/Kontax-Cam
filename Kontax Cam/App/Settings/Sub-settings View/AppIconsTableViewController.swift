@@ -110,12 +110,7 @@ class AppIconsTableViewCell: UITableViewCell {
             titleLabel.text = iconName.rawValue
         }
     }
-    
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//        accessoryType = selected ? .checkmark : .none
-//    }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none

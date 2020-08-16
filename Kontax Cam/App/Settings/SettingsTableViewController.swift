@@ -40,12 +40,6 @@ class SettingsTableViewController: UITableViewController {
     }
 }
 
-extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
-    }
-}
-
 extension SettingsTableViewController: SettingsViewModelDelegate {
     func appearanceTapped() {
         let vc = AppearanceTableViewController()
@@ -118,5 +112,11 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension SettingsTableViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

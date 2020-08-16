@@ -77,6 +77,7 @@
 		0AC8F9FA249CE8AC0068E54F /* Kontax_CamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8F9F9249CE8AC0068E54F /* Kontax_CamTests.swift */; };
 		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
 		0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2929324A78FDA00320BC4 /* CameraEngine.swift */; };
+		0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD36BEB24E907F400AA78F0 /* PRIDE.png */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
 		0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F172493C41C0057A729 /* DustImageFilter.swift */; };
 		0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F192493C7B50057A729 /* FilterType.swift */; };
@@ -191,6 +192,7 @@
 		0AC8F9FB249CE8AC0068E54F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		0AD2929324A78FDA00320BC4 /* CameraEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
+		0AD36BEB24E907F400AA78F0 /* PRIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRIDE.png; sourceTree = "<group>"; };
 		0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoImagesURLs.swift; sourceTree = "<group>"; };
 		0AE49F172493C41C0057A729 /* DustImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustImageFilter.swift; sourceTree = "<group>"; };
 		0AE49F192493C7B50057A729 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */,
 				0AF619F924E0F73B00BE288A /* Summer vibes.png */,
 				0AF619FA24E0F73B00BE288A /* Sunshine.png */,
+				0AD36BEB24E907F400AA78F0 /* PRIDE.png */,
 			);
 			path = "App icons";
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
 				0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
+				0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */,
 				0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */,
 				0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */,
 				0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */,

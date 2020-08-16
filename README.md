@@ -1,7 +1,6 @@
 [![Swift 5.2](https://img.shields.io/badge/swift-5.2-ED523F.svg?style=flat)](https://swift.org/download/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/kxvn-lx/Kontax-Cam/graphs/commit-activity)
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://kontaxcam.netlify.app)
-[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://github.com/kxvn-lx/Kontax-Cam/issues)
 
 # Kontax Cam
 Kontax Cam is an instant camera built 100% using Swift for iOS. You can take your photos with the filters personally made and cloned from my own lightroom preset that I used for my photography. You can also apply some filters to make it look like a film photo, or customise it to look digital-film.

@@ -134,7 +134,7 @@ class CameraViewController: UIViewController {
     }
     
     @objc private func settingButtonTapped() {
-        let vc = self.storyboard!.instantiateViewController(withIdentifier: "settingsVC") as! SettingsTableViewController
+        let vc = SettingsTableViewController(style: .insetGrouped)
         
         let navController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .overFullScreen

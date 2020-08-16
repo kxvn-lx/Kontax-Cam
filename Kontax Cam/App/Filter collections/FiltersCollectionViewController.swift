@@ -64,6 +64,11 @@ extension FiltersCollectionViewController {
         
         cell.buttonTapped = {
             AlertHelper.shared.presentOKAction(withTitle: "Future feature!", andMessage: "This feature will allow you to see all the filters inside this collection, along with sample images.", to: self)
+            
+//            let vc = FilterInfoViewController()
+//            vc.selectedCollection = item
+//            let navController = UINavigationController(rootViewController: vc)
+//            self.present(navController, animated: true, completion: nil)
         }
         
         return cell

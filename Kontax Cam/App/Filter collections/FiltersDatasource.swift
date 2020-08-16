@@ -17,14 +17,14 @@ enum FilterName: String, CaseIterable {
 
 struct FilterCollection: Equatable {
     var name: String
-    var image: UIImage = FilterCollection.placeholderImage
+    var image: UIImage = Self.placeholderImage
     var filters: [FilterName]
     
     static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
         return rhs.name == lhs.name
     }
     
-    static let aCollection = FilterCollection(name: "A Collection", filters: [.A1, .A2, .A3, .A4, .A5])
+    static let aCollection = FilterCollection(name: "A Collection", image: UIImage(named: "A Collection.hero")!, filters: [.A1, .A2, .A3, .A4, .A5])
     static let placeholderImage = UIImage(named: "collection-placeholder")!
 }
 

@@ -22,6 +22,7 @@ fileprivate enum IconNames: String, CaseIterable {
         switch self {
         case .KontaxOriginal: return forIconImageView ? self.rawValue : nil
         case .LanigiroXatnok: return "lanigirO xatnoK"
+        case .Pride: return "PRIDE"
         default: return self.rawValue
         }
     }
@@ -38,6 +39,7 @@ class AppIconsTableViewController: UITableViewController {
         closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
+    private var initIndexPath: IndexPath?
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,18 +54,32 @@ class AppIconsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: AppIconsTableViewCell.ReuseIdentifier, for: indexPath) as! AppIconsTableViewCell
         
         cell.iconName = IconNames.allCases[indexPath.row]
+        if UIApplication.shared.alternateIconName == IconNames.allCases[indexPath.row].getIconName(forIconImageView: false) {
+            cell.accessoryType = .checkmark
+            initIndexPath = indexPath
+        }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if UIApplication.shared.supportsAlternateIcons {
-            UIApplication.shared.setAlternateIconName(IconNames.allCases[indexPath.row].getIconName(forIconImageView: false)) { (error) in
-                if let error = error {
-                    AlertHelper.shared.presentOKAction(withTitle: error.localizedDescription, to: self)
-                }
+            UIApplication.shared.setAlternateIconName(IconNames.allCases[indexPath.row].getIconName(forIconImageView: false), completionHandler: nil)
+            
+            if let initIndexPath = initIndexPath {
+                let cell = tableView.cellForRow(at: initIndexPath) as! AppIconsTableViewCell
+                cell.accessoryType = .none
+                self.initIndexPath = nil
             }
+            
+            let cell = tableView.cellForRow(at: indexPath) as! AppIconsTableViewCell
+            cell.accessoryType = .checkmark
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! AppIconsTableViewCell
+        cell.accessoryType = .none
     }
     
     @objc private func closeTapped() {
@@ -95,11 +111,10 @@ class AppIconsTableViewCell: UITableViewCell {
         }
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        accessoryType = selected ? .checkmark : .none
-    }
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        accessoryType = selected ? .checkmark : .none
+//    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -115,4 +115,8 @@ extension SettingsViewModel: UITableViewDelegate, UITableViewDataSource {
             headerView.textLabel?.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .headline).pointSize, weight: .bold)
         }
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .secondarySystemBackground
+    }
 }

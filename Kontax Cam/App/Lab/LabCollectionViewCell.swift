@@ -10,6 +10,7 @@ import UIKit
 
 class LabCollectionViewCell: UICollectionViewCell {
     
+    static let ReuseIdentifier = "labCell"
     let photoView: UIImageView = {
         let v = UIImageView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -19,8 +20,6 @@ class LabCollectionViewCell: UICollectionViewCell {
     private var isUserSelected = false
     private let borderWidth: CGFloat = 2
     private let duration: Double = 0.0625
-    
-    static let ReuseIdentifier = "labCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)

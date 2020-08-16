@@ -65,6 +65,11 @@ class SettingsFooterView: UIView {
         mStackView.setCustomSpacing(10, after: appVersionLabel)
         
         addSubview(mStackView)
+        
+        if let bundleVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            appVersionLabel.text = "\(UIApplication.appVersion!) (\(bundleVersion))"
+        }
+        
     }
     
     private func setupConstraint() {

@@ -26,6 +26,7 @@ class ColourleaksCustomisationViewController: UIViewController {
         
         self.collectionView!.register(ColourleaksCustomisationCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.setNavigationBarTitle("Colour leaks")
+        self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         self.collectionView.backgroundColor = .clear
         

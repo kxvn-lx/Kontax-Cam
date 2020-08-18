@@ -8,15 +8,15 @@
 
 import UIKit
 
-class FilterInfoViewController: UIViewController {
+class FilterInfoViewController: UICollectionViewController {
     
+    private var viewModel: FilterInfoViewModel!
     var selectedCollection: FilterCollection! {
         didSet {
 
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,16 +24,20 @@ class FilterInfoViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = .systemBackground
         
+        self.collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
+        
+        viewModel = FilterInfoViewModel(owner: self, filterCollection: selectedCollection)
+        self.collectionView.delegate = viewModel
+        
         setupView()
         setupConstraint()
     }
     
     private func setupView() {
-
+        self.collectionView.backgroundColor = .systemBackground
     }
     
     private func setupConstraint() {
 
     }
-    
 }

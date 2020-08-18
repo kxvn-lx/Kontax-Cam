@@ -15,19 +15,6 @@ enum FilterName: String, CaseIterable {
     case BW1, BW2, BW3, BW4
 }
 
-struct FilterCollection: Equatable {
-    var name: String
-    var image: UIImage = Self.placeholderImage
-    var filters: [FilterName]
-    
-    static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
-        return rhs.name == lhs.name
-    }
-    
-    static let aCollection = FilterCollection(name: "A Collection", image: UIImage(named: "A Collection.hero")!, filters: [.A1, .A2, .A3, .A4, .A5])
-    static let placeholderImage = UIImage(named: "collection-placeholder")!
-}
-
 extension FiltersCollectionViewController {
     
     /// Populate the filters collection list

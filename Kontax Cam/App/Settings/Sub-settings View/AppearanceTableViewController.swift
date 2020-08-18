@@ -21,6 +21,7 @@ class AppearanceTableViewController: UIViewController {
         super.viewDidLoad()
         
         self.setNavigationBarTitle("Appearance", backgroundColor: .systemGroupedBackground)
+        self.addCloseButton()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "appearanceCell")
         
         
@@ -33,10 +34,6 @@ class AppearanceTableViewController: UIViewController {
     
     private func setupView() {
         self.view.addSubview(tableView)
-        
-        let closeButton = CloseButton()
-        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
     
     private func setupConstraint() {
@@ -44,11 +41,7 @@ class AppearanceTableViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-    }
+
 }
 
 extension AppearanceTableViewController: UITableViewDataSource, UITableViewDelegate {

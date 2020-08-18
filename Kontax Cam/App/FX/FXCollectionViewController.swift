@@ -27,6 +27,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         super.viewDidLoad()
 
         self.setNavigationBarTitle("Effects")
+        self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
         
         // UICollectionView setup

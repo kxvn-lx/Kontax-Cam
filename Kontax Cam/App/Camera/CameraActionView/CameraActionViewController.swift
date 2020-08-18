@@ -166,10 +166,9 @@ extension CameraActionViewController {
             vc.delegate = parent
             vc.selectedCollection = parent.currentCollection
             
-            let navController = PanModalNavigationController(rootViewController: vc)
-            navController.modalDestination = .filters
+            let navController = UINavigationController(rootViewController: vc)
             
-            self.presentPanModal(navController)
+            self.present(navController, animated: true, completion: nil)
             
         // Grid
         case 5:

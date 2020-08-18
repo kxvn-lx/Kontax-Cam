@@ -92,7 +92,7 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func deleteAllTapped() {
-        let alert = UIAlertController(title: "Delete all lab images?", message: "This will free up some space in your device.", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Delete all lab images?", message: "This will free up some space in your device.", preferredStyle: .alert)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
             guard let self = self else { return }

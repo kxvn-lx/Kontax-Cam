@@ -9,6 +9,17 @@
 import UIKit
 
 extension UIViewController {
+    func addCloseButton() {
+        let closeButton = CloseButton()
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+    }
+    
+    @objc private func closeTapped() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     func setNavigationBarTitle(
         _ title: String,
         backgroundColor: UIColor = .systemBackground,

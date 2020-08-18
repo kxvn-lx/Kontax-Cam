@@ -48,13 +48,10 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
         // 1. Navigation configuration
         self.setNavigationBarTitle("Lab")
+        self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
         
         self.collectionView.register(LabCollectionViewCell.self, forCellWithReuseIdentifier: LabCollectionViewCell.ReuseIdentifier)
-        
-        let closeButton = CloseButton()
-        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: selectButton)
@@ -203,13 +200,6 @@ extension LabCollectionViewController {
     /// Remove the emptyview when an item is present
     private func removeEmptyView() {
         self.collectionView.backgroundView = nil
-    }
-    
-    /// Close button tapped method
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-        
     }
     
     /// Select button tapped method

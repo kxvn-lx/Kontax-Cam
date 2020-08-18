@@ -32,6 +32,7 @@ class GrainCustomisationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarTitle("Grain")
+        self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         
         setupView()

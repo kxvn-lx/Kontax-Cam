@@ -11,12 +11,7 @@ import PanModal
 
 class PanModalNavigationController: UINavigationController {
     
-    enum SpecialModalDestination {
-        case filters
-    }
-    
     private var isShortFormEnabled = true
-    var modalDestination: SpecialModalDestination!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,29 +35,19 @@ extension PanModalNavigationController: PanModalPresentable {
     }
     
     var longFormHeight: PanModalHeight {
-        switch modalDestination {
-        case .filters: return .maxHeight
-        default: return .contentHeight(200)
-        }
+        return .contentHeight(200)
     }
     
     var shortFormHeight: PanModalHeight {
-        switch modalDestination {
-        case .filters: return .maxHeight
-        default: return .contentHeight(200)
-        }
+        return .contentHeight(200)
     }
     
     var anchorModalToLongForm: Bool {
         return false
     }
     
-    var cornerRadius: CGFloat {
-        return 0
-    }
-    
     var showDragIndicator: Bool {
-        return true
+        return false
     }
     
     var isHapticFeedbackEnabled: Bool {

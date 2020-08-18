@@ -31,6 +31,7 @@ class LightleaksCustomisationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarTitle("Light leaks")
+        self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         
         setupView()

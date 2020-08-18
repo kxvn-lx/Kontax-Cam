@@ -32,6 +32,7 @@ class DustCustomisationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarTitle("Dust")
+        self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         
         setupView()

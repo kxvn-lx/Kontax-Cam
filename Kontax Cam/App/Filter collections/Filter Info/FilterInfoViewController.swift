@@ -8,25 +8,30 @@
 
 import UIKit
 
-class FilterInfoViewController: UICollectionViewController {
+class FilterInfoViewController: UIViewController {
     
     private var viewModel: FilterInfoViewModel!
+    private let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     var selectedCollection: FilterCollection! {
         didSet {
-
+            
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle("")
-        self.navigationController?.isNavigationBarHidden = true
+        self.setNavigationBarTitle(selectedCollection.name, preferredLargeTitle: true)
+        self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         
         self.collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
         
-        viewModel = FilterInfoViewModel(owner: self, filterCollection: selectedCollection)
+        viewModel = FilterInfoViewModel(collectionView: collectionView, filterCollection: selectedCollection)
         self.collectionView.delegate = viewModel
         
         setupView()
@@ -34,10 +39,18 @@ class FilterInfoViewController: UICollectionViewController {
     }
     
     private func setupView() {
-        self.collectionView.backgroundColor = .systemBackground
+        self.view.addSubview(collectionView)
     }
     
     private func setupConstraint() {
-
+        collectionView.snp.makeConstraints { (make) in
+            make.top.width.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.7)
+        }
+    }
+    
+    @objc private func closeTapped() {
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -13,6 +13,7 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     static let ReuseIdentifier = "FilterInfoCell"
     private let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .secondarySystemBackground
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView

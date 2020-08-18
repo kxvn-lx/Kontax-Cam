@@ -10,7 +10,7 @@ import UIKit
 
 struct FilterInfo: Hashable {
     let id = UUID()
-    let image: UIImage
+    let image: UIImage?
     let filterName: String
     
     func hash(into hasher: inout Hasher) {
@@ -25,27 +25,24 @@ struct FilterInfo: Hashable {
 class FilterInfoViewModel: NSObject {
     
     private let selectedFilterCollection: FilterCollection
-    private weak var owner: UICollectionViewController?
+    private weak var collectionView: UICollectionView?
     private var datasource: DataSource!
     private var datas = [FilterInfo]()
     
-    init(owner: UICollectionViewController, filterCollection: FilterCollection) {
+    init(collectionView: UICollectionView, filterCollection: FilterCollection) {
         self.selectedFilterCollection = filterCollection
         super.init()
-        self.owner = owner
+        self.collectionView = collectionView
         
-        owner.collectionView.collectionViewLayout = createLayout()
+        collectionView.collectionViewLayout = createLayout()
         configureDatasource()
         setupDatas()
-        
-        owner.collectionView.isPagingEnabled = true
-        
     }
     
     private func setupDatas() {
         let filterName = selectedFilterCollection.name.components(separatedBy: " ").first!
         for n in 1 ... 5 {
-            let image = UIImage(named: "\(filterName).ex\(n)")!
+            let image = UIImage(named: "\(filterName).ex\(n)")
             
             let filterInfo = FilterInfo(image: image, filterName: filterName)
             datas.append(filterInfo)
@@ -62,7 +59,7 @@ extension FilterInfoViewModel {
     
     
     fileprivate func configureDatasource() {
-        datasource = DataSource(collectionView: (owner?.collectionView)!, cellProvider: { (collectionView, indexPath, filterInfo) -> UICollectionViewCell? in
+        datasource = DataSource(collectionView: collectionView!, cellProvider: { (collectionView, indexPath, filterInfo) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier, for: indexPath) as? FilterInfoCollectionViewCell else { return nil }
             
             cell.filterInfo = filterInfo
@@ -86,7 +83,7 @@ extension FilterInfoViewModel {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.9),
-            heightDimension: .fractionalHeight(0.7))
+            heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)

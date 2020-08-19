@@ -20,7 +20,6 @@ struct MasterpieceWidgetProvider: TimelineProvider {
     /// When user has added a widget to their home screeen, this is needed to provide
     /// a full timeline
     func getTimeline(in context: Context, completion: @escaping (Timeline<PhotoEntry>) -> Void) {
-        print("timeline")
         var entry = PhotoEntry(photo: .static_photo)
         if let randomphoto = DataEngine.shared.randomPhoto() {
             entry = PhotoEntry(photo: randomphoto)

@@ -25,18 +25,3 @@ struct KontaxCamWidget: Widget {
         
     }
 }
-
-struct KontaxCamWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            MasterpieceView(photo: .static_photo)
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-            
-            MasterpieceView(photo: .static_photo)
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
-            MasterpieceView(photo: .static_photo)
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
-        }
-    }
-}

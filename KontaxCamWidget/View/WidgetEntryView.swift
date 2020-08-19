@@ -10,9 +10,16 @@ import SwiftUI
 
 /// The main View that will be displayed by the WidgetKit
 struct WidgetEntryView: View {
+    @Environment(\.widgetFamily) private var widgetFamily
+    
     let entry: MasterpieceWidgetProvider.Entry
     
+    @ViewBuilder
     var body: some View {
-        MasterpieceView(photo: entry.photo)
+        switch widgetFamily {
+        case .systemSmall: MasterpieceSmallView(photo: entry.photo)
+        case .systemMedium: MasterpieceMediumView(photo: entry.photo)
+        default: MasterpieceLargeView(photo: entry.photo)
+        }
     }
 }

@@ -48,9 +48,4 @@ class FilterInfoViewController: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.7)
         }
     }
-    
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-    }
 }

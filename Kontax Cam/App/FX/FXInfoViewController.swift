@@ -39,6 +39,7 @@ class FXInfoViewController: UIViewController {
         super.viewDidLoad()
 
         self.setNavigationBarTitle("Effects information")
+        self.addCloseButton()
         self.tableView.register(FXInfoTableViewCell.self, forCellReuseIdentifier: FXInfoTableViewCell.ReuseIdentifier)
         setupView()
         setupConstraint()
@@ -49,9 +50,6 @@ class FXInfoViewController: UIViewController {
     }
     
     private func setupView() {
-        let closeButton = CloseButton()
-        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         
         self.view.addSubview(tableView)
         tableView.delegate = self
@@ -98,11 +96,6 @@ class FXInfoViewController: UIViewController {
         ]
         
         createSnapshot(from: datas)
-    }
-    
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
     }
 
 }

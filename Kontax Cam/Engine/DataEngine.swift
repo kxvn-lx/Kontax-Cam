@@ -74,12 +74,6 @@ struct DataEngine {
             }
         }
     }
-    
-    /// getDocumentsDirectory() is a little helper function to locate the user's documents directory where you can save app files.
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
 }
 
 /// Extension for Widgets

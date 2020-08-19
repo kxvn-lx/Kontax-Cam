@@ -27,7 +27,7 @@ class SettingsTableViewController: UITableViewController {
     
     private func setupView() {
         let closeButton = CloseButton()
-        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(customCloseTapped), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         
         self.tableView.backgroundColor = .systemBackground
@@ -35,7 +35,7 @@ class SettingsTableViewController: UITableViewController {
         self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 250))
     }
     
-    @objc private func closeTapped() {
+    @objc private func customCloseTapped() {
         dismissWithAnimation()
     }
 }

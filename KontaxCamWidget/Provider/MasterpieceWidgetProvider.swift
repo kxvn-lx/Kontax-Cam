@@ -21,10 +21,14 @@ struct MasterpieceWidgetProvider: TimelineProvider {
     /// a full timeline
     func getTimeline(in context: Context, completion: @escaping (Timeline<PhotoEntry>) -> Void) {
         var entry = PhotoEntry(photo: .static_photo)
-        if let randomphoto = DataEngine.shared.randomPhoto() {
-            entry = PhotoEntry(photo: randomphoto)
+        if let randomPhoto = DataEngine.shared.randomPhoto() {
+            entry = PhotoEntry(photo: randomPhoto)
         }
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
+        let timeline = Timeline(entries: [entry], policy: .never)
+         completion(timeline)
+    }
+    
+    func placeholder(in context: Context) -> PhotoEntry {
+        PhotoEntry(photo: .static_photo)
     }
 }

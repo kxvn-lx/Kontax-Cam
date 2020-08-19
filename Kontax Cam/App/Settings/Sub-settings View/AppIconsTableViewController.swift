@@ -33,11 +33,9 @@ class AppIconsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarTitle("App icons", backgroundColor: .systemGroupedBackground)
+        self.addCloseButton()
         self.tableView.register(AppIconsTableViewCell.self, forCellReuseIdentifier: AppIconsTableViewCell.ReuseIdentifier)
-        
-        let closeButton = CloseButton()
-        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+
     }
     private var initIndexPath: IndexPath?
     
@@ -80,11 +78,6 @@ class AppIconsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! AppIconsTableViewCell
         cell.accessoryType = .none
-    }
-    
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
     }
 }
 

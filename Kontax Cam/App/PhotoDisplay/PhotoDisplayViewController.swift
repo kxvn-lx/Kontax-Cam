@@ -81,7 +81,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         toolView.addSubview(toolSV)
         
         // Nav View
-        closeButton.addTarget(self, action: #selector(closeTapped), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(customCloseTapped), for: .touchUpInside)
         navView.addSubview(closeButton)
     }
     
@@ -172,7 +172,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         }
     }
     
-    @objc private func closeTapped() {
+    @objc private func customCloseTapped() {
         hideInfoOverlayView(false)
         dismiss(animated: true, completion: nil)
     }

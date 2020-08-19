@@ -19,13 +19,12 @@ struct DataEngine {
     func save(imageData: Data) {
         let timestamp = NSDate().timeIntervalSince1970
         let imageName = "KontaxCam_\(timestamp).jpeg"
+
+        let fileManager = FileManager.default
+        let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.kevinlaminto.kontaxcam")?.appendingPathComponent(imageName)
         
-        let filename = getDocumentsDirectory().appendingPathComponent(imageName)
-        do {
-            try imageData.write(to: filename)
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
+        // store image in group container
+        fileManager.createFile(atPath: url!.path as String, contents: imageData, attributes: nil)
     }
     
     /// Read data from the file and convert them into array of URLs for reading
@@ -34,12 +33,15 @@ struct DataEngine {
         var urls: [URL] = []
         
         let fileManager = FileManager.default
-        let documentsPath = getDocumentsDirectory().path
+        guard let sharedGroupPath = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.kevinlaminto.kontaxcam")?.path else {
+            return urls
+        }
         
         do {
-            let fileNames = try fileManager.contentsOfDirectory(atPath: "\(documentsPath)")
+            let fileNames = try fileManager.contentsOfDirectory(atPath: "\(sharedGroupPath)").filter({ $0.contains("KontaxCam") })
+            
             for fileName in fileNames {
-                let imageURL = URL(fileURLWithPath: documentsPath).appendingPathComponent(fileName)
+                let imageURL = URL(fileURLWithPath: sharedGroupPath).appendingPathComponent(fileName)
                 urls.append(imageURL)
             }
             
@@ -77,5 +79,25 @@ struct DataEngine {
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
+    }
+}
+
+/// Extension for Widgets
+extension DataEngine {
+    func randomPhoto() -> Photo? {
+        guard let randomImageURL = readDataToURLs().randomElement() else {
+            return Photo.static_photo
+        }
+        
+        do {
+            let imageData = try Data(contentsOf: randomImageURL)
+            guard let image = UIImage(data: imageData) else { return nil }
+            return Photo(image: image, url: randomImageURL)
+            
+        } catch {
+            print("Error loading image : \(error)")
+        }
+        
+        return nil
     }
 }

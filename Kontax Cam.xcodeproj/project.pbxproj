@@ -37,10 +37,14 @@
 		0A30641424A9BA5A005C9033 /* FilterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30641324A9BA5A005C9033 /* FilterRenderer.swift */; };
 		0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490A24A8A49B00168225 /* PreviewMetalView.swift */; };
 		0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */; };
+		0A3861D824ED04780066B003 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
+		0A3861D924ED04780066B003 /* MasterpieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F28024ECFE83007A5E33 /* MasterpieceView.swift */; };
+		0A3861DA24ED0B450066B003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */; };
 		0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */; };
 		0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */; };
 		0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */; };
+		0A3F50A624ED19D800192DAE /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0A43068124ADB20E00CA2E0F /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A43067F24ADB20E00CA2E0F /* PassThrough.metal */; };
 		0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29A2476A7F000603F2C /* AppDelegate.swift */; };
 		0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29C2476A7F000603F2C /* SceneDelegate.swift */; };
@@ -72,6 +76,14 @@
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
 		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
+		0AC2F28124ECFE83007A5E33 /* MasterpieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F28024ECFE83007A5E33 /* MasterpieceView.swift */; };
+		0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */; };
+		0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */; };
+		0AC2F2A624ED0409007A5E33 /* KontaxCamWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */; };
+		0AC2F2A924ED040B007A5E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A824ED040B007A5E33 /* Assets.xcassets */; };
+		0AC2F2AB24ED040B007A5E33 /* KontaxCamWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A724ED0409007A5E33 /* KontaxCamWidget.intentdefinition */; };
+		0AC2F2AC24ED040B007A5E33 /* KontaxCamWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A724ED0409007A5E33 /* KontaxCamWidget.intentdefinition */; };
+		0AC2F2AF24ED040B007A5E33 /* KontaxCamWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C6247DDE2100BB0270 /* FilterEngine.swift */; };
 		0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C9247DE04F00BB0270 /* FilterFactory.swift */; };
 		0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */; };
@@ -103,6 +115,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0AC2F2AD24ED040B007A5E33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A44B28F2476A7F000603F2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0AC2F2A024ED0409007A5E33;
+			remoteInfo = KontaxCamWidgetExtension;
+		};
 		0AC8F9FC249CE8AC0068E54F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A44B28F2476A7F000603F2C /* Project object */;
@@ -113,6 +132,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0AC2F29A24ED0100007A5E33 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0AC2F2AF24ED040B007A5E33 /* KontaxCamWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AC407E9247E383E00BB0270 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +188,8 @@
 		0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalNavigationController.swift; sourceTree = "<group>"; };
 		0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kontax Cam.entitlements"; sourceTree = "<group>"; };
+		0A3F50A824ED1BDF00192DAE /* KontaxCamWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KontaxCamWidgetExtension.entitlements; sourceTree = "<group>"; };
 		0A43067F24ADB20E00CA2E0F /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		0A44B2972476A7F000603F2C /* Kontax Cam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kontax Cam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A44B29A2476A7F000603F2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +221,14 @@
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0AC2F28024ECFE83007A5E33 /* MasterpieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterpieceView.swift; sourceTree = "<group>"; };
+		0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KontaxCamWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KontaxCamWidget.swift; sourceTree = "<group>"; };
+		0AC2F2A724ED0409007A5E33 /* KontaxCamWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = KontaxCamWidget.intentdefinition; sourceTree = "<group>"; };
+		0AC2F2A824ED040B007A5E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0AC2F2AA24ED040B007A5E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AC407C6247DDE2100BB0270 /* FilterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEngine.swift; sourceTree = "<group>"; };
 		0AC407C9247DE04F00BB0270 /* FilterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFactory.swift; sourceTree = "<group>"; };
 		0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTImageFilter.swift; sourceTree = "<group>"; };
@@ -230,6 +270,15 @@
 				0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AC2F29E24ED0409007A5E33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */,
+				0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,8 +368,10 @@
 		0A44B28E2476A7F000603F2C = {
 			isa = PBXGroup;
 			children = (
+				0A3F50A824ED1BDF00192DAE /* KontaxCamWidgetExtension.entitlements */,
 				0A44B2992476A7F000603F2C /* Kontax Cam */,
 				0AC8F9F8249CE8AC0068E54F /* Kontax CamTests */,
+				0AC2F2A424ED0409007A5E33 /* KontaxCamWidget */,
 				0A44B2982476A7F000603F2C /* Products */,
 				816177D18B28A96025786676 /* Pods */,
 				0AC407E5247E381000BB0270 /* Frameworks */,
@@ -332,6 +383,7 @@
 			children = (
 				0A44B2972476A7F000603F2C /* Kontax Cam.app */,
 				0AC8F9F7249CE8AC0068E54F /* Kontax CamTests.xctest */,
+				0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -339,6 +391,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */,
 				0AF619F524E0F6EA00BE288A /* App icons */,
 				0ABD6D3A2497802400C3CC4B /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
@@ -357,6 +410,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0AC2F27F24ECFE75007A5E33 /* MasterpieceWidget */,
 				0A4D6E53247A472100E039FC /* Filter collections */,
 				0A03EAFD2480AB84001D8006 /* FX */,
 				0AADEE72247B731C009FFA52 /* Lab */,
@@ -482,6 +536,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0AC2F27F24ECFE75007A5E33 /* MasterpieceWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2F28024ECFE83007A5E33 /* MasterpieceView.swift */,
+			);
+			path = MasterpieceWidget;
+			sourceTree = "<group>";
+		};
+		0AC2F2A424ED0409007A5E33 /* KontaxCamWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */,
+				0AC2F2A724ED0409007A5E33 /* KontaxCamWidget.intentdefinition */,
+				0AC2F2A824ED040B007A5E33 /* Assets.xcassets */,
+				0AC2F2AA24ED040B007A5E33 /* Info.plist */,
+			);
+			path = KontaxCamWidget;
+			sourceTree = "<group>";
+		};
 		0AC407C8247DE03700BB0270 /* FilterFactory */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +575,8 @@
 			isa = PBXGroup;
 			children = (
 				0A537D3C247E422A006E17C0 /* GPUImage.framework */,
+				0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */,
+				0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -577,10 +652,12 @@
 				0A44B2952476A7F000603F2C /* Resources */,
 				0AC407E9247E383E00BB0270 /* CopyFiles */,
 				0A66C34024AB9EF300E30B7C /* ShellScript */,
+				0AC2F29A24ED0100007A5E33 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0AC2F2AE24ED040B007A5E33 /* PBXTargetDependency */,
 			);
 			name = "Kontax Cam";
 			packageProductDependencies = (
@@ -592,6 +669,25 @@
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0AC2F2A024ED0409007A5E33 /* KontaxCamWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0AC2F2B024ED040B007A5E33 /* Build configuration list for PBXNativeTarget "KontaxCamWidgetExtension" */;
+			buildPhases = (
+				0AC2F29D24ED0409007A5E33 /* Sources */,
+				0AC2F29E24ED0409007A5E33 /* Frameworks */,
+				0AC2F29F24ED0409007A5E33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KontaxCamWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = KontaxCamWidgetExtension;
+			productReference = 0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		0AC8F9F6249CE8AC0068E54F /* Kontax CamTests */ = {
 			isa = PBXNativeTarget;
@@ -617,12 +713,15 @@
 		0A44B28F2476A7F000603F2C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Kevin Laminto";
 				TargetAttributes = {
 					0A44B2962476A7F000603F2C = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					0AC2F2A024ED0409007A5E33 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 					0AC8F9F6249CE8AC0068E54F = {
 						CreatedOnToolsVersion = 11.5;
@@ -651,6 +750,7 @@
 			targets = (
 				0A44B2962476A7F000603F2C /* Kontax Cam */,
 				0AC8F9F6249CE8AC0068E54F /* Kontax CamTests */,
+				0AC2F2A024ED0409007A5E33 /* KontaxCamWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -672,6 +772,15 @@
 				0AF61A0024E0F73C00BE288A /* Summer vibes.png in Resources */,
 				0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AC2F29F24ED0409007A5E33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A3861DA24ED0B450066B003 /* Assets.xcassets in Resources */,
+				0AC2F2A924ED040B007A5E33 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +843,7 @@
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */,
 				0A30641424A9BA5A005C9033 /* FilterRenderer.swift in Sources */,
+				0AC2F28124ECFE83007A5E33 /* MasterpieceView.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
 				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
 				0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */,
@@ -775,6 +885,7 @@
 				0A5C087F24E0044E002E2D66 /* SettingsFooterView.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */,
+				0AC2F2AC24ED040B007A5E33 /* KontaxCamWidget.intentdefinition in Sources */,
 				0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */,
 				0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */,
 				0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */,
@@ -784,6 +895,18 @@
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,
 				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,
 				0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0AC2F29D24ED0409007A5E33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A3F50A624ED19D800192DAE /* DataEngine.swift in Sources */,
+				0A3861D824ED04780066B003 /* Photo.swift in Sources */,
+				0AC2F2AB24ED040B007A5E33 /* KontaxCamWidget.intentdefinition in Sources */,
+				0AC2F2A624ED0409007A5E33 /* KontaxCamWidget.swift in Sources */,
+				0A3861D924ED04780066B003 /* MasterpieceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +921,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0AC2F2AE24ED040B007A5E33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0AC2F2A024ED0409007A5E33 /* KontaxCamWidgetExtension */;
+			targetProxy = 0AC2F2AD24ED040B007A5E33 /* PBXContainerItemProxy */;
+		};
 		0AC8F9FD249CE8AC0068E54F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0A44B2962476A7F000603F2C /* Kontax Cam */;
@@ -944,7 +1072,9 @@
 		0A44B2AC2476A7F100603F2C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Kontax Cam/Kontax Cam.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
@@ -964,7 +1094,9 @@
 		0A44B2AD2476A7F100603F2C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Kontax Cam/Kontax Cam.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
@@ -976,6 +1108,54 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlaminto.kontaxcam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		0AC2F2B124ED040B007A5E33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = KontaxCamWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = D87H8GPTK2;
+				INFOPLIST_FILE = KontaxCamWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlaminto.kontaxcam.KontaxCamWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0AC2F2B224ED040B007A5E33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = KontaxCamWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = D87H8GPTK2;
+				INFOPLIST_FILE = KontaxCamWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlaminto.kontaxcam.KontaxCamWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1040,6 +1220,15 @@
 			buildConfigurations = (
 				0A44B2AC2476A7F100603F2C /* Debug */,
 				0A44B2AD2476A7F100603F2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0AC2F2B024ED040B007A5E33 /* Build configuration list for PBXNativeTarget "KontaxCamWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AC2F2B124ED040B007A5E33 /* Debug */,
+				0AC2F2B224ED040B007A5E33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

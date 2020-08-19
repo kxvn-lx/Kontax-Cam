@@ -26,4 +26,6 @@ class Photo: Hashable {
     static func == (lhs: Photo, rhs: Photo) -> Bool {
         return lhs.id == rhs.id
     }
+    
+    static let static_photo = Photo(image: UIImage(named: "A.ex5")!, url: URL(fileURLWithPath: "static_photo_url"))
 }

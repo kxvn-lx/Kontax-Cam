@@ -38,6 +38,16 @@
                ReferencedContainer = "container:Kontax Cam.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0AC8F9F6249CE8AC0068E54F"
+               BuildableName = "Kontax CamTests.xctest"
+               BlueprintName = "Kontax CamTests"
+               ReferencedContainer = "container:Kontax Cam.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

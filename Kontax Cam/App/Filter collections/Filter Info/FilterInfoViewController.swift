@@ -25,7 +25,7 @@ class FilterInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle(selectedCollection.name, preferredLargeTitle: true)
+        self.setNavigationBarTitle(selectedCollection.name)
         self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         

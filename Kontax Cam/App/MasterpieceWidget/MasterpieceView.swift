@@ -7,14 +7,15 @@
 //
 
 import SwiftUI
-import UIKit
-import Nuke
+import WidgetKit
 
 @available(iOS 14.0, *)
 struct MasterpieceView: View {
     var photo: Photo
     @State private var date: String = "19 Aug 2020"
     @State private var time: String = "6:45 pm"
+    
+    @Environment(\.widgetFamily) private var widgetFamily
     
     var body: some View {
         ZStack {
@@ -61,5 +62,12 @@ struct MasterpieceView: View {
 struct MasterpieceView_Previews: PreviewProvider {
     static var previews: some View {
         MasterpieceView(photo: Photo.static_photo)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        
+        MasterpieceView(photo: Photo.static_photo)
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        
+        MasterpieceView(photo: Photo.static_photo)
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

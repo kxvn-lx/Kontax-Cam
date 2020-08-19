@@ -30,10 +30,9 @@ struct MasterpieceSmallView: View {
             
             VStack {
                 Text(date)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
                 Text(time)
-                    .font(.title3)
+                    .font(.caption)
             }
             .foregroundColor(.white)
         }

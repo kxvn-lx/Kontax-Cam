@@ -22,6 +22,5 @@ struct KontaxCamWidget: Widget {
         }
         .configurationDisplayName("Your masterpiece")
         .description("Random photo taken directly from your lab.")
-        
     }
 }

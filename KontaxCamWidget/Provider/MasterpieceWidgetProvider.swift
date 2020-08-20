@@ -14,12 +14,18 @@ struct MasterpieceWidgetProvider: TimelineProvider {
     /// Provides snapshot when widgetkit just wants one entry.
     /// like in Widget library
     func getSnapshot(in context: Context, completion: @escaping (PhotoEntry) -> Void) {
-        completion(PhotoEntry(photo: .static_photo))
+        print("Snapshot activated")
+        var entry = PhotoEntry(photo: .static_photo)
+        if let randomPhoto = DataEngine.shared.randomPhoto() {
+            entry = PhotoEntry(photo: randomPhoto)
+        }
+        completion(entry)
     }
     
     /// When user has added a widget to their home screeen, this is needed to provide
     /// a full timeline
     func getTimeline(in context: Context, completion: @escaping (Timeline<PhotoEntry>) -> Void) {
+        print("Timeline activated")
         var entry = PhotoEntry(photo: .static_photo)
         if let randomPhoto = DataEngine.shared.randomPhoto() {
             entry = PhotoEntry(photo: randomPhoto)

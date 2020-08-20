@@ -9,7 +9,6 @@
 import SwiftUI
 import WidgetKit
 
-@available(iOS 14.0, *)
 struct MasterpieceLargeView: View {
     var photo: Photo
     @State private var date: String = "19 Aug 2020"
@@ -25,10 +24,10 @@ struct MasterpieceLargeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(minWidth: 0,
-                                    maxWidth: .infinity,
-                                    minHeight: 0,
-                                    maxHeight: 275,
-                                    alignment: .center)
+                           maxWidth: .infinity,
+                           minHeight: 0,
+                           maxHeight: 275,
+                           alignment: .center)
                     .cornerRadius(15)
                     .clipped()
                     .onAppear(perform: {
@@ -41,7 +40,9 @@ struct MasterpieceLargeView: View {
                     Text(date)
                         .fontWeight(.bold)
                     Text(time)
+                        .foregroundColor(.gray)
                 }
+                .font(.callout)
                 .foregroundColor(.white)
             }
             .padding()
@@ -49,7 +50,6 @@ struct MasterpieceLargeView: View {
     }
 }
 
-@available(iOS 14.0, *)
 struct MasterpieceLargeView_Previews: PreviewProvider {
     static var previews: some View {
         MasterpieceLargeView(photo: .static_photo)

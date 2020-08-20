@@ -14,6 +14,10 @@ struct DateConverterHelper {
     private init() { }
     
     func convertToDateTime(url: URL) -> (date: String, time: String) {
+        if url == Photo.static_photo.url {
+            return ( "9 February 2019", "6:45 pm" )
+        }
+        
         let urlString = url.path
         let timestamp = urlString.components(separatedBy: "_").last!.components(separatedBy: ".").first!
         

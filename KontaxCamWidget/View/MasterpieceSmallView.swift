@@ -9,7 +9,6 @@
 import SwiftUI
 import WidgetKit
 
-@available(iOS 14.0, *)
 struct MasterpieceSmallView: View {
     var photo: Photo
     @State private var date: String = "19 Aug 2020"
@@ -32,14 +31,15 @@ struct MasterpieceSmallView: View {
                 Text(date)
                     .fontWeight(.bold)
                 Text(time)
-                    .font(.caption)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
             }
+            .font(.callout)
             .foregroundColor(.white)
         }
     }
 }
 
-@available(iOS 14.0, *)
 struct MasterpieceView_Previews: PreviewProvider {
     static var previews: some View {
         MasterpieceSmallView(photo: Photo.static_photo)

@@ -16,11 +16,7 @@ class FilterInfoViewController: UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-    var selectedCollection: FilterCollection! {
-        didSet {
-            
-        }
-    }
+    var selectedCollection: FilterCollection!
 
     override func viewDidLoad() {
         super.viewDidLoad()

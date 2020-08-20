@@ -16,11 +16,7 @@ class FilterInfoViewController: UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-    var selectedCollection: FilterCollection! {
-        didSet {
-            
-        }
-    }
+    var selectedCollection: FilterCollection!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +43,5 @@ class FilterInfoViewController: UIViewController {
             make.top.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.7)
         }
-    }
-    
-    @objc private func closeTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
     }
 }

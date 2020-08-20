@@ -44,7 +44,7 @@ class FilterInfoViewModel: NSObject {
         for n in 1 ... 5 {
             let image = UIImage(named: "\(filterName).ex\(n)")
             
-            let filterInfo = FilterInfo(image: image, filterName: filterName)
+            let filterInfo = FilterInfo(image: image, filterName: "\(filterName)\(n)")
             datas.append(filterInfo)
         }
         

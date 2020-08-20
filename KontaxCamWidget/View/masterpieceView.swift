@@ -9,7 +9,7 @@
 import SwiftUI
 import WidgetKit
 
-struct MasterpieceSmallView: View {
+struct masterpieceView: View {
     
     var photo: Photo
     @State private var date: String = "19 Aug 2020"
@@ -44,13 +44,13 @@ struct MasterpieceSmallView: View {
 
 struct MasterpieceView_Previews: PreviewProvider {
     static var previews: some View {
-        MasterpieceSmallView(photo: Photo.static_photo)
+        masterpieceView(photo: Photo.static_photo)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
         
-        MasterpieceSmallView(photo: Photo.static_photo)
+        masterpieceView(photo: Photo.static_photo)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         
-        MasterpieceSmallView(photo: Photo.static_photo)
+        masterpieceView(photo: Photo.static_photo)
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

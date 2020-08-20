@@ -16,10 +16,11 @@ struct WidgetEntryView: View {
     
     @ViewBuilder
     var body: some View {
-        switch widgetFamily {
-        case .systemSmall: MasterpieceSmallView(photo: entry.photo)
-        case .systemMedium: MasterpieceMediumView(photo: entry.photo)
-        default: MasterpieceLargeView(photo: entry.photo)
-        }
+        MasterpieceSmallView(photo: entry.photo)
+//        switch widgetFamily {
+//        case .systemSmall: MasterpieceSmallView(photo: entry.photo)
+//        case .systemMedium: MasterpieceMediumView(photo: entry.photo)
+//        default: MasterpieceLargeView(photo: entry.photo)
+//        }
     }
 }

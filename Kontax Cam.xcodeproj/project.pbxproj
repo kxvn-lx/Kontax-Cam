@@ -57,7 +57,6 @@
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
-		0A71C88A24EB6F5500C5449D /* FilterInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88924EB6F5500C5449D /* FilterInfoViewModel.swift */; };
 		0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88B24EB705A00C5449D /* FilterCollection.swift */; };
 		0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */; };
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
@@ -73,6 +72,7 @@
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
+		0AB2015724EF648300296B0F /* FilterInfoImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
 		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
 		0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */; };
@@ -198,7 +198,6 @@
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXInfoViewController.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
-		0A71C88924EB6F5500C5449D /* FilterInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoViewModel.swift; sourceTree = "<group>"; };
 		0A71C88B24EB705A00C5449D /* FilterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollection.swift; sourceTree = "<group>"; };
 		0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
@@ -212,6 +211,7 @@
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -478,8 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				0A13EB2724EAC0C0008C4FD0 /* FilterInfoViewController.swift */,
-				0A71C88924EB6F5500C5449D /* FilterInfoViewModel.swift */,
 				0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */,
+				0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */,
 			);
 			path = "Filter Info";
 			sourceTree = "<group>";
@@ -830,6 +830,7 @@
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */,
 				0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */,
+				0AB2015724EF648300296B0F /* FilterInfoImagesCollectionViewController.swift in Sources */,
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
@@ -843,7 +844,6 @@
 				0A267BD024E78FB50025FB60 /* UIImage.swift in Sources */,
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
 				0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */,
-				0A71C88A24EB6F5500C5449D /* FilterInfoViewModel.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,
 				0A1193BD249B56E30086604D /* Effect.swift in Sources */,
 				0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */,

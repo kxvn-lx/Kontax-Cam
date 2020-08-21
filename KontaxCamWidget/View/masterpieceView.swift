@@ -28,14 +28,18 @@ struct masterpieceView: View {
             Rectangle()
                 .fill(LinearGradient(gradient: Gradient(colors: [.clear, Color(.displayP3, red: 0, green: 0, blue: 0, opacity: 0.5)]), startPoint: .top, endPoint: .bottom))
             
-            VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Spacer()
+                    Text(date)
+                        .fontWeight(.bold)
+                    Text(time)
+                }
                 Spacer()
-                Text(date)
-                    .fontWeight(.bold)
-                Text(time)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
             }
+            .font(.system(.caption, design: .rounded))
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
             .foregroundColor(.white)
             .padding()
         }

@@ -29,6 +29,8 @@ class FilterInfoImagesCollectionViewController: UICollectionViewController {
         let pageControl = UIPageControl()
         pageControl.currentPage = 0
         pageControl.numberOfPages = 5 // Hardcoded since we know there will only be 5 example images
+        pageControl.currentPageIndicatorTintColor = .label
+        pageControl.pageIndicatorTintColor = .systemGray5
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         return pageControl
     }()

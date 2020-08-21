@@ -10,8 +10,14 @@ import UIKit
 
 struct FilterCollection: Equatable {
     var name: String
-    var image: UIImage = Self.placeholderImage
+    var image: UIImage?
     var filters: [FilterName]
+    
+    init(name: String, image: UIImage?, filters: [FilterName]) {
+        self.name = name
+        self.image = image == nil ? Self.placeholderImage : image
+        self.filters = filters
+    }
     
     static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
         return rhs.name == lhs.name

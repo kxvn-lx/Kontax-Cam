@@ -49,6 +49,9 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         setupView()
         setupConstraint()
         layer.borderColor = UIColor.label.cgColor
+        layer.cornerRadius = 5
+        layer.cornerCurve = .continuous
+        clipsToBounds = true
         
         // Setup blur view
         nameLabelView.backgroundColor = .clear

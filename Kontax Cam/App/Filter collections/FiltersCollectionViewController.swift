@@ -58,9 +58,8 @@ extension FiltersCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
         
         let item = filterCollections[indexPath.row]
-        cell.collectionNameLabel.text = item.name
-        cell.imageView.image = item.image
         
+        cell.filterCollection = item
         cell.isSelected = item == selectedCollection
         
         cell.buttonTapped = {
@@ -69,6 +68,9 @@ extension FiltersCollectionViewController {
             let navController = UINavigationController(rootViewController: vc)
             self.present(navController, animated: true, completion: nil)
         }
+        
+        cell.layer.shouldRasterize = true
+        cell.layer.rasterizationScale = UIScreen.main.scale
         
         return cell
     }
@@ -111,11 +113,5 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
-    }
-}
-
-extension FiltersCollectionViewController: PanModalPresentable {
-    var panScrollable: UIScrollView? {
-        return collectionView
     }
 }

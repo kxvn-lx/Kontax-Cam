@@ -58,6 +58,7 @@ class FilterInfoImagesCollectionViewController: UICollectionViewController {
     
     private func setupDatas() {
         let filterName = selectedFilterCollection.name.components(separatedBy: " ").first!
+
         for n in 1 ... 5 {
             let image = UIImage(named: "\(filterName).ex\(n)")
             

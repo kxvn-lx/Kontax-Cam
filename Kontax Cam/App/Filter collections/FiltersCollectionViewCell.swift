@@ -16,27 +16,33 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
-    let collectionNameLabel: UILabel = {
+    private let collectionNameLabel: UILabel = {
         let label = UILabel()
         return label
     }()
-    let infoButton: UIButton = {
+    private let infoButton: UIButton = {
         let button = UIButton(type: .detailDisclosure)
         button.tintColor = UIColor.label.withAlphaComponent(0.5)
         return button
     }()
-    let nameLabelView: UIView = {
+    private let nameLabelView: UIView = {
         let view = UIView()
         return view
     }()
     
     var buttonTapped: (() -> Void)? = nil
+    var filterCollection: FilterCollection! {
+        didSet {
+            collectionNameLabel.text = filterCollection.name
+            imageView.image = filterCollection.image
+        }
+    }
     
     override var isSelected: Bool {
         didSet {

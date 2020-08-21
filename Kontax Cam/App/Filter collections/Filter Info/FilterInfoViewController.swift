@@ -80,7 +80,7 @@ class FilterInfoViewController: UIViewController {
         mStackView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.8)
-            make.bottom.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-self.view.getSafeAreaInsets().bottom - 20)
         }
     }
     

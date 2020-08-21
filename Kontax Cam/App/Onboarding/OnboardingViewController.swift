@@ -39,12 +39,11 @@ class OnboardingViewController: UIViewController {
         v.text = "Instant camera hybrid app for films and digital photographers, by photographers."
         return v
     }()
-    private let startButton: UIButton = {
-       let v = UIButton()
-        v.setImage(IconHelper.shared.getIconImage(iconName: "arrow.right"), for: .normal)
-        v.imageView?.tintColor = .white
-        v.backgroundColor = .black
-        return v
+    private let startButton: DetailedButton = {
+       let button = DetailedButton()
+        button.setTitle("Start taking photo", for: .normal)
+        button.backgroundColor = .black
+        return button
     }()
     private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)
     

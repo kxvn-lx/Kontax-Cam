@@ -102,6 +102,7 @@
 		0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
 		0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */; };
+		0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4B47024EFB5C8004663CF /* DetailedButton.swift */; };
 		0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */; };
 		0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F624E0F73B00BE288A /* Bloodlust.png */; };
 		0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */; };
@@ -241,6 +242,7 @@
 		0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0AEE932F247C983800F485C0 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersGestureEngine.swift; sourceTree = "<group>"; };
+		0AF4B47024EFB5C8004663CF /* DetailedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedButton.swift; sourceTree = "<group>"; };
 		0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconsTableViewController.swift; sourceTree = "<group>"; };
 		0AF619F624E0F73B00BE288A /* Bloodlust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bloodlust.png; sourceTree = "<group>"; };
 		0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanigirO xatnoK.png"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 		0AB96FFA248A99E400F1FF3C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0AF4B47024EFB5C8004663CF /* DetailedButton.swift */,
 				0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */,
 				0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */,
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
@@ -798,6 +801,7 @@
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
+				0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */,
 				0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */,
 				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,
 				0A82B83424AC406600673F1A /* LUTRender.swift in Sources */,

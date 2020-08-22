@@ -96,10 +96,12 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
             guard let self = self else { return }
-            let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            
+            let fileManager = FileManager.default
+            guard let sharedGroupPath = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.kevinlaminto.kontaxcam") else { return }
             
             do {
-                let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: sharedGroupPath, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
                 for fileURL in fileURLs { try FileManager.default.removeItem(at: fileURL) }
                 
                 AlertHelper.shared.presentOKAction(withTitle: "Lab images has been successfully deleted.", to: self)

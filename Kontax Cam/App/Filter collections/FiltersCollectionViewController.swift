@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PanModal
 
 protocol FilterListDelegate: class {
     /// Tells the delegate that a filter collection has been selected
@@ -38,21 +37,11 @@ class FiltersCollectionViewController: UICollectionViewController {
         self.navigationItem.rightBarButtonItem = infoButton
     }
     
-    // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filterCollections.count
-    }
-    
     @objc private func infoButtonTapped() {
         AlertHelper.shared.presentOKAction(withTitle: "#TakenWithKontaxCam", andMessage: "Send your photos taken with Kontax Cam via email if you wished to be featured on the collection's cover page.", to: self)
     }
 }
 
-// MARK: - CollectionView delegate
 extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
@@ -79,6 +68,14 @@ extension FiltersCollectionViewController {
         delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filterCollections.count
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class FilterInfoCollectionViewCell: UICollectionViewCell {
     
+    private let cache = NSCache<NSString, UIImage>()
     static let ReuseIdentifier = "FilterInfoCell"
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -18,11 +19,7 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
-    var filterInfo: FilterInfo! {
-        didSet {
-            imageView.image = filterInfo.image
-        }
-    }
+    var filterInfo: FilterInfo!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +29,19 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let cachedImage = cache.object(forKey: Self.ReuseIdentifier as NSString) {
+            imageView.image = cachedImage
+        } else {
+            if let resizedImage = filterInfo.image!.scaleImage(width: imageView.bounds.size.width, height: imageView.bounds.size.height, trim: true) {
+                imageView.image = resizedImage
+                self.cache.setObject(resizedImage, forKey: Self.ReuseIdentifier as NSString)
+            }
+        }
+        
     }
     
     override func prepareForReuse() {

@@ -16,8 +16,9 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
     
+    private var cache = NSCache<NSString, UIImage>()
     private let imageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -40,7 +41,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     var filterCollection: FilterCollection! {
         didSet {
             collectionNameLabel.text = filterCollection.name
-            imageView.image = filterCollection.image
         }
     }
     
@@ -78,6 +78,19 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isSelected = false
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let cachedImage = cache.object(forKey: Self.ReuseIdentifier as NSString) {
+            imageView.image = cachedImage
+        } else {
+            if let resizedImage = filterCollection.image!.scaleImage(width: imageView.bounds.size.width, height: imageView.bounds.size.height, trim: true) {
+                imageView.image = resizedImage
+                cache.setObject(resizedImage, forKey: Self.ReuseIdentifier as NSString)
+            }
+        }
+
     }
     
     private func setupView() {
@@ -129,4 +142,5 @@ class FiltersCollectionViewCell: UICollectionViewCell {
             buttonAction()
         }
     }
+
 }

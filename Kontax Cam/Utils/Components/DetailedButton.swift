@@ -53,11 +53,13 @@ class DetailedButton: UIButton {
     
     private func setupView() {
         self.titleLabel?.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium)
-        
         setTitleColor(.white, for: .normal)
         setTitleColor(.systemGray3, for: .disabled)
         tintColor = .white
         self.adjustsImageWhenHighlighted = false
+        
+        layer.cornerRadius = 5
+        layer.cornerCurve = .continuous
     }
     
 }

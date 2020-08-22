@@ -23,8 +23,7 @@ class FilterInfoViewController: UIViewController {
         return button
     }()
     private let restoreButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(.systemGray2, for: .highlighted)
+        let button = UIButton(type: .system)
         button.setTitle("Restore purchase", for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .caption1)
         return button

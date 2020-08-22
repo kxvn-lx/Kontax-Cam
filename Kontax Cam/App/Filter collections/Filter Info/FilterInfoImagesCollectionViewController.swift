@@ -63,6 +63,7 @@ class FilterInfoImagesCollectionViewController: UICollectionViewController {
 
         for n in 1 ... 5 {
             let image = UIImage(named: "\(filterName).ex\(n)")
+            image?.accessibilityIdentifier = "\(filterName)\(n)"
             
             let filterInfo = FilterInfo(image: image, filterName: "\(filterName)\(n)")
             datas.append(filterInfo)

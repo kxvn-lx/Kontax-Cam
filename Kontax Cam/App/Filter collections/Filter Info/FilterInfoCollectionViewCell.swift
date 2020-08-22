@@ -33,15 +33,14 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let cachedImage = cache.object(forKey: Self.ReuseIdentifier as NSString) {
+        if let cachedImage = cache.object(forKey: filterInfo.image!.accessibilityIdentifier! as NSString) {
             imageView.image = cachedImage
         } else {
             if let resizedImage = filterInfo.image!.scaleImage(width: imageView.bounds.size.width, height: imageView.bounds.size.height, trim: true) {
                 imageView.image = resizedImage
-                self.cache.setObject(resizedImage, forKey: Self.ReuseIdentifier as NSString)
+                self.cache.setObject(resizedImage, forKey: filterInfo.image!.accessibilityIdentifier! as NSString)
             }
         }
-        
     }
     
     override func prepareForReuse() {

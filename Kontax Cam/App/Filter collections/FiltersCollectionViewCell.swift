@@ -82,12 +82,12 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let cachedImage = cache.object(forKey: Self.ReuseIdentifier as NSString) {
+        if let cachedImage = cache.object(forKey: filterCollection.name as NSString) {
             imageView.image = cachedImage
         } else {
             if let resizedImage = filterCollection.image!.scaleImage(width: imageView.bounds.size.width, height: imageView.bounds.size.height, trim: true) {
                 imageView.image = resizedImage
-                cache.setObject(resizedImage, forKey: Self.ReuseIdentifier as NSString)
+                cache.setObject(resizedImage, forKey: filterCollection.name as NSString)
             }
         }
 

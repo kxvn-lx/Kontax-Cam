@@ -17,7 +17,7 @@ struct FilterInfo: Hashable {
         hasher.combine(id)
     }
     
-    static func ==(lhs: FilterInfo, rhs: FilterInfo) -> Bool {
+    static func == (lhs: FilterInfo, rhs: FilterInfo) -> Bool {
         return lhs.id == rhs.id
     }
 }
@@ -92,7 +92,6 @@ extension FilterInfoImagesCollectionViewController {
     fileprivate enum Section { case main }
     fileprivate typealias DataSource = UICollectionViewDiffableDataSource<Section, FilterInfo>
     fileprivate typealias Snapshot = NSDiffableDataSourceSnapshot<Section, FilterInfo>
-    
     
     fileprivate func configureDatasource() {
         datasource = DataSource(collectionView: collectionView!, cellProvider: { (collectionView, indexPath, filterInfo) -> UICollectionViewCell? in

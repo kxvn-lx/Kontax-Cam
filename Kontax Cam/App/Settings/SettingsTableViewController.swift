@@ -42,14 +42,14 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController: SettingsViewModelDelegate {
     func appearanceTapped() {
-        let vc = AppearanceTableViewController()
-        let navController = UINavigationController(rootViewController: vc)
+        let appearanceVC = AppearanceTableViewController()
+        let navController = UINavigationController(rootViewController: appearanceVC)
         self.present(navController, animated: true, completion: nil)
     }
     
     func apppIconsTapped() {
-        let vc = AppIconsTableViewController(style: .insetGrouped)
-        let navController = UINavigationController(rootViewController: vc)
+        let appIconsVC = AppIconsTableViewController(style: .insetGrouped)
+        let navController = UINavigationController(rootViewController: appIconsVC)
         self.present(navController, animated: true, completion: nil)
     }
     

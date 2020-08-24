@@ -119,7 +119,6 @@ extension FXCollectionViewController {
         headerView.delegate = self
         headerView.titleLabel.text = "Long press any active effects to customise it."
         
-        
         return headerView
     }
     

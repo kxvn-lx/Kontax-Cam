@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate enum IconNames: String, CaseIterable {
+private enum IconNames: String, CaseIterable {
     case KontaxOriginal = "Kontax Original"
     case AFineDay = "A fine day"
     case Bloodlust

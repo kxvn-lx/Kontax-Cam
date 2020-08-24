@@ -26,7 +26,7 @@ protocol FilterRenderer: class {
     func reset()
 }
 
-func allocateOutputBufferPool(with inputFormatDescription: CMFormatDescription, outputRetainedBufferCountHint: Int) ->(
+func allocateOutputBufferPool(with inputFormatDescription: CMFormatDescription, outputRetainedBufferCountHint: Int) -> (
     outputBufferPool: CVPixelBufferPool?,
     outputColorSpace: CGColorSpace?,
     outputFormatDescription: CMFormatDescription?) {

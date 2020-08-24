@@ -47,7 +47,7 @@ extension UIImage {
         var widthScale = preWidthScale ?? preHeightScale ?? 1
         var heightScale = preHeightScale ?? widthScale
         switch scaleMode {
-        case .AspectFit(_):
+        case .AspectFit:
             let scale = min(widthScale, heightScale)
             widthScale = scale
             heightScale = scale

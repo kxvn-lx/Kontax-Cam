@@ -37,7 +37,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    var buttonTapped: (() -> Void)? = nil
+    var buttonTapped: (() -> Void)?
     var filterCollection: FilterCollection! {
         didSet {
             collectionNameLabel.text = filterCollection.name

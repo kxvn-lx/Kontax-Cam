@@ -24,7 +24,6 @@ class AppearanceTableViewController: UIViewController {
         self.addCloseButton()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "appearanceCell")
         
-        
         tableView.delegate = self
         tableView.dataSource = self
         

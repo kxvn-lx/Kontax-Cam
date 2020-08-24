@@ -10,7 +10,7 @@ import UIKit
 
 class LUTImageFilter: ImageFilterProtocol {
     
-    static var selectedLUTFilter: FilterName? = nil
+    static var selectedLUTFilter: FilterName?
     
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()

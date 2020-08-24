@@ -1,6 +1,14 @@
 disabled_rules:
 - trailing_whitespace
+- line_length
+- unused_capture_list
+- multiple_closures_with_trailing_closure
+- force_cast
 - identifier_name
+- type_name
+- cyclomatic_complexity
+- large_tuple
+- nesting
 opt_in_rules:
 - empty_count
 - empty_string
@@ -9,7 +17,7 @@ excluded:
 - Pods
 - SwiftLint/Common/3rdPartyLib
 line_length:
-    warning: 170
+    warning: 150
     error: 200
     ignores_function_declarations: true
     ignores_comments: true
@@ -30,6 +38,4 @@ file_length:
 cyclomatic_complexity:
     warning: 15
     error: 25
-type_name:
-    allowed_symbols: "_"
 reporter: "xcode"

@@ -281,7 +281,7 @@ class CameraEngine: NSObject {
                     guard let motion = motion else { return }
                     let x = motion.gravity.x
                     let y = motion.gravity.y
-                    // TODO: Maybe do faceup and facedown too?
+                    
                     if fabs(y) >= fabs(x) {
                         self.deviceOrientation = y >= 0 ? .portraitUpsideDown : .portrait
                     } else {

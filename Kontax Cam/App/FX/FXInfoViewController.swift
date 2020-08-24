@@ -92,7 +92,7 @@ class FXInfoViewController: UIViewController {
                 title: "Light leaks",
                 description: """
                 Light leaks makes your photo pop with custom made film light leaks. This effect best used with a film/vintage filter rather than modern one. But then, you can always experiment!
-                """),
+                """)
         ]
         
         createSnapshot(from: datas)
@@ -107,7 +107,7 @@ extension FXInfoViewController {
     
     /// Configure the datasource for the collectionview.
     fileprivate func configureDataSource() {
-        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, indexPath, fxInfo) -> UITableViewCell? in
+        dataSource = DataSource(tableView: tableView, cellProvider: { (tableView, _, fxInfo) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FXInfoTableViewCell.ReuseIdentifier) as? FXInfoTableViewCell else {
                 return nil
             }

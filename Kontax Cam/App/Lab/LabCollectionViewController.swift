@@ -259,12 +259,12 @@ extension LabCollectionViewController {
     }
     
     private func toggleElements() {
-        imageObjects.count == 0 ? setEmptyView() : removeEmptyView()
+        imageObjects.isEmpty ? setEmptyView() : removeEmptyView()
         
-        selectButton.isEnabled = imageObjects.count > 0
+        selectButton.isEnabled = !imageObjects.isEmpty
         selectButton.alpha = selectButton.isEnabled ? 1 : 0.25
         
-        fabDeleteButton.isEnabled = imagesIndexToDelete.count > 0
+        fabDeleteButton.isEnabled = !imagesIndexToDelete.isEmpty
         fabDeleteButton.isHidden = !isSelecting
         fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.5
     }

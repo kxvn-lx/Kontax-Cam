@@ -39,7 +39,7 @@ class SettingsViewModel: NSObject {
                     action: { [weak self] _ in self?.delegate?.appearanceTapped() }),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "App icons") },
-                    action: { [weak self] _ in self?.delegate?.apppIconsTapped() }),
+                    action: { [weak self] _ in self?.delegate?.apppIconsTapped() })
             ])
         
         let informationSection = SettingsSection(
@@ -53,7 +53,7 @@ class SettingsViewModel: NSObject {
                     action: { [weak self] _ in self?.delegate?.websiteTapped() }),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Email") },
-                    action: { [weak self] _ in self?.delegate?.emailTapped() }),
+                    action: { [weak self] _ in self?.delegate?.emailTapped() })
             ])
         
         let otherStuffSection = SettingsSection(
@@ -70,7 +70,7 @@ class SettingsViewModel: NSObject {
                         cell.accessoryType = .disclosureIndicator
                         return cell
                     },
-                    action: { [weak self] _ in self?.delegate?.deleteAllTapped() }),
+                    action: { [weak self] _ in self?.delegate?.deleteAllTapped() })
             ])
         
         self.tableviewSections = [generalSection, informationSection, otherStuffSection]

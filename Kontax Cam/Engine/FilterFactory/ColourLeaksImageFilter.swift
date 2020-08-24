@@ -6,7 +6,6 @@
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import GPUImage
 import UIKit
 
 class ColourLeaksImageFilter: ImageFilterProtocol {
@@ -17,28 +16,24 @@ class ColourLeaksImageFilter: ImageFilterProtocol {
     func process(imageToEdit image: UIImage) -> UIImage? {
         print("applying colour leaks value: \(selectedColourLeaksFilter.rawValue)")
         
-        var editedImage: UIImage?
-        let output = PictureOutput()
-        output.encodedImageFormat = .jpeg
-        output.imageAvailableCallback = { outputImage in
-            editedImage = outputImage.remakeOrientation(fromImage: image)
-        }
+        // 1. Begin drawing
+        UIGraphicsBeginImageContext(image.size)
         
-        let blendMode = DarkenBlend()
+        // 2. Draw the base image first
+        let rect = CGRect(origin: .zero, size: image.size)
+        image.draw(in: rect)
         
-        let imageInput = PictureInput(image: image)
-        let colourLeaksInput = PictureInput(image: renderImage(fromColor: selectedColourLeaksFilter.value, withSize: image.size).alpha(strength))
+        // 3. Draw the colour image with darken blend mode
+        let colourImage = convertToImage(fromColor: selectedColourLeaksFilter.value, withSize: image.size)
+        colourImage.draw(in: rect, blendMode: .darken, alpha: strength)
         
-        imageInput --> blendMode
-        colourLeaksInput --> blendMode --> output
-        
-        imageInput.processImage(synchronously: true)
-        colourLeaksInput.processImage(synchronously: true)
-        
-        return editedImage
+        // 4. Get the blended image and return!
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
     
-    private func renderImage(fromColor color: UIColor, withSize size: CGSize) -> UIImage {
+    private func convertToImage(fromColor color: UIColor, withSize size: CGSize) -> UIImage {
         return UIGraphicsImageRenderer(size: size).image { (ctx) in
             color.set()
             ctx.fill(CGRect(origin: .zero, size: size))

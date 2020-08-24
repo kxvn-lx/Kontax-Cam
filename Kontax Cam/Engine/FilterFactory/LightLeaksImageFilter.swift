@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GPUImage
 
 class LightLeaksImageFilter: ImageFilterProtocol {
     
@@ -24,24 +23,19 @@ class LightLeaksImageFilter: ImageFilterProtocol {
         guard let leaksImage = UIImage(named: selectedLeaksFilter.rawValue) else { fatalError("Invalid name!") }
         print("Applying lightleaks with strength of: \(String(describing: strength))")
         
-        var editedImage: UIImage?
-        let output = PictureOutput()
-        output.encodedImageFormat = .jpeg
-        output.imageAvailableCallback = { outputImage in
-            editedImage = outputImage.remakeOrientation(fromImage: image)
-        }
+        // 1. Begin drawing
+        UIGraphicsBeginImageContext(image.size)
         
-        let blendMode = ScreenBlend()
+        // 2. Draw the base image first
+        let rect = CGRect(origin: .zero, size: image.size)
+        image.draw(in: rect)
         
-        let imageInput = PictureInput(image: image)
-        let leaksInput = PictureInput(image: leaksImage.alpha(strength))
+        // 3. Draw the light leaks image with screen blend mode
+        leaksImage.draw(in: rect, blendMode: .screen, alpha: strength)
         
-        imageInput --> blendMode
-        leaksInput --> blendMode --> output
-        
-        imageInput.processImage(synchronously: true)
-        leaksInput.processImage(synchronously: true)
-        
-        return editedImage
+        // 4. Get the blended image and return!
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
 }

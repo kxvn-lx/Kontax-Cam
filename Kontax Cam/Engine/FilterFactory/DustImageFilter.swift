@@ -6,11 +6,9 @@
 //  Copyright © 2020 Kevin Laminto. All rights reserved.
 //
 
-import GPUImage
 import UIKit
 
 class DustImageFilter: ImageFilterProtocol {
-    
     private enum DustName: String, CaseIterable {
         case dust1
     }
@@ -24,24 +22,19 @@ class DustImageFilter: ImageFilterProtocol {
         guard let dustImage = UIImage(named: selectedDustFilter.rawValue) else { fatalError("Invalid name!") }
         print("Applying dust with strength of: \(strength)")
         
-        var editedImage: UIImage?
-        let output = PictureOutput()
-        output.encodedImageFormat = .jpeg
-        output.imageAvailableCallback = { outputImage in
-            editedImage = outputImage.remakeOrientation(fromImage: image)
-        }
+        // 1. Begin drawing
+        UIGraphicsBeginImageContext(image.size)
         
-        let blendMode = ScreenBlend()
+        // 2. Draw the base image first
+        let rect = CGRect(origin: .zero, size: image.size)
+        image.draw(in: rect)
         
-        let imageInput = PictureInput(image: image)
-        let dustInput = PictureInput(image: dustImage.alpha(strength))
+        // 3. Draw the dust image with screen blend mode
+        dustImage.draw(in: rect, blendMode: .screen, alpha: strength)
         
-        imageInput --> blendMode
-        dustInput --> blendMode --> output
-        
-        imageInput.processImage(synchronously: true)
-        dustInput.processImage(synchronously: true)
-        
-        return editedImage
+        // 4. Get the blended image and return!
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
     }
 }

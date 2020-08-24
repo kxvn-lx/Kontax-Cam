@@ -27,7 +27,7 @@ If you want to contribute or push some fun little features, feel free to submit 
  
  - [ ] Improve app to use less memory ⚠️ (In need of a help!)
  - [ ] Any improvements
- - [ ] Our very own ImageEngine (not relying on GPUImage)
+ - [x] Our very own ImageEngine (not relying on GPUImage)
  - [ ] Improve the app architecture
  - [ ] MOAR APP ICONS
  - [ ] Custom icons for timer, and all effects (or suggest!)
@@ -46,10 +46,6 @@ If you want to contribute or push some fun little features, feel free to submit 
 **How to**
 1. Clone the repo
 2. Open KontaxCam.xcworkspace
-
-
-## Acknowledgment
-This project uses [GPUImage 3](https://github.com/BradLarson/GPUImage3) to do all the heavy-lifting image-side. 
 
 ## Contact
 [Twitter](https://twitter.com/kevinlx_)

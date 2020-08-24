@@ -51,8 +51,6 @@
 		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
-		0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; };
-		0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A537D3C247E422A006E17C0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A5C087F24E0044E002E2D66 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */; };
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */; };
@@ -137,16 +135,6 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0AC407E9247E383E00BB0270 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0A537D3E247E423A006E17C0 /* GPUImage.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -194,7 +182,6 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
-		0A537D3C247E422A006E17C0 /* GPUImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GPUImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXInfoViewController.swift; sourceTree = "<group>"; };
@@ -260,7 +247,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A537D3D247E422A006E17C0 /* GPUImage.framework in Frameworks */,
 				0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */,
 				0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
@@ -360,7 +346,6 @@
 				0A44B2992476A7F000603F2C /* Kontax Cam */,
 				0AC2F2A424ED0409007A5E33 /* KontaxCamWidget */,
 				0A44B2982476A7F000603F2C /* Products */,
-				816177D18B28A96025786676 /* Pods */,
 				0AC407E5247E381000BB0270 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -555,7 +540,6 @@
 		0AC407E5247E381000BB0270 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A537D3C247E422A006E17C0 /* GPUImage.framework */,
 				0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */,
 				0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */,
 			);
@@ -638,13 +622,6 @@
 			path = "App icons";
 			sourceTree = "<group>";
 		};
-		816177D18B28A96025786676 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -655,7 +632,6 @@
 				0A44B2932476A7F000603F2C /* Sources */,
 				0A44B2942476A7F000603F2C /* Frameworks */,
 				0A44B2952476A7F000603F2C /* Resources */,
-				0AC407E9247E383E00BB0270 /* CopyFiles */,
 				0A66C34024AB9EF300E30B7C /* ShellScript */,
 				0AC2F29A24ED0100007A5E33 /* Embed App Extensions */,
 			);

@@ -2,21 +2,30 @@
   "object": {
     "pins": [
       {
-        "package": "CameraManager",
-        "repositoryURL": "https://github.com/imaginary-cloud/CameraManager",
+        "package": "DTPhotoViewerController",
+        "repositoryURL": "https://github.com/tungvoduc/DTPhotoViewerController",
         "state": {
           "branch": null,
-          "revision": "30584f3b8fcb47ed778b172b8727b10854704927",
-          "version": "5.1.3"
+          "revision": "be2b855fc04fae5750e021c04a8f6d0d4ab18f92",
+          "version": "3.1.1"
         }
       },
       {
-        "package": "QuickTableViewController",
-        "repositoryURL": "https://github.com/bcylin/QuickTableViewController",
+        "package": "Nuke",
+        "repositoryURL": "https://github.com/kean/Nuke",
         "state": {
           "branch": null,
-          "revision": "70ec82dc5f3cf55dc8518eca834d09c758a398fb",
-          "version": "1.2.1"
+          "revision": "998588c80611e4fe9b71dd4323fa938ee62f4ff7",
+          "version": "9.1.1"
+        }
+      },
+      {
+        "package": "PanModal",
+        "repositoryURL": "https://github.com/slackhq/PanModal",
+        "state": {
+          "branch": null,
+          "revision": "b012aecb6b67a8e46369227f893c12544846613f",
+          "version": "1.2.7"
         }
       },
       {
@@ -26,15 +35,6 @@
           "branch": null,
           "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
           "version": "5.0.1"
-        }
-      },
-      {
-        "package": "SPAlert",
-        "repositoryURL": "https://github.com/ivanvorobei/SPAlert",
-        "state": {
-          "branch": null,
-          "revision": "18862409586ac547bcdf8957cd96beb872fbc729",
-          "version": "2.1.4"
         }
       }
     ]

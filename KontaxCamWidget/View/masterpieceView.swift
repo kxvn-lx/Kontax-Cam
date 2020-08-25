@@ -20,7 +20,7 @@ struct masterpieceView: View {
             Image(uiImage: photo.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(minWidth: 0/*@END_MENU_TOKEN@*/, idealWidth: 100/*@END_MENU_TOKEN@*/, maxWidth: .infinity/*@END_MENU_TOKEN@*/, minHeight: 0/*@END_MENU_TOKEN@*/, idealHeight: 100/*@END_MENU_TOKEN@*/, maxHeight: .infinity/*@END_MENU_TOKEN@*/, alignment: .center/*@END_MENU_TOKEN@*/)
+                .frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
                 .onAppear(perform: {
                     (self.date, self.time) = DateConverterHelper.shared.convertToDateTime(url: photo.url)
                 })

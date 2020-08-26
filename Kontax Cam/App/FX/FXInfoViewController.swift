@@ -70,7 +70,7 @@ class FXInfoViewController: UIViewController {
                 Colour leaks add a gorgeous film colour overlay into your photo. Currently Kontax Cam provides three different colours: red, green, and blue.
                 """),
             FXInfo(
-                iconName: "calendar",
+                iconName: "calendar.icon",
                 title: "Datestamp",
                 description: """
                 Datestamp allows you to add a real film date stamp into your photo.

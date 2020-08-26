@@ -162,6 +162,7 @@ extension CameraViewController: FilterListDelegate {
 
 extension CameraViewController: FiltersGestureDelegate {
     func didSwipeToChangeFilter(withNewIndex newIndex: Int) {
+        TapticHelper.shared.lightTaptic()
         cameraEngine.showFilter = newIndex > 0
         if newIndex > 0 {
             cameraEngine.renderNewFilter(withFilterName: currentCollection.filters[newIndex - 1])

@@ -43,6 +43,8 @@ class OnboardingViewController: UIViewController {
        let button = DetailedButton()
         button.setTitle("Start taking photo", for: .normal)
         button.backgroundColor = .black
+        button.layer.cornerRadius = 5
+        button.layer.cornerCurve = .continuous
         return button
     }()
     private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)
@@ -61,9 +63,7 @@ class OnboardingViewController: UIViewController {
     }
 
     private func setupView() {
-        
         self.imageView.image = UIImage(named: imagesName[0])!
-        
         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(onTransition), userInfo: nil, repeats: true)
         
         self.view.addSubview(imageView)
@@ -77,13 +77,11 @@ class OnboardingViewController: UIViewController {
         
         mSV.addArrangedSubview(sv)
         
-        mSV.setCustomSpacing(10, after: titleLabel)
         mSV.setCustomSpacing(20, after: bodyLabel)
         
         sv.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
         }
-
     }
     
     private func setupConstraint() {

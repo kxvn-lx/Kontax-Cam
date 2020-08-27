@@ -95,7 +95,7 @@ class FilterInfoViewController: UIViewController {
     @objc private func restoreButtonTapped() {
         AlertHelper.shared.presentOKAction(
             withTitle: "Future feature!",
-            andMessage: "This feature will comes with the addition of in app purchases. It will be a one time purchase, and not a subscription based. (maybe?) 🤷‍♂️",
+            andMessage: "This feature will comes with the addition of in app purchases. It will either be a one time purchase, or a subscription based. (help me decide?) 🤷‍♂️",
             to: self
         )
     }

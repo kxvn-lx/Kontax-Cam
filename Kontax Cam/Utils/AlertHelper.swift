@@ -15,8 +15,8 @@ class AlertHelper {
     private init() { }
     
     /// Present alert with a specified action
-    func presentWithCustomAction(title: String? = nil, message: String? = nil, withCustomAction alertActions: [UIAlertAction], to view: UIViewController) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func presentWithCustomAction(title: String? = nil, message: String? = nil, withCustomAction alertActions: [UIAlertAction], to view: UIViewController, preferredStyle: UIAlertController.Style = .alert) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         
         alertActions.forEach({
             alert.addAction($0)

@@ -17,8 +17,19 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     var imageObjects = [Photo]()
     private var pipeline = ImagePipeline.shared
     
-    private var isSelecting = false
-    private var imagesIndexToDelete: [IndexPath] = []
+    private var isSelecting = false {
+        didSet {
+            navigationController?.setToolbarHidden(!isSelecting, animated: true)
+            selectButton.setTitle(isSelecting ? "Cancel" : "Select", for: .normal)
+        }
+    }
+    private var selectedImageIndexes = [IndexPath]() {
+        didSet {
+            toolbarItems?.forEach({
+                $0.isEnabled = !selectedImageIndexes.isEmpty
+            })
+        }
+    }
     
     private let photoLibraryEngine = PhotoLibraryEngine()
     private let previewVC = PreviewViewController()
@@ -30,16 +41,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         v.titleLabel?.numberOfLines = 0
         v.setTitleColor(.label, for: .normal)
         return v
-    }()
-    private let fabDeleteButton: DetailedButton = {
-        let button = DetailedButton()
-        button.isEnabled = false
-        button.setImage(IconHelper.shared.getIconImage(iconName: "trash"), for: .normal)
-        button.backgroundColor = .systemRed
-        button.highlightedBackgroundColor = nil
-        button.alpha = 0.75
-        button.isHidden = true
-        return button
     }()
     
     // MARK: - View lifecycle
@@ -70,24 +71,26 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
-
+        
         ImageLoadingOptions.shared.placeholder = UIImage(named: "labCellPlaceholder")!
         ImageLoadingOptions.shared.transition = .fadeIn(duration: 0.125)
     }
     
     private func setupView() {
-        // Setup FABDeleteButton
-        fabDeleteButton.addTarget(self, action: #selector(confirmDeleteTapped), for: .touchUpInside)
-        self.view.addSubview(fabDeleteButton)
+        // Setup toolbar
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        let downloadItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down")!, style: .plain, target: self, action: #selector(confirmDownloadTapped))
+        downloadItem.tintColor = .label
+        downloadItem.isEnabled = false
+        let deleteItem = UIBarButtonItem(image: UIImage(systemName: "trash")!, style: .plain, target: self, action: #selector(confirmDeleteTapped))
+        deleteItem.tintColor = .label
+        deleteItem.isEnabled = false
+        
+        toolbarItems = [downloadItem, spacer, deleteItem]
     }
     
     private func setupConstraint() {
-        fabDeleteButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-(self.view.getSafeAreaInsets().bottom + 20))
-            make.height.equalTo(50)
-            make.width.equalTo(self.view.frame.width * 0.8)
-            make.centerX.equalToSuperview()
-        }
     }
 }
 
@@ -110,7 +113,7 @@ extension LabCollectionViewController {
         
         loadImage(with: request, into: cell.photoView)
         
-        if imagesIndexToDelete.contains(indexPath) { cell.toggleSelection() }
+        if selectedImageIndexes.contains(indexPath) { cell.toggleSelection() }
         
         return cell
     }
@@ -120,16 +123,16 @@ extension LabCollectionViewController {
             let cell = collectionView.cellForItem(at: indexPath) as! LabCollectionViewCell
             cell.toggleSelection()
             
-            if self.imagesIndexToDelete.contains(indexPath) {
+            if self.selectedImageIndexes.contains(indexPath) {
                 // User wished to undo tapping on cell
-                imagesIndexToDelete.remove(at: imagesIndexToDelete.firstIndex(of: indexPath)!)
+                selectedImageIndexes.remove(at: selectedImageIndexes.firstIndex(of: indexPath)!)
             } else {
                 // User tapped on cell
-                self.imagesIndexToDelete.append(indexPath)
+                self.selectedImageIndexes.append(indexPath)
             }
             
             self.toggleElements()
-            self.imagesIndexToDelete.sort(by: { $0.row > $1.row })
+            self.selectedImageIndexes.sort(by: { $0.row > $1.row })
             
         } else {
             self.selectedImageIndex = indexPath.row
@@ -205,17 +208,16 @@ extension LabCollectionViewController {
     /// Select button tapped method
     @objc private func selectButtonTapped() {
         isSelecting.toggle()
-        selectButton.setTitle(isSelecting ? "Cancel" : "Select", for: .normal)
         
         if !isSelecting {
             // Clear all pending queue of images to delete and deselect all active cell.
-            for indexPath in imagesIndexToDelete {
+            for indexPath in selectedImageIndexes {
                 if let cell = collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
                     cell.toggleSelection()
                 }
             }
             self.collectionView.reloadData()
-            imagesIndexToDelete.removeAll()
+            selectedImageIndexes.removeAll()
         }
         
         toggleElements()
@@ -224,13 +226,12 @@ extension LabCollectionViewController {
     
     /// Called when user want to confirm deletion
     @objc private func confirmDeleteTapped() {
-        let message = imagesIndexToDelete.count > 1 ? "images" : "image"
-        let alert = UIAlertController(title: "Delete \(imagesIndexToDelete.count) \(message)?", message: nil, preferredStyle: .actionSheet)
+        let message = selectedImageIndexes.count > 1 ? "images" : "image"
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
             guard let self = self else { return }
             
-            for indexPath in self.imagesIndexToDelete {
+            for indexPath in self.selectedImageIndexes {
                 if let cell = self.collectionView.cellForItem(at: indexPath) as? LabCollectionViewCell {
                     cell.toggleSelection()
                 }
@@ -240,10 +241,10 @@ extension LabCollectionViewController {
             }
             
             self.collectionView.performBatchUpdates({
-                self.collectionView.deleteItems(at: self.imagesIndexToDelete)
+                self.collectionView.deleteItems(at: self.selectedImageIndexes)
             }) { (success) in
                 if success {
-                    self.imagesIndexToDelete.removeAll()
+                    self.selectedImageIndexes.removeAll()
                     self.selectButtonTapped()
                     self.toggleElements()
                     self.collectionView.reloadData()
@@ -252,10 +253,43 @@ extension LabCollectionViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        alert.addAction(deleteAction)
-        alert.addAction(cancelAction)
+        AlertHelper.shared.presentWithCustomAction(title: "Delete \(selectedImageIndexes.count) \(message)?", withCustomAction: [deleteAction, cancelAction], to: self, preferredStyle: .actionSheet)
+    }
+    
+    /// Called when user wants to download multiple images
+    @objc private func confirmDownloadTapped() {
+        let message = selectedImageIndexes.count > 1 ? "images" : "image"
         
-        self.present(alert, animated: true, completion: nil)
+        let downloadAction = UIAlertAction(title: "Download", style: .default) { [weak self] (_) in
+            guard let self = self else { return }
+            
+            self.selectedImageIndexes.forEach({
+                if let cell = self.collectionView.cellForItem(at: $0) as? LabCollectionViewCell {
+                    cell.toggleSelection()
+                }
+                
+                if let imageToSave = UIImage(contentsOfFile: self.imageObjects[$0.row].url.path) {
+                    self.photoLibraryEngine.saveImageToAlbum(imageToSave) { (success) in
+                        if !success {
+                            AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.", andMessage: "There was a problem saving the last image. Please try again", to: self.presentedViewController)
+                            return
+                        }
+                    }
+                }
+            })
+            
+            TapticHelper.shared.successTaptic()
+            let alert = UIAlertController(title: "Saved!", message: "\(self.selectedImageIndexes.count) \(self.selectedImageIndexes.count > 1 ? "photos" : "photo") has been successfully saved to your camera roll.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            self.selectedImageIndexes.removeAll()
+            self.selectButtonTapped()
+            self.toggleElements()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        AlertHelper.shared.presentWithCustomAction(title: "Download \(selectedImageIndexes.count) \(message)?", withCustomAction: [downloadAction, cancelAction], to: self, preferredStyle: .actionSheet)
     }
     
     private func toggleElements() {
@@ -263,10 +297,6 @@ extension LabCollectionViewController {
         
         selectButton.isEnabled = !imageObjects.isEmpty
         selectButton.alpha = selectButton.isEnabled ? 1 : 0.25
-        
-        fabDeleteButton.isEnabled = !imagesIndexToDelete.isEmpty
-        fabDeleteButton.isHidden = !isSelecting
-        fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.75
     }
     
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -348,7 +378,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                     DispatchQueue.main.async {
                         AlertHelper.shared.presentOKAction(withTitle: "Saved!", andMessage: "The photo has been successfully saved to your camera roll.", to: self.presentedViewController)
                     }
-
+                    
                     TapticHelper.shared.successTaptic()
                 } else {
                     TapticHelper.shared.errorTaptic()

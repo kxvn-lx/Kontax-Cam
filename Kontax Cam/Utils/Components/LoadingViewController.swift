@@ -9,25 +9,44 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
-
-    let titleLabel: UILabel = {
-       let v = UILabel()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.text = "PROCESSING"
-        v.textAlignment = .center
-        v.textColor = .white
-        v.font = UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .light)
-        return v
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "PROCESSING"
+        label.textAlignment = .center
+        label.textColor = .white
+        label.font = .rounded(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .bold)
+        return label
     }()
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = .white
+        spinner.startAnimating()
+        return spinner
+    }()
+    private var mStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        self.view.addSubview(titleLabel)
         
-        titleLabel.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        
+        setupView()
+        setupConstraint()
+    }
+    
+    private func setupView() {
+        mStackView = UIStackView(arrangedSubviews: [titleLabel, spinner])
+        mStackView.axis = .vertical
+        mStackView.spacing = 10
+        
+        self.view.addSubview(mStackView)
+    }
+    
+    private func setupConstraint() {
+        mStackView.snp.makeConstraints { (make) in
+            make.center.width.equalToSuperview()
         }
     }
 }

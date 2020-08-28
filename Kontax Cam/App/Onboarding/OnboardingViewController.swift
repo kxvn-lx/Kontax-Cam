@@ -40,11 +40,8 @@ class OnboardingViewController: UIViewController {
         return v
     }()
     private let startButton: DetailedButton = {
-       let button = DetailedButton()
-        button.setTitle("Start taking photo", for: .normal)
+       let button = DetailedButton(title: "Start taking photo")
         button.backgroundColor = .black
-        button.layer.cornerRadius = 5
-        button.layer.cornerCurve = .continuous
         return button
     }()
     private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)

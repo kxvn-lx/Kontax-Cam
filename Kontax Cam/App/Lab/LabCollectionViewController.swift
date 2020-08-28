@@ -31,15 +31,15 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         v.setTitleColor(.label, for: .normal)
         return v
     }()
-    private let fabDeleteButton: UIButton = {
-        let v = UIButton()
-        v.isEnabled = false
-        v.setImage(IconHelper.shared.getIconImage(iconName: "trash"), for: .normal)
-        v.tintColor = .white
-        v.backgroundColor = .systemRed
-        v.alpha = 0.5
-        v.isHidden = true
-        return v
+    private let fabDeleteButton: DetailedButton = {
+        let button = DetailedButton()
+        button.isEnabled = false
+        button.setImage(IconHelper.shared.getIconImage(iconName: "trash"), for: .normal)
+        button.backgroundColor = .systemRed
+        button.highlightedBackgroundColor = nil
+        button.alpha = 0.75
+        button.isHidden = true
+        return button
     }()
     
     // MARK: - View lifecycle
@@ -266,7 +266,7 @@ extension LabCollectionViewController {
         
         fabDeleteButton.isEnabled = !imagesIndexToDelete.isEmpty
         fabDeleteButton.isHidden = !isSelecting
-        fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.5
+        fabDeleteButton.alpha = fabDeleteButton.isEnabled ? 1 : 0.75
     }
     
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {

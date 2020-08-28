@@ -11,8 +11,7 @@ class DetailedButton: UIButton {
     
     var highlightedBackgroundColor: UIColor? = UIColor(displayP3Red: 15/255, green: 15/255, blue: 15/255, alpha: 1)
     private var temporaryBackgroundColor: UIColor?
-    private let highlightedAlphaValue: CGFloat = 0.5
-    private let disabledAlphaValue: CGFloat = 0.4
+    private let highlightedAlphaValue: CGFloat = 0.7
     
     required init(title: String) {
         super.init(frame: .zero)
@@ -22,6 +21,7 @@ class DetailedButton: UIButton {
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
     }
     
     required init?(coder: NSCoder) {

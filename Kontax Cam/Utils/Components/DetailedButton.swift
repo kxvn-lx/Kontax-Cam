@@ -52,7 +52,7 @@ class DetailedButton: UIButton {
     }
     
     private func setupView() {
-        self.titleLabel?.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium)
+        self.titleLabel?.font = .preferredFont(forTextStyle: .headline)
         setTitleColor(.white, for: .normal)
         setTitleColor(.systemGray3, for: .disabled)
         tintColor = .white

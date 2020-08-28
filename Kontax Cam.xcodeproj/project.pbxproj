@@ -61,6 +61,12 @@
 		0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 0A73C4D12499EEF900E46E9A /* Nuke */; };
 		0A7BC0DA24EE7D0600262C5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
+		0A84475624F9492300700CAB /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475524F9492300700CAB /* WhatsNewView.swift */; };
+		0A84475924F94A0100700CAB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
+		0A84475B24F94C9A00700CAB /* WhatsNewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475A24F94C9A00700CAB /* WhatsNewRow.swift */; };
+		0A84475D24F94CF700700CAB /* WhatsNewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475C24F94CF700700CAB /* WhatsNewModel.swift */; };
+		0A84475F24F9557600700CAB /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */; };
+		0A84476324F9603800700CAB /* WhatsNewEvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84476224F9603800700CAB /* WhatsNewEvoker.swift */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
@@ -190,6 +196,12 @@
 		0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A82B83324AC406600673F1A /* LUTRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTRender.swift; sourceTree = "<group>"; };
+		0A84475524F9492300700CAB /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
+		0A84475824F94A0100700CAB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0A84475A24F94C9A00700CAB /* WhatsNewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewRow.swift; sourceTree = "<group>"; };
+		0A84475C24F94CF700700CAB /* WhatsNewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewModel.swift; sourceTree = "<group>"; };
+		0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		0A84476224F9603800700CAB /* WhatsNewEvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewEvoker.swift; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +331,7 @@
 		0A267BC624E78F740025FB60 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0A84475724F949F000700CAB /* SwiftUI */,
 				0A1D97BD2477B94F00E4078F /* UIApplication.swift */,
 				0A267BC724E78F8F0025FB60 /* UIViewController.swift */,
 				0A267BC924E78F980025FB60 /* UIStackView.swift */,
@@ -381,6 +394,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A84475424F9491500700CAB /* WhatsNew */,
 				0A4D6E53247A472100E039FC /* Filter collections */,
 				0A03EAFD2480AB84001D8006 /* FX */,
 				0AADEE72247B731C009FFA52 /* Lab */,
@@ -471,6 +485,25 @@
 			path = "Filter Info";
 			sourceTree = "<group>";
 		};
+		0A84475424F9491500700CAB /* WhatsNew */ = {
+			isa = PBXGroup;
+			children = (
+				0A84475524F9492300700CAB /* WhatsNewView.swift */,
+				0A84475A24F94C9A00700CAB /* WhatsNewRow.swift */,
+				0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */,
+				0A84476224F9603800700CAB /* WhatsNewEvoker.swift */,
+			);
+			path = WhatsNew;
+			sourceTree = "<group>";
+		};
+		0A84475724F949F000700CAB /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				0A84475824F94A0100700CAB /* Color.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		0AADEE72247B731C009FFA52 /* Lab */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +536,7 @@
 				0ABD6D3C2497803500C3CC4B /* Photo.swift */,
 				0A1193BC249B56E30086604D /* Effect.swift */,
 				0A71C88B24EB705A00C5449D /* FilterCollection.swift */,
+				0A84475C24F94CF700700CAB /* WhatsNewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -771,6 +805,7 @@
 			files = (
 				0A43068124ADB20E00CA2E0F /* PassThrough.metal in Sources */,
 				0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */,
+				0A84475924F94A0100700CAB /* Color.swift in Sources */,
 				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
@@ -802,7 +837,9 @@
 				0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */,
 				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,
 				0A267BCC24E78F9F0025FB60 /* UIFont.swift in Sources */,
+				0A84475624F9492300700CAB /* WhatsNewView.swift in Sources */,
 				0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */,
+				0A84475F24F9557600700CAB /* PrimaryButtonStyle.swift in Sources */,
 				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
@@ -813,9 +850,11 @@
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
+				0A84476324F9603800700CAB /* WhatsNewEvoker.swift in Sources */,
 				0A267BCA24E78F980025FB60 /* UIStackView.swift in Sources */,
 				0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */,
 				0A267BCE24E78FA60025FB60 /* UIButton.swift in Sources */,
+				0A84475D24F94CF700700CAB /* WhatsNewModel.swift in Sources */,
 				0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */,
@@ -842,6 +881,7 @@
 				0A267BC824E78F8F0025FB60 /* UIViewController.swift in Sources */,
 				0A267BD424E78FC20025FB60 /* UIView.swift in Sources */,
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,
+				0A84475B24F94C9A00700CAB /* WhatsNewRow.swift in Sources */,
 				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,
 				0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */,
 			);

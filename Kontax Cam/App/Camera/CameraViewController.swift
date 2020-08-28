@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SnapKit
 
 class CameraViewController: UIViewController {
@@ -33,6 +34,8 @@ class CameraViewController: UIViewController {
     }
     private var filterLabelView = FilterLabelView()
     
+    private let whatsNewEvoker = WhatsNewEvoker()
+    
     let rotView: UIImageView = {
         let v = UIImageView()
         v.alpha = 0.5
@@ -58,17 +61,14 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraEngine.startCaptureSession()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        // Show tutorial if first visit
-        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
-            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
-            }
-            AlertHelper.shared.presentWithCustomAction(
-                title: "Swipe gesture",
-                message: "Swipe left or right to live preview all the available filters in the collection.",
-                withCustomAction: [okAction],
-                to: self)
+        if whatsNewEvoker.shouldPresent {
+            let whatsNewView = UIHostingController(rootView: WhatsNewView(dismissAction: onWhatsNewDismiss))
+            self.present(whatsNewView, animated: true, completion: nil)
         }
     }
     
@@ -145,6 +145,22 @@ class CameraViewController: UIViewController {
     func resetCameraView() {
         cameraView.pixelBuffer = nil
         cameraView.flushTextureCache()
+    }
+    
+    private func onWhatsNewDismiss() {
+        self.dismiss(animated: true, completion: {
+            // Show tutorial if first visit
+            if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
+                let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                    UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
+                }
+                AlertHelper.shared.presentWithCustomAction(
+                    title: "Swipe gesture",
+                    message: "Swipe left or right to live preview all the available filters in the collection.",
+                    withCustomAction: [okAction],
+                    to: self)
+            }
+        })
     }
 }
 

@@ -104,6 +104,7 @@
 		0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEA622F24878522004B9313 /* DTPhotoViewerController */; };
 		0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */; };
 		0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */; };
+		0AEC654824FA11AE00418096 /* ExtraLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC654724FA11AE00418096 /* ExtraLensView.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
 		0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */; };
 		0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4B47024EFB5C8004663CF /* DetailedButton.swift */; };
@@ -239,6 +240,7 @@
 		0AE49F192493C7B50057A729 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
 		0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		0AEC654724FA11AE00418096 /* ExtraLensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLensView.swift; sourceTree = "<group>"; };
 		0AEE932F247C983800F485C0 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersGestureEngine.swift; sourceTree = "<group>"; };
 		0AF4B47024EFB5C8004663CF /* DetailedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedButton.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				0A31490A24A8A49B00168225 /* PreviewMetalView.swift */,
 				0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */,
 				0A1D97C92477CB9C00E4078F /* CameraActionView */,
+				0AEC654724FA11AE00418096 /* ExtraLensView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
+				0AEC654824FA11AE00418096 /* ExtraLensView.swift in Sources */,
 				0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */,
 				0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */,
 				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,

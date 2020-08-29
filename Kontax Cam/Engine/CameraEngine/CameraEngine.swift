@@ -11,14 +11,17 @@ import CoreMotion
 import UIKit
 import MetalKit
 
-// Inspired by CameraManager
-// https://github.com/imaginary-cloud/CameraManager
 class CameraEngine: NSObject {
     private enum SessionSetupResult {
         case success
         case notAuthorized
         case configurationFailed
     }
+    enum CameraEngineError: String, Error {
+        case noInput = "No input detected"
+        case setupExtraLensInput = "Unable to setup extra lens input"
+    }
+    
     private var setupResult: SessionSetupResult = .success
     
     private var captureSession = AVCaptureSession()
@@ -28,7 +31,7 @@ class CameraEngine: NSObject {
         position: .unspecified)
     private var backCamera: AVCaptureDevice?
     private var frontCamera: AVCaptureDevice?
-    private var currentCamera: AVCaptureDevice?
+    var currentCamera: AVCaptureDevice?
     
     private let dataOutputQueue = DispatchQueue(label: "VideoDataQueue", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
     
@@ -66,10 +69,13 @@ class CameraEngine: NSObject {
     var previewView: PreviewMetalView?
     let filter = LUTRender()
     
+    var supportedExtraLens: AVCaptureDevice?
+    
     override init() {
         super.init()
         checkPermission()
         setupCaptureSession()
+        setupExtraLens()
     }
     
     // MARK: - Public methods
@@ -136,7 +142,40 @@ class CameraEngine: NSObject {
         }
     }
     
+    func changeToExtraLens(isDefault: Bool = false, completion: @escaping (Result<Bool, CameraEngineError>) -> Swift.Void) {
+        guard let input = captureSession.inputs.first else {
+            print("❗️No input detected")
+            completion(.failure(.noInput))
+            return
+        }
+        
+        captureSession.removeInput(input)
+        do {
+            let newCamera = isDefault ? backCamera! : supportedExtraLens!
+            let captureDeviceInput = try AVCaptureDeviceInput(device: newCamera)
+            captureSession.addInput(captureDeviceInput)
+            currentCamera = newCamera
+            
+            setPreviewViewOrientation()
+            completion(.success(true))
+        } catch {
+            completion(.failure(.setupExtraLensInput))
+        }
+        
+    }
+    
     // MARK: - Private methods
+    // Setup extra lens
+    private func setupExtraLens() {
+        if let device = AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back) {
+            supportedExtraLens = device
+        } else if let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) {
+            supportedExtraLens = device
+        } else {
+            supportedExtraLens = nil
+        }
+    }
+    
     /// Setup previewView orientation
     private func setPreviewViewOrientation() {
         let interfaceOrientation = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation

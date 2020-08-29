@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+protocol CameraActionDelegate: class {
+    func didTapOnReverse()
+}
+
 class CameraActionViewController: UIViewController {
     
     /// An array of strings filled with the icon name of the action button
@@ -24,6 +28,7 @@ class CameraActionViewController: UIViewController {
     ]
     var timerEngine = TimerEngine()
     var shutterSize: CGFloat! // Passed from parent
+    weak var delegate: CameraActionDelegate?
     
     private let actionButtonsScrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -152,6 +157,7 @@ extension CameraActionViewController {
         // Reverse camera
         case 2:
             cameraEngine?.switchCamera()
+            self.delegate?.didTapOnReverse()
             
         // FX
         case 3:

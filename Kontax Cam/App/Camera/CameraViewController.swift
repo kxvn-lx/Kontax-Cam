@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import SnapKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
     
@@ -32,7 +33,8 @@ class CameraViewController: UIViewController {
     private var cameraActionViewHeight: CGFloat {
         return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
     }
-    private var filterLabelView = FilterLabelView()
+    private let filterLabelView = FilterLabelView()
+    private var extraLensView = ExtraLensView()
     
     private let whatsNewEvoker = WhatsNewEvoker()
     
@@ -90,6 +92,7 @@ class CameraViewController: UIViewController {
         
         // Camera Action View
         cameraActionView = CameraActionViewController()
+        cameraActionView.delegate = self
         cameraActionView.shutterSize = (cameraActionViewHeight) * 0.4
         cameraActionView.cameraEngine = self.cameraEngine
         
@@ -108,6 +111,10 @@ class CameraViewController: UIViewController {
         
         // Filter label view
         cameraView.addSubview(filterLabelView)
+        cameraView.addSubview(extraLensView)
+        
+        extraLensView.delegate = self
+        extraLensView.availableExtraLens = cameraEngine.supportedExtraLens
     }
     
     private func setupConstraint() {
@@ -132,9 +139,14 @@ class CameraViewController: UIViewController {
         }
         
         filterLabelView.snp.makeConstraints { (make) in
-            make.height.equalTo(45)
-            make.width.equalTo(45)
+            make.height.width.equalTo(45)
             make.left.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 10, right: 0))
+        }
+        
+        extraLensView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(45)
+            make.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -202,5 +214,27 @@ extension CameraViewController: FiltersGestureDelegate {
 extension CameraViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
+    }
+}
+
+extension CameraViewController: ExtraLensViewDelegate {
+    func didTapOnExtraLensView() {
+        cameraEngine.changeToExtraLens(isDefault: self.extraLensView.isShowingExtraLens) { (result) in
+            switch result {
+            case .success(let isSuccessful):
+                if isSuccessful {
+                    self.extraLensView.isShowingExtraLens.toggle()
+                }
+                
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+    }
+}
+
+extension CameraViewController: CameraActionDelegate {
+    func didTapOnReverse() {
+        extraLensView.isHidden = cameraEngine.currentCamera?.position == AVCaptureDevice.Position.front
     }
 }

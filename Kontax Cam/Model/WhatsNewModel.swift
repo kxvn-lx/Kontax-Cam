@@ -17,13 +17,13 @@ struct WhatsNewModel: Identifiable {
     static let current_whatsnew: [WhatsNewModel] = [
         WhatsNewModel(
             imageName: "sparkles",
-            title: "Utlise more lens",
+            title: "Utilise more lens",
             description: "Kontax Cam can now provides more lens feature according to your device. (0.5x or 2x). Triple camera iPhone users MIGHT have an issue here."
         ),
         WhatsNewModel(
             imageName: "square.and.arrow.down.on.square",
-            title: "Download multiple images",
-            description: "You can now download multiple images! head to the lab and start downloading all of your masterpiece!"
+            title: "Save multiple images",
+            description: "You can now save multiple images! head to the lab and start saving all of your masterpiece!"
         ),
         WhatsNewModel(
             imageName: "info",

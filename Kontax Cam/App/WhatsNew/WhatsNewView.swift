@@ -43,12 +43,12 @@ struct WhatsNewView: View {
                     
                     ScrollView(.vertical) {
                         VStack {
-                            VStack(spacing: 50) {
+                            VStack(spacing: 30) {
                                 ForEach(WhatsNewModel.current_whatsnew) { whatsNewItem in
                                     WhatsNewRow(whatsNew: whatsNewItem)
                                 }
                             }
-                            Text("Since I don't possess a triple camera iPhone, I won't be able to test the lens feature. If you are willing/able to help, please email me.")
+                            Text("Since I don't possess a triple camera iPhone, I won't be able to test the lens feature for that model. If you are willing/able to help, please email me.")
                                 .font(.caption)
                                 .padding()
                         }
@@ -73,6 +73,26 @@ struct WhatsNewView: View {
                 
                 Spacer()
                     .frame(height: 25)
+            }
+            
+            if isFromSetting {
+                VStack {
+                    HStack {
+                        Button(action: {
+                            dismissAction!()
+                        }, label: {
+                            Image(systemName: "xmark")
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(.label)
+                        })
+                        .offset(x: 10, y: 10)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                .padding()
             }
         }
     }

@@ -35,7 +35,7 @@ struct WhatsNewRow: View {
 
 struct WhatsNewRow_Previews: PreviewProvider {
     static var previews: some View {
-        WhatsNewRow(whatsNew: .static_whatsnew)
+        WhatsNewRow(whatsNew: WhatsNewModel.current_whatsnew[0])
             .previewLayout(.sizeThatFits)
     }
 }

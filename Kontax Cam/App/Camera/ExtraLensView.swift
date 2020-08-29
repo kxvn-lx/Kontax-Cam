@@ -24,6 +24,7 @@ class ExtraLensView: UIView {
         let label = UILabel()
         label.text = "1x"
         label.textColor = .white
+        label.font = .preferredFont(forTextStyle: .callout)
         return label
     }()
     private var lensLabelArray = [String]()
@@ -51,7 +52,7 @@ class ExtraLensView: UIView {
     
     private func setupView() {
         addSubview(extraLensLabel)
-        layer.cornerRadius = 22.5
+        layer.cornerRadius = 20
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.cgColor
     }

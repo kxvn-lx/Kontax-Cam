@@ -144,7 +144,7 @@ class CameraViewController: UIViewController {
         }
         
         extraLensView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(45)
+            make.width.height.equalTo(40)
             make.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
             make.centerX.equalToSuperview()
         }

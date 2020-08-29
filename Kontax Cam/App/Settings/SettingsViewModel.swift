@@ -11,9 +11,12 @@ import UIKit
 protocol SettingsViewModelDelegate: class {
     func appearanceTapped()
     func apppIconsTapped()
+    
     func twitterTapped()
     func websiteTapped()
     func emailTapped()
+    func whatsNewTapped()
+    
     func privacyTapped()
     func deleteAllTapped()
 }
@@ -53,7 +56,10 @@ class SettingsViewModel: NSObject {
                     action: { [weak self] _ in self?.delegate?.websiteTapped() }),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Email") },
-                    action: { [weak self] _ in self?.delegate?.emailTapped() })
+                    action: { [weak self] _ in self?.delegate?.emailTapped() }),
+                SettingsItem(
+                    createdCell: { self.createNormalCell(withTitle: "What's new?") },
+                    action: { [weak self] _ in self?.delegate?.whatsNewTapped() })
             ])
         
         let otherStuffSection = SettingsSection(

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import SafariServices
 import MessageUI
 
@@ -41,6 +42,11 @@ class SettingsTableViewController: UITableViewController {
 }
 
 extension SettingsTableViewController: SettingsViewModelDelegate {
+    func whatsNewTapped() {
+        let whatsNewView = UIHostingController(rootView: WhatsNewView(isFromSetting: true, dismissAction: { self.dismiss(animated: true, completion: nil) }))
+        self.present(whatsNewView, animated: true, completion: nil)
+    }
+    
     func appearanceTapped() {
         let appearanceVC = AppearanceTableViewController()
         let navController = UINavigationController(rootViewController: appearanceVC)

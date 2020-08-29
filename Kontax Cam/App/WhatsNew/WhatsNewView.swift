@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct WhatsNewView: View {
+    var isFromSetting = false
     var dismissAction: (() -> Void)?
     
     private let iconHeight: CGFloat = 75
@@ -23,10 +24,10 @@ struct WhatsNewView: View {
             
             VStack {
                 Spacer()
-                VStack(spacing: 50) {
+                VStack(spacing: 15) {
                     VStack {
                         Spacer()
-                            .frame(height: 75)
+                            .frame(height: 50)
                         Image("appIcon-ori")
                             .resizable()
                             .frame(width: iconHeight, height: iconHeight)
@@ -55,15 +56,17 @@ struct WhatsNewView: View {
                 Spacer()
                 
                 Button(action: {
-                    UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    if !isFromSetting {
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                    }
                     dismissAction!()
                 }, label: {
-                    Text("Awesome, now let me in!")
+                    Text("Awesome, now let me \(isFromSetting ? "go back" : "in")!")
                 })
                 .buttonStyle(PrimaryButtonStyle())
                 
                 Spacer()
-                    .frame(height: 50)
+                    .frame(height: 25)
             }
         }
     }

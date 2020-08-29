@@ -18,7 +18,7 @@ struct WhatsNewModel: Identifiable {
         WhatsNewModel(
             imageName: "sparkles",
             title: "Utlise more lens",
-            description: "Kontax Cam can now provides more lens feature according to your device. (0.5x or 2x). triple camera iPhones might experience bug. Will try to fix in the next build."
+            description: "Kontax Cam can now provides more lens feature according to your device. (0.5x or 2x). Triple camera iPhone users MIGHT have an issue here."
         ),
         WhatsNewModel(
             imageName: "square.and.arrow.down.on.square",

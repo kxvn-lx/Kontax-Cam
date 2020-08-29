@@ -42,11 +42,17 @@ struct WhatsNewView: View {
                     }
                     
                     ScrollView(.vertical) {
-                        VStack(spacing: 50) {
-                            ForEach(WhatsNewModel.current_whatsnew) { whatsNewItem in
-                                WhatsNewRow(whatsNew: whatsNewItem)
+                        VStack {
+                            VStack(spacing: 50) {
+                                ForEach(WhatsNewModel.current_whatsnew) { whatsNewItem in
+                                    WhatsNewRow(whatsNew: whatsNewItem)
+                                }
                             }
+                            Text("Since I don't possess a triple camera iPhone, I won't be able to test the lens feature. If you are willing/able to help, please email me.")
+                                .font(.caption)
+                                .padding()
                         }
+
                         .padding()
                     }
                     .frame(maxWidth: .infinity)

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WhatsNewRow: View {
     let whatsNew: WhatsNewModel
-    private let imageHeight: CGFloat = 50
+    private let imageHeight: CGFloat = 40
     
     var body: some View {
         HStack(spacing: 20) {
@@ -28,6 +28,7 @@ struct WhatsNewRow: View {
                 Text(whatsNew.description)
                     .foregroundColor(.secondaryLabel)
             }
+            .fixedSize(horizontal: false, vertical: true)
             .font(.callout)
         }
     }

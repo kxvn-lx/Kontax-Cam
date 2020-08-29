@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct WhatsNewView: View {
-    var dismissAction: (() -> Void)
+    var dismissAction: (() -> Void)?
     
     private let iconHeight: CGFloat = 75
     private var cornerRadius: CGFloat {
@@ -49,14 +49,14 @@ struct WhatsNewView: View {
                         .padding()
                     }
                     .frame(maxWidth: .infinity)
-
+                    
                 }
                 
                 Spacer()
                 
                 Button(action: {
                     UINotificationFeedbackGenerator().notificationOccurred(.success)
-                    dismissAction()
+                    dismissAction!()
                 }, label: {
                     Text("Awesome, now let me in!")
                 })
@@ -66,5 +66,11 @@ struct WhatsNewView: View {
                     .frame(height: 50)
             }
         }
+    }
+}
+
+struct WhatsNewView_Previews: PreviewProvider {
+    static var previews: some View {
+        WhatsNewView(dismissAction: nil)
     }
 }

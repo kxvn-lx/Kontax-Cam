@@ -60,7 +60,9 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #if !targetEnvironment(simulator)
         cameraEngine.startCaptureSession()
+        #endif
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,13 +70,16 @@ class CameraViewController: UIViewController {
         
         if whatsNewEvoker.shouldPresent {
             let whatsNewView = UIHostingController(rootView: WhatsNewView(dismissAction: onWhatsNewDismiss))
+            whatsNewView.presentationController?.delegate = self
             self.present(whatsNewView, animated: true, completion: nil)
         }
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        #if !targetEnvironment(simulator)
         cameraEngine.addPreviewLayer(toView: cameraView)
+        #endif
     }
     
     // MARK: - Setup UI
@@ -147,6 +152,7 @@ class CameraViewController: UIViewController {
         cameraView.flushTextureCache()
     }
     
+    /// Called when user taps on the button inside whatsNew
     private func onWhatsNewDismiss() {
         self.dismiss(animated: true, completion: {
             // Show tutorial if first visit
@@ -160,6 +166,7 @@ class CameraViewController: UIViewController {
                     withCustomAction: [okAction],
                     to: self)
             }
+            UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
         })
     }
 }
@@ -189,5 +196,11 @@ extension CameraViewController: FiltersGestureDelegate {
             LUTImageFilter.selectedLUTFilter = nil
             filterLabelView.titleLabel.text = "OFF"
         }
+    }
+}
+
+extension CameraViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
     }
 }

@@ -10,6 +10,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+            <key>In development</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>In development</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
 			<key>A fine day</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

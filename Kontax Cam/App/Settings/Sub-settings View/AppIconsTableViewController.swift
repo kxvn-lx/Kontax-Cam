@@ -17,6 +17,7 @@ private enum IconNames: String, CaseIterable {
     case SummerVibes = "Summer vibes"
     case Sunshine
     case Pride = "Colourful"
+    case InDevelopment = "In development"
     
     func getIconName(forIconImageView: Bool) -> String? {
         switch self {

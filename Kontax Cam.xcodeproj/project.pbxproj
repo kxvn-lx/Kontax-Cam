@@ -67,6 +67,7 @@
 		0A84475D24F94CF700700CAB /* WhatsNewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475C24F94CF700700CAB /* WhatsNewModel.swift */; };
 		0A84475F24F9557600700CAB /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */; };
 		0A84476324F9603800700CAB /* WhatsNewEvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84476224F9603800700CAB /* WhatsNewEvoker.swift */; };
+		0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A954A4C24FB2A6300BDD0DC /* In development.png */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
@@ -203,6 +204,7 @@
 		0A84475C24F94CF700700CAB /* WhatsNewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewModel.swift; sourceTree = "<group>"; };
 		0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		0A84476224F9603800700CAB /* WhatsNewEvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewEvoker.swift; sourceTree = "<group>"; };
+		0A954A4C24FB2A6300BDD0DC /* In development.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In development.png"; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				0AF619F924E0F73B00BE288A /* Summer vibes.png */,
 				0AF619FA24E0F73B00BE288A /* Sunshine.png */,
 				0AD36BEB24E907F400AA78F0 /* PRIDE.png */,
+				0A954A4C24FB2A6300BDD0DC /* In development.png */,
 			);
 			path = "App icons";
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF61A0224E0F73C00BE288A /* Kontax Original.png in Resources */,
+				0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */,
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
 				0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,

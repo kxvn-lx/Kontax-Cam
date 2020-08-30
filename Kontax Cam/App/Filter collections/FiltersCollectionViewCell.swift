@@ -20,10 +20,11 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerCurve = .continuous
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.large
         imageView.sd_imageTransition = .fade
-        imageView.image = UIImage(named: "collection-placeholder")
-        imageView.clipsToBounds = true
         return imageView
     }()
     private let collectionNameLabel: UILabel = {
@@ -39,11 +40,13 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         return view
     }()
+    private var mStackView: UIStackView!
     
     var buttonTapped: (() -> Void)?
     var filterCollection: FilterCollection! {
         didSet {
             collectionNameLabel.text = filterCollection.name
+            imageView.sd_setImage(with: URL(string: filterCollection.imageURL)!, placeholderImage: UIImage(named: "collection-placeholder"), options: .scaleDownLargeImages)
         }
     }
     
@@ -61,17 +64,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 5
         layer.cornerCurve = .continuous
         clipsToBounds = true
-        
-        // Setup blur view
-        nameLabelView.backgroundColor = .clear
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabelView.insertSubview(blurView, at: 0)
-        
-        blurView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
 
     }
     
@@ -84,32 +76,34 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         isSelected = false
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.sd_setImage(with: URL(string: filterCollection.imageURL)!, placeholderImage: UIImage(named: "collection-placeholder"), options: .scaleDownLargeImages)
-    }
-    
     private func setupView() {
         nameLabelView.addSubview(collectionNameLabel)
         nameLabelView.addSubview(infoButton)
         
-        addSubview(imageView)
-        addSubview(nameLabelView)
+        mStackView = UIStackView(arrangedSubviews: [imageView, nameLabelView])
+        mStackView.axis = .vertical
+        mStackView.spacing = 10
+        
+        addSubview(mStackView)
         
         infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
     }
     
     private func setupConstraint() {
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.height.equalTo(self.bounds.height * 0.75)
         }
         
-        nameLabelView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(50)
-            make.bottom.equalToSuperview()
+        mStackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         }
         
+//        nameLabelView.snp.makeConstraints { (make) in
+//            make.width.equalToSuperview()
+//            make.height.equalTo(50)
+//            make.bottom.equalToSuperview()
+//        }
+//
         collectionNameLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(21)

@@ -30,5 +30,9 @@ struct WhatsNewModel: Identifiable {
             title: "This what's new section",
             description: "This section will be all about the exciting cool new features or fixes in the future!"
         )
+        
+        // New app icon
+        // Improved filter collection performance
+        // Website updated
     ]
 }

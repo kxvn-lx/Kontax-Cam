@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FiltersCollectionViewCell: UICollectionViewCell {
     
@@ -16,10 +17,12 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         static let padding = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
     
-    private var cache = NSCache<NSString, UIImage>()
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.large
+        imageView.sd_imageTransition = .fade
+        imageView.image = UIImage(named: "collection-placeholder")
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -69,6 +72,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         blurView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+
     }
     
     required init?(coder: NSCoder) {
@@ -82,15 +86,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let cachedImage = cache.object(forKey: filterCollection.name as NSString) {
-            imageView.image = cachedImage
-        } else {
-            if let resizedImage = filterCollection.image!.scaleImage(width: imageView.bounds.size.width, height: imageView.bounds.size.height, trim: true) {
-                imageView.image = resizedImage
-                cache.setObject(resizedImage, forKey: filterCollection.name as NSString)
-            }
-        }
-
+        imageView.sd_setImage(with: URL(string: filterCollection.imageURL)!, placeholderImage: UIImage(named: "collection-placeholder"), options: .scaleDownLargeImages)
     }
     
     private func setupView() {

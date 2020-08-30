@@ -19,10 +19,22 @@ extension FiltersCollectionViewController {
     
     /// Populate the filters collection list
     func populateSection() {
-        // Use placeholder image temporarily (unless someone wishes to contribute on a photo 😊)
-        let b = FilterCollection(name: "B Collection", image: UIImage(named: "B Collection.hero"), filters: [.B1, .B2, .B3, .B4, .B5])
-        let hue1 = FilterCollection(name: "HUE1 Collection", image: UIImage(named: "HUE1 Collection.hero"), filters: [.HUE1, .HUE2, .HUE3, .HUE4, .HUE5])
-        let bw = FilterCollection(name: "BW Collection", image: UIImage(named: "BW Collection.hero"), filters: [.BW1, .BW2, .BW3, .BW4])
+        
+        let b = FilterCollection(
+            name: "B Collection",
+            imageURL: "https://kontaxcam.imfast.io/B/B%20Collection.hero.png",
+            filters: [.B1, .B2, .B3, .B4, .B5]
+        )
+        let hue1 = FilterCollection(
+            name: "HUE1 Collection",
+            imageURL: "https://kontaxcam.imfast.io/HUE1/HUE1%20Collection.hero.png",
+            filters: [.HUE1, .HUE2, .HUE3, .HUE4, .HUE5]
+        )
+        let bw = FilterCollection(
+            name: "BW Collection",
+            imageURL: "https://kontaxcam.imfast.io/BW/BW%20Collection.hero.png",
+            filters: [.BW1, .BW2, .BW3, .BW4]
+        )
         
         self.filterCollections = [
             FilterCollection.aCollection,

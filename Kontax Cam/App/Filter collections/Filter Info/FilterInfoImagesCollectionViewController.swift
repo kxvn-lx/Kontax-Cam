@@ -10,7 +10,7 @@ import UIKit
 
 struct FilterInfo: Hashable {
     let id = UUID()
-    let image: UIImage?
+    let imageURL: URL
     let filterName: String
     
     func hash(into hasher: inout Hasher) {
@@ -62,10 +62,9 @@ class FilterInfoImagesCollectionViewController: UICollectionViewController {
         let filterName = selectedFilterCollection.name.components(separatedBy: " ").first!
 
         for n in 1 ... 5 {
-            let image = UIImage(named: "\(filterName).ex\(n)")
-            image?.accessibilityIdentifier = "\(filterName)\(n)"
+            let imageURL = URL(string: "https://kontaxcam.imfast.io/\(filterName)/\(filterName).ex\(n).jpg")!
             
-            let filterInfo = FilterInfo(image: image, filterName: "\(filterName)\(n)")
+            let filterInfo = FilterInfo(imageURL: imageURL, filterName: "\(filterName)\(n)")
             datas.append(filterInfo)
         }
         

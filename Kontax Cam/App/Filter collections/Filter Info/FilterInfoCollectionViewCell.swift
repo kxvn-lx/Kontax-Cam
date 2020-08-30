@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FilterInfoCollectionViewCell: UICollectionViewCell {
     
-    private let cache = NSCache<NSString, UIImage>()
     static let ReuseIdentifier = "FilterInfoCell"
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .secondarySystemBackground
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.sd_imageIndicator = SDWebImageActivityIndicator.large
+        imageView.sd_imageTransition = .fade
         return imageView
     }()
     var filterInfo: FilterInfo!
@@ -33,14 +35,7 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let cachedImage = cache.object(forKey: filterInfo.image!.accessibilityIdentifier! as NSString) {
-            imageView.image = cachedImage
-        } else {
-            if let resizedImage = filterInfo.image!.scaleImage(width: imageView.bounds.size.width, height: imageView.bounds.size.height, trim: true) {
-                imageView.image = resizedImage
-                self.cache.setObject(resizedImage, forKey: filterInfo.image!.accessibilityIdentifier! as NSString)
-            }
-        }
+        imageView.sd_setImage(with: filterInfo.imageURL, placeholderImage: UIImage(named: "labCellPlaceholder"), options: .scaleDownLargeImages)
     }
     
     override func prepareForReuse() {

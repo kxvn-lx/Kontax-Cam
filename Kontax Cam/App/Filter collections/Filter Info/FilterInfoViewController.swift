@@ -68,7 +68,7 @@ class FilterInfoViewController: UIViewController {
     private func setupConstraint() {
         filterInfoImagesVC.view.snp.makeConstraints { (make) in
             make.top.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.7)
+            make.height.equalToSuperview().multipliedBy(0.75)
         }
         
         iapButton.snp.makeConstraints { (make) in

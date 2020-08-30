@@ -11,21 +11,21 @@
         }
       },
       {
-        "package": "Nuke",
-        "repositoryURL": "https://github.com/kean/Nuke",
-        "state": {
-          "branch": null,
-          "revision": "998588c80611e4fe9b71dd4323fa938ee62f4ff7",
-          "version": "9.1.1"
-        }
-      },
-      {
         "package": "PanModal",
         "repositoryURL": "https://github.com/slackhq/PanModal",
         "state": {
           "branch": null,
           "revision": "b012aecb6b67a8e46369227f893c12544846613f",
           "version": "1.2.7"
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
+        "state": {
+          "branch": null,
+          "revision": "ae3d0a7703eb883a876864f17a4591158199e9f2",
+          "version": "5.9.0"
         }
       },
       {

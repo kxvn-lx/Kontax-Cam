@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Nuke
+import SDWebImage
 import DTPhotoViewerController
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
@@ -15,7 +15,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     private let IS_DEMO_MODE = false
     
     var imageObjects = [Photo]()
-    private var pipeline = ImagePipeline.shared
     
     private var isSelecting = false {
         didSet {
@@ -71,9 +70,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
-        
-        ImageLoadingOptions.shared.placeholder = UIImage(named: "labCellPlaceholder")!
-        ImageLoadingOptions.shared.transition = .fadeIn(duration: 0.125)
     }
     
     private func setupView() {
@@ -108,10 +104,7 @@ extension LabCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LabCollectionViewCell.ReuseIdentifier, for: indexPath) as! LabCollectionViewCell
         let currentImage = imageObjects[indexPath.row]
         
-        var request = ImageRequest(url: currentImage.url)
-        request.processors = [ImageProcessors.Resize(size: cell.bounds.size)]
-        
-        loadImage(with: request, into: cell.photoView)
+        cell.photoView.sd_setImage(with: currentImage.url, placeholderImage: UIImage(named: "labCellPlaceholder"), options: .scaleDownLargeImages, context: [.imageThumbnailPixelSize: cell.photoView.bounds.size])
         
         if selectedImageIndexes.contains(indexPath) { cell.toggleSelection() }
         
@@ -308,7 +301,8 @@ extension LabCollectionViewController {
                 TapticHelper.shared.lightTaptic()
                 
                 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-                Nuke.loadImage(with: imageObjects[indexPath.row].url, into: self.previewVC.imageView)
+                
+                self.previewVC.imageView.sd_setImage(with: imageObjects[indexPath.row].url, placeholderImage: UIImage(named: "labCellPlaceholder"), options: .scaleDownLargeImages, context: [.imageThumbnailPixelSize: self.previewVC.imageView.bounds.size])
                 window?.addSubview(self.previewVC.view)
             }
         case .ended:
@@ -338,7 +332,7 @@ extension LabCollectionViewController: DTPhotoViewerControllerDataSource {
     }
     
     func photoViewerController(_ photoViewerController: DTPhotoViewerController, configurePhotoAt index: Int, withImageView imageView: UIImageView) {
-        loadImage(with: imageObjects[index].url, into: imageView)
+        imageView.sd_setImage(with: imageObjects[index].url, placeholderImage: UIImage(named: "labCellPlaceholder"), options: .scaleDownLargeImages, context: [.imageThumbnailPixelSize: self.previewVC.imageView.bounds.size])
     }
 }
 

@@ -13,6 +13,7 @@ class LabCollectionViewCell: UICollectionViewCell {
     static let ReuseIdentifier = "labCell"
     let photoView: UIImageView = {
         let v = UIImageView()
+        v.sd_imageTransition = .fade
         v.translatesAutoresizingMaskIntoConstraints = false
         v.contentMode = .scaleAspectFit
         return v

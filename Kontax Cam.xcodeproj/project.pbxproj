@@ -58,7 +58,6 @@
 		0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88B24EB705A00C5449D /* FilterCollection.swift */; };
 		0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */; };
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
-		0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 0A73C4D12499EEF900E46E9A /* Nuke */; };
 		0A7BC0DA24EE7D0600262C5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
 		0A84475624F9492300700CAB /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475524F9492300700CAB /* WhatsNewView.swift */; };
@@ -99,6 +98,7 @@
 		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
 		0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2929324A78FDA00320BC4 /* CameraEngine.swift */; };
 		0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD36BEB24E907F400AA78F0 /* PRIDE.png */; };
+		0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0ADEDAD324FB6B34001106C1 /* SDWebImage */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
 		0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F172493C41C0057A729 /* DustImageFilter.swift */; };
 		0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F192493C7B50057A729 /* FilterType.swift */; };
@@ -264,9 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */,
-				0A73C4D22499EEF900E46E9A /* Nuke in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
+				0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +685,7 @@
 				0A1D97C02477BACE00E4078F /* SnapKit */,
 				0A0F94CD247E501300E33AEC /* PanModal */,
 				0AEA622F24878522004B9313 /* DTPhotoViewerController */,
-				0A73C4D12499EEF900E46E9A /* Nuke */,
+				0ADEDAD324FB6B34001106C1 /* SDWebImage */,
 			);
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
@@ -741,7 +741,7 @@
 				0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0A0F94CC247E501300E33AEC /* XCRemoteSwiftPackageReference "PanModal" */,
 				0AEA622E24878522004B9313 /* XCRemoteSwiftPackageReference "DTPhotoViewerController" */,
-				0A73C4D02499EEF900E46E9A /* XCRemoteSwiftPackageReference "Nuke" */,
+				0ADEDAD224FB6B34001106C1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 0A44B2982476A7F000603F2C /* Products */;
 			projectDirPath = "";
@@ -1201,12 +1201,12 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		0A73C4D02499EEF900E46E9A /* XCRemoteSwiftPackageReference "Nuke" */ = {
+		0ADEDAD224FB6B34001106C1 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke";
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.1.0;
+				minimumVersion = 5.9.0;
 			};
 		};
 		0AEA622E24878522004B9313 /* XCRemoteSwiftPackageReference "DTPhotoViewerController" */ = {
@@ -1230,10 +1230,10 @@
 			package = 0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		0A73C4D12499EEF900E46E9A /* Nuke */ = {
+		0ADEDAD324FB6B34001106C1 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A73C4D02499EEF900E46E9A /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
+			package = 0ADEDAD224FB6B34001106C1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		0AEA622F24878522004B9313 /* DTPhotoViewerController */ = {
 			isa = XCSwiftPackageProductDependency;

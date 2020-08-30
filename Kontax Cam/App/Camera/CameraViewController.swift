@@ -223,6 +223,7 @@ extension CameraViewController: ExtraLensViewDelegate {
             switch result {
             case .success(let isSuccessful):
                 if isSuccessful {
+                    TapticHelper.shared.lightTaptic()
                     self.extraLensView.isShowingExtraLens.toggle()
                 }
                 

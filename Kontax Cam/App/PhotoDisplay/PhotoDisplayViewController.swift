@@ -150,25 +150,18 @@ class PhotoDisplayViewController: DTPhotoViewerController {
             photoDisplayDelegate?.photoDisplayWillSave(photoAt: self.currentPhotoIndex)
             
         case 2:
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
                 self.photoDisplayDelegate?.photoDisplayWillDelete(photoAt: self.currentPhotoIndex)
                 
                 self.reloadData()
-                
                 let cv = self.scrollView as! UICollectionView
-                
                 if cv.numberOfItems(inSection: 0) == 0 { self.dismiss(animated: true, completion: nil) }
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
-            alert.addAction(deleteAction)
-            alert.addAction(cancelAction)
+            AlertHelper.shared.presentWithCustomAction(title: "This photo will be deleted from your lab.", withCustomAction: [deleteAction, cancelAction], to: self, preferredStyle: .actionSheet)
             
-            self.present(alert, animated: true, completion: nil)
-            
-        default: break
+        default: fatalError("This should not happen")
         }
     }
     

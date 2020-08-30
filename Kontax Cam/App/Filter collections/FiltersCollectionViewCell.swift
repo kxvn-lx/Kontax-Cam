@@ -21,8 +21,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
-        imageView.layer.cornerCurve = .continuous
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.large
         imageView.sd_imageTransition = .fade
         return imageView
@@ -64,7 +62,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 5
         layer.cornerCurve = .continuous
         clipsToBounds = true
-
     }
     
     required init?(coder: NSCoder) {
@@ -98,12 +95,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
             make.edges.equalToSuperview().inset(NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         }
         
-//        nameLabelView.snp.makeConstraints { (make) in
-//            make.width.equalToSuperview()
-//            make.height.equalTo(50)
-//            make.bottom.equalToSuperview()
-//        }
-//
         collectionNameLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(21)

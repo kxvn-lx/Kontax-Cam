@@ -71,7 +71,7 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func websiteTapped() {
-        if let url = URL(string: "https://kontaxcam.netlify.app") {
+        if let url = URL(string: "https://kontax.cam") {
             let sfSafariVC = SFSafariViewController(url: url)
             present(sfSafariVC, animated: true)
         }

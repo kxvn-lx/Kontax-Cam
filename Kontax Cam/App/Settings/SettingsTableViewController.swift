@@ -42,6 +42,13 @@ class SettingsTableViewController: UITableViewController {
 }
 
 extension SettingsTableViewController: SettingsViewModelDelegate {
+    func surveyFormTapped() {
+        if let url = URL(string: "https://kontaxcam.typeform.com/to/RDApdKEH") {
+            let sfSafariVC = SFSafariViewController(url: url)
+            present(sfSafariVC, animated: true)
+        }
+    }
+    
     func whatsNewTapped() {
         let whatsNewView = UIHostingController(rootView: WhatsNewView(isFromSetting: true, dismissAction: { self.dismiss(animated: true, completion: nil) }))
         self.present(whatsNewView, animated: true, completion: nil)
@@ -75,6 +82,7 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
             let sfSafariVC = SFSafariViewController(url: url)
             present(sfSafariVC, animated: true)
         }
+        
     }
     
     func emailTapped() {

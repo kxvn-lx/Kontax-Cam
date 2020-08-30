@@ -178,6 +178,7 @@ class CameraViewController: UIViewController {
                     withCustomAction: [okAction],
                     to: self)
             }
+            
             UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
         })
     }

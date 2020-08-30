@@ -17,6 +17,7 @@ protocol SettingsViewModelDelegate: class {
     func emailTapped()
     func whatsNewTapped()
     
+    func surveyFormTapped()
     func privacyTapped()
     func deleteAllTapped()
 }
@@ -58,13 +59,16 @@ class SettingsViewModel: NSObject {
                     createdCell: { self.createNormalCell(withTitle: "Email") },
                     action: { [weak self] _ in self?.delegate?.emailTapped() }),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "What's new?") },
+                    createdCell: { self.createNormalCell(withTitle: "What's new 🚀") },
                     action: { [weak self] _ in self?.delegate?.whatsNewTapped() })
             ])
         
         let otherStuffSection = SettingsSection(
             title: "Other stuffs",
             cells: [
+                SettingsItem(
+                    createdCell: { self.createNormalCell(withTitle: "Kontax Cam feedback form") },
+                    action: { [weak self] _ in self?.delegate?.surveyFormTapped() }),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Privacy policy") },
                     action: { [weak self] _ in self?.delegate?.privacyTapped() }),
@@ -95,11 +99,11 @@ extension SettingsViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableviewSections[section].cells.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableviewSections[indexPath.section].cells[indexPath.row].createdCell()
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableviewSections.count
     }

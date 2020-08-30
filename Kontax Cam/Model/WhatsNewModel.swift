@@ -34,5 +34,6 @@ struct WhatsNewModel: Identifiable {
         // New app icon
         // Improved filter collection performance
         // Website updated
+        // survey form
     ]
 }

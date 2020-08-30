@@ -15,7 +15,7 @@ struct UserDefaultsHelper {
         case userAppearance // The appearance theme of the user
         case userFirstLaunch // Keys wether should present onboarding
         case userNeedTutorial // Keys to present the 'swipe filter' alert
-        case bundleVersion // Key fro the bundle version
+        case bundleVersion // Key for the bundle version
     } 
     
     private let defaults = UserDefaults.standard

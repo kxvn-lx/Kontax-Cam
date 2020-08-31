@@ -36,5 +36,7 @@ struct WhatsNewModel: Identifiable {
         // Website updated
         // survey form
         // Minor adjustment to IAP layout
+        // Minor adjustment to FX layout
+        // Added volume button press to capture photo
     ]
 }

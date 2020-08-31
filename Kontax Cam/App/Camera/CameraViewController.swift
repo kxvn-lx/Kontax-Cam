@@ -76,7 +76,7 @@ class CameraViewController: UIViewController {
             self.present(whatsNewView, animated: true, completion: nil)
         }
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         #if !targetEnvironment(simulator)
@@ -178,7 +178,8 @@ class CameraViewController: UIViewController {
                     title: "Swipe gesture",
                     message: "Swipe left or right to live preview all the available filters in the collection.",
                     withCustomAction: [okAction],
-                    to: self)
+                    to: self
+                )
             }
         })
     }

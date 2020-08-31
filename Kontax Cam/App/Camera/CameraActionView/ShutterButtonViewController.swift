@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import MobileCoreServices
+import MediaPlayer
 
 class ShutterButtonViewController: UIViewController {
     
@@ -26,6 +27,14 @@ class ShutterButtonViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Register volume up
+        let volumeChangedSystemName = NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification")
+        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: volumeChangedSystemName, object: nil)
+        
+        // Hide system volume control
+        let volumeView = MPVolumeView(frame: CGRect(x: -CGFloat.greatestFiniteMagnitude, y: 0, width: 0, height: 0))
+        view.addSubview(volumeView)
         
         self.view.addSubview(innerCircle)
         self.view.isUserInteractionEnabled = true
@@ -106,6 +115,16 @@ class ShutterButtonViewController: UIViewController {
             self.view.layer.borderColor = color.resolvedColor(with: self.traitCollection).cgColor
             innerCircle.backgroundColor = touchedColor
         }
+    }
+    
+    /// Handle volue  button pressed
+    @objc private func volumeChanged(notification: NSNotification) {
+        guard
+            let info = notification.userInfo,
+            let reason = info["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String,
+            reason == "ExplicitVolumeChange" else { return }
+
+        shutterTapped()
     }
 }
 

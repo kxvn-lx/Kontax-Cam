@@ -36,7 +36,7 @@ class CameraViewController: UIViewController {
     private let filterLabelView = FilterLabelView()
     private var extraLensView = ExtraLensView()
     
-    private let whatsNewEvoker = WhatsNewEvoker()
+    private var whatsNewEvoker = WhatsNewEvoker()
     
     let rotView: UIImageView = {
         let v = UIImageView()
@@ -167,6 +167,8 @@ class CameraViewController: UIViewController {
     /// Called when user taps on the button inside whatsNew
     private func onWhatsNewDismiss() {
         self.dismiss(animated: true, completion: {
+            self.whatsNewEvoker.shouldPresent = false
+            
             // Show tutorial if first visit
             if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
                 let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
@@ -178,8 +180,6 @@ class CameraViewController: UIViewController {
                     withCustomAction: [okAction],
                     to: self)
             }
-            
-            UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
         })
     }
 }
@@ -214,7 +214,7 @@ extension CameraViewController: FiltersGestureDelegate {
 
 extension CameraViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
+        whatsNewEvoker.shouldPresent = false
     }
 }
 

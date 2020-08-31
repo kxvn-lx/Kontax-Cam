@@ -11,7 +11,13 @@ import UIKit
 /// Class to manage the what's new view.
 /// Will tell us wether we should present the whats new or not.
 struct WhatsNewEvoker {
-    var shouldPresent = false
+    var shouldPresent = false {
+        didSet {
+            if !shouldPresent {
+                UserDefaultsHelper.shared.setData(value: UIApplication.appVersion, key: .bundleVersion)
+            }
+        }
+    }
     
     init() {
         checkForUpdate()

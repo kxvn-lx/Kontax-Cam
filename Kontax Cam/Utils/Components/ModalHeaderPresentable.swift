@@ -18,7 +18,7 @@ class ModalHeaderPresentable: UICollectionReusableView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .caption1).pointSize, weight: .medium)
+        label.font = .preferredFont(forTextStyle: .caption1)
         return label
     }()
     let infoButton: UIButton = {

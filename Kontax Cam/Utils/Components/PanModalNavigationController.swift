@@ -18,12 +18,12 @@ class PanModalNavigationController: UINavigationController {
     }
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        super.dismiss(animated: flag, completion: nil)
+        super.dismiss(animated: flag, completion: completion)
         panModalSetNeedsLayoutUpdate()
     }
     
     override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
-        super.present(viewControllerToPresent, animated: flag, completion: nil)
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
         panModalSetNeedsLayoutUpdate()
     }
 }

@@ -9,8 +9,6 @@
 import UIKit
 import PanModal
 
-private let headerIdentifier = "fxHeader"
-
 private struct CellPath {
     static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
     static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
@@ -32,7 +30,6 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         
         // UICollectionView setup
         collectionView.collectionViewLayout = makeLayout()
-        collectionView.register(ModalHeaderPresentable.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         collectionView.register(FXCollectionViewCell.self, forCellWithReuseIdentifier: FXCollectionViewCell.ReuseIdentifier)
         
         // Setup Long press gesture
@@ -41,6 +38,30 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         lpgr.delegate = self
         lpgr.delaysTouchesBegan = true
         self.collectionView?.addGestureRecognizer(lpgr)
+        
+        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
+        self.navigationItem.rightBarButtonItem = infoButton
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .shouldShowEffectsTip) ?? true {
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                UserDefaultsHelper.shared.setData(value: false, key: .shouldShowEffectsTip)
+            }
+            
+            AlertHelper.shared.presentWithCustomAction(
+                title: "A tip for you",
+                message: "Did you know that you can long press any active effects to customise it?",
+                withCustomAction: [okAction],
+                to: self
+            )
+        }
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: true, completion: completion)
     }
     
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -50,6 +71,10 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         case .began:
             guard let indexPath = collectionView?.indexPathForItem(at: p) else { return }
             guard let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell else { return }
+            
+            UIView.animate(withDuration: 0.125) {
+                cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            }
             
             if cell.isFxSelected {
                 // Multiple designated view controllers for each customisation for the future. Maybe we need to add a new customisation option only to a specific effects?
@@ -74,8 +99,20 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                 default: break
                 }
             }
-        default: return
+            
+        default:
+            guard let indexPath = collectionView?.indexPathForItem(at: p) else { return }
+            guard let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell else { return }
+            UIView.animate(withDuration: 0.125) {
+                cell.transform = .identity
+            }
         }
+    }
+    
+    @objc private func infoButtonTapped() {
+        let fxInfoVC = FXInfoViewController()
+        let navController = UINavigationController(rootViewController: fxInfoVC)
+        self.present(navController, animated: true, completion: nil)
     }
 }
 
@@ -112,16 +149,6 @@ extension FXCollectionViewController {
         smartAppend(selectedCell, selectedFx)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? ModalHeaderPresentable else {
-            fatalError("Could not dequeue SectionHeader")
-        }
-        headerView.delegate = self
-        headerView.titleLabel.text = "Long press any active effects to customise it."
-        
-        return headerView
-    }
-    
     /// Append the selecteed FX to the allowed filters list. If exist, simply remove it.
     /// - Parameters:
     ///   - selectedCell: The selected cell
@@ -139,7 +166,7 @@ extension FXCollectionViewController {
 extension FXCollectionViewController {
     // MARK: - Class functions
     private func createSection() -> NSCollectionLayoutSection {
-        let contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -148,13 +175,12 @@ extension FXCollectionViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.25),
-            heightDimension: .fractionalWidth(0.25))
+            heightDimension: .fractionalWidth(0.325))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
         section.orthogonalScrollingBehavior = .groupPaging
-        section.boundarySupplementaryItems = [makeSectionHeader()]
         
         return section
     }
@@ -171,31 +197,10 @@ extension FXCollectionViewController {
         
         return layout
     }
-    
-    private func makeSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(40))
-        
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-        return layoutSectionHeader
-    }
 }
 
 extension FXCollectionViewController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return collectionView
-    }
-}
-
-extension FXCollectionViewController: ModalHeaderProtocol {
-    func didTapInfo() {
-        let fxInfoVC = FXInfoViewController()
-        let navController = UINavigationController(rootViewController: fxInfoVC)
-        self.present(navController, animated: true, completion: nil)
     }
 }

@@ -50,7 +50,7 @@ class FXInfoViewController: UIViewController {
     }
     
     private func setupView() {
-        
+        self.tableView.backgroundColor = .systemBackground
         self.view.addSubview(tableView)
         tableView.delegate = self
     }
@@ -130,6 +130,10 @@ extension FXInfoViewController {
 extension FXInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .secondarySystemBackground
     }
 }
 

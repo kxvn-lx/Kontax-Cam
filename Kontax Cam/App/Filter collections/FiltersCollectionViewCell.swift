@@ -95,12 +95,12 @@ class FiltersCollectionViewCell: UICollectionViewCell {
         
         collectionNameLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(21)
+            make.left.equalToSuperview()
         }
         
         infoButton.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-21)
+            make.right.equalToSuperview()
         }
     }
     

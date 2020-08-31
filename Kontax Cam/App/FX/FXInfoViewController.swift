@@ -154,6 +154,7 @@ class FXInfoTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .secondaryLabel
+        label.font = .preferredFont(forTextStyle: .callout)
         return label
     }()
     private var mStackView: UIStackView!

@@ -22,17 +22,17 @@ extension FiltersCollectionViewController {
         
         let b = FilterCollection(
             name: "B Collection",
-            imageURL: "https://kontaxcam.imfast.io/B/B%20Collection.hero.png",
+            imageURL: "https://kontaxcam.imfast.io/B/B%20Collection.hero.jpg",
             filters: [.B1, .B2, .B3, .B4, .B5]
         )
         let hue1 = FilterCollection(
             name: "HUE1 Collection",
-            imageURL: "https://kontaxcam.imfast.io/HUE1/HUE1%20Collection.hero.png",
+            imageURL: "https://kontaxcam.imfast.io/HUE1/HUE1%20Collection.hero.jpg",
             filters: [.HUE1, .HUE2, .HUE3, .HUE4, .HUE5]
         )
         let bw = FilterCollection(
             name: "BW Collection",
-            imageURL: "https://kontaxcam.imfast.io/BW/BW%20Collection.hero.png",
+            imageURL: "https://kontaxcam.imfast.io/BW/BW%20Collection.hero.jpg",
             filters: [.BW1, .BW2, .BW3, .BW4]
         )
         

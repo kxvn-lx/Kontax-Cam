@@ -42,6 +42,14 @@ class SettingsTableViewController: UITableViewController {
 }
 
 extension SettingsTableViewController: SettingsViewModelDelegate {
+    func restorePurchaseTapped() {
+        AlertHelper.shared.presentOKAction(
+            withTitle: "Future feature!",
+            andMessage: "This feature will come with the addition of in app purchases. It will either be a one time purchase, or a subscription based. (help me decide?) 🤷‍♂️",
+            to: self
+        )
+    }
+    
     func surveyFormTapped() {
         if let url = URL(string: "https://kontaxcam.typeform.com/to/RDApdKEH") {
             let sfSafariVC = SFSafariViewController(url: url)

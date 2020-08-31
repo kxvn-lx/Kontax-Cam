@@ -11,6 +11,7 @@ import UIKit
 protocol SettingsViewModelDelegate: class {
     func appearanceTapped()
     func apppIconsTapped()
+    func restorePurchaseTapped()
     
     func twitterTapped()
     func websiteTapped()
@@ -40,10 +41,16 @@ class SettingsViewModel: NSObject {
             cells: [
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Appearance") },
-                    action: { [weak self] _ in self?.delegate?.appearanceTapped() }),
+                    action: { [weak self] _ in self?.delegate?.appearanceTapped() }
+                ),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "App icons") },
-                    action: { [weak self] _ in self?.delegate?.apppIconsTapped() })
+                    action: { [weak self] _ in self?.delegate?.apppIconsTapped() }
+                ),
+                SettingsItem(
+                    createdCell: { self.createNormalCell(withTitle: "Restore purchase") },
+                    action: { [weak self] _ in self?.delegate?.restorePurchaseTapped() }
+                )
             ])
         
         let informationSection = SettingsSection(
@@ -51,16 +58,19 @@ class SettingsViewModel: NSObject {
             cells: [
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Twitter") },
-                    action: { [weak self] _ in self?.delegate?.twitterTapped() }),
+                    action: { [weak self] _ in self?.delegate?.twitterTapped() }
+                ),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Website") },
-                    action: { [weak self] _ in self?.delegate?.websiteTapped() }),
+                    action: { [weak self] _ in self?.delegate?.websiteTapped() }
+                ),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Email") },
                     action: { [weak self] _ in self?.delegate?.emailTapped() }),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "What's new 🚀") },
-                    action: { [weak self] _ in self?.delegate?.whatsNewTapped() })
+                    action: { [weak self] _ in self?.delegate?.whatsNewTapped() }
+                )
             ])
         
         let otherStuffSection = SettingsSection(
@@ -68,10 +78,12 @@ class SettingsViewModel: NSObject {
             cells: [
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Kontax Cam feedback form") },
-                    action: { [weak self] _ in self?.delegate?.surveyFormTapped() }),
+                    action: { [weak self] _ in self?.delegate?.surveyFormTapped() }
+                ),
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Privacy policy") },
-                    action: { [weak self] _ in self?.delegate?.privacyTapped() }),
+                    action: { [weak self] _ in self?.delegate?.privacyTapped() }
+                ),
                 SettingsItem(
                     createdCell: {
                         let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.ReuseIdentifier)

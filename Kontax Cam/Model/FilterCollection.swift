@@ -19,7 +19,7 @@ struct FilterCollection: Equatable {
     
     static let aCollection = FilterCollection(
         name: "A Collection",
-        imageURL: "https://kontaxcam.imfast.io/A/A%20Collection.hero.png",
+        imageURL: "https://kontaxcam.imfast.io/A/A%20Collection.hero.jpg",
         filters: [.A1, .A2, .A3, .A4, .A5]
     )
     static let placeholderImage = UIImage(named: "collection-placeholder")!

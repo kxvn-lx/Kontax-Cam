@@ -13,22 +13,37 @@ class FilterInfoViewController: UIViewController {
     var selectedCollection: FilterCollection! {
         didSet {
             filterInfoImagesVC.selectedFilterCollection = selectedCollection
+            titleLabel.text = selectedCollection.name
         }
     }
     private let filterInfoImagesVC = FilterInfoImagesCollectionViewController(collectionViewLayout: UICollectionViewLayout())
-    private let iapButton: DetailedButton = {
-        let button = DetailedButton(title: "Purchase now")
+    private let iapButton: UIButton = {
+        let button = UIButton(type: .system)
         button.setTitle("Purchased", for: .disabled)
-        button.backgroundColor = .black
+        button.setTitle("$5.99", for: .normal)
+        button.tintColor = .label
         return button
     }()
-    private let restoreButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Restore purchase", for: .normal)
-        button.titleLabel?.font = .preferredFont(forTextStyle: .caption1)
-        return button
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .secondaryLabel
+        return label
+    }()
+    private let spinnerView: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        spinner.color = .label
+        spinner.isHidden = false
+        return spinner
     }()
     private var mStackView: UIStackView!
+    
+    private var shouldShowSpinner = false {
+        didSet {
+            spinnerView.isHidden = !shouldShowSpinner
+            iapButton.isHidden = shouldShowSpinner
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,22 +62,22 @@ class FilterInfoViewController: UIViewController {
         }
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
-        // Disable button until IAP is implemented
-        iapButton.isEnabled = false
+        shouldShowSpinner = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.shouldShowSpinner = false
+        }
     }
     
     private func setupView() {
         self.addVC(filterInfoImagesVC)
+        self.view.addSubview(titleLabel)
         
-        mStackView = UIStackView(arrangedSubviews: [iapButton, restoreButton])
+        mStackView = UIStackView(arrangedSubviews: [spinnerView, iapButton])
         mStackView.alignment = .center
-        mStackView.axis = .vertical
-        mStackView.spacing = 10
         
         self.view.addSubview(mStackView)
         
         iapButton.addTarget(self, action: #selector(iapButtonTapped), for: .touchUpInside)
-        restoreButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
     }
     
     private func setupConstraint() {
@@ -71,9 +86,9 @@ class FilterInfoViewController: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.75)
         }
         
-        iapButton.snp.makeConstraints { (make) in
-            make.height.equalTo(50)
-            make.width.equalToSuperview()
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(filterInfoImagesVC.view.snp.bottom).offset(30)
         }
         
         mStackView.snp.makeConstraints { (make) in
@@ -89,13 +104,9 @@ class FilterInfoViewController: UIViewController {
     }
     
     @objc private func iapButtonTapped() {
-
-    }
-    
-    @objc private func restoreButtonTapped() {
         AlertHelper.shared.presentOKAction(
             withTitle: "Future feature!",
-            andMessage: "This feature will comes with the addition of in app purchases. It will either be a one time purchase, or a subscription based. (help me decide?) 🤷‍♂️",
+            andMessage: "This feature will come with the addition of in app purchases. It will either be a one time purchase, or a subscription based. (help me decide?) 🤷‍♂️",
             to: self
         )
     }

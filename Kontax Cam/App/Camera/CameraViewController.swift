@@ -71,7 +71,7 @@ class CameraViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if whatsNewEvoker.shouldPresent {
-            let whatsNewView = UIHostingController(rootView: WhatsNewView(dismissAction: onWhatsNewDismiss))
+            let whatsNewView = UIHostingController(rootView: WhatsNewView(dismissAction: onWhatsNewDismis))
             whatsNewView.presentationController?.delegate = self
             self.present(whatsNewView, animated: true, completion: nil)
         }
@@ -165,7 +165,7 @@ class CameraViewController: UIViewController {
     }
     
     /// Called when user taps on the button inside whatsNew
-    private func onWhatsNewDismiss() {
+    private func onWhatsNewDismis() {
         self.dismiss(animated: true, completion: {
             self.whatsNewEvoker.shouldPresent = false
             

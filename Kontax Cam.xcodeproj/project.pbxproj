@@ -48,24 +48,18 @@
 		0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29C2476A7F000603F2C /* SceneDelegate.swift */; };
 		0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29E2476A7F000603F2C /* CameraViewController.swift */; };
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
-		0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
 		0A5C087F24E0044E002E2D66 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */; };
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
+		0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
 		0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88B24EB705A00C5449D /* FilterCollection.swift */; };
 		0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */; };
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
-		0A7BC0DA24EE7D0600262C5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A32476A7F100603F2C /* Assets.xcassets */; };
 		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
-		0A84475624F9492300700CAB /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475524F9492300700CAB /* WhatsNewView.swift */; };
 		0A84475924F94A0100700CAB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
-		0A84475B24F94C9A00700CAB /* WhatsNewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475A24F94C9A00700CAB /* WhatsNewRow.swift */; };
-		0A84475D24F94CF700700CAB /* WhatsNewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475C24F94CF700700CAB /* WhatsNewModel.swift */; };
-		0A84475F24F9557600700CAB /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */; };
-		0A84476324F9603800700CAB /* WhatsNewEvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84476224F9603800700CAB /* WhatsNewEvoker.swift */; };
 		0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A954A4C24FB2A6300BDD0DC /* In development.png */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
@@ -186,7 +180,6 @@
 		0A44B29C2476A7F000603F2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A44B29E2476A7F000603F2C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		0A44B2A12476A7F000603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0A44B2A32476A7F100603F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
@@ -194,16 +187,12 @@
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXInfoViewController.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
+		0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A71C88B24EB705A00C5449D /* FilterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollection.swift; sourceTree = "<group>"; };
 		0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A82B83324AC406600673F1A /* LUTRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTRender.swift; sourceTree = "<group>"; };
-		0A84475524F9492300700CAB /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
 		0A84475824F94A0100700CAB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		0A84475A24F94C9A00700CAB /* WhatsNewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewRow.swift; sourceTree = "<group>"; };
-		0A84475C24F94CF700700CAB /* WhatsNewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewModel.swift; sourceTree = "<group>"; };
-		0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
-		0A84476224F9603800700CAB /* WhatsNewEvoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewEvoker.swift; sourceTree = "<group>"; };
 		0A954A4C24FB2A6300BDD0DC /* In development.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In development.png"; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -380,6 +369,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */,
 				0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */,
 				0AF619F524E0F6EA00BE288A /* App icons */,
 				0ABD6D3A2497802400C3CC4B /* Model */,
@@ -389,7 +379,6 @@
 				0A44B29A2476A7F000603F2C /* AppDelegate.swift */,
 				0A44B29C2476A7F000603F2C /* SceneDelegate.swift */,
 				0A44B2A02476A7F000603F2C /* Main.storyboard */,
-				0A44B2A32476A7F100603F2C /* Assets.xcassets */,
 				0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */,
 				0A44B2A82476A7F100603F2C /* Info.plist */,
 			);
@@ -399,7 +388,6 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				0A84475424F9491500700CAB /* WhatsNew */,
 				0A4D6E53247A472100E039FC /* Filter collections */,
 				0A03EAFD2480AB84001D8006 /* FX */,
 				0AADEE72247B731C009FFA52 /* Lab */,
@@ -490,17 +478,6 @@
 			path = "Filter Info";
 			sourceTree = "<group>";
 		};
-		0A84475424F9491500700CAB /* WhatsNew */ = {
-			isa = PBXGroup;
-			children = (
-				0A84475524F9492300700CAB /* WhatsNewView.swift */,
-				0A84475A24F94C9A00700CAB /* WhatsNewRow.swift */,
-				0A84475E24F9557600700CAB /* PrimaryButtonStyle.swift */,
-				0A84476224F9603800700CAB /* WhatsNewEvoker.swift */,
-			);
-			path = WhatsNew;
-			sourceTree = "<group>";
-		};
 		0A84475724F949F000700CAB /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,7 +518,6 @@
 				0ABD6D3C2497803500C3CC4B /* Photo.swift */,
 				0A1193BC249B56E30086604D /* Effect.swift */,
 				0A71C88B24EB705A00C5449D /* FilterCollection.swift */,
-				0A84475C24F94CF700700CAB /* WhatsNewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -764,9 +740,9 @@
 				0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */,
+				0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */,
 				0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */,
 				0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */,
-				0A44B2A42476A7F100603F2C /* Assets.xcassets in Resources */,
 				0AF619FF24E0F73C00BE288A /* A fine day.png in Resources */,
 				0AF61A0024E0F73C00BE288A /* Summer vibes.png in Resources */,
 				0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */,
@@ -778,7 +754,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A7BC0DA24EE7D0600262C5D /* Assets.xcassets in Resources */,
 				0AC2F2A924ED040B007A5E33 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,9 +820,7 @@
 				0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */,
 				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,
 				0A267BCC24E78F9F0025FB60 /* UIFont.swift in Sources */,
-				0A84475624F9492300700CAB /* WhatsNewView.swift in Sources */,
 				0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */,
-				0A84475F24F9557600700CAB /* PrimaryButtonStyle.swift in Sources */,
 				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
@@ -858,11 +831,9 @@
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
-				0A84476324F9603800700CAB /* WhatsNewEvoker.swift in Sources */,
 				0A267BCA24E78F980025FB60 /* UIStackView.swift in Sources */,
 				0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */,
 				0A267BCE24E78FA60025FB60 /* UIButton.swift in Sources */,
-				0A84475D24F94CF700700CAB /* WhatsNewModel.swift in Sources */,
 				0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */,
@@ -889,7 +860,6 @@
 				0A267BC824E78F8F0025FB60 /* UIViewController.swift in Sources */,
 				0A267BD424E78FC20025FB60 /* UIView.swift in Sources */,
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,
-				0A84475B24F94C9A00700CAB /* WhatsNewRow.swift in Sources */,
 				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,
 				0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */,
 			);

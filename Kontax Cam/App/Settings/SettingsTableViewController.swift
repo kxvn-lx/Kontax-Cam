@@ -42,6 +42,13 @@ class SettingsTableViewController: UITableViewController {
 }
 
 extension SettingsTableViewController: SettingsViewModelDelegate {
+    func changelogTapped() {
+        if let url = URL(string: "https://kontax.cam/change-log") {
+            let sfSafariVC = SFSafariViewController(url: url)
+            present(sfSafariVC, animated: true)
+        }
+    }
+    
     func restorePurchaseTapped() {
         AlertHelper.shared.presentOKAction(
             withTitle: "Future feature!",
@@ -55,11 +62,6 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
             let sfSafariVC = SFSafariViewController(url: url)
             present(sfSafariVC, animated: true)
         }
-    }
-    
-    func whatsNewTapped() {
-        let whatsNewView = UIHostingController(rootView: WhatsNewView(isFromSetting: true, dismissAction: { self.dismiss(animated: true, completion: nil) }))
-        self.present(whatsNewView, animated: true, completion: nil)
     }
     
     func appearanceTapped() {
@@ -107,7 +109,7 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func privacyTapped() {
-        if let url = URL(string: "https://kontaxcam.netlify.app/privacy-policy") {
+        if let url = URL(string: "https://kontax.cam/privacy-policy") {
             let sfSafariVC = SFSafariViewController(url: url)
             present(sfSafariVC, animated: true)
         }

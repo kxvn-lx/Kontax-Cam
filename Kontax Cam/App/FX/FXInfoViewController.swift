@@ -148,13 +148,11 @@ class FXInfoTableViewCell: UITableViewCell {
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
         return label
     }()
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .secondaryLabel
         return label
     }()
@@ -182,7 +180,7 @@ class FXInfoTableViewCell: UITableViewCell {
         mStackView = UIStackView(arrangedSubviews: [iconImageView, titleLabel, descriptionLabel])
         mStackView.alignment = .leading
         mStackView.axis = .vertical
-        mStackView.spacing = 10
+        mStackView.spacing = 15
         mStackView.isLayoutMarginsRelativeArrangement = true
         mStackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         mStackView.setCustomSpacing(0, after: titleLabel)

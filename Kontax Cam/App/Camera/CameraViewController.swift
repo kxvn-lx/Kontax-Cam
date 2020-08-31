@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftUI
 import SnapKit
 import AVFoundation
 
@@ -36,8 +35,6 @@ class CameraViewController: UIViewController {
     private let filterLabelView = FilterLabelView()
     private var extraLensView = ExtraLensView()
     
-    private var whatsNewEvoker = WhatsNewEvoker()
-    
     let rotView: UIImageView = {
         let v = UIImageView()
         v.alpha = 0.5
@@ -65,15 +62,18 @@ class CameraViewController: UIViewController {
         #if !targetEnvironment(simulator)
         cameraEngine.startCaptureSession()
         #endif
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if whatsNewEvoker.shouldPresent {
-            let whatsNewView = UIHostingController(rootView: WhatsNewView(dismissAction: onWhatsNewDismis))
-            whatsNewView.presentationController?.delegate = self
-            self.present(whatsNewView, animated: true, completion: nil)
+        // Show tutorial if first visit
+        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
+            }
+            AlertHelper.shared.presentWithCustomAction(
+                title: "Swipe gesture",
+                message: "Swipe left or right to live preview all the available filters in the collection.",
+                withCustomAction: [okAction],
+                to: self
+            )
         }
     }
     
@@ -163,26 +163,6 @@ class CameraViewController: UIViewController {
         cameraView.pixelBuffer = nil
         cameraView.flushTextureCache()
     }
-    
-    /// Called when user taps on the button inside whatsNew
-    private func onWhatsNewDismis() {
-        self.dismiss(animated: true, completion: {
-            self.whatsNewEvoker.shouldPresent = false
-            
-            // Show tutorial if first visit
-            if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
-                let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                    UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
-                }
-                AlertHelper.shared.presentWithCustomAction(
-                    title: "Swipe gesture",
-                    message: "Swipe left or right to live preview all the available filters in the collection.",
-                    withCustomAction: [okAction],
-                    to: self
-                )
-            }
-        })
-    }
 }
 
 extension CameraViewController: FilterListDelegate {
@@ -210,12 +190,6 @@ extension CameraViewController: FiltersGestureDelegate {
             LUTImageFilter.selectedLUTFilter = nil
             filterLabelView.titleLabel.text = "OFF"
         }
-    }
-}
-
-extension CameraViewController: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        whatsNewEvoker.shouldPresent = false
     }
 }
 

@@ -16,7 +16,7 @@ protocol SettingsViewModelDelegate: class {
     func twitterTapped()
     func websiteTapped()
     func emailTapped()
-    func whatsNewTapped()
+    func changelogTapped()
     
     func surveyFormTapped()
     func privacyTapped()
@@ -68,9 +68,8 @@ class SettingsViewModel: NSObject {
                     createdCell: { self.createNormalCell(withTitle: "Email") },
                     action: { [weak self] _ in self?.delegate?.emailTapped() }),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "What's new 🚀") },
-                    action: { [weak self] _ in self?.delegate?.whatsNewTapped() }
-                )
+                    createdCell: { self.createNormalCell(withTitle: "Changelog") },
+                    action: { [weak self] _ in self?.delegate?.changelogTapped() })
             ])
         
         let otherStuffSection = SettingsSection(

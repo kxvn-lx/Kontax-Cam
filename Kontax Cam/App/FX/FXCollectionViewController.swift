@@ -20,6 +20,8 @@ private struct CellPath {
 class FXCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
     private let effects: [Effect] = FilterType.allCases.map({ Effect(name: $0, icon: $0.iconName) }).filter({ $0.name != FilterType.lut })
+    private let scaleFactor: CGFloat = 0.95
+    private let scaleDuration: Double = 0.0625
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,8 +74,8 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
             guard let indexPath = collectionView?.indexPathForItem(at: p) else { return }
             guard let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell else { return }
             
-            UIView.animate(withDuration: 0.125) {
-                cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            UIView.animate(withDuration: scaleDuration) {
+                cell.transform = CGAffineTransform(scaleX: self.scaleFactor, y: self.scaleFactor)
             }
             
             if cell.isFxSelected {
@@ -103,7 +105,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         default:
             guard let indexPath = collectionView?.indexPathForItem(at: p) else { return }
             guard let cell = collectionView.cellForItem(at: indexPath) as? FXCollectionViewCell else { return }
-            UIView.animate(withDuration: 0.125) {
+            UIView.animate(withDuration: scaleDuration) {
                 cell.transform = .identity
             }
         }
@@ -147,6 +149,15 @@ extension FXCollectionViewController {
         // 2. Update datasource
         let selectedFx = effects[indexPath.row]
         smartAppend(selectedCell, selectedFx)
+        
+        // Start animation
+        UIView.animate(withDuration: scaleDuration) {
+            selectedCell.transform = CGAffineTransform(scaleX: self.scaleFactor, y: self.scaleFactor)
+        } completion: { (_) in
+            UIView.animate(withDuration: self.scaleDuration) {
+                selectedCell.transform = .identity
+            }
+        }
     }
     
     /// Append the selecteed FX to the allowed filters list. If exist, simply remove it.

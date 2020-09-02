@@ -75,7 +75,6 @@ extension FiltersCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier, for: indexPath) as! FiltersCollectionViewCell
         
         let item = filterCollections[indexPath.row]
-        
         cell.filterCollection = item
         cell.isLocked = !UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!.contains(where: { $0 == item.iapID })
         

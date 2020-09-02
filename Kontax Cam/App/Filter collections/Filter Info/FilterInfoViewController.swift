@@ -38,6 +38,14 @@ class FilterInfoViewController: UIViewController {
         button.tintColor = .label
         return button
     }()
+    private let successImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = IconHelper.shared.getIconImage(iconName: "checkmark.circle.fill")
+        imageView.tintColor = .systemGreen
+        imageView.isHidden = true
+        imageView.alpha = 0
+        return imageView
+    }()
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
@@ -84,7 +92,8 @@ class FilterInfoViewController: UIViewController {
         self.addVC(filterInfoImagesVC)
         self.view.addSubview(titleLabel)
         
-        mStackView = UIStackView(arrangedSubviews: [spinnerView, iapButton])
+        mStackView = UIStackView(arrangedSubviews: [spinnerView, iapButton, successImageView])
+        mStackView.axis = .vertical
         mStackView.alignment = .center
         
         self.view.addSubview(mStackView)
@@ -113,6 +122,10 @@ class FilterInfoViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.8)
             make.bottom.equalToSuperview().offset(-self.view.getSafeAreaInsets().bottom - 20)
+        }
+        
+        successImageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(35)
         }
     }
     
@@ -156,6 +169,29 @@ class FilterInfoViewController: UIViewController {
         }
     }
     
+    private func startIAPSuccessAnimation() {
+        let duration: Double = 0.5
+        
+        UIView.animate(withDuration: duration) {
+            self.iapButton.isHidden = true
+            self.iapButton.alpha = 0
+            
+            self.successImageView.isHidden = false
+            self.successImageView.alpha = 1
+        } completion: { (_) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: duration) {
+                    self.successImageView.alpha = 0
+                } completion: { (_) in
+                    self.mStackView.isHidden = true
+                    self.iapButton.isHidden = false
+                    self.iapButton.alpha = 1
+                    self.successImageView.isHidden = true
+                }
+            }
+        }
+    }
+    
     @objc private func closeButtonTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -170,6 +206,7 @@ class FilterInfoViewController: UIViewController {
             )
             return
         }
+        
         IAPManager.shared.purchase(selectedCollectionIAP.registeredPurchase.suffix) { [weak self] (result) in
             guard let self = self else { return }
             
@@ -185,7 +222,7 @@ class FilterInfoViewController: UIViewController {
                 }
                 
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
-                self.mStackView.isHidden = true
+                self.startIAPSuccessAnimation()
                 
                 self.shouldRefreshCollectionView.send(true)
                 

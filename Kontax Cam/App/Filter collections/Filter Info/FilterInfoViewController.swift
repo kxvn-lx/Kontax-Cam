@@ -223,6 +223,7 @@ class FilterInfoViewController: UIViewController {
                 
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
                 self.startIAPSuccessAnimation()
+                TapticHelper.shared.successTaptic()
                 
                 self.shouldRefreshCollectionView.send(true)
                 

@@ -11,6 +11,8 @@ import Combine
 
 class FilterInfoViewController: UIViewController {
     
+    var shouldRefreshCollectionView = PassthroughSubject<Bool, Never>()
+    
     var selectedCollection: FilterCollection! {
         didSet {
             filterInfoImagesVC.selectedFilterCollection = selectedCollection
@@ -90,7 +92,7 @@ class FilterInfoViewController: UIViewController {
         iapButton.addTarget(self, action: #selector(iapButtonTapped), for: .touchUpInside)
         
         let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
-        if purchasedFilters.contains(selectedCollection.name) || selectedCollectionIAP == nil {
+        if purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP == nil {
             // User has bought the collection
             mStackView.isHidden = true
         }
@@ -118,12 +120,12 @@ class FilterInfoViewController: UIViewController {
     private func observeIAP() {
         // Observed for live-change on IAP events
         IAPManager.shared.removedIAP
-            .handleEvents(receiveOutput: { [unowned self] removedIAP in
+            .handleEvents(receiveOutput: { [unowned self] removedIAPs in
                 if let selectedCollectionIAP = selectedCollectionIAP {
                     let iapID = IAPManager.shared.bundleID + "." + selectedCollectionIAP.registeredPurchase.suffix
                     
                     DispatchQueue.main.async {
-                        if removedIAP.contains(iapID) && mStackView.isHidden {
+                        if removedIAPs.contains(iapID) && mStackView.isHidden {
                             mStackView.isHidden = false
                             
                             var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
@@ -173,15 +175,19 @@ class FilterInfoViewController: UIViewController {
             
             switch result {
             case .success(let purchaseDetails):
-                print(purchaseDetails)
+                if IAPManager.isDebugMode {
+                    print("Purchase detail: \(purchaseDetails)")
+                }
                 
                 var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
-                if !purchasedFilters.contains(selectedCollectionIAP.title) {
-                    purchasedFilters.append(self.selectedCollection.name)
+                if !purchasedFilters.contains(selectedCollectionIAP.id) {
+                    purchasedFilters.append(selectedCollectionIAP.id)
                 }
                 
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
                 self.mStackView.isHidden = true
+                
+                self.shouldRefreshCollectionView.send(true)
                 
             case .failure(let error):
                 

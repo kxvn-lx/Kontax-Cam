@@ -31,14 +31,21 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     }()
     private let infoButton: UIButton = {
         let button = UIButton(type: .detailDisclosure)
-        button.tintColor = UIColor.label.withAlphaComponent(0.5)
+        button.tintColor = UIColor.label
         return button
     }()
     private let nameLabelView: UIView = {
         let view = UIView()
         return view
     }()
-    private var mStackView: UIStackView!
+    private let lockImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = IconHelper.shared.getIconImage(iconName: "lock.fill")
+        imageView.tintColor = .secondaryLabel
+        return imageView
+    }()
+    private var nameStackView: UIStackView! // Stackview of collection name and lock icon
+    private var mStackView: UIStackView! // Stackview of imageView and nameLabelView
     
     var buttonTapped: (() -> Void)?
     var filterCollection: FilterCollection! {
@@ -47,10 +54,17 @@ class FiltersCollectionViewCell: UICollectionViewCell {
             imageView.sd_setImage(with: URL(string: filterCollection.imageURL)!, placeholderImage: UIImage(named: "collection-placeholder"), options: .scaleDownLargeImages)
         }
     }
-    
-    override var isSelected: Bool {
+    var isLocked = true {
         didSet {
-            setCellSelected()
+            collectionNameLabel.textColor = isLocked ? .secondaryLabel : .label
+            lockImageView.isHidden = !isLocked
+        }
+    }
+    
+    // Perform a custom selection state so that we can customise its behaviour
+    var isCellSelected: Bool = false {
+        didSet {
+            layer.borderWidth = isCellSelected ? 2 : 0
         }
     }
     
@@ -72,7 +86,10 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupView() {
-        nameLabelView.addSubview(collectionNameLabel)
+        nameStackView = UIStackView(arrangedSubviews: [collectionNameLabel, lockImageView])
+        nameStackView.spacing = 10
+        
+        nameLabelView.addSubview(nameStackView)
         nameLabelView.addSubview(infoButton)
         
         mStackView = UIStackView(arrangedSubviews: [imageView, nameLabelView])
@@ -93,7 +110,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
             make.edges.equalToSuperview().inset(NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
         }
         
-        collectionNameLabel.snp.makeConstraints { (make) in
+        nameStackView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview()
         }
@@ -102,12 +119,6 @@ class FiltersCollectionViewCell: UICollectionViewCell {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview()
         }
-    }
-    
-    /// Gives a selected cell a style.
-    private func setCellSelected() {
-        layer.borderWidth = isSelected ? 2 : 0
-        collectionNameLabel.font = .preferredFont(forTextStyle: isSelected ? .headline : .body)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

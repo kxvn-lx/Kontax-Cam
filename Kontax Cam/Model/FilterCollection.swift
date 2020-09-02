@@ -13,6 +13,14 @@ struct FilterCollection: Equatable {
     var imageURL: String
     var filters: [FilterName]
     
+    var iapID: String {
+        return IAPManager.shared.bundleID + "." + convertToSuffix(name)
+    }
+    
+    private func convertToSuffix(_ str: String) -> String {
+        return str.lowercased().replacingOccurrences(of: " ", with: "")
+    }
+    
     static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
         return rhs.name == lhs.name
     }

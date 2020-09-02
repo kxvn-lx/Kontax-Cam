@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Make 'A Collection' the default filters
         if UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters) == nil {
-            UserDefaultsHelper.shared.setData(value: [FilterCollection.aCollection.name], key: .purchasedFilters)
+            UserDefaultsHelper.shared.setData(value: [FilterCollection.aCollection.iapID], key: .purchasedFilters)
         }
         return true
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol FilterListDelegate: class {
     /// Tells the delegate that a filter collection has been selected
@@ -18,6 +19,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     var filterCollections = [FilterCollection]()
     var selectedCollection = FilterCollection.aCollection
     weak var delegate: FilterListDelegate?
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,28 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
         self.navigationItem.rightBarButtonItem = infoButton
+        
+        observeIAP()
+    }
+    
+    /// Observe IAP changes in real time.
+    private func observeIAP() {
+        // Observed for live-change on IAP events
+        IAPManager.shared.removedIAP
+            .handleEvents(receiveOutput: { [unowned self] removedIAPs in
+                
+                var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
+                for iap in removedIAPs {
+                    purchasedFilters.removeAll(where: { $0 == iap })
+                }
+                UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            })
+            .sink { _ in }
+            .store(in: &subscriptions)
     }
     
     @objc private func infoButtonTapped() {
@@ -49,11 +73,23 @@ extension FiltersCollectionViewController {
         let item = filterCollections[indexPath.row]
         
         cell.filterCollection = item
-        cell.isSelected = item == selectedCollection
+        cell.isLocked = !UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!.contains(where: { $0 == item.iapID })
+        
+        cell.isCellSelected = item == selectedCollection
         
         cell.buttonTapped = {
             let vc = FilterInfoViewController()
             vc.selectedCollection = item
+            
+            vc.shouldRefreshCollectionView
+                .handleEvents(receiveOutput: { [unowned self] shouldRefresh in
+                    if shouldRefresh {
+                        self.collectionView.reloadData()
+                    }
+                })
+                .sink { _ in }
+                .store(in: &self.subscriptions)
+            
             let navController = UINavigationController(rootViewController: vc)
             self.present(navController, animated: true, completion: nil)
         }
@@ -65,9 +101,16 @@ extension FiltersCollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? FiltersCollectionViewCell else { return }
+        
+        if !selectedCell.isLocked {
+            selectedCell.isCellSelected.toggle()
+            delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
+            navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
+        } else {
+            TapticHelper.shared.errorTaptic()
+        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

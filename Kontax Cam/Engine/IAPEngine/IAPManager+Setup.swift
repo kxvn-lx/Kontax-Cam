@@ -9,7 +9,7 @@
 import Foundation
 
 extension IAPManager {
-    static let isDebugMode = true
+    static let isDebugMode = false
 
     static var registeredPurchases: Set<RegisteredPurchase> = [
         .init(suffix: "bcollection", purchaseType: .nonConsumable),

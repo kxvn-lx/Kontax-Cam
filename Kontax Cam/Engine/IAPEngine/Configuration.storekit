@@ -1,0 +1,59 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "36851729",
+      "localizations" : [
+        {
+          "description" : "Collection of black and white emulations",
+          "displayName" : "BW Collection",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kevinlaminto.kontaxcam.bwcollection",
+      "referenceName" : "BW Collection",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "3CBDA0B1",
+      "localizations" : [
+        {
+          "description" : "Collection of filters from HUE",
+          "displayName" : "HUE1 Collection",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kevinlaminto.kontaxcam.hue1collection",
+      "referenceName" : "HUE1 Collection",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "316C9DC2",
+      "localizations" : [
+        {
+          "description" : "Collection of infrared and film emulations",
+          "displayName" : "B Collection",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kevinlaminto.kontaxcam.bcollection",
+      "referenceName" : "B Collection",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}

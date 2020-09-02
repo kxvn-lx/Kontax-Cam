@@ -77,6 +77,7 @@
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 		0AB2015724EF648300296B0F /* FilterInfoImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
+		0ABB576324FF9DC70058DB49 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB576224FF9DC70058DB49 /* Configuration.storekit */; };
 		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
 		0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */; };
 		0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */; };
@@ -214,6 +215,7 @@
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		0ABB576224FF9DC70058DB49 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -337,6 +339,7 @@
 			children = (
 				0A1F11BD24FF4E6F00BCC1A9 /* IAPManager.swift */,
 				0A1F11C424FF542200BCC1A9 /* IAPManager+Setup.swift */,
+				0ABB576224FF9DC70058DB49 /* Configuration.storekit */,
 			);
 			path = IAPEngine;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */,
 				0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */,
+				0ABB576324FF9DC70058DB49 /* Configuration.storekit in Resources */,
 				0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */,
 				0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */,
 				0AF619FF24E0F73C00BE288A /* A fine day.png in Resources */,

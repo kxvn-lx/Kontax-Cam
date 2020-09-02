@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class FilterInfoViewController: UIViewController {
     
@@ -25,6 +26,7 @@ class FilterInfoViewController: UIViewController {
             }
         }
     }
+    private var subscriptions = Set<AnyCancellable>()
     
     private let filterInfoImagesVC = FilterInfoImagesCollectionViewController(collectionViewLayout: UICollectionViewLayout())
     private let iapButton: UIButton = {
@@ -76,6 +78,25 @@ class FilterInfoViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             self.shouldShowSpinner = false
         }
+        
+        IAPManager.shared.removedIAP
+            .handleEvents(receiveOutput: { [unowned self] removedIAP in
+                if let selectedCollectionIAP = selectedCollectionIAP {
+                    let iapID = IAPManager.shared.bundleID + "." + selectedCollectionIAP.registeredPurchase.suffix
+                    
+                    DispatchQueue.main.async {
+                        if removedIAP.contains(iapID) && mStackView.isHidden {
+                            mStackView.isHidden = false
+                            
+                            var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
+                            purchasedFilters.removeAll(where: { $0 == selectedCollectionIAP.title })
+                            UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
+                        }
+                    }
+                }
+            })
+            .sink { _ in }
+            .store(in: &subscriptions)
     }
     
     private func setupView() {
@@ -133,10 +154,12 @@ class FilterInfoViewController: UIViewController {
             
             if success {
                 var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
-                purchasedFilters.append(self.selectedCollection.name)
+                if !purchasedFilters.contains(selectedCollectionIAP.title) {
+                    purchasedFilters.append(self.selectedCollection.name)
+                }
                 
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
-                print(UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!)
+                self.mStackView.isHidden = true
             } else {
                 AlertHelper.shared.presentOKAction(
                     withTitle: "Oops!",

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RegisteredPurchase {
+struct RegisteredPurchase: Hashable {
     
     var suffix: String
     var purchaseType: IAPManager.PurchaseType
@@ -20,6 +20,9 @@ struct RegisteredPurchase {
         ]
     }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(suffix)
+    }
 }
 
 extension RegisteredPurchase: DocumentSerializable {

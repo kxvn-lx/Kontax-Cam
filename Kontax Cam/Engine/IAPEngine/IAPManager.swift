@@ -9,19 +9,28 @@
 import Foundation
 import SwiftyStoreKit
 import StoreKit
+import Combine
 
-class IAPManager {
+protocol DocumentSerializable {
+    init?(documentData: [String: Any])
+}
+
+class IAPManager: NSObject {
     enum PurchaseType: String {
         case nonConsumable
     }
     
     var inAppPurchases = [InAppPurchase]()
+    var removedIAP = PassthroughSubject<[String], Never>()
     
-    private let bundleID = Bundle.main.bundleIdentifier!
+    let bundleID = Bundle.main.bundleIdentifier!
     private var isIAPManagerStarted = false
     
     static var shared = IAPManager()
-    private init() { }
+    private override init() {
+        super.init()
+        SKPaymentQueue.default().add(self)
+    }
     
     // MARK: - Public methods
     /// Start IAPManager
@@ -267,6 +276,12 @@ extension IAPManager {
     }
 }
 
-protocol DocumentSerializable {
-    init?(documentData: [String: Any])
+extension IAPManager: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+//        print(transactions)
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, didRevokeEntitlementsForProductIdentifiers productIdentifiers: [String]) {
+        removedIAP.send(productIdentifiers)
+    }
 }

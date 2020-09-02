@@ -119,7 +119,7 @@ class FilterInfoViewController: UIViewController {
     /// Observe IAP changes in real time.
     private func observeIAP() {
         // Observed for live-change on IAP events
-        IAPManager.shared.removedIAP
+        IAPManager.shared.removedIAPs
             .handleEvents(receiveOutput: { [unowned self] removedIAPs in
                 if let selectedCollectionIAP = selectedCollectionIAP {
                     let iapID = IAPManager.shared.bundleID + "." + selectedCollectionIAP.registeredPurchase.suffix

@@ -21,7 +21,7 @@ class IAPManager: NSObject {
     }
     
     var inAppPurchases = [InAppPurchase]()
-    var removedIAP = PassthroughSubject<[String], Never>()
+    var removedIAPs = PassthroughSubject<[String], Never>()
     
     let bundleID = Bundle.main.bundleIdentifier!
     private var isIAPManagerStarted = false
@@ -282,6 +282,6 @@ extension IAPManager: SKPaymentTransactionObserver {
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, didRevokeEntitlementsForProductIdentifiers productIdentifiers: [String]) {
-        removedIAP.send(productIdentifiers)
+        removedIAPs.send(productIdentifiers)
     }
 }

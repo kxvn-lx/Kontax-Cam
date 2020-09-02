@@ -44,7 +44,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     /// Observe IAP changes in real time.
     private func observeIAP() {
         // Observed for live-change on IAP events
-        IAPManager.shared.removedIAP
+        IAPManager.shared.removedIAPs
             .handleEvents(receiveOutput: { [unowned self] removedIAPs in
                 
                 var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
@@ -53,7 +53,11 @@ class FiltersCollectionViewController: UICollectionViewController {
                 }
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
                 
+                // Reset to A
+                selectedCollection = .aCollection
+                
                 DispatchQueue.main.async {
+                    delegate?.filterListDidSelectCollection(.aCollection)
                     self.collectionView.reloadData()
                 }
             })

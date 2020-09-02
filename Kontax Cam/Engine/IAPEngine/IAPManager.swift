@@ -15,7 +15,7 @@ class IAPManager {
         case nonConsumable
     }
     
-    var inAppPurchases: [InAppPurchase] = []
+    var inAppPurchases = [InAppPurchase]()
     
     private let bundleID = Bundle.main.bundleIdentifier!
     private var isIAPManagerStarted = false

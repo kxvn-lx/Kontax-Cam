@@ -11,7 +11,7 @@ import Foundation
 extension IAPManager {
     static let isDebugMode = true
 
-    static var registeredPurchases: [RegisteredPurchase] = [
+    static var registeredPurchases: Set<RegisteredPurchase> = [
         .init(suffix: "bcollection", purchaseType: .nonConsumable),
         .init(suffix: "bwcollection", purchaseType: .nonConsumable),
         .init(suffix: "hue1collection", purchaseType: .nonConsumable)

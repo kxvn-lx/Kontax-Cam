@@ -9,10 +9,9 @@
 import Foundation
 
 extension IAPManager {
-    static let isDebugMode = false
+    static let isDebugMode = true
 
     static var registeredPurchases: [RegisteredPurchase] = [
-        .init(suffix: "acollection", purchaseType: .nonConsumable),
         .init(suffix: "bcollection", purchaseType: .nonConsumable),
         .init(suffix: "bwcollection", purchaseType: .nonConsumable),
         .init(suffix: "hue1collection", purchaseType: .nonConsumable)

@@ -13,6 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IAPManager.shared.start()
+        
+        // Make 'A Collection' the default filters
+        if UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters) == nil {
+            UserDefaultsHelper.shared.setData(value: [FilterCollection.aCollection.name], key: .purchasedFilters)
+        }
         return true
     }
 

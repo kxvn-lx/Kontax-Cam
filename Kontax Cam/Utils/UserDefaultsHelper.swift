@@ -16,6 +16,7 @@ struct UserDefaultsHelper {
         case userFirstLaunch // Keys wether should present onboarding
         case userNeedTutorial // Keys to present the 'swipe filter' alert
         case shouldShowEffectsTip
+        case purchasedFilters
     } 
     
     private let defaults = UserDefaults.standard

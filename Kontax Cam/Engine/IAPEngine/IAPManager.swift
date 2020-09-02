@@ -42,8 +42,8 @@ class IAPManager {
             self?.logForPurchaseResult(result)
             
             switch result {
-            case .success(purchase: let purchaseDetail):
-                print(purchaseDetail)
+            case .success(purchase: _):
+                completion(true)
             case .error(error: let error):
                 print(error.localizedDescription)
                 completion(false)

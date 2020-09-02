@@ -15,12 +15,14 @@ class FilterInfoViewController: UIViewController {
             filterInfoImagesVC.selectedFilterCollection = selectedCollection
             titleLabel.text = selectedCollection.name
             
-            selectedCollectionIAP = IAPManager.shared.inAppPurchases.filter({ $0.title == selectedCollection.name }).first!
+            selectedCollectionIAP = IAPManager.shared.inAppPurchases.filter({ $0.title == selectedCollection.name }).first
         }
     }
-    private var selectedCollectionIAP: InAppPurchase! {
+    private var selectedCollectionIAP: InAppPurchase? {
         didSet {
-            iapButton.setTitle(selectedCollectionIAP.price, for: .normal)
+            if let iap = selectedCollectionIAP {
+                iapButton.setTitle(iap.price, for: .normal)
+            }
         }
     }
     
@@ -86,6 +88,12 @@ class FilterInfoViewController: UIViewController {
         self.view.addSubview(mStackView)
         
         iapButton.addTarget(self, action: #selector(iapButtonTapped), for: .touchUpInside)
+        
+        let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
+        if purchasedFilters.contains(selectedCollection.name) || selectedCollectionIAP == nil {
+            // User has bought the collection
+            mStackView.isHidden = true
+        }
     }
     
     private func setupConstraint() {
@@ -112,10 +120,31 @@ class FilterInfoViewController: UIViewController {
     }
     
     @objc private func iapButtonTapped() {
-        AlertHelper.shared.presentOKAction(
-            withTitle: "Future feature!",
-            andMessage: "This feature will come with the addition of in app purchases. It will either be a one time purchase, or a subscription based. (help me decide?) 🤷‍♂️",
-            to: self
-        )
+        guard let selectedCollectionIAP = selectedCollectionIAP else {
+            AlertHelper.shared.presentOKAction(
+                withTitle: "Oops!",
+                andMessage: "Looks like there was a problem purchasing this collection. Please try again.",
+                to: self
+            )
+            return
+        }
+        IAPManager.shared.purchase(selectedCollectionIAP.registeredPurchase.suffix) { [weak self] (success) in
+            guard let self = self else { return }
+            
+            if success {
+                var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
+                purchasedFilters.append(self.selectedCollection.name)
+                
+                UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
+                print(UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!)
+            } else {
+                AlertHelper.shared.presentOKAction(
+                    withTitle: "Oops!",
+                    andMessage: "Looks like there was a problem purchasing this collection. Please try again.",
+                    to: self
+                )
+            }
+
+        }
     }
 }

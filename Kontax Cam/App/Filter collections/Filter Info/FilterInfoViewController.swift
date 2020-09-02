@@ -14,13 +14,21 @@ class FilterInfoViewController: UIViewController {
         didSet {
             filterInfoImagesVC.selectedFilterCollection = selectedCollection
             titleLabel.text = selectedCollection.name
+            
+            selectedCollectionIAP = IAPManager.shared.inAppPurchases.filter({ $0.title == selectedCollection.name }).first!
         }
     }
+    private var selectedCollectionIAP: InAppPurchase! {
+        didSet {
+            iapButton.setTitle(selectedCollectionIAP.price, for: .normal)
+        }
+    }
+    
     private let filterInfoImagesVC = FilterInfoImagesCollectionViewController(collectionViewLayout: UICollectionViewLayout())
     private let iapButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Purchased", for: .disabled)
-        button.setTitle("$5.99", for: .normal)
+        button.setTitle("$-1", for: .normal)
         button.tintColor = .label
         return button
     }()
@@ -63,7 +71,7 @@ class FilterInfoViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
         shouldShowSpinner = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             self.shouldShowSpinner = false
         }
     }

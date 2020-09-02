@@ -68,7 +68,7 @@ class SettingsViewModel: NSObject {
                     createdCell: { self.createNormalCell(withTitle: "Email") },
                     action: { [weak self] _ in self?.delegate?.emailTapped() }),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Changelog") },
+                    createdCell: { self.createNormalCell(withTitle: "Change log") },
                     action: { [weak self] _ in self?.delegate?.changelogTapped() })
             ])
         

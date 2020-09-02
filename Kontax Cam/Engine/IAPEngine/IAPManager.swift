@@ -41,7 +41,7 @@ class IAPManager: NSObject {
     }
     
     /// Purchase a product
-    func purchase(_ suffix: String, completion: @escaping (Bool) -> Void) {
+    func purchase(_ suffix: String, completion: @escaping (Result<PurchaseDetails, SKError>) -> Void) {
         if !isIAPManagerStarted {
             print("⚠️ IAPManager is not started! Please add 'IAPManager.shared.start()' to your 'application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)' in AppDelegate.swift")
             return
@@ -51,11 +51,11 @@ class IAPManager: NSObject {
             self?.logForPurchaseResult(result)
             
             switch result {
-            case .success(purchase: _):
-                completion(true)
+            case .success(purchase: let purchaseDetails):
+                completion(.success(purchaseDetails))
+                
             case .error(error: let error):
-                print(error.localizedDescription)
-                completion(false)
+                completion(.failure(error))
             }
         }
         
@@ -278,7 +278,7 @@ extension IAPManager {
 
 extension IAPManager: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-//        print(transactions)
+        
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, didRevokeEntitlementsForProductIdentifiers productIdentifiers: [String]) {

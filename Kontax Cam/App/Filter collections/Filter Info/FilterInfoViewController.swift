@@ -74,29 +74,8 @@ class FilterInfoViewController: UIViewController {
         }
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
-        shouldShowSpinner = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-            self.shouldShowSpinner = false
-        }
-        
-        IAPManager.shared.removedIAP
-            .handleEvents(receiveOutput: { [unowned self] removedIAP in
-                if let selectedCollectionIAP = selectedCollectionIAP {
-                    let iapID = IAPManager.shared.bundleID + "." + selectedCollectionIAP.registeredPurchase.suffix
-                    
-                    DispatchQueue.main.async {
-                        if removedIAP.contains(iapID) && mStackView.isHidden {
-                            mStackView.isHidden = false
-                            
-                            var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
-                            purchasedFilters.removeAll(where: { $0 == selectedCollectionIAP.title })
-                            UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
-                        }
-                    }
-                }
-            })
-            .sink { _ in }
-            .store(in: &subscriptions)
+        spinnerSetup()
+        observeIAP()
     }
     
     private func setupView() {
@@ -135,6 +114,46 @@ class FilterInfoViewController: UIViewController {
         }
     }
     
+    /// Observe IAP changes in real time.
+    private func observeIAP() {
+        // Observed for live-change on IAP events
+        IAPManager.shared.removedIAP
+            .handleEvents(receiveOutput: { [unowned self] removedIAP in
+                if let selectedCollectionIAP = selectedCollectionIAP {
+                    let iapID = IAPManager.shared.bundleID + "." + selectedCollectionIAP.registeredPurchase.suffix
+                    
+                    DispatchQueue.main.async {
+                        if removedIAP.contains(iapID) && mStackView.isHidden {
+                            mStackView.isHidden = false
+                            
+                            var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
+                            purchasedFilters.removeAll(where: { $0 == selectedCollectionIAP.title })
+                            UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
+                        }
+                    }
+                }
+            })
+            .sink { _ in }
+            .store(in: &subscriptions)
+    }
+    
+    /// Determine how the spinner will be shown
+    private func spinnerSetup() {
+        shouldShowSpinner = true
+        
+        if !ReachabilityHelper.shared.isConnectedToNetwork() && selectedCollection != .aCollection {
+            AlertHelper.shared.presentOKAction(
+                andMessage: "No internet connection. Please try again later",
+                to: self
+            )
+            spinnerView.isHidden = true
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                self.shouldShowSpinner = false
+            }
+        }
+    }
+    
     @objc private func closeButtonTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
@@ -149,10 +168,13 @@ class FilterInfoViewController: UIViewController {
             )
             return
         }
-        IAPManager.shared.purchase(selectedCollectionIAP.registeredPurchase.suffix) { [weak self] (success) in
+        IAPManager.shared.purchase(selectedCollectionIAP.registeredPurchase.suffix) { [weak self] (result) in
             guard let self = self else { return }
             
-            if success {
+            switch result {
+            case .success(let purchaseDetails):
+                print(purchaseDetails)
+                
                 var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
                 if !purchasedFilters.contains(selectedCollectionIAP.title) {
                     purchasedFilters.append(self.selectedCollection.name)
@@ -160,14 +182,20 @@ class FilterInfoViewController: UIViewController {
                 
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
                 self.mStackView.isHidden = true
-            } else {
-                AlertHelper.shared.presentOKAction(
-                    withTitle: "Oops!",
-                    andMessage: "Looks like there was a problem purchasing this collection. Please try again.",
-                    to: self
-                )
+                
+            case .failure(let error):
+                
+                switch error.code {
+                case .paymentCancelled:
+                    break
+                default:
+                    AlertHelper.shared.presentOKAction(
+                        withTitle: "Oops!",
+                        andMessage: error.localizedDescription,
+                        to: self
+                    )
+                }
             }
-
         }
     }
 }

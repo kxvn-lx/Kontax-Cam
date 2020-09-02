@@ -25,7 +25,7 @@ class AlertHelper {
     }
     
     /// Present a default alert view with an OK button.
-    func presentOKAction(withTitle title: String, andMessage message: String? = nil, to viewController: UIViewController?) {
+    func presentOKAction(withTitle title: String? = nil, andMessage message: String? = nil, to viewController: UIViewController?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

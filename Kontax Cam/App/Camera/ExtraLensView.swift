@@ -15,7 +15,7 @@ protocol ExtraLensViewDelegate: class {
 
 class ExtraLensView: UIView {
 
-    var availableExtraLens: AVCaptureDevice? {
+    var availableExtraLens = [AVCaptureDevice?]() {
         didSet {
             setupExtraLensLabel()
         }
@@ -28,12 +28,7 @@ class ExtraLensView: UIView {
         return label
     }()
     private var lensLabelArray = [String]()
-    private var extraLensMultiplierLabel = "-1x"
-    var isShowingExtraLens = false {
-        didSet {
-            extraLensLabel.text = isShowingExtraLens ? extraLensMultiplierLabel : "1x"
-        }
-    }
+    private var extraLensMultiplierArray = ["1x"]
     
     weak var delegate: ExtraLensViewDelegate?
     
@@ -50,6 +45,11 @@ class ExtraLensView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Update the lens appropriately
+    func updateLensLabel() {
+        extraLensLabel.text = getExtraLensString()
+    }
+    
     private func setupView() {
         addSubview(extraLensLabel)
         layer.cornerRadius = 17.5
@@ -64,17 +64,24 @@ class ExtraLensView: UIView {
     }
     
     private func setupExtraLensLabel() {
-        if let availableLens = availableExtraLens {
-            if availableLens.deviceType == .builtInTelephotoCamera {
-                extraLensMultiplierLabel = "2x"
-            } else if  availableLens.deviceType == .builtInUltraWideCamera {
-                extraLensMultiplierLabel = "0.5x"
+        for extraLens in availableExtraLens {
+            if let availableLens = extraLens {
+                if availableLens.deviceType == .builtInTelephotoCamera {
+                    extraLensMultiplierArray.append("2x")
+                } else if availableLens.deviceType == .builtInUltraWideCamera {
+                    extraLensMultiplierArray.append("0.5x")
+                }
             }
-            
-        } else {
-            self.isHidden = true
         }
-        
+    }
+    
+    private func getExtraLensString() -> String {
+        if var currentIndex = extraLensMultiplierArray.firstIndex(of: extraLensLabel.text!) {
+            currentIndex += 1
+            return currentIndex >= extraLensMultiplierArray.count ? "1x" : extraLensMultiplierArray[currentIndex]
+        } else {
+            return extraLensMultiplierArray.first!
+        }
     }
     
     @objc private func didTap() {

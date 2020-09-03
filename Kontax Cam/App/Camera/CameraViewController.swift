@@ -117,7 +117,7 @@ class CameraViewController: UIViewController {
         extraLensView.delegate = self
         extraLensView.availableExtraLens = cameraEngine.supportedExtraLens
     }
-    
+
     private func setupConstraint() {
         cameraView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width * 0.95)
@@ -193,12 +193,12 @@ extension CameraViewController: FiltersGestureDelegate {
 
 extension CameraViewController: ExtraLensViewDelegate {
     func didTapOnExtraLensView() {
-        cameraEngine.changeToExtraLens(isDefault: self.extraLensView.isShowingExtraLens) { (result) in
+        cameraEngine.updateLens { (result) in
             switch result {
             case .success(let isSuccessful):
                 if isSuccessful {
                     TapticHelper.shared.lightTaptic()
-                    self.extraLensView.isShowingExtraLens.toggle()
+                    self.extraLensView.updateLensLabel()
                 }
                 
             case .failure(let error):

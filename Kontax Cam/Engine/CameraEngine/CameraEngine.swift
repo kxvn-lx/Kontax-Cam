@@ -69,7 +69,7 @@ class CameraEngine: NSObject {
     var previewView: PreviewMetalView?
     let filter = LUTRender()
     
-    var supportedExtraLens: AVCaptureDevice?
+    var supportedExtraLens = [AVCaptureDevice?]()
     
     override init() {
         super.init()
@@ -142,16 +142,17 @@ class CameraEngine: NSObject {
         }
     }
     
-    func changeToExtraLens(isDefault: Bool = false, completion: @escaping (Result<Bool, CameraEngineError>) -> Swift.Void) {
+    func updateLens(completion: @escaping (Result<Bool, CameraEngineError>) -> Swift.Void) {
         guard let input = captureSession.inputs.first else {
             print("❗️No input detected")
             completion(.failure(.noInput))
             return
         }
         
+        let newCamera = getNextExtraLens()!
+        
         captureSession.removeInput(input)
         do {
-            let newCamera = isDefault ? backCamera! : supportedExtraLens!
             let captureDeviceInput = try AVCaptureDeviceInput(device: newCamera)
             captureSession.addInput(captureDeviceInput)
             currentCamera = newCamera
@@ -161,18 +162,50 @@ class CameraEngine: NSObject {
         } catch {
             completion(.failure(.setupExtraLensInput))
         }
-        
+
     }
     
     // MARK: - Private methods
-    // Setup extra lens
+    /// Setup extra lens
     private func setupExtraLens() {
-        if let device = AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back) {
-            supportedExtraLens = device
-        } else if let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back) {
-            supportedExtraLens = device
+        // If triple camera, add telephoto and ultrawide settings.
+        if AVCaptureDevice.default(.builtInTripleCamera, for: .video, position: .back) != nil {
+            let extraLens = [
+                AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back),
+                AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back)
+            ]
+            
+            supportedExtraLens = extraLens
+            
+        } else if AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back) != nil {
+            let extraLens = [
+                AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back)
+            ]
+            
+            supportedExtraLens = extraLens
+            
+        } else if AVCaptureDevice.default(.builtInDualWideCamera, for: .video, position: .back) != nil {
+            let extraLens = [
+                AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .back)
+            ]
+            
+            supportedExtraLens = extraLens
+            
         } else {
-            supportedExtraLens = nil
+            supportedExtraLens = [nil]
+        }
+    }
+    
+    /// Get the next extra lens that should be presented
+    private func getNextExtraLens() -> AVCaptureDevice? {
+        guard let input = captureSession.inputs[0] as? AVCaptureDeviceInput else { return backCamera }
+        
+        if var currentIndex = supportedExtraLens.firstIndex(of: input.device) {
+            currentIndex += 1 // get the next value
+            return currentIndex >= supportedExtraLens.count ? backCamera : supportedExtraLens[currentIndex]
+            
+        } else {
+            return supportedExtraLens.first ?? backCamera
         }
     }
     
@@ -252,6 +285,7 @@ class CameraEngine: NSObject {
             
             // Setup video data output
             if captureSession.canAddOutput(videoDataOutput) {
+                videoDataOutput.alwaysDiscardsLateVideoFrames = true
                 captureSession.addOutput(videoDataOutput)
                 videoDataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
                 videoDataOutput.setSampleBufferDelegate(self, queue: dataOutputQueue)

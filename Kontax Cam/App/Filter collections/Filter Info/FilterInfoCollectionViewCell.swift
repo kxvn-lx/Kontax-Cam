@@ -14,9 +14,7 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     static let ReuseIdentifier = "FilterInfoCell"
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .tertiarySystemGroupedBackground
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         imageView.sd_imageIndicator = SDWebImageActivityIndicator.large
         imageView.sd_imageTransition = .fade
         return imageView
@@ -37,11 +35,6 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
@@ -53,7 +46,9 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraint() {
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.center.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.8)
+            make.width.equalToSuperview().multipliedBy(0.8)
         }
     }
 }

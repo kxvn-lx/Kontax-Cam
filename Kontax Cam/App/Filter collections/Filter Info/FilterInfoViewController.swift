@@ -70,19 +70,11 @@ class FilterInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle(selectedCollection.name)
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.view.backgroundColor = .systemBackground
         
         setupView()
         setupConstraint()
-        
-        let closeButton = CloseButton()
-        self.view.addSubview(closeButton)
-        closeButton.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().inset(NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 0))
-        }
-        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
         spinnerSetup()
         observeIAP()
@@ -115,7 +107,7 @@ class FilterInfoViewController: UIViewController {
         
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(filterInfoImagesVC.view.snp.bottom).offset(30)
+            make.top.equalTo(filterInfoImagesVC.view.snp.bottom).offset(32.5)
         }
         
         mStackView.snp.makeConstraints { (make) in
@@ -192,18 +184,20 @@ class FilterInfoViewController: UIViewController {
         }
     }
     
-    @objc private func closeButtonTapped() {
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-    }
-    
     @objc private func iapButtonTapped() {
+        let window = UIApplication.shared.keyWindow!
+        let loadingVC = LoadingViewController()
+        loadingVC.shouldHideTitleLabel(true)
+        
+        window.addSubview(loadingVC.view)
+        
         guard let selectedCollectionIAP = selectedCollectionIAP else {
             AlertHelper.shared.presentOKAction(
                 withTitle: "Oops!",
                 andMessage: "Looks like there was a problem purchasing this collection. Please try again.",
                 to: self
             )
+            loadingVC.view.removeFromSuperview()
             return
         }
         
@@ -227,8 +221,9 @@ class FilterInfoViewController: UIViewController {
                 
                 self.shouldRefreshCollectionView.send(true)
                 
-            case .failure(let error):
+                loadingVC.view.removeFromSuperview()
                 
+            case .failure(let error):
                 switch error.code {
                 case .paymentCancelled:
                     break
@@ -239,6 +234,8 @@ class FilterInfoViewController: UIViewController {
                         to: self
                     )
                 }
+                loadingVC.view.removeFromSuperview()
+                
             }
         }
     }

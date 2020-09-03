@@ -40,7 +40,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         
         observeIAP()
     }
-    
+
     /// Observe IAP changes in real time.
     private func observeIAP() {
         // Observed for live-change on IAP events
@@ -93,8 +93,11 @@ extension FiltersCollectionViewController {
                 .sink { _ in }
                 .store(in: &self.subscriptionsToken)
             
-            let navController = UINavigationController(rootViewController: vc)
-            self.present(navController, animated: true, completion: nil)
+//            let navController = UINavigationController(rootViewController: vc)
+//            navController.modalPresentationStyle = .fullScreen
+//            self.present(navController, animated: true, completion: nil)
+            
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         
         cell.layer.shouldRasterize = true

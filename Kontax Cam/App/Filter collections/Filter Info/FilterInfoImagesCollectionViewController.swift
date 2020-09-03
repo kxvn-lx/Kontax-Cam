@@ -40,7 +40,7 @@ class FilterInfoImagesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.alwaysBounceVertical = false
+        collectionView.alwaysBounceHorizontal = true
         collectionView.isPagingEnabled = true
         collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
         collectionView.collectionViewLayout = createLayout()
@@ -124,6 +124,7 @@ extension FilterInfoImagesCollectionViewController {
         section.visibleItemsInvalidationHandler = { [weak self] visibleItems, _, _ in
             self?.pageControl.currentPage = visibleItems.last!.indexPath.row
         }
+        section.interGroupSpacing = 20
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout

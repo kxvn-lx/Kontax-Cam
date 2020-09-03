@@ -36,6 +36,10 @@ class LoadingViewController: UIViewController {
         setupConstraint()
     }
     
+    func shouldHideTitleLabel(_ bool: Bool) {
+        titleLabel.isHidden = bool
+    }
+    
     private func setupView() {
         mStackView = UIStackView(arrangedSubviews: [titleLabel, spinner])
         mStackView.axis = .vertical

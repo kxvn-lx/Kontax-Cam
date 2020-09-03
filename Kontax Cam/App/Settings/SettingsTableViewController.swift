@@ -50,11 +50,25 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func restorePurchaseTapped() {
-        AlertHelper.shared.presentOKAction(
-            withTitle: "Future feature!",
-            andMessage: "This feature will come with the addition of in app purchases. It will either be a one time purchase, or a subscription based. (help me decide?) 🤷‍♂️",
-            to: self
-        )
+        IAPManager.shared.restorePurchases { (isSuccessful) in
+            if isSuccessful == nil {
+                AlertHelper.shared.presentOKAction(
+                    withTitle: "Nothing to restore",
+                    to: self
+                )
+            } else if isSuccessful! {
+                AlertHelper.shared.presentOKAction(
+                    withTitle: "Puchase restore was succesful",
+                    to: self
+                )
+            } else {
+                AlertHelper.shared.presentOKAction(
+                    withTitle: "An error has occured",
+                    andMessage: "There was a problem restoring the purchase. Please try again later.",
+                    to: self
+                )
+            }
+        }
     }
     
     func surveyFormTapped() {

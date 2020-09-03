@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import MobileCoreServices
 import MediaPlayer
 
@@ -20,6 +19,8 @@ class ShutterButtonViewController: UIViewController {
     private let animationDuration: TimeInterval = 0.1
     private var color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
+    private let systemVolumeView = MPVolumeView(frame: CGRect(x: -CGFloat.greatestFiniteMagnitude, y: 0, width: 0, height: 0))
+    private var volume: Float = 0
     
     var oriFrame: CGSize! // Passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
@@ -27,14 +28,6 @@ class ShutterButtonViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Register volume up
-        let volumeChangedSystemName = NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification")
-        NotificationCenter.default.addObserver(self, selector: #selector(volumeChanged), name: volumeChangedSystemName, object: nil)
-        
-        // Hide system volume control
-        let volumeView = MPVolumeView(frame: CGRect(x: -CGFloat.greatestFiniteMagnitude, y: 0, width: 0, height: 0))
-        view.addSubview(volumeView)
         
         self.view.addSubview(innerCircle)
         self.view.isUserInteractionEnabled = true
@@ -50,8 +43,47 @@ class ShutterButtonViewController: UIViewController {
         
         touchEvent(event: .begin)
         renderSize()
+        
+        // Hide the VolumeHUD
+        self.view.addSubview(systemVolumeView)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupVolumeObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeVolumeObserver()
+    }
+    
+    private func setupVolumeObserver() {
+        let audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setActive(true)
+            volume = audioSession.outputVolume
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        if let systemVolumeSlider = systemVolumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
+            systemVolumeSlider.addTarget(self, action: #selector(volumeDidChange), for: .valueChanged)
+        }
+    }
+    
+    private func removeVolumeObserver() {
+        if let systemVolumeSlider = systemVolumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
+            systemVolumeSlider.removeTarget(self, action: #selector(volumeDidChange), for: .valueChanged)
+            systemVolumeSlider.value = volume
+        }
+    }
+    
+    @objc private func volumeDidChange(_ sender: UISlider) {
+        print(volume)
+    }
+    
     private func setupConstraint() {
         self.view.layer.cornerRadius = oriFrame.width / 2
         innerCircle.layer.cornerRadius = oriFrame.width * 0.9 / 2
@@ -77,7 +109,7 @@ class ShutterButtonViewController: UIViewController {
         let parent = self.parent as! CameraActionViewController
         let loadingVC = LoadingViewController()
         if parent.timerEngine.currentTime != 0 { parent.timerEngine.presentTimerDisplay() }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(parent.timerEngine.currentTime)) {
             parent.cameraEngine?.captureImage(completion: { [weak self] (capturedImage) in
                 guard let self = self, let image = capturedImage else { return }
@@ -123,7 +155,7 @@ class ShutterButtonViewController: UIViewController {
             let info = notification.userInfo,
             let reason = info["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String,
             reason == "ExplicitVolumeChange" else { return }
-
+        
         shutterTapped()
     }
 }

@@ -19,6 +19,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.setNavigationBarTitle("Settings")
+        self.addCloseButton()
         viewModel = SettingsViewModel(delegate: self)
         tableView.delegate = viewModel
         tableView.dataSource = viewModel
@@ -26,18 +27,15 @@ class SettingsTableViewController: UITableViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     private func setupView() {
-        let closeButton = CloseButton()
-        closeButton.addTarget(self, action: #selector(customCloseTapped), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
-        
         self.tableView.backgroundColor = .systemBackground
         
         self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 250))
-    }
-    
-    @objc private func customCloseTapped() {
-        dismissWithAnimation()
     }
 }
 

@@ -28,7 +28,7 @@ class FilterInfoViewController: UIViewController {
             }
         }
     }
-    private var iapObserverToken = Set<AnyCancellable>()
+    private var subscriptionsToken = Set<AnyCancellable>()
     
     private let filterInfoImagesVC = FilterInfoImagesCollectionViewController(collectionViewLayout: UICollectionViewLayout())
     private let iapButton: UIButton = {
@@ -149,7 +149,7 @@ class FilterInfoViewController: UIViewController {
                 }
             })
             .sink { _ in }
-            .store(in: &iapObserverToken)
+            .store(in: &subscriptionsToken)
     }
     
     /// Determine how the spinner will be shown

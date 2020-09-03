@@ -172,7 +172,11 @@ extension CameraActionViewController {
             vc.delegate = parent
             vc.selectedCollection = parent.currentCollection
             
+            cameraEngine?.stopCaptureSession()
+            parent.resetCameraView()
+
             let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
             
             self.present(navController, animated: true, completion: nil)
             

@@ -19,7 +19,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     var filterCollections = [FilterCollection]()
     var selectedCollection = FilterCollection.aCollection
     weak var delegate: FilterListDelegate?
-    private var iapObserverToken = Set<AnyCancellable>()
+    private var subscriptionsToken = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class FiltersCollectionViewController: UICollectionViewController {
                 }
             })
             .sink { _ in }
-            .store(in: &iapObserverToken)
+            .store(in: &subscriptionsToken)
     }
     
     @objc private func infoButtonTapped() {
@@ -91,7 +91,7 @@ extension FiltersCollectionViewController {
                     }
                 })
                 .sink { _ in }
-                .store(in: &self.iapObserverToken)
+                .store(in: &self.subscriptionsToken)
             
             let navController = UINavigationController(rootViewController: vc)
             self.present(navController, animated: true, completion: nil)

@@ -46,7 +46,6 @@ class CameraViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: true)
         
         setupUI()
         setupConstraint()
@@ -59,6 +58,8 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
         #if !targetEnvironment(simulator)
         cameraEngine.startCaptureSession()
         #endif
@@ -152,10 +153,7 @@ class CameraViewController: UIViewController {
     
     @objc private func settingButtonTapped() {
         let vc = SettingsTableViewController(style: .insetGrouped)
-        
-        let navController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .overFullScreen
-        presentWithAnimation(navController)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     /// Reset the camera view to improve performance

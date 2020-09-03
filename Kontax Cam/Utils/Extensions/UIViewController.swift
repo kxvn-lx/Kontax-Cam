@@ -58,24 +58,4 @@ extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
-    
-    func presentWithAnimation(_ viewControllerToPresent: UIViewController, withAnimation animation: CATransitionSubtype = .fromRight) {
-        let transition = CATransition()
-        transition.duration = 0.25
-        transition.type = CATransitionType.push
-        transition.subtype = animation
-        self.view.window!.layer.add(transition, forKey: kCATransition)
-
-        present(viewControllerToPresent, animated: false)
-    }
-
-    func dismissWithAnimation(withAnimation animation: CATransitionSubtype = .fromLeft) {
-        let transition = CATransition()
-        transition.duration = 0.25
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        self.view.window!.layer.add(transition, forKey: kCATransition)
-
-        dismiss(animated: false)
-    }
 }

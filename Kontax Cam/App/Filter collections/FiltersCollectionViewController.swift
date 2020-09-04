@@ -20,6 +20,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     var selectedCollection = FilterCollection.aCollection
     weak var delegate: FilterListDelegate?
     private var subscriptionsToken = Set<AnyCancellable>()
+    private var initIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +79,10 @@ extension FiltersCollectionViewController {
         cell.filterCollection = item
         cell.isLocked = !UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!.contains(where: { $0 == item.iapID })
         
-        cell.isCellSelected = item == selectedCollection
+        if item == selectedCollection {
+            cell.isCellSelected = true
+            initIndexPath = indexPath
+        }
         
         cell.buttonTapped = {
             let vc = FilterInfoViewController()
@@ -106,6 +110,12 @@ extension FiltersCollectionViewController {
         guard let selectedCell = collectionView.cellForItem(at: indexPath) as? FiltersCollectionViewCell else { return }
         
         if !selectedCell.isLocked {
+            if let initIndexPath = initIndexPath {
+                let cell = collectionView.cellForItem(at: initIndexPath) as! FiltersCollectionViewCell
+                cell.isCellSelected = false
+                self.initIndexPath = nil
+            }
+            
             selectedCell.isCellSelected.toggle()
             delegate?.filterListDidSelectCollection(filterCollections[indexPath.row])
             navigationController?.popViewController(animated: true)

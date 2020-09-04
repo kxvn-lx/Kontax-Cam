@@ -109,8 +109,6 @@ class FilterInfoViewController: UIViewController {
         setupDatas()
         
         pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
-        
-        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.view.backgroundColor = .systemBackground
         
         setupView()
@@ -213,11 +211,10 @@ class FilterInfoViewController: UIViewController {
         shouldShowSpinner = true
         
         if !ReachabilityHelper.shared.isConnectedToNetwork() && selectedCollection != .aCollection {
-            AlertHelper.shared.presentOKAction(
-                andMessage: "No internet connection. Please try again later",
-                to: self
-            )
+            iapButton.isEnabled = false
+            iapButton.setTitle("No internet connection.", for: .disabled)
             spinnerView.isHidden = true
+            self.shouldShowSpinner = false
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 self.shouldShowSpinner = false

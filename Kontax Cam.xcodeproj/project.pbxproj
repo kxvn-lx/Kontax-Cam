@@ -57,7 +57,6 @@
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
 		0A5C087F24E0044E002E2D66 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */; };
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
-		0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
 		0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
 		0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88B24EB705A00C5449D /* FilterCollection.swift */; };
@@ -195,7 +194,6 @@
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
-		0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXInfoViewController.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A71C88B24EB705A00C5449D /* FilterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollection.swift; sourceTree = "<group>"; };
@@ -297,7 +295,6 @@
 				0A11FE5E249CB6CB00016E74 /* EffectCustomisationView */,
 				0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */,
 				0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */,
-				0A66DEEA24E00AB500B197C6 /* FXInfoViewController.swift */,
 			);
 			path = FX;
 			sourceTree = "<group>";
@@ -849,7 +846,6 @@
 				0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */,
 				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,
 				0A267BCC24E78F9F0025FB60 /* UIFont.swift in Sources */,
-				0A66DEEB24E00AB500B197C6 /* FXInfoViewController.swift in Sources */,
 				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,
 				0ADE750B24FFBC73005C4F1C /* ReachabilityHelper.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,

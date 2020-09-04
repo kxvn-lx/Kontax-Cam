@@ -40,9 +40,6 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         lpgr.delegate = self
         lpgr.delaysTouchesBegan = true
         self.collectionView?.addGestureRecognizer(lpgr)
-        
-        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
-        self.navigationItem.rightBarButtonItem = infoButton
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,12 +106,6 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                 cell.transform = .identity
             }
         }
-    }
-    
-    @objc private func infoButtonTapped() {
-        let fxInfoVC = FXInfoViewController()
-        let navController = UINavigationController(rootViewController: fxInfoVC)
-        self.present(navController, animated: true, completion: nil)
     }
 }
 

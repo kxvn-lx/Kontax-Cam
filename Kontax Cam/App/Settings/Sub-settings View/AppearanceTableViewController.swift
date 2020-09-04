@@ -8,12 +8,7 @@
 
 import UIKit
 
-class AppearanceTableViewController: UIViewController {
-    
-    private let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        return tableView
-    }()
+class AppearanceTableViewController: UITableViewController {
     
     private let themes: [UIUserInterfaceStyle] = [.unspecified, .light, .dark]
     
@@ -21,38 +16,21 @@ class AppearanceTableViewController: UIViewController {
         super.viewDidLoad()
         
         self.setNavigationBarTitle("Appearance", backgroundColor: .systemGroupedBackground)
-        self.addCloseButton()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "appearanceCell")
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        setupView()
-        setupConstraint()
-    }
-    
-    private func setupView() {
-        self.view.addSubview(tableView)
-    }
-    
-    private func setupConstraint() {
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
     }
 
 }
 
-extension AppearanceTableViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension AppearanceTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return themes.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "appearanceCell", for: indexPath)
 
         switch themes[indexPath.row].rawValue {
@@ -70,7 +48,7 @@ extension AppearanceTableViewController: UITableViewDataSource, UITableViewDeleg
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         // Save to user defaults

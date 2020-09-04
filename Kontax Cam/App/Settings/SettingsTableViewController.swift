@@ -77,15 +77,13 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func appearanceTapped() {
-        let appearanceVC = AppearanceTableViewController()
-        let navController = UINavigationController(rootViewController: appearanceVC)
-        self.present(navController, animated: true, completion: nil)
+        let appearanceVC = AppearanceTableViewController(style: .insetGrouped)
+        self.show(appearanceVC, sender: self)
     }
     
     func apppIconsTapped() {
         let appIconsVC = AppIconsTableViewController(style: .insetGrouped)
-        let navController = UINavigationController(rootViewController: appIconsVC)
-        self.present(navController, animated: true, completion: nil)
+        self.show(appIconsVC, sender: self)
     }
     
     func twitterTapped() {

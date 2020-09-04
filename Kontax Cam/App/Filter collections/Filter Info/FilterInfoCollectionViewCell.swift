@@ -19,6 +19,12 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
         imageView.sd_imageTransition = .fade
         return imageView
     }()
+    private let separator: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .quaternaryLabel
+        return view
+    }()
     var filterInfo: FilterInfo! {
         didSet {
             imageView.sd_setImage(with: filterInfo.imageURL, placeholderImage: UIImage(named: "labCellPlaceholder"), options: .scaleDownLargeImages)
@@ -42,6 +48,7 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         self.addSubview(imageView)
+        self.addSubview(separator)
     }
     
     private func setupConstraint() {
@@ -49,6 +56,12 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.85)
             make.width.equalToSuperview().multipliedBy(0.85)
+        }
+        
+        separator.snp.makeConstraints { (make) in
+            make.height.equalTo(1)
+            make.width.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 }

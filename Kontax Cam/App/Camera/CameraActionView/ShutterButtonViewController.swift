@@ -19,8 +19,10 @@ class ShutterButtonViewController: UIViewController {
     private let animationDuration: TimeInterval = 0.1
     private var color = UIColor.label
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
+    
     private let systemVolumeView = MPVolumeView(frame: CGRect(x: -CGFloat.greatestFiniteMagnitude, y: 0, width: 0, height: 0))
     private var volume: Float = 0
+    private var shouldDetectVolume = false
     
     var oriFrame: CGSize! // Passed from parent to determined the size of the shutter button
     private let innerCircle = UIView()
@@ -69,19 +71,22 @@ class ShutterButtonViewController: UIViewController {
         }
         
         if let systemVolumeSlider = systemVolumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
-            systemVolumeSlider.addTarget(self, action: #selector(volumeDidChange), for: .valueChanged)
+            systemVolumeSlider.addTarget(self, action: #selector(onVolumeTrigger), for: .valueChanged)
         }
     }
     
     private func removeVolumeObserver() {
         if let systemVolumeSlider = systemVolumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
-            systemVolumeSlider.removeTarget(self, action: #selector(volumeDidChange), for: .valueChanged)
+            systemVolumeSlider.removeTarget(self, action: #selector(onVolumeTrigger), for: .valueChanged)
             systemVolumeSlider.value = volume
         }
     }
     
-    @objc private func volumeDidChange(_ sender: UISlider) {
-        print(volume)
+    @objc private func onVolumeTrigger() {
+        if shouldDetectVolume {
+            shutterTapped()
+        }
+        shouldDetectVolume = true
     }
     
     private func setupConstraint() {
@@ -147,16 +152,6 @@ class ShutterButtonViewController: UIViewController {
             self.view.layer.borderColor = color.resolvedColor(with: self.traitCollection).cgColor
             innerCircle.backgroundColor = touchedColor
         }
-    }
-    
-    /// Handle volue  button pressed
-    @objc private func volumeChanged(notification: NSNotification) {
-        guard
-            let info = notification.userInfo,
-            let reason = info["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String,
-            reason == "ExplicitVolumeChange" else { return }
-        
-        shutterTapped()
     }
 }
 

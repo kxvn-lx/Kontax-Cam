@@ -14,7 +14,7 @@ protocol ExtraLensViewDelegate: class {
 }
 
 class ExtraLensView: UIView {
-
+    
     var availableExtraLens = [AVCaptureDevice?]() {
         didSet {
             setupExtraLensLabel()
@@ -36,6 +36,9 @@ class ExtraLensView: UIView {
         super.init(frame: frame)
         setupView()
         setupConstraint()
+        
+        // hidden by default
+        self.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap))
         addGestureRecognizer(tap)
@@ -66,6 +69,7 @@ class ExtraLensView: UIView {
     private func setupExtraLensLabel() {
         for extraLens in availableExtraLens {
             if let availableLens = extraLens {
+                self.isHidden = false
                 if availableLens.deviceType == .builtInTelephotoCamera {
                     extraLensMultiplierArray.append("2x")
                 } else if availableLens.deviceType == .builtInUltraWideCamera {

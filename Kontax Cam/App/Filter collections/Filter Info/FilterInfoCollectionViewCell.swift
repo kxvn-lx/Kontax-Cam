@@ -47,8 +47,8 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
     private func setupConstraint() {
         imageView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.8)
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalToSuperview().multipliedBy(0.85)
+            make.width.equalToSuperview().multipliedBy(0.85)
         }
     }
 }

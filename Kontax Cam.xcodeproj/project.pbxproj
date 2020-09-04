@@ -75,7 +75,6 @@
 		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
-		0AB2015724EF648300296B0F /* FilterInfoImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
 		0ABB576324FF9DC70058DB49 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB576224FF9DC70058DB49 /* Configuration.storekit */; };
 		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
@@ -214,7 +213,6 @@
 		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
-		0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		0ABB576224FF9DC70058DB49 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 			children = (
 				0A13EB2724EAC0C0008C4FD0 /* FilterInfoViewController.swift */,
 				0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */,
-				0AB2015624EF648300296B0F /* FilterInfoImagesCollectionViewController.swift */,
 			);
 			path = "Filter Info";
 			sourceTree = "<group>";
@@ -861,7 +858,6 @@
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */,
 				0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */,
-				0AB2015724EF648300296B0F /* FilterInfoImagesCollectionViewController.swift in Sources */,
 				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,

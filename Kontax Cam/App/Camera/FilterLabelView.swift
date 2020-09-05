@@ -14,7 +14,7 @@ class FilterLabelView: UIView {
         let label = UILabel()
         label.text = "OFF"
         label.textColor = .label
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .caption1)
         return label
     }()
     private let blurEffectView: UIVisualEffectView = {

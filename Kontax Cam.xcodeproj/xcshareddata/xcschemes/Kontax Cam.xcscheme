@@ -70,6 +70,9 @@
             ReferencedContainer = "container:Kontax Cam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../Kontax Cam/Engine/IAPEngine/Configuration.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

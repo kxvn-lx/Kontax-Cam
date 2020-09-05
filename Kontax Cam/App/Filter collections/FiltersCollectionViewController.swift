@@ -104,8 +104,9 @@ extension FiltersCollectionViewController {
         
         if !selectedCell.isLocked {
             if let initIndexPath = initIndexPath {
-                let cell = collectionView.cellForItem(at: initIndexPath) as! FiltersCollectionViewCell
-                cell.isCellSelected = false
+                if let cell = collectionView.cellForItem(at: initIndexPath) as? FiltersCollectionViewCell {
+                    cell.isCellSelected = false
+                }
                 self.initIndexPath = nil
             }
             

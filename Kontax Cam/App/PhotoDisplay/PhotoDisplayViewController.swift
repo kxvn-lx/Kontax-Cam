@@ -62,6 +62,10 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         setupToolbar()
     }
     
+    override func didReceiveTapGesture() {
+        reverseInfoOverlayViewDisplayStatus()
+    }
+    
     private func setupUI() {
         
         self.view.addSubview(navView)
@@ -170,7 +174,7 @@ class PhotoDisplayViewController: DTPhotoViewerController {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - Secondary methods
+    // MARK: - Private methods
     private func hideInfoOverlayView(_ animated: Bool) {
         configureOverlayViews(hidden: true, animated: animated)
     }
@@ -203,10 +207,6 @@ class PhotoDisplayViewController: DTPhotoViewerController {
     private func setOverlayElementsAlpha(alpha: CGFloat) {
         toolView.alpha = alpha
         navView.alpha = alpha
-    }
-    
-    override func didReceiveTapGesture() {
-        reverseInfoOverlayViewDisplayStatus()
     }
     
     // MARK: - DT Delegate

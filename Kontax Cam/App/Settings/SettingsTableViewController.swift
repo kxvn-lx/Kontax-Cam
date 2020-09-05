@@ -48,6 +48,12 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func restorePurchaseTapped() {
+        let window = UIApplication.shared.keyWindow!
+        let loadingVC = LoadingViewController()
+        loadingVC.shouldHideTitleLabel = true
+        
+        window.addSubview(loadingVC.view)
+        
         IAPManager.shared.restorePurchases { (isSuccessful) in
             if isSuccessful == nil {
                 AlertHelper.shared.presentOKAction(
@@ -66,6 +72,8 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
                     to: self
                 )
             }
+            
+            loadingVC.view.removeFromSuperview()
         }
     }
     

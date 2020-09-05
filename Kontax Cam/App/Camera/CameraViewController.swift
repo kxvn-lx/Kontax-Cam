@@ -210,6 +210,9 @@ extension CameraViewController: ExtraLensViewDelegate {
 
 extension CameraViewController: CameraActionDelegate {
     func didTapOnReverse() {
-        extraLensView.isHidden = cameraEngine.currentCamera?.position == AVCaptureDevice.Position.front
+        if extraLensView.canDisplayExtraLens {
+            extraLensView.isHidden = cameraEngine.currentCamera?.position == AVCaptureDevice.Position.front
+        }
+
     }
 }

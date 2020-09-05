@@ -82,7 +82,7 @@ class FiltersCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        isSelected = false
+        isCellSelected = false
     }
     
     private func setupView() {

@@ -36,9 +36,6 @@ class FiltersCollectionViewController: UICollectionViewController {
         // 2. Setup datasource
         self.populateSection()
         
-        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
-        self.navigationItem.rightBarButtonItem = infoButton
-        
         observeIAP()
     }
     
@@ -64,10 +61,6 @@ class FiltersCollectionViewController: UICollectionViewController {
             })
             .sink { _ in }
             .store(in: &subscriptionsToken)
-    }
-    
-    @objc private func infoButtonTapped() {
-        AlertHelper.shared.presentOKAction(withTitle: "#TakenWithKontaxCam", andMessage: "Send your photos taken with Kontax Cam via email if you wished to be featured on the collection's cover page.", to: self)
     }
 }
 

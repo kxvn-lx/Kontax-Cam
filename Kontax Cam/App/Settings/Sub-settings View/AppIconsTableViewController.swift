@@ -33,6 +33,8 @@ class AppIconsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.setNavigationBarTitle("App icons", backgroundColor: .systemGroupedBackground)
         self.tableView.register(AppIconsTableViewCell.self, forCellReuseIdentifier: AppIconsTableViewCell.ReuseIdentifier)
 

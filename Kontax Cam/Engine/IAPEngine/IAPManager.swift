@@ -74,6 +74,15 @@ class IAPManager: NSObject {
             if !results.restoreFailedPurchases.isEmpty {
                 completion(false)
             } else if !results.restoredPurchases.isEmpty {
+                for product in results.restoredPurchases {
+                    let restoredProductID = product.productId
+                    var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
+                    if !purchasedFilters.contains(restoredProductID) {
+                        purchasedFilters.append(restoredProductID)
+                    }
+                    UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
+                }
+                
                 completion(true)
             } else {
                 completion(nil)

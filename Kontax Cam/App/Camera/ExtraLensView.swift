@@ -15,6 +15,11 @@ protocol ExtraLensViewDelegate: class {
 
 class ExtraLensView: UIView {
     
+    var canDisplayExtraLens = false {
+        didSet {
+            self.isHidden = !canDisplayExtraLens
+        }
+    }
     var availableExtraLens = [AVCaptureDevice?]() {
         didSet {
             setupExtraLensLabel()
@@ -69,7 +74,7 @@ class ExtraLensView: UIView {
     private func setupExtraLensLabel() {
         for extraLens in availableExtraLens {
             if let availableLens = extraLens {
-                self.isHidden = false
+                canDisplayExtraLens = true
                 if availableLens.deviceType == .builtInTelephotoCamera {
                     extraLensMultiplierArray.append("2x")
                 } else if availableLens.deviceType == .builtInUltraWideCamera {

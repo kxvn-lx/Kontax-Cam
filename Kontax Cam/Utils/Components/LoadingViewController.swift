@@ -26,6 +26,11 @@ class LoadingViewController: UIViewController {
         return spinner
     }()
     private var mStackView: UIStackView!
+    var shouldHideTitleLabel = false {
+        didSet {
+            titleLabel.isHidden = shouldHideTitleLabel
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +39,6 @@ class LoadingViewController: UIViewController {
         
         setupView()
         setupConstraint()
-    }
-    
-    func shouldHideTitleLabel(_ bool: Bool) {
-        titleLabel.isHidden = bool
     }
     
     private func setupView() {

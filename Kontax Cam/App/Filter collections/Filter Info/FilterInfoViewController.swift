@@ -102,6 +102,8 @@ class FilterInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         // Setup collectionview
         collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
         collectionView.collectionViewLayout = createLayout()
@@ -248,7 +250,7 @@ class FilterInfoViewController: UIViewController {
     @objc private func iapButtonTapped() {
         let window = UIApplication.shared.keyWindow!
         let loadingVC = LoadingViewController()
-        loadingVC.shouldHideTitleLabel(true)
+        loadingVC.shouldHideTitleLabel = true
         
         window.addSubview(loadingVC.view)
         

@@ -54,6 +54,10 @@ extension PanModalNavigationController: PanModalPresentable {
         return false
     }
     
+    var shouldRoundTopCorners: Bool {
+        false
+    }
+    
     func willTransition(to state: PanModalPresentationController.PresentationState) {
         guard isShortFormEnabled, case .longForm = state
             else { return }

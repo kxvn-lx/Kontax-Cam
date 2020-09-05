@@ -73,7 +73,7 @@ class SettingsViewModel: NSObject {
             ])
         
         let otherStuffSection = SettingsSection(
-            title: "Other stuffs",
+            title: "Other stuff",
             cells: [
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Kontax Cam feedback form") },
@@ -133,7 +133,7 @@ extension SettingsViewModel: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.text = tableviewSections[section].title
-            headerView.textLabel?.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .headline).pointSize, weight: .medium)
+            headerView.textLabel?.font = .preferredFont(forTextStyle: .headline)
         }
     }
     

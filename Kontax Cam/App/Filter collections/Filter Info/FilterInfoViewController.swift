@@ -123,7 +123,7 @@ class FilterInfoViewController: UIViewController {
     /// Setup datas for collectionview images
     private func setupDatas() {
         let filterName = selectedCollection.name.components(separatedBy: " ").first!
-
+        
         for n in 1 ... 5 {
             let imageURL = URL(string: "https://kontaxcam.imfast.io/\(filterName)/\(filterName).ex\(n).jpg")!
             
@@ -138,15 +138,15 @@ class FilterInfoViewController: UIViewController {
         self.view.addSubview(collectionView)
         self.view.addSubview(pageControl)
         self.view.addSubview(titleLabel)
-
+        
         mStackView = UIStackView(arrangedSubviews: [spinnerView, iapButton, successImageView])
         mStackView.axis = .vertical
         mStackView.alignment = .center
-
+        
         self.view.addSubview(mStackView)
-
+        
         iapButton.addTarget(self, action: #selector(iapButtonTapped), for: .touchUpInside)
-
+        
         let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
         if purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP == nil {
             // User has bought the collection
@@ -176,7 +176,7 @@ class FilterInfoViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.8)
             make.bottom.equalToSuperview().offset(-self.view.getSafeAreaInsets().bottom - 20)
         }
-
+        
         successImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(35)
         }
@@ -195,8 +195,8 @@ class FilterInfoViewController: UIViewController {
                     let iapID = IAPManager.shared.bundleID + "." + selectedCollectionIAP.registeredPurchase.suffix
                     
                     DispatchQueue.main.async {
-                        if removedIAPs.contains(iapID) && mStackView.isHidden {
-                            mStackView.isHidden = false
+                        if removedIAPs.contains(iapID) && iapButton.isEnabled == false {
+                            iapButton.isEnabled = true
                             
                             var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
                             purchasedFilters.removeAll(where: { $0 == selectedCollectionIAP.title })
@@ -257,6 +257,7 @@ class FilterInfoViewController: UIViewController {
         
         window.addSubview(loadingVC.view)
         
+        // Make sure we have an IAP to purchase
         guard let selectedCollectionIAP = selectedCollectionIAP else {
             AlertHelper.shared.presentOKAction(
                 withTitle: "Oops!",

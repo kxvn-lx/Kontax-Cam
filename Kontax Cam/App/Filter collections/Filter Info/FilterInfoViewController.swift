@@ -150,7 +150,8 @@ class FilterInfoViewController: UIViewController {
         let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
         if purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP == nil {
             // User has bought the collection
-            mStackView.isHidden = true
+            iapButton.isEnabled = false
+            iapButton.setTitle("Purchased", for: .disabled)
         }
     }
     
@@ -218,7 +219,7 @@ class FilterInfoViewController: UIViewController {
             spinnerView.isHidden = true
             self.shouldShowSpinner = false
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double.random(in: 0.25...0.75)) {
                 self.shouldShowSpinner = false
             }
         }
@@ -234,14 +235,16 @@ class FilterInfoViewController: UIViewController {
             self.successImageView.isHidden = false
             self.successImageView.alpha = 1
         } completion: { (_) in
+            self.iapButton.isEnabled = false
+            self.iapButton.setTitle("Purchased", for: .disabled)
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 UIView.animate(withDuration: duration) {
                     self.successImageView.alpha = 0
-                } completion: { (_) in
-                    self.mStackView.isHidden = true
+                    self.successImageView.isHidden = true
+                    
                     self.iapButton.isHidden = false
                     self.iapButton.alpha = 1
-                    self.successImageView.isHidden = true
                 }
             }
         }

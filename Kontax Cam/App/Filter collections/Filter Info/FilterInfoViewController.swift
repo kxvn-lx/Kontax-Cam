@@ -108,7 +108,7 @@ class FilterInfoViewController: UIViewController {
         collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
         collectionView.collectionViewLayout = createLayout()
         configureDatasource()
-        setupDatas()
+        setupImageDatas()
         
         pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
         self.view.backgroundColor = .systemBackground
@@ -121,7 +121,7 @@ class FilterInfoViewController: UIViewController {
     }
     
     /// Setup datas for collectionview images
-    private func setupDatas() {
+    private func setupImageDatas() {
         let filterName = selectedCollection.name.components(separatedBy: " ").first!
         
         for n in 1 ... 5 {
@@ -146,6 +146,11 @@ class FilterInfoViewController: UIViewController {
         self.view.addSubview(mStackView)
         
         iapButton.addTarget(self, action: #selector(iapButtonTapped), for: .touchUpInside)
+        
+        if selectedCollection == FilterCollection.aCollection {
+            mStackView.isHidden = true
+            return
+        }
         
         let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
         if purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP == nil {

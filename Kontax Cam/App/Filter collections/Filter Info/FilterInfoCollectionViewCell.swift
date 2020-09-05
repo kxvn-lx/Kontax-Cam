@@ -59,8 +59,9 @@ class FilterInfoCollectionViewCell: UICollectionViewCell {
         }
         
         separator.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
             make.height.equalTo(1)
-            make.width.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.85)
             make.bottom.equalToSuperview()
         }
     }

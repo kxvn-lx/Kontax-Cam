@@ -66,7 +66,7 @@ class FXCollectionViewCell: UICollectionViewCell {
     
     private func setupConstraint() {
         iconImageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(self.frame.width * 0.225)
+            make.width.height.equalTo(25)
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(30)
         }

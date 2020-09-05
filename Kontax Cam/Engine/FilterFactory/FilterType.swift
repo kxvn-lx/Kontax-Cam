@@ -31,8 +31,8 @@ extension FilterType: CustomStringConvertible {
         case .grain: return "grain.icon"
         case .dust: return "dust.icon"
         case .lightleaks: return "leaks.icon"
-        case .datestamp: return "calendar.icon"
-        case .colourleaks: return "color.icon"
+        case .datestamp: return "calendar"
+        case .colourleaks: return "camera.filters"
         }
     }
 }

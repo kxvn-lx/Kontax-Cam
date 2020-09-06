@@ -8,6 +8,7 @@
 
 import UIKit
 import PanModal
+import SwiftUI
 
 private struct CellPath {
     static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
@@ -40,6 +41,9 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         lpgr.delegate = self
         lpgr.delaysTouchesBegan = true
         self.collectionView?.addGestureRecognizer(lpgr)
+        
+        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
+        self.navigationItem.rightBarButtonItem = infoButton
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,10 +61,6 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                 to: self
             )
         }
-    }
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        super.dismiss(animated: true, completion: completion)
     }
     
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -106,6 +106,13 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                 cell.transform = .identity
             }
         }
+    }
+    
+    @objc private func infoButtonTapped() {
+        let fxInfoView = UIHostingController(rootView: FXInfoView(dismissAction: {
+            self.dismiss(animated: true)
+        }))
+        self.present(fxInfoView, animated: true, completion: nil)
     }
 }
 

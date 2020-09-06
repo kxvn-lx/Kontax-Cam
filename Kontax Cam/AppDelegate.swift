@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters) == nil {
             UserDefaultsHelper.shared.setData(value: [FilterCollection.aCollection.iapID], key: .purchasedFilters)
         }
+        
+        FirebaseApp.configure()
+        
         return true
     }
 

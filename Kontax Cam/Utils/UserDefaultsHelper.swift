@@ -15,7 +15,6 @@ struct UserDefaultsHelper {
         case userAppearance // The appearance theme of the user
         case userFirstLaunch // Keys wether should present onboarding
         case userNeedTutorial // Keys to present the 'swipe filter' alert
-        case shouldShowEffectsTip
         case purchasedFilters
     } 
     

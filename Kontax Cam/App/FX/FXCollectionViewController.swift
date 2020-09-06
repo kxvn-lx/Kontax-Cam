@@ -45,24 +45,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
         self.navigationItem.rightBarButtonItem = infoButton
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .shouldShowEffectsTip) ?? true {
-            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                UserDefaultsHelper.shared.setData(value: false, key: .shouldShowEffectsTip)
-            }
-            
-            AlertHelper.shared.presentWithCustomAction(
-                title: "A tip for you",
-                message: "Did you know that you can long press any active effects to customise it?",
-                withCustomAction: [okAction],
-                to: self
-            )
-        }
-    }
-    
+
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         let p = gestureRecognizer.location(in: collectionView)
         

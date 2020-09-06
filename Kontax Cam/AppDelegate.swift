@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Shake
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         FirebaseApp.configure()
+        Shake.start()
         
         return true
     }

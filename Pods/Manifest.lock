@@ -64,9 +64,11 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
+  - Shake (10.0.6)
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Shake
 
 SPEC REPOS:
   trunk:
@@ -81,6 +83,7 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - Shake
 
 SPEC CHECKSUMS:
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
@@ -94,7 +97,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  Shake: 56c29f2babd4d2fd8266ec0a1dd82aad2808e5b1
 
-PODFILE CHECKSUM: fa7ed95686cb96e9fcf3cd7c2b5e209d19308549
+PODFILE CHECKSUM: a33e2add8aac8cbe2094c93e8b3319f5dc6d956d
 
 COCOAPODS: 1.9.3

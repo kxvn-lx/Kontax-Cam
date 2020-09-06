@@ -1,0 +1,6 @@
+framework module Shake {
+  umbrella header "Shake.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@ target 'Kontax Cam' do
 
   # Pods for Kontax Cam
 	pod 'Firebase/Analytics'
+        pod 'Shake'
 end
 
 target 'KontaxCamWidgetExtension' do

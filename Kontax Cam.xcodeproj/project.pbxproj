@@ -1157,6 +1157,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Kontax Cam/Kontax Cam.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 13;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = "Kontax Cam/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

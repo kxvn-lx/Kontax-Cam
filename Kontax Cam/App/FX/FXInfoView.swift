@@ -13,7 +13,7 @@ struct FXInfoRow: View {
     var title: String
     var description: String
     
-    private let imageFrameSize: CGFloat = 25
+    private let imageFrameSize: CGFloat = 30
     
     var body: some View {
         HStack(spacing: 20) {
@@ -30,6 +30,7 @@ struct FXInfoRow: View {
                     .foregroundColor(.secondaryLabel)
             }
         }
+        .padding(.vertical)
     }
 }
 

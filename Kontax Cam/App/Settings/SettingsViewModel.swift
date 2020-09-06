@@ -136,8 +136,4 @@ extension SettingsViewModel: UITableViewDelegate, UITableViewDataSource {
             headerView.textLabel?.font = .preferredFont(forTextStyle: .headline)
         }
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = .secondarySystemGroupedBackground
-    }
 }

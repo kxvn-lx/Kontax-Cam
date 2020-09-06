@@ -18,7 +18,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle("Settings")
+        self.setNavigationBarTitle("Settings", backgroundColor: .systemGroupedBackground)
         self.addCloseButton()
         viewModel = SettingsViewModel(delegate: self)
         tableView.delegate = viewModel
@@ -33,7 +33,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     private func setupView() {
-        self.tableView.backgroundColor = .systemBackground
         
         self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 250))
     }

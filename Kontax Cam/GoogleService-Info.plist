@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>201750003846-oqegrggff0ni04cop3r2m4m7887ihqae.apps.googleusercontent.com</string>
+	<string>1023958202233-e1em29nn7upj7r2ecr9o8jnaok2kv7e1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.201750003846-oqegrggff0ni04cop3r2m4m7887ihqae</string>
+	<string>com.googleusercontent.apps.1023958202233-e1em29nn7upj7r2ecr9o8jnaok2kv7e1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCzP4QEDLmjKcqDV28fufVSbXwKW9y3nO4</string>
+	<string>AIzaSyBCfDV6VAm4-WbV-y2GQ6y5pKhFOCKK_C0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>201750003846</string>
+	<string>1023958202233</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.kevinlaminto.kontaxcam</string>
 	<key>PROJECT_ID</key>
-	<string>kontax-cam</string>
+	<string>kontax-cam-cf0b1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>kontax-cam.appspot.com</string>
+	<string>kontax-cam-cf0b1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:201750003846:ios:71df9a45cc7c5467cb1107</string>
+	<string>1:1023958202233:ios:a044e61688fd1becc321a8</string>
 	<key>DATABASE_URL</key>
-	<string>https://kontax-cam.firebaseio.com</string>
+	<string>https://kontax-cam-cf0b1.firebaseio.com</string>
 </dict>
 </plist>

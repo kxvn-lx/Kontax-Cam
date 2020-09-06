@@ -63,9 +63,9 @@
 		0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88B24EB705A00C5449D /* FilterCollection.swift */; };
 		0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */; };
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
+		0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */; };
 		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
 		0A84475924F94A0100700CAB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
-		0A8D67572504C10500EB7D10 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A8D67562504C10500EB7D10 /* GoogleService-Info.plist */; };
 		0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A954A4C24FB2A6300BDD0DC /* In development.png */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
@@ -204,9 +204,9 @@
 		0A71C88B24EB705A00C5449D /* FilterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollection.swift; sourceTree = "<group>"; };
 		0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
+		0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A82B83324AC406600673F1A /* LUTRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTRender.swift; sourceTree = "<group>"; };
 		0A84475824F94A0100700CAB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		0A8D67562504C10500EB7D10 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A954A4C24FB2A6300BDD0DC /* In development.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In development.png"; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -383,7 +383,6 @@
 		0A44B28E2476A7F000603F2C = {
 			isa = PBXGroup;
 			children = (
-				0A8D67562504C10500EB7D10 /* GoogleService-Info.plist */,
 				0A3F50A824ED1BDF00192DAE /* KontaxCamWidgetExtension.entitlements */,
 				0A44B2992476A7F000603F2C /* Kontax Cam */,
 				0AC2F2A424ED0409007A5E33 /* KontaxCamWidget */,
@@ -405,6 +404,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */,
 				0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */,
 				0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */,
 				0AF619F524E0F6EA00BE288A /* App icons */,
@@ -791,7 +791,7 @@
 			files = (
 				0AF61A0224E0F73C00BE288A /* Kontax Original.png in Resources */,
 				0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */,
-				0A8D67572504C10500EB7D10 /* GoogleService-Info.plist in Resources */,
+				0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */,
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
 				0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,

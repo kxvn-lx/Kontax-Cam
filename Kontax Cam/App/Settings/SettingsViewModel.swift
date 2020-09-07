@@ -44,7 +44,7 @@ class SettingsViewModel: NSObject {
                     action: { [weak self] _ in self?.delegate?.appearanceTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "App icons") },
+                    createdCell: { self.createNormalCell(withTitle: "Alternate app icons") },
                     action: { [weak self] _ in self?.delegate?.apppIconsTapped() }
                 ),
                 SettingsItem(

@@ -10,12 +10,9 @@ import UIKit
 
 private enum IconNames: String, CaseIterable {
     case KontaxOriginal = "Kontax Original"
-    case AFineDay = "A fine day"
     case Bloodlust
-    case EternalSleep = "Eternal sleep"
     case LanigiroXatnok = "Lanigiro Xatnok"
     case SummerVibes = "Summer vibes"
-    case Sunshine
     case Pride = "Colourful"
     case InDevelopment = "In development"
     
@@ -35,7 +32,7 @@ class AppIconsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.setNavigationBarTitle("App icons", backgroundColor: .systemGroupedBackground)
+        self.setNavigationBarTitle("Alternate app icons", backgroundColor: .systemGroupedBackground)
         self.tableView.register(AppIconsTableViewCell.self, forCellReuseIdentifier: AppIconsTableViewCell.ReuseIdentifier)
 
     }

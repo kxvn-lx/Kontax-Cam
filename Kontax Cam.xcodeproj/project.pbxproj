@@ -65,7 +65,12 @@
 		0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */; };
 		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
 		0A84475924F94A0100700CAB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
-		0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A954A4C24FB2A6300BDD0DC /* In development.png */; };
+		0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9014282506597C0003CD68 /* Summer vibes.png */; };
+		0A90142F2506597D0003CD68 /* PRIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9014292506597C0003CD68 /* PRIDE.png */; };
+		0A9014302506597D0003CD68 /* In development.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142A2506597C0003CD68 /* In development.png */; };
+		0A9014312506597D0003CD68 /* Kontax Original.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142B2506597C0003CD68 /* Kontax Original.png */; };
+		0A9014322506597D0003CD68 /* Bloodlust.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142C2506597D0003CD68 /* Bloodlust.png */; };
+		0A9014332506597D0003CD68 /* lanigirO xatnoK.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142D2506597D0003CD68 /* lanigirO xatnoK.png */; };
 		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
@@ -96,7 +101,6 @@
 		0ACBADC324ED4F1000D93708 /* DateConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */; };
 		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
 		0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2929324A78FDA00320BC4 /* CameraEngine.swift */; };
-		0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD36BEB24E907F400AA78F0 /* PRIDE.png */; };
 		0ADE750B24FFBC73005C4F1C /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */; };
 		0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0ADEDAD324FB6B34001106C1 /* SDWebImage */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
@@ -110,13 +114,6 @@
 		0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */; };
 		0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4B47024EFB5C8004663CF /* DetailedButton.swift */; };
 		0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */; };
-		0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F624E0F73B00BE288A /* Bloodlust.png */; };
-		0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */; };
-		0AF619FF24E0F73C00BE288A /* A fine day.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F824E0F73B00BE288A /* A fine day.png */; };
-		0AF61A0024E0F73C00BE288A /* Summer vibes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619F924E0F73B00BE288A /* Summer vibes.png */; };
-		0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FA24E0F73B00BE288A /* Sunshine.png */; };
-		0AF61A0224E0F73C00BE288A /* Kontax Original.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FB24E0F73B00BE288A /* Kontax Original.png */; };
-		0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FC24E0F73C00BE288A /* Eternal sleep.png */; };
 		0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */; };
 		0AFA90D624E8C59B00BBDF57 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */; };
 		0AFE45842506234B006F126E /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE45832506234B006F126E /* SettingsFooterView.swift */; };
@@ -206,7 +203,12 @@
 		0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A82B83324AC406600673F1A /* LUTRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTRender.swift; sourceTree = "<group>"; };
 		0A84475824F94A0100700CAB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		0A954A4C24FB2A6300BDD0DC /* In development.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In development.png"; sourceTree = "<group>"; };
+		0A9014282506597C0003CD68 /* Summer vibes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Summer vibes.png"; sourceTree = "<group>"; };
+		0A9014292506597C0003CD68 /* PRIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRIDE.png; sourceTree = "<group>"; };
+		0A90142A2506597C0003CD68 /* In development.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In development.png"; sourceTree = "<group>"; };
+		0A90142B2506597C0003CD68 /* Kontax Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kontax Original.png"; sourceTree = "<group>"; };
+		0A90142C2506597D0003CD68 /* Bloodlust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bloodlust.png; sourceTree = "<group>"; };
+		0A90142D2506597D0003CD68 /* lanigirO xatnoK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanigirO xatnoK.png"; sourceTree = "<group>"; };
 		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +240,6 @@
 		0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterHelper.swift; sourceTree = "<group>"; };
 		0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		0AD2929324A78FDA00320BC4 /* CameraEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
-		0AD36BEB24E907F400AA78F0 /* PRIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRIDE.png; sourceTree = "<group>"; };
 		0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
 		0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoImagesURLs.swift; sourceTree = "<group>"; };
 		0AE49F172493C41C0057A729 /* DustImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustImageFilter.swift; sourceTree = "<group>"; };
@@ -250,13 +251,6 @@
 		0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersGestureEngine.swift; sourceTree = "<group>"; };
 		0AF4B47024EFB5C8004663CF /* DetailedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedButton.swift; sourceTree = "<group>"; };
 		0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconsTableViewController.swift; sourceTree = "<group>"; };
-		0AF619F624E0F73B00BE288A /* Bloodlust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bloodlust.png; sourceTree = "<group>"; };
-		0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanigirO xatnoK.png"; sourceTree = "<group>"; };
-		0AF619F824E0F73B00BE288A /* A fine day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "A fine day.png"; sourceTree = "<group>"; };
-		0AF619F924E0F73B00BE288A /* Summer vibes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Summer vibes.png"; sourceTree = "<group>"; };
-		0AF619FA24E0F73B00BE288A /* Sunshine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sunshine.png; sourceTree = "<group>"; };
-		0AF619FB24E0F73B00BE288A /* Kontax Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kontax Original.png"; sourceTree = "<group>"; };
-		0AF619FC24E0F73C00BE288A /* Eternal sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eternal sleep.png"; sourceTree = "<group>"; };
 		0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		0AFE45832506234B006F126E /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
@@ -404,10 +398,10 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A901427250659450003CD68 /* Alternate app icons */,
 				0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */,
 				0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */,
 				0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */,
-				0AF619F524E0F6EA00BE288A /* App icons */,
 				0ABD6D3A2497802400C3CC4B /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
 				0A44B2AF2476A80700603F2C /* Engine */,
@@ -521,6 +515,19 @@
 				0A84475824F94A0100700CAB /* Color.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		0A901427250659450003CD68 /* Alternate app icons */ = {
+			isa = PBXGroup;
+			children = (
+				0A90142C2506597D0003CD68 /* Bloodlust.png */,
+				0A90142A2506597C0003CD68 /* In development.png */,
+				0A90142B2506597C0003CD68 /* Kontax Original.png */,
+				0A90142D2506597D0003CD68 /* lanigirO xatnoK.png */,
+				0A9014292506597C0003CD68 /* PRIDE.png */,
+				0A9014282506597C0003CD68 /* Summer vibes.png */,
+			);
+			path = "Alternate app icons";
 			sourceTree = "<group>";
 		};
 		0AADEE72247B731C009FFA52 /* Lab */ = {
@@ -663,22 +670,6 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		0AF619F524E0F6EA00BE288A /* App icons */ = {
-			isa = PBXGroup;
-			children = (
-				0AF619F824E0F73B00BE288A /* A fine day.png */,
-				0AF619F624E0F73B00BE288A /* Bloodlust.png */,
-				0AF619FC24E0F73C00BE288A /* Eternal sleep.png */,
-				0AF619FB24E0F73B00BE288A /* Kontax Original.png */,
-				0AF619F724E0F73B00BE288A /* lanigirO xatnoK.png */,
-				0AF619F924E0F73B00BE288A /* Summer vibes.png */,
-				0AF619FA24E0F73B00BE288A /* Sunshine.png */,
-				0AD36BEB24E907F400AA78F0 /* PRIDE.png */,
-				0A954A4C24FB2A6300BDD0DC /* In development.png */,
-			);
-			path = "App icons";
-			sourceTree = "<group>";
-		};
 		EEDF8380CA7CD574C1862AF2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,20 +780,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AF61A0224E0F73C00BE288A /* Kontax Original.png in Resources */,
-				0A954A4D24FB2A6300BDD0DC /* In development.png in Resources */,
+				0A9014312506597D0003CD68 /* Kontax Original.png in Resources */,
+				0A90142F2506597D0003CD68 /* PRIDE.png in Resources */,
 				0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */,
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
-				0AF619FD24E0F73C00BE288A /* Bloodlust.png in Resources */,
+				0A9014332506597D0003CD68 /* lanigirO xatnoK.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
-				0AD36BEC24E907F400AA78F0 /* PRIDE.png in Resources */,
 				0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */,
 				0ABB576324FF9DC70058DB49 /* Configuration.storekit in Resources */,
-				0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */,
-				0AF61A0124E0F73C00BE288A /* Sunshine.png in Resources */,
-				0AF619FF24E0F73C00BE288A /* A fine day.png in Resources */,
-				0AF61A0024E0F73C00BE288A /* Summer vibes.png in Resources */,
-				0AF619FE24E0F73C00BE288A /* lanigirO xatnoK.png in Resources */,
+				0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */,
+				0A9014302506597D0003CD68 /* In development.png in Resources */,
+				0A9014322506597D0003CD68 /* Bloodlust.png in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

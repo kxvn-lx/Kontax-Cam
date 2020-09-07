@@ -10,29 +10,11 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>A fine day</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>A fine day</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>Bloodlust</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Bloodlust</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>Eternal sleep</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Eternal sleep</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -64,15 +46,6 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>Sunshine</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Sunshine</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
 			<key>lanigirO xatnoK</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -88,15 +61,24 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>AppIcon-2</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>A fine day</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
+            <key>AppIcon-1</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>PRIDE</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>AppIcon-2</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>In development</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
 			<key>AppIcon-3</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -120,15 +102,6 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>Summer vibes</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>AppIcon-6</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>Sunshine</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

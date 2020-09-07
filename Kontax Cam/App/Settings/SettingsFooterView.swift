@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsFooterView: View {
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Text("Kontax Cam")
                 .font(.caption)
                 .fontWeight(.medium)
@@ -18,6 +18,7 @@ struct SettingsFooterView: View {
             Text("Designed and developed by Kevin Laminto.")
                 .font(.caption)
         }
+        .multilineTextAlignment(.center)
         .foregroundColor(.tertiaryLabel)
     }
 }

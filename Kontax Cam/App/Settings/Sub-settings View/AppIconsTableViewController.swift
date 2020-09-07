@@ -81,6 +81,10 @@ class AppIconsTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! AppIconsTableViewCell
         cell.accessoryType = .none
     }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "If you want to create your own design and share it with the world, please submit it to kevinlaminto.dev@gmail.com"
+    }
 }
 
 class AppIconsTableViewCell: UITableViewCell {

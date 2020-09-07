@@ -32,7 +32,7 @@ extension FilterType: CustomStringConvertible {
         case .dust: return "dust.icon"
         case .lightleaks: return "leaks.icon"
         case .datestamp: return "calendar"
-        case .colourleaks: return "camera.filters"
+        case .colourleaks: return "color.icon"
         }
     }
 }

@@ -42,7 +42,7 @@ struct IconHelper {
         } else if let customImage = UIImage(named: iconName) {
             return customImage
         } else {
-            fatalError("Unable to get image")
+            return UIImage(systemName: "rectangle")!
         }
         
     }

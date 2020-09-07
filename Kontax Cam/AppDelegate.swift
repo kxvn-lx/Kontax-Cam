@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaultsHelper.shared.setData(value: [FilterCollection.aCollection.iapID], key: .purchasedFilters)
         }
         
+        #if !targetEnvironment(simulator)
         FirebaseApp.configure()
+        #endif
         Shake.start()
         
         return true

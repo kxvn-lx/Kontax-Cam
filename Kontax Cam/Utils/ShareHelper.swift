@@ -20,7 +20,10 @@ struct ShareHelper {
     /// - Parameter sender: The view that will be presented the sheet is.
     func presentShare(withImage image: UIImage, toView sender: UIViewController) {
 
-        let vc = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+        let vc = UIActivityViewController(
+            activityItems: [image],
+            applicationActivities: []
+        )
         sender.present(vc, animated: true)
     }
     

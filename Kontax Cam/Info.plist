@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Shake</key>
-    <dict>
-      <key>APIClientID</key>
-      <string>7gMAucIL198pSwx3ny6zez3Yox9t3lXuP3KV9lId</string>
-      <key>APIClientSecret</key>
-      <string>AmsipemILCdRf6O2TP4S25ad7G7yjl1PrHFigF3SGnxc1Yw2ydyP7a2</string>
-    </dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -162,6 +155,13 @@
 	<string>Kontax Cam requires permission to save photo to your library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Kontax Cam requires access to your library to save photo.</string>
+	<key>Shake</key>
+	<dict>
+		<key>APIClientID</key>
+		<string>7gMAucIL198pSwx3ny6zez3Yox9t3lXuP3KV9lId</string>
+		<key>APIClientSecret</key>
+		<string>AmsipemILCdRf6O2TP4S25ad7G7yjl1PrHFigF3SGnxc1Yw2ydyP7a2</string>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Date Stamp Alt.otf</string>

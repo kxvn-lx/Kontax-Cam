@@ -58,7 +58,7 @@ struct FXInfoView: View {
                 
                 Section {
                     FXInfoRow(
-                        iconImage: Image(systemName: "camera.filters"),
+                        iconImage: Image("color.icon"),
                         title: "Colour leaks",
                         description: "Colour leaks adds a gorgeous vintage colour overlay to your photo to make it pop and stylish. Experiment to find your own colour!"
                     )

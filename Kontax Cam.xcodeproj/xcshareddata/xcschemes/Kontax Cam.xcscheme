@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A65AED1249CE675001B9124"
-               BuildableName = "KontaxCam_RangeConverterTest.xctest"
-               BlueprintName = "KontaxCam_RangeConverterTest"
-               ReferencedContainer = "container:Kontax Cam.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0AC8F9F6249CE8AC0068E54F"
-               BuildableName = "Kontax CamTests.xctest"
-               BlueprintName = "Kontax CamTests"
-               ReferencedContainer = "container:Kontax Cam.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

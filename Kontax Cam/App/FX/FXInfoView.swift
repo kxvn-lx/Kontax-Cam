@@ -41,6 +41,7 @@ struct FXInfoView: View {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.shadowColor = .clear
+        navBarAppearance.backgroundColor = .systemGroupedBackground
         
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().standardAppearance = navBarAppearance

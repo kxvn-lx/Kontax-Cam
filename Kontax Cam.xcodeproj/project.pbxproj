@@ -56,7 +56,6 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
-		0A5C087F24E0044E002E2D66 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */; };
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
 		0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
@@ -120,6 +119,7 @@
 		0AF61A0324E0F73C00BE288A /* Eternal sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF619FC24E0F73C00BE288A /* Eternal sleep.png */; };
 		0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */; };
 		0AFA90D624E8C59B00BBDF57 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */; };
+		0AFE45842506234B006F126E /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE45832506234B006F126E /* SettingsFooterView.swift */; };
 		784A6C9739AD2141DFEBE4BB /* Pods_KontaxCamWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 979A073E6A0856D0464533B9 /* Pods_KontaxCamWidgetExtension.framework */; };
 		7E4502CD1D6EE4380047A297 /* Pods_Kontax_Cam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */; };
 /* End PBXBuildFile section */
@@ -197,7 +197,6 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
-		0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -260,6 +259,7 @@
 		0AF619FC24E0F73C00BE288A /* Eternal sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eternal sleep.png"; sourceTree = "<group>"; };
 		0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		0AFE45832506234B006F126E /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kontax_Cam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BA85A5BD6E76809B130329C /* Pods-KontaxCamWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KontaxCamWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-KontaxCamWidgetExtension/Pods-KontaxCamWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		979A073E6A0856D0464533B9 /* Pods_KontaxCamWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KontaxCamWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -490,9 +490,9 @@
 			isa = PBXGroup;
 			children = (
 				0AC54C9D248AAB5900D64D05 /* Sub-settings View */,
-				0A5C087E24E0044E002E2D66 /* SettingsFooterView.swift */,
 				0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */,
 				0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */,
+				0AFE45832506234B006F126E /* SettingsFooterView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -966,11 +966,11 @@
 				0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */,
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
+				0AFE45842506234B006F126E /* SettingsFooterView.swift in Sources */,
 				0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */,
 				0A267BD224E78FBB0025FB60 /* String.swift in Sources */,
 				0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
-				0A5C087F24E0044E002E2D66 /* SettingsFooterView.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A1A40EA25049EEC004B2E14 /* FXInfoView.swift in Sources */,
 				0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */,

@@ -60,13 +60,13 @@ struct FXInfoView: View {
                     FXInfoRow(
                         iconImage: Image("color.icon"),
                         title: "Colour leaks",
-                        description: "Colour leaks adds a gorgeous vintage colour overlay to your photo to make it pop and stylish. Experiment to find your own colour!"
+                        description: "Adds a gorgeous colour overlay to your photo to make it pop and stylish. "
                     )
                     
                     FXInfoRow(
                         iconImage: Image(systemName: "calendar"),
                         title: "Datestamp",
-                        description: "Datestamp embed a vintage film-styled datestamp to your photo making it looks vintage and unique."
+                        description: "Embed a film-styled datestamp to your photo."
                     )
                     
                     FXInfoRow(
@@ -78,13 +78,13 @@ struct FXInfoView: View {
                     FXInfoRow(
                         iconImage: Image("dust.icon"),
                         title: "Dust",
-                        description: "Dust, like the name implies, adds a scratched and dust effect to your photo. Use this to make it look dated and vintage."
+                        description: "Adds a scratched and dusty effect to your photo."
                     )
                     
                     FXInfoRow(
                         iconImage: Image("leaks.icon"),
                         title: "Light leaks",
-                        description: "Light leaks adds a subtle but vivid colourful light leaks - simulating a vintage film camera."
+                        description: "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera."
                     )
                 }
             }

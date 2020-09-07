@@ -33,8 +33,10 @@ class SettingsTableViewController: UITableViewController {
     }
     
     private func setupView() {
-        
-        self.tableView.tableFooterView = SettingsFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 250))
+        let settingsFooterView = UIHostingController(rootView: SettingsFooterView())
+        settingsFooterView.view.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 75)
+        settingsFooterView.view.backgroundColor = .clear
+        self.tableView.tableFooterView = settingsFooterView.view
     }
 }
 

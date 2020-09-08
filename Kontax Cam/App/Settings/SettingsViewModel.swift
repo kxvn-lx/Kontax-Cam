@@ -48,7 +48,7 @@ class SettingsViewModel: NSObject {
                     action: { [weak self] _ in self?.delegate?.apppIconsTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Restore purchase") },
+                    createdCell: { self.createNormalCell(withTitle: "Restore purchase", accessoryType: .none) },
                     action: { [weak self] _ in self?.delegate?.restorePurchaseTapped() }
                 )
             ])
@@ -88,7 +88,7 @@ class SettingsViewModel: NSObject {
                         let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.ReuseIdentifier)
                         cell.textLabel?.text = "Delete lab images"
                         cell.textLabel?.textColor = .systemRed
-                        cell.accessoryType = .disclosureIndicator
+                        cell.accessoryType = .none
                         return cell
                     },
                     action: { [weak self] _ in self?.delegate?.deleteAllTapped() })
@@ -98,10 +98,10 @@ class SettingsViewModel: NSObject {
     }
     
     /// Helper to create a cell with a title
-    private func createNormalCell(withTitle title: String) -> UITableViewCell {
+    private func createNormalCell(withTitle title: String, accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.ReuseIdentifier)
         cell.textLabel?.text = title
-        cell.accessoryType = .disclosureIndicator
+        cell.accessoryType = accessoryType
         return cell
     }
 }

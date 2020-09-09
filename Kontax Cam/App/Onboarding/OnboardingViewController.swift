@@ -22,26 +22,34 @@ class OnboardingViewController: UIViewController {
     
     private let imageView: UIImageView = {
        let v = UIImageView()
+        v.clipsToBounds = true
+        v.translatesAutoresizingMaskIntoConstraints = false
         v.contentMode = .scaleAspectFill
         return v
     }()
     private let titleLabel: UILabel = {
        let v = UILabel()
         v.text = "Kontax Cam"
-        v.textColor = .white
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.textColor = .label
         v.font = UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize, weight: .bold)
         return v
     }()
     private let bodyLabel: UILabel = {
         let v = UILabel()
+        v.translatesAutoresizingMaskIntoConstraints = false
         v.numberOfLines = 0
-        v.textColor = .white
+        v.textColor = .label
         v.text = "Instant camera hybrid app for films and digital photographers, by photographers."
         return v
     }()
-    private let startButton: DetailedButton = {
-       let button = DetailedButton(title: "Start taking photo")
-        button.backgroundColor = .black
+    private let startButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Start taking photo", for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .label
+        button.setTitleColor(.systemBackground, for: .normal)
         return button
     }()
     private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)
@@ -53,6 +61,8 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = .systemBackground
+        
         setupView()
         setupConstraint()
         
@@ -68,22 +78,17 @@ class OnboardingViewController: UIViewController {
         
         mSV.addArrangedSubview(titleLabel)
         mSV.addArrangedSubview(bodyLabel)
-
-        let sv = SVHelper.shared.createSV(axis: .horizontal, alignment: .center, distribution: .fillProportionally)
-        sv.addArrangedSubview(startButton)
-        
-        mSV.addArrangedSubview(sv)
+        mSV.addArrangedSubview(startButton)
         
         mSV.setCustomSpacing(20, after: bodyLabel)
-        
-        sv.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-        }
     }
     
     private func setupConstraint() {
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.top.equalToSuperview().offset(125)
+            make.height.equalToSuperview().multipliedBy(0.5)
         }
         
         mSV.snp.makeConstraints { (make) in

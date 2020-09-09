@@ -71,6 +71,10 @@ class CameraEngine: NSObject {
     
     var supportedExtraLens = [AVCaptureDevice?]()
     
+    private let minimumZoom: CGFloat = 1.0
+    private let maximumZoom: CGFloat = 3.0
+    private var lastZoomFactor: CGFloat = 1.0
+    
     override init() {
         super.init()
         checkPermission()
@@ -87,6 +91,8 @@ class CameraEngine: NSObject {
         
         startRunningCaptureSession()
         attachFocus(view)
+        
+        setupZoom(toView: view)
     }
     
     /// Capture the image
@@ -129,6 +135,7 @@ class CameraEngine: NSObject {
             currentCamera = newCamera
             
             setPreviewViewOrientation()
+            lastZoomFactor = 1.0
         } catch {
             print(error)
         }
@@ -158,14 +165,50 @@ class CameraEngine: NSObject {
             currentCamera = newCamera
             
             setPreviewViewOrientation()
+            lastZoomFactor = 1.0
             completion(.success(true))
         } catch {
             completion(.failure(.setupExtraLensInput))
         }
-
+        
     }
     
     // MARK: - Private methods
+    /// Setup zoom control to allow pinch to zoom
+    private func setupZoom(toView view: UIView) {
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        view.addGestureRecognizer(pinchRecognizer)
+    }
+    
+    @objc private func pinch(_ pinch: UIPinchGestureRecognizer) {
+        guard let device = currentCamera else { return }
+        
+        // Return zoom value between the minimum and maximum zoom values
+        func minMaxZoom(_ factor: CGFloat) -> CGFloat {
+            return min(min(max(factor, minimumZoom), maximumZoom), device.activeFormat.videoMaxZoomFactor)
+        }
+        
+        func update(scale factor: CGFloat) {
+            do {
+                try device.lockForConfiguration()
+                defer { device.unlockForConfiguration() }
+                device.videoZoomFactor = factor
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+        
+        let newScaleFactor = minMaxZoom(pinch.scale * lastZoomFactor)
+        
+        switch pinch.state {
+        case .changed: update(scale: newScaleFactor)
+        case .ended:
+            lastZoomFactor = minMaxZoom(newScaleFactor)
+            update(scale: lastZoomFactor)
+        default: break
+        }
+    }
+    
     /// Setup extra lens
     private func setupExtraLens() {
         // If triple camera, add telephoto and ultrawide settings.
@@ -525,7 +568,7 @@ extension CameraEngine: AVCapturePhotoCaptureDelegate, AVCaptureVideoDataOutputS
             
             finalVideoPixelBuffer = filteredBuffer
         }
-
+        
         previewView?.pixelBuffer = finalVideoPixelBuffer
     }
 }

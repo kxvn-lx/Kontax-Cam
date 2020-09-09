@@ -11,13 +11,15 @@ import SwiftUI
 struct SettingsFooterView: View {
     var body: some View {
         VStack(alignment: .center) {
-            Text("Kontax Cam")
-                .font(.caption)
-                .fontWeight(.medium)
+            Text("Kc.")
+                .font(.largeTitle)
+                .fontWeight(.bold)
             
-            Text("Designed and developed by Kevin Laminto.")
+            Text("Designed and developed by Kevin Laminto")
                 .font(.caption)
+            Spacer()
         }
+        .padding()
         .multilineTextAlignment(.center)
         .foregroundColor(.tertiaryLabel)
     }

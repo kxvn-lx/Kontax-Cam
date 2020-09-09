@@ -25,7 +25,7 @@ class FiltersCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle("Filter collections")
+        self.setNavigationBarTitle("Filter collections", removeSeparator: false)
         self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
         

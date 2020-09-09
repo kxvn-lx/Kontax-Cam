@@ -112,7 +112,6 @@
 		0AEC654824FA11AE00418096 /* ExtraLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC654724FA11AE00418096 /* ExtraLensView.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
 		0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */; };
-		0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4B47024EFB5C8004663CF /* DetailedButton.swift */; };
 		0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */; };
 		0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */; };
 		0AFA90D624E8C59B00BBDF57 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */; };
@@ -249,7 +248,6 @@
 		0AEC654724FA11AE00418096 /* ExtraLensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLensView.swift; sourceTree = "<group>"; };
 		0AEE932F247C983800F485C0 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersGestureEngine.swift; sourceTree = "<group>"; };
-		0AF4B47024EFB5C8004663CF /* DetailedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedButton.swift; sourceTree = "<group>"; };
 		0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconsTableViewController.swift; sourceTree = "<group>"; };
 		0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
@@ -545,7 +543,6 @@
 		0AB96FFA248A99E400F1FF3C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0AF4B47024EFB5C8004663CF /* DetailedButton.swift */,
 				0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */,
 				0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */,
 				0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */,
@@ -901,7 +898,6 @@
 				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
 				0AEC654824FA11AE00418096 /* ExtraLensView.swift in Sources */,
-				0AF4B47124EFB5C8004663CF /* DetailedButton.swift in Sources */,
 				0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */,
 				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,
 				0A82B83424AC406600673F1A /* LUTRender.swift in Sources */,

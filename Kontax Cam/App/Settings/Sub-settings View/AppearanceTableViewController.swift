@@ -35,7 +35,7 @@ extension AppearanceTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "appearanceCell", for: indexPath)
 
         switch themes[indexPath.row].rawValue {
-        case 0: cell.textLabel?.text = "System"
+        case 0: cell.textLabel?.text = "Automatic"
         case 1: cell.textLabel?.text = "Light"
         case 2: cell.textLabel?.text = "Dark"
         default: break

@@ -61,24 +61,24 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-            <key>AppIcon-1</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>PRIDE</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>AppIcon-2</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>In development</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
+			<key>AppIcon-1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>PRIDE</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>AppIcon-2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>In development</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>AppIcon-3</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

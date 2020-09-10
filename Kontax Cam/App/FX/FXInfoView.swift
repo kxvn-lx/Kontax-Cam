@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// MARK: - FXInfoRow
 struct FXInfoRow: View {
     var iconImage: Image
     var title: String
@@ -34,6 +35,7 @@ struct FXInfoRow: View {
     }
 }
 
+// MARK: - FXInfoView
 struct FXInfoView: View {
     var dismissAction: (() -> Void)?
     
@@ -54,7 +56,7 @@ struct FXInfoView: View {
         NavigationView {
             List {
                 Section {
-                    Text("Tip: you can long-press any active effect(s) in order to cutsomise it")
+                    Text("Tip: long-press any active effect(s) to customise it.")
                 }
                 
                 Section {

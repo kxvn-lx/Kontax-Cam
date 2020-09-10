@@ -72,7 +72,7 @@ class OnboardingViewController: UIViewController {
     private func setupConstraint() {
         logoLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top + 100)
+            make.centerY.equalToSuperview().offset(-75)
         }
         
         imageView.snp.makeConstraints { (make) in

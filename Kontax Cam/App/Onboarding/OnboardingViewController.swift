@@ -9,17 +9,6 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
-    
-    private let imagesName: [String] = [
-        "onboarding1",
-        "onboarding2",
-        "onboarding3",
-        "onboarding4",
-        "onboarding5",
-        "onboarding6",
-        "onboarding7"
-    ]
-    
     private let imageView: UIImageView = {
        let v = UIImageView()
         v.clipsToBounds = true
@@ -27,19 +16,20 @@ class OnboardingViewController: UIViewController {
         v.contentMode = .scaleAspectFill
         return v
     }()
-    private let titleLabel: UILabel = {
-       let v = UILabel()
-        v.text = "Kontax Cam"
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.textColor = .label
-        v.font = UIFont.systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title2).pointSize, weight: .bold)
-        return v
+    private let logoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Kc."
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .label
+        label.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 1.5, weight: .bold)
+        return label
     }()
     private let bodyLabel: UILabel = {
         let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.numberOfLines = 0
         v.textColor = .label
+        v.textAlignment = .center
         v.text = "Instant camera hybrid app for films and digital photographers, by photographers."
         return v
     }()
@@ -52,10 +42,7 @@ class OnboardingViewController: UIViewController {
         button.setTitleColor(.systemBackground, for: .normal)
         return button
     }()
-    private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .leading, distribution: .fill)
-    
-    private var timer = Timer()
-    private var photoCount = 0
+    private let mSV = SVHelper.shared.createSV(axis: .vertical, alignment: .center, distribution: .fill)
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -70,25 +57,29 @@ class OnboardingViewController: UIViewController {
     }
 
     private func setupView() {
-        self.imageView.image = UIImage(named: imagesName[0])!
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(onTransition), userInfo: nil, repeats: true)
+        self.imageView.image = UIImage(named: "onboarding")!
+        self.view.addSubview(logoLabel)
         
         self.view.addSubview(imageView)
         self.view.addSubview(mSV)
         
-        mSV.addArrangedSubview(titleLabel)
         mSV.addArrangedSubview(bodyLabel)
         mSV.addArrangedSubview(startButton)
         
         mSV.setCustomSpacing(20, after: bodyLabel)
     }
-    
+
     private func setupConstraint() {
+        logoLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top + 100)
+        }
+        
         imageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.8)
-            make.top.equalToSuperview().offset(125)
-            make.height.equalToSuperview().multipliedBy(0.5)
+            make.bottom.equalTo(mSV.snp.top).offset(-50)
+            make.height.equalTo(self.view.snp.width).multipliedBy(0.9)
         }
         
         mSV.snp.makeConstraints { (make) in
@@ -115,17 +106,5 @@ class OnboardingViewController: UIViewController {
         self.present(navVC, animated: true, completion: nil)
         
         UserDefaultsHelper.shared.setData(value: false, key: .userFirstLaunch)
-    }
-    
-    @objc private func onTransition() {
-        if photoCount < imagesName.count - 1 {
-            photoCount += 1
-        } else {
-            photoCount = 0
-        }
-
-        UIView.transition(with: self.imageView, duration: 2.0, options: .transitionCrossDissolve, animations: {
-            self.imageView.image = UIImage(named: self.imagesName[self.photoCount])
-        }, completion: nil)
     }
 }

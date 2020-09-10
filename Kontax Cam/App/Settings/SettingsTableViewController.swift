@@ -96,7 +96,7 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func twitterTapped() {
-        if let url = URL(string: "https://twitter.com/kevinlx_") {
+        if let url = URL(string: "https://twitter.com/KontaxCam") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {

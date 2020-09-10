@@ -116,7 +116,6 @@
 		0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */; };
 		0AFA90D624E8C59B00BBDF57 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */; };
 		0AFE45842506234B006F126E /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE45832506234B006F126E /* SettingsFooterView.swift */; };
-		784A6C9739AD2141DFEBE4BB /* Pods_KontaxCamWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 979A073E6A0856D0464533B9 /* Pods_KontaxCamWidgetExtension.framework */; };
 		7E4502CD1D6EE4380047A297 /* Pods_Kontax_Cam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */; };
 /* End PBXBuildFile section */
 
@@ -253,10 +252,7 @@
 		0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		0AFE45832506234B006F126E /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kontax_Cam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BA85A5BD6E76809B130329C /* Pods-KontaxCamWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KontaxCamWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-KontaxCamWidgetExtension/Pods-KontaxCamWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		979A073E6A0856D0464533B9 /* Pods_KontaxCamWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KontaxCamWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA827D3F86A7D44B4B26A394 /* Pods-Kontax Cam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kontax Cam.release.xcconfig"; path = "Target Support Files/Pods-Kontax Cam/Pods-Kontax Cam.release.xcconfig"; sourceTree = "<group>"; };
-		D5CF71EE3414E9637A5609CC /* Pods-KontaxCamWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KontaxCamWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-KontaxCamWidgetExtension/Pods-KontaxCamWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		EED5C8C707313FC23C8DF618 /* Pods-Kontax Cam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kontax Cam.debug.xcconfig"; path = "Target Support Files/Pods-Kontax Cam/Pods-Kontax Cam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,7 +276,6 @@
 			files = (
 				0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */,
 				0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */,
-				784A6C9739AD2141DFEBE4BB /* Pods_KontaxCamWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +596,6 @@
 				0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */,
 				0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */,
 				57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */,
-				979A073E6A0856D0464533B9 /* Pods_KontaxCamWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -672,8 +666,6 @@
 			children = (
 				EED5C8C707313FC23C8DF618 /* Pods-Kontax Cam.debug.xcconfig */,
 				BA827D3F86A7D44B4B26A394 /* Pods-Kontax Cam.release.xcconfig */,
-				8BA85A5BD6E76809B130329C /* Pods-KontaxCamWidgetExtension.debug.xcconfig */,
-				D5CF71EE3414E9637A5609CC /* Pods-KontaxCamWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -714,7 +706,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AC2F2B024ED040B007A5E33 /* Build configuration list for PBXNativeTarget "KontaxCamWidgetExtension" */;
 			buildPhases = (
-				589E545E095EB79C92039B81 /* [CP] Check Pods Manifest.lock */,
 				0AC2F29D24ED0409007A5E33 /* Sources */,
 				0AC2F29E24ED0409007A5E33 /* Frameworks */,
 				0AC2F29F24ED0409007A5E33 /* Resources */,
@@ -820,28 +811,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		589E545E095EB79C92039B81 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KontaxCamWidgetExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 		B613B76A1972DB3703BEF15F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1182,7 +1151,6 @@
 		};
 		0AC2F2B124ED040B007A5E33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BA85A5BD6E76809B130329C /* Pods-KontaxCamWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1209,7 +1177,6 @@
 		};
 		0AC2F2B224ED040B007A5E33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5CF71EE3414E9637A5609CC /* Pods-KontaxCamWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;

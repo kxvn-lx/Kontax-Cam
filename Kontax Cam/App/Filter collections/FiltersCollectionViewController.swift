@@ -25,7 +25,6 @@ class FiltersCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle("Filter collections", removeSeparator: false)
         self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
         
@@ -37,6 +36,16 @@ class FiltersCollectionViewController: UICollectionViewController {
         self.populateSection()
         
         observeIAP()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarTitle("Filter collections", removeSeparator: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.setNavigationBarTitle("Filter collections", removeSeparator: true)
     }
     
     /// Observe IAP changes in real time.

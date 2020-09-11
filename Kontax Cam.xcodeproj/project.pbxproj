@@ -496,8 +496,8 @@
 		0A838BA624EA639300F2EB8F /* Filter Info */ = {
 			isa = PBXGroup;
 			children = (
-				0A13EB2724EAC0C0008C4FD0 /* FilterInfoViewController.swift */,
 				0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */,
+				0A13EB2724EAC0C0008C4FD0 /* FilterInfoViewController.swift */,
 			);
 			path = "Filter Info";
 			sourceTree = "<group>";

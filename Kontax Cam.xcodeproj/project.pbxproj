@@ -56,6 +56,7 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
+		0A618334250CE0E000CA4782 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A618333250CE0E000CA4782 /* TryViewController.swift */; };
 		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
 		0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
@@ -192,6 +193,7 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
+		0A618333250CE0E000CA4782 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A618332250CE0B800CA4782 /* Try Camera */,
 				0A4D6E53247A472100E039FC /* Filter collections */,
 				0A03EAFD2480AB84001D8006 /* FX */,
 				0AADEE72247B731C009FFA52 /* Lab */,
@@ -482,6 +485,14 @@
 				0AFE45832506234B006F126E /* SettingsFooterView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		0A618332250CE0B800CA4782 /* Try Camera */ = {
+			isa = PBXGroup;
+			children = (
+				0A618333250CE0E000CA4782 /* TryViewController.swift */,
+			);
+			path = "Try Camera";
 			sourceTree = "<group>";
 		};
 		0A82B82B24AC3BBF00673F1A /* FilterRenderer */ = {
@@ -924,6 +935,7 @@
 				0A267BD224E78FBB0025FB60 /* String.swift in Sources */,
 				0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */,
 				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
+				0A618334250CE0E000CA4782 /* TryViewController.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A1A40EA25049EEC004B2E14 /* FXInfoView.swift in Sources */,
 				0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */,

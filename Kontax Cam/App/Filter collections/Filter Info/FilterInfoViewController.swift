@@ -319,7 +319,10 @@ class FilterInfoViewController: UIViewController {
     }
     
     @objc private func tryButtonTapped() {
-        
+        let tryVC = TryViewController()
+        tryVC.currentCollection = selectedCollection
+        tryVC.modalPresentationStyle = .overFullScreen
+        self.present(tryVC, animated: true, completion: nil)
     }
 }
 

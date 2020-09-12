@@ -47,7 +47,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         super.viewDidLoad()
         
         // 1. Navigation configuration
-        self.setNavigationBarTitle("Lab", removeSeparator: false)
+        self.setNavigationBarTitle("Lab")
         self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
         

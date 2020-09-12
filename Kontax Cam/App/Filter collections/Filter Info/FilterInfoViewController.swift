@@ -91,18 +91,25 @@ class FilterInfoViewController: UIViewController {
     }()
     private var datasource: DataSource!
     private var datas = [FilterInfo]()
-    
     private var shouldShowSpinner = false {
         didSet {
             spinnerView.isHidden = !shouldShowSpinner
             iapButton.isHidden = shouldShowSpinner
         }
     }
+    private let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        // Setup try button
+        let tryButton = UIBarButtonItem(title: "Try", style: .plain, target: self, action: #selector(tryButtonTapped))
+        if !purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP != nil {
+            // User has not bought the collection, let them try it!
+            navigationItem.rightBarButtonItem = tryButton
+        }
         
         // Setup collectionview
         collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
@@ -152,7 +159,6 @@ class FilterInfoViewController: UIViewController {
             return
         }
         
-        let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
         if purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP == nil {
             // User has bought the collection
             iapButton.isEnabled = false
@@ -310,6 +316,10 @@ class FilterInfoViewController: UIViewController {
                 
             }
         }
+    }
+    
+    @objc private func tryButtonTapped() {
+        
     }
 }
 

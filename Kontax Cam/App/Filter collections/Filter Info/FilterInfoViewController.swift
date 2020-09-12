@@ -99,17 +99,17 @@ class FilterInfoViewController: UIViewController {
     }
     private let purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
     
+    private var tryButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Setup try button
-        let tryButton = UIBarButtonItem(title: "Try", style: .plain, target: self, action: #selector(tryButtonTapped))
-        if !purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP != nil {
-            // User has not bought the collection, let them try it!
-            navigationItem.rightBarButtonItem = tryButton
-        }
+        tryButton = UIBarButtonItem(title: "Try", style: .plain, target: self, action: #selector(tryButtonTapped))
+        navigationItem.rightBarButtonItem = tryButton
+        tryButton.isHidden = purchasedFilters.contains(selectedCollection.iapID)
         
         // Setup collectionview
         collectionView.register(FilterInfoCollectionViewCell.self, forCellWithReuseIdentifier: FilterInfoCollectionViewCell.ReuseIdentifier)
@@ -208,6 +208,7 @@ class FilterInfoViewController: UIViewController {
                     DispatchQueue.main.async {
                         if removedIAPs.contains(iapID) && iapButton.isEnabled == false {
                             iapButton.isEnabled = true
+                            tryButton.isHidden = false
                             
                             var purchasedFilters = UserDefaultsHelper.shared.getData(type: [String].self, forKey: .purchasedFilters)!
                             purchasedFilters.removeAll(where: { $0 == selectedCollectionIAP.title })
@@ -296,6 +297,7 @@ class FilterInfoViewController: UIViewController {
                 UserDefaultsHelper.shared.setData(value: purchasedFilters, key: .purchasedFilters)
                 self.startIAPSuccessAnimation()
                 TapticHelper.shared.successTaptic()
+                self.tryButton.isHidden = true
                 
                 self.shouldRefreshCollectionView.send(true)
                 

@@ -19,7 +19,6 @@ class ShutterView: UIView {
     private let touchedColor = UIColor.label.withAlphaComponent(0.8)
     private let animationDuration: TimeInterval = 0.1
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

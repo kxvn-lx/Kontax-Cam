@@ -8,7 +8,9 @@
 
 import UIKit
 import Firebase
+import FirebaseMessaging
 import Shake
+import Backend 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

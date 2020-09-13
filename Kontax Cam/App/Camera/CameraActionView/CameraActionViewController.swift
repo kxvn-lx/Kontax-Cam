@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Backend
 
 protocol CameraActionDelegate: class {
     func didTapOnReverse()

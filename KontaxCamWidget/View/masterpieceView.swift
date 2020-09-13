@@ -8,6 +8,7 @@
 
 import SwiftUI
 import WidgetKit
+import Backend
 
 struct masterpieceView: View {
     

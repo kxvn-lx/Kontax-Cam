@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Backend
 
 struct FilterInfo: Hashable {
     let id = UUID()

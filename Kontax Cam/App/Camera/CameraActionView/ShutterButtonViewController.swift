@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import MediaPlayer
+import Backend
 
 class ShutterButtonViewController: UIViewController {
     

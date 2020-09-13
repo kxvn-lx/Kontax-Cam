@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import DTPhotoViewerController
+import Backend
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     

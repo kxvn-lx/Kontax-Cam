@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import SafariServices
 import MessageUI
+import Backend
 
 class SettingsTableViewController: UITableViewController {
     

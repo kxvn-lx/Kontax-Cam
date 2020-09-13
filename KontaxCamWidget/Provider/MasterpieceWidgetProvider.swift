@@ -8,6 +8,7 @@
 
 import Foundation
 import WidgetKit
+import Backend
 
 /// Provides snapshot when widgetkit wants an entry
 struct MasterpieceWidgetProvider: TimelineProvider {

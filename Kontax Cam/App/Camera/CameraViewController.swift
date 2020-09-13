@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import AVFoundation
+import Backend
 
 class CameraViewController: UIViewController {
     

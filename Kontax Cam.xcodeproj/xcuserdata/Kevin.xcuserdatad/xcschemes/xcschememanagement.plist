@@ -9,10 +9,15 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>KontaxCamWidgetExtension.xcscheme_^#shared#^_</key>
+		<key>KontaxCamAppClip.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>18</integer>
+		</dict>
+		<key>KontaxCamWidgetExtension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 		<key>SnapKitPlayground (Playground) 1.xcscheme</key>
 		<dict>
@@ -60,6 +65,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0A44B2962476A7F000603F2C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A96144A250DCEF800137FE6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Backend
 
 class FiltersCollectionViewCell: UICollectionViewCell {
     

@@ -8,6 +8,7 @@
 
 import Foundation
 import WidgetKit
+import Backend
 
 struct PhotoEntry: TimelineEntry {
     let date = Date()

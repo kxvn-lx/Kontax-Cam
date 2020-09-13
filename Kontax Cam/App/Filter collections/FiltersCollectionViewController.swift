@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Backend
 
 protocol FilterListDelegate: class {
     /// Tells the delegate that a filter collection has been selected

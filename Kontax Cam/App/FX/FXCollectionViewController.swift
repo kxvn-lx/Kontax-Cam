@@ -9,6 +9,7 @@
 import UIKit
 import PanModal
 import SwiftUI
+import Backend
 
 private struct CellPath {
     static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)

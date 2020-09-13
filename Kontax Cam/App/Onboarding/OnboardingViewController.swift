@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Backend
 
 class OnboardingViewController: UIViewController {
     private let imageView: UIImageView = {

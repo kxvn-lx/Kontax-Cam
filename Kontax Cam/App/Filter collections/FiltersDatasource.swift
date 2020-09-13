@@ -7,13 +7,7 @@
 //
 
 import UIKit
-
-enum FilterName: String, CaseIterable {
-    case A1, A2, A3, A4, A5
-    case B1, B2, B3, B4, B5
-    case HUE1, HUE2, HUE3, HUE4, HUE5
-    case BW1, BW2, BW3, BW4, BW5
-}
+import Backend
 
 extension FiltersCollectionViewController {
     

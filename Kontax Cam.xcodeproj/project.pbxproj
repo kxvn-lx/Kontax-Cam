@@ -8,13 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260762497179F009C26FB /* PreviewViewController.swift */; };
-		0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0260812497334C009C26FB /* DatestampImageFilter.swift */; };
 		0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */; };
 		0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */; };
 		0A0F94CE247E501300E33AEC /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0F94CD247E501300E33AEC /* PanModal */; };
 		0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */; };
-		0A1193BD249B56E30086604D /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BC249B56E30086604D /* Effect.swift */; };
-		0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */; };
 		0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193C4249B702E0086604D /* LoadingViewController.swift */; };
 		0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */; };
 		0A13EB2824EAC0C0008C4FD0 /* FilterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13EB2724EAC0C0008C4FD0 /* FilterInfoViewController.swift */; };
@@ -26,30 +23,18 @@
 		0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */; };
 		0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CC2477DDB900E4078F /* IconHelper.swift */; };
 		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
-		0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D32477F38900E4078F /* TimerEngine.swift */; };
-		0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */; };
 		0A1F11B224FF410800BCC1A9 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1F11B124FF410800BCC1A9 /* SwiftyStoreKit */; };
-		0A1F11BE24FF4E6F00BCC1A9 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F11BD24FF4E6F00BCC1A9 /* IAPManager.swift */; };
-		0A1F11C024FF4ECE00BCC1A9 /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F11BF24FF4ECE00BCC1A9 /* InAppPurchase.swift */; };
-		0A1F11C324FF4F3000BCC1A9 /* RegisteredPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F11C224FF4F3000BCC1A9 /* RegisteredPurchase.swift */; };
-		0A1F11C524FF542200BCC1A9 /* IAPManager+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F11C424FF542200BCC1A9 /* IAPManager+Setup.swift */; };
 		0A267BC824E78F8F0025FB60 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BC724E78F8F0025FB60 /* UIViewController.swift */; };
 		0A267BCA24E78F980025FB60 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BC924E78F980025FB60 /* UIStackView.swift */; };
-		0A267BCC24E78F9F0025FB60 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BCB24E78F9F0025FB60 /* UIFont.swift */; };
 		0A267BCE24E78FA60025FB60 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BCD24E78FA60025FB60 /* UIButton.swift */; };
 		0A267BD024E78FB50025FB60 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BCF24E78FB50025FB60 /* UIImage.swift */; };
 		0A267BD224E78FBB0025FB60 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BD124E78FBB0025FB60 /* String.swift */; };
 		0A267BD424E78FC20025FB60 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BD324E78FC20025FB60 /* UIView.swift */; };
-		0A30641424A9BA5A005C9033 /* FilterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30641324A9BA5A005C9033 /* FilterRenderer.swift */; };
-		0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A31490A24A8A49B00168225 /* PreviewMetalView.swift */; };
 		0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */; };
-		0A3861D824ED04780066B003 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
 		0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */; };
 		0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */; };
 		0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D557F247F70FC00BC0477 /* PanModalNavigationController.swift */; };
 		0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */; };
-		0A3F50A624ED19D800192DAE /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
-		0A43068124ADB20E00CA2E0F /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A43067F24ADB20E00CA2E0F /* PassThrough.metal */; };
 		0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29A2476A7F000603F2C /* AppDelegate.swift */; };
 		0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29C2476A7F000603F2C /* SceneDelegate.swift */; };
 		0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A44B29E2476A7F000603F2C /* CameraViewController.swift */; };
@@ -58,14 +43,11 @@
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
 		0A618334250CE0E000CA4782 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A618333250CE0E000CA4782 /* TryViewController.swift */; };
 		0A618336250CFB4000CA4782 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A618335250CFB4000CA4782 /* UIBarButtonItem.swift */; };
-		0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
 		0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
-		0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88B24EB705A00C5449D /* FilterCollection.swift */; };
 		0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */; };
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
 		0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */; };
-		0A82B83424AC406600673F1A /* LUTRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82B83324AC406600673F1A /* LUTRender.swift */; };
 		0A84475924F94A0100700CAB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
 		0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9014282506597C0003CD68 /* Summer vibes.png */; };
 		0A90142F2506597D0003CD68 /* PRIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9014292506597C0003CD68 /* PRIDE.png */; };
@@ -73,27 +55,30 @@
 		0A9014312506597D0003CD68 /* Kontax Original.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142B2506597C0003CD68 /* Kontax Original.png */; };
 		0A9014322506597D0003CD68 /* Bloodlust.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142C2506597D0003CD68 /* Bloodlust.png */; };
 		0A9014332506597D0003CD68 /* lanigirO xatnoK.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142D2506597D0003CD68 /* lanigirO xatnoK.png */; };
-		0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */; };
+		0A96144E250DCEF800137FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A96144D250DCEF800137FE6 /* AppDelegate.swift */; };
+		0A961450250DCEF800137FE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A96144F250DCEF800137FE6 /* SceneDelegate.swift */; };
+		0A961452250DCEF800137FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A961451250DCEF800137FE6 /* ViewController.swift */; };
+		0A961455250DCEF800137FE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A961453250DCEF800137FE6 /* Main.storyboard */; };
+		0A961457250DCEFA00137FE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A961456250DCEFA00137FE6 /* Assets.xcassets */; };
+		0A96145A250DCEFA00137FE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A961458250DCEFA00137FE6 /* LaunchScreen.storyboard */; };
+		0A96145F250DCEFA00137FE6 /* KontaxCamAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 0A96144B250DCEF800137FE6 /* KontaxCamAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0A961476250DD01000137FE6 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A961475250DD01000137FE6 /* Backend */; };
+		0A961478250DD01800137FE6 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A961477250DD01800137FE6 /* Backend */; };
+		0A96147D250DD41100137FE6 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A96147C250DD41100137FE6 /* SwiftyStoreKit */; };
+		0A96147F250DD42600137FE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A96147E250DD42600137FE6 /* SnapKit */; };
+		0A961481250DD96C00137FE6 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A961480250DD96C00137FE6 /* PassThrough.metal */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
 		0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */; };
-		0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8F0F1249D017D00B07519 /* FilterValue.swift */; };
 		0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
-		0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE70247B6987009FFA52 /* DataEngine.swift */; };
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
-		0ABB576324FF9DC70058DB49 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB576224FF9DC70058DB49 /* Configuration.storekit */; };
-		0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD6D3C2497803500C3CC4B /* Photo.swift */; };
 		0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */; };
 		0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */; };
 		0AC2F2A624ED0409007A5E33 /* KontaxCamWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */; };
 		0AC2F2A924ED040B007A5E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A824ED040B007A5E33 /* Assets.xcassets */; };
 		0AC2F2AF24ED040B007A5E33 /* KontaxCamWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C6247DDE2100BB0270 /* FilterEngine.swift */; };
-		0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407C9247DE04F00BB0270 /* FilterFactory.swift */; };
-		0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */; };
-		0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */; };
 		0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */; };
 		0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
 		0ACBADB824ED4DAF00D93708 /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADB624ED4D5900D93708 /* PhotoEntry.swift */; };
@@ -101,27 +86,28 @@
 		0ACBADBE24ED4E3000D93708 /* WidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADBD24ED4E3000D93708 /* WidgetEntryView.swift */; };
 		0ACBADC024ED4EDA00D93708 /* masterpieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADBF24ED4EDA00D93708 /* masterpieceView.swift */; };
 		0ACBADC324ED4F1000D93708 /* DateConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */; };
-		0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */; };
-		0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD2929324A78FDA00320BC4 /* CameraEngine.swift */; };
 		0ADE750B24FFBC73005C4F1C /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */; };
 		0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0ADEDAD324FB6B34001106C1 /* SDWebImage */; };
 		0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */; };
-		0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F172493C41C0057A729 /* DustImageFilter.swift */; };
-		0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE49F192493C7B50057A729 /* FilterType.swift */; };
 		0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEA622F24878522004B9313 /* DTPhotoViewerController */; };
 		0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */; };
 		0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */; };
 		0AEC654824FA11AE00418096 /* ExtraLensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC654724FA11AE00418096 /* ExtraLensView.swift */; };
 		0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE932F247C983800F485C0 /* ShareHelper.swift */; };
-		0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */; };
 		0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */; };
 		0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */; };
-		0AFA90D624E8C59B00BBDF57 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */; };
 		0AFE45842506234B006F126E /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE45832506234B006F126E /* SettingsFooterView.swift */; };
 		7E4502CD1D6EE4380047A297 /* Pods_Kontax_Cam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0A96145D250DCEFA00137FE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A44B28F2476A7F000603F2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A96144A250DCEF800137FE6;
+			remoteInfo = KontaxCamAppClip;
+		};
 		0AC2F2AD24ED040B007A5E33 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A44B28F2476A7F000603F2C /* Project object */;
@@ -132,6 +118,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0A961460250DCEFA00137FE6 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				0A96145F250DCEFA00137FE6 /* KontaxCamAppClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AC2F29A24ED0100007A5E33 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,12 +144,9 @@
 
 /* Begin PBXFileReference section */
 		0A0260762497179F009C26FB /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		0A0260812497334C009C26FB /* DatestampImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatestampImageFilter.swift; sourceTree = "<group>"; };
 		0A03EAFE2480ABC4001D8006 /* FXCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewController.swift; sourceTree = "<group>"; };
 		0A03EB002480ABD1001D8006 /* FXCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FXCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A0F94D1247E55AC00E33AEC /* ModalHeaderPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderPresentable.swift; sourceTree = "<group>"; };
-		0A1193BC249B56E30086604D /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
-		0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourLeaksImageFilter.swift; sourceTree = "<group>"; };
 		0A1193C4249B702E0086604D /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0A11FE5F249CB6FE00016E74 /* GrainCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrainCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A13EB2724EAC0C0008C4FD0 /* FilterInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterInfoViewController.swift; sourceTree = "<group>"; };
@@ -163,21 +157,12 @@
 		0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterButtonViewController.swift; sourceTree = "<group>"; };
 		0A1D97CC2477DDB900E4078F /* IconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHelper.swift; sourceTree = "<group>"; };
 		0A1D97D12477F21C00E4078F /* TapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticHelper.swift; sourceTree = "<group>"; };
-		0A1D97D32477F38900E4078F /* TimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEngine.swift; sourceTree = "<group>"; };
-		0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryEngine.swift; sourceTree = "<group>"; };
-		0A1F11BD24FF4E6F00BCC1A9 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
-		0A1F11BF24FF4ECE00BCC1A9 /* InAppPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
-		0A1F11C224FF4F3000BCC1A9 /* RegisteredPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredPurchase.swift; sourceTree = "<group>"; };
-		0A1F11C424FF542200BCC1A9 /* IAPManager+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IAPManager+Setup.swift"; sourceTree = "<group>"; };
 		0A267BC724E78F8F0025FB60 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		0A267BC924E78F980025FB60 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
-		0A267BCB24E78F9F0025FB60 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		0A267BCD24E78FA60025FB60 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		0A267BCF24E78FB50025FB60 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		0A267BD124E78FBB0025FB60 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0A267BD324E78FC20025FB60 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		0A30641324A9BA5A005C9033 /* FilterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterRenderer.swift; sourceTree = "<group>"; };
-		0A31490A24A8A49B00168225 /* PreviewMetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewMetalView.swift; sourceTree = "<group>"; };
 		0A334628249A4F6B00FE8BCE /* FiltersDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersDatasource.swift; sourceTree = "<group>"; };
 		0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewController.swift; sourceTree = "<group>"; };
 		0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -185,7 +170,6 @@
 		0A3DFB9C2493ACC600765304 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kontax Cam.entitlements"; sourceTree = "<group>"; };
 		0A3F50A824ED1BDF00192DAE /* KontaxCamWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KontaxCamWidgetExtension.entitlements; sourceTree = "<group>"; };
-		0A43067F24ADB20E00CA2E0F /* PassThrough.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		0A44B2972476A7F000603F2C /* Kontax Cam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kontax Cam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A44B29A2476A7F000603F2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A44B29C2476A7F000603F2C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,14 +180,11 @@
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A618333250CE0E000CA4782 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		0A618335250CFB4000CA4782 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
-		0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeConverterHelper.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0A71C88B24EB705A00C5449D /* FilterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollection.swift; sourceTree = "<group>"; };
 		0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0A82B83324AC406600673F1A /* LUTRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTRender.swift; sourceTree = "<group>"; };
 		0A84475824F94A0100700CAB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0A9014282506597C0003CD68 /* Summer vibes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Summer vibes.png"; sourceTree = "<group>"; };
 		0A9014292506597C0003CD68 /* PRIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRIDE.png; sourceTree = "<group>"; };
@@ -211,28 +192,31 @@
 		0A90142B2506597C0003CD68 /* Kontax Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kontax Original.png"; sourceTree = "<group>"; };
 		0A90142C2506597D0003CD68 /* Bloodlust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bloodlust.png; sourceTree = "<group>"; };
 		0A90142D2506597D0003CD68 /* lanigirO xatnoK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lanigirO xatnoK.png"; sourceTree = "<group>"; };
-		0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightLeaksImageFilter.swift; sourceTree = "<group>"; };
+		0A96144B250DCEF800137FE6 /* KontaxCamAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KontaxCamAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A96144D250DCEF800137FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A96144F250DCEF800137FE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0A961451250DCEF800137FE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A961454250DCEF800137FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A961456250DCEFA00137FE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A961459250DCEFA00137FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0A96145B250DCEFA00137FE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A96145C250DCEFA00137FE6 /* KontaxCamAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KontaxCamAppClip.entitlements; sourceTree = "<group>"; };
+		0A961474250DCFBF00137FE6 /* Backend */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Backend; sourceTree = "<group>"; };
+		0A96147B250DD15C00137FE6 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		0A961480250DD96C00137FE6 /* PassThrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
 		0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisationControlHeaderView.swift; sourceTree = "<group>"; };
-		0AA8F0F1249D017D00B07519 /* FilterValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterValue.swift; sourceTree = "<group>"; };
 		0AADEE6E247B6541009FFA52 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
-		0AADEE70247B6987009FFA52 /* DataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEngine.swift; sourceTree = "<group>"; };
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
-		0ABB576224FF9DC70058DB49 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		0ABD6D3C2497803500C3CC4B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KontaxCamWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KontaxCamWidget.swift; sourceTree = "<group>"; };
 		0AC2F2A824ED040B007A5E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AC2F2AA24ED040B007A5E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AC407C6247DDE2100BB0270 /* FilterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEngine.swift; sourceTree = "<group>"; };
-		0AC407C9247DE04F00BB0270 /* FilterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterFactory.swift; sourceTree = "<group>"; };
-		0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LUTImageFilter.swift; sourceTree = "<group>"; };
-		0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrainImageFilter.swift; sourceTree = "<group>"; };
 		0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
 		0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLabelView.swift; sourceTree = "<group>"; };
 		0ACBADB624ED4D5900D93708 /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
@@ -240,20 +224,14 @@
 		0ACBADBD24ED4E3000D93708 /* WidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntryView.swift; sourceTree = "<group>"; };
 		0ACBADBF24ED4EDA00D93708 /* masterpieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = masterpieceView.swift; sourceTree = "<group>"; };
 		0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterHelper.swift; sourceTree = "<group>"; };
-		0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
-		0AD2929324A78FDA00320BC4 /* CameraEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
 		0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
 		0ADFE3EC249A0F4F004419D1 /* DemoImagesURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoImagesURLs.swift; sourceTree = "<group>"; };
-		0AE49F172493C41C0057A729 /* DustImageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustImageFilter.swift; sourceTree = "<group>"; };
-		0AE49F192493C7B50057A729 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 		0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
 		0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0AEC654724FA11AE00418096 /* ExtraLensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLensView.swift; sourceTree = "<group>"; };
 		0AEE932F247C983800F485C0 /* ShareHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
-		0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersGestureEngine.swift; sourceTree = "<group>"; };
 		0AF619F324E0F62E00BE288A /* AppIconsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconsTableViewController.swift; sourceTree = "<group>"; };
 		0AFA90D324E8C45500BBDF57 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		0AFE45832506234B006F126E /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		57708E1C65710C0102ABB4AD /* Pods_Kontax_Cam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kontax_Cam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA827D3F86A7D44B4B26A394 /* Pods-Kontax Cam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kontax Cam.release.xcconfig"; path = "Target Support Files/Pods-Kontax Cam/Pods-Kontax Cam.release.xcconfig"; sourceTree = "<group>"; };
@@ -270,7 +248,15 @@
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
 				0A1F11B224FF410800BCC1A9 /* SwiftyStoreKit in Frameworks */,
 				0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */,
+				0A961476250DD01000137FE6 /* Backend in Frameworks */,
 				7E4502CD1D6EE4380047A297 /* Pods_Kontax_Cam.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A961448250DCEF800137FE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +264,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A961478250DD01800137FE6 /* Backend in Frameworks */,
+				0A96147D250DD41100137FE6 /* SwiftyStoreKit in Frameworks */,
 				0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */,
 				0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */,
+				0A96147F250DD42600137FE6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +309,6 @@
 			isa = PBXGroup;
 			children = (
 				0A44B29E2476A7F000603F2C /* CameraViewController.swift */,
-				0A31490A24A8A49B00168225 /* PreviewMetalView.swift */,
 				0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */,
 				0A1D97C92477CB9C00E4078F /* CameraActionView */,
 				0AEC654724FA11AE00418096 /* ExtraLensView.swift */,
@@ -337,16 +325,6 @@
 			path = CameraActionView;
 			sourceTree = "<group>";
 		};
-		0A1F11B324FF438D00BCC1A9 /* IAPEngine */ = {
-			isa = PBXGroup;
-			children = (
-				0A1F11BD24FF4E6F00BCC1A9 /* IAPManager.swift */,
-				0A1F11C424FF542200BCC1A9 /* IAPManager+Setup.swift */,
-				0ABB576224FF9DC70058DB49 /* Configuration.storekit */,
-			);
-			path = IAPEngine;
-			sourceTree = "<group>";
-		};
 		0A267BC624E78F740025FB60 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,7 +332,6 @@
 				0A1D97BD2477B94F00E4078F /* UIApplication.swift */,
 				0A267BC724E78F8F0025FB60 /* UIViewController.swift */,
 				0A267BC924E78F980025FB60 /* UIStackView.swift */,
-				0A267BCB24E78F9F0025FB60 /* UIFont.swift */,
 				0A267BCD24E78FA60025FB60 /* UIButton.swift */,
 				0A267BCF24E78FB50025FB60 /* UIImage.swift */,
 				0A267BD124E78FBB0025FB60 /* String.swift */,
@@ -364,20 +341,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0A31490C24A8CCC000168225 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				0A43067F24ADB20E00CA2E0F /* PassThrough.metal */,
-			);
-			path = Shaders;
-			sourceTree = "<group>";
-		};
 		0A44B28E2476A7F000603F2C = {
 			isa = PBXGroup;
 			children = (
+				0A961474250DCFBF00137FE6 /* Backend */,
 				0A3F50A824ED1BDF00192DAE /* KontaxCamWidgetExtension.entitlements */,
 				0A44B2992476A7F000603F2C /* Kontax Cam */,
 				0AC2F2A424ED0409007A5E33 /* KontaxCamWidget */,
+				0A96144C250DCEF800137FE6 /* KontaxCamAppClip */,
 				0A44B2982476A7F000603F2C /* Products */,
 				0AC407E5247E381000BB0270 /* Frameworks */,
 				EEDF8380CA7CD574C1862AF2 /* Pods */,
@@ -389,6 +360,7 @@
 			children = (
 				0A44B2972476A7F000603F2C /* Kontax Cam.app */,
 				0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */,
+				0A96144B250DCEF800137FE6 /* KontaxCamAppClip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -396,13 +368,13 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A961480250DD96C00137FE6 /* PassThrough.metal */,
+				0A96147B250DD15C00137FE6 /* Configuration.storekit */,
 				0A901427250659450003CD68 /* Alternate app icons */,
 				0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */,
 				0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */,
 				0A3F50A724ED1BBA00192DAE /* Kontax Cam.entitlements */,
-				0ABD6D3A2497802400C3CC4B /* Model */,
 				0A44B2B02476A80D00603F2C /* Utils */,
-				0A44B2AF2476A80700603F2C /* Engine */,
 				0A44B2AE2476A80300603F2C /* App */,
 				0A44B29A2476A7F000603F2C /* AppDelegate.swift */,
 				0A44B29C2476A7F000603F2C /* SceneDelegate.swift */,
@@ -428,20 +400,6 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		0A44B2AF2476A80700603F2C /* Engine */ = {
-			isa = PBXGroup;
-			children = (
-				0A1F11B324FF438D00BCC1A9 /* IAPEngine */,
-				0AD2929224A78FCE00320BC4 /* CameraEngine */,
-				0AC407C8247DE03700BB0270 /* FilterFactory */,
-				0AC407C6247DDE2100BB0270 /* FilterEngine.swift */,
-				0A1D97D32477F38900E4078F /* TimerEngine.swift */,
-				0A1D97D82478083900E4078F /* PhotoLibraryEngine.swift */,
-				0AADEE70247B6987009FFA52 /* DataEngine.swift */,
-			);
-			path = Engine;
-			sourceTree = "<group>";
-		};
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,8 +411,6 @@
 				0A1D97D12477F21C00E4078F /* TapticHelper.swift */,
 				0AADEE6E247B6541009FFA52 /* AlertHelper.swift */,
 				0AEE932F247C983800F485C0 /* ShareHelper.swift */,
-				0ACCFE63248B3DE500A9F9CB /* UserDefaultsHelper.swift */,
-				0A65AECC249CDEA7001B9124 /* RangeConverterHelper.swift */,
 				0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */,
 			);
 			path = Utils;
@@ -498,15 +454,6 @@
 			path = "Try Camera";
 			sourceTree = "<group>";
 		};
-		0A82B82B24AC3BBF00673F1A /* FilterRenderer */ = {
-			isa = PBXGroup;
-			children = (
-				0A30641324A9BA5A005C9033 /* FilterRenderer.swift */,
-				0A82B83324AC406600673F1A /* LUTRender.swift */,
-			);
-			path = FilterRenderer;
-			sourceTree = "<group>";
-		};
 		0A838BA624EA639300F2EB8F /* Filter Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +484,29 @@
 			path = "Alternate app icons";
 			sourceTree = "<group>";
 		};
+		0A96144C250DCEF800137FE6 /* KontaxCamAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				0A961464250DCF0400137FE6 /* App */,
+				0A96144D250DCEF800137FE6 /* AppDelegate.swift */,
+				0A96144F250DCEF800137FE6 /* SceneDelegate.swift */,
+				0A961453250DCEF800137FE6 /* Main.storyboard */,
+				0A961456250DCEFA00137FE6 /* Assets.xcassets */,
+				0A961458250DCEFA00137FE6 /* LaunchScreen.storyboard */,
+				0A96145B250DCEFA00137FE6 /* Info.plist */,
+				0A96145C250DCEFA00137FE6 /* KontaxCamAppClip.entitlements */,
+			);
+			path = KontaxCamAppClip;
+			sourceTree = "<group>";
+		};
+		0A961464250DCF0400137FE6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0A961451250DCEF800137FE6 /* ViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		0AADEE72247B731C009FFA52 /* Lab */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,19 +531,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		0ABD6D3A2497802400C3CC4B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0AFA90D524E8C59B00BBDF57 /* SettingsModel.swift */,
-				0ABD6D3C2497803500C3CC4B /* Photo.swift */,
-				0A1193BC249B56E30086604D /* Effect.swift */,
-				0A71C88B24EB705A00C5449D /* FilterCollection.swift */,
-				0A1F11BF24FF4ECE00BCC1A9 /* InAppPurchase.swift */,
-				0A1F11C224FF4F3000BCC1A9 /* RegisteredPurchase.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0AC2F2A424ED0409007A5E33 /* KontaxCamWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,22 +543,6 @@
 				0AC2F2AA24ED040B007A5E33 /* Info.plist */,
 			);
 			path = KontaxCamWidget;
-			sourceTree = "<group>";
-		};
-		0AC407C8247DE03700BB0270 /* FilterFactory */ = {
-			isa = PBXGroup;
-			children = (
-				0AE49F192493C7B50057A729 /* FilterType.swift */,
-				0AC407C9247DE04F00BB0270 /* FilterFactory.swift */,
-				0AC407CB247DE0C300BB0270 /* LUTImageFilter.swift */,
-				0AC407CD247DE90C00BB0270 /* GrainImageFilter.swift */,
-				0AE49F172493C41C0057A729 /* DustImageFilter.swift */,
-				0A9C07622494E67B003A0D16 /* LightLeaksImageFilter.swift */,
-				0A0260812497334C009C26FB /* DatestampImageFilter.swift */,
-				0A1193BE249B5AE60086604D /* ColourLeaksImageFilter.swift */,
-				0AA8F0F1249D017D00B07519 /* FilterValue.swift */,
-			);
-			path = FilterFactory;
 			sourceTree = "<group>";
 		};
 		0AC407E5247E381000BB0270 /* Frameworks */ = {
@@ -656,17 +597,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		0AD2929224A78FCE00320BC4 /* CameraEngine */ = {
-			isa = PBXGroup;
-			children = (
-				0AD2929324A78FDA00320BC4 /* CameraEngine.swift */,
-				0AF4A03824B56DE300A8831B /* FiltersGestureEngine.swift */,
-				0A82B82B24AC3BBF00673F1A /* FilterRenderer */,
-				0A31490C24A8CCC000168225 /* Shaders */,
-			);
-			path = CameraEngine;
-			sourceTree = "<group>";
-		};
 		0AEBF1FB2495BCB7007CFAC6 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,11 +628,13 @@
 				0A66C34024AB9EF300E30B7C /* Swiftlint  */,
 				0AC2F29A24ED0100007A5E33 /* Embed App Extensions */,
 				B613B76A1972DB3703BEF15F /* [CP] Embed Pods Frameworks */,
+				0A961460250DCEFA00137FE6 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				0AC2F2AE24ED040B007A5E33 /* PBXTargetDependency */,
+				0A96145E250DCEFA00137FE6 /* PBXTargetDependency */,
 			);
 			name = "Kontax Cam";
 			packageProductDependencies = (
@@ -711,10 +643,30 @@
 				0AEA622F24878522004B9313 /* DTPhotoViewerController */,
 				0ADEDAD324FB6B34001106C1 /* SDWebImage */,
 				0A1F11B124FF410800BCC1A9 /* SwiftyStoreKit */,
+				0A961475250DD01000137FE6 /* Backend */,
 			);
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0A96144A250DCEF800137FE6 /* KontaxCamAppClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A961463250DCEFA00137FE6 /* Build configuration list for PBXNativeTarget "KontaxCamAppClip" */;
+			buildPhases = (
+				0A961447250DCEF800137FE6 /* Sources */,
+				0A961448250DCEF800137FE6 /* Frameworks */,
+				0A961449250DCEF800137FE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KontaxCamAppClip;
+			packageProductDependencies = (
+			);
+			productName = KontaxCamAppClip;
+			productReference = 0A96144B250DCEF800137FE6 /* KontaxCamAppClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
 		};
 		0AC2F2A024ED0409007A5E33 /* KontaxCamWidgetExtension */ = {
 			isa = PBXNativeTarget;
@@ -729,6 +681,11 @@
 			dependencies = (
 			);
 			name = KontaxCamWidgetExtension;
+			packageProductDependencies = (
+				0A961477250DD01800137FE6 /* Backend */,
+				0A96147C250DD41100137FE6 /* SwiftyStoreKit */,
+				0A96147E250DD42600137FE6 /* SnapKit */,
+			);
 			productName = KontaxCamWidgetExtension;
 			productReference = 0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -745,6 +702,9 @@
 				TargetAttributes = {
 					0A44B2962476A7F000603F2C = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					0A96144A250DCEF800137FE6 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 					0AC2F2A024ED0409007A5E33 = {
 						CreatedOnToolsVersion = 12.0;
@@ -773,6 +733,7 @@
 			targets = (
 				0A44B2962476A7F000603F2C /* Kontax Cam */,
 				0AC2F2A024ED0409007A5E33 /* KontaxCamWidgetExtension */,
+				0A96144A250DCEF800137FE6 /* KontaxCamAppClip */,
 			);
 		};
 /* End PBXProject section */
@@ -789,11 +750,20 @@
 				0A9014332506597D0003CD68 /* lanigirO xatnoK.png in Resources */,
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */,
-				0ABB576324FF9DC70058DB49 /* Configuration.storekit in Resources */,
 				0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */,
 				0A9014302506597D0003CD68 /* In development.png in Resources */,
 				0A9014322506597D0003CD68 /* Bloodlust.png in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A961449250DCEF800137FE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A96145A250DCEFA00137FE6 /* LaunchScreen.storyboard in Resources */,
+				0A961457250DCEFA00137FE6 /* Assets.xcassets in Resources */,
+				0A961455250DCEF800137FE6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,56 +842,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A43068124ADB20E00CA2E0F /* PassThrough.metal in Sources */,
-				0AE49F1A2493C7B50057A729 /* FilterType.swift in Sources */,
 				0A84475924F94A0100700CAB /* Color.swift in Sources */,
 				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
 				0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */,
-				0AC407CE247DE90C00BB0270 /* GrainImageFilter.swift in Sources */,
 				0A44B29F2476A7F000603F2C /* CameraViewController.swift in Sources */,
 				0AEC654824FA11AE00418096 /* ExtraLensView.swift in Sources */,
-				0A31490B24A8A49B00168225 /* PreviewMetalView.swift in Sources */,
 				0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */,
-				0A82B83424AC406600673F1A /* LUTRender.swift in Sources */,
-				0A9C07632494E67B003A0D16 /* LightLeaksImageFilter.swift in Sources */,
 				0A44B29B2476A7F000603F2C /* AppDelegate.swift in Sources */,
 				0A3DFB9D2493ACC600765304 /* SettingsTableViewController.swift in Sources */,
 				0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */,
-				0A65AECD249CDEA7001B9124 /* RangeConverterHelper.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* UIApplication.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
-				0AC407C7247DDE2100BB0270 /* FilterEngine.swift in Sources */,
-				0ACCFE64248B3DE500A9F9CB /* UserDefaultsHelper.swift in Sources */,
-				0AC407CA247DE04F00BB0270 /* FilterFactory.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
-				0AA8F0F2249D017D00B07519 /* FilterValue.swift in Sources */,
-				0A30641424A9BA5A005C9033 /* FilterRenderer.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
-				0A1F11C324FF4F3000BCC1A9 /* RegisteredPurchase.swift in Sources */,
-				0AC407CC247DE0C300BB0270 /* LUTImageFilter.swift in Sources */,
-				0A71C88C24EB705A00C5449D /* FilterCollection.swift in Sources */,
 				0A13EB2824EAC0C0008C4FD0 /* FilterInfoViewController.swift in Sources */,
-				0AFA90D624E8C59B00BBDF57 /* SettingsModel.swift in Sources */,
-				0AF4A03924B56DE300A8831B /* FiltersGestureEngine.swift in Sources */,
 				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,
-				0A267BCC24E78F9F0025FB60 /* UIFont.swift in Sources */,
-				0ABD6D3D2497803500C3CC4B /* Photo.swift in Sources */,
 				0ADE750B24FFBC73005C4F1C /* ReachabilityHelper.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
-				0A1F11C024FF4ECE00BCC1A9 /* InAppPurchase.swift in Sources */,
 				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */,
 				0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */,
-				0AADEE71247B6987009FFA52 /* DataEngine.swift in Sources */,
 				0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */,
 				0A9F7F15248200800088E053 /* EmptyView.swift in Sources */,
 				0A267BCA24E78F980025FB60 /* UIStackView.swift in Sources */,
 				0AF619F424E0F62E00BE288A /* AppIconsTableViewController.swift in Sources */,
 				0A267BCE24E78FA60025FB60 /* UIButton.swift in Sources */,
-				0A0260822497334D009C26FB /* DatestampImageFilter.swift in Sources */,
+				0A961481250DD96C00137FE6 /* PassThrough.metal in Sources */,
 				0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */,
 				0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */,
 				0A618336250CFB4000CA4782 /* UIBarButtonItem.swift in Sources */,
@@ -930,30 +879,32 @@
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
 				0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,
-				0A1193BD249B56E30086604D /* Effect.swift in Sources */,
 				0ADFE3ED249A0F4F004419D1 /* DemoImagesURLs.swift in Sources */,
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
 				0AFE45842506234B006F126E /* SettingsFooterView.swift in Sources */,
 				0A11FE60249CB6FE00016E74 /* GrainCustomisationViewController.swift in Sources */,
 				0A267BD224E78FBB0025FB60 /* String.swift in Sources */,
-				0AD2929424A78FDA00320BC4 /* CameraEngine.swift in Sources */,
-				0A1D97D92478083900E4078F /* PhotoLibraryEngine.swift in Sources */,
 				0A618334250CE0E000CA4782 /* TryViewController.swift in Sources */,
 				0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */,
 				0A1A40EA25049EEC004B2E14 /* FXInfoView.swift in Sources */,
 				0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */,
 				0A334629249A4F6B00FE8BCE /* FiltersDatasource.swift in Sources */,
-				0A1193BF249B5AE60086604D /* ColourLeaksImageFilter.swift in Sources */,
 				0AEE9330247C983800F485C0 /* ShareHelper.swift in Sources */,
-				0A1F11C524FF542200BCC1A9 /* IAPManager+Setup.swift in Sources */,
 				0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */,
-				0A1F11BE24FF4E6F00BCC1A9 /* IAPManager.swift in Sources */,
 				0A267BC824E78F8F0025FB60 /* UIViewController.swift in Sources */,
 				0A267BD424E78FC20025FB60 /* UIView.swift in Sources */,
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,
-				0A1D97D42477F38900E4078F /* TimerEngine.swift in Sources */,
-				0AE49F182493C41C0057A729 /* DustImageFilter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A961447250DCEF800137FE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A961452250DCEF800137FE6 /* ViewController.swift in Sources */,
+				0A96144E250DCEF800137FE6 /* AppDelegate.swift in Sources */,
+				0A961450250DCEF800137FE6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,9 +912,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A3F50A624ED19D800192DAE /* DataEngine.swift in Sources */,
 				0ACBADBE24ED4E3000D93708 /* WidgetEntryView.swift in Sources */,
-				0A3861D824ED04780066B003 /* Photo.swift in Sources */,
 				0ACBADC324ED4F1000D93708 /* DateConverterHelper.swift in Sources */,
 				0ACBADC024ED4EDA00D93708 /* masterpieceView.swift in Sources */,
 				0ACBADB824ED4DAF00D93708 /* PhotoEntry.swift in Sources */,
@@ -975,6 +924,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0A96145E250DCEFA00137FE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A96144A250DCEF800137FE6 /* KontaxCamAppClip */;
+			targetProxy = 0A96145D250DCEFA00137FE6 /* PBXContainerItemProxy */;
+		};
 		0AC2F2AE24ED040B007A5E33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0AC2F2A024ED0409007A5E33 /* KontaxCamWidgetExtension */;
@@ -995,6 +949,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				0A44B2A62476A7F100603F2C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0A961453250DCEF800137FE6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A961454250DCEF800137FE6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0A961458250DCEFA00137FE6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A961459250DCEFA00137FE6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1165,6 +1135,50 @@
 			};
 			name = Release;
 		};
+		0A961461250DCEFA00137FE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KontaxCamAppClip/KontaxCamAppClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 16;
+				DEVELOPMENT_TEAM = D87H8GPTK2;
+				INFOPLIST_FILE = KontaxCamAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlaminto.kontaxcam.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0A961462250DCEFA00137FE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KontaxCamAppClip/KontaxCamAppClip.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 16;
+				DEVELOPMENT_TEAM = D87H8GPTK2;
+				INFOPLIST_FILE = KontaxCamAppClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlaminto.kontaxcam.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		0AC2F2B124ED040B007A5E33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1238,6 +1252,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0A961463250DCEFA00137FE6 /* Build configuration list for PBXNativeTarget "KontaxCamAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A961461250DCEFA00137FE6 /* Debug */,
+				0A961462250DCEFA00137FE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0AC2F2B024ED040B007A5E33 /* Build configuration list for PBXNativeTarget "KontaxCamWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1307,6 +1330,24 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1F11B024FF410800BCC1A9 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;
+		};
+		0A961475250DD01000137FE6 /* Backend */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Backend;
+		};
+		0A961477250DD01800137FE6 /* Backend */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Backend;
+		};
+		0A96147C250DD41100137FE6 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A1F11B024FF410800BCC1A9 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		0A96147E250DD42600137FE6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		0ADEDAD324FB6B34001106C1 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

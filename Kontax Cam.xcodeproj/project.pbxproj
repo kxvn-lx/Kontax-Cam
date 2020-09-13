@@ -43,7 +43,6 @@
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
 		0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
 		0A50C414250DF5B600233610 /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
-		0A50C415250DF5D600233610 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BD324E78FC20025FB60 /* UIView.swift */; };
 		0A50C417250DF5F900233610 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C416250DF5F900233610 /* Backend */; };
 		0A50C419250DF5FE00233610 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C418250DF5FE00233610 /* SnapKit */; };
 		0A50C41B250DF60200233610 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C41A250DF60200233610 /* SwiftyStoreKit */; };
@@ -940,7 +939,6 @@
 				0A64EE14250E388D004C1B56 /* Color.swift in Sources */,
 				0A96144E250DCEF800137FE6 /* AppDelegate.swift in Sources */,
 				0A64EE13250E3816004C1B56 /* PreviewView.swift in Sources */,
-				0A50C415250DF5D600233610 /* UIView.swift in Sources */,
 				0A64EE0E250E3713004C1B56 /* LoadingViewController.swift in Sources */,
 				0A64EE0D250E247B004C1B56 /* ShutterView.swift in Sources */,
 				0A961450250DCEF800137FE6 /* SceneDelegate.swift in Sources */,

@@ -16,7 +16,7 @@ struct PreviewView: View {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.shadowColor = .clear
-        navBarAppearance.backgroundColor = .systemGroupedBackground
+        navBarAppearance.backgroundColor = .systemBackground
         
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         UINavigationBar.appearance().standardAppearance = navBarAppearance
@@ -34,7 +34,6 @@ struct PreviewView: View {
                     .scaledToFit()
                     .frame(maxHeight: UIScreen.main.bounds.height * 0.8)
                     .padding()
-                
                 
                 VStack {
                     Divider()

@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         return label
     }()
     private var cameraActionViewHeight: CGFloat {
-        return (self.view.frame.height - self.view.frame.height * 0.7) - (self.view.getSafeAreaInsets().top * 0.5)
+        return (self.view.frame.height - self.view.frame.height * 0.7) - (view.safeAreaInsets.top * 0.5)
     }
     
     override func viewDidLoad() {
@@ -98,7 +98,7 @@ class ViewController: UIViewController {
         cameraView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width * 0.95)
             make.height.equalTo(self.view.frame.height * 0.65)
-            make.top.equalToSuperview().offset(25 + self.view.getSafeAreaInsets().top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
             make.centerX.equalToSuperview()
         }
         
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
         
         shutterView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-30)
             make.width.height.equalTo(cameraActionViewHeight * 0.4)
         }
         

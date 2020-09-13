@@ -41,8 +41,24 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
+		0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
+		0A50C414250DF5B600233610 /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
+		0A50C415250DF5D600233610 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BD324E78FC20025FB60 /* UIView.swift */; };
+		0A50C417250DF5F900233610 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C416250DF5F900233610 /* Backend */; };
+		0A50C419250DF5FE00233610 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C418250DF5FE00233610 /* SnapKit */; };
+		0A50C41B250DF60200233610 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C41A250DF60200233610 /* SwiftyStoreKit */; };
+		0A50C41C250DF6CD00233610 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A961480250DD96C00137FE6 /* PassThrough.metal */; };
+		0A50C41D250DF70700233610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
+		0A50C41F250DF87C00233610 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE6E247B6541009FFA52 /* AlertHelper.swift */; };
 		0A618334250CE0E000CA4782 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A618333250CE0E000CA4782 /* TryViewController.swift */; };
 		0A618336250CFB4000CA4782 /* UIBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A618335250CFB4000CA4782 /* UIBarButtonItem.swift */; };
+		0A64EE0D250E247B004C1B56 /* ShutterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64EE0C250E247B004C1B56 /* ShutterView.swift */; };
+		0A64EE0E250E3713004C1B56 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1193C4249B702E0086604D /* LoadingViewController.swift */; };
+		0A64EE0F250E3757004C1B56 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BC724E78F8F0025FB60 /* UIViewController.swift */; };
+		0A64EE10250E37D9004C1B56 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
+		0A64EE11250E37E8004C1B56 /* IconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CC2477DDB900E4078F /* IconHelper.swift */; };
+		0A64EE13250E3816004C1B56 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64EE12250E3816004C1B56 /* PreviewView.swift */; };
+		0A64EE14250E388D004C1B56 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
 		0A6B878D249E00C0001745B1 /* ColourleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */; };
 		0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */; };
 		0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */; };
@@ -180,6 +196,8 @@
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A618333250CE0E000CA4782 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		0A618335250CFB4000CA4782 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
+		0A64EE0C250E247B004C1B56 /* ShutterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterView.swift; sourceTree = "<group>"; };
+		0A64EE12250E3816004C1B56 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		0A6B878C249E00C0001745B1 /* ColourleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourleaksCustomisationViewController.swift; sourceTree = "<group>"; };
 		0A6E6DC324FD12EA00B0D6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A71C88D24EB749600C5449D /* FilterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +275,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A50C41B250DF60200233610 /* SwiftyStoreKit in Frameworks */,
+				0A50C417250DF5F900233610 /* Backend in Frameworks */,
+				0A50C419250DF5FE00233610 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +524,8 @@
 			isa = PBXGroup;
 			children = (
 				0A961451250DCEF800137FE6 /* ViewController.swift */,
+				0A64EE0C250E247B004C1B56 /* ShutterView.swift */,
+				0A64EE12250E3816004C1B56 /* PreviewView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -663,6 +686,9 @@
 			);
 			name = KontaxCamAppClip;
 			packageProductDependencies = (
+				0A50C416250DF5F900233610 /* Backend */,
+				0A50C418250DF5FE00233610 /* SnapKit */,
+				0A50C41A250DF60200233610 /* SwiftyStoreKit */,
 			);
 			productName = KontaxCamAppClip;
 			productReference = 0A96144B250DCEF800137FE6 /* KontaxCamAppClip.app */;
@@ -763,6 +789,7 @@
 			files = (
 				0A96145A250DCEFA00137FE6 /* LaunchScreen.storyboard in Resources */,
 				0A961457250DCEFA00137FE6 /* Assets.xcassets in Resources */,
+				0A50C41D250DF70700233610 /* Assets.xcassets in Resources */,
 				0A961455250DCEF800137FE6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -903,7 +930,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A961452250DCEF800137FE6 /* ViewController.swift in Sources */,
+				0A50C41C250DF6CD00233610 /* PassThrough.metal in Sources */,
+				0A50C414250DF5B600233610 /* TapticHelper.swift in Sources */,
+				0A64EE11250E37E8004C1B56 /* IconHelper.swift in Sources */,
+				0A64EE0F250E3757004C1B56 /* UIViewController.swift in Sources */,
+				0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */,
+				0A50C41F250DF87C00233610 /* AlertHelper.swift in Sources */,
+				0A64EE10250E37D9004C1B56 /* CloseButton.swift in Sources */,
+				0A64EE14250E388D004C1B56 /* Color.swift in Sources */,
 				0A96144E250DCEF800137FE6 /* AppDelegate.swift in Sources */,
+				0A64EE13250E3816004C1B56 /* PreviewView.swift in Sources */,
+				0A50C415250DF5D600233610 /* UIView.swift in Sources */,
+				0A64EE0E250E3713004C1B56 /* LoadingViewController.swift in Sources */,
+				0A64EE0D250E247B004C1B56 /* ShutterView.swift in Sources */,
 				0A961450250DCEF800137FE6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1327,6 +1366,20 @@
 			productName = SnapKit;
 		};
 		0A1F11B124FF410800BCC1A9 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A1F11B024FF410800BCC1A9 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		0A50C416250DF5F900233610 /* Backend */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Backend;
+		};
+		0A50C418250DF5FE00233610 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A1D97BF2477BACE00E4078F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		0A50C41A250DF60200233610 /* SwiftyStoreKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1F11B024FF410800BCC1A9 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;

@@ -24,6 +24,7 @@ public class ImagePickerEngine: NSObject, UIImagePickerControllerDelegate, UINav
         pickImageCallback = callback
         self.viewController = viewController
         
+        picker.delegate = self
         picker.sourceType = .photoLibrary
         self.viewController!.present(picker, animated: true, completion: nil)
     }
@@ -33,11 +34,9 @@ public class ImagePickerEngine: NSObject, UIImagePickerControllerDelegate, UINav
     }
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        guard let image = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-        }
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         pickImageCallback?(image)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     @objc private func imagePickerController(_ picker: UIImagePickerController, pickedImage: UIImage?) {

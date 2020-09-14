@@ -13,8 +13,6 @@ import Backend
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
-    private let IS_DEMO_MODE = false
-    
     var imageObjects = [Photo]()
     
     private var isSelecting = false {
@@ -56,7 +54,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
         // 2. CollectionView configuration
         self.collectionView.collectionViewLayout = makeLayout()
-        fetchData(IS_DEMO_MODE)
+        fetchData()
         
         setupView()
         setupConstraint()
@@ -73,8 +71,8 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         let selectBarButtonItem = UIBarButtonItem(customView: selectButton)
         
-//        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
-        navigationItem.rightBarButtonItems = [selectBarButtonItem]
+        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
+        navigationItem.rightBarButtonItems = [selectBarButtonItem, importButton]
     }
     
     private func setupView() {
@@ -95,8 +93,11 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     }
     
     @objc private func importButtonTapped() {
-        ImagePickerEngine.shared.pickImage(self) { (image) in
-            
+        ImagePickerEngine.shared.pickImage(self) { [weak self] (image) in
+            DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
+            self?.imageObjects = []
+            self?.fetchData()
+            self?.collectionView.reloadData()
         }
     }
 }
@@ -147,9 +148,8 @@ extension LabCollectionViewController {
 
 extension LabCollectionViewController {
     // MARK: - CollectionView fetching and layout
-    private func fetchData(_ isDemoMode: Bool) {
-        let urls = isDemoMode ? demoPhotosURLs : DataEngine.shared.readDataToURLs()
-        for url in urls {
+    private func fetchData() {
+        for url in DataEngine.shared.readDataToURLs() {
             self.imageObjects.append(Photo(image: UIImage(named: "labCellPlaceholder")!, url: url))
         }
     }

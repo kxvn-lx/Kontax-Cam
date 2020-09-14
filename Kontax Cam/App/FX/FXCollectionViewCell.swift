@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Backend
 
 class FXCollectionViewCell: UICollectionViewCell {
 
@@ -20,7 +21,7 @@ class FXCollectionViewCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -29,7 +30,7 @@ class FXCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
-    let iconImageView: UIImageView = {
+    private let iconImageView: UIImageView = {
         let v = UIImageView()
         v.tintColor = .label
         v.contentMode = .scaleAspectFit
@@ -39,6 +40,13 @@ class FXCollectionViewCell: UICollectionViewCell {
     var isFxSelected = false {
         didSet {
             isActiveView.isHidden = !isFxSelected
+        }
+    }
+    
+    var effect: Effect! {
+        didSet {
+            titleLabel.text = effect.name.description
+            iconImageView.image = IconHelper.shared.getIconImage(iconName: effect.icon)
         }
     }
     

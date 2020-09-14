@@ -114,8 +114,7 @@ extension FXCollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FXCollectionViewCell.ReuseIdentifier, for: indexPath) as! FXCollectionViewCell
         let currentFx = effects[indexPath.row]
         
-        cell.titleLabel.text = currentFx.name.description
-        cell.iconImageView.image = IconHelper.shared.getIconImage(iconName: currentFx.icon)
+        cell.effect = currentFx
         
         if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.isFxSelected.toggle() }
         return cell

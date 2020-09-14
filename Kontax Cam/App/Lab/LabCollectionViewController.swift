@@ -54,9 +54,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
         self.collectionView.register(LabCollectionViewCell.self, forCellWithReuseIdentifier: LabCollectionViewCell.ReuseIdentifier)
         
-        selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: selectButton)
-        
         // 2. CollectionView configuration
         self.collectionView.collectionViewLayout = makeLayout()
         fetchData(IS_DEMO_MODE)
@@ -71,6 +68,13 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionView?.addGestureRecognizer(longPressedGesture)
+        
+        // Setup bar button item
+        selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
+        let selectBarButtonItem = UIBarButtonItem(customView: selectButton)
+        
+//        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
+        navigationItem.rightBarButtonItems = [selectBarButtonItem]
     }
     
     private func setupView() {
@@ -88,6 +92,12 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     }
     
     private func setupConstraint() {
+    }
+    
+    @objc private func importButtonTapped() {
+        ImagePickerEngine.shared.pickImage(self) { (image) in
+            
+        }
     }
 }
 

@@ -25,10 +25,8 @@ If you want to contribute or push some fun little features, feel free to submit 
  ## Future ideas
  I'm always open for suggestion! Feel free to message me or submit a PR :D
  
- - [ ] Fully support triple camera iphones
  - [ ] Improve app to use less memory ⚠️ (In need of a help!)
  - [ ] Any improvements
- - [x] Our very own ImageEngine (not relying on GPUImage)
  - [ ] Improve the app architecture
  - [ ] MOAR APP ICONS
  - [ ] Custom icons for timer, and all effects (or suggest!)

@@ -7,10 +7,17 @@
 //
 
 import SwiftUI
+import StoreKit
+import Backend
 
 struct PreviewView: View {
     var image: Image
     var dismissAction: (() -> Void)?
+    
+    @State private var showOverlay = false
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertDescription = ""
     
     init(image: Image, dismissAction: (() -> Void)?) {
         let navBarAppearance = UINavigationBarAppearance()
@@ -33,10 +40,12 @@ struct PreviewView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight: UIScreen.main.bounds.height * 0.8)
-                    .padding()
                 
                 VStack {
                     Divider()
+                    
+                    Spacer()
+                    
                     VStack(alignment: .center) {
                         Text("Kc.")
                             .font(.largeTitle)
@@ -44,19 +53,13 @@ struct PreviewView: View {
                         
                         Text("Powered by Kontax Cam")
                             .font(.caption)
-                        Spacer()
-                    }
-                    
-                    VStack {
-                        Text("To save, use other filters, or apply some effects, please download the full app.")
-                            .font(.caption)
                     }
                 }
                 .frame(maxHeight: UIScreen.main.bounds.height * 0.2)
                 .padding()
                 .multilineTextAlignment(.center)
                 .foregroundColor(.tertiaryLabel)
-
+                
             }
             .padding()
             .navigationBarItems(leading:
@@ -67,8 +70,29 @@ struct PreviewView: View {
                                             .renderingMode(.template)
                                             .foregroundColor(.label)
                                     })
+                                , trailing:
+                                    Button(action: {
+                                        self.alertTitle = "Some info for ya!"
+                                        self.alertDescription = "To save, use other effects and filters, please download the full app."
+                                        self.showAlert = true
+                                    }, label: {
+                                        Image(systemName: "info.circle")
+                                            .renderingMode(.template)
+                                            .foregroundColor(.label)
+                                    })
             )
             .navigationBarTitle(Text(""), displayMode: .inline)
+            .appStoreOverlay(isPresented: $showOverlay) { () -> SKOverlay.Configuration in
+                return SKOverlay.AppClipConfiguration(position: .bottom)
+            }
+            .alert(isPresented: $showAlert) { () -> Alert in
+                Alert(title: Text(self.alertTitle), message: Text(self.alertDescription), dismissButton: .default(Text("OK")))
+            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.showOverlay = true
+                }
+            }
         }
     }
 }

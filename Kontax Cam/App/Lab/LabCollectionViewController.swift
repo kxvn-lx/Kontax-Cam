@@ -71,8 +71,8 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         let selectBarButtonItem = UIBarButtonItem(customView: selectButton)
         
-        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
-        navigationItem.rightBarButtonItems = [selectBarButtonItem, importButton]
+//        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
+        navigationItem.rightBarButtonItems = [selectBarButtonItem]
     }
     
     private func setupView() {

@@ -46,6 +46,10 @@ class FilterInfoViewController: UIViewController {
     
     private let iapButton: UIButton = {
         let button = UIButton(type: .system)
+        button.layer.cornerRadius = 5
+        button.layer.cornerCurve = .continuous
+        button.backgroundColor = UIColor(named: "DetailedButtonColor")
+        button.contentEdgeInsets = UIEdgeInsets(top: 7.5, left: 20, bottom: 7.5, right: 20)
         button.setTitle("Purchased", for: .disabled)
         button.setTitle("$-1", for: .normal)
         button.tintColor = .label

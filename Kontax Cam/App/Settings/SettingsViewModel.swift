@@ -77,7 +77,7 @@ class SettingsViewModel: NSObject {
             title: "Others",
             cells: [
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Kontax Cam feedback form") },
+                    createdCell: { self.createNormalCell(withTitle: "Feedback") },
                     action: { [weak self] _ in self?.delegate?.surveyFormTapped() }
                 ),
                 SettingsItem(

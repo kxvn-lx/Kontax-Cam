@@ -69,8 +69,7 @@ struct PreviewView: View {
                                         Image(systemName: "xmark")
                                             .renderingMode(.template)
                                             .foregroundColor(.label)
-                                    })
-                                , trailing:
+                                    }), trailing:
                                     Button(action: {
                                         self.alertTitle = "Some info for ya!"
                                         self.alertDescription = "To save, use other effects and filters, please download the full app."

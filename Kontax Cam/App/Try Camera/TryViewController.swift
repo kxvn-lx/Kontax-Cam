@@ -100,14 +100,14 @@ class TryViewController: UIViewController {
     
     private func setupConstraint() {
         closeButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(self.view.getSafeAreaInsets().top + 15)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(15)
             make.left.equalToSuperview().offset(15)
         }
         
         cameraView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width * 0.95)
             make.height.equalTo(self.view.frame.height * 0.65)
-            make.top.equalTo(closeButton.snp.bottom).offset(10 + self.view.getSafeAreaInsets().top)
+            make.top.equalTo(closeButton.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         

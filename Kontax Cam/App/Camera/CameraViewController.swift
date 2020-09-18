@@ -153,7 +153,7 @@ class CameraViewController: UIViewController {
     }
     
     @objc private func settingButtonTapped() {
-        let vc = SettingsTableViewController(style: .grouped)
+        let vc = SettingsTableViewController(style: .insetGrouped)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

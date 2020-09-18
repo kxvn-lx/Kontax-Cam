@@ -54,61 +54,82 @@ struct FXInfoView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    Text("Tip: long-press any active effect(s) to customise it.")
+            if #available(iOS 14.0, *) {
+                List {
+                    Section {
+                        Text("Tip: long-press any active effect(s) to customise it.")
+                    }
+                    
+                    infoRowSection
                 }
-                
-                Section {
-                    FXInfoRow(
-                        iconImage: Image("color.icon"),
-                        title: "Colour leaks",
-                        description: "Adds a gorgeous colour overlay to your photo to make it pop and stylish. "
-                    )
+                .listStyle(InsetGroupedListStyle())
+                .navigationBarItems(leading:
+                                        Button(action: {
+                                            self.dismissAction!()
+                                        }, label: {
+                                            Image(systemName: "xmark")
+                                                .renderingMode(.template)
+                                                .foregroundColor(.label)
+                                        })
+                )
+                .navigationBarTitle(Text("Effects Information"), displayMode: .inline)
+            } else {
+                List {
+                    Section {
+                        Text("Tip: long-press any active effect(s) to customise it.")
+                    }
                     
-                    FXInfoRow(
-                        iconImage: Image(systemName: "calendar"),
-                        title: "Datestamp",
-                        description: "Embed a film-styled datestamp to your photo."
-                    )
-                    
-                    FXInfoRow(
-                        iconImage: Image("grain.icon"),
-                        title: "Grain",
-                        description: "Ah, The good ol' grain. The essential of every 'stylish' photo."
-                    )
-                    
-                    FXInfoRow(
-                        iconImage: Image("dust.icon"),
-                        title: "Dust",
-                        description: "Adds a scratched and dusty effect to your photo."
-                    )
-                    
-                    FXInfoRow(
-                        iconImage: Image("leaks.icon"),
-                        title: "Light leaks",
-                        description: "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera."
-                    )
+                    infoRowSection
                 }
+                .listStyle(GroupedListStyle())
+                .navigationBarItems(leading:
+                                        Button(action: {
+                                            self.dismissAction!()
+                                        }, label: {
+                                            Image(systemName: "xmark")
+                                                .renderingMode(.template)
+                                                .foregroundColor(.label)
+                                        })
+                )
+                .navigationBarTitle(Text("Effects Information"), displayMode: .inline)
             }
-            .listStyle(GroupedListStyle())
-            .navigationBarItems(leading:
-                                    Button(action: {
-                                        self.dismissAction!()
-                                    }, label: {
-                                        Image(systemName: "xmark")
-                                            .renderingMode(.template)
-                                            .foregroundColor(.label)
-                                    })
-            )
-            .navigationBarTitle(Text("Effects Information"), displayMode: .inline)
         }
         
     }
 }
 
-struct FXInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        FXInfoView(dismissAction: nil)
+private extension FXInfoView {
+    private var infoRowSection: some View {
+        Section {
+            FXInfoRow(
+                iconImage: Image("color.icon"),
+                title: "Colour leaks",
+                description: "Adds a gorgeous colour overlay to your photo to make it pop and stylish. "
+            )
+            
+            FXInfoRow(
+                iconImage: Image(systemName: "calendar"),
+                title: "Datestamp",
+                description: "Embed a film-styled datestamp to your photo."
+            )
+            
+            FXInfoRow(
+                iconImage: Image("grain.icon"),
+                title: "Grain",
+                description: "Ah, The good ol' grain. The essential of every 'stylish' photo."
+            )
+            
+            FXInfoRow(
+                iconImage: Image("dust.icon"),
+                title: "Dust",
+                description: "Adds a scratched and dusty effect to your photo."
+            )
+            
+            FXInfoRow(
+                iconImage: Image("leaks.icon"),
+                title: "Light leaks",
+                description: "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera."
+            )
+        }
     }
 }

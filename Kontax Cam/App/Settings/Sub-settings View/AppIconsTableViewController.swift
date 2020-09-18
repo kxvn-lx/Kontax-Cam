@@ -27,6 +27,7 @@ private enum IconNames: String, CaseIterable {
 }
 
 class AppIconsTableViewController: UITableViewController {
+    private var initIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,6 @@ class AppIconsTableViewController: UITableViewController {
         self.tableView.register(AppIconsTableViewCell.self, forCellReuseIdentifier: AppIconsTableViewCell.ReuseIdentifier)
 
     }
-    private var initIndexPath: IndexPath?
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,7 +80,7 @@ class AppIconsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "If you want to create your own design and share it with the world, please submit it to kevinlaminto.dev@gmail.com"
+        return "If you want to create your own design and share it with the world, please submit it via email."
     }
 }
 

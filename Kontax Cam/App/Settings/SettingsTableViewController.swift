@@ -87,12 +87,12 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
     }
     
     func appearanceTapped() {
-        let appearanceVC = AppearanceTableViewController(style: .grouped)
+        let appearanceVC = AppearanceTableViewController(style: .insetGrouped)
         self.show(appearanceVC, sender: self)
     }
     
     func apppIconsTapped() {
-        let appIconsVC = AppIconsTableViewController(style: .grouped)
+        let appIconsVC = AppIconsTableViewController(style: .insetGrouped)
         self.show(appIconsVC, sender: self)
     }
     

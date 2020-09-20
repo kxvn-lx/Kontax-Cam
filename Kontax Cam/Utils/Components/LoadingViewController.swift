@@ -14,7 +14,7 @@ class LoadingViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PROCESSING"
+        label.text = NSLocalizedString("PROCESSING", comment: "")
         label.textAlignment = .center
         label.textColor = .white
         label.font = .rounded(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .bold)

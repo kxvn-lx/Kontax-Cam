@@ -1,19 +1,19 @@
-/* 
+/*
   Localizable.strings
   Kontax Cam
-
+ 
   Created by Kevin Laminto on 20/9/20.
   Copyright © 2020 Kevin Laminto. All rights reserved.
 */
-
+ 
 // Onboarding VC
 "Start taking photos" = "Mulai mengambil foto";
 "Instant camera hybrid app for films and digital photographers, by photographers." = "Aplikasi kamera instan hybrid untuk film dan digital fotografer, oleh fotografer.";
-
+ 
 // CameraVC
 "Swipe gesture" = "Fitur geser";
 "Swipe left or right to live preview all the available filters in the collection." = "Geser ke kiri atau kanan untuk live preview semua filter yang tersedia dalam koleksi.";
-
+ 
 // Settings
 "Settings" = "Pengaturan";
 "General" = "General";
@@ -30,35 +30,36 @@
 "Privacy policy" = "Kebijaksaan privasi";
 "Delete lab images" = "Hapus semua foto lab";
 "Designed and developed by Kevin Laminto" = "Dirancang dan dibuat oleh Kevin Laminto";
-
+ 
 // Apearance
 "Automatic" = "Otomatis";
 "Light" = "Terang";
 "Dark" = "Gelap";
-
+ 
 // Alternate app icons
 "If you want to create your own design and share it with the world, please submit it via email." = "Jika Anda ingin membuat desain sendiri, silakan kirim desain anda melalui email.";
-
+ 
 // Lab
 "Start by taking a photo" = "Mulailah dengan memotret foto";
-"Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Foto yang di potret akan di proses dengan filter dan efek yang dipilih, dan akan di tampilkan di sini.";
+"Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Foto yang diambil akan terproses dengan filter dan efek yang dipilih, dan akan ditampilkan di sini.";
 "Select" = "Pilih";
 "images" = "foto";
-"image" = "foto";
+"image" = "gambar";
 "Download" = "Unduh";
 "Something went wrong." = "Terjadi kesalahan.";
-"There was a problem saving the last image. Please try again" = "Terjadi masalah saat menyimpan gambar terakhir. Silahkan coba lagi";
+"There was a problem saving the last image. Please try again" = "Terjadi suatu masalah saat menyimpan gambar terakhir. Silahkan coba lagi";
 "Saved!" = "Tersimpan!";
-"has been successfully saved to your camera roll." = "telah berhasil disimpan ke galeri foto Anda.";
-"We are unable to delete the image." = "Terjadi masalah saat menghapus foto.";
+"The photo has been successfully saved to your camera roll." = "Foto tersebut telah berhasil disimpan ke galeri foto Anda."
+"has been successfully saved to your camera roll." = "telah tersimpan di galeri foto Anda.";
+"We are unable to delete the image." = "foto ini tidak dapat dihapuskan.";
 "Kontax Cam does not have permission." = "Kontax Cam tidak memiliki izin.";
-"Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings." = "Kontax Cam tidak bisa menyimpan foto anda ke galeri foto karena kurangnya izin. Silakan periksa izin aplikasi di bawah pengaturan.";
-
+"Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings." = "Kontax Cam tidak bisa menyimpan foto anda ke galeri foto dikarenakan belum mendapatkan izin. Silakan periksa izin aplikasi di bawah pengaturan.";
+ 
 // PhotoDisplay
 "Delete" = "Hapus";
 "Cancel" = "Batal";
 "This photo will be deleted from your lab." = "Foto ini akan dihapus dari Lab anda.";
-
+ 
 // Effects
 "Effects" = "Efek";
 "Colour leaks" = "Bocoran warna";
@@ -66,27 +67,29 @@
 "Grain" = "Grain";
 "Dust" = "Debu";
 "Light leaks" = "Bocoran cahaya";
-"Strength" = "Kekuatan";
-"No customisation available" = "Tidak ada kostumisasi";
-"Kontax Cam does not support Datestamp customisation at the moment." = "Kontax Cam tidak mendukung kostumisasi cap tanggal saat ini.";
+"Strength" = "daya";
+"No customisation available" = "Tidak ada kustomisasi yang tersedia";
+"Kontax Cam does not support Datestamp customisation at the moment." = "Kontax Cam tidak mendukung perubahan cap tanggal saat ini.";
 "Done" = "Selesai";
-
+ 
 // Effects Infoview
 "Effects Information" = "Informasi Efek";
-"Tip: long-press any active effect(s) to customise it." = "Tip: tekan lama untuk kostumisasikan efek yang aktif";
-"Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Menambahkan bocoran warna ke foto anda untuk membuatnya lebih bergaya.";
-"Embed a film-styled datestamp to your photo." = "Menambahkan stempel tanggal bergaya film ke foto Anda.";
-"Ah, the good ol' grain. The essential of every 'stylish' photo." = "yah, ini dia. Grain. keperluan esensial di setiap foto yang bergaya.";
+"Tip: long-press any active effect(s) to customise it however you need." = "Tip: tekan lama di efek yang tersedia untuk menyesuaikan sesuai kebutuhan anda";
+"Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Menambahkan bocoran warna ke foto anda untuk membuatnya lebih menonjol dan beraneka ragam.";
+"Embed a film-styled datestamp to your photo." = "Menambahkan cap tanggal beraneka film ke foto Anda.";
+"Ah, the good ol' grain. The essential of every 'aesthetic' photo." = "dan, ini lah. Grain. Sebuah keperluan esensial di setiap foto yang berestetika.";
 "Adds a scratched and dusty effect to your photo." = "Menambahkan simulasi efek debu ke foto anda.";
-"Adds a subtle but vivid colourful light leaks - simulating a vintage film camera." = "Menambahkan bocoran cahaya yang halus ke foto anda - menyimulasikan kamera film.";
-
+"Adds a subtle but vivid colourful light leaks - simulating a vintage film camera." = "Menambahkan bocoran cahaya yang halus ke foto anda - mensimulasikan kamera film.";
+ 
 // Filter collections
 "Filter collections" = "Koleksi filter";
-
+ 
 // Filter info
 "Purchased" = "Dibeli";
 "Try" = "Coba";
-
+ 
 // Try camera
 "You are trying" = "Anda sedang mencoba";
-"If you like it, please purchase the collection." = "Jika Anda menyukai filter tersebut, silakan beli koleksinya.";
+"If you like it, please purchase the collection." = "Jika Anda menyukai filter tersebut, silahkan membeli koleksinya.";
+
+"PROCESSING" = "MENGELOLAH";

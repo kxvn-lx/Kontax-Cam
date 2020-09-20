@@ -57,7 +57,7 @@ struct FXInfoView: View {
             if #available(iOS 14.0, *) {
                 List {
                     Section {
-                        Text("Tip: long-press any active effect(s) to customise it.".localized)
+                        Text("Tip: long-press any active effect(s) to customise it however you need.".localized)
                     }
                     
                     infoRowSection
@@ -116,7 +116,7 @@ private extension FXInfoView {
             FXInfoRow(
                 iconImage: Image("grain.icon"),
                 title: "Grain".localized,
-                description: "Ah, the good ol' grain. The essential of every 'stylish' photo.".localized
+                description: "Ah, the good ol' grain. The essential of every 'aesthetic' photo.".localized
             )
             
             FXInfoRow(

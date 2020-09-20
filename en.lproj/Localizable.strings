@@ -73,10 +73,10 @@
 
 // Effects Infoview
 "Effects Information" = "Effects Information";
-"Tip: long-press any active effect(s) to customise it." = "Tip: long-press any active effect(s) to customise it";
+"Tip: long-press any active effect(s) to customise it however you need." = "Tip: long-press any active effect(s) to customise it however you need.";
 "Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Adds a gorgeous colour overlay to your photo to make it pop and stylish";
 "Embed a film-styled datestamp to your photo." = "Embed a film-styled datestamp to your photo.";
-"Ah, the good ol' grain. The essential of every 'stylish' photo." = "Ah, the good ol' grain. The essential of every 'stylish' photo.";
+"Ah, the good ol' grain. The essential of every 'aesthetic' photo." = "Ah, the good ol' grain. The essential of every 'aesthetic' photo.";
 "Adds a scratched and dusty effect to your photo." = "Adds a scratched and dusty effect to your photo.";
 "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera." = "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera.";
 
@@ -91,3 +91,5 @@
 // Try camera
 "You are trying" = "You are trying";
 "If you like it, please purchase the collection." = "If you like it, please purchase the collection.";
+
+"PROCESSING" = "PROCESSING";

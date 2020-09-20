@@ -83,7 +83,6 @@
 		0A96147F250DD42600137FE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A96147E250DD42600137FE6 /* SnapKit */; };
 		0A961481250DD96C00137FE6 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A961480250DD96C00137FE6 /* PassThrough.metal */; };
 		0A9D09FB25164B70003EE10D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D09FD25164B70003EE10D /* Localizable.strings */; };
-		0A9D0A0A2516639C003EE10D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D0A0C2516639C003EE10D /* InfoPlist.strings */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
 		0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */; };
@@ -228,8 +227,6 @@
 		0A9D09F225164AC6003EE10D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0A9D09FC25164B70003EE10D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A9D0A0125164B72003EE10D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0A9D0A0B2516639C003EE10D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0A9D0A10251663A1003EE10D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A9F7F14248200800088E053 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DustCustomisationViewController.swift; sourceTree = "<group>"; };
 		0AA34A17249E5E2300C45361 /* CustomisationControlHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomisationControlHeaderView.swift; sourceTree = "<group>"; };
@@ -372,7 +369,6 @@
 		0A44B28E2476A7F000603F2C = {
 			isa = PBXGroup;
 			children = (
-				0A9D0A0C2516639C003EE10D /* InfoPlist.strings */,
 				0A9D09FD25164B70003EE10D /* Localizable.strings */,
 				0A961474250DCFBF00137FE6 /* Backend */,
 				0A3F50A824ED1BDF00192DAE /* KontaxCamWidgetExtension.entitlements */,
@@ -781,7 +777,6 @@
 				0A9014312506597D0003CD68 /* Kontax Original.png in Resources */,
 				0A9D09FB25164B70003EE10D /* Localizable.strings in Resources */,
 				0A90142F2506597D0003CD68 /* PRIDE.png in Resources */,
-				0A9D0A0A2516639C003EE10D /* InfoPlist.strings in Resources */,
 				0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */,
 				0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */,
 				0A9014332506597D0003CD68 /* lanigirO xatnoK.png in Resources */,
@@ -1028,15 +1023,6 @@
 				0A9D0A0125164B72003EE10D /* id */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		0A9D0A0C2516639C003EE10D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A9D0A0B2516639C003EE10D /* en */,
-				0A9D0A10251663A1003EE10D /* id */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

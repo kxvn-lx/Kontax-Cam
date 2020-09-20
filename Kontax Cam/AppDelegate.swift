@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
         
+        StoreKitReviewHelper.shared.start()
+        
         return true
     }
     

@@ -33,7 +33,7 @@
 // Lab
 "Start by taking a photo" = "Start by taking a photo";
 "Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Photo taken will be processed with the selected filters and effects, and will be displayed here.";
-"Select" = "Select"
+"Select" = "Select";
 
 // PhotoDisplay
 "Delete" = "Delete";

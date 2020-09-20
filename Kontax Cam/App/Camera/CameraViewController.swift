@@ -79,6 +79,11 @@ class CameraViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        StoreKitReviewHelper.shared.shouldShowReview()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         #if !targetEnvironment(simulator)

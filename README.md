@@ -27,6 +27,7 @@ If you want to contribute or push some fun little features, feel free to submit 
  ## Future ideas
  I'm always open for suggestion! Feel free to message me or submit a PR :D
  
+ - [ ] Localisation to more languages
  - [ ] Improve app to use less memory ⚠️ (In need of a help!)
  - [ ] Any improvements
  - [ ] Improve the app architecture

@@ -1,0 +1,73 @@
+/* 
+  Localizable.strings
+  Kontax Cam
+
+  Created by Kevin Laminto on 20/9/20.
+  Copyright © 2020 Kevin Laminto. All rights reserved.
+*/
+
+// Onboarding VC
+"Start taking photos" = "Mulai mengambil foto";
+"Instant camera hybrid app for films and digital photographers, by photographers." = "Aplikasi kamera instan hybrid untuk film dan digital fotografer, oleh fotografer.";
+
+// CameraVC
+"Swipe gesture" = "Fitur geser";
+"Swipe left or right to live preview all the available filters in the collection." = "Geser ke kiri atau kanan untuk live preview semua filter yang tersedia dalam koleksi.";
+
+// Settings
+"Settings" = "Pengaturan";
+"General" = "General";
+"Appearance" = "Penampilan";
+"Alternate app icons" = "Ikon aplikasi alternatif";
+"Restore purchase" = "Pulihkan pembelian";
+"Information" = "Informasi";
+"Twitter" = "Twitter";
+"Website" = "Situs website";
+"Email" = "Email";
+"Change log" = "Change log";
+"Others" = "Lain-lain";
+"Privacy policy" = "Kebijaksaan privasi";
+"Delete lab images" = "Hapus semua foto lab";
+"Designed and developed by Kevin Laminto" = "Dirancang dan dibuat oleh Kevin Laminto";
+
+// Lab
+"Start by taking a photo" = "Mulailah dengan memotret foto";
+"Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Foto yang di potret akan di proses dengan filter dan efek yang dipilih, dan akan di tampilkan di sini.";
+"Select" = "Pilih";
+
+// PhotoDisplay
+"Delete" = "Hapus";
+"Cancel" = "Batal";
+"This photo will be deleted from your lab." = "Foto ini akan dihapus dari Lab anda.";
+
+// Effects
+"Effects" = "Efek";
+"Colour leaks" = "Bocoran warna";
+"Datestamp" = "cap tanggal";
+"Grain" = "Grain";
+"Dust" = "Debu";
+"Light leaks" = "Bocoran cahaya";
+"Strength" = "Kekuatan";
+"No customisation available" = "Tidak ada kostumisasi";
+"Kontax Cam does not support Datestamp customisation at the moment." = "Kontax Cam tidak mendukung kostumisasi cap tanggal saat ini.";
+"Done" = "Selesai";
+
+// Effects Infoview
+"Effects Information" = "Informasi Efek";
+"Tip: long-press any active effect(s) to customise it" = "Tip: tekan lama untuk kostumisasikan efek yang aktif";
+"Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Menambahkan bocoran warna ke foto anda untuk membuatnya lebih bergaya.";
+"Embed a film-styled datestamp to your photo." = "Menambahkan stempel tanggal bergaya film ke foto Anda.";
+"Ah, the good ol' grain. The essential of every 'stylish' photo." = "yah, ini dia. Grain. keperluan esensial di setiap foto yang bergaya.";
+"Adds a scratched and dusty effect to your photo." = "Menambahkan simulasi efek debu ke foto anda.";
+"Adds a subtle but vivid colourful light leaks - simulating a vintage film camera." = "Menambahkan bocoran cahaya yang halus ke foto anda - menyimulasikan kamera film.";
+
+// Filter collections
+"Filter collections" = "Koleksi filter";
+
+// Filter info
+"Purchased" = "Dibeli";
+"Try" = "Coba";
+
+// Try camera
+"You are trying" = "Anda sedang mencoba";
+"If you like it, please purchase the collection." = "Jika Anda menyukai filter tersebut, silakan beli koleksinya.";

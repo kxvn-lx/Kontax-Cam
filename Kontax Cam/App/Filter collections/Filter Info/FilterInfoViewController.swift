@@ -50,7 +50,7 @@ class FilterInfoViewController: UIViewController {
         button.layer.cornerCurve = .continuous
         button.backgroundColor = UIColor(named: "DetailedButtonColor")
         button.contentEdgeInsets = UIEdgeInsets(top: 7.5, left: 20, bottom: 7.5, right: 20)
-        button.setTitle("Purchased", for: .disabled)
+        button.setTitle("Purchased".localized, for: .disabled)
         button.setTitle("$-1", for: .normal)
         button.tintColor = .label
         return button
@@ -112,7 +112,7 @@ class FilterInfoViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         // Setup try button
-        tryButton = UIBarButtonItem(title: "Try", style: .plain, target: self, action: #selector(tryButtonTapped))
+        tryButton = UIBarButtonItem(title: "Try".localized, style: .plain, target: self, action: #selector(tryButtonTapped))
         navigationItem.rightBarButtonItem = tryButton
         tryButton.isHidden = purchasedFilters.contains(selectedCollection.iapID)
         

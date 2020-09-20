@@ -38,38 +38,38 @@ class SettingsViewModel: NSObject {
     
     private func configureDatasource() {
         let generalSection = SettingsSection(
-            title: "General",
+            title: "General".localized,
             cells: [
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Appearance") },
+                    createdCell: { self.createNormalCell(withTitle: "Appearance".localized) },
                     action: { [weak self] _ in self?.delegate?.appearanceTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Alternate app icons") },
+                    createdCell: { self.createNormalCell(withTitle: "Alternate app icons".localized) },
                     action: { [weak self] _ in self?.delegate?.apppIconsTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Restore purchase", accessoryType: .none) },
+                    createdCell: { self.createNormalCell(withTitle: "Restore purchase".localized, accessoryType: .none) },
                     action: { [weak self] _ in self?.delegate?.restorePurchaseTapped() }
                 )
             ])
         
         let informationSection = SettingsSection(
-            title: "Information",
+            title: "Information".localized,
             cells: [
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Twitter") },
+                    createdCell: { self.createNormalCell(withTitle: "Twitter".localized) },
                     action: { [weak self] _ in self?.delegate?.twitterTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Website") },
+                    createdCell: { self.createNormalCell(withTitle: "Website".localized) },
                     action: { [weak self] _ in self?.delegate?.websiteTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Email") },
+                    createdCell: { self.createNormalCell(withTitle: "Email".localized) },
                     action: { [weak self] _ in self?.delegate?.emailTapped() }),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Change log") },
+                    createdCell: { self.createNormalCell(withTitle: "Change log".localized) },
                     action: { [weak self] _ in self?.delegate?.changelogTapped() })
             ])
         
@@ -77,17 +77,17 @@ class SettingsViewModel: NSObject {
             title: "Others",
             cells: [
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Feedback") },
+                    createdCell: { self.createNormalCell(withTitle: "Feedback".localized) },
                     action: { [weak self] _ in self?.delegate?.surveyFormTapped() }
                 ),
                 SettingsItem(
-                    createdCell: { self.createNormalCell(withTitle: "Privacy policy") },
+                    createdCell: { self.createNormalCell(withTitle: "Privacy policy".localized) },
                     action: { [weak self] _ in self?.delegate?.privacyTapped() }
                 ),
                 SettingsItem(
                     createdCell: {
                         let cell = UITableViewCell(style: .value1, reuseIdentifier: Self.ReuseIdentifier)
-                        cell.textLabel?.text = "Delete lab images"
+                        cell.textLabel?.text = "Delete lab images".localized
                         cell.textLabel?.textColor = .systemRed
                         cell.accessoryType = .none
                         return cell

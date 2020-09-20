@@ -28,7 +28,7 @@ class EmptyView: UIView {
     }()
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Start by taking a photo"
+        lbl.text = "Start by taking a photo".localized
         lbl.font = .systemFont(ofSize: UIFont.preferredFont(forTextStyle: .title3).pointSize, weight: .medium)
         return lbl
     }()
@@ -36,7 +36,7 @@ class EmptyView: UIView {
         let lbl = UILabel()
         lbl.text = """
         Photo taken will be processed with the selected filters and effects, and will be displayed here.
-        """
+        """.localized
         lbl.font = .preferredFont(forTextStyle: .caption1)
         lbl.numberOfLines = 0
         return lbl

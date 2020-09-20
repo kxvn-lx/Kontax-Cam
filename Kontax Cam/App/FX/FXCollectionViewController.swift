@@ -28,7 +28,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setNavigationBarTitle("Effects")
+        self.setNavigationBarTitle("Effects".localized)
         self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
         
@@ -77,7 +77,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                     
                 case CellPath.datestampCell:
                     TapticHelper.shared.errorTaptic()
-                    AlertHelper.shared.presentOKAction(withTitle: "No customisation available", andMessage: "Kontax Cam does not support Datestamp customisation at the moment.", to: self)
+                    AlertHelper.shared.presentOKAction(withTitle: "No customisation available".localized, andMessage: "Kontax Cam does not support Datestamp customisation at the moment.".localized, to: self)
                     
                 default: break
                 }

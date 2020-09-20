@@ -57,7 +57,7 @@ struct FXInfoView: View {
             if #available(iOS 14.0, *) {
                 List {
                     Section {
-                        Text("Tip: long-press any active effect(s) to customise it.")
+                        Text("Tip: long-press any active effect(s) to customise it.".localized)
                     }
                     
                     infoRowSection
@@ -76,7 +76,7 @@ struct FXInfoView: View {
             } else {
                 List {
                     Section {
-                        Text("Tip: long-press any active effect(s) to customise it.")
+                        Text("Tip: long-press any active effect(s) to customise it.".localized)
                     }
                     
                     infoRowSection
@@ -103,32 +103,32 @@ private extension FXInfoView {
         Section {
             FXInfoRow(
                 iconImage: Image("color.icon"),
-                title: "Colour leaks",
-                description: "Adds a gorgeous colour overlay to your photo to make it pop and stylish. "
+                title: "Colour leaks".localized,
+                description: "Adds a gorgeous colour overlay to your photo to make it pop and stylish.".localized
             )
             
             FXInfoRow(
                 iconImage: Image(systemName: "calendar"),
-                title: "Datestamp",
-                description: "Embed a film-styled datestamp to your photo."
+                title: "Datestamp".localized,
+                description: "Embed a film-styled datestamp to your photo.".localized
             )
             
             FXInfoRow(
                 iconImage: Image("grain.icon"),
-                title: "Grain",
-                description: "Ah, The good ol' grain. The essential of every 'stylish' photo."
+                title: "Grain".localized,
+                description: "Ah, the good ol' grain. The essential of every 'stylish' photo.".localized
             )
             
             FXInfoRow(
                 iconImage: Image("dust.icon"),
-                title: "Dust",
-                description: "Adds a scratched and dusty effect to your photo."
+                title: "Dust".localized,
+                description: "Adds a scratched and dusty effect to your photo.".localized
             )
             
             FXInfoRow(
                 iconImage: Image("leaks.icon"),
-                title: "Light leaks",
-                description: "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera."
+                title: "Light leaks".localized,
+                description: "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera.".localized
             )
         }
     }

@@ -71,8 +71,8 @@ class CameraViewController: UIViewController {
                 UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
             }
             AlertHelper.shared.presentWithCustomAction(
-                title: "Swipe gesture",
-                message: "Swipe left or right to live preview all the available filters in the collection.",
+                title: NSLocalizedString("Swipe gesture", comment: ""),
+                message: NSLocalizedString("Swipe left or right to live preview all the available filters in the collection.", comment: ""),
                 withCustomAction: [okAction],
                 to: self
             )

@@ -31,12 +31,12 @@ class OnboardingViewController: UIViewController {
         v.numberOfLines = 0
         v.textColor = .label
         v.textAlignment = .center
-        v.text = "Instant camera hybrid app for films and digital photographers, by photographers."
+        v.text = NSLocalizedString("Instant camera hybrid app for films and digital photographers, by photographers.", comment: "")
         return v
     }()
     private let startButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Start taking photo", for: .normal)
+        button.setTitle(NSLocalizedString("Start taking photos", comment: ""), for: .normal)
         button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .label

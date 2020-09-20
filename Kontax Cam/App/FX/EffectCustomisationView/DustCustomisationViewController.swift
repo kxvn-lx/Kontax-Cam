@@ -32,7 +32,7 @@ class DustCustomisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationBarTitle("Dust")
+        self.setNavigationBarTitle("Dust".localized)
         self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         
@@ -42,7 +42,8 @@ class DustCustomisationViewController: UIViewController {
         controlView.delegate = self
         
         // Overwrite the strengthLabel and slider
-        controlView.controlTitleLabel.text = "Strength: +\(FilterValue.Dust.strength)"
+        let strLoc = "Strength".localized
+        controlView.controlTitleLabel.text = "\(strLoc): +\(FilterValue.Dust.strength)"
         slider.setValue(Float(FilterValue.Dust.strength), animated: true)
         
         // Add event listener for the slider
@@ -79,8 +80,9 @@ class DustCustomisationViewController: UIViewController {
     @objc private func sliderValueDidChange(_ sender: UISlider!) {
         let roundedStepValue = round(sender.value / step) * step
         sender.value = roundedStepValue
+        let strLoc = "Strength".localized
         DispatchQueue.main.async {
-            self.controlView.controlTitleLabel.text = "Strength: +\(roundedStepValue)"
+            self.controlView.controlTitleLabel.text = "\(strLoc): +\(roundedStepValue)"
         }
     }
 }

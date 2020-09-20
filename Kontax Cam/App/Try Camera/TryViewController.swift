@@ -13,7 +13,9 @@ class TryViewController: UIViewController {
     
     var currentCollection: FilterCollection! {
         didSet {
-            tryLabel.text = "You are trying \(currentCollection.name). If you like it, please purchase the collection."
+            let str1Loc = "You are trying".localized
+            let str2Loc = "If you like it, please purchase the collection.".localized
+            tryLabel.text = "\(str1Loc) \(currentCollection.name). \(str2Loc)"
         }
     }
     

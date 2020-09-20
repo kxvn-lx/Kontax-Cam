@@ -18,7 +18,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     private var isSelecting = false {
         didSet {
             navigationController?.setToolbarHidden(!isSelecting, animated: true)
-            selectButton.setTitle(isSelecting ? "Cancel" : "Select", for: .normal)
+            selectButton.setTitle(isSelecting ? "Cancel".localized : "Select".localized, for: .normal)
         }
     }
     private var selectedImageIndexes = [IndexPath]() {
@@ -35,7 +35,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     private var selectedImageIndex: Int = 0
     private let selectButton: UIButton = {
         let v = UIButton()
-        v.setTitle("Select", for: .normal)
+        v.setTitle("Select".localized, for: .normal)
         v.titleLabel?.numberOfLines = 0
         v.setTitleColor(.label, for: .normal)
         return v

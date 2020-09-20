@@ -1,0 +1,74 @@
+/* 
+  Localizable.strings
+  Kontax Cam
+
+  Created by Kevin Laminto on 20/9/20.
+  Copyright © 2020 Kevin Laminto. All rights reserved.
+*/
+
+// Onboarding VC
+"Start taking photos" = "Start taking photos";
+"Instant camera hybrid app for films and digital photographers, by photographers." = "Instant camera hybrid app for films and digital photographers, by photographers.";
+
+// CameraVC
+"Swipe gesture" = "Swipe gesture";
+"Swipe left or right to live preview all the available filters in the collection." = "Swipe left or right to live preview all the available filters in the collection.";
+
+// Settings
+"Settings" = "Settings";
+"General" = "General";
+"Appearance" = "Appearance";
+"Alternate app icons" = "Alternate app icons";
+"Restore purchase" = "Restore purchase";
+"Information" = "Information";
+"Twitter" = "Twitter";
+"Website" = "Website";
+"Email" = "Email";
+"Change log" = "Change log";
+"Others" = "Others";
+"Privacy policy" = "Privacy policy";
+"Delete lab images" = "Delete lab images";
+"Designed and developed by Kevin Laminto" = "Designed and developed by Kevin Laminto";
+
+// Lab
+"Start by taking a photo" = "Start by taking a photo";
+"Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Photo taken will be processed with the selected filters and effects, and will be displayed here.";
+"Select" = "Select"
+
+// PhotoDisplay
+"Delete" = "Delete";
+"Cancel" = "Cancel";
+"This photo will be deleted from your lab." = "This photo will be deleted from your lab.";
+
+// Effects
+"Effects" = "Effects";
+"Colour leaks" = "Colour leaks";
+"Datestamp" = "Datestamp";
+"Grain" = "Grain";
+"Dust" = "Dust";
+"Light leaks" = "Light leaks";
+"Strength" = "Strength";
+"No customisation available" = "No customisation available";
+"Kontax Cam does not support Datestamp customisation at the moment." = "Kontax Cam does not support Datestamp customisation at the moment.";
+"Done" = "Done";
+
+// Effects Infoview
+"Effects Information" = "Effects Information";
+"Tip: long-press any active effect(s) to customise it" = "Tip: long-press any active effect(s) to customise it";
+"Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Adds a gorgeous colour overlay to your photo to make it pop and stylish";
+"Embed a film-styled datestamp to your photo." = "Embed a film-styled datestamp to your photo.";
+"Ah, the good ol' grain. The essential of every 'stylish' photo." = "Ah, the good ol' grain. The essential of every 'stylish' photo.";
+"Adds a scratched and dusty effect to your photo." = "Adds a scratched and dusty effect to your photo.";
+"Adds a subtle but vivid colourful light leaks - simulating a vintage film camera." = "Adds a subtle but vivid colourful light leaks - simulating a vintage film camera.";
+
+// Filter collections
+"Filter collections" = "Filter collections";
+
+
+// Filter info
+"Purchased" = "Purchased";
+"Try" = "Try";
+
+// Try camera
+"You are trying" = "You are trying";
+"If you like it, please purchase the collection." = "If you like it, please purchase the collection.";

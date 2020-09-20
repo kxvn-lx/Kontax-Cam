@@ -27,7 +27,7 @@ class FiltersCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.addCloseButton()
-        self.setNavigationBarTitle("Filter collections")
+        self.setNavigationBarTitle("Filter collections".localized)
         self.collectionView.backgroundColor = .systemBackground
         
         // 1. Setup the layout

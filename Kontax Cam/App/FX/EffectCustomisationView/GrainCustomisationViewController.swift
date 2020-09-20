@@ -32,7 +32,7 @@ class GrainCustomisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationBarTitle("Grain")
+        self.setNavigationBarTitle("Grain".localized)
         self.addCloseButton()
         self.view.backgroundColor = .systemBackground
         
@@ -40,7 +40,8 @@ class GrainCustomisationViewController: UIViewController {
         setupConstraint()
         
         // Overwrite the strengthLabel and slider
-        controlView.controlTitleLabel.text = "Strength: +\(FilterValue.Grain.strength)"
+        let strLoc = "Strength".localized
+        controlView.controlTitleLabel.text = "\(strLoc): +\(FilterValue.Grain.strength)"
         slider.setValue(Float(FilterValue.Grain.strength), animated: true)
         
         // Add event listener for the slider
@@ -80,8 +81,9 @@ class GrainCustomisationViewController: UIViewController {
     @objc private func sliderValueDidChange(_ sender: UISlider!) {
         let roundedStepValue = round(sender.value / step) * step
         sender.value = roundedStepValue
+        let strLoc = "Strength".localized
         DispatchQueue.main.async {
-            self.controlView.controlTitleLabel.text = "Strength: +\(roundedStepValue)"
+            self.controlView.controlTitleLabel.text = "\(strLoc): +\(roundedStepValue)"
         }
     }
 }

@@ -19,7 +19,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setNavigationBarTitle("Settings", backgroundColor: .systemGroupedBackground)
+        self.setNavigationBarTitle("Settings".localized, backgroundColor: .systemGroupedBackground)
         self.addCloseButton()
         viewModel = SettingsViewModel(delegate: self)
         tableView.delegate = viewModel

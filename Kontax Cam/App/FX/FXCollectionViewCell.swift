@@ -45,7 +45,7 @@ class FXCollectionViewCell: UICollectionViewCell {
     
     var effect: Effect! {
         didSet {
-            titleLabel.text = effect.name.description
+            titleLabel.text = effect.name.description.localized
             iconImageView.image = IconHelper.shared.getIconImage(iconName: effect.icon)
         }
     }

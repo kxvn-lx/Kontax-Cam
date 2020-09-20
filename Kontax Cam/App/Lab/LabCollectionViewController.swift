@@ -381,14 +381,14 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 guard let self = self else { return }
                 if success {
                     DispatchQueue.main.async {
-                        AlertHelper.shared.presentOKAction(withTitle: "Saved!", andMessage: "The photo has been successfully saved to your camera roll.", to: self.presentedViewController)
+                        AlertHelper.shared.presentOKAction(withTitle: "Saved!".localized, andMessage: "The photo has been successfully saved to your camera roll.".localized, to: self.presentedViewController)
                     }
                     
                     TapticHelper.shared.successTaptic()
                 } else {
                     TapticHelper.shared.errorTaptic()
                     DispatchQueue.main.async {
-                        AlertHelper.shared.presentOKAction(withTitle: "Kontax Cam does not have permission.", andMessage: "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.", to: self.presentedViewController)
+                        AlertHelper.shared.presentOKAction(withTitle: "Kontax Cam does not have permission.".localized, andMessage: "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.".localized, to: self.presentedViewController)
                     }
                 }
             }

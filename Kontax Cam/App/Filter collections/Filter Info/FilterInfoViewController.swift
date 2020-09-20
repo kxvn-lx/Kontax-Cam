@@ -167,7 +167,7 @@ class FilterInfoViewController: UIViewController {
         if purchasedFilters.contains(selectedCollection.iapID) || selectedCollectionIAP == nil {
             // User has bought the collection
             iapButton.isEnabled = false
-            iapButton.setTitle("Purchased", for: .disabled)
+            iapButton.setTitle("Purchased".localized, for: .disabled)
         }
     }
     

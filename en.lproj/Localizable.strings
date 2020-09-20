@@ -50,6 +50,9 @@
 "Saved!" = "Saved!";
 "has been successfully saved to your camera roll." = "has been successfully saved to your camera roll.";
 "We are unable to delete the image." = "We are unable to delete the image.";
+"The photo has been successfully saved to your camera roll." = "The photo has been successfully saved to your camera roll.";
+"Kontax Cam does not have permission." = "Kontax Cam does not have permission.";
+"Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings." = "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.";
 
 // PhotoDisplay
 "Delete" = "Delete";
@@ -70,7 +73,7 @@
 
 // Effects Infoview
 "Effects Information" = "Effects Information";
-"Tip: long-press any active effect(s) to customise it" = "Tip: long-press any active effect(s) to customise it";
+"Tip: long-press any active effect(s) to customise it." = "Tip: long-press any active effect(s) to customise it";
 "Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Adds a gorgeous colour overlay to your photo to make it pop and stylish";
 "Embed a film-styled datestamp to your photo." = "Embed a film-styled datestamp to your photo.";
 "Ah, the good ol' grain. The essential of every 'stylish' photo." = "Ah, the good ol' grain. The essential of every 'stylish' photo.";

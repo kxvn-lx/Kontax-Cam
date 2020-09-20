@@ -51,6 +51,8 @@
 "Saved!" = "Tersimpan!";
 "has been successfully saved to your camera roll." = "telah berhasil disimpan ke galeri foto Anda.";
 "We are unable to delete the image." = "Terjadi masalah saat menghapus foto.";
+"Kontax Cam does not have permission." = "Kontax Cam tidak memiliki izin.";
+"Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings." = "Kontax Cam tidak bisa menyimpan foto anda ke galeri foto karena kurangnya izin. Silakan periksa izin aplikasi di bawah pengaturan.";
 
 // PhotoDisplay
 "Delete" = "Hapus";
@@ -71,7 +73,7 @@
 
 // Effects Infoview
 "Effects Information" = "Informasi Efek";
-"Tip: long-press any active effect(s) to customise it" = "Tip: tekan lama untuk kostumisasikan efek yang aktif";
+"Tip: long-press any active effect(s) to customise it." = "Tip: tekan lama untuk kostumisasikan efek yang aktif";
 "Adds a gorgeous colour overlay to your photo to make it pop and stylish." = "Menambahkan bocoran warna ke foto anda untuk membuatnya lebih bergaya.";
 "Embed a film-styled datestamp to your photo." = "Menambahkan stempel tanggal bergaya film ke foto Anda.";
 "Ah, the good ol' grain. The essential of every 'stylish' photo." = "yah, ini dia. Grain. keperluan esensial di setiap foto yang bergaya.";

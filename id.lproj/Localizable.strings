@@ -43,6 +43,14 @@
 "Start by taking a photo" = "Mulailah dengan memotret foto";
 "Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Foto yang di potret akan di proses dengan filter dan efek yang dipilih, dan akan di tampilkan di sini.";
 "Select" = "Pilih";
+"images" = "foto";
+"image" = "foto";
+"Download" = "Unduh";
+"Something went wrong." = "Terjadi kesalahan.";
+"There was a problem saving the last image. Please try again" = "Terjadi masalah saat menyimpan gambar terakhir. Silahkan coba lagi";
+"Saved!" = "Tersimpan!";
+"has been successfully saved to your camera roll." = "telah berhasil disimpan ke galeri foto Anda.";
+"We are unable to delete the image." = "Terjadi masalah saat menghapus foto.";
 
 // PhotoDisplay
 "Delete" = "Hapus";

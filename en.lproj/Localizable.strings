@@ -42,6 +42,14 @@
 "Start by taking a photo" = "Start by taking a photo";
 "Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Photo taken will be processed with the selected filters and effects, and will be displayed here.";
 "Select" = "Select";
+"images" = "images";
+"image" = "image";
+"Download" = "Download";
+"Something went wrong." = "Something went wrong.";
+"There was a problem saving the last image. Please try again" = "There was a problem saving the last image. Please try again";
+"Saved!" = "Saved!";
+"has been successfully saved to your camera roll." = "has been successfully saved to your camera roll.";
+"We are unable to delete the image." = "We are unable to delete the image.";
 
 // PhotoDisplay
 "Delete" = "Delete";

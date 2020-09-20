@@ -230,9 +230,9 @@ extension LabCollectionViewController {
     
     /// Called when user want to confirm deletion
     @objc private func confirmDeleteTapped() {
-        let message = selectedImageIndexes.count > 1 ? "images" : "image"
+        let message = selectedImageIndexes.count > 1 ? "images".localized : "image".localized
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (_) in
+        let deleteAction = UIAlertAction(title: "Delete".localized, style: .destructive) { [weak self] (_) in
             guard let self = self else { return }
             
             for indexPath in self.selectedImageIndexes {
@@ -255,16 +255,16 @@ extension LabCollectionViewController {
                 } else { fatalError() }
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         
-        AlertHelper.shared.presentWithCustomAction(title: "Delete \(selectedImageIndexes.count) \(message)?", withCustomAction: [deleteAction, cancelAction], to: self, preferredStyle: .actionSheet)
+        AlertHelper.shared.presentWithCustomAction(title: "\("Delete".localized) \(selectedImageIndexes.count) \(message)?", withCustomAction: [deleteAction, cancelAction], to: self, preferredStyle: .actionSheet)
     }
     
     /// Called when user wants to download multiple images
     @objc private func confirmDownloadTapped() {
-        let message = selectedImageIndexes.count > 1 ? "images" : "image"
+        let message = selectedImageIndexes.count > 1 ? "images".localized : "image".localized
         
-        let downloadAction = UIAlertAction(title: "Download", style: .default) { [weak self] (_) in
+        let downloadAction = UIAlertAction(title: "Download".localized, style: .default) { [weak self] (_) in
             guard let self = self else { return }
             
             self.selectedImageIndexes.forEach({
@@ -275,7 +275,7 @@ extension LabCollectionViewController {
                 if let imageToSave = UIImage(contentsOfFile: self.imageObjects[$0.row].url.path) {
                     self.photoLibraryEngine.saveImageToAlbum(imageToSave) { (success) in
                         if !success {
-                            AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.", andMessage: "There was a problem saving the last image. Please try again", to: self.presentedViewController)
+                            AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.".localized, andMessage: "There was a problem saving the last image. Please try again".localized, to: self.presentedViewController)
                             return
                         }
                     }
@@ -283,7 +283,7 @@ extension LabCollectionViewController {
             })
             
             TapticHelper.shared.successTaptic()
-            let alert = UIAlertController(title: "Saved!", message: "\(self.selectedImageIndexes.count) \(self.selectedImageIndexes.count > 1 ? "photos" : "photo") has been successfully saved to your camera roll.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Saved!".localized, message: "\(self.selectedImageIndexes.count) \(self.selectedImageIndexes.count > 1 ? "images".localized : "image".localized) \("has been successfully saved to your camera roll.".localized)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
@@ -291,9 +291,9 @@ extension LabCollectionViewController {
             self.selectButtonTapped()
             self.toggleElements()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         
-        AlertHelper.shared.presentWithCustomAction(title: "Download \(selectedImageIndexes.count) \(message)?", withCustomAction: [downloadAction, cancelAction], to: self, preferredStyle: .actionSheet)
+        AlertHelper.shared.presentWithCustomAction(title: "\("Download".localized) \(selectedImageIndexes.count) \(message)?", withCustomAction: [downloadAction, cancelAction], to: self, preferredStyle: .actionSheet)
     }
     
     private func toggleElements() {
@@ -407,7 +407,7 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 self.toggleElements()
                 self.collectionView.reloadData()
             } else {
-                AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.", andMessage: "We are unable to delete the image", to: self.presentedViewController)
+                AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.".localized, andMessage: "We are unable to delete the image.".localized, to: self.presentedViewController)
             }
         }
     }

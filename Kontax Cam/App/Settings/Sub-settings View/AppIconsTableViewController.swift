@@ -33,7 +33,7 @@ class AppIconsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.setNavigationBarTitle("Alternate app icons", backgroundColor: .systemGroupedBackground)
+        self.setNavigationBarTitle("Alternate app icons".localized, backgroundColor: .systemGroupedBackground)
         self.tableView.register(AppIconsTableViewCell.self, forCellReuseIdentifier: AppIconsTableViewCell.ReuseIdentifier)
 
     }
@@ -80,7 +80,7 @@ class AppIconsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "If you want to create your own design and share it with the world, please submit it via email."
+        return "If you want to create your own design and share it with the world, please submit it via email.".localized
     }
 }
 

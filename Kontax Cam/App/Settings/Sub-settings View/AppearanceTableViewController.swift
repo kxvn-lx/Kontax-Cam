@@ -17,7 +17,7 @@ class AppearanceTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.setNavigationBarTitle("Appearance", backgroundColor: .systemGroupedBackground)
+        self.setNavigationBarTitle("Appearance".localized, backgroundColor: .systemGroupedBackground)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "appearanceCell")
     }
 
@@ -36,9 +36,9 @@ extension AppearanceTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "appearanceCell", for: indexPath)
 
         switch themes[indexPath.row].rawValue {
-        case 0: cell.textLabel?.text = "Automatic"
-        case 1: cell.textLabel?.text = "Light"
-        case 2: cell.textLabel?.text = "Dark"
+        case 0: cell.textLabel?.text = "Automatic".localized
+        case 1: cell.textLabel?.text = "Light".localized
+        case 2: cell.textLabel?.text = "Dark".localized
         default: break
         }
         

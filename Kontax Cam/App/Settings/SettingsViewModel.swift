@@ -74,7 +74,7 @@ class SettingsViewModel: NSObject {
             ])
         
         let otherStuffSection = SettingsSection(
-            title: "Others",
+            title: "Others".localized,
             cells: [
                 SettingsItem(
                     createdCell: { self.createNormalCell(withTitle: "Feedback".localized) },

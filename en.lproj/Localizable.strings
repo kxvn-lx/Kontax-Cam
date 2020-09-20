@@ -30,6 +30,14 @@
 "Delete lab images" = "Delete lab images";
 "Designed and developed by Kevin Laminto" = "Designed and developed by Kevin Laminto";
 
+// Apearance
+"Automatic" = "Automatic";
+"Light" = "Light";
+"Dark" = "Dark";
+
+// Alternate app icons
+"If you want to create your own design and share it with the world, please submit it via email." = "If you want to create your own design and share it with the world, please submit it via email.";
+
 // Lab
 "Start by taking a photo" = "Start by taking a photo";
 "Photo taken will be processed with the selected filters and effects, and will be displayed here." = "Photo taken will be processed with the selected filters and effects, and will be displayed here.";

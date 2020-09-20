@@ -22,13 +22,22 @@
 "Restore purchase" = "Pulihkan pembelian";
 "Information" = "Informasi";
 "Twitter" = "Twitter";
-"Website" = "Situs website";
+"Website" = "Website";
 "Email" = "Email";
+"Feedback" = "Saran";
 "Change log" = "Change log";
 "Others" = "Lain-lain";
 "Privacy policy" = "Kebijaksaan privasi";
 "Delete lab images" = "Hapus semua foto lab";
 "Designed and developed by Kevin Laminto" = "Dirancang dan dibuat oleh Kevin Laminto";
+
+// Apearance
+"Automatic" = "Otomatis";
+"Light" = "Terang";
+"Dark" = "Gelap";
+
+// Alternate app icons
+"If you want to create your own design and share it with the world, please submit it via email." = "Jika Anda ingin membuat desain sendiri, silakan kirim desain anda melalui email.";
 
 // Lab
 "Start by taking a photo" = "Mulailah dengan memotret foto";

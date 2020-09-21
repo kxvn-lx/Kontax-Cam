@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct SettingsFooterView: View {
+    
+    private let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("Kc.")
@@ -18,6 +21,9 @@ struct SettingsFooterView: View {
             Text("Designed and developed by Kevin Laminto")
                 .font(.caption)
             Spacer()
+            
+            Text(appVersion)
+                .font(.caption)
         }
         .padding()
         .multilineTextAlignment(.center)

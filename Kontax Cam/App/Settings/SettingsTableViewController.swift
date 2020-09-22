@@ -96,8 +96,19 @@ extension SettingsTableViewController: SettingsViewModelDelegate {
         self.show(appIconsVC, sender: self)
     }
     
+    func instagramTapped() {
+        if let url = URL(string: "https://instagram.com/kontaxcam") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                let sfSafariVC = SFSafariViewController(url: url)
+                present(sfSafariVC, animated: true)
+            }
+        }
+    }
+    
     func twitterTapped() {
-        if let url = URL(string: "https://twitter.com/KontaxCam") {
+        if let url = URL(string: "https://twitter.com/kontaxcam") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {

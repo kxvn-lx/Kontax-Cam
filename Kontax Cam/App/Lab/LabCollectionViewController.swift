@@ -73,6 +73,8 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         
 //        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
         navigationItem.rightBarButtonItems = [selectBarButtonItem]
+        
+         toggleElements()
     }
     
     private func setupView() {

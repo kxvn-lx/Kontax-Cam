@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-struct TapticHelper {
+public struct TapticHelper {
     
-    static let shared = TapticHelper()
+    public static let shared = TapticHelper()
     private init() { }
     
     /**
      Creates an error Taptic feedback
      */
-    func errorTaptic() {
+    public func errorTaptic() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
     }
@@ -25,7 +25,7 @@ struct TapticHelper {
     /**
      Creates a success Taptic feedback
      */
-    func successTaptic() {
+    public func successTaptic() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
     }
@@ -33,7 +33,7 @@ struct TapticHelper {
     /**
      Creates a warning Taptic feedback
      */
-    func warningTaptic() {
+    public func warningTaptic() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.warning)
     }
@@ -41,7 +41,7 @@ struct TapticHelper {
     /**
      Creates a light Taptic feedback
      */
-    func lightTaptic() {
+    public func lightTaptic() {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.prepare()
         generator.impactOccurred()
@@ -50,7 +50,7 @@ struct TapticHelper {
     /**
      Creates a medium Taptic feedback
      */
-    func mediumTaptic() {
+    public func mediumTaptic() {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.prepare()
         generator.impactOccurred()
@@ -59,7 +59,7 @@ struct TapticHelper {
     /**
      Creates a heavy Taptic feedback
      */
-    func heavyTaptic() {
+    public func heavyTaptic() {
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.prepare()
         generator.impactOccurred()

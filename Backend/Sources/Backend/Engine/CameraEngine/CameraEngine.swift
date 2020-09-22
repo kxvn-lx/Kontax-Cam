@@ -71,9 +71,30 @@ public class CameraEngine: NSObject {
     
     public var supportedExtraLens = [AVCaptureDevice?]()
     
+    private let exposureLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(red: 1, green: 0.83, blue: 0, alpha: 0.95)
+        label.isHidden = true
+        label.text = String(format: "EV %.1f", 1.0)
+        label.font = .rounded(ofSize: UIFont.preferredFont(forTextStyle: .body).pointSize, weight: .medium)
+        label.alpha = 0
+        return label
+    }()
+    
     private let minimumZoom: CGFloat = 1.0
     private let maximumZoom: CGFloat = 3.0
     private var lastZoomFactor: CGFloat = 1.0
+    
+    private var exposureValue: Float = 0.5 {
+        didSet {
+            exposureLabel.text = String(format: "EV %.1f", exposureValue + 0.5)
+        }
+    }
+    private var translationY: Float = 0
+    private var startPanPointInPreviewLayer: CGPoint?
+    
+    private let exposureDurationPower: Float = 4.0 // the exposure slider gain
+    private let exposureMininumDuration: Float64 = 1.0 / 2000.0
     
     public override init() {
         super.init()
@@ -86,13 +107,15 @@ public class CameraEngine: NSObject {
     /// Add the camera preview layer to the given view
     /// - Parameter view: The view that will receive the camera preview layer
     public func addPreviewLayer(toView view: UIView) {
+        if previewView != nil { return }
         self.previewView = view as? PreviewMetalView
         setPreviewViewOrientation()
         
         startRunningCaptureSession()
         attachFocus(view)
+        attachExposure(view)
         
-        setupZoom(toView: view)
+        attachZoom(toView: view)
     }
     
     /// Capture the image
@@ -175,7 +198,7 @@ public class CameraEngine: NSObject {
     
     // MARK: - Private methods
     /// Setup zoom control to allow pinch to zoom
-    private func setupZoom(toView view: UIView) {
+    private func attachZoom(toView view: UIView) {
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
         view.addGestureRecognizer(pinchRecognizer)
     }
@@ -352,7 +375,7 @@ public class CameraEngine: NSObject {
         captureSession.startRunning()
     }
     
-    /// Fix the captured image to properly follows the device
+    /// Fix the captured image to properly follows the devicei
     private func fixOrientation(withImage image: UIImage) -> UIImage {
         guard let cgImage = image.cgImage else { return image }
         
@@ -432,6 +455,9 @@ public class CameraEngine: NSObject {
         
         let textureRect = CGRect(origin: texturePoint, size: .zero)
         let deviceRect = videoDataOutput.metadataOutputRectConverted(fromOutputRect: textureRect)
+        
+        // Reset custom exposure
+        exposureValue = 0.5
         
         // Show the focus ring
         if let view = recognizer.view {
@@ -532,6 +558,97 @@ public class CameraEngine: NSObject {
             }
             
         }
+    }
+    
+    /// Attach pan gesture for exposure
+    private func attachExposure(_ view: UIView) {
+        let exposureGesture = UIPanGestureRecognizer()
+        
+        DispatchQueue.main.async {
+            exposureGesture.addTarget(self, action: #selector(self.exposureStart))
+            view.addGestureRecognizer(exposureGesture)
+            
+            view.addSubview(self.exposureLabel)
+            self.exposureLabel.snp.makeConstraints { (make) in
+                make.right.bottom.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 10))
+            }
+        }
+    }
+    
+    private func changeExposureMode(mode: AVCaptureDevice.ExposureMode) {
+        guard let device = currentCamera else { return }
+        if device.exposureMode == mode { return }
+        
+        do {
+            try device.lockForConfiguration()
+            if device.isExposureModeSupported(mode) {
+                device.exposureMode = mode
+            }
+            device.unlockForConfiguration()
+        } catch {
+            return
+        }
+        
+    }
+    
+    private func changeExposureDuration(value: Float) {
+        guard let device = currentCamera else {  return }
+        do {
+            try device.lockForConfiguration()
+            let p = Float64(pow(value, exposureDurationPower)) // Apply power function to expand slider's low-end range
+            let minDurationSeconds = Float64(max(CMTimeGetSeconds(device.activeFormat.minExposureDuration), exposureMininumDuration))
+            let maxDurationSeconds = Float64(CMTimeGetSeconds(device.activeFormat.maxExposureDuration))
+            let newDurationSeconds = Float64(p * (maxDurationSeconds - minDurationSeconds)) + minDurationSeconds // Scale from 0-1 slider range to actual duration
+            if device.exposureMode == .custom {
+                let newExposureTime = CMTimeMakeWithSeconds(Float64(newDurationSeconds), preferredTimescale: 1000 * 1000 * 1000)
+                device.setExposureModeCustom(duration: newExposureTime, iso: AVCaptureDevice.currentISO, completionHandler: nil)
+            }
+            
+            device.unlockForConfiguration()
+            
+        } catch {
+            return
+        }
+    }
+    
+    @objc private func exposureStart(_ gestureRecognizer: UIPanGestureRecognizer) {
+        guard let view = gestureRecognizer.view else { return }
+        let duration: Double = 0.125
+        
+        changeExposureMode(mode: .custom)
+        
+        let translation = gestureRecognizer.translation(in: view)
+        let currentTranslation = translationY + Float(translation.y)
+        
+        switch gestureRecognizer.state {
+        case .began:
+            TapticHelper.shared.lightTaptic()
+            exposureLabel.alpha = 0
+            exposureLabel.isHidden = false
+            UIView.animate(withDuration: duration) {
+                self.exposureLabel.alpha = 1
+            }
+
+        case .ended:
+            TapticHelper.shared.lightTaptic()
+            translationY = currentTranslation
+            UIView.animate(withDuration: duration, animations: {
+                self.exposureLabel.alpha = 0
+            }) { (finished) in
+                self.exposureLabel.isHidden = finished
+            }
+            
+        default: break
+        }
+        
+        if currentTranslation < 0 {
+            // up - brighter
+            exposureValue = 0.5 + min(abs(currentTranslation) / 400, 1) / 2
+        } else if currentTranslation >= 0 {
+            // down - lower
+            exposureValue = 0.5 - min(abs(currentTranslation) / 400, 1) / 2
+        }
+        changeExposureDuration(value: exposureValue)
     }
     
 }

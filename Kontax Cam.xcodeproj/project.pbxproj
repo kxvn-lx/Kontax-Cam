@@ -22,7 +22,6 @@
 		0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */; };
 		0A1D97CB2477CBB100E4078F /* ShutterButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */; };
 		0A1D97CD2477DDB900E4078F /* IconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97CC2477DDB900E4078F /* IconHelper.swift */; };
-		0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A1F11B224FF410800BCC1A9 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1F11B124FF410800BCC1A9 /* SwiftyStoreKit */; };
 		0A267BC824E78F8F0025FB60 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BC724E78F8F0025FB60 /* UIViewController.swift */; };
 		0A267BCA24E78F980025FB60 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A267BC924E78F980025FB60 /* UIStackView.swift */; };
@@ -42,7 +41,6 @@
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
 		0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
-		0A50C414250DF5B600233610 /* TapticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D97D12477F21C00E4078F /* TapticHelper.swift */; };
 		0A50C417250DF5F900233610 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C416250DF5F900233610 /* Backend */; };
 		0A50C419250DF5FE00233610 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C418250DF5FE00233610 /* SnapKit */; };
 		0A50C41B250DF60200233610 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C41A250DF60200233610 /* SwiftyStoreKit */; };
@@ -171,7 +169,6 @@
 		0A1D97C72477C17A00E4078F /* CameraActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraActionViewController.swift; sourceTree = "<group>"; };
 		0A1D97CA2477CBB100E4078F /* ShutterButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterButtonViewController.swift; sourceTree = "<group>"; };
 		0A1D97CC2477DDB900E4078F /* IconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHelper.swift; sourceTree = "<group>"; };
-		0A1D97D12477F21C00E4078F /* TapticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapticHelper.swift; sourceTree = "<group>"; };
 		0A267BC724E78F8F0025FB60 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		0A267BC924E78F980025FB60 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		0A267BCD24E78FA60025FB60 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -434,7 +431,6 @@
 				0AB96FFA248A99E400F1FF3C /* Components */,
 				0A1D97C32477BFAE00E4078F /* SVHelper.swift */,
 				0A1D97CC2477DDB900E4078F /* IconHelper.swift */,
-				0A1D97D12477F21C00E4078F /* TapticHelper.swift */,
 				0AADEE6E247B6541009FFA52 /* AlertHelper.swift */,
 				0AEE932F247C983800F485C0 /* ShareHelper.swift */,
 				0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */,
@@ -894,7 +890,6 @@
 				0AA34A18249E5E2300C45361 /* CustomisationControlHeaderView.swift in Sources */,
 				0ADE750B24FFBC73005C4F1C /* ReachabilityHelper.swift in Sources */,
 				0A3D5580247F70FC00BC0477 /* PanModalNavigationController.swift in Sources */,
-				0A1D97D22477F21C00E4078F /* TapticHelper.swift in Sources */,
 				0A1D97C82477C17A00E4078F /* CameraActionViewController.swift in Sources */,
 				0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */,
 				0A71C88E24EB749600C5449D /* FilterInfoCollectionViewCell.swift in Sources */,
@@ -936,7 +931,6 @@
 			files = (
 				0A961452250DCEF800137FE6 /* ViewController.swift in Sources */,
 				0A50C41C250DF6CD00233610 /* PassThrough.metal in Sources */,
-				0A50C414250DF5B600233610 /* TapticHelper.swift in Sources */,
 				0A64EE11250E37E8004C1B56 /* IconHelper.swift in Sources */,
 				0A64EE0F250E3757004C1B56 /* UIViewController.swift in Sources */,
 				0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import StoreKit
 
 public struct StoreKitReviewHelper {
-    private let timesOpenedMark = 10
+    private let openCounts = [10, 40, 70]
     
     public static let shared = StoreKitReviewHelper()
     private init() { }
@@ -23,7 +23,7 @@ public struct StoreKitReviewHelper {
     /// When executed, this method will check if the system should present a review
     public func shouldShowReview() {
         let appOpenedCountValue  = UserDefaultsHelper.shared.getData(type: Int.self, forKey: .timesOpened) ?? 0
-        if appOpenedCountValue == timesOpenedMark {
+        if openCounts.contains(appOpenedCountValue) {
             SKStoreReviewController.requestReview()
             print("App has been opened: \(appOpenedCountValue) time(s). Show review!")
             

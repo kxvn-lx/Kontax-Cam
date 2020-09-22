@@ -83,8 +83,7 @@
 
 // Filter collections
 "Filter collections" = "Filter collections";
-"Submission" = "Submission";
-
+"filterHeaderLabel" = "Tag your photo @kontaxcam or use #kontaxcam for a chance to be featured.";
 
 // Filter info
 "Purchased" = "Purchased";

@@ -84,8 +84,8 @@
  
 // Filter collections
 "Filter collections" = "Koleksi filter";
-"Submission" = "pengajuan";
- 
+"filterHeaderLabel" = "Tag foto kalian dengan @kontaxcam atau gunakan #kontaxcam hashtag untuk kesempatan di upload ke social media kami.";
+
 // Filter info
 "Purchased" = "Dibeli";
 "Try" = "Coba";

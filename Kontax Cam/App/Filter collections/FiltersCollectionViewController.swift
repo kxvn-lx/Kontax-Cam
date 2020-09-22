@@ -34,15 +34,12 @@ class FiltersCollectionViewController: UICollectionViewController {
         // 1. Setup the layout
         collectionView.collectionViewLayout = makeLayout()
         collectionView.register(FiltersCollectionViewCell.self, forCellWithReuseIdentifier: FiltersCollectionViewCell.ReuseIdentifier)
+        collectionView.register(FilterHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FilterHeaderView.ReuseIdentifier)
         
         // 2. Setup datasource
         self.populateSection()
         
         observeIAP()
-        
-        // Setup bar button item
-        let submissionButton = UIBarButtonItem(title: "Submission".localized, style: .plain, target: self, action: #selector(didTapOnSubmissionButton))
-        navigationItem.rightBarButtonItem = submissionButton
     }
     
     /// Observe IAP changes in real time.
@@ -67,13 +64,6 @@ class FiltersCollectionViewController: UICollectionViewController {
             })
             .sink { _ in }
             .store(in: &subscriptionsToken)
-    }
-    
-    @objc private func didTapOnSubmissionButton() {
-        if let url = URL(string: "https://airtable.com/shrrHwYKAnDlquJ5M") {
-            let sfSafariVC = SFSafariViewController(url: url)
-            present(sfSafariVC, animated: true)
-        }
     }
 }
 
@@ -139,6 +129,13 @@ extension FiltersCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filterCollections.count
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FilterHeaderView.ReuseIdentifier, for: indexPath) as? FilterHeaderView {
+            return headerView
+        }
+        return UICollectionReusableView()
+    }
 }
 
 extension FiltersCollectionViewController {
@@ -155,8 +152,11 @@ extension FiltersCollectionViewController {
             heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
+        section.boundarySupplementaryItems = [header]
         
         return section
     }
@@ -172,5 +172,41 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
+    }
+}
+
+// MARK: - Header view
+class FilterHeaderView: UICollectionReusableView {
+    static let ReuseIdentifier = "FilterHeaderView"
+    
+    private let label: UILabel = {
+        let label = UILabel()
+        label.text = "filterHeaderLabel".localized
+        label.numberOfLines = 0
+        label.textColor = .secondaryLabel
+        label.font = .preferredFont(forTextStyle: .caption1)
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+        setupConstraint()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        addSubview(label)
+    }
+    
+    private func setupConstraint() {
+        label.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(0.95)
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview()
+        }
     }
 }

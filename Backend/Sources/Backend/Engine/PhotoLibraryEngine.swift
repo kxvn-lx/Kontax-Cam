@@ -35,7 +35,7 @@ public class PhotoLibraryEngine {
                     completion(false)
                     return
                 }
-
+                
                 if let newCollection = self.fetchAssetCollection() {
                     self.saveImageToAssetCollection(image, collection: newCollection) { (success) in
                         completion(success)
@@ -48,22 +48,20 @@ public class PhotoLibraryEngine {
     private func fetchAssetCollection() -> PHAssetCollection? {
         let fetchOption = PHFetchOptions()
         fetchOption.predicate = NSPredicate(format: "title == '" + self.albumName + "'")
-
+        
         let fetchResult = PHAssetCollection.fetchAssetCollections(
             with: PHAssetCollectionType.album,
             subtype: PHAssetCollectionSubtype.albumRegular,
             options: fetchOption)
-
+        
         return fetchResult.firstObject
     }
-
+    
     private func saveImageToAssetCollection(_ image: UIImage, collection: PHAssetCollection, completion: @escaping ((Bool) -> Void)) {
-
         PHPhotoLibrary.shared().performChanges({
-
             let creationRequest = PHAssetCreationRequest.creationRequestForAsset(from: image)
             if let request = PHAssetCollectionChangeRequest(for: collection),
-                let placeHolder = creationRequest.placeholderForCreatedAsset {
+               let placeHolder = creationRequest.placeholderForCreatedAsset {
                 request.addAssets([placeHolder] as NSFastEnumeration)
             }
         }, completionHandler: { (success: Bool, error: Error?) in

@@ -23,9 +23,12 @@ public struct StoreKitReviewHelper {
     /// When executed, this method will check if the system should present a review
     public func shouldShowReview() {
         let appOpenedCountValue  = UserDefaultsHelper.shared.getData(type: Int.self, forKey: .timesOpened) ?? 0
-        if appOpenedCountValue % timesOpenedMark == 0 {
+        if appOpenedCountValue == timesOpenedMark {
             SKStoreReviewController.requestReview()
             print("App has been opened: \(appOpenedCountValue) time(s). Show review!")
+            
+            self.start()
+            
         } else {
             print("App has been opened: \(appOpenedCountValue) time(s)")
         }

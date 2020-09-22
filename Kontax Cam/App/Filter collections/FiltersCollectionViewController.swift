@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import SafariServices
 import Backend
 
 protocol FilterListDelegate: class {
@@ -38,6 +39,10 @@ class FiltersCollectionViewController: UICollectionViewController {
         self.populateSection()
         
         observeIAP()
+        
+        // Setup bar button item
+        let submissionButton = UIBarButtonItem(title: "Submission".localized, style: .plain, target: self, action: #selector(didTapOnSubmissionButton))
+        navigationItem.rightBarButtonItem = submissionButton
     }
     
     /// Observe IAP changes in real time.
@@ -62,6 +67,13 @@ class FiltersCollectionViewController: UICollectionViewController {
             })
             .sink { _ in }
             .store(in: &subscriptionsToken)
+    }
+    
+    @objc private func didTapOnSubmissionButton() {
+        if let url = URL(string: "https://airtable.com/shrrHwYKAnDlquJ5M") {
+            let sfSafariVC = SFSafariViewController(url: url)
+            present(sfSafariVC, animated: true)
+        }
     }
 }
 

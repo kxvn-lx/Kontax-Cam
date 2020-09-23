@@ -18,6 +18,16 @@ public class FiltersGestureEngine {
     private let previewView: UIView!
     public weak var delegate: FiltersGestureDelegate?
     public var filterIndex = 0
+    public let leftSwipeGesture: UISwipeGestureRecognizer = {
+        let gest = UISwipeGestureRecognizer()
+        gest.direction = .left
+        return gest
+    }()
+    public let rightSwipeGesture: UISwipeGestureRecognizer = {
+        let gest = UISwipeGestureRecognizer()
+        gest.direction = .right
+        return gest
+    }()
     
     public var collectionCount = FilterCollection.aCollection.filters.count + 1 {
         didSet {
@@ -33,11 +43,11 @@ public class FiltersGestureEngine {
     // MARK: - Class methods
     /// Attach the gesture to the view to enable gesture listening
     private func attachGesture() {
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeFilterSwipe))
+        leftSwipeGesture.addTarget(self, action: #selector(changeFilterSwipe))
         leftSwipeGesture.direction = .left
         previewView.addGestureRecognizer(leftSwipeGesture)
         
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeFilterSwipe))
+        rightSwipeGesture.addTarget(self, action: #selector(changeFilterSwipe))
         rightSwipeGesture.direction = .right
         previewView.addGestureRecognizer(rightSwipeGesture)
     }

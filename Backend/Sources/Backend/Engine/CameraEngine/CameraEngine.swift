@@ -96,6 +96,8 @@ public class CameraEngine: NSObject {
     private let exposureDurationPower: Float = 4.0 // the exposure slider gain
     private let exposureMininumDuration: Float64 = 1.0 / 2000.0
     
+    public var swipeGestures: [UISwipeGestureRecognizer]?
+    
     public override init() {
         super.init()
         checkPermission()
@@ -563,6 +565,12 @@ public class CameraEngine: NSObject {
     /// Attach pan gesture for exposure
     private func attachExposure(_ view: UIView) {
         let exposureGesture = UIPanGestureRecognizer()
+        
+        if let swipeGestures = swipeGestures {
+            for swipeGesture in swipeGestures {
+                exposureGesture.require(toFail: swipeGesture)
+            }
+        }
         
         DispatchQueue.main.async {
             exposureGesture.addTarget(self, action: #selector(self.exposureStart))

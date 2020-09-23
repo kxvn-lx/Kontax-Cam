@@ -55,6 +55,8 @@ class CameraViewController: UIViewController {
         
         filtersGestureEngine = FiltersGestureEngine(previewView: cameraView)
         filtersGestureEngine.delegate = self
+        
+        cameraEngine.swipeGestures = [filtersGestureEngine.leftSwipeGesture, filtersGestureEngine.rightSwipeGesture]
     }
     
     override func viewWillAppear(_ animated: Bool) {

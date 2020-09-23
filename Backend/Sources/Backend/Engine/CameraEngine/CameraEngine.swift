@@ -87,7 +87,7 @@ public class CameraEngine: NSObject {
     
     private var exposureValue: Float = 0.5 {
         didSet {
-            exposureLabel.text = String(format: "EV %.1f", exposureValue + 0.5)
+            exposureLabel.text = String(format: "EV %.2f", exposureValue + 0.5)
         }
     }
     private var translationY: Float = 0
@@ -564,12 +564,12 @@ public class CameraEngine: NSObject {
     
     /// Attach pan gesture for exposure
     private func attachExposure(_ view: UIView) {
+        // If fails, don't attach exposure gesture
+        guard let swipeGestures = swipeGestures else { return }
         let exposureGesture = UIPanGestureRecognizer()
         
-        if let swipeGestures = swipeGestures {
-            for swipeGesture in swipeGestures {
-                exposureGesture.require(toFail: swipeGesture)
-            }
+        for swipeGesture in swipeGestures {
+            exposureGesture.require(toFail: swipeGesture)
         }
         
         DispatchQueue.main.async {

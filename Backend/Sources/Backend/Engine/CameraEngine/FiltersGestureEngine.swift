@@ -44,11 +44,9 @@ public class FiltersGestureEngine {
     /// Attach the gesture to the view to enable gesture listening
     private func attachGesture() {
         leftSwipeGesture.addTarget(self, action: #selector(changeFilterSwipe))
-        leftSwipeGesture.direction = .left
         previewView.addGestureRecognizer(leftSwipeGesture)
         
         rightSwipeGesture.addTarget(self, action: #selector(changeFilterSwipe))
-        rightSwipeGesture.direction = .right
         previewView.addGestureRecognizer(rightSwipeGesture)
     }
     

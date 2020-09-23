@@ -45,6 +45,8 @@ class ViewController: UIViewController {
         filtersGestureEngine = FiltersGestureEngine(previewView: cameraView)
         filtersGestureEngine.delegate = self
         
+        cameraEngine.swipeGestures = [filtersGestureEngine.leftSwipeGesture, filtersGestureEngine.rightSwipeGesture]
+        
         // Setup cameraEngine
         #if !targetEnvironment(simulator)
         cameraEngine.startCaptureSession()

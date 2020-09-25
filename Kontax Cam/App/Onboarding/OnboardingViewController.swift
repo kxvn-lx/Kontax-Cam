@@ -31,7 +31,7 @@ class OnboardingViewController: UIViewController {
         v.numberOfLines = 0
         v.textColor = .label
         v.textAlignment = .center
-        v.text = NSLocalizedString("Instant camera hybrid app for films and digital photographers, by photographers.", comment: "")
+        v.text = NSLocalizedString("Instant camera hybrid app for films and digital photographers.", comment: "")
         return v
     }()
     private let startButton: UIButton = {

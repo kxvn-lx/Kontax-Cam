@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import Shake
 import Backend 
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         
         StoreKitReviewHelper.shared.start()
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient, options: .mixWithOthers)
+        } catch let error {
+            print(error.localizedDescription)
+        }
         
         return true
     }

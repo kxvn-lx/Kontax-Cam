@@ -16,10 +16,7 @@ struct MasterpieceWidgetProvider: TimelineProvider {
     /// like in Widget library
     func getSnapshot(in context: Context, completion: @escaping (PhotoEntry) -> Void) {
         print("Snapshot activated")
-        var entry = PhotoEntry(photo: .static_photo)
-        if let randomPhoto = DataEngine.shared.randomPhoto() {
-            entry = PhotoEntry(photo: randomPhoto)
-        }
+        let entry = PhotoEntry(photo: DataEngine.shared.randomPhoto() ?? .static_photo)
         completion(entry)
     }
     
@@ -27,10 +24,7 @@ struct MasterpieceWidgetProvider: TimelineProvider {
     /// a full timeline
     func getTimeline(in context: Context, completion: @escaping (Timeline<PhotoEntry>) -> Void) {
         print("Timeline activated")
-        var entry = PhotoEntry(photo: .static_photo)
-        if let randomPhoto = DataEngine.shared.randomPhoto() {
-            entry = PhotoEntry(photo: randomPhoto)
-        }
+        let entry = PhotoEntry(photo: DataEngine.shared.randomPhoto() ?? .static_photo)
         let timeline = Timeline(entries: [entry], policy: .never)
          completion(timeline)
     }

@@ -7,25 +7,33 @@
 //
 
 import UIKit
+import Combine
 
 class PhotoEditorViewController: UIViewController {
     var image: UIImage! {
         didSet {
-            imageView.image = image
+            editorPreview.image = image
         }
     }
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    private let editorPreview = EditorPreview()
     private var mStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.distribution = .fillEqually
         return stackView
     }()
+    private let doneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("import to lab".localized, for: .normal)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .label
+        button.setTitleColor(.systemBackground, for: .normal)
+        return button
+    }()
+    
+    var editedImage = PassthroughSubject<UIImage, Never>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +47,15 @@ class PhotoEditorViewController: UIViewController {
     }
     
     private func setupView() {
-        view.addSubview(imageView)
+        view.addSubview(editorPreview)
         view.addSubview(mStackView)
+        view.addSubview(doneButton)
+        
+        doneButton.addTarget(self, action: #selector(doneButtonTapped), for: .touchUpInside)
     }
     
     private func setupConstraint() {
-        imageView.snp.makeConstraints { (make) in
+        editorPreview.snp.makeConstraints { (make) in
             make.width.equalTo(self.view.frame.width * 0.95)
             make.height.equalTo(self.view.frame.height * 0.65)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(10)
@@ -52,15 +63,22 @@ class PhotoEditorViewController: UIViewController {
         }
         
         mStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.bottom).offset(20)
+            make.top.equalTo(editorPreview.snp.bottom).offset(20)
             make.width.equalToSuperview().multipliedBy(0.95)
             make.height.equalTo(44)
             make.centerX.equalToSuperview()
         }
+        
+        doneButton.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(50)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-20)
+        }
     }
     
     private func setupActionButtons() {
-        let iconNames = ["fx", "filters.icon"]
+        let iconNames = ["fx", "filters.icon", "square.and.arrow.up"]
         var buttonTag = 0
         
         for name in iconNames {
@@ -77,6 +95,19 @@ class PhotoEditorViewController: UIViewController {
     }
 
     @objc private func actionButtonTapped(_ sender: UIButton) {
-        
+        switch sender.tag {
+        case 0: break
+        case 1: break
+        case 2:
+            if let image = editorPreview.getEditedImage() {
+                ShareHelper.shared.presentShare(withImage: image, toView: self)
+            }
+            
+        default: break
+        }
+    }
+    
+    @objc private func doneButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

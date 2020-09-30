@@ -55,6 +55,9 @@
 "Kontax Cam does not have permission." = "Kontax Cam does not have permission.";
 "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings." = "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings.";
 
+// Lab more action
+"Import from camera roll" = "Import from camera roll";
+
 // PhotoDisplay
 "Delete" = "Delete";
 "Cancel" = "Cancel";

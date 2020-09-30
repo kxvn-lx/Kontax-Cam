@@ -56,6 +56,9 @@
 "Kontax Cam does not have permission." = "Kontax Cam tidak memiliki izin.";
 "Looks like we couldn't save the photo to your camera roll due to lack of permission. Please check the app's permission under settings." = "Kontax Cam tidak bisa menyimpan foto anda ke galeri foto dikarenakan belum mendapatkan izin. Silakan periksa izin aplikasi di bawah pengaturan.";
  
+// Lab more action
+"Import from camera roll" = "Impor dari galeri foto";
+
 // PhotoDisplay
 "Delete" = "Hapus";
 "Cancel" = "Batal";

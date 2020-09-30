@@ -71,10 +71,10 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         let selectBarButtonItem = UIBarButtonItem(customView: selectButton)
         
-//        let importButton = UIBarButtonItem(title: "Import", style: .plain, target: self, action: #selector(importButtonTapped))
-        navigationItem.rightBarButtonItems = [selectBarButtonItem]
+        let moreButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(moreButtonTapped))
+        navigationItem.rightBarButtonItems = [moreButton, selectBarButtonItem]
         
-         toggleElements()
+        toggleElements()
     }
     
     private func setupView() {
@@ -94,13 +94,12 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     private func setupConstraint() {
     }
     
-    @objc private func importButtonTapped() {
-        ImagePickerEngine.shared.pickImage(self) { [weak self] (image) in
-            DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
-            self?.imageObjects = []
-            self?.fetchData()
-            self?.collectionView.reloadData()
-        }
+    @objc private func moreButtonTapped() {
+//        let labMoreActionVC = LabMoreActionTableViewController(style: .insetGrouped)
+//        labMoreActionVC.delegate = self
+//        presentPanModal(PanModalNavigationController(rootViewController: labMoreActionVC))
+        
+        self.didSelectImport()
     }
 }
 
@@ -411,6 +410,27 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
             } else {
                 AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.".localized, andMessage: "We are unable to delete the image.".localized, to: self.presentedViewController)
             }
+        }
+    }
+}
+
+// MARK: - LabMoreActionDelegate
+extension LabCollectionViewController: LabMoreActionDelegate {
+    func didSelectImport() {
+        let loadingVC = LoadingViewController()
+        loadingVC.shouldHideTitleLabel = true
+        
+        ImagePickerEngine.shared.pickImage(self) { [weak self] (image) in
+            guard let self = self else { return }
+            
+            let photoEditorVC = PhotoEditorViewController()
+            photoEditorVC.image = image
+            
+            self.show(photoEditorVC, sender: self)
+//            DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
+//            self?.imageObjects = []
+//            self?.fetchData()
+//            self?.collectionView.reloadData()
         }
     }
 }

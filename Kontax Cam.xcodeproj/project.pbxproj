@@ -95,6 +95,7 @@
 		0AC2F2AF24ED040B007A5E33 /* KontaxCamWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */; };
 		0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
+		0AC7D4DF252426E900449326 /* LabMoreActionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7D4DE252426E900449326 /* LabMoreActionTableViewController.swift */; };
 		0ACBADB824ED4DAF00D93708 /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADB624ED4D5900D93708 /* PhotoEntry.swift */; };
 		0ACBADBB24ED4DF700D93708 /* MasterpieceWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADBA24ED4DF700D93708 /* MasterpieceWidgetProvider.swift */; };
 		0ACBADBE24ED4E3000D93708 /* WidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADBD24ED4E3000D93708 /* WidgetEntryView.swift */; };
@@ -102,6 +103,7 @@
 		0ACBADC324ED4F1000D93708 /* DateConverterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */; };
 		0ADE750B24FFBC73005C4F1C /* ReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */; };
 		0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0ADEDAD324FB6B34001106C1 /* SDWebImage */; };
+		0AE6EFB6252453CB007A9C7A /* PhotoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE6EFB5252453CB007A9C7A /* PhotoEditorViewController.swift */; };
 		0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEA622F24878522004B9313 /* DTPhotoViewerController */; };
 		0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */; };
 		0AEBF1FD2495BCCA007CFAC6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */; };
@@ -239,12 +241,14 @@
 		0AC2F2AA24ED040B007A5E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
 		0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLabelView.swift; sourceTree = "<group>"; };
+		0AC7D4DE252426E900449326 /* LabMoreActionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabMoreActionTableViewController.swift; sourceTree = "<group>"; };
 		0ACBADB624ED4D5900D93708 /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
 		0ACBADBA24ED4DF700D93708 /* MasterpieceWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterpieceWidgetProvider.swift; sourceTree = "<group>"; };
 		0ACBADBD24ED4E3000D93708 /* WidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntryView.swift; sourceTree = "<group>"; };
 		0ACBADBF24ED4EDA00D93708 /* masterpieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = masterpieceView.swift; sourceTree = "<group>"; };
 		0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterHelper.swift; sourceTree = "<group>"; };
 		0ADE750A24FFBC73005C4F1C /* ReachabilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityHelper.swift; sourceTree = "<group>"; };
+		0AE6EFB5252453CB007A9C7A /* PhotoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorViewController.swift; sourceTree = "<group>"; };
 		0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDisplayViewController.swift; sourceTree = "<group>"; };
 		0AEBF1FC2495BCCA007CFAC6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0AEC654724FA11AE00418096 /* ExtraLensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraLensView.swift; sourceTree = "<group>"; };
@@ -411,6 +415,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0AE6EFAC25244EC6007A9C7A /* PhotoEditor */,
 				0A618332250CE0B800CA4782 /* Try Camera */,
 				0A4D6E53247A472100E039FC /* Filter collections */,
 				0A03EAFD2480AB84001D8006 /* FX */,
@@ -538,6 +543,7 @@
 				0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */,
 				0A9F7F14248200800088E053 /* EmptyView.swift */,
 				0A0260762497179F009C26FB /* PreviewViewController.swift */,
+				0AC7D4DE252426E900449326 /* LabMoreActionTableViewController.swift */,
 			);
 			path = Lab;
 			sourceTree = "<group>";
@@ -618,6 +624,14 @@
 				0ACBADC224ED4F1000D93708 /* DateConverterHelper.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		0AE6EFAC25244EC6007A9C7A /* PhotoEditor */ = {
+			isa = PBXGroup;
+			children = (
+				0AE6EFB5252453CB007A9C7A /* PhotoEditorViewController.swift */,
+			);
+			path = PhotoEditor;
 			sourceTree = "<group>";
 		};
 		0AEBF1FB2495BCB7007CFAC6 /* Onboarding */ = {
@@ -883,6 +897,7 @@
 				0A1193C5249B702E0086604D /* LoadingViewController.swift in Sources */,
 				0A1D97BE2477B94F00E4078F /* UIApplication.swift in Sources */,
 				0A3D557A247F569E00BC0477 /* FiltersCollectionViewController.swift in Sources */,
+				0AE6EFB6252453CB007A9C7A /* PhotoEditorViewController.swift in Sources */,
 				0AADEE6F247B6541009FFA52 /* AlertHelper.swift in Sources */,
 				0A03EAFF2480ABC4001D8006 /* FXCollectionViewController.swift in Sources */,
 				0A1D97C42477BFAE00E4078F /* SVHelper.swift in Sources */,
@@ -903,6 +918,7 @@
 				0AEA623224878596004B9313 /* PhotoDisplayViewController.swift in Sources */,
 				0A618336250CFB4000CA4782 /* UIBarButtonItem.swift in Sources */,
 				0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */,
+				0AC7D4DF252426E900449326 /* LabMoreActionTableViewController.swift in Sources */,
 				0A267BD024E78FB50025FB60 /* UIImage.swift in Sources */,
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
 				0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */,

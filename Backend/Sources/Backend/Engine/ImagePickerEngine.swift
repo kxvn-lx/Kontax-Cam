@@ -35,11 +35,8 @@ public class ImagePickerEngine: NSObject, UIImagePickerControllerDelegate, UINav
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        pickImageCallback?(image)
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true) {
+            self.pickImageCallback?(image)
+        }
     }
-    
-    @objc private func imagePickerController(_ picker: UIImagePickerController, pickedImage: UIImage?) {
-    }
-    
 }

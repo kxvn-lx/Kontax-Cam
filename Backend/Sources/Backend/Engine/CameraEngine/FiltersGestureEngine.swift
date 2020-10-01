@@ -14,7 +14,6 @@ public protocol FiltersGestureDelegate: class {
 }
 
 public class FiltersGestureEngine {
-    
     private let previewView: UIView!
     public weak var delegate: FiltersGestureDelegate?
     public var filterIndex = 0

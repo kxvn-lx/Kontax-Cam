@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Backend
 
 class PhotoEditorViewController: UIViewController {
     var image: UIImage! {
@@ -16,7 +17,10 @@ class PhotoEditorViewController: UIViewController {
         }
     }
     
+    private var currentCollection = FilterCollection.aCollection
+    private var filtersGestureEngine: FiltersGestureEngine!
     private let editorPreview = EditorPreview()
+    private let lutImageFilter = LUTImageFilter()
     private var mStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alignment = .center
@@ -40,6 +44,10 @@ class PhotoEditorViewController: UIViewController {
         self.setNavigationBarTitle("")
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        // Setup swipe gesture for filters
+        filtersGestureEngine = FiltersGestureEngine(previewView: editorPreview)
+        filtersGestureEngine.delegate = self
         
         setupActionButtons()
         setupView()
@@ -101,7 +109,16 @@ class PhotoEditorViewController: UIViewController {
     @objc private func actionButtonTapped(_ sender: UIButton) {
         switch sender.tag {
         case 0: break
-        case 1: break
+        case 1:
+            let vc = FiltersCollectionViewController(collectionViewLayout: UICollectionViewLayout())
+            vc.delegate = self
+            vc.selectedCollection = currentCollection
+
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
+            
+            self.present(navController, animated: true, completion: nil)
+            
         case 2:
             if let image = editorPreview.getEditedImage() {
                 ShareHelper.shared.presentShare(withImage: image, toView: self)
@@ -113,5 +130,31 @@ class PhotoEditorViewController: UIViewController {
     
     @objc private func doneButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension PhotoEditorViewController: FilterListDelegate {
+    func filterListDidSelectCollection(_ collection: FilterCollection) {
+        currentCollection = collection
+        filtersGestureEngine.collectionCount = currentCollection.filters.count + 1
+        if let processedImage = lutImageFilter.process(filterName: currentCollection.filters.first!, imageToEdit: image) {
+            editorPreview.setEditedImage(image: processedImage)
+            editorPreview.filterLabelView.titleLabel.text = currentCollection.filters.first!.rawValue.uppercased()
+        }
+    }
+}
+
+extension PhotoEditorViewController: FiltersGestureDelegate {
+    func didSwipeToChangeFilter(withNewIndex newIndex: Int) {
+        TapticHelper.shared.lightTaptic()
+        if newIndex > 0 {
+            if let processedImage = lutImageFilter.process(filterName: currentCollection.filters[newIndex - 1], imageToEdit: image) {
+                editorPreview.setEditedImage(image: processedImage)
+                editorPreview.filterLabelView.titleLabel.text = currentCollection.filters[newIndex - 1].rawValue.uppercased()
+            }
+        } else {
+            editorPreview.setEditedImage(image: image)
+            editorPreview.filterLabelView.titleLabel.text = "OFF"
+        }
     }
 }

@@ -15,6 +15,26 @@ public class LUTImageFilter: ImageFilterProtocol {
     private let dimension = 64
     private let colorSpace = CGColorSpaceCreateDeviceRGB()
     
+    public init() { }
+    
+    public func process(filterName: FilterName, imageToEdit uiImage: UIImage) -> UIImage? {
+        guard let lutImage = UIImage(named: filterName.rawValue.uppercased()) else { fatalError("The name provided does not match any of the available LUT. Perhaps check if the naming is correct.") }
+        let context = CIContext(options: nil)
+
+        let beginImage = CIImage(image: uiImage)
+        let filter = makeFilter(from: lutImage)
+        filter.setValue(beginImage, forKey: kCIInputImageKey)
+
+        if let output = filter.outputImage {
+            if let cgImg = context.createCGImage(output, from: output.extent) {
+                let processedImage = UIImage(cgImage: cgImg, scale: 1.0, orientation: uiImage.imageOrientation)
+                return processedImage
+            }
+        }
+
+        return nil
+    }
+    
     public func process(imageToEdit uiImage: UIImage) -> UIImage? {
         if LUTImageFilter.selectedLUTFilter == nil { return uiImage }
         

@@ -16,6 +16,20 @@ public class FilterEngine {
     public static let shared = FilterEngine()
     private init() { }
     
+    public func process(image: UIImage, selectedFilters: [FilterType]) -> UIImage? {
+        print("Alllowed filters: \(selectedFilters)")
+        var image = image
+        
+        for filter in selectedFilters {
+            print("🛠 Current filter: \(filter.description)")
+            let filterObj = FilterFactory.shared.getFilter(ofFilterType: filter)
+            guard let editedImage = filterObj.process(imageToEdit: image) else { return image }
+            image = editedImage
+            print("✅ \(filter.description) finished.")
+        }
+        return image
+    }
+    
     /// Process the image with all the allowed filters
     /// - Parameter originalImage: The original image
     /// - Returns: The edited image

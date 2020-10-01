@@ -15,7 +15,7 @@ class EditorPreview: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private let editedImageView: UIImageView = {
+    let editedImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -43,15 +43,6 @@ class EditorPreview: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    /// Get the editedImage from the imageView
-    func getEditedImage() -> UIImage? {
-        return editedImageView.image
-    }
-    
-    func setEditedImage(image: UIImage) {
-        editedImageView.image = image
     }
     
     private func setupView() {

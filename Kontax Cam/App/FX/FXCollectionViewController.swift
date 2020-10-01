@@ -11,6 +11,10 @@ import PanModal
 import SwiftUI
 import Backend
 
+protocol FXCollectionDelegate: class {
+    func didTapEffect(effect: FilterType)
+}
+
 private struct CellPath {
     static let colourleaksCell = IndexPath(row: FilterType.allCases.firstIndex(of: .colourleaks)! - 1, section: 0)
     static let grainCell = IndexPath(row: FilterType.allCases.firstIndex(of: .grain)! - 1, section: 0)
@@ -24,10 +28,13 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
     private let effects: [Effect] = FilterType.allCases.map({ Effect(name: $0, icon: $0.iconName) }).filter({ $0.name != FilterType.lut })
     private let scaleFactor: CGFloat = 0.95
     private let scaleDuration: Double = 0.0625
+    weak var delegate: FXCollectionDelegate?
+    var isFromEditor = false
+    var selectedFxs = [FilterType]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setNavigationBarTitle("Effects".localized)
         self.addCloseButton()
         self.collectionView.backgroundColor = .systemBackground
@@ -46,7 +53,7 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
         let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(infoButtonTapped))
         self.navigationItem.rightBarButtonItem = infoButton
     }
-
+    
     @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         let p = gestureRecognizer.location(in: collectionView)
         
@@ -116,7 +123,14 @@ extension FXCollectionViewController {
         
         cell.effect = currentFx
         
-        if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.isFxSelected.toggle() }
+        if isFromEditor {
+            if selectedFxs.contains(FilterType.allCases.first(where: { $0.description == currentFx.name.description })!) {
+                cell.isFxSelected.toggle()
+            }
+        } else {
+            if FilterEngine.shared.allowedFilters.contains(currentFx.name) { cell.isFxSelected.toggle() }
+        }
+        
         return cell
     }
     
@@ -129,7 +143,10 @@ extension FXCollectionViewController {
         
         // 2. Update datasource
         let selectedFx = effects[indexPath.row]
-        smartAppend(selectedCell, selectedFx)
+        if !isFromEditor {
+            smartAppend(selectedCell, selectedFx)
+        }
+        delegate?.didTapEffect(effect: FilterType.allCases.first(where: { $0.description == selectedFx.name.description })!)
         
         // Start animation
         UIView.animate(withDuration: scaleDuration) {

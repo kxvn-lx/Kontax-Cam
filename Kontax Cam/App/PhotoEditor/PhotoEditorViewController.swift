@@ -17,6 +17,13 @@ class PhotoEditorViewController: UIViewController {
         }
     }
     
+    private let globalFilterValue: [FilterType: Any] = [
+        .colourleaks: FilterValue.Colourleaks.selectedColourValue,
+        .grain: FilterValue.Grain.strength,
+        .dust: FilterValue.Dust.strength,
+        .lightleaks: FilterValue.Lightleaks.strength
+    ]
+    private var selectedFxs = [FilterType]()
     private var currentCollection = FilterCollection.aCollection
     private var filtersGestureEngine: FiltersGestureEngine!
     private let editorPreview = EditorPreview()
@@ -52,6 +59,14 @@ class PhotoEditorViewController: UIViewController {
         setupActionButtons()
         setupView()
         setupConstraint()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        FilterValue.Colourleaks.selectedColourValue = globalFilterValue[.colourleaks] as! FilterValue.Colourleaks.ColourValue
+        FilterValue.Grain.strength = globalFilterValue[.grain] as! CGFloat
+        FilterValue.Dust.strength = globalFilterValue[.dust] as! CGFloat
+        FilterValue.Lightleaks.strength = globalFilterValue[.lightleaks] as! CGFloat
     }
     
     private func setupView() {
@@ -108,7 +123,14 @@ class PhotoEditorViewController: UIViewController {
 
     @objc private func actionButtonTapped(_ sender: UIButton) {
         switch sender.tag {
-        case 0: break
+        case 0:
+            let vc = FXCollectionViewController(collectionViewLayout: UICollectionViewLayout())
+            vc.delegate = self
+            vc.selectedFxs = selectedFxs
+            vc.isFromEditor = true
+            let navController = PanModalNavigationController(rootViewController: vc)
+            self.presentPanModal(navController)
+            
         case 1:
             let vc = FiltersCollectionViewController(collectionViewLayout: UICollectionViewLayout())
             vc.delegate = self
@@ -120,7 +142,7 @@ class PhotoEditorViewController: UIViewController {
             self.present(navController, animated: true, completion: nil)
             
         case 2:
-            if let image = editorPreview.getEditedImage() {
+            if let image = editorPreview.editedImageView.image {
                 ShareHelper.shared.presentShare(withImage: image, toView: self)
             }
             
@@ -129,12 +151,21 @@ class PhotoEditorViewController: UIViewController {
     }
     
     @objc private func doneButtonTapped() {
-        if let image = editorPreview.getEditedImage() {
+        if let image = editorPreview.editedImageView.image {
             editedImage.send(image)
             self.navigationController?.popViewController(animated: true)
         } else {
             AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.".localized, andMessage: "We are unable to import the image. Please try again.".localized, to: self)
         }
+    }
+    
+    private func smartAppend(_ selectedFx: FilterType) {
+        if selectedFxs.contains(selectedFx) {
+            selectedFxs.remove(at: selectedFxs.firstIndex(where: { $0 == selectedFx })!)
+        } else {
+            selectedFxs.append(selectedFx)
+        }
+        selectedFxs.sort(by: { $0.rawValue < $1.rawValue })
     }
 }
 
@@ -143,7 +174,7 @@ extension PhotoEditorViewController: FilterListDelegate {
         currentCollection = collection
         filtersGestureEngine.collectionCount = currentCollection.filters.count + 1
         if let processedImage = lutImageFilter.process(filterName: currentCollection.filters.first!, imageToEdit: image) {
-            editorPreview.setEditedImage(image: processedImage)
+            editorPreview.editedImageView.image = processedImage
             editorPreview.filterLabelView.titleLabel.text = currentCollection.filters.first!.rawValue.uppercased()
         }
     }
@@ -154,12 +185,39 @@ extension PhotoEditorViewController: FiltersGestureDelegate {
         TapticHelper.shared.lightTaptic()
         if newIndex > 0 {
             if let processedImage = lutImageFilter.process(filterName: currentCollection.filters[newIndex - 1], imageToEdit: image) {
-                editorPreview.setEditedImage(image: processedImage)
+                editorPreview.editedImageView.image = processedImage
                 editorPreview.filterLabelView.titleLabel.text = currentCollection.filters[newIndex - 1].rawValue.uppercased()
             }
         } else {
-            editorPreview.setEditedImage(image: image)
+            editorPreview.editedImageView.image = image
             editorPreview.filterLabelView.titleLabel.text = "OFF"
         }
+    }
+}
+
+extension PhotoEditorViewController: FXCollectionDelegate {
+    func didTapEffect(effect: FilterType) {
+        smartAppend(effect)
+        let loadingVC = LoadingViewController()
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first!
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                window.addSubview(loadingVC.view)
+                loadingVC.view.snp.makeConstraints { (make) in
+                    make.edges.equalToSuperview()
+                }
+            }
+            
+            if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs) {
+                DispatchQueue.main.async {
+                    self.editorPreview.editedImageView.image = editedImage
+                    loadingVC.view.removeFromSuperview()
+                }
+            }
+        }
+
     }
 }

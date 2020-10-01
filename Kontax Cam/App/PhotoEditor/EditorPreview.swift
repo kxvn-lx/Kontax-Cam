@@ -18,7 +18,6 @@ class EditorPreview: UIView {
     private let editedImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
         return imageView
     }()
     let filterLabelView = FilterLabelView()
@@ -37,8 +36,9 @@ class EditorPreview: UIView {
         setupView()
         
         // Add tap gesture
-        let tapGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressView))
-        self.addGestureRecognizer(tapGesture)
+        let longpressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didPressView))
+        longpressGesture.minimumPressDuration = 0.125
+        self.addGestureRecognizer(longpressGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -64,20 +64,30 @@ class EditorPreview: UIView {
         let ratio = image.size.width / image.size.height
         
         baseImageView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(self.snp.width).dividedBy(ratio)
+            if ratio >= 1 {
+                make.width.equalToSuperview()
+                make.height.equalTo(self.snp.width).dividedBy(ratio)
+            } else {
+                make.height.equalToSuperview()
+                make.width.equalTo(self.snp.height).multipliedBy(ratio)
+            }
             make.center.equalToSuperview()
         }
         
         editedImageView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(self.snp.width).dividedBy(ratio)
+            if ratio >= 1 {
+                make.width.equalToSuperview()
+                make.height.equalTo(self.snp.width).dividedBy(ratio)
+            } else {
+                make.height.equalToSuperview()
+                make.width.equalTo(self.snp.height).multipliedBy(ratio)
+            }
             make.center.equalToSuperview()
         }
         
         filterLabelView.snp.makeConstraints { (make) in
             make.bottom.equalTo(editedImageView.snp.bottom).offset(-10)
-            make.left.equalToSuperview().offset(10)
+            make.left.equalTo(editedImageView.snp.left).offset(10)
             make.height.width.equalTo(45)
         }
     }

@@ -129,7 +129,12 @@ class PhotoEditorViewController: UIViewController {
     }
     
     @objc private func doneButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
+        if let image = editorPreview.getEditedImage() {
+            editedImage.send(image)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.".localized, andMessage: "We are unable to import the image. Please try again.".localized, to: self)
+        }
     }
 }
 

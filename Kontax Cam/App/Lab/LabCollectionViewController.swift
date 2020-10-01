@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import DTPhotoViewerController
 import Backend
+import Combine
 
 class LabCollectionViewController: UICollectionViewController, UIGestureRecognizerDelegate {
     
@@ -40,6 +41,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         v.setTitleColor(.label, for: .normal)
         return v
     }()
+    private var subscriptionsToken = Set<AnyCancellable>()
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -336,12 +338,17 @@ extension LabCollectionViewController {
             
             let photoEditorVC = PhotoEditorViewController()
             photoEditorVC.image = image
+            photoEditorVC.editedImage
+                .handleEvents(receiveOutput: { [unowned self] image in
+                    DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
+                    self.imageObjects = []
+                    self.fetchData()
+                    self.collectionView.reloadData()
+                })
+                .sink { _ in }
+                .store(in: &self.subscriptionsToken)
             
             self.show(photoEditorVC, sender: self)
-//            DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
-//            self?.imageObjects = []
-//            self?.fetchData()
-//            self?.collectionView.reloadData()
         }
     }
 }

@@ -80,9 +80,13 @@ class PhotoEditorViewController: UIViewController {
     private func setupActionButtons() {
         let iconNames = ["fx", "filters.icon", "square.and.arrow.up"]
         var buttonTag = 0
+        let buttonWidth: CGFloat = self.view.frame.width * 0.175
+        let buttonHeight: CGFloat = 35
         
         for name in iconNames {
-            let button = UIButton(type: .system)
+            let button = UIButton()
+            button.frame = CGRect(origin: .zero, size: CGSize(width: buttonWidth, height: buttonHeight))
+            button.clipsToBounds = true
             button.setImage(IconHelper.shared.getIconImage(iconName: name), for: .normal)
             button.tintColor = .label
             button.imageView?.contentMode = .scaleAspectFit

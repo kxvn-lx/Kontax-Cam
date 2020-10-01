@@ -13,6 +13,7 @@ import Backend
 
 protocol FXCollectionDelegate: class {
     func didTapEffect(effect: FilterType)
+    func didTapDone()
 }
 
 private struct CellPath {
@@ -71,20 +72,29 @@ class FXCollectionViewController: UICollectionViewController, UIGestureRecognize
                 // Perhaps there is a better way on doing this.
                 switch indexPath {
                 case CellPath.colourleaksCell:
-                    presentPanModal(PanModalNavigationController(rootViewController: ColourleaksCustomisationViewController()))
+                    let vc = ColourleaksCustomisationViewController()
+                    vc.delegate = delegate
+                    presentPanModal(PanModalNavigationController(rootViewController: vc))
                     
                 case CellPath.grainCell:
-                    presentPanModal(PanModalNavigationController(rootViewController: GrainCustomisationViewController()))
+                    let vc = GrainCustomisationViewController()
+                    vc.delegate = delegate
+                    presentPanModal(PanModalNavigationController(rootViewController: vc))
                     
                 case CellPath.dustCell:
-                    presentPanModal(PanModalNavigationController(rootViewController: DustCustomisationViewController()))
+                    let vc = DustCustomisationViewController()
+                    vc.delegate = delegate
+                    presentPanModal(PanModalNavigationController(rootViewController: vc))
                     
                 case CellPath.lightleaksCell:
-                    presentPanModal(PanModalNavigationController(rootViewController: LightleaksCustomisationViewController()))
+                    let vc = LightleaksCustomisationViewController()
+                    vc.delegate = delegate
+                    presentPanModal(PanModalNavigationController(rootViewController: vc))
                     
                 case CellPath.datestampCell:
                     TapticHelper.shared.errorTaptic()
                     AlertHelper.shared.presentOKAction(withTitle: "No customisation available".localized, andMessage: "Kontax Cam does not support Datestamp customisation at the moment.".localized, to: self)
+                    return
                     
                 default: break
                 }

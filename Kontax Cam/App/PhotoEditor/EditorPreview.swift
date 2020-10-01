@@ -10,11 +10,6 @@ import UIKit
 
 class EditorPreview: UIView {
 
-    private let baseImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
     let editedImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -24,12 +19,12 @@ class EditorPreview: UIView {
     
     var image: UIImage! {
         didSet {
-            baseImageView.image = image
             editedImageView.image = image
             
             setupConstraint()
         }
     }
+    private var tempImage: UIImage!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,24 +41,12 @@ class EditorPreview: UIView {
     }
     
     private func setupView() {
-        addSubview(baseImageView)
         addSubview(editedImageView)
         addSubview(filterLabelView)
     }
     
     private func setupConstraint() {
         let ratio = image.size.width / image.size.height
-        
-        baseImageView.snp.makeConstraints { (make) in
-            if ratio >= 1 {
-                make.width.equalToSuperview()
-                make.height.equalTo(self.snp.width).dividedBy(ratio)
-            } else {
-                make.height.equalToSuperview()
-                make.width.equalTo(self.snp.height).multipliedBy(ratio)
-            }
-            make.center.equalToSuperview()
-        }
         
         editedImageView.snp.makeConstraints { (make) in
             if ratio >= 1 {
@@ -85,9 +68,10 @@ class EditorPreview: UIView {
     
     @objc private func didPressView(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-            editedImageView.isHidden = true
+            tempImage = editedImageView.image
+            editedImageView.image = image
         } else if sender.state == .ended {
-            editedImageView.isHidden = false
+            editedImageView.image = tempImage
         }
     }
 }

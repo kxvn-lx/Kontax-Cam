@@ -29,6 +29,7 @@ class DustCustomisationViewController: UIViewController {
         return v
     }()
     private let controlView = CustomisationControlHeaderView()
+    weak var delegate: FXCollectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,7 @@ extension DustCustomisationViewController: CustomisationControlProtocol {
         print("Dust strength new value: \(FilterValue.Dust.strength)")
         
         TapticHelper.shared.successTaptic()
+        delegate?.didTapDone()
         dismiss(animated: true, completion: nil)
     }
 }

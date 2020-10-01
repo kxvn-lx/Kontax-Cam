@@ -344,6 +344,7 @@ extension LabCollectionViewController {
                     self.imageObjects = []
                     self.fetchData()
                     self.collectionView.reloadData()
+                    self.toggleElements()
                 })
                 .sink { _ in }
                 .store(in: &self.subscriptionsToken)

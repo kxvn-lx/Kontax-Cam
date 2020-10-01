@@ -29,6 +29,7 @@ class GrainCustomisationViewController: UIViewController {
         return v
     }()
     private let controlView = CustomisationControlHeaderView()
+    weak var delegate: FXCollectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,7 @@ extension GrainCustomisationViewController: CustomisationControlProtocol {
         print("Grain strength new value: \(FilterValue.Grain.strength)")
         
         TapticHelper.shared.successTaptic()
+        delegate?.didTapDone()
         dismiss(animated: true, completion: nil)
     }
 }

@@ -28,6 +28,7 @@ class LightleaksCustomisationViewController: UIViewController {
         return v
     }()
     private let controlView = CustomisationControlHeaderView()
+    weak var delegate: FXCollectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +94,7 @@ extension LightleaksCustomisationViewController: CustomisationControlProtocol {
         FilterValue.Lightleaks.strength = CGFloat(slider.value)
         print("Lightleaks strength new value: \(FilterValue.Dust.strength)")
         TapticHelper.shared.successTaptic()
+        delegate?.didTapDone()
         dismiss(animated: true, completion: nil)
     }
 }

@@ -16,6 +16,7 @@ class ColourleaksCustomisationViewController: UIViewController {
     private let colourleaks = FilterValue.Colourleaks.ColourValue.allCases
     private let controlView = CustomisationControlHeaderView()
     private var collectionView: UICollectionView!
+    weak var delegate: FXCollectionDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +130,7 @@ extension ColourleaksCustomisationViewController: CustomisationControlProtocol {
         print("colour leaks new value: \(colourleaks[selectedIndexPath!.row].rawValue)")
         
         TapticHelper.shared.successTaptic()
+        delegate?.didTapDone()
         dismiss(animated: true, completion: nil)
     }
 }

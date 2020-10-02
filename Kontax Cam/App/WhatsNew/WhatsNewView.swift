@@ -10,7 +10,40 @@ import SwiftUI
 import SSSwiftUIGIFView
 import SwiftUIX
 
+private struct openingView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("What's new on Kontax Cam")
+                    .font(.headline)
+                Spacer()
+            }
+
+            Spacer()
+        }
+    }
+}
+
+private struct viewOne: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Edit with the Kontax Editor")
+                .font(.headline)
+            SwiftUIGIFPlayerView(gifName: "whatsnew")
+                .scaledToFill()
+                .frame(height: 250)
+                .clipped()
+            Text("Kontax Cam now supports importing your own photo taken outside the app and edit it with Kontax cam's filters and effects.")
+            Text("To use it, simply head to the lab, and click the plus icon in the top right corner.")
+            Spacer()
+        }
+    }
+}
+
+// MARK: - Body view
 struct WhatsNewView: View {
+    @Environment(\.progressionController) var progressionController
+    @State private var currentIndex = 0
     var dismissAction: (() -> Void)?
     
     init(dismissAction: (() -> Void)?) {
@@ -29,24 +62,20 @@ struct WhatsNewView: View {
         NavigationView {
             VStack {
                 PaginationView(axis: .horizontal) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Edit with the Kontax Editor")
-                            .font(.headline)
-                        SwiftUIGIFPlayerView(gifName: "whatsnew")
-                            .scaledToFill()
-                            .frame(height: 250)
-                            .clipped()
-                        Text("Kontax Cam now supports importing your own photo taken outside the app and edit it with Kontax cam's filters and effects.")
-                        Text("To use it, simply head to the lab, and click the plus icon in the top right corner.")
-                        Spacer()
-                    }
+                    openingView().eraseToAnyView()
+                    viewOne().eraseToAnyView()
                 }
+                .currentPageIndex($currentIndex)
                 Spacer()
 
                 Button(action: {
-                    self.dismissAction!()
+                    if currentIndex == 1 {
+                        self.dismissAction!()
+                    } else {
+                        currentIndex += 1
+                    }
                 }, label: {
-                    Text("Start taking photos")
+                    Text(currentIndex == 1 ? "Start taking photos" : "Next")
                 })
                 .buttonStyle(KontaxButtonStyle())
             }

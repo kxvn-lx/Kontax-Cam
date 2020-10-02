@@ -63,6 +63,8 @@
 		0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */; };
 		0A80ADF32504EEC5003E4AA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */; };
 		0A84475924F94A0100700CAB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84475824F94A0100700CAB /* Color.swift */; };
+		0A86009A2527333A003606EB /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8600992527333A003606EB /* WhatsNewView.swift */; };
+		0A8600A325273B3F003606EB /* KontaxButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8600A225273B3F003606EB /* KontaxButtonStyle.swift */; };
 		0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9014282506597C0003CD68 /* Summer vibes.png */; };
 		0A90142F2506597D0003CD68 /* PRIDE.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A9014292506597C0003CD68 /* PRIDE.png */; };
 		0A9014302506597D0003CD68 /* In development.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A90142A2506597C0003CD68 /* In development.png */; };
@@ -203,6 +205,8 @@
 		0A73C4CB2499E92E00E46E9A /* Date Stamp Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Date Stamp Alt.otf"; sourceTree = "<group>"; };
 		0A80ADF22504EEC5003E4AA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A84475824F94A0100700CAB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0A8600992527333A003606EB /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
+		0A8600A225273B3F003606EB /* KontaxButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KontaxButtonStyle.swift; sourceTree = "<group>"; };
 		0A9014282506597C0003CD68 /* Summer vibes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Summer vibes.png"; sourceTree = "<group>"; };
 		0A9014292506597C0003CD68 /* PRIDE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRIDE.png; sourceTree = "<group>"; };
 		0A90142A2506597C0003CD68 /* In development.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "In development.png"; sourceTree = "<group>"; };
@@ -415,6 +419,7 @@
 		0A44B2AE2476A80300603F2C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				0A86008D252716F9003606EB /* WhatsNew */,
 				0AE6EFAC25244EC6007A9C7A /* PhotoEditor */,
 				0A618332250CE0B800CA4782 /* Try Camera */,
 				0A4D6E53247A472100E039FC /* Filter collections */,
@@ -431,6 +436,7 @@
 		0A44B2B02476A80D00603F2C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0A8600A125273B2C003606EB /* Style */,
 				0A267BC624E78F740025FB60 /* Extensions */,
 				0A026078249728C9009C26FB /* Font */,
 				0AB96FFA248A99E400F1FF3C /* Components */,
@@ -496,6 +502,22 @@
 				0A84475824F94A0100700CAB /* Color.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		0A86008D252716F9003606EB /* WhatsNew */ = {
+			isa = PBXGroup;
+			children = (
+				0A8600992527333A003606EB /* WhatsNewView.swift */,
+			);
+			path = WhatsNew;
+			sourceTree = "<group>";
+		};
+		0A8600A125273B2C003606EB /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				0A8600A225273B3F003606EB /* KontaxButtonStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		0A901427250659450003CD68 /* Alternate app icons */ = {
@@ -921,6 +943,7 @@
 				0A267BD024E78FB50025FB60 /* UIImage.swift in Sources */,
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
 				0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */,
+				0A86009A2527333A003606EB /* WhatsNewView.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,
 				0A0260772497179F009C26FB /* PreviewViewController.swift in Sources */,
 				0A44B29D2476A7F000603F2C /* SceneDelegate.swift in Sources */,
@@ -937,6 +960,7 @@
 				0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */,
 				0A267BC824E78F8F0025FB60 /* UIViewController.swift in Sources */,
 				0A267BD424E78FC20025FB60 /* UIView.swift in Sources */,
+				0A8600A325273B3F003606EB /* KontaxButtonStyle.swift in Sources */,
 				0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1164,7 +1188,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Kontax Cam/Kontax Cam.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = "Kontax Cam/Info.plist";
@@ -1189,7 +1213,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Kontax Cam/Kontax Cam.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = "Kontax Cam/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1212,7 +1236,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KontaxCamAppClip/KontaxCamAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = KontaxCamAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1235,7 +1259,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = KontaxCamAppClip/KontaxCamAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				INFOPLIST_FILE = KontaxCamAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1258,7 +1282,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = KontaxCamWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				ENABLE_BITCODE = YES;
@@ -1285,7 +1309,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = KontaxCamWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = D87H8GPTK2;
 				ENABLE_BITCODE = YES;

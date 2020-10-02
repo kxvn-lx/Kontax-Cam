@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import AVFoundation
 import Backend
+import SwiftUI
 
 class CameraViewController: UIViewController {
     
@@ -35,6 +36,8 @@ class CameraViewController: UIViewController {
     }
     private let filterLabelView = FilterLabelView()
     private var extraLensView = ExtraLensView()
+    
+    private let whatsNewHelper = WhatsNewHelper()
     
     let rotView: UIImageView = {
         let v = UIImageView()
@@ -84,6 +87,12 @@ class CameraViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         StoreKitReviewHelper.shared.shouldShowReview()
+        
+        if whatsNewHelper.shouldShowWhatsNew {
+            let vc = UIHostingController(rootView: WhatsNewView(dismissAction: { self.dismiss(animated: true, completion: nil) }))
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLayoutSubviews() {

@@ -17,6 +17,7 @@ public struct UserDefaultsHelper {
         case userNeedTutorial // Keys to present the 'swipe filter' alert
         case purchasedFilters
         case timesOpened // Keys for the amount of times user open the app
+        case appVersion
     } 
     
     private let defaults = UserDefaults.standard

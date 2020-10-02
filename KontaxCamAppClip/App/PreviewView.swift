@@ -72,7 +72,7 @@ struct PreviewView: View {
                                     }), trailing:
                                     Button(action: {
                                         self.alertTitle = "Some info for ya!"
-                                        self.alertDescription = "To save, use other effects and filters, please download the full app."
+                                        self.alertDescription = "To save, use other effects and filters, or edit your photo with the photo editor, please download the full app."
                                         self.showAlert = true
                                     }, label: {
                                         Image(systemName: "info.circle")

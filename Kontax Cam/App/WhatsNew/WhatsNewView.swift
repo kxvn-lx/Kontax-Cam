@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import SSSwiftUIGIFView
+import SwiftUIX
 
 struct WhatsNewView: View {
     var dismissAction: (() -> Void)?
@@ -26,21 +28,25 @@ struct WhatsNewView: View {
     var body: some View {
         NavigationView {
             VStack {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Edit with the Kontax Editor")
-                        .font(.headline)
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(height: 250)
-                    Text("Kontax Cam now supports importing your own photo taken outside the app and edit it with Kontax cam's filters and effects.")
-                    Text("To use it, simply head to the lab, and click the plus icon in the top right corner.")
+                PaginationView(axis: .horizontal) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Edit with the Kontax Editor")
+                            .font(.headline)
+                        SwiftUIGIFPlayerView(gifName: "whatsnew")
+                            .scaledToFill()
+                            .frame(height: 250)
+                            .clipped()
+                        Text("Kontax Cam now supports importing your own photo taken outside the app and edit it with Kontax cam's filters and effects.")
+                        Text("To use it, simply head to the lab, and click the plus icon in the top right corner.")
+                        Spacer()
+                    }
                 }
                 Spacer()
-                
+
                 Button(action: {
                     self.dismissAction!()
                 }, label: {
-                    Text("Awesome! now let me in.")
+                    Text("Start taking photos")
                 })
                 .buttonStyle(KontaxButtonStyle())
             }

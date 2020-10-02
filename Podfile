@@ -6,6 +6,7 @@ target 'Kontax Cam' do
   pod 'Firebase/Analytics'
   pod 'Shake'
   pod 'Firebase/Messaging'
+  pod 'SSSwiftUIGIFView'
 end
 
 post_install do |pi|

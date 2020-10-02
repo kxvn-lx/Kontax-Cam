@@ -41,6 +41,8 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
+		0A4D7F75252749760068EA8E /* whatsnew.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0A4D7F74252749760068EA8E /* whatsnew.gif */; };
+		0A4D7F7B25274B570068EA8E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 0A4D7F7A25274B570068EA8E /* SwiftUIX */; };
 		0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
 		0A50C417250DF5F900233610 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C416250DF5F900233610 /* Backend */; };
 		0A50C419250DF5FE00233610 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C418250DF5FE00233610 /* SnapKit */; };
@@ -195,6 +197,7 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
+		0A4D7F74252749760068EA8E /* whatsnew.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = whatsnew.gif; sourceTree = "<group>"; };
 		0A618333250CE0E000CA4782 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		0A618335250CFB4000CA4782 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		0A64EE0C250E247B004C1B56 /* ShutterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterView.swift; sourceTree = "<group>"; };
@@ -273,6 +276,7 @@
 				0AEA623024878522004B9313 /* DTPhotoViewerController in Frameworks */,
 				0A0F94CE247E501300E33AEC /* PanModal in Frameworks */,
 				0A1D97C12477BACE00E4078F /* SnapKit in Frameworks */,
+				0A4D7F7B25274B570068EA8E /* SwiftUIX in Frameworks */,
 				0A1F11B224FF410800BCC1A9 /* SwiftyStoreKit in Frameworks */,
 				0ADEDAD424FB6B34001106C1 /* SDWebImage in Frameworks */,
 				0A961476250DD01000137FE6 /* Backend in Frameworks */,
@@ -399,6 +403,7 @@
 		0A44B2992476A7F000603F2C /* Kontax Cam */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D7F70252749670068EA8E /* GIF */,
 				0A961480250DD96C00137FE6 /* PassThrough.metal */,
 				0A96147B250DD15C00137FE6 /* Configuration.storekit */,
 				0A901427250659450003CD68 /* Alternate app icons */,
@@ -466,6 +471,14 @@
 				0AEA623124878596004B9313 /* PhotoDisplayViewController.swift */,
 			);
 			path = PhotoDisplay;
+			sourceTree = "<group>";
+		};
+		0A4D7F70252749670068EA8E /* GIF */ = {
+			isa = PBXGroup;
+			children = (
+				0A4D7F74252749760068EA8E /* whatsnew.gif */,
+			);
+			path = GIF;
 			sourceTree = "<group>";
 		};
 		0A5290A9247AB43900BA0D57 /* Settings */ = {
@@ -703,6 +716,7 @@
 				0ADEDAD324FB6B34001106C1 /* SDWebImage */,
 				0A1F11B124FF410800BCC1A9 /* SwiftyStoreKit */,
 				0A961475250DD01000137FE6 /* Backend */,
+				0A4D7F7A25274B570068EA8E /* SwiftUIX */,
 			);
 			productName = "Kontax Cam";
 			productReference = 0A44B2972476A7F000603F2C /* Kontax Cam.app */;
@@ -789,6 +803,7 @@
 				0AEA622E24878522004B9313 /* XCRemoteSwiftPackageReference "DTPhotoViewerController" */,
 				0ADEDAD224FB6B34001106C1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				0A1F11B024FF410800BCC1A9 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				0A4D7F7925274B570068EA8E /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 0A44B2982476A7F000603F2C /* Products */;
 			projectDirPath = "";
@@ -815,6 +830,7 @@
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */,
 				0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */,
+				0A4D7F75252749760068EA8E /* whatsnew.gif in Resources */,
 				0A9014302506597D0003CD68 /* In development.png in Resources */,
 				0A9014322506597D0003CD68 /* Bloodlust.png in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,
@@ -1395,6 +1411,14 @@
 				minimumVersion = 0.16.1;
 			};
 		};
+		0A4D7F7925274B570068EA8E /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
 		0ADEDAD224FB6B34001106C1 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -1428,6 +1452,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1F11B024FF410800BCC1A9 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
 			productName = SwiftyStoreKit;
+		};
+		0A4D7F7A25274B570068EA8E /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A4D7F7925274B570068EA8E /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		0A50C416250DF5F900233610 /* Backend */ = {
 			isa = XCSwiftPackageProductDependency;

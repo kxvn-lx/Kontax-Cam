@@ -82,11 +82,13 @@ PODS:
   - PromisesObjC (1.2.9)
   - Protobuf (3.13.0)
   - Shake (10.0.6)
+  - SSSwiftUIGIFView (1.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Messaging
   - Shake
+  - SSSwiftUIGIFView
 
 SPEC REPOS:
   trunk:
@@ -105,6 +107,7 @@ SPEC REPOS:
     - PromisesObjC
     - Protobuf
     - Shake
+    - SSSwiftUIGIFView
 
 SPEC CHECKSUMS:
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
@@ -122,7 +125,8 @@ SPEC CHECKSUMS:
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   Shake: 56c29f2babd4d2fd8266ec0a1dd82aad2808e5b1
+  SSSwiftUIGIFView: f109262cd0baff190b58b519c0e94f7622c428d4
 
-PODFILE CHECKSUM: 2b14419a923aa2586bc30413802b620bd33091b4
+PODFILE CHECKSUM: 9edf8948c401c24500a0d1e78eb6d4d26abfa307
 
 COCOAPODS: 1.9.3

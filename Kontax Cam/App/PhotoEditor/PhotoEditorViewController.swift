@@ -10,6 +10,10 @@ import UIKit
 import Combine
 import Backend
 
+protocol PhotoEditorDelegate: class {
+    func storeBackValue(values: [FilterType: Any])
+}
+
 class PhotoEditorViewController: UIViewController {
     var image: UIImage! {
         didSet {
@@ -17,12 +21,7 @@ class PhotoEditorViewController: UIViewController {
         }
     }
     
-    private let globalFilterValue: [FilterType: Any] = [
-        .colourleaks: FilterValue.Colourleaks.selectedColourValue,
-        .grain: FilterValue.Grain.strength,
-        .dust: FilterValue.Dust.strength,
-        .lightleaks: FilterValue.Lightleaks.strength
-    ]
+    private var globalFilterValue = [FilterType: Any]()
     private var selectedFxs = [FilterType]()
     private var currentCollection = FilterCollection.aCollection
     private var filtersGestureEngine: FiltersGestureEngine!
@@ -43,7 +42,9 @@ class PhotoEditorViewController: UIViewController {
         button.setTitleColor(.systemBackground, for: .normal)
         return button
     }()
-    private var collectionIndex = 0
+    private var collectionIndex = 1
+    
+    weak var delegate: PhotoEditorDelegate?
     
     var editedImage = PassthroughSubject<UIImage, Never>()
     
@@ -60,14 +61,13 @@ class PhotoEditorViewController: UIViewController {
         setupActionButtons()
         setupView()
         setupConstraint()
+        
+        configureFilterValues()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        FilterValue.Colourleaks.selectedColourValue = globalFilterValue[.colourleaks] as! FilterValue.Colourleaks.ColourValue
-        FilterValue.Grain.strength = globalFilterValue[.grain] as! CGFloat
-        FilterValue.Dust.strength = globalFilterValue[.dust] as! CGFloat
-        FilterValue.Lightleaks.strength = globalFilterValue[.lightleaks] as! CGFloat
+        delegate?.storeBackValue(values: globalFilterValue)
     }
     
     private func setupView() {
@@ -168,20 +168,25 @@ class PhotoEditorViewController: UIViewController {
         }
         selectedFxs.sort(by: { $0.rawValue < $1.rawValue })
     }
+    
+    private func configureFilterValues() {
+        globalFilterValue = [
+            .colourleaks: FilterValue.Colourleaks.selectedColourValue,
+            .grain: FilterValue.Grain.strength,
+            .dust: FilterValue.Dust.strength,
+            .lightleaks: FilterValue.Lightleaks.strength]
+        
+        FilterValue.reset()
+    }
 }
 
 extension PhotoEditorViewController: FilterListDelegate {
     func filterListDidSelectCollection(_ collection: FilterCollection) {
         currentCollection = collection
         filtersGestureEngine.collectionCount = currentCollection.filters.count + 1
-        if let processedImage = lutImageFilter.process(filterName: currentCollection.filters.first!, imageToEdit: image) {
-            if !selectedFxs.isEmpty {
-                if let editedImage = FilterEngine.shared.process(image: processedImage, selectedFilters: self.selectedFxs) {
-                    editorPreview.editedImageView.image = editedImage
-                }
-            } else {
-                editorPreview.editedImageView.image = processedImage
-            }
+        
+        if let editedImage = FilterEngine.shared.process(image: image, selectedFilters: selectedFxs, lut: currentCollection.filters.first) {
+            editorPreview.editedImageView.image = editedImage
             editorPreview.filterLabelView.titleLabel.text = currentCollection.filters.first!.rawValue.uppercased()
         }
     }
@@ -196,6 +201,7 @@ extension PhotoEditorViewController: FiltersGestureDelegate {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
             
+            // Add loadingVC
             DispatchQueue.main.async {
                 window.addSubview(loadingVC.view)
                 loadingVC.view.snp.makeConstraints { (make) in
@@ -204,36 +210,23 @@ extension PhotoEditorViewController: FiltersGestureDelegate {
             }
             
             if newIndex > 0 {
-                if let processedImage = self.lutImageFilter.process(filterName: self.currentCollection.filters[newIndex - 1], imageToEdit: self.image) {
-                    if !self.selectedFxs.isEmpty {
-                        if let editedImage = FilterEngine.shared.process(image: processedImage, selectedFilters: self.selectedFxs) {
-                            DispatchQueue.main.async {
-                                self.editorPreview.editedImageView.image = editedImage
-                            }
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.editorPreview.editedImageView.image = processedImage
-                        }
-                    }
-                    
+                if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs, lut: self.currentCollection.filters[newIndex - 1]) {
                     DispatchQueue.main.async {
-                        self.editorPreview.filterLabelView.titleLabel.text = self.currentCollection.filters[newIndex - 1].rawValue.uppercased()
-                        loadingVC.view.removeFromSuperview()
+                        self.editorPreview.editedImageView.image = editedImage
                     }
+                }
+                
+                DispatchQueue.main.async {
+                    self.editorPreview.filterLabelView.titleLabel.text = self.currentCollection.filters[newIndex - 1].rawValue.uppercased()
+                    loadingVC.view.removeFromSuperview()
                 }
             } else {
-                if !self.selectedFxs.isEmpty {
-                    if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs) {
-                        DispatchQueue.main.async {
-                            self.editorPreview.editedImageView.image = editedImage
-                        }
-                    }
-                } else {
+                if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs, lut: nil) {
                     DispatchQueue.main.async {
-                        self.editorPreview.editedImageView.image = self.image
+                        self.editorPreview.editedImageView.image = editedImage
                     }
                 }
+                
                 DispatchQueue.main.async {
                     self.editorPreview.filterLabelView.titleLabel.text = "OFF"
                     loadingVC.view.removeFromSuperview()
@@ -257,23 +250,12 @@ extension PhotoEditorViewController: FXCollectionDelegate {
                 loadingVC.view.snp.makeConstraints { (make) in
                     make.edges.equalToSuperview()
                 }
-                
-                if self.editorPreview.filterLabelView.titleLabel.text != "OFF" {
-                    if let processedImage = self.lutImageFilter.process(filterName: self.currentCollection.filters[self.collectionIndex - 1], imageToEdit: self.image) {
-                        if let editedImage = FilterEngine.shared.process(image: processedImage, selectedFilters: self.selectedFxs) {
-                            DispatchQueue.main.async {
-                                self.editorPreview.editedImageView.image = editedImage
-                                loadingVC.view.removeFromSuperview()
-                            }
-                        }
-                    }
-                } else {
-                    if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs) {
-                        DispatchQueue.main.async {
-                            self.editorPreview.editedImageView.image = editedImage
-                            loadingVC.view.removeFromSuperview()
-                        }
-                    }
+            }
+            
+            if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs, lut: self.collectionIndex == 0 ? nil : self.currentCollection.filters[self.collectionIndex - 1]) {
+                DispatchQueue.main.async {
+                    self.editorPreview.editedImageView.image = editedImage
+                    loadingVC.view.removeFromSuperview()
                 }
             }
         }
@@ -291,23 +273,12 @@ extension PhotoEditorViewController: FXCollectionDelegate {
                 loadingVC.view.snp.makeConstraints { (make) in
                     make.edges.equalToSuperview()
                 }
-                
-                if self.editorPreview.filterLabelView.titleLabel.text != "OFF" {
-                    if let processedImage = self.lutImageFilter.process(filterName: self.currentCollection.filters[self.collectionIndex - 1], imageToEdit: self.image) {
-                        if let editedImage = FilterEngine.shared.process(image: processedImage, selectedFilters: self.selectedFxs) {
-                            DispatchQueue.main.async {
-                                self.editorPreview.editedImageView.image = editedImage
-                                loadingVC.view.removeFromSuperview()
-                            }
-                        }
-                    }
-                } else {
-                    if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs) {
-                        DispatchQueue.main.async {
-                            self.editorPreview.editedImageView.image = editedImage
-                            loadingVC.view.removeFromSuperview()
-                        }
-                    }
+            }
+            
+            if let editedImage = FilterEngine.shared.process(image: self.image, selectedFilters: self.selectedFxs, lut: self.collectionIndex == 0 ? nil : self.currentCollection.filters[self.collectionIndex - 1]) {
+                DispatchQueue.main.async {
+                    self.editorPreview.editedImageView.image = editedImage
+                    loadingVC.view.removeFromSuperview()
                 }
             }
         }

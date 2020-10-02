@@ -9,7 +9,6 @@
 import UIKit
 
 public class LightLeaksImageFilter: ImageFilterProtocol {
-    
     private enum LeaksName: String, CaseIterable {
         case leaks1
     }

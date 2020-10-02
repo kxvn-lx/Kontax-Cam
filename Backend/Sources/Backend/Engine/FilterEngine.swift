@@ -10,15 +10,20 @@ import Foundation
 import UIKit
 
 public class FilterEngine {
-    
     public var allowedFilters: [FilterType] = []
     
     public static let shared = FilterEngine()
     private init() { }
     
-    public func process(image: UIImage, selectedFilters: [FilterType]) -> UIImage? {
+    public func process(image: UIImage, selectedFilters: [FilterType], lut: FilterName?) -> UIImage? {
         print("Alllowed filters: \(selectedFilters)")
         var image = image
+        
+        // LUT is always enabled by default
+        let lutImageFilter = LUTImageFilter()
+        if let lutImage = lutImageFilter.process(filterName: lut, imageToEdit: image) {
+            image = lutImage
+        }
         
         for filter in selectedFilters {
             print("🛠 Current filter: \(filter.description)")

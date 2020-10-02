@@ -60,4 +60,11 @@ public struct FilterValue {
     }
     
     private init() { }
+    
+    public static func reset() {
+        Colourleaks.selectedColourValue = .red
+        Grain.strength = 10
+        Dust.strength = 10
+        Lightleaks.strength = 10
+    }
 }

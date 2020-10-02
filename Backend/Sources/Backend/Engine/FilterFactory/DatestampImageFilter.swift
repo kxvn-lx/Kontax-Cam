@@ -9,7 +9,6 @@
 import UIKit
 
 public class DatestampImageFilter: ImageFilterProtocol {
-    
     private var currentDate: String = {
         let currentDateTime = Date()
         let userCalendar = Calendar.current
@@ -25,7 +24,6 @@ public class DatestampImageFilter: ImageFilterProtocol {
     }()
     
     public func process(imageToEdit image: UIImage) -> UIImage? {
-        
         let xPos: CGFloat = image.size.width * 0.7
         let yPos: CGFloat = image.size.height * 0.9
         let fontSize: CGFloat = image.size.width * 0.038

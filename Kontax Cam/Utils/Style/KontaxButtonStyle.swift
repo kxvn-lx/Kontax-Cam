@@ -12,7 +12,7 @@ struct KontaxButtonStyle: ButtonStyle {
         configuration.label
             .font(.headline)
             .padding()
-            .foregroundColor(configuration.isPressed ? Color.systemBackground.opacity(0.75) : Color.systemBackground)
+            .foregroundColor(configuration.isPressed ? Color.systemBackground.opacity(0.25) : Color.systemBackground)
             .frame(minWidth: 0, maxWidth: UIScreen.main.bounds.width)
             .background(
                 Rectangle()

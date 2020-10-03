@@ -12,7 +12,6 @@ import SwiftUIX
 
 private struct openingView: View {
     @State private var opacity: Double = 1
-    
     private var repeatingAnimation: Animation {
         Animation
             .easeIn(duration: 1.5)
@@ -93,8 +92,8 @@ struct WhatsNewView: View {
                     Text(currentIndex == 1 ? "Start taking photos".localized : "Next".localized)
                 })
                 .buttonStyle(KontaxButtonStyle())
+                .padding()
             }
-            .padding()
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading:
                                     Button(action: {

@@ -14,7 +14,7 @@ private struct openingView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("What's new on Kontax Cam")
+                Text("What's new on Kontax Cam".localized)
                     .font(.headline)
                 Spacer()
             }
@@ -27,14 +27,14 @@ private struct openingView: View {
 private struct viewOne: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Edit with the Kontax Editor")
+            Text("Edit with the Kontax Editor".localized)
                 .font(.headline)
             SwiftUIGIFPlayerView(gifName: "whatsnew")
                 .scaledToFill()
                 .frame(height: 250)
                 .clipped()
-            Text("Kontax Cam now supports importing your own photo taken outside the app and edit it with Kontax cam's filters and effects.")
-            Text("To use it, simply head to the lab, and click the plus icon in the top right corner.")
+            Text("Kontax Cam now supports importing your own photo taken outside the app and edit it with Kontax cam's filters and effects.".localized)
+            Text("To use it, simply head to the lab, and click the plus icon in the top right corner.".localized)
             Spacer()
         }
     }
@@ -75,7 +75,7 @@ struct WhatsNewView: View {
                         currentIndex += 1
                     }
                 }, label: {
-                    Text(currentIndex == 1 ? "Start taking photos" : "Next")
+                    Text(currentIndex == 1 ? "Start taking photos".localized : "Next".localized)
                 })
                 .buttonStyle(KontaxButtonStyle())
             }

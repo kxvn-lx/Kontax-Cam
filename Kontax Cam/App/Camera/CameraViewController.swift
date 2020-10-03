@@ -37,8 +37,6 @@ class CameraViewController: UIViewController {
     private let filterLabelView = FilterLabelView()
     private var extraLensView = ExtraLensView()
     
-    private let whatsNewHelper = WhatsNewHelper()
-    
     let rotView: UIImageView = {
         let v = UIImageView()
         v.alpha = 0.5
@@ -70,29 +68,20 @@ class CameraViewController: UIViewController {
         cameraEngine.startCaptureSession()
         #endif
         
-        // Show tutorial if first visit
-        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
-            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
-            }
-            AlertHelper.shared.presentWithCustomAction(
-                title: NSLocalizedString("Swipe gesture", comment: ""),
-                message: NSLocalizedString("Swipe left or right to live preview all the available filters in the collection.", comment: ""),
-                withCustomAction: [okAction],
-                to: self
-            )
+        if shouldShowWhatsNew() {
+            let vc = UIHostingController(rootView: WhatsNewView(dismissAction: { self.dismiss(animated: true) {
+                self.showSwipeTutorial()
+            } }))
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            self.showSwipeTutorial()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         StoreKitReviewHelper.shared.shouldShowReview()
-        
-        if whatsNewHelper.shouldShowWhatsNew {
-            let vc = UIHostingController(rootView: WhatsNewView(dismissAction: { self.dismiss(animated: true, completion: nil) }))
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true, completion: nil)
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -177,6 +166,33 @@ class CameraViewController: UIViewController {
     func resetCameraView() {
         cameraView.pixelBuffer = nil
         cameraView.flushTextureCache()
+    }
+    
+    private func shouldShowWhatsNew() -> Bool {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        let savedVersion = UserDefaultsHelper.shared.getData(type: String.self, forKey: .appVersion)
+        
+        if savedVersion != version {
+            UserDefaultsHelper.shared.setData(value: version, key: .appVersion)
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func showSwipeTutorial() {
+        // Show tutorial if first visit
+        if UserDefaultsHelper.shared.getData(type: Bool.self, forKey: .userNeedTutorial) ?? true {
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                UserDefaultsHelper.shared.setData(value: false, key: .userNeedTutorial)
+            }
+            AlertHelper.shared.presentWithCustomAction(
+                title: NSLocalizedString("Swipe gesture", comment: ""),
+                message: NSLocalizedString("Swipe left or right to live preview all the available filters in the collection.", comment: ""),
+                withCustomAction: [okAction],
+                to: self
+            )
+        }
     }
 }
 

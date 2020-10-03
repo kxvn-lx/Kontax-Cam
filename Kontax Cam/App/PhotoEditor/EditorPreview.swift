@@ -20,7 +20,6 @@ class EditorPreview: UIView {
     var image: UIImage! {
         didSet {
             editedImageView.image = image
-            
             setupConstraint()
         }
     }
@@ -46,22 +45,14 @@ class EditorPreview: UIView {
     }
     
     private func setupConstraint() {
-        let ratio = image.size.width / image.size.height
-        
         editedImageView.snp.makeConstraints { (make) in
-            if ratio >= 1 {
-                make.width.equalToSuperview()
-                make.height.equalTo(self.snp.width).dividedBy(ratio)
-            } else {
-                make.height.equalToSuperview()
-                make.width.equalTo(self.snp.height).multipliedBy(ratio)
-            }
+            make.edges.equalToSuperview()
             make.center.equalToSuperview()
         }
         
         filterLabelView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(editedImageView.snp.bottom).offset(-10)
-            make.left.equalTo(editedImageView.snp.left).offset(10)
+            make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.left.equalTo(self.snp.left).offset(10)
             make.height.width.equalTo(45)
         }
     }

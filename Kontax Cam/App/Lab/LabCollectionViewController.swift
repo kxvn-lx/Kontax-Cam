@@ -75,7 +75,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         selectButton.addTarget(self, action: #selector(selectButtonTapped), for: .touchUpInside)
         let selectBarButtonItem = UIBarButtonItem(customView: selectButton)
         
-        let moreButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(moreButtonTapped))
+        let moreButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(importButtonTapped))
         navigationItem.rightBarButtonItems = [moreButton, selectBarButtonItem]
         
         toggleElements()
@@ -108,12 +108,29 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     private func setupConstraint() {
     }
     
-    @objc private func moreButtonTapped() {
-//        let labMoreActionVC = LabMoreActionTableViewController(style: .insetGrouped)
-//        labMoreActionVC.delegate = self
-//        presentPanModal(PanModalNavigationController(rootViewController: labMoreActionVC))
-        
-        self.didSelectImport()
+    @objc private func importButtonTapped() {
+        ImagePickerEngine.shared.pickImage(self) { [weak self] (image) in
+            guard let self = self else { return }
+            
+            let photoEditorVC = PhotoEditorViewController()
+            photoEditorVC.image = image
+            photoEditorVC.delegate = self
+            photoEditorVC.editedImage
+                .handleEvents(receiveOutput: { [unowned self] image in
+                    DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
+                    self.imageObjects = []
+                    self.fetchData()
+                    self.collectionView.reloadData()
+                    self.toggleElements()
+                })
+                .sink { _ in }
+                .store(in: &self.subscriptionsToken)
+            
+            let nav = UINavigationController(rootViewController: photoEditorVC)
+            nav.modalPresentationStyle = .overFullScreen
+            
+            self.present(nav, animated: true, completion: nil)
+        }
     }
 }
 
@@ -338,31 +355,6 @@ extension LabCollectionViewController {
             }
             
         default: return
-        }
-    }
-    
-    private func didSelectImport() {
-        let loadingVC = LoadingViewController()
-        loadingVC.shouldHideTitleLabel = true
-        
-        ImagePickerEngine.shared.pickImage(self) { [weak self] (image) in
-            guard let self = self else { return }
-            
-            let photoEditorVC = PhotoEditorViewController()
-            photoEditorVC.image = image
-            photoEditorVC.delegate = self
-            photoEditorVC.editedImage
-                .handleEvents(receiveOutput: { [unowned self] image in
-                    DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
-                    self.imageObjects = []
-                    self.fetchData()
-                    self.collectionView.reloadData()
-                    self.toggleElements()
-                })
-                .sink { _ in }
-                .store(in: &self.subscriptionsToken)
-            
-            self.show(photoEditorVC, sender: self)
         }
     }
 }

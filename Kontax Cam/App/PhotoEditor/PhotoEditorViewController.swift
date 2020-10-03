@@ -52,7 +52,7 @@ class PhotoEditorViewController: UIViewController {
         super.viewDidLoad()
         self.setNavigationBarTitle("")
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.addCloseButton()
         
         // Setup swipe gesture for filters
         filtersGestureEngine = FiltersGestureEngine(previewView: editorPreview)

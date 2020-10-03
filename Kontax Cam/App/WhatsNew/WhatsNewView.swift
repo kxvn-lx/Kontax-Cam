@@ -11,16 +11,30 @@ import SSSwiftUIGIFView
 import SwiftUIX
 
 private struct openingView: View {
+    @State private var opacity: Double = 1
+    
+    private var repeatingAnimation: Animation {
+        Animation
+            .easeIn(duration: 1.5)
+            .repeatForever()
+    }
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("What's new on Kontax Cam".localized)
-                    .font(.headline)
-                Spacer()
-            }
-
-            Spacer()
+        VStack(spacing: 20) {
+            Text("What's new on Kontax Cam".localized)
+                .font(.headline)
+            Image(systemName: "arrow.forward")
+                .resizable()
+                .renderingMode(.template)
+                .foregroundColor(.label)
+                .scaledToFit()
+                .frame(width: 20, height: 20)
+                .opacity(opacity)
+                .onAppear {
+                    withAnimation(self.repeatingAnimation) { self.opacity = 0 }
+                }
         }
+        .padding()
     }
 }
 
@@ -37,6 +51,7 @@ private struct viewOne: View {
             Text("To use it, simply head to the lab, and click the plus icon in the top right corner.".localized)
             Spacer()
         }
+        .padding()
     }
 }
 
@@ -67,7 +82,7 @@ struct WhatsNewView: View {
                 }
                 .currentPageIndex($currentIndex)
                 Spacer()
-
+                
                 Button(action: {
                     if currentIndex == 1 {
                         self.dismissAction!()

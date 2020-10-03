@@ -85,6 +85,7 @@
 		0A96147D250DD41100137FE6 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A96147C250DD41100137FE6 /* SwiftyStoreKit */; };
 		0A96147F250DD42600137FE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A96147E250DD42600137FE6 /* SnapKit */; };
 		0A961481250DD96C00137FE6 /* PassThrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0A961480250DD96C00137FE6 /* PassThrough.metal */; };
+		0A978BAC25289EAF00064531 /* FilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A978BAB25289EAF00064531 /* FilterHeaderView.swift */; };
 		0A9D09FB25164B70003EE10D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A9D09FD25164B70003EE10D /* Localizable.strings */; };
 		0A9F7F15248200800088E053 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F7F14248200800088E053 /* EmptyView.swift */; };
 		0AA31190249E536C00659BD1 /* DustCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA3118F249E536C00659BD1 /* DustCustomisationViewController.swift */; };
@@ -93,6 +94,7 @@
 		0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */; };
 		0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */; };
 		0AB96FFC248A99FF00F1FF3C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */; };
+		0ABB372A2528AA9500C1C42C /* FHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB37292528AA9500C1C42C /* FHeaderView.swift */; };
 		0AC2F2A224ED0409007A5E33 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */; };
 		0AC2F2A324ED0409007A5E33 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */; };
 		0AC2F2A624ED0409007A5E33 /* KontaxCamWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */; };
@@ -228,6 +230,7 @@
 		0A961474250DCFBF00137FE6 /* Backend */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Backend; sourceTree = "<group>"; };
 		0A96147B250DD15C00137FE6 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		0A961480250DD96C00137FE6 /* PassThrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PassThrough.metal; sourceTree = "<group>"; };
+		0A978BAB25289EAF00064531 /* FilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeaderView.swift; sourceTree = "<group>"; };
 		0A9D09EC25164AA1003EE10D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		0A9D09F025164ABB003EE10D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		0A9D09F125164AC2003EE10D /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 		0AADEE73247B732E009FFA52 /* LabCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewController.swift; sourceTree = "<group>"; };
 		0AADEE79247BB48E009FFA52 /* LabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AB96FFB248A99FF00F1FF3C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		0ABB37292528AA9500C1C42C /* FHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FHeaderView.swift; sourceTree = "<group>"; };
 		0AC2F28724ED00FE007A5E33 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0AC2F28924ED00FE007A5E33 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KontaxCamWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -457,6 +461,7 @@
 		0A4D6E53247A472100E039FC /* Filter collections */ = {
 			isa = PBXGroup;
 			children = (
+				0A978BB025289EC200064531 /* FilterHeaderView */,
 				0A838BA624EA639300F2EB8F /* Filter Info */,
 				0A3D5579247F569E00BC0477 /* FiltersCollectionViewController.swift */,
 				0A3D557B247F5A4100BC0477 /* FiltersCollectionViewCell.swift */,
@@ -569,6 +574,15 @@
 				0A64EE12250E3816004C1B56 /* PreviewView.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		0A978BB025289EC200064531 /* FilterHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0A978BAB25289EAF00064531 /* FilterHeaderView.swift */,
+				0ABB37292528AA9500C1C42C /* FHeaderView.swift */,
+			);
+			path = FilterHeaderView;
 			sourceTree = "<group>";
 		};
 		0AADEE72247B731C009FFA52 /* Lab */ = {
@@ -923,6 +937,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABB372A2528AA9500C1C42C /* FHeaderView.swift in Sources */,
 				0A84475924F94A0100700CAB /* Color.swift in Sources */,
 				0A0F94D2247E55AC00E33AEC /* ModalHeaderPresentable.swift in Sources */,
 				0AADEE74247B732E009FFA52 /* LabCollectionViewController.swift in Sources */,
@@ -958,6 +973,7 @@
 				0AADEE7A247BB48E009FFA52 /* LabCollectionViewCell.swift in Sources */,
 				0A267BD024E78FB50025FB60 /* UIImage.swift in Sources */,
 				0A3D557C247F5A4100BC0477 /* FiltersCollectionViewCell.swift in Sources */,
+				0A978BAC25289EAF00064531 /* FilterHeaderView.swift in Sources */,
 				0AFA90D424E8C45500BBDF57 /* SettingsViewModel.swift in Sources */,
 				0A86009A2527333A003606EB /* WhatsNewView.swift in Sources */,
 				0A03EB012480ABD1001D8006 /* FXCollectionViewCell.swift in Sources */,

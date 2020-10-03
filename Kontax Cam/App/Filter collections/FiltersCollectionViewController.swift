@@ -152,7 +152,7 @@ extension FiltersCollectionViewController {
             heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
         
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = contentInsets
@@ -172,41 +172,5 @@ extension FiltersCollectionViewController {
         layout.configuration = config
         
         return layout
-    }
-}
-
-// MARK: - Header view
-class FilterHeaderView: UICollectionReusableView {
-    static let ReuseIdentifier = "FilterHeaderView"
-    
-    private let label: UILabel = {
-        let label = UILabel()
-        label.text = "filterHeaderLabel".localized
-        label.numberOfLines = 0
-        label.textColor = .secondaryLabel
-        label.font = .preferredFont(forTextStyle: .caption1)
-        return label
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-        setupConstraint()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupView() {
-        addSubview(label)
-    }
-    
-    private func setupConstraint() {
-        label.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().multipliedBy(0.95)
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview()
-        }
     }
 }

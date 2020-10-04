@@ -77,6 +77,12 @@ class CameraViewController: UIViewController {
         } else {
             self.showSwipeTutorial()
         }
+        
+        let vc = UIHostingController(rootView: WhatsNewView(dismissAction: { self.dismiss(animated: true) {
+            self.showSwipeTutorial()
+        } }))
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

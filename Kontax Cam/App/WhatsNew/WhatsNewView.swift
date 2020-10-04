@@ -14,7 +14,7 @@ private struct openingView: View {
     @State private var opacity: Double = 1
     private var repeatingAnimation: Animation {
         Animation
-            .easeIn(duration: 1.5)
+            .easeInOut(duration: 1.5)
             .repeatForever()
     }
     
@@ -27,7 +27,7 @@ private struct openingView: View {
                 .renderingMode(.template)
                 .foregroundColor(.label)
                 .scaledToFit()
-                .frame(width: 20, height: 20)
+                .frame(width: 15, height: 15)
                 .opacity(opacity)
                 .onAppear {
                     withAnimation(self.repeatingAnimation) { self.opacity = 0 }
@@ -58,6 +58,7 @@ private struct viewOne: View {
 struct WhatsNewView: View {
     @Environment(\.progressionController) var progressionController
     @State private var currentIndex = 0
+    private let numberOfViews = 1
     var dismissAction: (() -> Void)?
     
     init(dismissAction: (() -> Void)?) {
@@ -80,16 +81,18 @@ struct WhatsNewView: View {
                     viewOne().eraseToAnyView()
                 }
                 .currentPageIndex($currentIndex)
+                .pageIndicatorTintColor(Color.systemGray5)
+                .currentPageIndicatorTintColor(Color.label)
                 Spacer()
                 
                 Button(action: {
-                    if currentIndex == 1 {
+                    if currentIndex == numberOfViews {
                         self.dismissAction!()
                     } else {
                         currentIndex += 1
                     }
                 }, label: {
-                    Text(currentIndex == 1 ? "Start taking photos".localized : "Next".localized)
+                    Text(currentIndex == numberOfViews ? "Start taking photos".localized : "Next".localized)
                 })
                 .buttonStyle(KontaxButtonStyle())
                 .padding()

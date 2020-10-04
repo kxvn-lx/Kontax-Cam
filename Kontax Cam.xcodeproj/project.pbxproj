@@ -41,7 +41,6 @@
 		0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A02476A7F000603F2C /* Main.storyboard */; };
 		0A44B2A72476A7F100603F2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A44B2A52476A7F100603F2C /* LaunchScreen.storyboard */; };
 		0A4D58FD24A2108600C51189 /* LightleaksCustomisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */; };
-		0A4D7F75252749760068EA8E /* whatsnew.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0A4D7F74252749760068EA8E /* whatsnew.gif */; };
 		0A4D7F7B25274B570068EA8E /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 0A4D7F7A25274B570068EA8E /* SwiftUIX */; };
 		0A50C413250DF59600233610 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
 		0A50C417250DF5F900233610 /* Backend in Frameworks */ = {isa = PBXBuildFile; productRef = 0A50C416250DF5F900233610 /* Backend */; };
@@ -100,6 +99,7 @@
 		0AC2F2A624ED0409007A5E33 /* KontaxCamWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */; };
 		0AC2F2A924ED040B007A5E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AC2F2A824ED040B007A5E33 /* Assets.xcassets */; };
 		0AC2F2AF24ED040B007A5E33 /* KontaxCamWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0AC2F2A124ED0409007A5E33 /* KontaxCamWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0AC4BB9F252999AF007AD53B /* whatsnew.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4BB9E252999AF007AD53B /* whatsnew.gif */; };
 		0AC54C9F248AAB7C00D64D05 /* AppearanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */; };
 		0AC735EE24B70E6D002BBE72 /* FilterLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */; };
 		0ACBADB824ED4DAF00D93708 /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACBADB624ED4D5900D93708 /* PhotoEntry.swift */; };
@@ -199,7 +199,6 @@
 		0A44B2A62476A7F100603F2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A44B2A82476A7F100603F2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A4D58FC24A2108600C51189 /* LightleaksCustomisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightleaksCustomisationViewController.swift; sourceTree = "<group>"; };
-		0A4D7F74252749760068EA8E /* whatsnew.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = whatsnew.gif; sourceTree = "<group>"; };
 		0A618333250CE0E000CA4782 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		0A618335250CFB4000CA4782 /* UIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItem.swift; sourceTree = "<group>"; };
 		0A64EE0C250E247B004C1B56 /* ShutterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutterView.swift; sourceTree = "<group>"; };
@@ -251,6 +250,7 @@
 		0AC2F2A524ED0409007A5E33 /* KontaxCamWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KontaxCamWidget.swift; sourceTree = "<group>"; };
 		0AC2F2A824ED040B007A5E33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AC2F2AA24ED040B007A5E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AC4BB9E252999AF007AD53B /* whatsnew.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = whatsnew.gif; sourceTree = "<group>"; };
 		0AC54C9E248AAB7C00D64D05 /* AppearanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceTableViewController.swift; sourceTree = "<group>"; };
 		0AC735ED24B70E6D002BBE72 /* FilterLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLabelView.swift; sourceTree = "<group>"; };
 		0ACBADB624ED4D5900D93708 /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
@@ -481,7 +481,7 @@
 		0A4D7F70252749670068EA8E /* GIF */ = {
 			isa = PBXGroup;
 			children = (
-				0A4D7F74252749760068EA8E /* whatsnew.gif */,
+				0AC4BB9E252999AF007AD53B /* whatsnew.gif */,
 			);
 			path = GIF;
 			sourceTree = "<group>";
@@ -844,7 +844,7 @@
 				0A73C4CC2499E92E00E46E9A /* Date Stamp Alt.otf in Resources */,
 				0A6E6DC424FD12EA00B0D6FA /* Assets.xcassets in Resources */,
 				0A90142E2506597D0003CD68 /* Summer vibes.png in Resources */,
-				0A4D7F75252749760068EA8E /* whatsnew.gif in Resources */,
+				0AC4BB9F252999AF007AD53B /* whatsnew.gif in Resources */,
 				0A9014302506597D0003CD68 /* In development.png in Resources */,
 				0A9014322506597D0003CD68 /* Bloodlust.png in Resources */,
 				0A44B2A22476A7F000603F2C /* Main.storyboard in Resources */,

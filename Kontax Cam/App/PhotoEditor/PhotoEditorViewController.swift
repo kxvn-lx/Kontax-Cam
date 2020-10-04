@@ -159,6 +159,7 @@ class PhotoEditorViewController: UIViewController {
         selectedFxs.sort(by: { $0.rawValue < $1.rawValue })
     }
     
+    /// Prepare global filter value for photo editor
     private func configureFilterValues() {
         globalFilterValue = [
             .colourleaks: FilterValue.Colourleaks.selectedColourValue,
@@ -169,6 +170,7 @@ class PhotoEditorViewController: UIViewController {
         FilterValue.reset()
     }
     
+    /// Store back the camera's filter value back after photo editor has done making changes
     private func storeBackValue() {
         FilterValue.Colourleaks.selectedColourValue = globalFilterValue[.colourleaks] as! FilterValue.Colourleaks.ColourValue
         FilterValue.Grain.strength = globalFilterValue[.grain] as! CGFloat

@@ -43,8 +43,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
     }()
     private var subscriptionsToken = Set<AnyCancellable>()
     
-    private var globalFiltersValue: [FilterType: Any]?
-    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,16 +79,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
         toggleElements()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        guard let globalFiltersValue = globalFiltersValue else { return }
-        FilterValue.Colourleaks.selectedColourValue = globalFiltersValue[.colourleaks] as! FilterValue.Colourleaks.ColourValue
-        FilterValue.Grain.strength = globalFiltersValue[.grain] as! CGFloat
-        FilterValue.Dust.strength = globalFiltersValue[.dust] as! CGFloat
-        FilterValue.Lightleaks.strength = globalFiltersValue[.lightleaks] as! CGFloat
-        self.globalFiltersValue = nil
-    }
-    
     private func setupView() {
         // Setup toolbar
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -114,7 +102,6 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
             
             let photoEditorVC = PhotoEditorViewController()
             photoEditorVC.image = image
-            photoEditorVC.delegate = self
             photoEditorVC.editedImage
                 .handleEvents(receiveOutput: { [unowned self] image in
                     DataEngine.shared.save(imageData: image.sd_imageData(as: .JPEG, compressionQuality: 1.0)!)
@@ -127,7 +114,7 @@ class LabCollectionViewController: UICollectionViewController, UIGestureRecogniz
                 .store(in: &self.subscriptionsToken)
             
             let nav = UINavigationController(rootViewController: photoEditorVC)
-            nav.modalPresentationStyle = .overFullScreen
+            nav.modalPresentationStyle = .fullScreen
             
             self.present(nav, animated: true, completion: nil)
         }
@@ -442,11 +429,5 @@ extension LabCollectionViewController: PhotoDisplayDelegate {
                 AlertHelper.shared.presentOKAction(withTitle: "Something went wrong.".localized, andMessage: "We are unable to delete the image.".localized, to: self.presentedViewController)
             }
         }
-    }
-}
-
-extension LabCollectionViewController: PhotoEditorDelegate {
-    func storeBackValue(values: [FilterType: Any]) {
-        self.globalFiltersValue = values
     }
 }

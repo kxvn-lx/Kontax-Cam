@@ -16,6 +16,7 @@ struct FHeaderView: View {
         }
         .font(.caption)
         .foregroundColor(.secondaryLabel)
+        .padding(.horizontal)
     }
 }
 

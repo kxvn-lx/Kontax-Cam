@@ -10,10 +10,6 @@ import UIKit
 import Combine
 import Backend
 
-protocol PhotoEditorDelegate: class {
-    func storeBackValue(values: [FilterType: Any])
-}
-
 class PhotoEditorViewController: UIViewController {
     var image: UIImage! {
         didSet {
@@ -44,8 +40,6 @@ class PhotoEditorViewController: UIViewController {
     }()
     private var collectionIndex = 1
     
-    weak var delegate: PhotoEditorDelegate?
-    
     var editedImage = PassthroughSubject<UIImage, Never>()
     
     override func viewDidLoad() {
@@ -63,11 +57,6 @@ class PhotoEditorViewController: UIViewController {
         setupConstraint()
         
         configureFilterValues()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        delegate?.storeBackValue(values: globalFilterValue)
     }
     
     private func setupView() {
@@ -153,6 +142,7 @@ class PhotoEditorViewController: UIViewController {
     
     @objc private func doneButtonTapped() {
         if let image = editorPreview.editedImageView.image {
+            storeBackValue()
             editedImage.send(image)
             self.dismiss(animated: true, completion: nil)
         } else {
@@ -177,6 +167,19 @@ class PhotoEditorViewController: UIViewController {
             .lightleaks: FilterValue.Lightleaks.strength]
         
         FilterValue.reset()
+    }
+    
+    private func storeBackValue() {
+        FilterValue.Colourleaks.selectedColourValue = globalFilterValue[.colourleaks] as! FilterValue.Colourleaks.ColourValue
+        FilterValue.Grain.strength = globalFilterValue[.grain] as! CGFloat
+        FilterValue.Dust.strength = globalFilterValue[.dust] as! CGFloat
+        FilterValue.Lightleaks.strength = globalFilterValue[.lightleaks] as! CGFloat
+    }
+    
+    @objc private func closeTapped() {
+        storeBackValue()
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
 

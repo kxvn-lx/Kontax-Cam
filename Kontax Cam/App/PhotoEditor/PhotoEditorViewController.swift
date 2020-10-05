@@ -178,7 +178,7 @@ class PhotoEditorViewController: UIViewController {
         FilterValue.Lightleaks.strength = globalFilterValue[.lightleaks] as! CGFloat
     }
     
-    @objc private func closeTapped() {
+    @objc override func closeTapped() {
         storeBackValue()
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)

@@ -15,7 +15,7 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
     
-    @objc private func closeTapped() {
+    @objc func closeTapped() {
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }

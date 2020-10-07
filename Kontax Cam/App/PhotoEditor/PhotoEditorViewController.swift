@@ -179,9 +179,14 @@ class PhotoEditorViewController: UIViewController {
     }
     
     @objc override func closeTapped() {
-        storeBackValue()
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        let okAction = UIAlertAction(title: "OK".localized, style: .destructive) { [weak self] (_) in
+            guard let self = self else { return }
+            self.storeBackValue()
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        AlertHelper.shared.presentWithCustomAction(title: "Discard changes".localized + "?", withCustomAction: [cancelAction, okAction], to: self)
     }
 }
 

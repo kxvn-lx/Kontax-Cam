@@ -58,6 +58,7 @@
 // PhotoEditor
 "import to lab" = "import to lab";
 "We are unable to import the image. Please try again." = "We are unable to import the image. Please try again.";
+"Discard changes" = "Discard changes";
 
 // Lab more action
 "Import from camera roll" = "Import from camera roll";

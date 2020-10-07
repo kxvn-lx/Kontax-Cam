@@ -59,6 +59,7 @@
 // PhotoEditor
 "import to lab" = "Import ke lab";
 "We are unable to import the image. Please try again." = "Terjadi suatu masalah saat mengimpor foto ini. Tolonng coba lagi.";
+"Discard changes" = "Buang perubahan";
 
 // Lab more action
 "Import from camera roll" = "Impor dari galeri foto";

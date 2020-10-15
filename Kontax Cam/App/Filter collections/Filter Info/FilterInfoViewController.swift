@@ -25,7 +25,6 @@ struct FilterInfo: Hashable {
 }
 
 class FilterInfoViewController: UIViewController {
-    
     var shouldRefreshCollectionView = PassthroughSubject<Bool, Never>()
     
     var selectedCollection: FilterCollection! {
@@ -136,10 +135,9 @@ class FilterInfoViewController: UIViewController {
     private func setupImageDatas() {
         let filterName = selectedCollection.name.components(separatedBy: " ").first!
         
-        for n in 1 ... 5 {
-            let imageURL = URL(string: "https://kontaxcam.imfast.io/\(filterName)/\(filterName).ex\(n).jpg")!
-            
-            let filterInfo = FilterInfo(imageURL: imageURL, filterName: "\(filterName)\(n)")
+        for n in 0 ... 4 {
+            let imageURL = URL(string: FilterCollection.imageURLs[filterName]![n])
+            let filterInfo = FilterInfo(imageURL: imageURL!, filterName: "\(filterName)\(n + 1)")
             datas.append(filterInfo)
         }
         

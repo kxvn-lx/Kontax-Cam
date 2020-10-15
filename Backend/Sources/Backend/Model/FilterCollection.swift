@@ -37,7 +37,9 @@ public struct FilterCollection: Equatable {
     public static func == (rhs: FilterCollection, lhs: FilterCollection) -> Bool {
         return rhs.name == lhs.name
     }
-    
+}
+
+extension FilterCollection {
     public static let aCollection = FilterCollection(
         name: "A Collection",
         imageURL: "https://i.postimg.cc/P5v1wW4Y/A-Collection-hero.jpg",

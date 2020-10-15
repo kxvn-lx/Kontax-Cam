@@ -171,13 +171,17 @@ class CameraViewController: UIViewController {
     private func shouldShowWhatsNew() -> Bool {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
         let savedVersion = UserDefaultsHelper.shared.getData(type: String.self, forKey: .appVersion)
+
+        let prefixedVersion = version.prefix(3)
+        let prefixedSavedVersion = savedVersion?.prefix(3)
         
-        if savedVersion != version {
-            UserDefaultsHelper.shared.setData(value: version, key: .appVersion)
+        if prefixedSavedVersion != prefixedVersion {
+            UserDefaultsHelper.shared.setData(value: prefixedVersion, key: .appVersion)
             return true
         } else {
             return false
         }
+        
     }
     
     private func showSwipeTutorial() {

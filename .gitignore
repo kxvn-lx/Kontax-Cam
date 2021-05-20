@@ -89,5 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-Kontax*Cam/Assets.xcassets/Filter
+# Kontax*Cam/Assets.xcassets/Filter
 
